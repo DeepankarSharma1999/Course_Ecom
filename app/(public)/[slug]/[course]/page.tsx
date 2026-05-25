@@ -1,0 +1,60 @@
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { CoursePageContent } from "@/components/course-page-content";
+import { TrainerSection } from "@/components/trainer-section";
+import { StickyCta } from "@/components/sticky-cta";
+import { CourseCountrySwitcher } from "@/components/course-country-switcher";
+import { formatPrice } from "@/lib/utils";
+import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { SITE } from "@/lib/utils";
+import { COUNTRIES, getAllCourses, getCourseBySlug, findCountry, getCourseVariant } from "@/lib/content";
+
+export const dynamicParams = true;
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const courses = await getAllCourses();
+  return COUNTRIES.flatMap((country) => courses.map((c) => ({ slug: country.slug, course: c.slug })));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; course: string }> }): Promise<Metadata> {
+  const { slug, course } = await params;
+  const c = await getCourseBySlug(course); const co = findCountry(slug);
+  if (!c || !co) return {};
+  const variant = await getCourseVariant(course, slug);
+  const title = variant?.seoTitle || `${c.shortTitle} Certification Training in ${co.name} | MindClick`;
+  const description = variant?.seoDescription || `${c.seoDescription} Now available across ${co.name} — live online & classroom batches.`;
+  return {
+    title, description, keywords: c.seoKeywords,
+    alternates: { canonical: `/${slug}/${course}` },
+    openGraph: { title, description, images: c.heroImage ? [c.heroImage] : [], url: `${SITE.url}/${slug}/${course}` },
+  };
+}
+
+export default async function Page({ params }: { params: Promise<{ slug: string; course: string }> }) {
+  const { slug, course } = await params;
+  const c = await getCourseBySlug(course); const co = findCountry(slug);
+  if (!c || !co) notFound();
+
+  const jsonLd = [
+    courseJsonLd(c, { country: co.name }),
+    faqJsonLd(c.faqs),
+    breadcrumbJsonLd([
+      { name: "Home", url: SITE.url },
+      { name: co.name, url: `${SITE.url}/${slug}` },
+      { name: c.shortTitle, url: `${SITE.url}/${slug}/${course}` },
+    ]),
+  ];
+
+  return (
+    <>
+      {jsonLd.map((d, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
+      ))}
+      <CoursePageContent course={c} countrySlug={slug} />
+      <TrainerSection courseSlug={c.slug} />
+      <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceInr ? formatPrice(c.basePriceInr, "INR") : undefined} />
+      <CourseCountrySwitcher courseSlug={c.slug} currentCountrySlug={slug} countries={COUNTRIES} />
+    </>
+  );
+}

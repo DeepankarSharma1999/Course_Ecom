@@ -1,0 +1,57 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { getAllCourses } from "@/lib/content";
+import { ComparePicker } from "@/components/compare-picker";
+
+export const metadata: Metadata = {
+  title: "Compare Certification Courses",
+  description: "Side-by-side comparison of certification training courses — duration, price, exam, prerequisites and outcomes.",
+};
+
+export const revalidate = 60;
+
+const SUGGESTED = [
+  ["safe-scrum-master-certification", "safe-product-owner-product-manager-certification"],
+  ["safe-scrum-master-certification", "safe-devops-certification"],
+];
+
+export default async function ComparePage() {
+  const courses = await getAllCourses();
+  return (
+    <>
+      <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
+        <div className="container-tight py-14">
+          <div className="badge mb-3 bg-white/10 text-white border border-white/20">Compare</div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3">Compare Certification Courses</h1>
+          <p className="text-brand-100 text-lg max-w-2xl">Not sure which course is right for you? Pick any two to see them side-by-side.</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-tight">
+          <div className="card p-6 mb-10">
+            <ComparePicker courses={courses.map((c) => ({ slug: c.slug, title: c.shortTitle }))} />
+          </div>
+
+          <h2 className="h3 mb-4">Popular Comparisons</h2>
+          <div className="grid md:grid-cols-2 gap-3">
+            {SUGGESTED.map(([a, b]) => {
+              const A = courses.find((c) => c.slug === a); const B = courses.find((c) => c.slug === b);
+              if (!A || !B) return null;
+              return (
+                <Link key={`${a}-${b}`} href={`/compare/${a}-vs-${b}`} className="card p-5 hover:shadow-card-lg transition-all flex items-center gap-3">
+                  <div className="flex-1">
+                    <div className="font-semibold">{A.shortTitle} <span className="text-ink-400 font-normal">vs</span> {B.shortTitle}</div>
+                    <div className="text-xs text-ink-500 mt-1">Compare side-by-side</div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-brand-600" />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

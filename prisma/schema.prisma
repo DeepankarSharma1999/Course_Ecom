@@ -1,0 +1,304 @@
+// Mindclick training platform - Prisma schema
+// Designed to power /[course], /[country]/[course], /[country]/[course]/[city]
+// from a single reusable template with admin-managed content.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  tagline   String?
+  icon      String?
+  order     Int      @default(0)
+  courses   Course[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Course {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  shortTitle      String?
+  subtitle        String?
+  summary         String   @db.Text
+  description     String   @db.Text
+  durationHours   Int?
+  durationLabel   String?
+  level           String?
+  accreditedBy    String?
+  basePriceInr    Int?
+  basePriceUsd    Int?
+  heroImage       String?
+  thumbnailImage  String?
+  brochureUrl     String?
+  examIncluded    Boolean  @default(false)
+  pduCredits      Int?
+  ratingAvg       Float    @default(4.8)
+  ratingCount     Int      @default(0)
+  isFeatured      Boolean  @default(false)
+  isPublished     Boolean  @default(true)
+
+  categoryId      String?
+  category        Category? @relation(fields: [categoryId], references: [id])
+
+  keyFeatures     Json?
+  learningOutcomes Json?
+  whoShouldAttend Json?
+  prerequisites   Json?
+  curriculum      Json?
+  whyChooseUs     Json?
+
+  seoTitle        String?
+  seoDescription  String?  @db.Text
+  seoKeywords     String?
+
+  faqs            FAQ[]
+  schedules       Schedule[]
+  pageVariants    CoursePageVariant[]
+  trainers        CourseTrainer[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CoursePageVariant {
+  id              String   @id @default(cuid())
+  courseId        String
+  course          Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  countryCode     String?
+  countrySlug     String?
+  citySlug        String?
+  cityName        String?
+  countryName     String?
+  currency        String   @default("INR")
+  priceLocal      Int?
+  heroHeadline    String?
+  heroSubheadline String?  @db.Text
+  localContext    String?  @db.Text
+  seoTitle        String?
+  seoDescription  String?  @db.Text
+  isPublished     Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([courseId, countrySlug, citySlug])
+  @@index([countrySlug, citySlug])
+}
+
+model Schedule {
+  id          String   @id @default(cuid())
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  countrySlug String?
+  citySlug    String?
+  mode        String   // "Live Online" | "Classroom" | "Self-Paced"
+  startDate   DateTime
+  endDate     DateTime
+  timezone    String?
+  timeLabel   String?
+  priceInr    Int?
+  priceUsd    Int?
+  discountPct Int?
+  seatsLeft   Int?
+  isFilling   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([courseId, citySlug])
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  courseId  String?
+  course    Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  scope     String   @default("course") // "course" | "global"
+  question  String   @db.Text
+  answer    String   @db.Text
+  order     Int      @default(0)
+}
+
+model Trainer {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  title       String?
+  bio         String?  @db.Text
+  photo       String?
+  rating      Float?
+  reviews     Int?
+  expertise   Json?       // string[]
+  certifications Json?    // string[]
+  experienceYears Int?
+  linkedinUrl String?
+  isFeatured  Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  courses     CourseTrainer[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CourseTrainer {
+  courseId  String
+  trainerId String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  trainer   Trainer  @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  @@id([courseId, trainerId])
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String?
+  company   String?
+  quote     String   @db.Text
+  rating    Int      @default(5)
+  photo     String?
+  course    String?
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id                 String  @id @default("singleton")
+  brandName          String  @default("MindClick")
+  tagline            String  @default("Training & Certifications")
+  logoUrl            String?
+  faviconUrl         String?
+
+  phone              String  @default("+91 80 4710 6633")
+  email              String  @default("info@mindclick.com")
+  whatsappNumber     String?
+  address            String? @db.Text
+
+  topBarMessages     Json?     // string[]
+  accreditationLogos Json?     // { name, logoUrl?, label? }[]
+  socialLinks        Json?     // { linkedin, twitter, facebook, instagram, youtube }
+
+  footerAbout        String? @db.Text
+  footerColumns      Json?     // { title, links: { label, href }[] }[]
+  copyrightText      String  @default("© MindClick. All rights reserved.")
+
+  announcementText   String?
+  announcementLink   String?
+  announcementEnabled Boolean @default(false)
+
+  defaultSeoTitle    String?
+  defaultSeoDescription String? @db.Text
+
+  updatedAt          DateTime @updatedAt
+}
+
+model HomePageContent {
+  id                  String  @id @default("singleton")
+
+  heroBadgeText       String  @default("Trusted by 500,000+ learners across 50+ countries")
+  heroHeadline        String  @default("Globally Accredited")
+  heroHeadlineHighlight String @default("Certification")
+  heroHeadlineSuffix  String  @default("Training")
+  heroSubheading      String  @db.Text
+  heroCtaPrimaryText  String  @default("Explore All Courses")
+  heroCtaPrimaryLink  String  @default("/courses")
+  heroCtaSecondaryText String @default("Corporate Training")
+  heroCtaSecondaryLink String @default("/corporate")
+  heroStats           Json?     // { value, label }[]
+  heroFormTitle       String  @default("Talk to a Training Advisor")
+  heroFormSubtitle    String  @default("Get course details, batch schedules and group discounts.")
+
+  accreditationTitle  String  @default("Accredited Training Partner")
+
+  categoriesBadge     String  @default("Course Catalog")
+  categoriesTitle     String  @default("Explore Our Training Categories")
+  categoriesSubtitle  String  @db.Text
+
+  coursesBadge        String  @default("Most Popular")
+  coursesTitle        String  @default("Bestselling Certification Courses")
+
+  whyUsBadge          String  @default("Why MindClick")
+  whyUsTitle          String  @default("A Training Partner Built for Outcomes, Not Just Certificates")
+  whyUsSubtitle       String  @db.Text
+  whyUsImage          String?
+  whyUsItems          Json?     // { icon, title, body }[]
+
+  testimonialsBadge   String  @default("Learner Stories")
+  testimonialsTitle   String  @default("What Our Learners Say")
+  testimonialsSubtitle String @default("Real reviews from professionals who advanced their careers with MindClick.")
+
+  faqBadge            String  @default("FAQ")
+  faqTitle            String  @default("Frequently Asked Questions")
+
+  ctaTitle            String  @default("Ready to Advance Your Career?")
+  ctaSubtitle         String  @db.Text
+  ctaPrimaryText      String  @default("Enquire Now")
+  ctaPrimaryLink      String  @default("/enquire")
+  ctaSecondaryText    String  @default("Corporate Training")
+  ctaSecondaryLink    String  @default("/corporate")
+
+  seoTitle            String?
+  seoDescription      String? @db.Text
+
+  updatedAt           DateTime @updatedAt
+}
+
+model SimplePage {
+  id              String   @id @default(cuid())
+  slug            String   @unique     // "corporate" | "enquire" | "about" | ...
+  title           String
+  heroBadge       String?
+  heroHeadline    String?
+  heroSubheading  String?  @db.Text
+  body            String?  @db.Text     // markdown / HTML
+  showLeadForm    Boolean  @default(true)
+  leadFormTitle   String?
+  leadFormSubtitle String? @db.Text
+  ctaText         String?
+  ctaLink         String?
+  seoTitle        String?
+  seoDescription  String?  @db.Text
+  isPublished     Boolean  @default(true)
+  updatedAt       DateTime @updatedAt
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  role         String   @default("admin") // "admin" | "editor"
+  isActive     Boolean  @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Lead {
+  id             String   @id @default(cuid())
+  name           String
+  email          String
+  phone          String
+  countryCode    String?
+  courseSlug     String?
+  countrySlug    String?
+  citySlug       String?
+  message        String?  @db.Text
+  source         String?
+  consentMarketing Boolean @default(false)
+  status         String   @default("new") // "new" | "contacted" | "qualified" | "converted" | "dropped"
+  notes          String?  @db.Text
+  utm            Json?    // { source, medium, campaign, term, content, referrer, landingPath }
+  brochureCourseSlug String?
+  ipAddress      String?
+  userAgent      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([createdAt])
+  @@index([status])
+  @@index([source])
+}
