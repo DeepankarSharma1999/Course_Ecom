@@ -232,7 +232,7 @@ export const COURSES: CourseContent[] = [
     ],
     seoTitle: "SAFe POPM Certification Training | SAFe Product Owner Product Manager Course",
     seoDescription:
-      "Get SAFe POPM 6.0 certified with MindClick. Live instructor-led SAFe Product Owner / Product Manager training by SPC-certified trainers. Exam fee included.",
+      "Get SAFe POPM 6.0 certified with Course_Ecom. Live instructor-led SAFe Product Owner / Product Manager training by SPC-certified trainers. Exam fee included.",
     seoKeywords:
       "safe popm certification, safe product owner product manager training, popm certification training, safe 6.0 popm",
   },
@@ -310,7 +310,7 @@ export const COURSES: CourseContent[] = [
     ],
     seoTitle: "SAFe Scrum Master (SSM) Certification Training Online",
     seoDescription:
-      "Get certified as a SAFe Scrum Master 6.0 with MindClick. Live instructor-led SSM course with PI Planning simulation, exam fee included and 14 PDUs.",
+      "Get certified as a SAFe Scrum Master 6.0 with Course_Ecom. Live instructor-led SSM course with PI Planning simulation, exam fee included and 14 PDUs.",
     seoKeywords:
       "safe scrum master certification, ssm certification training, safe ssm 6.0, scaled agile scrum master",
   },
@@ -390,14 +390,14 @@ export const COURSES: CourseContent[] = [
     ],
     seoTitle: "SAFe DevOps (SDP) Certification Training | CALMR & Value Stream",
     seoDescription:
-      "Get certified as a SAFe DevOps Practitioner with MindClick. Live SDP 6.0 training with CALMR, value stream mapping and CI/CD pipeline design. Exam included.",
+      "Get certified as a SAFe DevOps Practitioner with Course_Ecom. Live SDP 6.0 training with CALMR, value stream mapping and CI/CD pipeline design. Exam included.",
     seoKeywords:
       "safe devops certification, sdp certification, safe devops practitioner training, devops with safe",
   },
 ];
 
 export const GLOBAL_FAQS: FaqItem[] = [
-  { q: "Are MindClick courses globally accredited?", a: "Yes. MindClick is an accredited training partner for Scaled Agile, PMI, Scrum Alliance, Axelos, EXIN, PeopleCert and other leading certification bodies. All our certifications are globally recognized." },
+  { q: "Are Course_Ecom courses globally accredited?", a: "Yes. Course_Ecom is an accredited training partner for Scaled Agile, PMI, Scrum Alliance, Axelos, EXIN, PeopleCert and other leading certification bodies. All our certifications are globally recognized." },
   { q: "Do you offer corporate training?", a: "Yes. We deliver private group training, custom curriculum and bulk enrollment programs for enterprises globally. Visit our Corporate Training page or contact us for a tailored proposal." },
   { q: "Can I switch batches if I miss a session?", a: "Absolutely. With our flexible re-attendance policy, you can attend the missed sessions in any upcoming batch at no extra cost." },
   { q: "How do I access course material after the training?", a: "You receive lifetime access to our Learning Management System (LMS) including recordings, slides, practice tests, and reference material." },
@@ -447,7 +447,7 @@ export const TRAINERS = [
 ];
 
 export const TESTIMONIALS = [
-  { name: "Anita Sharma", role: "Senior Scrum Master", company: "Infosys", quote: "The SSM training at MindClick was hands-down the most practical SAFe course I have attended. The PI Planning simulation felt like a real ART event.", rating: 5, course: "SAFe Scrum Master" },
+  { name: "Anita Sharma", role: "Senior Scrum Master", company: "Infosys", quote: "The SSM training at Course_Ecom was hands-down the most practical SAFe course I have attended. The PI Planning simulation felt like a real ART event.", rating: 5, course: "SAFe Scrum Master" },
   { name: "Rohit Verma", role: "Product Manager", company: "Wipro", quote: "Cleared my POPM exam on the first attempt. The trainer connected every concept to real product scenarios. Highly recommended.", rating: 5, course: "SAFe POPM" },
   { name: "Sandeep Iyer", role: "DevOps Lead", company: "TCS", quote: "Value stream mapping during the SAFe DevOps class gave me a concrete improvement roadmap I implemented the very next sprint.", rating: 5, course: "SAFe DevOps" },
   { name: "Priya Menon", role: "Agile Coach", company: "HCL", quote: "Excellent trainer, fantastic content and a very supportive team. The free retake policy gave me complete peace of mind.", rating: 5, course: "SAFe SSM" },

@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.log("Seeding admin user...");
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@mindclick.com";
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@course-ecom.com";
   const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
   const passwordHash = await bcrypt.hash(adminPassword, 10);
   await prisma.adminUser.upsert({
@@ -101,16 +101,16 @@ async function main() {
       update: {
         countryCode: "IN", countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
-        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with MindClick.`,
-        seoTitle: `${c.shortTitle} Certification Training in Delhi | MindClick`,
+        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Course_Ecom.`,
+        seoTitle: `${c.shortTitle} Certification Training in Delhi | Course_Ecom`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
       create: {
         courseId: course.id, countryCode: "IN", countrySlug: "in", citySlug: "delhi",
         countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
-        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with MindClick.`,
-        seoTitle: `${c.shortTitle} Certification Training in Delhi | MindClick`,
+        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Course_Ecom.`,
+        seoTitle: `${c.shortTitle} Certification Training in Delhi | Course_Ecom`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
     });

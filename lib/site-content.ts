@@ -8,12 +8,12 @@ export type SiteSettings = NonNullable<Awaited<ReturnType<typeof getSiteSettings
 export type HomePageContent = NonNullable<Awaited<ReturnType<typeof getHomeContent>>>;
 
 const DEFAULT_SETTINGS = {
-  brandName: "MindClick",
+  brandName: "Course_Ecom",
   tagline: "Training & Certifications",
   logoUrl: null,
   faviconUrl: null,
   phone: "+91 80 4710 6633",
-  email: "info@mindclick.com",
+  email: "info@course-ecom.com",
   whatsappNumber: "918047106633",
   address: null,
   topBarMessages: [
@@ -25,7 +25,7 @@ const DEFAULT_SETTINGS = {
     { name: "AXELOS" }, { name: "EXIN" }, { name: "PeopleCert" }, { name: "IIBA®" },
   ],
   socialLinks: { linkedin: "", twitter: "", facebook: "", instagram: "", youtube: "" },
-  footerAbout: "MindClick is a global certification training provider, helping 500,000+ professionals across 50+ countries advance their careers with globally accredited programs.",
+  footerAbout: "Course_Ecom is a global certification training provider, helping 500,000+ professionals across 50+ countries advance their careers with globally accredited programs.",
   footerColumns: [
     {
       title: "Top Categories",
@@ -57,7 +57,7 @@ const DEFAULT_SETTINGS = {
       ],
     },
   ],
-  copyrightText: "© MindClick. All rights reserved.",
+  copyrightText: "© Course_Ecom. All rights reserved.",
   announcementText: null,
   announcementLink: null,
   announcementEnabled: false,
@@ -86,7 +86,7 @@ const DEFAULT_HOME = {
   categoriesSubtitle: "From individual certifications to enterprise transformation, find the right program for your career stage.",
   coursesBadge: "Most Popular",
   coursesTitle: "Bestselling Certification Courses",
-  whyUsBadge: "Why MindClick",
+  whyUsBadge: "Why Course_Ecom",
   whyUsTitle: "A Training Partner Built for Outcomes, Not Just Certificates",
   whyUsSubtitle: "We combine globally accredited curriculum, hands-on practitioner-led delivery, and modern learning experiences to ensure you don't just pass your exam — you actually apply what you learn at work.",
   whyUsImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
@@ -98,7 +98,7 @@ const DEFAULT_HOME = {
   ],
   testimonialsBadge: "Learner Stories",
   testimonialsTitle: "What Our Learners Say",
-  testimonialsSubtitle: "Real reviews from professionals who advanced their careers with MindClick.",
+  testimonialsSubtitle: "Real reviews from professionals who advanced their careers with Course_Ecom.",
   faqBadge: "FAQ",
   faqTitle: "Frequently Asked Questions",
   ctaTitle: "Ready to Advance Your Career?",
@@ -114,7 +114,7 @@ const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
     heroBadge: "For Enterprises",
     heroHeadline: "Upskill Your Teams With Globally Accredited Training",
     heroSubheading: "Custom curriculum, private group batches, bulk enrollments and dedicated success management for your enterprise.",
-    body: "MindClick partners with Fortune 500 enterprises and high-growth product companies to deliver world-class training programs at scale.\n\nWe combine accredited curriculum, practitioner-led delivery and modern learning experiences to ensure your teams don't just complete training — they apply it.\n\n**What we offer**\n- Private cohorts and custom curriculum\n- Bulk enrollment discounts (10+ learners)\n- Dedicated learning experience manager\n- Onsite, virtual or hybrid delivery\n- LMS access for 12 months\n- Detailed reporting and certification tracking",
+    body: "Course_Ecom partners with Fortune 500 enterprises and high-growth product companies to deliver world-class training programs at scale.\n\nWe combine accredited curriculum, practitioner-led delivery and modern learning experiences to ensure your teams don't just complete training — they apply it.\n\n**What we offer**\n- Private cohorts and custom curriculum\n- Bulk enrollment discounts (10+ learners)\n- Dedicated learning experience manager\n- Onsite, virtual or hybrid delivery\n- LMS access for 12 months\n- Detailed reporting and certification tracking",
     showLeadForm: true,
     leadFormTitle: "Request a Corporate Proposal",
     leadFormSubtitle: "Our enterprise team will respond within one business day.",
@@ -130,11 +130,11 @@ const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
     leadFormSubtitle: "Quick form — we'll do the rest.",
   },
   about: {
-    slug: "about", title: "About MindClick",
+    slug: "about", title: "About Course_Ecom",
     heroBadge: "About",
     heroHeadline: "Building Careers Through World-Class Training",
-    heroSubheading: "MindClick is a global training and certification provider, trusted by 500,000+ professionals and 1,000+ enterprises.",
-    body: "Founded with a mission to make globally accredited certification training accessible across geographies, MindClick partners with Scaled Agile, PMI, Scrum Alliance, AXELOS, EXIN and PeopleCert to deliver world-class programs in Agile, SAFe, DevOps, Project Management, IT Service Management, Quality, Cybersecurity and emerging tech.\n\n**Our mission** — give every professional an unfair career advantage through practitioner-led training, modern learning experiences and outcome-focused certification programs.\n\n**Why choose MindClick** — accredited training partners, only SPC/PMP-certified instructors, free retake policy, 24×7 learner support and a single point of contact through your learning journey.",
+    heroSubheading: "Course_Ecom is a global training and certification provider, trusted by 500,000+ professionals and 1,000+ enterprises.",
+    body: "Founded with a mission to make globally accredited certification training accessible across geographies, Course_Ecom partners with Scaled Agile, PMI, Scrum Alliance, AXELOS, EXIN and PeopleCert to deliver world-class programs in Agile, SAFe, DevOps, Project Management, IT Service Management, Quality, Cybersecurity and emerging tech.\n\n**Our mission** — give every professional an unfair career advantage through practitioner-led training, modern learning experiences and outcome-focused certification programs.\n\n**Why choose Course_Ecom** — accredited training partners, only SPC/PMP-certified instructors, free retake policy, 24×7 learner support and a single point of contact through your learning journey.",
     showLeadForm: false,
   },
 };

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const c = await getCourseBySlug(course); const co = findCountry(slug); const ct = findCity(city);
   if (!c || !co || !ct) return {};
   const variant = await getCourseVariant(course, slug, city);
-  const title = variant?.seoTitle || `${c.shortTitle} Certification Training in ${ct.name} | MindClick`;
+  const title = variant?.seoTitle || `${c.shortTitle} Certification Training in ${ct.name} | Course_Ecom`;
   const description = variant?.seoDescription || `Become a certified ${c.shortTitle} in ${ct.name}. ${c.summary} Weekend & weekday batches available.`;
   return {
     title, description, keywords: `${c.seoKeywords}, ${c.shortTitle} ${ct.name}, ${c.shortTitle} training in ${ct.name}`,

@@ -8,7 +8,7 @@ import { CurrencySwitcher } from "@/components/currency-switcher";
 
 export function SiteHeader({
   currency = "INR",
-  brandName = "MindClick",
+  brandName = "Course_Ecom",
   tagline = "Training & Certifications",
   phone = "+91 80 4710 6633",
   topBarMessages = [],
@@ -113,7 +113,7 @@ export function SiteHeader({
       {mobileOpen && (
         <div className="fixed inset-0 z-50 bg-white lg:hidden overflow-y-auto">
           <div className="container-tight py-4 flex items-center justify-between border-b border-ink-100">
-            <div className="font-bold text-lg">MindClick</div>
+            <div className="font-bold text-lg">Course_Ecom</div>
             <button onClick={() => setMobileOpen(false)} aria-label="Close"><X className="w-6 h-6" /></button>
           </div>
           <div className="container-tight py-6 space-y-6">

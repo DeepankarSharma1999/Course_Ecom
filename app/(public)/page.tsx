@@ -155,7 +155,7 @@ export default async function HomePage() {
           <div className="container-tight grid lg:grid-cols-2 gap-12 items-center">
             {h.whyUsImage && (
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-card-lg">
-                <Image src={h.whyUsImage} alt="Why MindClick" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+                <Image src={h.whyUsImage} alt="Why Course_Ecom" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
               </div>
             )}
             <div>

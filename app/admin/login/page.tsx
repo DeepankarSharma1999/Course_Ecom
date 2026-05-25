@@ -34,7 +34,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">M</div>
-            <span className="font-bold text-xl text-ink-900">MindClick Admin</span>
+            <span className="font-bold text-xl text-ink-900">Course_Ecom Admin</span>
           </Link>
           <p className="text-sm text-ink-500 mt-2">Sign in to manage courses, schedules, and leads.</p>
         </div>
@@ -54,7 +54,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
               required
               autoComplete="email"
               className="mt-1 w-full rounded-lg border border-ink-200 px-3 py-2 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"
-              placeholder="admin@mindclick.com"
+              placeholder="admin@course-ecom.com"
             />
           </div>
           <div>
@@ -69,7 +69,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           </div>
           <button type="submit" className="btn-primary w-full">Sign in</button>
           <div className="text-xs text-ink-500 text-center">
-            Default: <code className="font-mono">admin@mindclick.com</code> / <code className="font-mono">admin123</code>
+            Default: <code className="font-mono">admin@course-ecom.com</code> / <code className="font-mono">admin123</code>
           </div>
         </form>
 

@@ -17,7 +17,7 @@ export default async function SiteSettingsPage({ searchParams }: { searchParams:
         {sp.saved && <div className="mb-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2 text-sm">Saved.</div>}
         <form action={saveSiteSettings} className="grid lg:grid-cols-2 gap-6">
           <Section title="Brand">
-            <Field label="Brand Name" required><Input name="brandName" defaultValue={s?.brandName ?? "MindClick"} required /></Field>
+            <Field label="Brand Name" required><Input name="brandName" defaultValue={s?.brandName ?? "Course_Ecom"} required /></Field>
             <Field label="Tagline"><Input name="tagline" defaultValue={s?.tagline ?? ""} /></Field>
             <Field label="Logo URL"><Input name="logoUrl" defaultValue={s?.logoUrl ?? ""} /></Field>
             <Field label="Favicon URL"><Input name="faviconUrl" defaultValue={s?.faviconUrl ?? ""} /></Field>

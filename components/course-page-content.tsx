@@ -170,7 +170,7 @@ export function CoursePageContent({
             {city && (
               <p className="text-ink-700 leading-relaxed">
                 {course.shortTitle} certification is in strong demand across {city.name} and the wider {country?.name} market.
-                MindClick delivers weekend and weekday batches in {city.name} — both classroom (subject to venue availability) and live online — led by accredited
+                Course_Ecom delivers weekend and weekday batches in {city.name} — both classroom (subject to venue availability) and live online — led by accredited
                 trainers with deep industry experience.
               </p>
             )}
@@ -300,8 +300,8 @@ export function CoursePageContent({
       <section className="section bg-ink-50/40">
         <div className="container-tight">
           <div className="text-center mb-10">
-            <div className="badge mb-3">Why MindClick</div>
-            <h2 className="h2">Why Choose MindClick for {course.shortTitle}</h2>
+            <div className="badge mb-3">Why Course_Ecom</div>
+            <h2 className="h2">Why Choose Course_Ecom for {course.shortTitle}</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {course.whyChooseUs.map((w, i) => (

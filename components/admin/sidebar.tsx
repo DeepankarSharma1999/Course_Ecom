@@ -27,7 +27,7 @@ export function AdminSidebar() {
         <Link href="/admin" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-brand-500 grid place-items-center text-white font-bold">M</div>
           <div className="leading-tight">
-            <div className="font-bold text-white text-sm">MindClick</div>
+            <div className="font-bold text-white text-sm">Course_Ecom</div>
             <div className="text-[10px] uppercase tracking-widest text-brand-300">Admin</div>
           </div>
         </Link>

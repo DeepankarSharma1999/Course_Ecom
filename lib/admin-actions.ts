@@ -360,7 +360,7 @@ export async function saveSiteSettings(formData: FormData) {
     },
     create: {
       id: "singleton",
-      brandName: String(formData.get("brandName") || "MindClick"),
+      brandName: String(formData.get("brandName") || "Course_Ecom"),
       tagline: String(formData.get("tagline") || ""),
       phone: String(formData.get("phone") || ""),
       email: String(formData.get("email") || ""),
