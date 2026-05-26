@@ -57,7 +57,18 @@ export function CoursePageContent({
   const country = countrySlug ? findCountry(countrySlug) : null;
   const city = citySlug ? findCity(citySlug) : null;
   const locationLabel = city?.name && country?.name ? `${city.name}, ${country.name}` : country?.name;
-  const titlePrefix = city ? `${course.shortTitle} Training in ${city.name}` : course.shortTitle;
+
+  // Normalize the short title so we don't end up with "X Certification Certification Training"
+  // when the seeded shortTitle already ends with "Certification" or "Training".
+  const baseTitle = course.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim();
+  const heroTitle = city
+    ? `${baseTitle} Certification Training in ${city.name}`
+    : `${baseTitle} Certification Training`;
+  const breadcrumbLabel = city ? `${baseTitle} Training in ${city.name}` : baseTitle;
+  const featuresHeading = city
+    ? `Key Features of ${baseTitle} Training in ${city.name}`
+    : `Key Features of ${baseTitle} Certification Training`;
+
   const schedules = generateSchedules(course);
 
   return (
@@ -70,7 +81,7 @@ export function CoursePageContent({
           <Link href={`/category/${course.category.slug}`} className="hover:text-brand-600">{course.category.name}</Link>
           <span>/</span>
           {country && (<><Link href={`/${countrySlug}`} className="hover:text-brand-600">{country.name}</Link><span>/</span></>)}
-          <span className="text-ink-700 line-clamp-1">{course.shortTitle}{city ? ` Training in ${city.name}` : ""}</span>
+          <span className="text-ink-700 line-clamp-1">{breadcrumbLabel}</span>
         </div>
       </div>
 
@@ -84,10 +95,10 @@ export function CoursePageContent({
               {city && <span className="badge bg-accent-500/20 text-accent-500 border border-accent-500/30"><MapPin className="w-3 h-3" />{city.name}</span>}
             </div>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight mb-4">
-              {titlePrefix} Certification Training
+              {heroTitle}
             </h1>
             <p className="text-lg text-brand-100 mb-6 max-w-2xl">
-              {city ? `${course.subtitle} Join Delhi-NCR's leading certification training provider.` : course.subtitle}
+              {city ? `${course.subtitle} Join ${city.name}'s leading certification training provider.` : course.subtitle}
             </p>
             <div className="flex flex-wrap items-center gap-5 mb-6">
               <div className="flex items-center gap-1">
@@ -144,7 +155,7 @@ export function CoursePageContent({
         <div className="container-tight">
           <div className="mb-8">
             <div className="badge mb-3">Course Highlights</div>
-            <h2 className="h2">Key Features of {course.shortTitle} Training{city ? ` in ${city.name}` : ""}</h2>
+            <h2 className="h2">{featuresHeading}</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {course.keyFeatures.map((kf, i) => {

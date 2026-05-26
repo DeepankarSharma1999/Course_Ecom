@@ -4,7 +4,6 @@ import { CourseCard } from "@/components/course-card";
 import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
-import { CourseCountrySwitcher } from "@/components/course-country-switcher";
 import { formatPrice } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE } from "@/lib/utils";
@@ -65,7 +64,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <CoursePageContent course={course} />
         <TrainerSection courseSlug={course.slug} />
         <StickyCta courseTitle={course.shortTitle} priceLabel={course.basePriceInr ? formatPrice(course.basePriceInr, "INR") : undefined} />
-        <CourseCountrySwitcher courseSlug={course.slug} countries={COUNTRIES} />
       </>
     );
   }

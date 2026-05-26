@@ -3,10 +3,8 @@ import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
-import { CourseCountrySwitcher } from "@/components/course-country-switcher";
-import { formatPrice } from "@/lib/utils";
+import { baseCourseTitle, composeCourseTitle, formatPrice, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { SITE } from "@/lib/utils";
 import { CITIES_IN, COUNTRIES, findCountry, findCity, getAllCourses, getCourseBySlug, getCourseVariant } from "@/lib/content";
 
 export const dynamicParams = true;
@@ -22,10 +20,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const c = await getCourseBySlug(course); const co = findCountry(slug); const ct = findCity(city);
   if (!c || !co || !ct) return {};
   const variant = await getCourseVariant(course, slug, city);
-  const title = variant?.seoTitle || `${c.shortTitle} Certification Training in ${ct.name} | Course_Ecom`;
-  const description = variant?.seoDescription || `Become a certified ${c.shortTitle} in ${ct.name}. ${c.summary} Weekend & weekday batches available.`;
+  const base = baseCourseTitle(c.shortTitle);
+  const title = stripBrandSuffix(variant?.seoTitle) || composeCourseTitle(c.shortTitle, { city: ct.name });
+  const description = variant?.seoDescription || `Become a certified ${base} in ${ct.name}. ${c.summary} Weekend & weekday batches available.`;
   return {
-    title, description, keywords: `${c.seoKeywords}, ${c.shortTitle} ${ct.name}, ${c.shortTitle} training in ${ct.name}`,
+    title, description, keywords: `${c.seoKeywords}, ${base} ${ct.name}, ${base} training in ${ct.name}`,
     alternates: { canonical: `/${slug}/${course}/${city}` },
     openGraph: { title, description, images: c.heroImage ? [c.heroImage] : [], url: `${SITE.url}/${slug}/${course}/${city}` },
   };
@@ -42,8 +41,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
     breadcrumbJsonLd([
       { name: "Home", url: SITE.url },
       { name: co.name, url: `${SITE.url}/${slug}` },
-      { name: c.shortTitle, url: `${SITE.url}/${slug}/${course}` },
-      { name: `${c.shortTitle} in ${ct.name}`, url: `${SITE.url}/${slug}/${course}/${city}` },
+      { name: baseCourseTitle(c.shortTitle), url: `${SITE.url}/${slug}/${course}` },
+      { name: `${baseCourseTitle(c.shortTitle)} in ${ct.name}`, url: `${SITE.url}/${slug}/${course}/${city}` },
     ]),
   ];
 
@@ -55,7 +54,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
       <CoursePageContent course={c} countrySlug={slug} citySlug={city} />
       <TrainerSection courseSlug={c.slug} />
       <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceInr ? formatPrice(c.basePriceInr, "INR") : undefined} />
-      <CourseCountrySwitcher courseSlug={c.slug} currentCountrySlug={slug} countries={COUNTRIES} />
     </>
   );
 }

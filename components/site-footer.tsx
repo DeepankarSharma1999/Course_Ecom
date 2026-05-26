@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react";
 import { getSiteSettings } from "@/lib/site-content";
+import { getAllCourses } from "@/lib/content";
+import { COUNTRIES } from "@/lib/seed-data";
+import { FooterCountrySwitcher } from "@/components/course-country-switcher";
 
 export async function SiteFooter() {
-  const s = await getSiteSettings();
+  const [s, courses] = await Promise.all([getSiteSettings(), getAllCourses()]);
   const social = (s.socialLinks as any) || {};
   const columns = (s.footerColumns as any) || [];
+  const courseSlugs = courses.map((c) => c.slug);
 
   return (
     <footer className="bg-ink-900 text-ink-400">
@@ -45,6 +49,7 @@ export async function SiteFooter() {
       <div className="border-t border-ink-800">
         <div className="container-tight py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
           <div>{s.copyrightText.replace("©", `© ${new Date().getFullYear()}`)}</div>
+          <FooterCountrySwitcher countries={COUNTRIES as any} courseSlugs={courseSlugs} />
         </div>
       </div>
     </footer>

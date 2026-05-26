@@ -102,7 +102,7 @@ async function main() {
         countryCode: "IN", countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
         heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Course_Ecom.`,
-        seoTitle: `${c.shortTitle} Certification Training in Delhi | Course_Ecom`,
+        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Course_Ecom`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
       create: {
@@ -110,7 +110,7 @@ async function main() {
         countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
         heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Course_Ecom.`,
-        seoTitle: `${c.shortTitle} Certification Training in Delhi | Course_Ecom`,
+        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Course_Ecom`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
     });

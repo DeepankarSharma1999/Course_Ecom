@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { MapPin, ChevronDown, Check } from "lucide-react";
 
 type Country = { slug: string; name: string; code: string };
@@ -35,15 +35,13 @@ export function CourseCountrySwitcher({
     };
   }, []);
 
-  const current = currentCountrySlug
-    ? countries.find((c) => c.slug === currentCountrySlug)
-    : null;
+  const current = currentCountrySlug ? countries.find((c) => c.slug === currentCountrySlug) : null;
   const currentLabel = current?.name ?? "Global";
 
   function switchTo(slug: string | null) {
     setOpen(false);
-    const target = slug ? `/${slug}/${courseSlug}` : `/${courseSlug}`;
-    router.push(target);
+    setFilter("");
+    router.push(slug ? `/${slug}/${courseSlug}` : `/${courseSlug}`);
   }
 
   const filtered = filter.trim()
@@ -51,10 +49,10 @@ export function CourseCountrySwitcher({
     : countries;
 
   return (
-    <div ref={ref} className="hidden lg:block fixed bottom-5 right-5 z-40">
+    <div ref={ref} className="relative inline-block">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-2 rounded-full bg-white border border-ink-200 shadow-card-lg px-4 py-2.5 text-sm font-medium text-ink-800 hover:border-brand-300 hover:text-brand-700"
+        className="inline-flex items-center gap-2 rounded-full bg-white text-ink-800 border border-ink-200 shadow-card px-4 py-2 text-sm font-medium hover:border-brand-300 hover:text-brand-700"
         aria-haspopup="listbox"
         aria-expanded={open}
       >
@@ -75,7 +73,7 @@ export function CourseCountrySwitcher({
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
               placeholder="Search countries…"
-              className="w-full px-3 py-1.5 rounded-lg border border-ink-200 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"
+              className="w-full px-3 py-1.5 rounded-lg border border-ink-200 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-ink-900"
             />
           </div>
           <div className="overflow-y-auto py-1">
@@ -106,5 +104,42 @@ export function CourseCountrySwitcher({
         </div>
       )}
     </div>
+  );
+}
+
+// Wrapper that auto-detects whether the current URL is a course page and renders the switcher.
+// Designed for embedding in the global footer.
+export function FooterCountrySwitcher({
+  countries,
+  courseSlugs,
+}: {
+  countries: Country[];
+  courseSlugs: string[];
+}) {
+  const pathname = usePathname();
+  const segments = pathname.split("/").filter(Boolean);
+
+  let courseSlug: string | null = null;
+  let currentCountrySlug: string | null = null;
+
+  const countrySlugSet = new Set(countries.map((c) => c.slug));
+  const courseSlugSet = new Set(courseSlugs);
+
+  if (segments.length === 1 && courseSlugSet.has(segments[0])) {
+    courseSlug = segments[0];
+  } else if (segments.length >= 2 && countrySlugSet.has(segments[0]) && courseSlugSet.has(segments[1])) {
+    currentCountrySlug = segments[0];
+    courseSlug = segments[1];
+    // segments[2] (city) is dropped on switch
+  }
+
+  if (!courseSlug) return null;
+
+  return (
+    <CourseCountrySwitcher
+      courseSlug={courseSlug}
+      currentCountrySlug={currentCountrySlug ?? undefined}
+      countries={countries}
+    />
   );
 }
