@@ -1,0 +1,63 @@
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { ExitIntentPopup } from "@/components/exit-intent-popup";
+import { FloatingWhatsApp } from "@/components/whatsapp-button";
+import { getDisplayCurrency } from "@/lib/geo";
+import { getSiteSettings } from "@/lib/site-content";
+import { getAllCourses, getCategories } from "@/lib/content";
+import Link from "next/link";
+
+export default async function PublicLayout({ children }: { children: React.ReactNode }) {
+  const [currency, settings, categories, courses] = await Promise.all([
+    getDisplayCurrency(),
+    getSiteSettings(),
+    getCategories(),
+    getAllCourses(),
+  ]);
+
+  // Build the nav data: categories with their courses
+  const navCategories = categories.map((cat) => ({
+    slug: cat.slug,
+    name: cat.name,
+    tagline: cat.tagline,
+    icon: cat.icon,
+    courses: courses.filter((c) => c.category.slug === cat.slug).map((c) => ({
+      slug: c.slug,
+      title: c.shortTitle || c.title,
+    })),
+  })).filter((c) => c.courses.length > 0);
+
+  const featuredCourses = courses.slice(0, 6).map((c) => ({
+    slug: c.slug,
+    title: c.shortTitle || c.title,
+    category: c.category.name,
+  }));
+
+  return (
+    <>
+      {settings.announcementEnabled && settings.announcementText && (
+        <div className="bg-accent-500 text-white text-xs font-semibold">
+          <div className="container-tight py-2 text-center">
+            {settings.announcementLink ? (
+              <Link href={settings.announcementLink} className="hover:underline">{settings.announcementText}</Link>
+            ) : settings.announcementText}
+          </div>
+        </div>
+      )}
+      <SiteHeader
+        currency={currency}
+        brandName={settings.brandName}
+        tagline={settings.tagline}
+        phone={settings.phone}
+        whatsappNumber={settings.whatsappNumber}
+        topBarMessages={(settings.topBarMessages as string[]) || []}
+        navCategories={navCategories}
+        featuredCourses={featuredCourses}
+      />
+      <main>{children}</main>
+      <SiteFooter />
+      <ExitIntentPopup />
+      <FloatingWhatsApp phone={settings.whatsappNumber} message={`Hi ${settings.brandName} team, I'd like to know more about your courses.`} />
+    </>
+  );
+}

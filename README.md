@@ -1,86 +1,56 @@
-# Course_Ecom
-Creating an SEO friendly management courses edtech website
+# Course_Ecom — Global Certification Training Platform
 
-# Sprint 1: Static Replica Foundation
+A dynamic, SEO-first training platform built with Next.js 15 (App Router), TypeScript, Tailwind CSS, Prisma and PostgreSQL.
 
-## Sprint Goal
+## Sprint 1 scope
 
-Build the first frontend proof of concept for the training website by creating an exact visual and structural replica of:
+- Home page, courses listing, category pages, enquire & corporate pages
+- Reusable course page template powering:
+  - `/[course]` — global course page
+  - `/[country]/[course]` — country variant
+  - `/[country]/[course]/[city]` — city variant
+- 3 seeded SAFe courses: POPM, SSM, DevOps (with Delhi city variants)
+- Lead capture API (Postgres or no-DB fallback for local dev)
+- SEO: dynamic `generateMetadata`, sitemap.xml, robots.txt, JSON-LD (Course / FAQ / Breadcrumb)
 
-1. Home page
-2. One course detail page
+## Setup
 
-The goal of Sprint 1 is not to build the full dynamic platform. The goal is to prove the visual direction, page structure, layout quality, responsiveness, and reusable component foundation before moving into CMS, database, admin, SEO automation, and dynamic page generation.
+```bash
+# 1) Install
+npm install
 
----
+# 2) Configure environment
+cp .env.example .env
+# Edit DATABASE_URL to point at your Postgres (or skip — lead form falls back to logging)
 
-## Sprint 1 Objective
+# 3) If using Postgres
+npm run db:generate
+npm run db:push
+npm run db:seed
 
-Create a static frontend replica of the reference training website using reusable components so that the same structure can later be connected to a dynamic backend and admin CMS.
+# 4) Run dev server
+npm run dev
+```
 
-By the end of this sprint, stakeholders should be able to review a working preview link and confirm whether the layout direction is acceptable for future development.
+Open http://localhost:3000
 
----
+## Key routes to try
 
-## Sprint 1 Scope
+- `/` — home
+- `/courses` — full catalog
+- `/safe-product-owner-product-manager-certification` — global course page
+- `/in/safe-product-owner-product-manager-certification` — India variant
+- `/in/safe-product-owner-product-manager-certification/delhi` — Delhi city variant
+- `/in/safe-scrum-master-certification/delhi`
+- `/in/safe-devops-certification/delhi`
+- `/sitemap.xml`, `/robots.txt`
 
-### In Scope
+## Next sprints (not built yet)
 
-- Home page replica
-- One course detail page replica
-- Header and footer
-- Navigation structure
-- Hero sections
-- Course cards
-- Course detail sections
-- Schedule section with dummy data
-- CTA buttons
-- Lead/contact form placeholder
-- FAQ accordion
-- Responsive desktop and mobile layout
-- Static JSON or local config-based content
-- Reusable frontend components
-- Vercel preview deployment
-
-### Out of Scope
-
-- Admin dashboard
-- Database integration
-- PostgreSQL setup
-- Course CRUD
-- Location-based dynamic pages
-- City and country page generation
-- Payment gateway
-- User login
-- Student LMS
-- Instructor portal
-- Analytics dashboard
-- Blog CMS
-- Coupon system
-- Checkout flow
-- Multi-currency pricing logic
-
----
-
-## Pages to Build
-
-### 1. Home Page
-
-The home page should visually replicate the reference website structure and include:
-
-- Header with logo and navigation
-- Course search or discovery section
-- Hero section
-- Popular course/category section
-- Trust badges or rating section
-- Corporate training CTA
-- Course cards
-- Resource or blog preview section, if applicable
-- Footer
-
-### 2. Course Detail Page
-
-The course page should replicate one selected course page, preferably:
-
-```text
-Leading SAFe Certification Training
+- Admin panel (NextAuth + CRUD for courses, schedules, FAQs, leads)
+- Email/CRM integration for lead notifications
+- Search & filters on `/courses`
+- Blog/resource hub
+- Checkout & enrollment
+- Trainer & instructor profiles
+- LMS portal
