@@ -1,5 +1,17 @@
 {
-  "node": {},
+  "node": {
+    "406e1aa39ed9ab875372d437c12aa57468dbc24f3a": {
+      "workers": {
+        "app/admin/login/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fraven%2FCourse_Ecom%2Fapp%2Fadmin%2Flogin%2Fpage.tsx%22%2C%5B%5B%22406e1aa39ed9ab875372d437c12aa57468dbc24f3a%22%2C%22%24%24RSC_SERVER_ACTION_0%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/admin/login/page": "rsc"
+      }
+    }
+  },
   "edge": {},
   "encryptionKey": "flLraMEHyXwkSdv6Dh59Y9knhcR10z4hB8G/J2KXasA="
 }
