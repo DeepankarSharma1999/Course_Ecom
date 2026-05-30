@@ -9,8 +9,7 @@ import { type CourseContent, type FaqItem, findCity, findCountry } from "@/lib/s
 import { LeadForm } from "@/components/lead-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { BrochureButton } from "@/components/brochure-button";
-import { formatPrice } from "@/lib/utils";
-
+import { type CurrencyCode, formatInCurrency } from "@/lib/currency";
 type Schedule = {
   mode: string;
   startDate: Date;
@@ -49,10 +48,12 @@ export function CoursePageContent({
   course,
   countrySlug,
   citySlug,
+  currency = "INR",
 }: {
   course: CourseContent;
   countrySlug?: string;
   citySlug?: string;
+  currency?: CurrencyCode;
 }) {
   const country = countrySlug ? findCountry(countrySlug) : null;
   const city = citySlug ? findCity(citySlug) : null;
@@ -137,7 +138,7 @@ export function CoursePageContent({
             { icon: Clock, label: "Duration", value: course.durationLabel },
             { icon: Award, label: "Certification", value: course.accreditedBy },
             { icon: BookOpen, label: "Level", value: course.level },
-            { icon: Tag, label: "Starting From", value: formatPrice(course.basePriceInr) },
+            { icon: Tag, label: "Starting From", value: formatInCurrency(course.basePriceInr, currency) },
           ].map((f, i) => (
             <div key={i} className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 grid place-items-center shrink-0"><f.icon className="w-5 h-5" /></div>
@@ -258,8 +259,8 @@ export function CoursePageContent({
                 </div>
                 <div className="text-sm text-ink-600">{s.timeLabel}</div>
                 <div>
-                  <div className="font-bold text-ink-900">{formatPrice(s.priceInr * (1 - (s.discountPct ?? 0) / 100))}</div>
-                  {s.discountPct ? <div className="text-xs text-ink-500"><span className="line-through">{formatPrice(s.priceInr)}</span> <span className="text-green-600 font-semibold">-{s.discountPct}%</span></div> : null}
+                  <div className="font-bold text-ink-900">{formatInCurrency(s.priceInr * (1 - (s.discountPct ?? 0) / 100), currency)}</div>
+                  {s.discountPct ? <div className="text-xs text-ink-500"><span className="line-through">{formatInCurrency(s.priceInr, currency)}</span> <span className="text-green-600 font-semibold">-{s.discountPct}%</span></div> : null}
                 </div>
                 <div className="flex md:justify-end">
                   <a href="#enquire" className="btn-primary w-full md:w-auto">Enroll</a>

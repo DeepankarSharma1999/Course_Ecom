@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { CourseCard } from "@/components/course-card";
-import type { CurrencyCode } from "@/lib/currency";
+import { type CurrencyCode, convertFromInr } from "@/lib/currency";
 
 type Course = any;
 type Category = { slug: string; name: string };
@@ -37,7 +37,9 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
     }
     if (cat) list = list.filter((c) => c.category?.slug === cat);
     if (examOnly) list = list.filter((c) => c.examIncluded);
-    if (maxPrice !== "" && maxPrice > 0) list = list.filter((c) => (c.basePriceInr ?? 0) <= maxPrice);
+    if (maxPrice !== "" && maxPrice > 0) {
+      list = list.filter((c) => convertFromInr(c.basePriceInr ?? 0, currency) <= maxPrice);
+    }
 
     switch (sort) {
       case "rating": list.sort((a, b) => (b.ratingAvg ?? 0) - (a.ratingAvg ?? 0)); break;
@@ -82,7 +84,7 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
           </div>
 
           <div>
-            <label className="text-xs font-bold uppercase text-ink-500 mb-2 block">Max Price (INR)</label>
+            <label className="text-xs font-bold uppercase text-ink-500 mb-2 block">Max Price ({currency})</label>
             <input
               type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value === "" ? "" : Number(e.target.value))}
               placeholder="e.g. 30000"

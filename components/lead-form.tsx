@@ -125,8 +125,8 @@ export function LeadForm({
           aria-hidden="true"
           style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
         />
-        <input name="name" required placeholder="Full name *" className="input" autoComplete="name" />
-        <input name="email" type="email" required placeholder="Work email *" className="input" autoComplete="email" />
+        <input name="name" required placeholder="Full name *" className="input w-full" autoComplete="name" />
+        <input name="email" type="email" required placeholder="Work email *" className="input w-full" autoComplete="email" />
         <div className="flex gap-2">
           <select name="countryCode" defaultValue="+91" className="input w-28">
             <option value="+91">+91</option>
@@ -136,9 +136,9 @@ export function LeadForm({
             <option value="+65">+65</option>
             <option value="+971">+971</option>
           </select>
-          <input name="phone" required placeholder="Phone *" className="input flex-1" autoComplete="tel" inputMode="tel" />
+          <input name="phone" required placeholder="Phone *" className="input flex-1 min-w-0" autoComplete="tel" inputMode="tel" />
         </div>
-        {!brochureCourseSlug && <textarea name="message" placeholder="Tell us about your training need (optional)" rows={2} className="input" />}
+        {!brochureCourseSlug && <textarea name="message" placeholder="Tell us about your training need (optional)" rows={2} className="input w-full" />}
         <label className="flex items-start gap-2 text-xs text-ink-500">
           <input name="consentMarketing" type="checkbox" defaultChecked className="mt-0.5" />
           <span>I agree to receive course information and updates.</span>
@@ -152,7 +152,6 @@ export function LeadForm({
       </form>
       <style jsx>{`
         .input {
-          width: 100%;
           border: 1px solid rgb(229 231 235);
           border-radius: 0.5rem;
           padding: 0.625rem 0.75rem;

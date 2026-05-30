@@ -4,10 +4,11 @@ import { CourseCard } from "@/components/course-card";
 import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
-import { formatPrice } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE } from "@/lib/utils";
 import { COUNTRIES, getAllCourses, getCourseBySlug, findCountry } from "@/lib/content";
+import { getDisplayCurrency } from "@/lib/geo";
+import { formatInCurrency } from "@/lib/currency";
 
 export const dynamicParams = true;
 export const revalidate = 60;
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const course = await getCourseBySlug(slug);
+  const [course, currency] = await Promise.all([getCourseBySlug(slug), getDisplayCurrency()]);
   if (course) {
     const jsonLd = [
       courseJsonLd(course),
@@ -61,9 +62,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         {jsonLd.map((d, i) => (
           <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
         ))}
-        <CoursePageContent course={course} />
+        <CoursePageContent course={course} currency={currency} />
         <TrainerSection courseSlug={course.slug} />
-        <StickyCta courseTitle={course.shortTitle} priceLabel={course.basePriceInr ? formatPrice(course.basePriceInr, "INR") : undefined} />
+        <StickyCta courseTitle={course.shortTitle} priceLabel={course.basePriceInr ? formatInCurrency(course.basePriceInr, currency) : undefined} />
       </>
     );
   }
@@ -83,7 +84,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <section className="section">
           <div className="container-tight">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {all.map((c) => <CourseCard key={c.slug} course={c} country={country.slug} />)}
+              {all.map((c) => <CourseCard key={c.slug} course={c} country={country.slug} currency={currency} />)}
             </div>
           </div>
         </section>

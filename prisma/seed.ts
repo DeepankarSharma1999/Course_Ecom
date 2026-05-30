@@ -150,13 +150,13 @@ async function main() {
         name: t.name, title: t.title, bio: t.bio, photo: t.photo,
         rating: t.rating, reviews: t.reviews, experienceYears: t.experienceYears,
         expertise: t.expertise as any, certifications: t.certifications as any,
-        linkedinUrl: t.linkedinUrl, isFeatured: t.isFeatured,
+        linkedinUrl: t.linkedinUrl, isFeatured: t.isFeatured, isActive: true,
       },
       create: {
         slug: t.slug, name: t.name, title: t.title, bio: t.bio, photo: t.photo,
         rating: t.rating, reviews: t.reviews, experienceYears: t.experienceYears,
         expertise: t.expertise as any, certifications: t.certifications as any,
-        linkedinUrl: t.linkedinUrl, isFeatured: t.isFeatured,
+        linkedinUrl: t.linkedinUrl, isFeatured: t.isFeatured, isActive: true,
       },
     });
     // assign to courses

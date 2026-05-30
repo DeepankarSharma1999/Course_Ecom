@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
-import { baseCourseTitle, composeCourseTitle, formatPrice, SITE, stripBrandSuffix } from "@/lib/utils";
+import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { COUNTRIES, getAllCourses, getCourseBySlug, findCountry, getCourseVariant } from "@/lib/content";
+import { getDisplayCurrency } from "@/lib/geo";
+import { formatInCurrency } from "@/lib/currency";
 
 export const dynamicParams = true;
 export const revalidate = 60;
@@ -31,7 +33,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string; course: string }> }) {
   const { slug, course } = await params;
-  const c = await getCourseBySlug(course); const co = findCountry(slug);
+  const [c, currency] = await Promise.all([getCourseBySlug(course), getDisplayCurrency()]);
+  const co = findCountry(slug);
   if (!c || !co) notFound();
 
   const jsonLd = [
@@ -49,9 +52,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
       {jsonLd.map((d, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
       ))}
-      <CoursePageContent course={c} countrySlug={slug} />
+      <CoursePageContent course={c} countrySlug={slug} currency={currency} />
       <TrainerSection courseSlug={c.slug} />
-      <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceInr ? formatPrice(c.basePriceInr, "INR") : undefined} />
+      <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceInr ? formatInCurrency(c.basePriceInr, currency) : undefined} />
     </>
   );
 }

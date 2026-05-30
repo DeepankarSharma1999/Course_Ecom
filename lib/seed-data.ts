@@ -116,7 +116,7 @@ export const COURSES: CourseContent[] = [
   {
     slug: "safe-product-owner-product-manager-certification",
     title: "SAFe Product Owner / Product Manager (POPM) Certification Training",
-    shortTitle: "SAFe POPM Certification",
+    shortTitle: "SAFe POPM",
     subtitle: "Become a certified SAFe Product Owner / Product Manager and lead value delivery in an Agile Release Train.",
     summary:
       "Get globally accredited SAFe POPM 6.0 certification training led by SPCs with hands-on labs, real ART scenarios, and 16 PDUs.",
