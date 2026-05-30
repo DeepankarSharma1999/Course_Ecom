@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description:
-    "Course_Ecom delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more. Learn from accredited trainers, in person or live online.",
+    "Ulearnsystems delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more. Learn from accredited trainers, in person or live online.",
   openGraph: { type: "website", siteName: SITE.name, url: SITE.url },
   robots: { index: true, follow: true },
 };

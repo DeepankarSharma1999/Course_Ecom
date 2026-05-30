@@ -19,15 +19,21 @@ const NAV = [
   { href: "/admin/users", label: "Admin Users", icon: Users },
 ];
 
-export function AdminSidebar() {
+export function AdminSidebar({ brandName = "Ulearnsystems", logoUrl = null }: { brandName?: string; logoUrl?: string | null }) {
   const pathname = usePathname();
   return (
     <aside className="w-60 shrink-0 bg-ink-900 text-ink-200 min-h-screen sticky top-0">
       <div className="p-4 border-b border-white/10">
         <Link href="/admin" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-brand-500 grid place-items-center text-white font-bold">M</div>
+          {logoUrl ? (
+            <img src={logoUrl} alt={brandName} className="w-10 h-auto object-contain" />
+          ) : (
+            <div className="w-8 h-8 rounded-lg bg-brand-500 grid place-items-center text-white font-bold">
+              {brandName.charAt(0)}
+            </div>
+          )}
           <div className="leading-tight">
-            <div className="font-bold text-white text-sm">Course_Ecom</div>
+            <div className="font-bold text-white text-sm">{brandName}</div>
             <div className="text-[10px] uppercase tracking-widest text-brand-300">Admin</div>
           </div>
         </Link>

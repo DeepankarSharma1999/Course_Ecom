@@ -1,4 +1,4 @@
-# Course_Ecom — Global Certification Training Platform
+# Ulearnsystems — Global Certification Training Platform
 
 A dynamic, SEO-first training platform built with Next.js 15 (App Router), TypeScript, Tailwind CSS, Prisma and PostgreSQL.
 

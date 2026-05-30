@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const SITE = {
-  name: "Course_Ecom",
+  name: "Ulearnsystems",
   tagline: "Global Certification Training",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   phone: "+91 80 4710 6633",

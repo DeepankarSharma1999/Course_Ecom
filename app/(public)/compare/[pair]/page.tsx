@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ pair: str
   if (!a || !b) return {};
   return {
     title: `${a.shortTitle} vs ${b.shortTitle} — Side-by-Side Comparison`,
-    description: `Compare ${a.shortTitle} and ${b.shortTitle} side-by-side. Duration, price, exam, prerequisites and outcomes from Course_Ecom.`,
+    description: `Compare ${a.shortTitle} and ${b.shortTitle} side-by-side. Duration, price, exam, prerequisites and outcomes from Ulearnsystems.`,
     alternates: { canonical: `/compare/${pair}` },
     openGraph: { url: `${SITE.url}/compare/${pair}` },
   };
@@ -117,7 +117,7 @@ export default async function ComparePair({ params }: { params: Promise<{ pair: 
         <div className="container-tight grid lg:grid-cols-[1fr_400px] gap-10 items-start">
           <div>
             <h2 className="h3 mb-3">Still not sure which to pick?</h2>
-            <p className="text-ink-700 mb-4">Speak with a Course_Ecom training advisor — we&apos;ll review your career goals, current experience and team context to recommend the right certification path.</p>
+            <p className="text-ink-700 mb-4">Speak with a Ulearnsystems training advisor — we&apos;ll review your career goals, current experience and team context to recommend the right certification path.</p>
             <ul className="space-y-2 text-sm text-ink-700">
               <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-600 mt-0.5" /> Personalized course recommendation</li>
               <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-600 mt-0.5" /> Batch schedule and pricing details</li>

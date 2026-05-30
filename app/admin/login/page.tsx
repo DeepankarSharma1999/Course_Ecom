@@ -2,6 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { authenticate, signSession, setSessionCookie, getCurrentUser } from "@/lib/auth";
 
+import { getSiteSettings } from "@/lib/site-content";
+
 export const metadata = { title: "Admin Login" };
 
 async function loginAction(formData: FormData) {
@@ -21,6 +23,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const sp = await searchParams;
   const existing = await getCurrentUser();
   if (existing) redirect(sp.from || "/admin");
+  const settings = await getSiteSettings();
 
   const errorMsg: Record<string, string> = {
     invalid: "Invalid email or password.",
@@ -33,8 +36,14 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">M</div>
-            <span className="font-bold text-xl text-ink-900">Course_Ecom Admin</span>
+            {settings.logoUrl ? (
+              <img src={settings.logoUrl} alt={settings.brandName} className="w-12 h-auto object-contain" />
+            ) : (
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">
+                {settings.brandName.charAt(0)}
+              </div>
+            )}
+            <span className="font-bold text-xl text-ink-900">Admin</span>
           </Link>
           <p className="text-sm text-ink-500 mt-2">Sign in to manage courses, schedules, and leads.</p>
         </div>

@@ -1,10 +1,10 @@
-# Course_Ecom — Test Plan & Tester Guide
+# Ulearnsystems — Test Plan & Tester Guide
 
 This document walks a tester through setting up the project from a fresh clone
 and verifying every public-site and admin-panel feature. Each test case has a
 preconditions block, numbered steps and an explicit pass criterion.
 
-- **Repo**: https://github.com/DeepankarSharma1999/Course_Ecom
+- **Repo**: https://github.com/DeepankarSharma1999/Ulearnsystems
 - **Stack**: Next.js 15 (App Router) + TypeScript + Tailwind + Prisma + PostgreSQL
 - **Default URLs**: Public site `http://localhost:3000` · Admin `http://localhost:3000/admin`
 
@@ -31,8 +31,8 @@ preconditions block, numbered steps and an explicit pass criterion.
 ### 1.1 Clone the repository
 
 ```bash
-git clone https://github.com/DeepankarSharma1999/Course_Ecom.git
-cd Course_Ecom
+git clone https://github.com/DeepankarSharma1999/Ulearnsystems.git
+cd Ulearnsystems
 ```
 
 ### 1.2 Install dependencies
@@ -183,6 +183,8 @@ checkbox), course grid, sort dropdown ("Recommended").
 **Steps:** Click "Scaled Agile (SAFe)" in the sidebar.
 **Expected:** Only SAFe courses shown.
 
+
+### A12.1 Desktop trigger
 ### A2.4 Sort
 **Steps:** Pick "Price: Low → High" / "Highest Rated" / "Most Reviewed".
 **Expected:** Order changes correctly.
@@ -218,7 +220,7 @@ or "Training", correct city name in subtitle (no hardcoded "Delhi-NCR").
 
 ### A3.3 Browser tab title de-duplication
 **Steps:** Inspect the `<title>` tag in devtools on any course page.
-**Expected:** Single ` | Course_Ecom` at the end, never two.
+**Expected:** Single ` | Ulearnsystems` at the end, never two.
 
 ### A3.4 Breadcrumbs
 **Expected:** Format `Home / <Category> / <Country if any> / <Course (in City)>`,
@@ -368,6 +370,8 @@ CTA.
 **Expected:** 4 items (Compare, Trainers, About, Contact Sales) navigate
 correctly; menu closes on click and on `Esc`.
 
+
+### A12.1 Desktop trigger
 ### A10.4 Mobile drawer
 **Steps:** Shrink to mobile → tap ☰.
 **Expected:** Full-screen drawer; each category is a collapsible `<details>`;
@@ -392,7 +396,7 @@ icons (only the ones with URLs in Site Settings), 3 link columns
 ### A12.1 Desktop trigger
 **Steps:** Wait ≥ 8 seconds on any public page → move cursor up out of the
 viewport.
-**Expected:** Modal appears with "Save 15%" promo and an inline lead form.
+**Expected:** Modal appears with "Save 15%" promo http://localhost:3000/adminand an inline lead form.
 
 ### A12.2 Mobile trigger
 **Steps:** On mobile width, scroll past 60% of the page (after the 8-second
@@ -487,7 +491,7 @@ all navigate correctly.
 ### B3.1 Edit brand name
 **Steps:** Change "Brand Name" to "Acme Training" → Save.
 **Expected:** Confirmation banner appears. Reload `/` → header, footer,
-metadata all show "Acme Training". (Restore to `Course_Ecom` for further tests.)
+metadata all show "Acme Training". (Restore to `Ulearnsystems` for further tests.)
 
 ### B3.2 Top bar messages
 **Steps:** Edit "Messages (JSON array)" to e.g. `["Limited summer offer"]` → Save.

@@ -101,16 +101,16 @@ async function main() {
       update: {
         countryCode: "IN", countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
-        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Course_Ecom.`,
-        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Course_Ecom`,
+        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Ulearnsystems.`,
+        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Ulearnsystems`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
       create: {
         courseId: course.id, countryCode: "IN", countrySlug: "in", citySlug: "delhi",
         countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
-        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Course_Ecom.`,
-        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Course_Ecom`,
+        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Ulearnsystems.`,
+        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Ulearnsystems`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
     });

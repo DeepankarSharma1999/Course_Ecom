@@ -8,7 +8,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  @apply bg-white text-ink-800 antialiased;
+  @apply bg-ink-100 text-ink-800 antialiased;
   font-family: Inter, system-ui, -apple-system, sans-serif;
 }
 

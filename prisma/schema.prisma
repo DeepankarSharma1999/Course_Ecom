@@ -1,4 +1,4 @@
-// Course_Ecom training platform - Prisma schema
+// Ulearnsystems training platform - Prisma schema
 // Designed to power /[course], /[country]/[course], /[country]/[course]/[city]
 // from a single reusable template with admin-managed content.
 
@@ -167,7 +167,7 @@ model Testimonial {
 
 model SiteSettings {
   id                 String  @id @default("singleton")
-  brandName          String  @default("Course_Ecom")
+  brandName          String  @default("Ulearnsystems")
   tagline            String  @default("Training & Certifications")
   logoUrl            String?
   faviconUrl         String?
@@ -183,7 +183,7 @@ model SiteSettings {
 
   footerAbout        String? @db.Text
   footerColumns      Json?     // { title, links: { label, href }[] }[]
-  copyrightText      String  @default("© Course_Ecom. All rights reserved.")
+  copyrightText      String  @default("© Ulearnsystems. All rights reserved.")
 
   announcementText   String?
   announcementLink   String?
@@ -220,7 +220,7 @@ model HomePageContent {
   coursesBadge        String  @default("Most Popular")
   coursesTitle        String  @default("Bestselling Certification Courses")
 
-  whyUsBadge          String  @default("Why Course_Ecom")
+  whyUsBadge          String  @default("Why Ulearnsystems")
   whyUsTitle          String  @default("A Training Partner Built for Outcomes, Not Just Certificates")
   whyUsSubtitle       String  @db.Text
   whyUsImage          String?
@@ -228,7 +228,7 @@ model HomePageContent {
 
   testimonialsBadge   String  @default("Learner Stories")
   testimonialsTitle   String  @default("What Our Learners Say")
-  testimonialsSubtitle String @default("Real reviews from professionals who advanced their careers with Course_Ecom.")
+  testimonialsSubtitle String @default("Real reviews from professionals who advanced their careers with Ulearnsystems.")
 
   faqBadge            String  @default("FAQ")
   faqTitle            String  @default("Frequently Asked Questions")

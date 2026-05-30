@@ -23,6 +23,7 @@ type FeaturedCourse = { slug: string; title: string; category: string };
 type Props = {
   currency?: string;
   brandName?: string;
+  logoUrl?: string | null;
   tagline?: string;
   phone?: string;
   whatsappNumber?: string | null;
@@ -61,9 +62,8 @@ function CategoryMegaMenu({
                 href={`/category/${cat.slug}`}
                 onMouseEnter={() => setHoveredCat(cat.slug)}
                 onClick={onNavigate}
-                className={`flex items-center gap-3 px-5 py-2.5 text-sm transition-colors ${
-                  isActive ? "bg-white text-brand-700 font-semibold border-l-2 border-brand-600" : "text-ink-700 hover:bg-white border-l-2 border-transparent"
-                }`}
+                className={`flex items-center gap-3 px-5 py-2.5 text-sm transition-colors ${isActive ? "bg-white text-brand-700 font-semibold border-l-2 border-brand-600" : "text-ink-700 hover:bg-white border-l-2 border-transparent"
+                  }`}
               >
                 <div className={`w-8 h-8 rounded-lg grid place-items-center ${isActive ? "bg-brand-100 text-brand-700" : "bg-white text-ink-500"}`}>
                   <Icon name={cat.icon} className="w-4 h-4" />
@@ -169,7 +169,8 @@ function ResourcesDropdown({ onNavigate }: { onNavigate: () => void }) {
 
 export function SiteHeader({
   currency = "INR",
-  brandName = "Course_Ecom",
+  brandName = "Ulearnsystems",
+  logoUrl = null,
   tagline = "Training & Certifications",
   phone = "",
   whatsappNumber = null,
@@ -218,9 +219,8 @@ export function SiteHeader({
   const navLink = (href: string, label: string) => (
     <Link
       href={href}
-      className={`relative px-3 py-2 text-sm font-medium transition-colors ${
-        isActive(href) ? "text-brand-700" : "text-ink-700 hover:text-brand-600"
-      }`}
+      className={`relative px-3 py-2 text-sm font-medium transition-colors ${isActive(href) ? "text-brand-700" : "text-ink-700 hover:text-brand-600"
+        }`}
     >
       {label}
       {isActive(href) && <span className="absolute left-3 right-3 -bottom-px h-0.5 bg-brand-600 rounded-full" />}
@@ -264,24 +264,29 @@ export function SiteHeader({
       {/* Main nav */}
       <div className="container-tight flex items-center gap-3 py-3">
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">
-            {brandName.charAt(0)}
-          </div>
-          <div className="leading-tight">
-            <div className="font-bold text-lg text-ink-900">{brandName}</div>
-            <div className="text-[10px] uppercase tracking-widest text-brand-600">{tagline}</div>
-          </div>
+          {logoUrl ? (
+            <img src={logoUrl} alt={brandName} className="h-12 w-auto object-contain" />
+          ) : (
+            <>
+              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">
+                {brandName.charAt(0)}
+              </div>
+              <div className="leading-tight">
+                <div className="font-bold text-lg text-ink-900">{brandName}</div>
+                <div className="text-[10px] uppercase tracking-widest text-brand-600">{tagline}</div>
+              </div>
+            </>
+          )}
         </Link>
 
         <nav className="hidden lg:flex items-center gap-0 ml-6">
           {/* All Courses mega-menu */}
           <div className="relative" onMouseEnter={() => openSoft("courses")} onMouseLeave={closeSoft}>
             <button
-              className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${
-                openMenu === "courses" || pathname.startsWith("/courses") || pathname.startsWith("/category")
+              className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${openMenu === "courses" || pathname.startsWith("/courses") || pathname.startsWith("/category")
                   ? "text-brand-700"
                   : "text-ink-700 hover:text-brand-600"
-              }`}
+                }`}
               onClick={() => setOpenMenu(openMenu === "courses" ? null : "courses")}
               aria-haspopup="true"
               aria-expanded={openMenu === "courses"}
@@ -306,9 +311,8 @@ export function SiteHeader({
           {/* Resources dropdown */}
           <div className="relative" onMouseEnter={() => openSoft("resources")} onMouseLeave={closeSoft}>
             <button
-              className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${
-                openMenu === "resources" ? "text-brand-700" : "text-ink-700 hover:text-brand-600"
-              }`}
+              className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${openMenu === "resources" ? "text-brand-700" : "text-ink-700 hover:text-brand-600"
+                }`}
               onClick={() => setOpenMenu(openMenu === "resources" ? null : "resources")}
               aria-haspopup="true"
               aria-expanded={openMenu === "resources"}

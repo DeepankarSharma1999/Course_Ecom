@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!t) return {};
   return {
     title: `${t.name} — ${t.title ?? "Trainer"}`,
-    description: t.bio?.slice(0, 160) ?? `Learn from ${t.name} at Course_Ecom.`,
-    openGraph: { title: `${t.name} | Course_Ecom`, description: t.bio?.slice(0, 160) ?? "", images: t.photo ? [t.photo] : [], url: `${SITE.url}/trainers/${slug}` },
+    description: t.bio?.slice(0, 160) ?? `Learn from ${t.name} at Ulearnsystems.`,
+    openGraph: { title: `${t.name} | Ulearnsystems`, description: t.bio?.slice(0, 160) ?? "", images: t.photo ? [t.photo] : [], url: `${SITE.url}/trainers/${slug}` },
   };
 }
 

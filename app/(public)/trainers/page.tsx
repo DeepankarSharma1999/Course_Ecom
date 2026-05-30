@@ -27,7 +27,7 @@ export default async function TrainersIndex() {
         <div className="container-tight py-14">
           <div className="badge mb-3 bg-white/10 text-white border border-white/20">Our Trainers</div>
           <h1 className="text-4xl md:text-5xl font-bold mb-3">World-Class Practitioner Trainers</h1>
-          <p className="text-brand-100 text-lg max-w-2xl">Every Course_Ecom trainer is an accredited practitioner with decades of real-world experience. They don&apos;t just teach the material — they live it every day.</p>
+          <p className="text-brand-100 text-lg max-w-2xl">Every Ulearnsystems trainer is an accredited practitioner with decades of real-world experience. They don&apos;t just teach the material — they live it every day.</p>
         </div>
       </section>
       <section className="section">

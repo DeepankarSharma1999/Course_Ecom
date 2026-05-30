@@ -5,7 +5,7 @@ import { getDisplayCurrency } from "@/lib/geo";
 
 export const metadata: Metadata = {
   title: "All Certification Training Courses",
-  description: "Browse all globally accredited certification courses from Course_Ecom — Agile, SAFe, DevOps, Project Management, ITSM, Quality and more.",
+  description: "Browse all globally accredited certification courses from Ulearnsystems — Agile, SAFe, DevOps, Project Management, ITSM, Quality and more.",
 };
 
 export const revalidate = 60;

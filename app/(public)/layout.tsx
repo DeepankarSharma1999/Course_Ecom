@@ -47,6 +47,7 @@ export default async function PublicLayout({ children }: { children: React.React
       <SiteHeader
         currency={currency}
         brandName={settings.brandName}
+        logoUrl={settings.logoUrl}
         tagline={settings.tagline}
         phone={settings.phone}
         whatsappNumber={settings.whatsappNumber}
