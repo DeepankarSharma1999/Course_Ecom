@@ -2,9 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { AdminTopbar } from "@/components/admin/topbar";
-import { Badge, Field, Input, PageHeader, Section, Select, Checkbox } from "@/components/admin/ui";
+import { Badge, PageHeader } from "@/components/admin/ui";
 import { createSchedule, deleteSchedule } from "@/lib/admin-actions";
-import { COUNTRIES, CITIES_IN } from "@/lib/seed-data";
+import { ScheduleForm } from "@/components/admin/schedule-form";
 
 export const dynamic = "force-dynamic";
 
@@ -61,45 +61,7 @@ export default async function CourseSchedules({ params }: { params: Promise<{ id
             </table>
           </div>
 
-          <form action={createBound} className="space-y-4">
-            <Section title="Add Schedule">
-              <Field label="Start Date" required><Input type="datetime-local" name="startDate" required /></Field>
-              <Field label="End Date" required><Input type="datetime-local" name="endDate" required /></Field>
-              <Field label="Mode">
-                <Select name="mode" defaultValue="Live Online">
-                  <option>Live Online</option>
-                  <option>Classroom</option>
-                  <option>Self-Paced</option>
-                </Select>
-              </Field>
-              <div className="grid grid-cols-2 gap-2">
-                <Field label="Country">
-                  <Select name="countrySlug" defaultValue="">
-                    <option value="">—</option>
-                    {COUNTRIES.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
-                  </Select>
-                </Field>
-                <Field label="City">
-                  <Select name="citySlug" defaultValue="">
-                    <option value="">—</option>
-                    {CITIES_IN.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
-                  </Select>
-                </Field>
-              </div>
-              <Field label="Time Label"><Input name="timeLabel" placeholder="09:00 AM - 06:00 PM IST" /></Field>
-              <Field label="Timezone"><Input name="timezone" placeholder="IST" /></Field>
-              <div className="grid grid-cols-2 gap-2">
-                <Field label="Price (INR)"><Input type="number" name="priceInr" /></Field>
-                <Field label="Price (USD)"><Input type="number" name="priceUsd" /></Field>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                <Field label="Discount %"><Input type="number" name="discountPct" /></Field>
-                <Field label="Seats Left"><Input type="number" name="seatsLeft" /></Field>
-              </div>
-              <Checkbox name="isFilling" label="Mark as Filling Fast" />
-              <button type="submit" className="btn-primary w-full">Add Schedule</button>
-            </Section>
-          </form>
+          <ScheduleForm action={createBound} />
         </div>
       </div>
     </>

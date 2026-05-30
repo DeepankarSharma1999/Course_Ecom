@@ -1,4 +1,10 @@
 {
+  "/api/leads/route": "app/api/leads/route.js",
   "/(public)/page": "app/(public)/page.js",
-  "/admin/login/page": "app/admin/login/page.js"
+  "/admin/courses/[id]/schedules/page": "app/admin/courses/[id]/schedules/page.js",
+  "/(public)/category/[slug]/page": "app/(public)/category/[slug]/page.js",
+  "/(public)/[slug]/page": "app/(public)/[slug]/page.js",
+  "/admin/courses/[id]/edit/page": "app/admin/courses/[id]/edit/page.js",
+  "/admin/leads/page": "app/admin/leads/page.js",
+  "/admin/leads/[id]/page": "app/admin/leads/[id]/page.js"
 }

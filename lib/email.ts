@@ -79,7 +79,7 @@ export async function sendViaFormSubmit(toEmail: string, lead: any, siteName: st
     Name: lead.name,
     Email: lead.email,
     Phone: `${lead.countryCode || ""} ${lead.phone}`.trim(),
-    Course: lead.courseSlug || "—",
+    Course: lead.courseSlug || "General Enquiry",
     Location: [lead.citySlug, lead.countrySlug].filter(Boolean).join(", ") || "—",
     Source: lead.source || "—",
     "UTM source": utm.source || "—",
@@ -128,7 +128,7 @@ export async function notifyAdminOfLead(lead: any) {
       ${row("Name", lead.name)}
       ${row("Email", `<a href="mailto:${lead.email}">${lead.email}</a>`)}
       ${row("Phone", `<a href="tel:${lead.phone}">${lead.phone}</a>`)}
-      ${row("Course", lead.courseSlug || "—")}
+      ${row("Course", lead.courseSlug || "General Enquiry")}
       ${row("Location", [lead.citySlug, lead.countrySlug].filter(Boolean).join(", ") || "—")}
       ${row("Source", lead.source || "—")}
       ${row("UTM source", utm.source || "—")}
@@ -144,7 +144,7 @@ export async function notifyAdminOfLead(lead: any) {
     to: adminEmail,
     subject: `New lead: ${lead.name}${lead.courseSlug ? ` · ${lead.courseSlug}` : ""}`,
     html: brandLayout(s, body),
-    text: `New lead: ${lead.name} — ${lead.email} — ${lead.phone}\nCourse: ${lead.courseSlug || "—"}\nSource: ${lead.source || "—"}\n${lead.message || ""}`,
+    text: `New lead: ${lead.name} — ${lead.email} — ${lead.phone}\nCourse: ${lead.courseSlug || "General Enquiry"}\nSource: ${lead.source || "—"}\n${lead.message || ""}`,
     replyTo: lead.email,
   });
 }

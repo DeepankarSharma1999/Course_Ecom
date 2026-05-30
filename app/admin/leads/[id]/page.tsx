@@ -21,7 +21,7 @@ export default async function LeadDetail({ params }: { params: Promise<{ id: str
           <div className="lg:col-span-2 card p-6 space-y-3 text-sm">
             <Row label="Email">{lead.email}</Row>
             <Row label="Phone">{lead.phone}</Row>
-            <Row label="Course">{lead.courseSlug || "—"}</Row>
+            <Row label="Course">{lead.courseSlug ? <span className="font-medium text-ink-900">{lead.courseSlug}</span> : <span className="text-ink-500 italic">General Enquiry</span>}</Row>
             <Row label="Country">{lead.countrySlug || "—"}</Row>
             <Row label="City">{lead.citySlug || "—"}</Row>
             <Row label="Source">{lead.source || "—"}</Row>

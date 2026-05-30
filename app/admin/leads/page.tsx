@@ -85,7 +85,13 @@ export default async function LeadsPage({
                     <td className="px-4 py-3"><Link href={`/admin/leads/${l.id}`} className="font-medium text-ink-900 hover:text-brand-600">{l.name}</Link></td>
                     <td className="px-4 py-3 text-ink-700">{l.email}</td>
                     <td className="px-4 py-3 text-ink-700">{l.phone}</td>
-                    <td className="px-4 py-3 text-xs text-ink-600">{l.courseSlug || "—"}</td>
+                    <td className="px-4 py-3 text-xs text-ink-600">
+                      {l.courseSlug ? (
+                        <span className="font-medium text-ink-900">{l.courseSlug}</span>
+                      ) : (
+                        <span className="text-ink-500 italic">General Enquiry</span>
+                      )}
+                    </td>
                     <td className="px-4 py-3 text-xs">{l.source ? <Badge tone="neutral">{l.source}</Badge> : <span className="text-ink-400">—</span>}</td>
                     <td className="px-4 py-3 text-xs text-ink-600">
                       {utm.source ? <>{utm.source}{utm.campaign ? <span className="text-ink-400"> · {utm.campaign}</span> : ""}</> : <span className="text-ink-400">—</span>}

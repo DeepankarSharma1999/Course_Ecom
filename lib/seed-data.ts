@@ -112,6 +112,8 @@ export const CITIES_IN = [
   { slug: "ahmedabad", name: "Ahmedabad" },
 ];
 
+
+
 export const COURSES: CourseContent[] = [
   {
     slug: "safe-product-owner-product-manager-certification",
