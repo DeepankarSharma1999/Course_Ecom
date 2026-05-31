@@ -3,7 +3,13 @@ node_modules
 out
 .env
 .env.local
+.env.*.local
 *.log
 .DS_Store
 .vercel
 prisma/dev.db*
+tsconfig.tsbuildinfo
+
+# Throwaway scripts / debug helpers
+check-trainers.ts
+replace.js
