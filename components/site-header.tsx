@@ -262,10 +262,11 @@ export function SiteHeader({
       </div>
 
       {/* Main nav */}
-      <div className="container-tight flex items-center gap-3 py-3">
+      <div className="container-tight flex items-center gap-3 py-2">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           {logoUrl ? (
-            <img src={logoUrl} alt={brandName} className="h-12 w-auto object-contain" />
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logoUrl} alt={brandName} className="h-16 md:h-20 w-auto object-contain" />
           ) : (
             <>
               <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">
@@ -294,7 +295,7 @@ export function SiteHeader({
               All Courses <ChevronDown className={`w-4 h-4 transition-transform ${openMenu === "courses" ? "rotate-180" : ""}`} />
             </button>
             {openMenu === "courses" && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2">
+              <div className="absolute left-0 top-full pt-2">
                 <CategoryMegaMenu
                   categories={navCategories}
                   featured={featuredCourses}

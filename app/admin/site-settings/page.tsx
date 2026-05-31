@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { AdminTopbar } from "@/components/admin/topbar";
 import { Checkbox, Field, Input, PageHeader, Section, Textarea } from "@/components/admin/ui";
+import { ImageUploader } from "@/components/admin/image-uploader";
 import { saveSiteSettings } from "@/lib/admin-actions";
 
 export const dynamic = "force-dynamic";
@@ -19,8 +20,12 @@ export default async function SiteSettingsPage({ searchParams }: { searchParams:
           <Section title="Brand">
             <Field label="Brand Name" required><Input name="brandName" defaultValue={s?.brandName ?? "Ulearnsystems"} required /></Field>
             <Field label="Tagline"><Input name="tagline" defaultValue={s?.tagline ?? ""} /></Field>
-            <Field label="Logo URL"><Input name="logoUrl" defaultValue={s?.logoUrl ?? ""} /></Field>
-            <Field label="Favicon URL"><Input name="faviconUrl" defaultValue={s?.faviconUrl ?? ""} /></Field>
+            <Field label="Logo" hint="Saved under /public/uploads/ and committed with your repo">
+              <ImageUploader name="logoUrl" kind="logo" defaultValue={s?.logoUrl ?? null} previewAspect="wide" />
+            </Field>
+            <Field label="Favicon" hint="PNG or .ico, 32×32 or 64×64">
+              <ImageUploader name="faviconUrl" kind="favicon" defaultValue={s?.faviconUrl ?? null} previewAspect="square" />
+            </Field>
           </Section>
           <Section title="Contact">
             <Field label="Phone"><Input name="phone" defaultValue={s?.phone ?? ""} /></Field>
