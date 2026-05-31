@@ -18,7 +18,7 @@ export async function SiteFooter() {
           <div className="flex items-center gap-2 mb-4">
             {s.logoUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={s.logoUrl} alt={s.brandName} className="h-10 w-auto object-contain bg-white/5 rounded p-1" />
+              <img src={s.logoUrl} alt={s.brandName} className="h-16 w-auto object-contain bg-white rounded p-1" />
             ) : (
               <>
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">{s.brandName.charAt(0)}</div>

@@ -263,10 +263,10 @@ export function SiteHeader({
 
       {/* Main nav */}
       <div className="container-tight flex items-center gap-3 py-2">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
+        <Link href="/" className="flex items-center gap-2 shrink-0 -my-2">
           {logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logoUrl} alt={brandName} className="h-16 md:h-20 w-auto object-contain" />
+            <img src={logoUrl} alt={brandName} className="h-20 md:h-24 w-auto object-contain" />
           ) : (
             <>
               <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">
