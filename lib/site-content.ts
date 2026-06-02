@@ -8,7 +8,7 @@ export type SiteSettings = NonNullable<Awaited<ReturnType<typeof getSiteSettings
 export type HomePageContent = NonNullable<Awaited<ReturnType<typeof getHomeContent>>>;
 
 const DEFAULT_SETTINGS = {
-  brandName: "Ulearnsystems",
+  brandName: "ULearnSystems",
   tagline: "Training & Certifications",
   logoUrl: null,
   faviconUrl: null,
@@ -28,36 +28,46 @@ const DEFAULT_SETTINGS = {
   footerAbout: "Ulearnsystems is a global certification training provider, helping 500,000+ professionals across 50+ countries advance their careers with globally accredited programs.",
   footerColumns: [
     {
-      title: "Top Categories",
+      title: "AGILE",
       links: [
-        { label: "Agile & Scrum", href: "/category/agile-scrum" },
-        { label: "Scaled Agile (SAFe)", href: "/category/safe" },
-        { label: "Project Management", href: "/category/project-management" },
-        { label: "DevOps", href: "/category/devops" },
-        { label: "IT Service Management", href: "/category/it-service-management" },
+        { label: "Certified Scrum Master (CSM®)", href: "/csm-certification-training" },
+        { label: "Certified Scrum Product Owner (CSPO®)", href: "/cspo-certification-training" },
+        { label: "Advanced Certified Scrum Master (A-CSM®)", href: "/a-csm-certification-training" },
+        { label: "Agile and Scrum Training", href: "/agile-and-scrum-training" },
+        { label: "PMI-Agile Certified Practitioner (PMI-ACP®)", href: "/pmi-acp-certification-training" },
       ],
     },
     {
-      title: "Company",
+      title: "PROJECT & BUSINESS",
       links: [
-        { label: "About Us", href: "/about" },
-        { label: "Trainers", href: "/trainers" },
-        { label: "Corporate Training", href: "/corporate" },
-        { label: "Compare Courses", href: "/compare" },
-        { label: "Contact", href: "/enquire" },
+        { label: "Project Management Professional (PMP®)", href: "/pmp-certification-training" },
+        { label: "PRINCE2® Foundation and Practitioner", href: "/prince2-foundation-practitioner-course" },
+        { label: "Certified Associate in Project Management (CAPM®)", href: "/capm-certification-training" },
+        { label: "Certified Business Analysis Professional (CBAP®)", href: "/cbap-certification-training" },
+        { label: "Change Management Training", href: "/change-management-training" },
       ],
     },
     {
-      title: "Support",
+      title: "DEVOPS & CLOUD",
       links: [
-        { label: "Help Center", href: "/help" },
-        { label: "Refund Policy", href: "/refund-policy" },
-        { label: "Terms of Service", href: "/terms" },
-        { label: "Privacy Policy", href: "/privacy" },
+        { label: "DevOps Foundation® Certification", href: "/devops-foundation-certification" },
+        { label: "Docker and Kubernetes Training", href: "/docker-kubernetes-certification" },
+        { label: "AWS SysOps Administrator", href: "/aws-sysops-administrator-certification-training" },
+        { label: "AWS DevOps Engineer", href: "/aws-devops-engineer-certification-training" },
+        { label: "Cloud Computing with AWS", href: "/cloud-computing-with-aws-course" },
+      ],
+    },
+    {
+      title: "QUALITY & SERVICE",
+      links: [
+        { label: "Lean Six Sigma Yellow Belt", href: "/lean-six-sigma-yellow-belt-certification" },
+        { label: "Lean Six Sigma Green Belt", href: "/lean-six-sigma-green-belt-certification" },
+        { label: "ITIL 4® Foundation Certification", href: "/itil-foundation-certification" },
+        { label: "Root Cause Analysis (RCA)", href: "/root-cause-analysis-training" },
       ],
     },
   ],
-  copyrightText: "© Ulearnsystems. All rights reserved.",
+  copyrightText: "© ULearnSystems. All rights reserved.",
   announcementText: null,
   announcementLink: null,
   announcementEnabled: false,

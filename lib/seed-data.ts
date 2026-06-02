@@ -4,6 +4,7 @@
 export type CourseFeature = { icon: string; label: string };
 export type CurriculumModule = { title: string; topics: string[] };
 export type FaqItem = { q: string; a: string };
+export type CategoryContent = { slug: string; name: string; tagline: string; icon: string };
 
 export type CourseContent = {
   slug: string;

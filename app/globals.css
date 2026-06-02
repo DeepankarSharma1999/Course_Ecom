@@ -1,3 +1,5 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,17 +15,74 @@ body {
 }
 
 @layer components {
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold text-sm transition-all; }
-  .btn-primary { @apply btn bg-brand-600 text-white hover:bg-brand-700 shadow-card; }
-  .btn-accent { @apply btn bg-accent-500 text-white hover:bg-accent-600 shadow-card; }
-  .btn-outline { @apply btn border-2 border-brand-600 text-brand-600 hover:bg-brand-50; }
-  .btn-ghost { @apply btn text-ink-700 hover:bg-ink-50; }
-  .section { @apply py-14 md:py-20; }
-  .container-tight { @apply mx-auto max-w-6xl px-4; }
-  .h1 { @apply text-3xl md:text-5xl font-bold tracking-tight text-ink-900; }
-  .h2 { @apply text-2xl md:text-4xl font-bold tracking-tight text-ink-900; }
-  .h3 { @apply text-lg md:text-2xl font-semibold text-ink-900; }
-  .lead { @apply text-base md:text-lg text-ink-600; }
-  .card { @apply rounded-xl border border-ink-100 bg-white shadow-card; }
-  .badge { @apply inline-flex items-center gap-1 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-bold text-sm transition-all active:scale-95; }
+  .btn-primary { @apply btn bg-primary text-primary-foreground hover:opacity-90 shadow-[0_8px_30px_rgb(31,168,168,0.25)]; }
+  .btn-accent { @apply btn bg-accent text-accent-foreground hover:opacity-90 shadow-sm; }
+  .btn-outline { @apply btn border-2 border-primary text-primary hover:bg-secondary; }
+  .btn-ghost { @apply btn text-muted-foreground hover:bg-secondary hover:text-foreground; }
+  .section { @apply py-20 md:py-32; }
+  .container-tight { @apply mx-auto max-w-6xl px-6; }
+  .h1 { @apply text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground; }
+  .h2 { @apply text-3xl md:text-5xl font-bold tracking-tight text-foreground; }
+  .h3 { @apply text-xl md:text-3xl font-semibold text-foreground; }
+  .lead { @apply text-lg md:text-xl text-muted-foreground leading-relaxed; }
+  .card { @apply rounded-2xl border border-border/50 bg-card shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300; }
+  .badge { @apply inline-flex items-center gap-1 rounded-full bg-secondary px-4 py-1.5 text-xs font-bold text-secondary-foreground; }
+}
+
+@layer base {
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  :root {
+    --background: 195 25% 96%; /* #F4F7F7 Very Light Gray */
+    --foreground: 205 73% 11%; /* #082032 Deep Navy */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 205 73% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 205 73% 11%;
+    --primary: 180 69% 39%; /* #1FA8A8 Teal */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 180 43% 93%; /* #E7F3F3 Pale Mint */
+    --secondary-foreground: 180 69% 39%; /* Teal */
+    --muted: 211 16% 43%; /* #5D6D7E Slate Gray */
+    --muted-foreground: 211 16% 43%;
+    --accent: 180 43% 93%; /* Pale Mint */
+    --accent-foreground: 180 69% 39%;
+    --destructive: 0 84% 60%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 180 69% 39%; /* Teal */
+    --radius: 0.75rem;
+  }
+  .dark {
+    --background: 205 73% 11%; /* #082032 */
+    --foreground: 195 25% 96%; /* #F4F7F7 */
+    --card: 211 20% 15%;
+    --card-foreground: 195 25% 96%;
+    --popover: 211 20% 15%;
+    --popover-foreground: 195 25% 96%;
+    --primary: 180 69% 39%; /* Teal */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 211 20% 20%;
+    --secondary-foreground: 195 25% 96%;
+    --muted: 211 20% 20%;
+    --muted-foreground: 211 16% 60%;
+    --accent: 211 20% 20%;
+    --accent-foreground: 195 25% 96%;
+    --destructive: 0 62.8% 30.6%;
+    --border: 211 20% 20%;
+    --input: 211 20% 20%;
+    --ring: 180 69% 39%;
+  }
+  * {
+    @apply border-border outline-ring;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

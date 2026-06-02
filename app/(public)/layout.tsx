@@ -6,6 +6,7 @@ import { getDisplayCurrency } from "@/lib/geo";
 import { getSiteSettings } from "@/lib/site-content";
 import { getAllCourses, getCategories } from "@/lib/content";
 import Link from "next/link";
+import { LiveChatWidget } from "@/components/live-chat-widget";
 
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
   const [currency, settings, categories, courses] = await Promise.all([
@@ -59,6 +60,7 @@ export default async function PublicLayout({ children }: { children: React.React
       <SiteFooter />
       <ExitIntentPopup />
       <FloatingWhatsApp phone={settings.whatsappNumber} message={`Hi ${settings.brandName} team, I'd like to know more about your courses.`} />
+      <LiveChatWidget />
     </>
   );
 }
