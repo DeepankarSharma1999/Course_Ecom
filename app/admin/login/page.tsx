@@ -36,13 +36,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2">
-            {settings.logoUrl ? (
-              <img src={settings.logoUrl} alt={settings.brandName} className="w-12 h-auto object-contain" />
-            ) : (
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">
-                {settings.brandName.charAt(0)}
-              </div>
-            )}
+            <img src="/logo.png" alt={settings.brandName} className="h-10 w-auto object-contain scale-[2] origin-left ml-4" />
             <span className="font-bold text-xl text-ink-900">Admin</span>
           </Link>
           <p className="text-sm text-ink-500 mt-2">Sign in to manage courses, schedules, and leads.</p>

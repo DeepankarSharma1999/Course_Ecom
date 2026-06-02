@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Calendar, FileText, FolderTree, GraduationCap, Home, HelpCircle, Inbox, LayoutDashboard, MessageSquareQuote, Settings, Users } from "lucide-react";
+import { BookOpen, Calendar, FileText, FolderTree, GraduationCap, Home, HelpCircle, Inbox, LayoutDashboard, MessageSquareQuote, Settings, Users, Layers } from "lucide-react";
 
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: Home, exact: true },
   { href: "/admin/home-content", label: "Home Page", icon: LayoutDashboard },
   { href: "/admin/pages", label: "Pages", icon: FileText },
   { href: "/admin/courses", label: "Courses", icon: BookOpen },
+  { href: "/admin/combo-courses", label: "Combo Courses", icon: Layers },
   { href: "/admin/schedules", label: "Schedules", icon: Calendar },
   { href: "/admin/trainers", label: "Trainers", icon: GraduationCap },
   { href: "/admin/categories", label: "Categories", icon: FolderTree },
