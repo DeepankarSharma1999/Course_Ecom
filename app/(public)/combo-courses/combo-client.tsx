@@ -15,7 +15,7 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
   const tabs = ["Other Combo", "PMI Combo", "Scaled Agile Combo", "Scrum Alliance Combo"];
 
   // Categorize
-  const categorized = {
+  const categorized: Record<string, any[]> = {
     "PMI Combo": courses.filter(c => c.title.includes("PMP") || c.title.includes("PMI") || c.title.includes("CAPM")),
     "Scaled Agile Combo": courses.filter(c => c.title.includes("SAFe") || c.title.includes("SSM") || c.title.includes("POPM") || c.title.includes("RTE") || c.title.includes("SPC") || c.title.includes("LPM")),
     "Scrum Alliance Combo": courses.filter(c => c.title.includes("CSM") || c.title.includes("CSPO") || c.title.includes("CSD") || c.title.includes("A-CSM") || c.title.includes("A-CSPO") || c.title.includes("CSP-SM")),
@@ -29,7 +29,7 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
 
   categorized["Other Combo"] = courses.filter(c => !categorizedIds.has(c.id));
 
-  const currentCourses = categorized[activeTab as keyof typeof categorized] || [];
+  const currentCourses = categorized[activeTab] || [];
 
   return (
     <div className="py-16 bg-ink-50 min-h-screen">
