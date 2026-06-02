@@ -99,17 +99,19 @@ export function BusinessSectors() {
               </div>
             </div>
 
-            {/* Bottom Actions */}
-            <div className="flex items-center border-t border-gray-100 pt-8">
-              <Link
-                href="/about"
-                className="bg-[#1FA8A8] hover:bg-[#188c8c] text-white px-10 py-3.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap shadow-md"
-              >
-                More About Us
-              </Link>
-            </div>
+
           </div>
 
+        </div>
+
+        {/* Bottom Actions - Centered below both columns */}
+        <div className="mt-12 flex justify-center border-t border-gray-100 pt-8">
+          <Link
+            href="/about"
+            className="bg-[#1FA8A8] hover:bg-[#188c8c] text-white px-10 py-3.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap shadow-md"
+          >
+            More About Us
+          </Link>
         </div>
       </div>
     </section>

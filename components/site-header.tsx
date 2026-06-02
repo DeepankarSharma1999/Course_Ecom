@@ -93,14 +93,7 @@ export function SiteHeader({
       <div className="container-tight flex items-center h-[80px] justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          {logoUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={logoUrl} alt={brandName} className="h-9 object-contain" />
-          ) : (
-            <span className="font-extrabold text-2xl tracking-tighter text-foreground">
-              <span className="text-primary">U</span>LearnSystems
-            </span>
-          )}
+          <img src="/logo.png" alt={brandName} className="h-12 md:h-16 w-auto object-contain" />
         </Link>
 
         {/* All Courses Dropdown & Search (Desktop) */}
@@ -195,9 +188,7 @@ export function SiteHeader({
       {mobileOpen && (
         <div className="fixed inset-0 z-[100] bg-background lg:hidden overflow-y-auto">
           <div className="p-4 flex items-center justify-between border-b border-border/50 bg-card">
-            <span className="font-extrabold text-2xl tracking-tighter text-foreground">
-              <span className="text-primary">U</span>LearnSystems
-            </span>
+            <img src="/logo.png" alt={brandName} className="h-20 w-auto object-contain" />
             <button onClick={() => setMobileOpen(false)} className="p-2 bg-secondary rounded-full text-foreground/80"><X className="w-5 h-5" /></button>
           </div>
           <div className="p-6 space-y-4">

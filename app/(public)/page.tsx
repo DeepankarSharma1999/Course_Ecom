@@ -55,6 +55,10 @@ export default async function HomePage() {
       
       <TrainersSection />
       
+      <StatsBanner />
+      
+      <CtaStrip />
+
       {/* World Map Section */}
       <section className="py-16 overflow-hidden font-sans" style={{ background: "#082032" }}>
         <div className="container-tight text-center mb-10">
@@ -84,10 +88,6 @@ export default async function HomePage() {
           />
         </div>
       </section>
-      
-      <StatsBanner />
-      
-      <CtaStrip />
     </>
   );
 }
