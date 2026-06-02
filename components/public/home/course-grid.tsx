@@ -119,13 +119,19 @@ function GridCourseCard({ course, currency }: { course: CourseContent; currency:
   
   return (
     <div className="card group flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(31,168,168,0.15)] bg-white cursor-pointer relative z-10">
-      <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl">
-        <Image
-          src={course.heroImage}
-          alt={course.title}
-          fill
-          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-        />
+      <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl bg-secondary">
+        {course.heroImage ? (
+          <Image
+            src={course.heroImage}
+            alt={course.title}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-accent/80 flex items-center justify-center p-4 text-center">
+            <span className="text-white font-bold text-lg drop-shadow-md line-clamp-3">{course.title}</span>
+          </div>
+        )}
         <div className="absolute top-4 right-4 bg-foreground/90 backdrop-blur-sm text-background text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
           Popular
         </div>

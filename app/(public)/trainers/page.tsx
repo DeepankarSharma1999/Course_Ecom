@@ -23,11 +23,14 @@ export default async function TrainersIndex() {
   const trainers = await getTrainers();
   return (
     <>
-      <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
-        <div className="container-tight py-14">
-          <div className="badge mb-3 bg-white/10 text-white border border-white/20">Our Trainers</div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">World-Class Practitioner Trainers</h1>
-          <p className="text-brand-100 text-lg max-w-2xl">Every Ulearnsystems trainer is an accredited practitioner with decades of real-world experience. They don&apos;t just teach the material — they live it every day.</p>
+      <section className="bg-gradient-to-br from-primary to-[#0f6b6b] text-primary-foreground py-14 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/frontend_assets/image/homban-dots.webp')] opacity-20 bg-repeat"></div>
+        <div className="container-tight relative z-10 text-center flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
+            <span className="text-sm font-semibold text-white">Our Trainers</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">World-Class Practitioner Trainers</h1>
+          <p className="text-primary-foreground/90 text-lg max-w-2xl leading-relaxed">Every Ulearnsystems trainer is an accredited practitioner with decades of real-world experience. They don&apos;t just teach the material — they live it every day.</p>
         </div>
       </section>
       <section className="section">
