@@ -9,57 +9,56 @@ export function BusinessSectors() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left: Image Collage */}
-          <div className="relative h-[600px] w-full flex items-center">
-            {/* Top Left Image */}
-            <div className="absolute top-0 left-0 w-56 h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden shadow-lg z-20">
-              <div className="absolute inset-0 bg-gray-200">
-                {/* Fallback image placeholder */}
-                <Image
-                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600&h=600"
-                  alt="Business meeting"
-                  fill
-                  className="object-cover"
-                />
+          <div className="relative h-[440px] sm:h-[600px] w-full flex justify-center sm:block mb-8 sm:mb-0 mt-4 sm:mt-0">
+            <div className="relative w-[320px] h-[400px] sm:w-full sm:h-full shrink-0">
+              {/* Top Left Image */}
+              <div className="absolute top-0 left-0 w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden shadow-lg z-20">
+                <div className="absolute inset-0 bg-gray-200">
+                  {/* Fallback image placeholder */}
+                  <Image
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600&h=600"
+                    alt="Business meeting"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Center Big Image */}
-            <div className="absolute top-12 left-20 lg:top-16 lg:left-32 w-72 h-[400px] lg:w-[360px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl z-10">
-              <div className="absolute inset-0 bg-gray-300">
-                <Image
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600&h=800"
-                  alt="Celebrating success"
-                  fill
-                  className="object-cover"
-                />
+              {/* Center Big Image */}
+              <div className="absolute top-8 left-16 sm:top-12 sm:left-20 lg:top-16 lg:left-32 w-52 h-[260px] sm:w-72 sm:h-[400px] lg:w-[360px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl z-10">
+                <div className="absolute inset-0 bg-gray-300">
+                  <Image
+                    src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600&h=800"
+                    alt="Celebrating success"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Bottom Right Image */}
-            <div className="absolute top-64 left-56 lg:top-[300px] lg:left-[340px] w-56 h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden shadow-xl z-20 border-8 border-white">
-              <div className="absolute inset-0 bg-gray-200">
-                <Image
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600&h=600"
-                  alt="Team collaboration"
-                  fill
-                  className="object-cover"
-                />
+              {/* Bottom Right Image */}
+              <div className="absolute top-[200px] left-[140px] sm:top-64 sm:left-56 lg:top-[300px] lg:left-[340px] w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden shadow-xl z-20 border-4 sm:border-8 border-white">
+                <div className="absolute inset-0 bg-gray-200">
+                  <Image
+                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600&h=600"
+                    alt="Team collaboration"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Experience Badge */}
-            <div className="absolute top-[320px] -left-4 lg:top-[380px] lg:-left-8 bg-[#1FA8A8] text-white p-6 lg:p-7 rounded-3xl shadow-2xl z-30 flex items-center gap-5 w-[260px] lg:w-[300px]">
-              <div className="bg-white p-4 rounded-2xl shadow-sm shrink-0">
-                <Trophy className="w-8 h-8 lg:w-10 lg:h-10 text-[#1FA8A8]" />
-              </div>
-              <div>
-                <div className="font-black text-3xl lg:text-4xl leading-none mb-1">25+</div>
-                <div className="text-sm lg:text-base font-medium text-white/90">Years Of Experience</div>
+              {/* Experience Badge */}
+              <div className="absolute top-[280px] left-5 sm:top-[320px] sm:-left-4 lg:top-[380px] lg:-left-8 bg-[#1FA8A8] text-white p-5 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl shadow-2xl z-30 flex items-center gap-4 sm:gap-5 w-[260px] sm:w-[260px] lg:w-[300px]">
+                <div className="bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-sm shrink-0">
+                  <Trophy className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-[#1FA8A8]" />
+                </div>
+                <div>
+                  <div className="font-black text-2xl sm:text-3xl lg:text-4xl leading-none mb-1">25+</div>
+                  <div className="text-xs sm:text-sm lg:text-base font-medium text-white/90">Years Of Experience</div>
+                </div>
               </div>
             </div>
-            
-            {/* Spacer for layout since children are absolute */}
-            <div className="h-[600px] w-full lg:hidden"></div>
           </div>
 
           {/* Right: Content */}

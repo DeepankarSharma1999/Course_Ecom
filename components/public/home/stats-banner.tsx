@@ -12,13 +12,13 @@ export function StatsBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="card p-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative"
+          className="card p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative mt-6 md:mt-0"
         >
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-background px-6 py-1.5 border border-border/50 rounded-full shadow-sm">
-            <h3 className="font-bold text-foreground text-sm uppercase tracking-widest">Grow Your Career Faster with Our Skilled Services</h3>
+          <div className="md:absolute md:-top-4 md:left-1/2 md:-translate-x-1/2 bg-secondary/30 md:bg-background px-6 py-4 md:py-1.5 rounded-2xl md:rounded-full md:border md:border-border/50 md:shadow-sm w-full md:w-auto text-center mb-4 md:mb-0">
+            <h3 className="font-bold text-foreground text-xs md:text-sm uppercase tracking-widest leading-relaxed">Grow Your Career Faster with Our Skilled Services</h3>
           </div>
           
-          <div className="flex items-center gap-5 flex-1 justify-center md:justify-start mt-6 md:mt-0">
+          <div className="flex items-center gap-5 flex-1 justify-center md:justify-start w-full md:w-auto">
             <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-primary shadow-inner">
               <Diamond className="w-6 h-6" />
             </div>

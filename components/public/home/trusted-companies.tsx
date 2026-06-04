@@ -25,7 +25,7 @@ export function TrustedCompanies() {
         </p>
       </div>
 
-      <div className="relative w-full flex overflow-hidden group">
+      <div className="relative w-full flex overflow-hidden group" style={{ WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}>
         {/* Marquee Container */}
         <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
           {logos.map((company, index) => (

@@ -196,13 +196,13 @@ export function SiteHeader({
               <Search className="w-4 h-4 text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2" />
               <input type="text" name="q" placeholder="What do you want to learn today?" className="w-full pl-11 pr-4 py-3.5 border border-border/50 rounded-full text-sm bg-secondary focus:outline-none focus:border-primary" />
             </form>
-            <Link href="/courses" className="block py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">All Courses <ChevronRight className="w-4 h-4 opacity-50" /></Link>
-            <Link href="/combo-courses" className="block py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">
+            <Link href="/courses" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">All Courses <ChevronRight className="w-4 h-4 opacity-50" /></Link>
+            <Link href="/combo-courses" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">
               <span className="flex items-center gap-2">Combo Courses <span className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full">New</span></span>
               <ChevronRight className="w-4 h-4 opacity-50" />
             </Link>
-            <Link href="/resources" className="block py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Resources <ChevronRight className="w-4 h-4 opacity-50" /></Link>
-            <Link href="/corporate" className="block py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Corporate <ChevronRight className="w-4 h-4 opacity-50" /></Link>
+            <Link href="/resources" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Resources <ChevronRight className="w-4 h-4 opacity-50" /></Link>
+            <Link href="/corporate" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Corporate <ChevronRight className="w-4 h-4 opacity-50" /></Link>
           </div>
         </div>
       )}

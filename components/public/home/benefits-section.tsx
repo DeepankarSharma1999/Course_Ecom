@@ -17,7 +17,7 @@ const images = [
 export function BenefitsSection() {
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-background py-20 font-sans">
-      <ParallaxHeroImages images={images} variant="edge-focus" />
+      <ParallaxHeroImages images={images} variant="edge-focus" className="hidden md:block" />
       
       <motion.div 
         initial={{ opacity: 0, y: 40 }}

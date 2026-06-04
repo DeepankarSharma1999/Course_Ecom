@@ -62,13 +62,13 @@ export function CourseGrid({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-start md:justify-center gap-2 mb-12 max-w-5xl mx-auto"
+          className="flex overflow-x-auto md:flex-wrap items-center justify-start md:justify-center gap-2 mb-12 max-w-5xl mx-auto hide-scrollbar pb-2 px-1"
         >
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${
+              className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 whitespace-nowrap shrink-0 ${
                 activeTab === tab
                   ? "bg-primary text-primary-foreground shadow-[0_8px_20px_rgb(31,168,168,0.25)]"
                   : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground border border-border/50"

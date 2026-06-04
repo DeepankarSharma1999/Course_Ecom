@@ -64,7 +64,7 @@ export function ComboSchedule() {
         </h2>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center border-b border-gray-200 mb-10 gap-4 md:gap-8">
+        <div className="flex overflow-x-auto md:flex-wrap md:justify-center border-b border-gray-200 mb-10 gap-4 md:gap-8 hide-scrollbar pb-1">
           {TABS.map((tab) => (
             <button
               key={tab}
