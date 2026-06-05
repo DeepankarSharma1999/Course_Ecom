@@ -87,8 +87,9 @@ export function CoursePageContent({
       </div>
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800 text-white">
-        <div className="container-tight grid lg:grid-cols-[1fr_400px] gap-10 py-12 lg:py-16 items-start">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary to-[#0f6b6b] text-white">
+        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white/10 blur-3xl rounded-full opacity-50 pointer-events-none"></div>
+        <div className="container-tight grid lg:grid-cols-[1fr_400px] gap-10 py-12 lg:py-16 items-start relative z-10">
           <div>
             <div className="flex flex-wrap gap-2 mb-4">
               <span className="badge bg-white/10 text-white border border-white/20">{course.category.name}</span>

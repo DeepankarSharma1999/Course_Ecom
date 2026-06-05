@@ -30,11 +30,14 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const courses = all.filter((c) => c.category.slug === cat.slug);
   return (
     <>
-      <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
-        <div className="container-tight py-14">
-          <div className="text-sm text-brand-200 mb-2">Category</div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">{cat.name}</h1>
-          <p className="text-brand-100 text-lg max-w-2xl">{cat.tagline}</p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary to-[#0f6b6b] text-white">
+        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white/10 blur-3xl rounded-full opacity-50 pointer-events-none"></div>
+        <div className="container-tight py-16 lg:py-20 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6">
+            Category
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-4">{cat.name}</h1>
+          <p className="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed">{cat.tagline}</p>
         </div>
       </section>
       <section className="section">

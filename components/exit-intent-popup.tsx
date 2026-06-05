@@ -63,12 +63,12 @@ export function ExitIntentPopup() {
         <button onClick={dismiss} aria-label="Close" className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white">
           <X className="w-4 h-4 text-ink-700" />
         </button>
-        <div className="bg-gradient-to-br from-brand-700 to-brand-900 text-white p-8 hidden md:flex md:flex-col md:justify-center">
+        <div className="bg-gradient-to-br from-primary to-[#0f6b6b] text-white p-8 hidden md:flex md:flex-col md:justify-center">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent-500 mb-3">
             <Gift className="w-4 h-4" /> Limited Time
           </div>
           <div className="text-3xl font-bold mb-2">Save 15% on your next certification</div>
-          <p className="text-brand-100 text-sm">Get an exclusive discount code in your inbox — valid on any live online or classroom batch this quarter.</p>
+          <p className="text-white/90 text-sm">Get an exclusive discount code in your inbox — valid on any live online or classroom batch this quarter.</p>
         </div>
         <div className="p-6">
           <div className="md:hidden mb-3">
