@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Star, Clock, Users, ArrowRight } from "lucide-react";
+import { Star, Clock, Users, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import type { CourseContent, CategoryContent } from "@/lib/seed-data";
@@ -32,26 +32,26 @@ export function CourseGrid({
 }) {
   const [activeTab, setActiveTab] = useState("All Courses");
 
-  const tabs = ["All Courses", ...categories.map((c) => c.name)];
+  const screenshotTabs = ["All Courses", "AGILE", "SAFe", "PROJECT", "BUSINESS", "Generative AI", "QUALITY", "SERVICE", "DEVOPS"];
   
   const filteredCourses = activeTab === "All Courses" 
     ? courses 
-    : courses.filter(c => c.category.name === activeTab);
+    : courses.filter(c => c.category.name.toUpperCase().includes(activeTab) || activeTab.includes(c.category.name.toUpperCase()) || (activeTab === "SAFe" && c.category.name.includes("SAFe")));
 
   return (
-    <section className="section bg-background font-sans">
+    <section className="section bg-[#f8f9fa] font-sans pt-10 pb-20">
       <div className="container-tight">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12"
+          className="text-center max-w-4xl mx-auto mb-8"
         >
-          <div className="text-sm font-bold text-primary uppercase tracking-widest mb-3">
-            Accelerate Your Career
+          <div className="text-[11px] font-bold text-[#1c4b79] uppercase tracking-wider mb-2">
+            CHOOSE THE BETTER COURSE FOR YOUR CAREER
           </div>
-          <h2 className="h2 mb-4">
+          <h2 className="text-3xl font-black text-foreground">
             Professional Certification & Training Courses
           </h2>
         </motion.div>
@@ -62,21 +62,23 @@ export function CourseGrid({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex overflow-x-auto md:flex-wrap items-center justify-start md:justify-center gap-2 mb-12 max-w-5xl mx-auto hide-scrollbar pb-2 px-1"
+          className="mb-10 max-w-6xl mx-auto"
         >
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 whitespace-nowrap shrink-0 ${
-                activeTab === tab
-                  ? "bg-primary text-primary-foreground shadow-[0_8px_20px_rgb(31,168,168,0.25)]"
-                  : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground border border-border/50"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+          <div className="flex items-center overflow-x-auto hide-scrollbar border border-emerald-200 rounded-lg bg-white shadow-sm px-2">
+            {screenshotTabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-5 py-3.5 text-[13px] font-semibold whitespace-nowrap transition-colors border-b-2 ${
+                  activeTab === tab
+                    ? "text-emerald-600 border-emerald-600"
+                    : "text-gray-500 border-transparent hover:text-gray-800"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Grid */}
@@ -85,28 +87,13 @@ export function CourseGrid({
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
         >
           {filteredCourses.slice(0, 6).map((c) => (
-            <motion.div key={c.slug} variants={itemVariants}>
+            <motion.div key={c.slug} variants={itemVariants} className="h-full">
               <GridCourseCard course={c} currency={currency} />
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-16"
-        >
-          <Link
-            href="/courses"
-            className="btn-outline group"
-          >
-            Explore All Courses <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
         </motion.div>
       </div>
     </section>
@@ -118,78 +105,86 @@ function GridCourseCard({ course, currency }: { course: CourseContent; currency:
   const originalPrice = basePrice * 2; 
   
   return (
-    <div className="card group flex flex-col h-full transform hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(31,168,168,0.15)] bg-white cursor-pointer relative z-10">
-      <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl bg-secondary">
-        {course.heroImage ? (
-          <Image
-            src={course.heroImage}
-            alt={course.title}
-            fill
-            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-          />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-accent/80 flex items-center justify-center p-4 text-center">
-            <span className="text-white font-bold text-lg drop-shadow-md line-clamp-3">{course.title}</span>
-          </div>
-        )}
-        <div className="absolute top-4 right-4 bg-foreground/90 backdrop-blur-sm text-background text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col h-full relative group">
+      {/* Image Container */}
+      <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 p-2">
+        <div className="relative w-full h-full rounded-lg overflow-hidden">
+          {course.heroImage ? (
+            <Image
+              src={course.heroImage}
+              alt={course.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-[#002f5b] flex items-center justify-center p-4 text-center">
+              <span className="text-white font-bold text-lg drop-shadow-md line-clamp-3">{course.title}</span>
+            </div>
+          )}
+        </div>
+        {/* Popular Badge */}
+        <div className="absolute top-4 right-4 bg-[#1c4b79] text-white text-[11px] font-bold px-3 py-1 shadow-sm rounded-sm">
           Popular
         </div>
       </div>
       
-      <div className="p-6 flex flex-col flex-1">
-        <div className="flex items-center justify-between mb-4 text-[13px] font-bold">
-          <div className="flex items-center gap-2">
-            <span className="bg-secondary text-primary px-2.5 py-1 rounded-md">
-              Starts 8 Jun
+      <div className="p-5 flex flex-col flex-1">
+        {/* Top Meta */}
+        <div className="flex items-center justify-between mb-3 text-[11px] font-bold">
+          <div className="flex items-center gap-1.5">
+            <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-sm">
+              Starts 8 Jun 2026
             </span>
-            <span className="text-foreground flex items-center gap-1.5 opacity-80">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-50"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              Live Classroom
+            <span className="text-[#1c4b79] flex items-center gap-1">
+              • Live Classroom
             </span>
           </div>
-          <div className="flex items-center gap-1 text-foreground">
-            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-            {course.ratingAvg.toFixed(1)}
+          <div className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-sm flex items-center gap-1">
+            <Star className="w-3 h-3 fill-current" />
+            5.0
           </div>
         </div>
 
-        <h3 className="font-bold text-foreground text-xl leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2">
+        {/* Title */}
+        <h3 className="font-bold text-[#082032] text-[16px] leading-snug mb-3 line-clamp-2">
           {course.title}
         </h3>
         
-        <p className="text-sm text-muted-foreground mb-6 line-clamp-2 leading-relaxed">
-          <strong className="text-foreground font-semibold">Skills you'll gain:</strong> {course.summary}
-        </p>
+        {/* Skills */}
+        <div className="text-[13px] text-gray-600 mb-4 line-clamp-2 leading-relaxed h-10">
+          <strong className="text-[#082032] font-bold">Skill you'll gain :</strong> {course.summary}
+        </div>
         
-        <div className="flex flex-col gap-2.5 text-[13px] text-muted-foreground mb-6 font-medium">
-          <span className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-primary" /> 
-            {course.durationLabel}
+        {/* Details */}
+        <div className="flex flex-col gap-1.5 text-[12px] text-gray-500 mb-5 font-medium">
+          <span className="flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-emerald-600" /> 
+            {course.durationLabel.replace('(', '|').replace(' Hours)', '')}
           </span>
-          <span className="flex items-center gap-2">
-            <Users className="w-4 h-4 text-primary" /> 
-            3K+ Enrolled Worldwide
+          <span className="flex items-center gap-1.5">
+            <Users className="w-3.5 h-3.5 text-emerald-600" /> 
+            3K+ Enrolled
           </span>
         </div>
         
-        <div className="mt-auto pt-5 border-t border-border flex items-center justify-between">
+        {/* Footer: Price & Button */}
+        <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
           <div>
-            <div className="text-[11px] text-muted-foreground mb-1 uppercase tracking-wider font-bold">Starting from</div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-extrabold text-foreground text-xl tracking-tight">
-                {formatInCurrency(basePrice, currency)}
+            <div className="text-[11px] text-gray-400 mb-0.5 font-medium">Start from</div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-bold text-emerald-700 text-[15px]">
+                {formatInCurrency(basePrice, currency).replace('.00', '')}
               </span>
-              <span className="text-muted-foreground line-through text-xs font-medium">
-                {formatInCurrency(originalPrice, currency)}
+              <span className="text-gray-400 line-through text-[11px] font-medium">
+                {formatInCurrency(originalPrice, currency).replace('.00', '')}
+              </span>
+              <span className="text-emerald-600 text-[10px] font-bold">
+                (50% OFF)
               </span>
             </div>
           </div>
-          <Link href={`/${course.slug}`} className="bg-foreground hover:bg-primary text-background hover:text-primary-foreground px-5 py-2.5 rounded-full font-bold text-sm flex items-center gap-1.5 transition-all shadow-md active:scale-95">
-            Enroll <ArrowRight className="w-4 h-4" />
+          <Link href={`/${course.slug}`} className="bg-[#002f5b] hover:bg-[#001f3d] text-white px-4 py-2 rounded font-semibold text-[13px] flex items-center gap-1 transition-colors">
+            Enroll <ChevronRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>

@@ -36,10 +36,10 @@ export function LiveChatWidget() {
             style={{ height: '520px' }}
           >
             {/* Header */}
-            <div className="bg-[#F27C38] text-black px-4 py-3 flex items-center justify-center relative">
+            <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center justify-center relative">
               <span className="font-bold text-[15px]">Chat with us</span>
               <button onClick={() => setIsOpen(false)} className="absolute right-4 hover:opacity-70 transition-opacity">
-                <Minus className="w-5 h-5 text-black" />
+                <Minus className="w-5 h-5 text-primary-foreground" />
               </button>
             </div>
 
@@ -52,17 +52,17 @@ export function LiveChatWidget() {
 
               <div className="flex flex-col gap-1.5">
                 <label className="font-bold text-sm text-[#2f3941]">Name</label>
-                <input type="text" className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-[#F27C38] transition-colors" />
+                <input type="text" className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-primary transition-colors" />
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label className="font-bold text-sm text-[#2f3941]">Email</label>
-                <input type="email" className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-[#F27C38] transition-colors" />
+                <input type="email" className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-primary transition-colors" />
               </div>
 
               <div className="flex flex-col gap-1.5 mb-2">
                 <label className="font-bold text-sm text-[#2f3941]">Message</label>
-                <textarea className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-[#F27C38] transition-colors resize-none min-h-[100px]" />
+                <textarea className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-primary transition-colors resize-none min-h-[100px]" />
               </div>
             </div>
 

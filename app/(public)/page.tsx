@@ -15,6 +15,9 @@ import { StatsBanner } from "@/components/public/home/stats-banner";
 import { CtaStrip } from "@/components/public/home/cta-strip";
 import { WorldMap } from "@/components/world-map";
 
+import { TestimonialsSlider } from "@/components/public/home/testimonials-slider";
+import { LatestBlogs } from "@/components/public/home/latest-blogs";
+
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,9 +44,7 @@ export default async function HomePage() {
   return (
     <>
       <HomeHero />
-      <PartnerLogos logos={accreditationLogos} />
-      
-      <TrustedCompanies />
+      <PartnerLogos />
       
       <CourseGrid courses={COURSES} categories={CATEGORIES} currency={currency} />
       
@@ -58,6 +59,10 @@ export default async function HomePage() {
       <StatsBanner />
       
       <CtaStrip />
+
+      <TestimonialsSlider />
+      
+      <LatestBlogs />
 
       {/* World Map Section */}
       <section className="py-16 overflow-hidden font-sans" style={{ background: "#082032" }}>
