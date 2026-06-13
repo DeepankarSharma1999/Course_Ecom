@@ -1,69 +1,47 @@
 "use client";
 
-import { Diamond, Clock, Users, Globe } from "lucide-react";
+import { Clock, Diamond, Globe, Users } from "lucide-react";
 import { motion } from "framer-motion";
+
+const stats = [
+  { value: "1,500+", label: "Industry Experts", icon: Diamond, accent: true },
+  { value: "130+", label: "Comprehensive Courses", icon: Clock },
+  { value: "300+", label: "Agile Transformations", icon: Users, accent: true },
+  { value: "120+", label: "Countries & Counting", icon: Globe },
+];
 
 export function StatsBanner() {
   return (
-    <section className="bg-background pb-20 pt-10 font-sans relative z-20">
+    <section className="bg-[#F4F8FA] py-12 font-sans md:py-16">
       <div className="container-tight max-w-6xl">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="card p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative mt-6 md:mt-0"
+          transition={{ duration: 0.45 }}
+          className="rounded-3xl border border-[#082032]/10 bg-white p-6 shadow-[0_8px_24px_rgba(8,32,50,0.05)] md:p-8"
         >
-          <div className="md:absolute md:-top-4 md:left-1/2 md:-translate-x-1/2 bg-secondary/30 md:bg-background px-6 py-4 md:py-1.5 rounded-2xl md:rounded-full md:border md:border-border/50 md:shadow-sm w-full md:w-auto text-center mb-4 md:mb-0">
-            <h3 className="font-bold text-foreground text-xs md:text-sm uppercase tracking-widest leading-relaxed">Grow Your Career Faster with Our Skilled Services</h3>
-          </div>
-          
-          <div className="flex items-center gap-5 flex-1 justify-center md:justify-start w-full md:w-auto">
-            <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-primary shadow-inner">
-              <Diamond className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="font-black text-foreground text-2xl">1,500+</div>
-              <div className="text-sm text-muted-foreground font-semibold">Industry Experts</div>
-            </div>
+          <div className="mb-6 text-center">
+            <div className="section-eyebrow mb-3">Skilled Services</div>
+            <h2 className="text-xl font-black text-[#082032] md:text-2xl">Grow your career faster with credible training support</h2>
           </div>
 
-          <div className="w-px h-16 bg-border hidden md:block" />
-
-          <div className="flex items-center gap-5 flex-1 justify-center mt-6 md:mt-0">
-            <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-primary shadow-inner">
-              <Clock className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="font-black text-foreground text-2xl">130+</div>
-              <div className="text-sm text-muted-foreground font-semibold">Comprehensive Courses</div>
-            </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.label} className="flex items-center gap-4 rounded-2xl bg-[#F4F8FA] p-4">
+                  <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${item.accent ? "bg-[#FFE8E8] text-[#E23B3B]" : "bg-secondary text-primary"}`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-[#082032]">{item.value}</div>
+                    <div className="text-sm font-semibold text-muted-foreground">{item.label}</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-
-          <div className="w-px h-16 bg-border hidden md:block" />
-
-          <div className="flex items-center gap-5 flex-1 justify-center mt-6 md:mt-0">
-            <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-primary shadow-inner">
-              <Users className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="font-black text-foreground text-2xl">300+</div>
-              <div className="text-sm text-muted-foreground font-semibold">Agile Transformations</div>
-            </div>
-          </div>
-
-          <div className="w-px h-16 bg-border hidden md:block" />
-
-          <div className="flex items-center gap-5 flex-1 justify-center md:justify-end mt-6 md:mt-0">
-            <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-primary shadow-inner">
-              <Globe className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="font-black text-foreground text-2xl">120+</div>
-              <div className="text-sm text-muted-foreground font-semibold">Countries & Counting</div>
-            </div>
-          </div>
-
         </motion.div>
       </div>
     </section>

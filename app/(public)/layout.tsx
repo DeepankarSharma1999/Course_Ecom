@@ -2,11 +2,11 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ExitIntentPopup } from "@/components/exit-intent-popup";
 import { FloatingWhatsApp } from "@/components/whatsapp-button";
+import { LiveChatWidget } from "@/components/live-chat-widget";
 import { getDisplayCurrency } from "@/lib/geo";
 import { getSiteSettings } from "@/lib/site-content";
 import { getAllCourses, getCategories } from "@/lib/content";
 import Link from "next/link";
-import { LiveChatWidget } from "@/components/live-chat-widget";
 
 import { LearnerAuthProvider } from "@/components/learner-auth-provider";
 import { AuthModal } from "@/components/auth-modal";

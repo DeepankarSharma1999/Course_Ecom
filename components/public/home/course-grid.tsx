@@ -1,25 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { Star, Clock, Users, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { Award, Clock, Star } from "lucide-react";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import type { CourseContent, CategoryContent } from "@/lib/seed-data";
+import type { CategoryContent, CourseContent } from "@/lib/seed-data";
 import { formatInCurrency, type CurrencyCode } from "@/lib/currency";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-};
 
 export function CourseGrid({
   courses,
@@ -30,164 +16,118 @@ export function CourseGrid({
   categories: CategoryContent[];
   currency: CurrencyCode;
 }) {
+  const tabs = ["All Courses", ...categories.slice(0, 7).map((c) => c.name)];
   const [activeTab, setActiveTab] = useState("All Courses");
 
-  const screenshotTabs = ["All Courses", "AGILE", "SAFe", "PROJECT", "BUSINESS", "Generative AI", "QUALITY", "SERVICE", "DEVOPS"];
-  
-  const filteredCourses = activeTab === "All Courses" 
-    ? courses 
-    : courses.filter(c => c.category.name.toUpperCase().includes(activeTab) || activeTab.includes(c.category.name.toUpperCase()) || (activeTab === "SAFe" && c.category.name.includes("SAFe")));
+  const filteredCourses =
+    activeTab === "All Courses" ? courses : courses.filter((course) => course.category.name === activeTab);
 
   return (
-    <section className="section bg-[#f8f9fa] font-sans pt-10 pb-20">
+    <section className="section bg-[#E9F4F4] font-sans">
       <div className="container-tight">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-4xl mx-auto mb-8"
-        >
-          <div className="text-[11px] font-bold text-[#1c4b79] uppercase tracking-wider mb-2">
-            CHOOSE THE BETTER COURSE FOR YOUR CAREER
-          </div>
-          <h2 className="text-3xl font-black text-foreground">
-            Professional Certification & Training Courses
-          </h2>
-        </motion.div>
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <div className="section-eyebrow mb-3">Course Discovery</div>
+          <h2 className="h2">Professional certification training for every career stage</h2>
+          <p className="lead mt-4">
+            Explore expert-led programs built around globally recognised frameworks, practical workshops, and exam-focused outcomes.
+          </p>
+        </div>
 
-        {/* Tabs */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-10 max-w-6xl mx-auto"
-        >
-          <div className="flex items-center overflow-x-auto hide-scrollbar border border-emerald-200 rounded-lg bg-white shadow-sm px-2">
-            {screenshotTabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-5 py-3.5 text-[13px] font-semibold whitespace-nowrap transition-colors border-b-2 ${
-                  activeTab === tab
-                    ? "text-emerald-600 border-emerald-600"
-                    : "text-gray-500 border-transparent hover:text-gray-800"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+        <div role="tablist" aria-label="Course categories" className="mb-10 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto flex w-max min-w-full gap-2 rounded-2xl border border-[#082032]/10 bg-white p-2 shadow-[0_8px_24px_rgba(8,32,50,0.05)] md:min-w-0">
+            {tabs.map((tab) => {
+              const active = activeTab === tab;
+              return (
+                <button
+                  key={tab}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setActiveTab(tab)}
+                  className={`min-h-[40px] whitespace-nowrap rounded-xl px-4 text-sm font-extrabold transition-colors ${
+                    active ? "bg-primary text-white shadow-sm" : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  }`}
+                >
+                  {tab}
+                </button>
+              );
+            })}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Grid */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-        >
-          {filteredCourses.slice(0, 6).map((c) => (
-            <motion.div key={c.slug} variants={itemVariants} className="h-full">
-              <GridCourseCard course={c} currency={currency} />
-            </motion.div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {filteredCourses.slice(0, 6).map((course, index) => (
+            <CourseDiscoveryCard key={course.slug} course={course} currency={currency} featured={index < 3} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
-function GridCourseCard({ course, currency }: { course: CourseContent; currency: CurrencyCode }) {
-  const basePrice = course.basePriceInr;
-  const originalPrice = basePrice * 2; 
-  
+function CourseDiscoveryCard({ course, currency, featured }: { course: CourseContent; currency: CurrencyCode; featured: boolean }) {
+  const compareAtPriceInr = "compareAtPriceInr" in course
+    ? (course as CourseContent & { compareAtPriceInr?: number }).compareAtPriceInr
+    : undefined;
+
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col h-full relative group">
-      {/* Image Container */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 p-2">
-        <div className="relative w-full h-full rounded-lg overflow-hidden">
-          {course.heroImage ? (
-            <Image
-              src={course.heroImage}
-              alt={course.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-          ) : (
-            <div className="absolute inset-0 bg-[#002f5b] flex items-center justify-center p-4 text-center">
-              <span className="text-white font-bold text-lg drop-shadow-md line-clamp-3">{course.title}</span>
-            </div>
-          )}
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#082032]/10 bg-white shadow-[0_8px_24px_rgba(8,32,50,0.05)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(8,32,50,0.09)]">
+      <Link href={`/${course.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-secondary">
+        {course.heroImage ? (
+          <Image
+            src={course.heroImage}
+            alt={course.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          />
+        ) : null}
+        <div className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-black text-[#082032] shadow-sm">
+          {course.category.name}
         </div>
-        {/* Popular Badge */}
-        <div className="absolute top-4 right-4 bg-[#1c4b79] text-white text-[11px] font-bold px-3 py-1 shadow-sm rounded-sm">
-          Popular
-        </div>
-      </div>
-      
-      <div className="p-5 flex flex-col flex-1">
-        {/* Top Meta */}
-        <div className="flex items-center justify-between mb-3 text-[11px] font-bold">
-          <div className="flex items-center gap-1.5">
-            <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-sm">
-              Starts 8 Jun 2026
-            </span>
-            <span className="text-[#1c4b79] flex items-center gap-1">
-              • Live Classroom
-            </span>
-          </div>
-          <div className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-sm flex items-center gap-1">
-            <Star className="w-3 h-3 fill-current" />
-            5.0
-          </div>
+        {featured && <div className="accent-badge absolute right-4 top-4">Popular</div>}
+      </Link>
+
+      <div className="flex flex-1 flex-col p-5 md:p-6">
+        <div className="mb-3 flex items-center gap-3 text-xs font-bold text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <Award className="h-4 w-4 text-primary" />
+            {course.accreditedBy || "Certified program"}
+          </span>
         </div>
 
-        {/* Title */}
-        <h3 className="font-bold text-[#082032] text-[16px] leading-snug mb-3 line-clamp-2">
-          {course.title}
+        <h3 className="mb-3 line-clamp-2 min-h-14 text-lg font-black leading-snug text-[#082032] group-hover:text-primary">
+          <Link href={`/${course.slug}`} className="inline-flex min-h-[32px] items-center">{course.shortTitle || course.title}</Link>
         </h3>
-        
-        {/* Skills */}
-        <div className="text-[13px] text-gray-600 mb-4 line-clamp-2 leading-relaxed h-10">
-          <strong className="text-[#082032] font-bold">Skill you'll gain :</strong> {course.summary}
-        </div>
-        
-        {/* Details */}
-        <div className="flex flex-col gap-1.5 text-[12px] text-gray-500 mb-5 font-medium">
+
+        <p className="mb-5 line-clamp-2 text-sm leading-6 text-muted-foreground">{course.summary}</p>
+
+        <div className="mb-5 flex flex-wrap gap-3 text-sm font-bold text-[#5D6D7E]">
           <span className="flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-emerald-600" /> 
-            {course.durationLabel.replace('(', '|').replace(' Hours)', '')}
+            <Star className="h-4 w-4 fill-[#E23B3B] text-[#E23B3B]" />
+            {course.ratingAvg} ({course.ratingCount.toLocaleString()})
           </span>
           <span className="flex items-center gap-1.5">
-            <Users className="w-3.5 h-3.5 text-emerald-600" /> 
-            3K+ Enrolled
+            <Clock className="h-4 w-4 text-primary" />
+            {course.durationLabel}
           </span>
         </div>
-        
-        {/* Footer: Price & Button */}
-        <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+
+        <div className="mt-auto flex items-end justify-between gap-4 border-t border-[#082032]/8 pt-5">
           <div>
-            <div className="text-[11px] text-gray-400 mb-0.5 font-medium">Start from</div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="font-bold text-emerald-700 text-[15px]">
-                {formatInCurrency(basePrice, currency).replace('.00', '')}
-              </span>
-              <span className="text-gray-400 line-through text-[11px] font-medium">
-                {formatInCurrency(originalPrice, currency).replace('.00', '')}
-              </span>
-              <span className="text-emerald-600 text-[10px] font-bold">
-                (50% OFF)
-              </span>
-            </div>
+            <div className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Starts from</div>
+            <div className="mt-1 text-xl font-black text-[#082032]">{formatInCurrency(course.basePriceInr, currency).replace(".00", "")}</div>
+            {compareAtPriceInr ? (
+              <div className="text-xs font-semibold text-muted-foreground line-through">
+                {formatInCurrency(compareAtPriceInr, currency).replace(".00", "")}
+              </div>
+            ) : null}
           </div>
-          <Link href={`/${course.slug}`} className="bg-[#002f5b] hover:bg-[#001f3d] text-white px-4 py-2 rounded font-semibold text-[13px] flex items-center gap-1 transition-colors">
-            Enroll <ChevronRight className="w-3.5 h-3.5" />
+          <Link href={`/${course.slug}`} className="btn-primary min-h-[44px] rounded-xl px-4 py-2 text-xs">
+            View Details
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

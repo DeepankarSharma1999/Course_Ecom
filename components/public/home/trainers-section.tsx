@@ -1,113 +1,60 @@
-"use client";
-
 import Link from "next/link";
-import { Linkedin, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 
 const TRAINERS = [
   {
-    name: "Aakash Srinivasan, CST",
-    title: "Certified Scrum Master (CSM®)Cer...",
-    bio: "Aakash Srinivasan is an experienced Agile transformation leader and a co-founder of ULearnSystems, an Agile training and coaching...",
-    exp: "15+ Years",
-    img: "https://i.pravatar.cc/100?img=11"
+    name: "Aakash Srivastava, CST",
+    title: "Certified Scrum Trainer",
+    bio: "Agile coach focused on complex enterprise transformations and practical scrum adoption.",
+    photo: "https://i.pravatar.cc/160?img=33",
+    experience: "15+ Years experience",
   },
   {
     name: "Michel Goldenberg, CST",
-    title: "Certified Scrum Master (CSM®)Adv...",
-    bio: "Michel Started working with Agile in 2001 when he first used eXtreme Programming as a team member in a very complex project in Brazil, since...",
-    exp: "21+ Years",
-    img: "https://i.pravatar.cc/100?img=53"
+    title: "Certified Scrum Trainer",
+    bio: "Leadership and product coach with deep experience across agile and product organisations.",
+    photo: "https://i.pravatar.cc/160?img=12",
+    experience: "17+ Years experience",
   },
   {
-    name: "Raj Kasturi, CST",
-    title: "CSM",
-    bio: "Raj is an experienced Scrum Trainer, Scrum Master, Agile Coach helping organizations transition to Scrum...",
-    exp: "28+ Years",
-    img: "https://i.pravatar.cc/100?img=68"
-  }
+    name: "Raj Ratan, CST",
+    title: "Agile Coach",
+    bio: "Enterprise agility expert focused on practical delivery, facilitation, and team maturity.",
+    photo: "https://i.pravatar.cc/160?img=52",
+    experience: "16+ Years experience",
+  },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-};
 
 export function TrainersSection() {
   return (
-    <section className="bg-background py-20 font-sans">
+    <section className="section bg-white font-sans">
       <div className="container-tight">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <div className="text-[11px] font-extrabold text-primary uppercase tracking-widest mb-3">
-            OUR EXPERIENCED TRAINING EXPERTS
-          </div>
-          <h2 className="text-3xl md:text-5xl font-black text-foreground tracking-tight">
-            Meet the Team That's Invested in Your Success
-          </h2>
-        </motion.div>
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <div className="section-eyebrow mb-3">Training Experts</div>
+          <h2 className="h2">Learn from practitioners invested in your success</h2>
+          <p className="lead mt-4">Our trainers combine certification expertise with real-world transformation experience.</p>
+        </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-3 gap-8 mb-12"
-        >
-          {TRAINERS.map((t, i) => (
-            <motion.div key={i} variants={itemVariants} className="card p-8 group flex flex-col transform hover:-translate-y-2 transition-all duration-300">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary/20 rounded-full scale-[1.15] -z-10 group-hover:bg-primary/30 transition-colors" />
-                  <img src={t.img} alt={t.name} className="w-16 h-16 rounded-full border-2 border-background object-cover shadow-sm" />
-                </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {TRAINERS.map((trainer) => (
+            <article key={trainer.name} className="card flex h-full flex-col p-6">
+              <div className="mb-5 flex items-center gap-4">
+                <img src={trainer.photo} alt={trainer.name} className="h-20 w-20 rounded-2xl object-cover" />
                 <div>
-                  <h4 className="font-bold text-lg text-foreground leading-snug group-hover:text-primary transition-colors">{t.name}</h4>
-                  <div className="text-xs font-semibold text-muted-foreground truncate w-48">{t.title}</div>
+                  <h3 className="text-lg font-black leading-snug text-[#082032]">{trainer.name}</h3>
+                  <p className="mt-1 text-sm font-bold text-primary">{trainer.title}</p>
                 </div>
               </div>
-              
-              <p className="text-[15px] text-muted-foreground leading-relaxed mb-4 flex-1">
-                {t.bio}
-              </p>
-              <Link href="#" className="text-sm font-bold text-foreground hover:text-primary underline underline-offset-4 mb-8 transition-colors">Read More</Link>
-              
-              <div className="pt-5 border-t border-border flex items-center justify-between">
-                <span className="text-[14px] text-foreground font-semibold">Experience: <span className="text-primary">{t.exp}</span></span>
-                <Link href="#" className="w-8 h-8 bg-[#0A66C2]/10 hover:bg-[#0A66C2] rounded-full flex items-center justify-center text-[#0A66C2] hover:text-white transition-all">
-                  <Linkedin className="w-4 h-4 fill-current" />
+              <p className="line-clamp-3 flex-1 text-sm leading-6 text-muted-foreground">{trainer.bio}</p>
+              <div className="mt-6 flex items-center justify-between border-t border-[#082032]/8 pt-5">
+                <span className="text-sm font-bold text-[#082032]">{trainer.experience}</span>
+                <Link href="#" aria-label={`${trainer.name} LinkedIn`} className="grid h-10 w-10 place-items-center rounded-full bg-[#0A66C2]/10 text-[#0A66C2] transition-colors hover:bg-[#0A66C2] hover:text-white">
+                  <Linkedin className="h-4 w-4" />
                 </Link>
               </div>
-            </motion.div>
+            </article>
           ))}
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex items-center justify-center gap-4"
-        >
-          <button className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary hover:bg-primary/5 transition-all active:scale-95">
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary hover:bg-primary/5 transition-all active:scale-95">
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

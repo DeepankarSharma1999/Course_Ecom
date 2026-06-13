@@ -6,27 +6,31 @@ import { ArrowRight } from "lucide-react";
 
 export function CtaStrip() {
   return (
-    <section className="bg-background pb-20 font-sans">
+    <section className="bg-white py-14 font-sans">
       <div className="container-tight max-w-5xl">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-foreground rounded-3xl p-10 md:p-14 shadow-[0_20px_50px_rgba(8,32,50,0.3)] flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden border border-primary/20"
+          className="relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-3xl border border-primary/20 bg-foreground p-8 shadow-[0_18px_55px_rgba(8,32,50,0.18)] md:flex-row md:items-center md:p-10"
         >
-          {/* Background pattern placeholder */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
+          <div className="absolute inset-0 opacity-[0.05]" style={{
             backgroundImage: "radial-gradient(circle at 100% 100%, white 40px, transparent 40px), radial-gradient(circle at 80% 0%, white 20px, transparent 20px)",
             backgroundSize: "200px 200px"
           }} />
-          
-          <h2 className="text-2xl md:text-3xl font-black text-background max-w-lg relative z-10 text-center md:text-left leading-tight tracking-tight">
-            Have more questions or require individualized guidance?
-          </h2>
-          
-          <Link href="/contact" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3.5 rounded-full font-bold text-sm transition-all shadow-lg active:scale-95 flex items-center gap-2 group relative z-10 whitespace-nowrap">
-            Request for Query <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+
+          <div className="relative z-10">
+            <h2 className="max-w-xl text-2xl font-black leading-tight text-white md:text-3xl">
+              Ready to plan your next certification journey?
+            </h2>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-white/70">
+              Talk to an advisor and choose the right training path for your role or team.
+            </p>
+          </div>
+
+          <Link href="/enquire" className="btn-primary relative z-10 whitespace-nowrap">
+            Request Guidance <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </div>
