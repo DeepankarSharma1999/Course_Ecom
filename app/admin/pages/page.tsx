@@ -5,6 +5,8 @@ import Link from "next/link";
 import { PlusCircle, Trash2, Edit } from "lucide-react";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminPages() {
   const pages = await prisma.page.findMany({
     orderBy: { createdAt: "desc" },

@@ -4,6 +4,8 @@ import { updatePage } from "@/lib/page-actions";
 import { ArrowLeft, Save } from "lucide-react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function EditPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const page = await prisma.page.findUnique({ where: { id } });

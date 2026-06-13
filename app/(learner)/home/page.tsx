@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export default async function LearnerDashboardPage() {
   // Fetch some courses for the dashboard
-  const courses = await prisma.course.findMany({
+  const rawCourses = await prisma.course.findMany({
     take: 8,
     where: { isPublished: true },
     orderBy: { createdAt: "desc" },
@@ -20,9 +20,17 @@ export default async function LearnerDashboardPage() {
       title: true,
       heroImage: true,
       basePriceInr: true,
-      categorySlug: true,
+      category: { select: { slug: true } },
     }
   });
+  // Flatten the category relation to a categorySlug field for the dashboard widgets.
+  const courses = rawCourses.map((c) => ({
+    slug: c.slug,
+    title: c.title,
+    heroImage: c.heroImage,
+    basePriceInr: c.basePriceInr,
+    categorySlug: c.category?.slug ?? null,
+  }));
 
   const comboOffers = courses.slice(0, 2);
   const freeCourses = courses.slice(2, 4);

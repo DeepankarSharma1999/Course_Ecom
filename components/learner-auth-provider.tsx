@@ -15,7 +15,7 @@ type LearnerAuthContextType = {
   isModalOpen: boolean;
   openModal: () => void;
   closeModal: () => void;
-  login: (email: string) => void;
+  login: (email: string, provider?: string) => void;
   logout: () => void;
 };
 
