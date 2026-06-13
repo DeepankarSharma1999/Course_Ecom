@@ -92,5 +92,23 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     );
   }
 
+  // Check if it's a dynamic universal page
+  const { getPageBySlug } = await import("@/lib/page-actions");
+  const customPage = await getPageBySlug(slug, false);
+  
+  if (customPage) {
+    return (
+      <main className="min-h-screen bg-ink-50 pt-10 pb-20">
+        <div className="container-tight bg-white p-10 rounded-2xl shadow-sm border border-ink-100">
+          <h1 className="text-4xl font-extrabold text-ink-900 mb-8 pb-6 border-b border-ink-100">{customPage.title}</h1>
+          <div 
+            className="prose prose-ink max-w-none"
+            dangerouslySetInnerHTML={{ __html: customPage.content }}
+          />
+        </div>
+      </main>
+    );
+  }
+
   notFound();
 }

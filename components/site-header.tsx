@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import * as Lucide from "lucide-react";
 import { CurrencySwitcher } from "@/components/currency-switcher";
+import { useLearnerAuth } from "@/components/learner-auth-provider";
+import { LearnerDropdown } from "@/components/learner-dropdown";
 
 type NavCategory = {
   slug: string;
@@ -47,7 +49,10 @@ export function SiteHeader({
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<"courses" | "resources" | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategorySlug, setActiveCategorySlug] = useState<string | null>(null);
   const closeTimer = useRef<number | undefined>(undefined);
+  
+  const { isLoggedIn, openModal } = useLearnerAuth();
 
   function openSoft(name: "courses" | "resources") {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
@@ -98,27 +103,96 @@ export function SiteHeader({
 
         {/* All Courses Dropdown & Search (Desktop) */}
         <div className="hidden lg:flex items-center flex-1 max-w-2xl gap-3 ml-8">
-          <div className="relative h-full flex items-center" onMouseEnter={() => openSoft("courses")} onMouseLeave={closeSoft}>
-            <button className="flex items-center gap-2 px-4 py-2.5 border border-border/50 rounded-full text-sm font-semibold text-foreground bg-secondary/50 hover:bg-secondary hover:border-primary/30 transition-all">
-              <Menu className="w-4 h-4 text-primary" /> All Courses <ChevronDown className="w-4 h-4 opacity-70" />
+          <div className="relative h-full flex items-center group" onMouseEnter={() => openSoft("courses")} onMouseLeave={closeSoft}>
+            <button className="flex items-center gap-2 px-4 py-2 border border-border/50 rounded-md text-[14px] font-semibold text-foreground bg-white hover:bg-gray-50 hover:border-primary/30 transition-all shadow-sm">
+              <Menu className="w-4 h-4" /> All Courses <ChevronDown className="w-4 h-4 opacity-70" />
             </button>
             {openMenu === "courses" && (
-              <div className="absolute left-0 top-[calc(100%+8px)] w-[800px] z-50">
-                <div className="bg-card border border-border/50 shadow-2xl rounded-2xl flex overflow-hidden">
-                  <div className="w-1/3 bg-secondary/30 py-4 border-r border-border/50 min-h-[300px]">
-                    {navCategories.map(cat => (
-                      <Link key={cat.slug} href={`/category/${cat.slug}`} onClick={() => setOpenMenu(null)} className="block px-6 py-3 text-sm font-semibold text-foreground/80 hover:bg-white hover:text-primary transition-colors">
-                        {cat.name}
-                      </Link>
-                    ))}
+              <div className="absolute left-0 top-[calc(100%)] w-[950px] z-50 pt-2">
+                <div className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg border border-gray-200 flex h-[480px] overflow-hidden">
+                  
+                  {/* Left Column: Categories */}
+                  <div className="w-[260px] shrink-0 border-r border-gray-100 flex flex-col bg-white">
+                    <div className="px-6 py-4 border-b border-gray-100 font-bold text-[#082032] text-[15px]">
+                      Categories
+                    </div>
+                    <div className="overflow-y-auto flex-1 py-2 custom-scrollbar">
+                      {navCategories.map((cat, i) => {
+                        const isActive = activeCategorySlug ? activeCategorySlug === cat.slug : i === 0;
+                        return (
+                          <div 
+                            key={cat.slug} 
+                            onMouseEnter={() => setActiveCategorySlug(cat.slug)}
+                            className={`px-6 py-3.5 text-[13px] font-bold cursor-pointer flex items-center justify-between transition-colors ${isActive ? 'bg-gray-100 text-[#082032]' : 'text-[#082032] hover:bg-gray-50'}`}
+                          >
+                            <span className="uppercase">{cat.name}</span>
+                            {isActive && <ChevronRight className="w-4 h-4" />}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <div className="w-2/3 p-6 grid grid-cols-2 gap-x-6 gap-y-4 bg-card">
-                    {navCategories[0]?.courses.slice(0, 10).map(c => (
-                      <Link key={c.slug} href={`/${c.slug}`} onClick={() => setOpenMenu(null)} className="text-sm font-medium text-muted-foreground hover:text-primary truncate block transition-colors">
-                        {c.title}
-                      </Link>
-                    ))}
+
+                  {/* Middle Column: Courses */}
+                  <div className="flex-1 border-r border-gray-100 flex flex-col bg-white">
+                    {(() => {
+                      const activeCat = activeCategorySlug 
+                        ? navCategories.find(c => c.slug === activeCategorySlug) 
+                        : navCategories[0];
+                      
+                      if (!activeCat) return <div className="p-6">No categories found</div>;
+                      
+                      return (
+                        <>
+                          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                            <div className="font-bold text-[#082032] text-[15px] uppercase">
+                              {activeCat.name} ({activeCat.courses.length} Courses)
+                            </div>
+                            <Link href={`/category/${activeCat.slug}`} className="text-[13px] text-[#0a66c2] font-semibold underline hover:text-[#004182]">
+                              View all Courses
+                            </Link>
+                          </div>
+                          <div className="overflow-y-auto flex-1 p-6 space-y-6">
+                            {activeCat.courses.slice(0, 10).map((c, i) => (
+                              <Link key={c.slug} href={`/${c.slug}`} onClick={() => setOpenMenu(null)} className="flex items-start gap-4 group/course">
+                                <div className="w-12 h-12 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
+                                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px] text-center leading-none">ITIL</div>
+                                </div>
+                                <div className="flex-1 pt-0.5">
+                                  <div className="flex items-center flex-wrap gap-2 mb-1.5">
+                                    <h4 className="text-[14px] font-bold text-[#082032] leading-tight group-hover/course:text-primary transition-colors">
+                                      {c.title}
+                                    </h4>
+                                    {i === 0 && <span className="bg-primary text-white text-[10px] px-2 py-0.5 rounded font-bold tracking-wide">Popular</span>}
+                                    {i === 1 && <span className="bg-[#1c4b79] text-white text-[10px] px-2 py-0.5 rounded font-bold tracking-wide">Trending</span>}
+                                  </div>
+                                  <div className="text-[12px] text-gray-500">
+                                    {i % 2 === 0 ? "2 Days" : "Beginner"} | Live Classes
+                                  </div>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </>
+                      );
+                    })()}
                   </div>
+
+                  {/* Right Column: Issuing Bodies */}
+                  <div className="w-[280px] shrink-0 bg-white flex flex-col">
+                    <div className="px-6 py-4 border-b border-gray-100 font-bold text-[#082032] text-[15px]">
+                      Credential Issuing Bodies
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
+                          <span className="text-primary font-bold text-[10px]">PC</span>
+                        </div>
+                        <div className="text-[13px] font-bold text-[#082032]">PeopleCert ATO</div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             )}
@@ -168,9 +242,16 @@ export function SiteHeader({
             </a>
           )}
 
-          <Link href="/admin" className="hidden lg:block font-bold text-sm text-foreground hover:text-primary whitespace-nowrap transition-colors">
-            Sign In
-          </Link>
+          {isLoggedIn ? (
+            <LearnerDropdown />
+          ) : (
+            <button 
+              onClick={openModal}
+              className="hidden lg:block font-bold text-sm text-foreground hover:text-primary whitespace-nowrap transition-colors"
+            >
+              Sign In
+            </button>
+          )}
 
           <button className="relative p-2 text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full">
             <Lucide.ShoppingCart className="w-5 h-5" />

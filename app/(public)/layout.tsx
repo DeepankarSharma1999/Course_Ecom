@@ -8,6 +8,9 @@ import { getAllCourses, getCategories } from "@/lib/content";
 import Link from "next/link";
 import { LiveChatWidget } from "@/components/live-chat-widget";
 
+import { LearnerAuthProvider } from "@/components/learner-auth-provider";
+import { AuthModal } from "@/components/auth-modal";
+
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
   const [currency, settings, categories, courses] = await Promise.all([
     getDisplayCurrency(),
@@ -35,7 +38,7 @@ export default async function PublicLayout({ children }: { children: React.React
   }));
 
   return (
-    <>
+    <LearnerAuthProvider>
       {settings.announcementEnabled && settings.announcementText && (
         <div className="bg-accent-500 text-white text-xs font-semibold">
           <div className="container-tight py-2 text-center">
@@ -61,6 +64,7 @@ export default async function PublicLayout({ children }: { children: React.React
       <ExitIntentPopup />
       <FloatingWhatsApp phone={settings.whatsappNumber} message={`Hi ${settings.brandName} team, I'd like to know more about your courses.`} />
       <LiveChatWidget />
-    </>
+      <AuthModal />
+    </LearnerAuthProvider>
   );
 }

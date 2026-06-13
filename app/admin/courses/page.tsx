@@ -3,7 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { AdminTopbar } from "@/components/admin/topbar";
 import { Badge, PageHeader } from "@/components/admin/ui";
 import { formatPrice } from "@/lib/utils";
-import { Calendar, MessageCircleQuestion, MapPin, Pencil, Plus } from "lucide-react";
+import { Calendar, MessageCircleQuestion, MapPin, Pencil, Plus, Copy } from "lucide-react";
+import { duplicateCourse } from "@/lib/admin-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -58,8 +59,11 @@ export default async function CoursesList() {
                     <Link href={`/admin/courses/${c.id}/faqs`} className="inline-flex items-center gap-1 hover:text-brand-600"><MessageCircleQuestion className="w-3 h-3" /> {c._count.faqs}</Link>
                     <Link href={`/admin/courses/${c.id}/variants`} className="inline-flex items-center gap-1 hover:text-brand-600"><MapPin className="w-3 h-3" /> {c._count.pageVariants}</Link>
                   </td>
-                  <td className="px-4 py-3 text-right">
+                  <td className="px-4 py-3 text-right space-x-4">
                     <Link href={`/admin/courses/${c.id}/edit`} className="inline-flex items-center gap-1 text-brand-600 hover:underline text-sm"><Pencil className="w-3 h-3" /> Edit</Link>
+                    <form action={duplicateCourse.bind(null, c.id)} className="inline-block">
+                      <button type="submit" className="inline-flex items-center gap-1 text-ink-500 hover:text-ink-900 text-sm" title="Duplicate Course & Schedules"><Copy className="w-3 h-3" /> Duplicate</button>
+                    </form>
                   </td>
                 </tr>
               ))}

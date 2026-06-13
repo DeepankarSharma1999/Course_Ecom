@@ -33,6 +33,8 @@ function revalidatePublic() {
   revalidatePath("/", "layout");
 }
 
+import { CITIES_IN } from "@/lib/content";
+
 // =========== COURSES ============
 export async function createCourse(formData: FormData) {
   await requireAdmin();
@@ -76,6 +78,29 @@ export async function createCourse(formData: FormData) {
       seoKeywords: toStr(formData.get("seoKeywords")),
     },
   });
+
+  // Auto-generate variants for CITIES_IN
+  const shortTitle = course.shortTitle || course.title;
+  const variantData = CITIES_IN.map(city => ({
+    courseId: course.id,
+    countryCode: "IN",
+    countrySlug: "in",
+    citySlug: city.slug,
+    countryName: "India",
+    cityName: city.name,
+    currency: "INR",
+    priceLocal: course.basePriceInr || 0,
+    heroHeadline: `${shortTitle} Training in ${city.name}`,
+    heroSubheadline: `${course.subtitle || ""} Join thousands of learners in ${city.name}.`.trim(),
+    seoTitle: `${shortTitle} Certification Training in ${city.name} | Ulearnsystems`,
+    seoDescription: `${course.summary || ""} Live online & classroom batches available in ${city.name}.`.trim(),
+    isPublished: true,
+  }));
+
+  if (variantData.length > 0) {
+    await prisma.coursePageVariant.createMany({ data: variantData });
+  }
+
   revalidatePublic();
   redirect(`/admin/courses/${course.id}/edit`);
 }
@@ -139,6 +164,130 @@ export async function toggleCoursePublished(id: string) {
   await prisma.course.update({ where: { id }, data: { isPublished: !c.isPublished } });
   revalidatePublic();
   revalidatePath("/admin/courses");
+}
+
+export async function duplicateCourse(id: string) {
+  await requireAdmin();
+  const course = await prisma.course.findUnique({
+    where: { id },
+    include: {
+      category: true,
+      faqs: true,
+      schedules: true,
+      pageVariants: true,
+      trainers: true,
+    },
+  });
+
+  if (!course) throw new Error("Course not found");
+
+  const newSlug = `${course.slug}-copy-${Date.now()}`;
+  const newTitle = `[Copy] ${course.title}`;
+
+  const clonedCourse = await prisma.course.create({
+    data: {
+      slug: newSlug,
+      title: newTitle,
+      shortTitle: course.shortTitle ? `[Copy] ${course.shortTitle}` : null,
+      subtitle: course.subtitle,
+      summary: course.summary,
+      description: course.description,
+      durationLabel: course.durationLabel,
+      durationHours: course.durationHours,
+      level: course.level,
+      accreditedBy: course.accreditedBy,
+      basePriceInr: course.basePriceInr,
+      basePriceUsd: course.basePriceUsd,
+      heroImage: course.heroImage,
+      thumbnailImage: course.thumbnailImage,
+      brochureUrl: course.brochureUrl,
+      examIncluded: course.examIncluded,
+      pduCredits: course.pduCredits,
+      ratingAvg: course.ratingAvg,
+      ratingCount: course.ratingCount,
+      isFeatured: false,
+      isPublished: false, // Do not publish copies automatically
+      categoryId: course.categoryId,
+      keyFeatures: course.keyFeatures as any,
+      learningOutcomes: course.learningOutcomes as any,
+      whoShouldAttend: course.whoShouldAttend as any,
+      prerequisites: course.prerequisites as any,
+      curriculum: course.curriculum as any,
+      whyChooseUs: course.whyChooseUs as any,
+      seoTitle: course.seoTitle,
+      seoDescription: course.seoDescription,
+      seoKeywords: course.seoKeywords,
+    },
+  });
+
+  // Clone FAQs
+  if (course.faqs.length > 0) {
+    await prisma.fAQ.createMany({
+      data: course.faqs.map(f => ({
+        courseId: clonedCourse.id,
+        scope: f.scope,
+        question: f.question,
+        answer: f.answer,
+        order: f.order,
+      }))
+    });
+  }
+
+  // Clone Schedules
+  if (course.schedules.length > 0) {
+    await prisma.schedule.createMany({
+      data: course.schedules.map(s => ({
+        courseId: clonedCourse.id,
+        countrySlug: s.countrySlug,
+        citySlug: s.citySlug,
+        mode: s.mode,
+        startDate: s.startDate,
+        endDate: s.endDate,
+        timezone: s.timezone,
+        timeLabel: s.timeLabel,
+        priceInr: s.priceInr,
+        priceUsd: s.priceUsd,
+        discountPct: s.discountPct,
+        seatsLeft: s.seatsLeft,
+        isFilling: s.isFilling,
+      }))
+    });
+  }
+
+  // Clone Variants
+  if (course.pageVariants.length > 0) {
+    await prisma.coursePageVariant.createMany({
+      data: course.pageVariants.map(v => ({
+        courseId: clonedCourse.id,
+        countryCode: v.countryCode,
+        countrySlug: v.countrySlug,
+        citySlug: v.citySlug,
+        countryName: v.countryName,
+        cityName: v.cityName,
+        currency: v.currency,
+        priceLocal: v.priceLocal,
+        heroHeadline: v.heroHeadline,
+        heroSubheadline: v.heroSubheadline,
+        localContext: v.localContext,
+        seoTitle: v.seoTitle,
+        seoDescription: v.seoDescription,
+        isPublished: v.isPublished,
+      }))
+    });
+  }
+
+  // Clone Trainers
+  if (course.trainers.length > 0) {
+    await prisma.courseTrainer.createMany({
+      data: course.trainers.map(t => ({
+        courseId: clonedCourse.id,
+        trainerId: t.trainerId,
+      }))
+    });
+  }
+
+  revalidatePublic();
+  redirect("/admin/courses");
 }
 
 // =========== SCHEDULES ============
