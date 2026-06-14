@@ -33,5 +33,5 @@ export async function getDisplayCurrency(): Promise<CurrencyCode> {
   if (lang.includes("en-sg")) return "SGD";
   if (lang.includes("en-us")) return "USD";
 
-  return "INR";
+  return "AED";
 }

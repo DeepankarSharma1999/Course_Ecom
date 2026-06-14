@@ -1,100 +1,83 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight, Clock } from "lucide-react";
+
+const blogs = [
+  {
+    title: "A Complete Guide for Mastering Docker Networking",
+    category: "DevOps",
+    readTime: "76 min read",
+    date: "3 Jun 2026",
+    text: "Learn Docker networking, network types, drivers, bridge and overlay networks, security, and commands.",
+  },
+  {
+    title: "What is a Network Diagram in Project Management?",
+    category: "Project",
+    readTime: "42 min read",
+    date: "3 Jun 2026",
+    text: "Understand network diagrams in project management with types, examples, and exam-ready explanations.",
+  },
+  {
+    title: "Claude vs ChatGPT vs Gemini: Features and Use Cases",
+    category: "Generative AI",
+    readTime: "29 min read",
+    date: "3 Jun 2026",
+    text: "Compare leading AI tools by strengths, pricing, practical use cases, and limitations.",
+  },
+];
 
 export function LatestBlogs() {
-  const blogs = [
-    {
-      title: "A Complete Guide for Mastering Docker Networking",
-      category: "DEVOPS",
-      readTime: "76 mins read",
-      author: "By ulearnsystems",
-      avatar: "https://i.pravatar.cc/100?img=11",
-      date: "3rd Jun, 2026",
-      text: "Learn Docker Networking, network types, drivers, bridge and overlay networks, security, commands, and best...",
-      bgClass: "bg-blue-100",
-      imageText: "A Complete Guide for Mastering Docker Networking",
-      imageTextColor: "text-[#1c4b79]"
-    },
-    {
-      title: "What is a Network Diagram in Project Management: Types, Exam...",
-      category: "PROJECT",
-      readTime: "42 mins read",
-      author: "By ulearnsystems",
-      avatar: "https://i.pravatar.cc/100?img=5",
-      date: "3rd Jun, 2026",
-      text: "Understand What Is a Network Diagram in project management with easy examples. Learn diagram type...",
-      bgClass: "bg-teal-50",
-      imageText: "What is a Network Diagram in Project Management: Types, Examples & Best Practices Guide",
-      imageTextColor: "text-[#1c4b79]"
-    },
-    {
-      title: "Claude vs ChatGPT vs Gemini: Features, Pricing, Use Cases &...",
-      category: "Generative AI",
-      readTime: "29 mins read",
-      author: "By ulearnsystems",
-      avatar: "https://i.pravatar.cc/100?img=9",
-      date: "3rd Jun, 2026",
-      text: "Compare Claude vs ChatGPT vs Gemini. Explore features, pricing, performance, strengths, limitations,...",
-      bgClass: "bg-cyan-50",
-      imageText: "Claude vs ChatGPT vs Gemini: Which AI Tool is Best?",
-      imageTextColor: "text-[#1c4b79]"
-    }
-  ];
+  const [featured, ...supporting] = blogs;
 
   return (
-    <section className="bg-white py-16 font-sans">
-      <div className="container-tight max-w-6xl mx-auto px-4">
-        <div className="text-center mb-10">
-          <div className="text-[11px] font-bold text-[#1c4b79] uppercase tracking-wider mb-2">
-            LEARNER REVIEWS FROM THE WORLD OVER
+    <section className="section bg-white font-sans">
+      <div className="container-tight">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div className="max-w-2xl">
+            <div className="section-eyebrow mb-3">Resources</div>
+            <h2 className="h2">Latest insights for modern professionals</h2>
           </div>
-          <h2 className="text-3xl font-black text-[#082032]">
-            Our Latest Blogs
-          </h2>
+          <Link href="/resources" className="btn-outline w-fit">
+            View Resources <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {blogs.map((b, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-gray-100 overflow-hidden flex flex-col h-full group hover:-translate-y-1 transition-transform duration-300">
-              
-              {/* Fake Image Area */}
-              <div className={`relative aspect-[16/10] w-full ${b.bgClass} flex items-center justify-center p-6 text-center overflow-hidden`}>
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, black 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/40 blur-xl"></div>
-                <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-white/40 blur-xl"></div>
-                
-                <h3 className={`font-bold text-lg leading-snug relative z-10 ${b.imageTextColor}`}>
-                  {b.imageText}
-                </h3>
-              </div>
-
-              <div className="p-6 flex flex-col items-center flex-1 text-center">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <span className="text-[11px] font-medium text-gray-500">{b.date}</span>
-                  <span className="bg-[#1c4b79] text-white px-2 py-0.5 rounded-full font-bold text-[10px]">
-                    {b.category}
-                  </span>
-                </div>
-
-                <h4 className="text-[#082032] text-[15px] font-bold leading-snug mb-3 line-clamp-2 hover:text-[#1FA8A8] transition-colors cursor-pointer">
-                  {b.title}
-                </h4>
-                
-                <p className="text-[12px] text-gray-600 line-clamp-3 mb-6 flex-1 leading-relaxed">
-                  {b.text}
-                </p>
-
-                <div className="flex items-center justify-center gap-1.5 text-[11px] text-gray-500 font-medium w-full pt-4 border-t border-gray-100">
-                  <img src={b.avatar} alt="Author" className="w-4 h-4 rounded-full" />
-                  <span className="text-gray-600">{b.author}</span>
-                  <span className="mx-0.5">•</span>
-                  <span>{b.readTime}</span>
-                </div>
-              </div>
-
-            </div>
-          ))}
+        <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+          <ArticleCard article={featured} featured />
+          <div className="grid gap-6">
+            {supporting.map((article) => (
+              <ArticleCard key={article.title} article={article} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ArticleCard({ article, featured = false }: { article: (typeof blogs)[number]; featured?: boolean }) {
+  return (
+    <article className={`group overflow-hidden rounded-2xl border border-[#082032]/10 bg-white shadow-[0_8px_24px_rgba(8,32,50,0.05)] transition-all hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(8,32,50,0.09)] ${featured ? "lg:min-h-[430px]" : ""}`}>
+      <div className={`${featured ? "aspect-[16/8]" : "aspect-[16/6]"} bg-[linear-gradient(135deg,#E7F3F3,#F4F8FA)] p-6`}>
+        <div className="flex h-full items-end rounded-xl border border-white/80 bg-white/45 p-5">
+          <div>
+            <span className="accent-badge mb-3">{article.category}</span>
+            <h3 className={`${featured ? "text-3xl" : "text-xl"} max-w-xl font-black leading-tight text-[#082032]`}>{article.title}</h3>
+          </div>
+        </div>
+      </div>
+      <div className="p-6">
+        <div className="mb-3 flex flex-wrap items-center gap-3 text-xs font-bold text-muted-foreground">
+          <span>{article.date}</span>
+          <span className="flex items-center gap-1">
+            <Clock className="h-3.5 w-3.5 text-primary" />
+            {article.readTime}
+          </span>
+        </div>
+        <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">{article.text}</p>
+        <Link href="/resources" className="mt-5 inline-flex min-h-[44px] items-center gap-2 text-sm font-black text-primary">
+          Read article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </article>
   );
 }

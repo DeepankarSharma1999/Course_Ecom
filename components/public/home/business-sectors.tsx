@@ -1,116 +1,71 @@
-import Image from "next/image";
-import { Trophy, Target, Heart } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, Heart, Target, Trophy } from "lucide-react";
+
+const benefits = [
+  {
+    icon: Trophy,
+    title: "Certification credibility",
+    text: "Programs aligned to recognised frameworks and practitioner-led delivery.",
+  },
+  {
+    icon: Heart,
+    title: "Career-centred learning",
+    text: "Training experiences designed around practical application and long-term growth.",
+  },
+  {
+    icon: Target,
+    title: "Outcome-focused paths",
+    text: "Clear learning journeys for individuals, teams, and enterprise transformation.",
+  },
+];
 
 export function BusinessSectors() {
   return (
-    <section className="py-20 bg-white font-sans overflow-hidden">
+    <section className="section bg-[#E9F4F4] font-sans">
       <div className="container-tight">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          {/* Left: Image Collage */}
-          <div className="relative h-[440px] sm:h-[600px] w-full flex justify-center sm:block mb-8 sm:mb-0 mt-4 sm:mt-0">
-            <div className="relative w-[320px] h-[400px] sm:w-full sm:h-full shrink-0">
-              {/* Top Left Image */}
-              <div className="absolute top-0 left-0 w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden shadow-lg z-20">
-                <div className="absolute inset-0 bg-gray-200">
-                  {/* Fallback image placeholder */}
-                  <Image
-                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600&h=600"
-                    alt="Business meeting"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Center Big Image */}
-              <div className="absolute top-8 left-16 sm:top-12 sm:left-20 lg:top-16 lg:left-32 w-52 h-[260px] sm:w-72 sm:h-[400px] lg:w-[360px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl z-10">
-                <div className="absolute inset-0 bg-gray-300">
-                  <Image
-                    src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600&h=800"
-                    alt="Celebrating success"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Bottom Right Image */}
-              <div className="absolute top-[200px] left-[140px] sm:top-64 sm:left-56 lg:top-[300px] lg:left-[340px] w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden shadow-xl z-20 border-4 sm:border-8 border-white">
-                <div className="absolute inset-0 bg-gray-200">
-                  <Image
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600&h=600"
-                    alt="Team collaboration"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Experience Badge */}
-              <div className="absolute top-[280px] left-5 sm:top-[320px] sm:-left-4 lg:top-[380px] lg:-left-8 bg-[#1FA8A8] text-white p-5 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl shadow-2xl z-30 flex items-center gap-4 sm:gap-5 w-[260px] sm:w-[260px] lg:w-[300px]">
-                <div className="bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-sm shrink-0">
-                  <Trophy className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-[#1FA8A8]" />
-                </div>
-                <div>
-                  <div className="font-black text-2xl sm:text-3xl lg:text-4xl leading-none mb-1">25+</div>
-                  <div className="text-xs sm:text-sm lg:text-base font-medium text-white/90">Years Of Experience</div>
-                </div>
-              </div>
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-3xl border border-[#082032]/10 bg-white shadow-[0_14px_40px_rgba(8,32,50,0.08)]">
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1200"
+                alt="Professionals collaborating in a training workshop"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-6 left-6 max-w-[260px] rounded-2xl bg-primary p-5 text-white shadow-[0_16px_45px_rgba(31,168,168,0.25)]">
+              <div className="text-4xl font-black leading-none">25+</div>
+              <div className="mt-2 text-sm font-bold leading-5 text-white/90">Years of learning expertise</div>
             </div>
           </div>
 
-          {/* Right: Content */}
-          <div className="lg:pl-8">
-            <h2 className="text-3xl md:text-5xl font-black text-[#082032] leading-tight mb-6">
-              We Build Competitive<br />Global Professionals
-            </h2>
-            <p className="text-gray-500 text-[15px] leading-relaxed mb-10">
-              We are committed to delivering world-class certification training that bridges the skills gap. Our expert-led programs empower individuals and organizations to stay ahead in an ever-evolving technological landscape.
+          <div>
+            <div className="section-eyebrow mb-3">Professional Outcomes</div>
+            <h2 className="h2">We build competitive global professionals</h2>
+            <p className="lead mt-5">
+              ULearnSystems helps professionals and organisations bridge the gap between knowledge, certification, and real workplace execution.
             </p>
 
-            <div className="space-y-6 mb-10">
-              {/* Value 1 */}
-              <div className="bg-white rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.06)] p-6 flex items-start gap-6 border border-gray-50">
-                <div className="bg-[#1FA8A8]/10 w-14 h-14 rounded-full flex items-center justify-center shrink-0">
-                  <Heart className="w-6 h-6 text-[#1FA8A8]" />
-                </div>
-                <div>
-                  <h4 className="text-[#082032] font-bold text-lg mb-2">Excellence & Innovation</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    We believe in continuous learning, delivering cutting-edge curriculum designed by industry experts for real-world applicability.
-                  </p>
-                </div>
-              </div>
-
-              {/* Value 2 */}
-              <div className="bg-white rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.06)] p-6 flex items-start gap-6 border border-gray-50">
-                <div className="bg-[#1FA8A8]/10 w-14 h-14 rounded-full flex items-center justify-center shrink-0">
-                  <Target className="w-6 h-6 text-[#1FA8A8]" />
-                </div>
-                <div>
-                  <h4 className="text-[#082032] font-bold text-lg mb-2">Our Mission</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    To transform careers by providing accessible, high-quality education that helps professionals achieve global certifications.
-                  </p>
-                </div>
-              </div>
+            <div className="mt-8 space-y-4">
+              {benefits.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="flex gap-4 rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(8,32,50,0.05)]">
+                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-secondary text-primary">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-black text-[#082032]">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.text}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-
+            <Link href="/about" className="btn-outline mt-8">
+              More About Us <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-
-        </div>
-
-        {/* Bottom Actions - Centered below both columns */}
-        <div className="mt-12 flex justify-center border-t border-gray-100 pt-8">
-          <Link
-            href="/about"
-            className="bg-[#1FA8A8] hover:bg-[#188c8c] text-white px-10 py-3.5 rounded-full font-bold text-sm transition-colors whitespace-nowrap shadow-md"
-          >
-            More About Us
-          </Link>
         </div>
       </div>
     </section>

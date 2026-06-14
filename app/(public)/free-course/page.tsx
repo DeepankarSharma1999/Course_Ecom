@@ -205,10 +205,10 @@ export default function FreeCoursePage() {
                     {course.title}
                   </h3>
                   <div className="flex items-center justify-between mt-8 border-t border-border pt-4">
-                    <Link href={`/${course.slug}`} className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href="/enquire" className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">
                       View Course
                     </Link>
-                    <Link href={`/${course.slug}`} className="text-sm font-bold text-primary bg-secondary px-4 py-2 rounded-md hover:bg-primary hover:text-primary-foreground transition-colors">
+                    <Link href="/enquire" className="text-sm font-bold text-primary bg-secondary px-4 py-2 rounded-md hover:bg-primary hover:text-primary-foreground transition-colors">
                       Enroll Now
                     </Link>
                   </div>
@@ -244,7 +244,7 @@ export default function FreeCoursePage() {
                   </div>
                 </div>
                 <div className="w-full md:w-auto shrink-0">
-                  <Link href={`/practice-tests/${test.slug}`} className="btn-primary w-full shadow-sm">
+                  <Link href="/enquire" className="btn-primary w-full shadow-sm">
                     Start Test
                   </Link>
                 </div>
@@ -264,7 +264,7 @@ export default function FreeCoursePage() {
               <p className="text-lg text-background/80 mb-8">
                 Share the knowledge! Enjoy unlimited access to all ULearnSystems courses—enroll in as many as you want, 100% free.
               </p>
-              <Link href="/refer-earn" className="btn bg-accent text-accent-foreground hover:opacity-90">
+              <Link href="/enquire" className="btn bg-accent text-accent-foreground hover:opacity-90">
                 Invite Now
               </Link>
             </div>

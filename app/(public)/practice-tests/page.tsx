@@ -225,7 +225,7 @@ export default function PracticeTestsPage() {
                       Request Test
                     </Link>
                   ) : (
-                    <Link href={`/practice-tests/${test.slug}`} className="btn-primary w-full sm:w-auto px-6 whitespace-nowrap shadow-sm hover:shadow">
+                    <Link href="/enquire" className="btn-primary w-full sm:w-auto px-6 whitespace-nowrap shadow-sm hover:shadow">
                       Start Now
                     </Link>
                   )}
