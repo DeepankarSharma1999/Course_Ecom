@@ -1,29 +1,33 @@
 import Link from "next/link";
 import { getAllCourses, getCategories } from "@/lib/content";
-import { getHomeContent } from "@/lib/site-content";
+import { getHomeContent, getSiteSettings } from "@/lib/site-content";
 import { getDisplayCurrency } from "@/lib/geo";
 import type { Metadata } from "next";
 
+import dynamic from "next/dynamic";
+
 import { HomeHero } from "@/components/public/home/hero";
 import { PartnerLogos } from "@/components/public/home/partner-logos";
-import { CourseGrid } from "@/components/public/home/course-grid";
-import { ComboSchedule } from "@/components/public/home/combo-schedule";
+import { TrustedCompanies } from "@/components/public/home/trusted-companies";
 import { BusinessSectors } from "@/components/public/home/business-sectors";
-import { BenefitsSection } from "@/components/public/home/benefits-section";
-import { TrainersSection } from "@/components/public/home/trainers-section";
-import { CtaStrip } from "@/components/public/home/cta-strip";
-import { WorldMap } from "@/components/world-map";
 
-import { TestimonialsSlider } from "@/components/public/home/testimonials-slider";
-import { LatestBlogs } from "@/components/public/home/latest-blogs";
+const CourseGrid = dynamic(() => import("@/components/public/home/course-grid").then(m => m.CourseGrid));
+const ComboSchedule = dynamic(() => import("@/components/public/home/combo-schedule").then(m => m.ComboSchedule));
+const BenefitsSection = dynamic(() => import("@/components/public/home/benefits-section").then(m => m.BenefitsSection));
+const TrainersSection = dynamic(() => import("@/components/public/home/trainers-section").then(m => m.TrainersSection));
+const StatsBanner = dynamic(() => import("@/components/public/home/stats-banner").then(m => m.StatsBanner));
+const CtaStrip = dynamic(() => import("@/components/public/home/cta-strip").then(m => m.CtaStrip));
+const WorldMap = dynamic(() => import("@/components/world-map").then(m => m.WorldMap));
+const TestimonialsSlider = dynamic(() => import("@/components/public/home/testimonials-slider").then(m => m.TestimonialsSlider));
+const LatestBlogs = dynamic(() => import("@/components/public/home/latest-blogs").then(m => m.LatestBlogs));
 
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const h = await getHomeContent();
+  const [h, s] = await Promise.all([getHomeContent(), getSiteSettings()]);
   return {
-    title: h.seoTitle ?? undefined,
-    description: h.seoDescription ?? undefined,
+    title: h.seoTitle || s.defaultSeoTitle || undefined,
+    description: h.seoDescription || s.defaultSeoDescription || undefined,
   };
 }
 
