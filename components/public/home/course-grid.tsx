@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Award, Clock, Star } from "lucide-react";
+import { Clock, Users, Search, Download } from "lucide-react";
 import { useState } from "react";
 import type { CategoryContent, CourseContent } from "@/lib/seed-data";
 import { formatInCurrency, type CurrencyCode } from "@/lib/currency";
@@ -23,41 +23,46 @@ export function CourseGrid({
     activeTab === "All Courses" ? courses : courses.filter((course) => course.category.name === activeTab);
 
   return (
-    <section className="section bg-[#E9F4F4] font-sans">
-      <div className="container-tight">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
-          <div className="section-eyebrow mb-3">Course Discovery</div>
-          <h2 className="h2">Professional certification training for every career stage</h2>
-          <p className="lead mt-4">
-            Explore expert-led programs built around globally recognised frameworks, practical workshops, and exam-focused outcomes.
-          </p>
+    <section className="section bg-white font-sans pt-10 pb-24">
+      <div className="container-tight max-w-[1200px]">
+        <div className="mx-auto mb-10 text-center">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-[#4a7298] mb-2">Find the course right for your goals</div>
+          <h2 className="text-[32px] md:text-[36px] font-bold text-[#082032] tracking-tight">
+            Explore From Over 400+ Courses
+          </h2>
         </div>
 
-        <div role="tablist" aria-label="Course categories" className="mb-10 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="mx-auto flex w-max min-w-full gap-2 rounded-2xl border border-[#082032]/10 bg-white p-2 shadow-[0_8px_24px_rgba(8,32,50,0.05)] md:min-w-0">
+        {/* Custom Tab Bar */}
+        <div className="mb-10 flex items-center justify-center gap-3">
+          <div className="flex items-center max-w-full overflow-x-auto border border-primary/30 rounded-md p-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {tabs.map((tab) => {
               const active = activeTab === tab;
               return (
                 <button
                   key={tab}
                   type="button"
-                  role="tab"
-                  aria-selected={active}
                   onClick={() => setActiveTab(tab)}
-                  className={`min-h-[40px] whitespace-nowrap rounded-xl px-4 text-sm font-extrabold transition-colors ${
-                    active ? "bg-primary text-white shadow-sm" : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  className={`relative px-6 py-2.5 text-[13px] font-bold whitespace-nowrap transition-colors rounded-sm ${
+                    active ? "text-primary bg-[#E9F4F4]" : "text-gray-600 hover:text-[#082032] hover:bg-gray-50"
                   }`}
                 >
                   {tab}
+                  {active && (
+                    <div className="absolute bottom-0 left-2 right-2 h-[2px] bg-primary rounded-t-sm" />
+                  )}
                 </button>
               );
             })}
           </div>
+          <button className="hidden md:flex items-center justify-center w-11 h-11 border border-gray-200 rounded-md text-gray-500 hover:text-primary transition-colors shrink-0">
+            <Search className="w-4 h-4" />
+          </button>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {/* Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredCourses.slice(0, 6).map((course, index) => (
-            <CourseDiscoveryCard key={course.slug} course={course} currency={currency} featured={index < 3} />
+            <CourseDiscoveryCard key={course.slug} course={course} currency={currency} index={index} />
           ))}
         </div>
       </div>
@@ -65,67 +70,77 @@ export function CourseGrid({
   );
 }
 
-function CourseDiscoveryCard({ course, currency, featured }: { course: CourseContent; currency: CurrencyCode; featured: boolean }) {
+function CourseDiscoveryCard({ course, currency, index }: { course: CourseContent; currency: CurrencyCode; index: number }) {
+  // Mock some tag logic for the UI reference
+  const isRecommended = index === 0 || index === 1 || index === 2;
+  const isTrending = index === 3 || index === 4;
+
   const compareAtPriceInr = "compareAtPriceInr" in course
     ? (course as CourseContent & { compareAtPriceInr?: number }).compareAtPriceInr
     : undefined;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#082032]/10 bg-white shadow-[0_8px_24px_rgba(8,32,50,0.05)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(8,32,50,0.09)]">
-      <Link href={`/${course.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-secondary">
+    <article className="group flex flex-col bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+      
+      {/* Top Image Section */}
+      <div className="relative h-[200px] w-full bg-gray-100 overflow-hidden">
         {course.heroImage ? (
           <Image
             src={course.heroImage}
             alt={course.title}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : null}
-        <div className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-black text-[#082032] shadow-sm">
-          {course.category.name}
-        </div>
-        {featured && <div className="accent-badge absolute right-4 top-4">Popular</div>}
-      </Link>
+        
+        {/* Floating Tags */}
+        {isRecommended && (
+          <div className="absolute top-0 right-0 bg-[#4e6bf2] text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-wide z-10 shadow-sm">
+            Recommended
+          </div>
+        )}
+        {isTrending && (
+          <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-wide z-10 shadow-sm">
+            Trending
+          </div>
+        )}
+      </div>
 
-      <div className="flex flex-1 flex-col p-5 md:p-6">
-        <div className="mb-3 flex items-center gap-3 text-xs font-bold text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <Award className="h-4 w-4 text-primary" />
-            {course.accreditedBy || "Certified program"}
-          </span>
-        </div>
-
-        <h3 className="mb-3 line-clamp-2 min-h-14 text-lg font-black leading-snug text-[#082032] group-hover:text-primary">
-          <Link href={`/${course.slug}`} className="inline-flex min-h-[32px] items-center">{course.shortTitle || course.title}</Link>
+      <div className="p-6 flex flex-col flex-1">
+        <div className="text-[11px] text-gray-400 font-medium mb-3">Live Classroom / Classroom</div>
+        
+        <h3 className="text-[18px] font-bold text-[#082032] leading-snug mb-6 flex-1 hover:text-primary transition-colors cursor-pointer">
+          <Link href={`/${course.slug}`}>{course.shortTitle || course.title}</Link>
         </h3>
 
-        <p className="mb-5 line-clamp-2 text-sm leading-6 text-muted-foreground">{course.summary}</p>
-
-        <div className="mb-5 flex flex-wrap gap-3 text-sm font-bold text-[#5D6D7E]">
-          <span className="flex items-center gap-1.5">
-            <Star className="h-4 w-4 fill-[#E23B3B] text-[#E23B3B]" />
-            {course.ratingAvg} ({course.ratingCount.toLocaleString()})
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock className="h-4 w-4 text-primary" />
-            {course.durationLabel}
-          </span>
+        <div className="flex items-end justify-between mt-auto mb-6">
+          <div className="space-y-2">
+            <div className="flex items-center gap-1.5 text-[12px] font-medium text-gray-500">
+              <Clock className="w-4 h-4 text-primary" /> {course.durationLabel || "16 Hrs"}
+            </div>
+            <div className="flex items-center gap-1.5 text-[12px] font-medium text-gray-500">
+              <Users className="w-4 h-4 text-primary" /> {((course.slug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) * 314) % 90000 + 10000).toLocaleString()} Enrolled
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="text-[11px] text-gray-500 font-medium mb-0.5">Start from</div>
+            <div className="text-[18px] font-bold text-[#082032] leading-none">
+              {formatInCurrency(course.basePriceInr, currency).replace(".00", "")}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-auto flex items-end justify-between gap-4 border-t border-[#082032]/8 pt-5">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Starts from</div>
-            <div className="mt-1 text-xl font-black text-[#082032]">{formatInCurrency(course.basePriceInr, currency).replace(".00", "")}</div>
-            {compareAtPriceInr ? (
-              <div className="text-xs font-semibold text-muted-foreground line-through">
-                {formatInCurrency(compareAtPriceInr, currency).replace(".00", "")}
-              </div>
-            ) : null}
-          </div>
-          <Link href={`/${course.slug}`} className="btn-primary min-h-[44px] rounded-xl px-4 py-2 text-xs">
-            View Details
+        <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+          <Link 
+            href={`/${course.slug}`} 
+            className="flex-1 text-center py-2.5 border border-[#082032] text-[#082032] rounded text-[13px] font-bold hover:bg-gray-50 transition-colors"
+          >
+            View Certification
           </Link>
+          <button className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-[#082032] text-white rounded text-[13px] font-bold hover:bg-black transition-colors">
+            <Download className="w-4 h-4" /> Curriculum
+          </button>
         </div>
       </div>
     </article>

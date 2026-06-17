@@ -1,58 +1,119 @@
-import Link from "next/link";
-import { Linkedin } from "lucide-react";
+import { Check, ShieldCheck, Award, Globe } from "lucide-react";
 
 const TRAINERS = [
   {
-    name: "Aakash Srivastava, CST",
-    title: "Certified Scrum Trainer",
-    bio: "Agile coach focused on complex enterprise transformations and practical scrum adoption.",
-    photo: "https://i.pravatar.cc/160?img=33",
-    experience: "15+ Years experience",
+    name: "Carl Pritchard",
+    title: "Project Management Guru",
+    companies: [ "BNY Mellon", "AT&T" ],
+    photo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300",
+    color: "yellow",
+    offset: false
   },
   {
-    name: "Michel Goldenberg, CST",
-    title: "Certified Scrum Trainer",
-    bio: "Leadership and product coach with deep experience across agile and product organisations.",
-    photo: "https://i.pravatar.cc/160?img=12",
-    experience: "17+ Years experience",
+    name: "Chris Ward",
+    title: "Project Management Expert",
+    companies: [ "iLinc", "PASSION" ],
+    photo: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=300",
+    color: "green",
+    offset: true
   },
   {
-    name: "Raj Ratan, CST",
-    title: "Agile Coach",
-    bio: "Enterprise agility expert focused on practical delivery, facilitation, and team maturity.",
-    photo: "https://i.pravatar.cc/160?img=52",
-    experience: "16+ Years experience",
+    name: "Cristina Shuval",
+    title: "Cyber Security Consultant",
+    companies: [ "accenture", "FORTINET" ],
+    photo: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300",
+    color: "yellow",
+    offset: false
   },
+  {
+    name: "Kevin Davis",
+    title: "Project Management Expert",
+    companies: [ "bmc", "CLARK" ],
+    photo: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
+    color: "green",
+    offset: true
+  },
+  {
+    name: "Juan Galvan",
+    title: "Digital Entrepreneur",
+    companies: [ "KOBE", "QLE" ],
+    photo: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300",
+    color: "yellow",
+    offset: false
+  }
 ];
 
 export function TrainersSection() {
   return (
-    <section className="section bg-white font-sans">
-      <div className="container-tight">
+    <section className="section bg-white font-sans py-24 overflow-hidden">
+      <div className="container-tight max-w-[1200px]">
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <div className="section-eyebrow mb-3">Training Experts</div>
-          <h2 className="h2">Learn from practitioners invested in your success</h2>
-          <p className="lead mt-4">Our trainers combine certification expertise with real-world transformation experience.</p>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">Our Seasoned Support System</div>
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-4">Learn from Experts Who've Been There and Done That</h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        {/* Top Stats Bar */}
+        <div className="mx-auto mb-16 max-w-5xl bg-white rounded-full border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] py-6 px-10 hidden md:flex items-center justify-between">
+          <div className="flex items-center gap-4">
+             <div className="text-primary"><Award className="w-8 h-8" /></div>
+             <div>
+               <div className="text-xl font-bold text-[#082032] leading-none mb-1">1,250+</div>
+               <div className="text-[12px] text-gray-500 font-medium">Industry Experts</div>
+             </div>
+          </div>
+          <div className="w-px h-10 bg-gray-200" />
+          <div className="flex items-center gap-4">
+             <div className="text-red-500"><ShieldCheck className="w-8 h-8" /></div>
+             <div>
+               <div className="text-xl font-bold text-[#082032] leading-none mb-1">400+</div>
+               <div className="text-[12px] text-gray-500 font-medium">Comprehensive Courses</div>
+             </div>
+          </div>
+          <div className="w-px h-10 bg-gray-200" />
+          <div className="flex items-center gap-4">
+             <div className="text-primary"><Check className="w-8 h-8" /></div>
+             <div>
+               <div className="text-xl font-bold text-[#082032] leading-none mb-1">300+</div>
+               <div className="text-[12px] text-gray-500 font-medium">Agile Transformations Facilitated</div>
+             </div>
+          </div>
+          <div className="w-px h-10 bg-gray-200" />
+          <div className="flex items-center gap-4">
+             <div className="text-red-500"><Globe className="w-8 h-8" /></div>
+             <div>
+               <div className="text-xl font-bold text-[#082032] leading-none mb-1">100+</div>
+               <div className="text-[12px] text-gray-500 font-medium">Countries & Counting</div>
+             </div>
+          </div>
+        </div>
+
+        {/* Trainer Cards */}
+        <div className="flex justify-start md:justify-center gap-6 overflow-x-auto pb-10 px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {TRAINERS.map((trainer) => (
-            <article key={trainer.name} className="card flex h-full flex-col p-6">
-              <div className="mb-5 flex items-center gap-4">
-                <img src={trainer.photo} alt={trainer.name} className="h-20 w-20 rounded-2xl object-cover" />
-                <div>
-                  <h3 className="text-lg font-black leading-snug text-[#082032]">{trainer.name}</h3>
-                  <p className="mt-1 text-sm font-bold text-primary">{trainer.title}</p>
-                </div>
-              </div>
-              <p className="line-clamp-3 flex-1 text-sm leading-6 text-muted-foreground">{trainer.bio}</p>
-              <div className="mt-6 flex items-center justify-between border-t border-[#082032]/8 pt-5">
-                <span className="text-sm font-bold text-[#082032]">{trainer.experience}</span>
-                <Link href="#" aria-label={`${trainer.name} LinkedIn`} className="grid h-10 w-10 place-items-center rounded-full bg-[#0A66C2]/10 text-[#0A66C2] transition-colors hover:bg-[#0A66C2] hover:text-white">
-                  <Linkedin className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
+            <div key={trainer.name} className={`w-[220px] shrink-0 rounded-t-3xl rounded-b-[110px] bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.06)] relative flex flex-col pt-8 pb-0 items-center overflow-hidden transition-transform hover:-translate-y-2 ${trainer.offset ? 'mt-12' : ''}`}>
+               
+               {/* Gradient Background */}
+               <div className={`absolute inset-0 z-0 opacity-80 ${trainer.color === 'yellow' ? 'bg-gradient-to-b from-white via-white to-[#fde047]' : 'bg-gradient-to-b from-white via-white to-[#86efac]'}`} />
+
+               <div className="text-center px-4 mb-4 relative z-10">
+                 <h3 className="text-[16px] font-bold text-[#082032] mb-1.5 leading-tight">{trainer.name}</h3>
+                 <p className="text-[11px] text-gray-500 font-bold leading-tight">{trainer.title}</p>
+               </div>
+               
+               <div className="relative z-10 flex flex-col items-center">
+                 <div className="text-[9px] text-gray-400 mb-2 font-bold tracking-wider uppercase">Has worked with</div>
+                 <div className="flex gap-3 mb-8 items-center justify-center opacity-80 bg-white/50 px-3 py-1.5 rounded-full">
+                   {/* Mock company names */}
+                   <span className="text-[11px] font-black text-[#082032]">{trainer.companies[0]}</span>
+                   <span className="text-[11px] font-black text-blue-700">{trainer.companies[1]}</span>
+                 </div>
+               </div>
+
+               {/* Cutout image at the bottom */}
+               <div className="mt-auto relative w-full h-[220px] z-10">
+                 <img src={trainer.photo} className="absolute inset-0 w-full h-full object-cover object-center" alt={trainer.name} />
+               </div>
+            </div>
           ))}
         </div>
       </div>

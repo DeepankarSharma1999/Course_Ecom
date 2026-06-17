@@ -122,7 +122,46 @@ export const CITIES_IN = [
 
 
 
+const mockAiCourses = [
+  { slug: "applied-agentic-ai-certification", title: "Applied Agentic AI Certification" },
+  { slug: "gen-ai-for-scrum-masters", title: "Gen AI for Scrum Masters" },
+  { slug: "gen-ai-for-project-managers", title: "Gen AI for Project Managers" },
+  { slug: "gen-ai-for-product-owners", title: "Gen AI for Product Owners/Product Managers" },
+  { slug: "gen-ai-for-enterprise-agilist", title: "Gen AI for Enterprise Agilist" },
+  { slug: "gen-ai-for-business-analysts", title: "Gen AI for Business Analysts" },
+  { slug: "ai-powered-software-development", title: "AI Powered Software Development" },
+  { slug: "no-code-ai-agents", title: "No-Code AI Agents & Automation" }
+].map(c => ({
+  slug: c.slug,
+  title: c.title,
+  shortTitle: c.title,
+  subtitle: `Master ${c.title} with ULearnSystems.`,
+  summary: `Comprehensive training for ${c.title}. Led by industry experts.`,
+  description: `Enroll in the ${c.title} course at ULearnSystems to accelerate your career.`,
+  category: { slug: "generative-ai", name: "Generative AI" },
+  durationLabel: "2 Days | Live Classes",
+  level: "Intermediate",
+  accreditedBy: "Global Certification Body",
+  basePriceInr: 24999,
+  basePriceUsd: 549,
+  examIncluded: true,
+  ratingAvg: 4.8,
+  ratingCount: 1200 + Math.floor(Math.random() * 1000),
+  heroImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80", // AI themed
+  keyFeatures: [],
+  learningOutcomes: ["Master core concepts", "Real-world application", "Pass the certification exam"],
+  whoShouldAttend: ["Professionals seeking certification", "Career switchers", "Team leads"],
+  prerequisites: ["Basic understanding of the domain"],
+  curriculum: [],
+  whyChooseUs: [],
+  faqs: [],
+  seoTitle: `${c.title} | ULearnSystems`,
+  seoDescription: `Get certified in ${c.title} with ULearnSystems. Expert-led training and comprehensive curriculum.`,
+  seoKeywords: `${c.title.toLowerCase()}, ai training, certification`
+}));
+
 export const COURSES: CourseContent[] = [
+  ...mockAiCourses,
   {
     slug: "csm-certification-training",
     title: "Certified Scrum Master (CSM®) Certification Training",

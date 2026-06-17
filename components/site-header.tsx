@@ -47,30 +47,35 @@ export function SiteHeader({
 }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<"courses" | "resources" | null>(null);
+  const [openMenu, setOpenMenu] = useState<"courses" | "ai-courses" | "enterprise" | "resources" | null>(null);
+  const [openSubMenu, setOpenSubMenu] = useState<"agile" | "product" | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategorySlug, setActiveCategorySlug] = useState<string | null>(null);
   const closeTimer = useRef<number | undefined>(undefined);
   
   const { isLoggedIn, openModal } = useLearnerAuth();
 
-  function openSoft(name: "courses" | "resources") {
+  function openSoft(name: "courses" | "ai-courses" | "enterprise" | "resources") {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
     setOpenMenu(name);
   }
   function closeSoft() {
-    closeTimer.current = window.setTimeout(() => setOpenMenu(null), 120);
+    closeTimer.current = window.setTimeout(() => {
+      setOpenMenu(null);
+      setOpenSubMenu(null);
+    }, 120);
   }
 
   useEffect(() => {
     setOpenMenu(null);
+    setOpenSubMenu(null);
     setMobileOpen(false);
   }, [pathname]);
 
   const navLink = (href: string, label: string, isNew = false) => (
     <Link
       href={href}
-      className={`relative px-4 py-6 text-[15px] font-semibold transition-colors flex items-center h-full text-foreground/80 hover:text-primary`}
+      className={`relative px-3 py-6 text-[14px] font-bold transition-colors flex items-center h-full text-gray-600 hover:text-[#082032]`}
     >
       {isNew && (
         <span className="absolute top-3 right-0 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5 rounded-full leading-none font-bold">
@@ -82,30 +87,38 @@ export function SiteHeader({
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-lg border-b border-border/50 font-sans transition-all duration-300">
-      {/* Top Banner (Bakrid Sale) */}
-      <div className="bg-foreground text-background text-[13px] py-2 relative overflow-hidden hidden md:block">
-        <div className="container-tight flex items-center justify-between relative z-10">
-          <div className="font-semibold text-muted-foreground/80">26th-31st May</div>
-          <div className="font-bold flex items-center gap-2 text-primary-foreground">
-            Special Offer &ndash; Enroll Before It Ends
+    <header className="sticky top-0 z-50 w-full bg-[#f8fcfc] border-b border-gray-200 font-sans transition-all duration-300">
+      {/* Top Banner (Skillup Sale) */}
+      <div className="bg-[#E9F4F4] text-[#082032] text-[13px] py-2 relative overflow-hidden hidden md:block border-b border-primary/10">
+        <div className="container-tight flex items-center justify-between relative z-10 font-sans">
+          <div className="flex items-center gap-3">
+            <span className="bg-primary text-white px-3 py-1 font-black text-[15px] rounded shadow-sm">Skillup <span className="font-normal text-xs uppercase align-top">Sale</span></span>
+            <span className="font-black text-gray-800 text-[15px]">8 - 15 June</span>
           </div>
-          <div className="w-24" /> {/* Spacer to center the text */}
+          <div className="font-black text-xl flex items-center gap-2 text-primary uppercase tracking-wide">
+            Upskill Today, Lead Tomorrow! <span className="text-2xl ml-1 leading-none font-bold">&#8594;</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="border border-primary/20 rounded px-2 py-0.5 font-bold text-gray-700 bg-white shadow-sm flex flex-col items-center leading-none text-[10px]">
+              Use SKILL10<br/><span className="text-primary text-xs uppercase">Flat 10% OFF</span>
+            </span>
+            <span className="font-black text-[#082032] text-[15px]">Ends Soon!</span>
+          </div>
         </div>
       </div>
 
       {/* Main nav */}
-      <div className="container-tight flex items-center h-[80px] justify-between gap-4">
+      <div className="container-tight flex items-center h-[72px] justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          <img src="/logo.png" alt={brandName} className="h-12 md:h-16 w-auto object-contain" />
+          <img src="/logo.png" alt={brandName} className="h-[44px] w-auto object-contain" />
         </Link>
 
         {/* All Courses Dropdown & Search (Desktop) */}
-        <div className="hidden lg:flex items-center flex-1 max-w-2xl gap-3 ml-8">
-          <div className="relative h-full flex items-center group" onMouseEnter={() => openSoft("courses")} onMouseLeave={closeSoft}>
-            <button className="flex items-center gap-2 px-4 py-2 border border-border/50 rounded-md text-[14px] font-semibold text-foreground bg-white hover:bg-gray-50 hover:border-primary/30 transition-all shadow-sm">
-              <Menu className="w-4 h-4" /> All Courses <ChevronDown className="w-4 h-4 opacity-70" />
+        <div className="hidden lg:flex items-center ml-6 flex-1">
+          <div className="relative h-[42px] flex items-center group" onMouseEnter={() => openSoft("courses")} onMouseLeave={closeSoft}>
+            <button className="h-full flex items-center justify-between gap-3 px-4 border border-[#CBD5E1] rounded-[6px] text-[14px] font-bold text-[#1E293B] bg-white transition-all w-[150px]">
+              <span className="flex items-center gap-2.5"><Menu className="w-4 h-4 text-[#64748b]" /> All Courses</span> <ChevronDown className="w-4 h-4 text-[#94a3b8]" />
             </button>
             {openMenu === "courses" && (
               <div className="absolute left-0 top-[calc(100%)] w-[950px] z-50 pt-2">
@@ -198,62 +211,168 @@ export function SiteHeader({
             )}
           </div>
 
-          <form action="/courses" method="get" className="flex-1 relative group">
-            <Search className="w-4 h-4 text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2 group-focus-within:text-primary transition-colors" />
+          <form action="/courses" method="get" className="relative ml-3 w-full max-w-[380px] h-[42px]">
+            <Search className="w-4 h-4 text-[#7E93A8] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text" name="q"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="What do you want to learn today?"
-              className="w-full pl-11 pr-4 py-2.5 border border-border/50 rounded-full text-sm bg-background focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+              placeholder="What you want to learn today?"
+              className="w-full h-full pl-[38px] pr-4 py-2 border border-[#CBD5E1] rounded-[6px] text-[14px] bg-white focus:outline-none focus:border-[#94A3B8] transition-all text-[#1E293B] placeholder-[#94A3B8]"
             />
           </form>
         </div>
 
         {/* Right Navigation */}
-        <nav className="hidden lg:flex items-center h-full gap-2">
-          {navLink("/combo-courses", "Combo Courses", true)}
-
-          <div className="relative flex items-center h-full" onMouseEnter={() => openSoft("resources")} onMouseLeave={closeSoft}>
-            <button className="flex items-center gap-1 px-4 text-[15px] font-semibold text-foreground/80 hover:text-primary transition-colors">
-              Resources <ChevronDown className="w-4 h-4 opacity-70" />
-            </button>
-            {openMenu === "resources" && (
-              <div className="absolute right-0 top-full pt-2 z-50">
-                <div className="bg-card border border-border/50 shadow-2xl rounded-2xl w-56 py-2 overflow-hidden">
-                  <Link href="/free-course" className="block px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:bg-secondary hover:text-primary transition-colors">Free Course</Link>
-                  <Link href="/practice-tests" className="block px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:bg-secondary hover:text-primary transition-colors">Practice Test</Link>
-                  <Link href="/webinars" className="block px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:bg-secondary hover:text-primary transition-colors">Webinars</Link>
-                  <Link href="/resources" className="block px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:bg-secondary hover:text-primary transition-colors">Blogs</Link>
-                  <Link href="/trainers" className="block px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:bg-secondary hover:text-primary transition-colors">Trainers</Link>
+        <nav className="hidden xl:flex items-center h-full ml-auto">
+          
+          {/* AI Courses */}
+          <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "ai-courses" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("ai-courses")} onMouseLeave={closeSoft}>
+            <Link href="/ai-courses" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+              AI Courses <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "ai-courses" ? "text-[#1FA8A8] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
+            </Link>
+            {openMenu === "ai-courses" && (
+              <div className="absolute left-0 top-[72px] pt-1 z-50">
+                <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[320px] overflow-hidden py-2 flex flex-col">
+                  {[
+                    { name: "Applied Agentic AI certification", href: "/applied-agentic-ai-certification" },
+                    { name: "Gen AI for Scrum Masters", href: "/gen-ai-for-scrum-masters" },
+                    { name: "Gen AI for Project Managers", href: "/gen-ai-for-project-managers" },
+                    { name: "Gen AI for Product Owners/Product Managers", href: "/gen-ai-for-product-owners" },
+                    { name: "Gen AI for Enterprise Agilist", href: "/gen-ai-for-enterprise-agilist" },
+                    { name: "Gen AI for Business Analysts", href: "/gen-ai-for-business-analysts" },
+                    { name: "AI Powered Software Development", href: "/ai-powered-software-development" },
+                    { name: "No-Code AI Agents & Automation", href: "/no-code-ai-agents" },
+                  ].map((link, i) => (
+                    <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
+                      {link.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}
           </div>
 
-          {navLink("/corporate", "Corporate")}
+          <div className="flex items-center h-full px-4 border-b-2 border-transparent">
+            <Link href="/self-paced" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+              Self-Paced
+            </Link>
+          </div>
+
+          {/* Enterprise */}
+          <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "enterprise" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("enterprise")} onMouseLeave={closeSoft}>
+            <Link href="/corporate-training" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+              Enterprise <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "enterprise" ? "text-[#1FA8A8] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
+            </Link>
+            {openMenu === "enterprise" && (
+              <div className="absolute left-0 top-[72px] pt-1 z-50">
+                <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[260px] py-2 flex flex-col">
+                  <Link href="/corporate-training" className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50" onMouseEnter={() => setOpenSubMenu(null)}>
+                    Corporate Training
+                  </Link>
+                  
+                  <div className="relative group" onMouseEnter={() => setOpenSubMenu("agile")}>
+                    <Link href="/agile-solutions" className={`px-5 py-3 text-[13px] font-medium transition-colors border-b border-gray-50 flex justify-between items-center ${openSubMenu === "agile" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
+                      Agile Solutions 
+                      {openSubMenu === "agile" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
+                    </Link>
+                    {openSubMenu === "agile" && (
+                      <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
+                        <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
+                          {[
+                            { name: "SAFe Implementation", href: "/safe-implementation" },
+                            { name: "Business Agility", href: "/business-agility" },
+                            { name: "Value Stream Workshop / Optimization", href: "/value-stream" },
+                            { name: "DevOps Cultural Transformation", href: "/devops-cultural-transformation" },
+                            { name: "Technology & Business Management", href: "/tech-business-management" },
+                            { name: "Lean Portfolio Management", href: "/lean-portfolio-management" }
+                          ].map((item, idx) => (
+                            <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="relative group" onMouseEnter={() => setOpenSubMenu("product")}>
+                    <Link href="/product-building" className={`px-5 py-3 text-[13px] font-medium transition-colors flex justify-between items-center ${openSubMenu === "product" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
+                      Product Building 
+                      {openSubMenu === "product" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
+                    </Link>
+                    {openSubMenu === "product" && (
+                      <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
+                        <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
+                          {[
+                            { name: "Product Coaching", href: "/product-coaching" },
+                            { name: "Design Thinking Workshops", href: "/design-thinking-workshops" },
+                            { name: "Project to Product (Culture Shift)", href: "/project-to-product" },
+                            { name: "Product Development Training", href: "/product-development-training" }
+                          ].map((item, idx) => (
+                            <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center h-full px-4 border-b-2 border-transparent">
+            <Link href="/refer-earn" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+              Refer & Earn
+            </Link>
+          </div>
+
+          {/* Resources */}
+          <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "resources" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("resources")} onMouseLeave={closeSoft}>
+            <Link href="/resources" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+              Resources <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "resources" ? "text-[#1FA8A8] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
+            </Link>
+            {openMenu === "resources" && (
+              <div className="absolute right-0 top-[72px] pt-1 z-50">
+                <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[260px] overflow-hidden py-2 flex flex-col">
+                  {[
+                    { name: "Free Courses", href: "/free-courses" },
+                    { name: "Blogs", href: "/resources" },
+                    { name: "Tutorials", href: "/tutorials" },
+                    { name: "Practice Tests", href: "/practice-tests" },
+                    { name: "Interview Questions", href: "/interview-questions" },
+                    { name: "Events", href: "/events", arrow: true },
+                    { name: "Scrum Master Certification Guide", href: "/scrum-master-certification-guide" },
+                    { name: "Course Info", href: "/course-info" },
+                  ].map((link, i) => (
+                    <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0 flex justify-between items-center group">
+                      {link.name}
+                      {link.arrow && <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Right Icons */}
-        <div className="flex items-center gap-5 ml-auto">
-          {phone && (
-            <a href={`tel:${phone}`} className="hidden xl:block text-muted-foreground hover:text-primary transition-colors">
-              <Phone className="w-5 h-5 fill-current" />
-            </a>
-          )}
-
+        <div className="flex items-center gap-4 ml-6">
           {isLoggedIn ? (
             <LearnerDropdown />
           ) : (
             <button 
               onClick={openModal}
-              className="hidden lg:block font-bold text-sm text-foreground hover:text-primary whitespace-nowrap transition-colors"
+              className="hidden lg:block font-bold text-[14px] text-white bg-[#0B1221] hover:bg-black h-[42px] px-6 rounded-[6px] transition-colors whitespace-nowrap"
             >
               Sign In
             </button>
           )}
 
-          <button className="relative p-2 text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full">
+          <button className="relative p-2 text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full lg:hidden">
             <Lucide.ShoppingCart className="w-5 h-5" />
             <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
               0

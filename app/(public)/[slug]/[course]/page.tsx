@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
-import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { COUNTRIES, getAllCourses, getCourseBySlug, findCountry, getCourseVariant } from "@/lib/content";
@@ -54,7 +53,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
       ))}
       <CoursePageContent course={c} countrySlug={slug} currency={currency} />
       <TrainerSection courseSlug={c.slug} />
-      <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceInr ? formatInCurrency(c.basePriceInr, currency) : undefined} />
     </>
   );
 }

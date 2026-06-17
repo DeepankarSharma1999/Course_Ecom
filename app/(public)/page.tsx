@@ -13,13 +13,13 @@ import { BusinessSectors } from "@/components/public/home/business-sectors";
 
 const CourseGrid = dynamic(() => import("@/components/public/home/course-grid").then(m => m.CourseGrid));
 const ComboSchedule = dynamic(() => import("@/components/public/home/combo-schedule").then(m => m.ComboSchedule));
-const BenefitsSection = dynamic(() => import("@/components/public/home/benefits-section").then(m => m.BenefitsSection));
+const PedagogySection = dynamic(() => import("@/components/public/home/pedagogy-section").then(m => m.PedagogySection));
 const TrainersSection = dynamic(() => import("@/components/public/home/trainers-section").then(m => m.TrainersSection));
 const StatsBanner = dynamic(() => import("@/components/public/home/stats-banner").then(m => m.StatsBanner));
 const CtaStrip = dynamic(() => import("@/components/public/home/cta-strip").then(m => m.CtaStrip));
 const WorldMap = dynamic(() => import("@/components/world-map").then(m => m.WorldMap));
 const TestimonialsSlider = dynamic(() => import("@/components/public/home/testimonials-slider").then(m => m.TestimonialsSlider));
-const LatestBlogs = dynamic(() => import("@/components/public/home/latest-blogs").then(m => m.LatestBlogs));
+const AccoladesSection = dynamic(() => import("@/components/public/home/accolades-section").then(m => m.AccoladesSection));
 
 export const revalidate = 60;
 
@@ -43,21 +43,18 @@ export default async function HomePage() {
       <HomeHero />
       <PartnerLogos />
       
-      <CourseGrid courses={COURSES} categories={CATEGORIES} currency={currency} />
-      
-      <ComboSchedule />
-      
       <BusinessSectors />
       
-      <BenefitsSection />
+      <CourseGrid courses={COURSES} categories={CATEGORIES} currency={currency} />
+      <ComboSchedule />
+      
+      <PedagogySection />
 
       <TrainersSection />
 
-      <CtaStrip />
-
       <TestimonialsSlider />
       
-      <LatestBlogs />
+      <AccoladesSection />
 
       <section className="overflow-hidden bg-[#082032] py-16 font-sans md:py-20">
         <div className="container-tight">
