@@ -71,8 +71,8 @@ const DEFAULT_SETTINGS = {
   announcementText: null,
   announcementLink: null,
   announcementEnabled: false,
-  defaultSeoTitle: null,
-  defaultSeoDescription: null,
+  defaultSeoTitle: "ULearnSystems - Training & Certifications",
+  defaultSeoDescription: "Ulearnsystems delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more.",
 };
 
 const DEFAULT_HOME = {
@@ -115,7 +115,8 @@ const DEFAULT_HOME = {
   ctaSubtitle: "Speak with a training advisor today. Get curated course recommendations, batch schedules and exclusive offers tailored to your goals.",
   ctaPrimaryText: "Enquire Now", ctaPrimaryLink: "/enquire",
   ctaSecondaryText: "Corporate Training", ctaSecondaryLink: "/corporate",
-  seoTitle: null, seoDescription: null,
+  seoTitle: "ULearnSystems | Globally Accredited Certification Training", 
+  seoDescription: "Join 500,000+ professionals worldwide. Ulearnsystems offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management.",
 };
 
 const DEFAULT_SIMPLE_PAGES: Record<string, any> = {

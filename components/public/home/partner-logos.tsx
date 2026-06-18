@@ -19,14 +19,14 @@ export function PartnerLogos() {
           <div className="relative w-full max-w-full overflow-hidden [contain:paint]" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
             <div className="flex w-max animate-marquee gap-x-12 opacity-90 hover:[animation-play-state:paused]">
               <div className="flex items-center gap-x-12 pr-12">
-                {visualLogos.map((logo, i) => (
+                {[...visualLogos, ...visualLogos, ...visualLogos].map((logo, i) => (
                   <div key={`set1-${i}`} className="shrink-0 cursor-default opacity-80 transition-opacity hover:opacity-100" title={logo.name}>
                     {logo.el}
                   </div>
                 ))}
               </div>
               <div className="flex items-center gap-x-12 pr-12" aria-hidden="true">
-                {visualLogos.map((logo, i) => (
+                {[...visualLogos, ...visualLogos, ...visualLogos].map((logo, i) => (
                   <div key={`set2-${i}`} className="shrink-0 cursor-default opacity-80 transition-opacity hover:opacity-100" title={logo.name}>
                     {logo.el}
                   </div>

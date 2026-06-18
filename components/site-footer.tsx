@@ -1,103 +1,157 @@
-"use client";
-
+import React from "react";
 import Link from "next/link";
-import { ChevronRight, Facebook, Instagram, Linkedin, Mail, Phone, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
-const footerGroups = [
-  {
+const LINKS = {
+  company: {
     title: "Company",
-    links: ["About us", "Accreditation", "Careers", "Customer Speak", "Contact us"],
+    links: ["About Us", "Careers", "Accreditation", "Customer Speak", "Contact Us", "Grievance Redressal"],
   },
-  {
+  offerings: {
     title: "Offerings",
-    links: ["Live virtual training", "Classroom training", "Corporate training", "Agile services", "Training Schedule"],
+    links: ["Live Virtual (Online)", "Classroom", "Agile Services", "Refer and Earn", "Corporate Training"],
   },
-  {
+  resources: {
     title: "Resources",
-    links: ["Combo Courses", "Free Course", "Practice Tests", "Webinars", "Blogs", "Trainers"],
+    links: ["Course Info", "Tutorials", "Blogs", "Interview Questions", "Practice Tests", "Free Courses", "Masterclasses"],
   },
+  partner: {
+    title: "Partner with Us",
+    links: ["Become an Instructor", "Become a Training Partner", "Affiliate"],
+  },
+  support: {
+    title: "Support",
+    links: ["FAQs", "Terms and Conditions", "Privacy Policy and Disclaimer", "Cancellation and Refund Policy", "Report a Vulnerability"],
+  },
+};
+
+const CONTACT_NUMBERS = [
+  { country: "USA", flag: "🇺🇸", number: "+1-469-442-0620\n+1-832-684-0080" },
+  { country: "India", flag: "🇮🇳", number: "+91-95382-36399\n+91-72089-98084\n+91-95381-83332\n+91-72089-98083" },
+  { country: "UK", flag: "🇬🇧", number: "+44-2045-865736\n+44-2046-002067" },
+  { country: "Singapore", flag: "🇸🇬", number: "+65-317-46174" },
+  { country: "Malaysia", flag: "🇲🇾", number: "+601548770914" },
+  { country: "Canada", flag: "🇨🇦", number: "+1-613-707-0763" },
+  { country: "New Zealand", flag: "🇳🇿", number: "+64-36694791" },
+  { country: "Ireland", flag: "🇮🇪", number: "+44-2081-586434" },
+  { country: "Australia", flag: "🇦🇺", number: "+61-290995641" },
+  { country: "UAE: Toll Free", flag: "🇦🇪", number: "8000180960" },
 ];
+
+const TOP_CATEGORIES = [
+  "Agile Management Courses", "Project Management Courses", "Cloud Computing Courses", "IT Service Management Courses", "Business Management Courses", "Devops Courses", "BI and Visualization Courses", "Cybersecurity Courses", "Quality Management Courses", "Data Science Courses", "Web Development Courses", "Programming Courses"
+];
+
+const TOP_COURSES = [
+  "CSM Certification", "PMP Certification", "CSPO Certification", "Leading SAFe 6.0 Certification", "ITIL Foundation Certification", "PRINCE2 Certifications", "PSM Certification", "SAFe 6.0 POPM Certification", "SAFe 6.0 Practice Consultant Certification", "SAFe 6.0 Scrum Master Certification", "SAFe 6.0 RTE Certification", "ECBA Certification", "CAPM Certification", "PSPO Certification", "PMI-ACP Certification", "ICP-ACC Certification", "Microsoft Power BI", "A-CSM Certification", "PgMP Certification", "AWS Solutions Architect Associate Certification", "CBAP Certification", "A-CSPO Certification", "Lean Six Sigma Green Belt Certification", "SAFe 6.0 Agile Product Management", "SAFe 6.0 Lean Portfolio Management", "AWS Cloud Architect Master's Program", "CISSP Certification", "SAFe 6.0 Advanced Scrum Master Certification", "PSM-A Certification", "SAFe 6.0 DevOps Certification", "PRINCE2 Foundation Certification", "Agile Master's Program", "PSPO-A Certification", "Azure Data Engineer Master's Program", "Project Management Master's Program", "PRINCE2 Agile Certifications", "Agile Excellence Master's Program", "Certified Scrum Developer Certification"
+];
+
+function LinkGroup({ data }: { data: { title: string; links: string[] } }) {
+  return (
+    <div>
+      <h3 className="font-bold text-[#082032] mb-5">{data.title}</h3>
+      <ul className="space-y-3">
+        {data.links.map((link) => (
+          <li key={link}>
+            <Link href="#" className="text-[13px] text-[#4a7298] hover:text-primary transition-colors block">
+              {link}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#082032] font-sans text-sm text-white">
-      <div className="container-tight pb-8 pt-16 md:pt-[76px]">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_1.3fr]">
-          <div>
-            <img src="/logo.png" alt="ULearnSystems" className="mb-5 h-auto w-[125px] rounded bg-white p-2" />
-            <p className="max-w-[280px] text-[15px] leading-7 text-white/65">
-              A global learning and certification platform helping professionals and organisations build practical capability.
-            </p>
-            <div className="mt-6 flex gap-3">
-              {[Linkedin, Facebook, Instagram, Youtube].map((Icon, index) => (
-                <a key={index} href="#" aria-label="Social profile" className="grid h-11 w-11 place-items-center rounded-lg border border-white/10 text-white/72 transition-colors hover:border-primary hover:bg-primary hover:text-white">
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {footerGroups.map((group) => (
-            <div key={group.title}>
-              <h3 className="mb-4 text-[15px] font-bold text-white">{group.title}</h3>
-              <ul className="space-y-2">
-                {group.links.map((link) => (
-                  <li key={link}>
-                    <Link href="#" className="inline-flex min-h-[32px] items-center text-sm leading-[26px] text-white/62 transition-colors hover:text-primary sm:min-h-0">
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div>
-            <h3 className="mb-4 text-[15px] font-bold text-white">Get weekly learning insights</h3>
-            <form className="flex overflow-hidden rounded-lg border border-white/10 bg-white/8">
-              <label htmlFor="footer-email" className="sr-only">Email address</label>
-              <input id="footer-email" type="email" placeholder="Email address" className="min-h-12 w-full bg-transparent px-4 text-white placeholder:text-white/45 focus:outline-none" />
-              <button type="submit" className="bg-primary px-4 font-black text-white transition-colors hover:bg-[#178f8f]" aria-label="Subscribe">
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </form>
-            <div className="mt-6 space-y-3 text-white/65">
-              <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
-                +91-9036554933
+    <footer className="bg-[#f8fcfc] font-sans pt-16 pb-8 border-t border-gray-100">
+      <div className="container-tight max-w-[1400px] px-6 md:px-12">
+        <div className="grid lg:grid-cols-[1fr_500px] gap-16">
+           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+              {/* Col 1 */}
+              <div className="flex flex-col gap-12">
+                 <LinkGroup data={LINKS.company} />
+                 <LinkGroup data={LINKS.partner} />
               </div>
-              <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary" />
-                hello@ulearnsystems.com
+              {/* Col 2 */}
+              <div className="flex flex-col gap-12">
+                 <LinkGroup data={LINKS.offerings} />
+                 <LinkGroup data={LINKS.support} />
               </div>
-            </div>
-          </div>
+              {/* Col 3 */}
+              <div className="flex flex-col gap-12">
+                 <LinkGroup data={LINKS.resources} />
+              </div>
+           </div>
+
+           <div>
+              <div className="mb-10">
+                 <h3 className="font-bold text-[#082032] mb-4">Connect with us</h3>
+                 <div className="flex gap-4">
+                    <a href="#" className="w-8 h-8 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Linkedin className="w-4 h-4" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Instagram className="w-4 h-4" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Facebook className="w-4 h-4" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Twitter className="w-4 h-4 fill-current" /></a>
+                 </div>
+              </div>
+              
+              <div className="mb-10">
+                 <h3 className="font-bold text-[#082032] mb-4">We Accept</h3>
+                 <div className="flex gap-5 items-center flex-wrap">
+                     <span className="font-black text-blue-800 italic text-xl leading-none">PayPal</span>
+                     <span className="font-black text-blue-600 text-[10px] leading-tight w-14 uppercase">American Express</span>
+                     <span className="w-10 h-6 flex items-center justify-center relative">
+                        <div className="w-4 h-4 rounded-full bg-red-500 absolute left-1 mix-blend-multiply opacity-90"></div>
+                        <div className="w-4 h-4 rounded-full bg-yellow-400 absolute right-1 mix-blend-multiply opacity-90"></div>
+                     </span>
+                     <span className="font-black text-blue-800 text-2xl italic leading-none">VISA</span>
+                     <span className="font-black text-teal-400 italic text-lg leading-none tracking-tighter">afterpay<span className="text-xl">⬎</span></span>
+                 </div>
+              </div>
+
+              <div className="border border-gray-200 rounded-[24px] p-6 lg:p-8 bg-white shadow-sm">
+                 <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6">
+                    {CONTACT_NUMBERS.map(c => (
+                        <div key={c.country}>
+                           <div className="flex items-center gap-2 mb-2 font-bold text-[#082032] text-[13px]"><span className="text-lg leading-none">{c.flag}</span> {c.country}</div>
+                           <div className="text-[12px] text-[#4a7298] space-y-1 whitespace-pre-line leading-relaxed">{c.number}</div>
+                        </div>
+                    ))}
+                 </div>
+              </div>
+           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <div className="mb-6">
-            <h3 className="mb-3 text-[13px] font-bold uppercase tracking-[0.14em] text-white/80">Top Categories</h3>
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-[12px] font-semibold uppercase text-white/45">
-              {["Agile", "SAFe", "Project", "Business", "Generative AI", "Quality", "Service", "DevOps", "Cloud Computing", "Data Science"].map((cat) => (
-                <Link key={cat} href="#" className="inline-flex min-h-[32px] items-center hover:text-primary sm:min-h-0">
-                  {cat}
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div className="mt-16 border-t border-gray-200 pt-10">
+           <div className="mb-8">
+              <h3 className="font-bold text-[#082032] text-[15px] mb-4">Top Categories</h3>
+              <div className="flex flex-wrap items-center text-[13px] text-[#4a7298] leading-8">
+                 {TOP_CATEGORIES.map((cat, i) => (
+                    <React.Fragment key={cat}>
+                       <Link href="#" className="hover:text-primary transition-colors whitespace-nowrap">{cat}</Link>
+                       {i < TOP_CATEGORIES.length - 1 && <span className="mx-3 text-gray-300">|</span>}
+                    </React.Fragment>
+                 ))}
+              </div>
+           </div>
+           <div className="mb-10">
+              <h3 className="font-bold text-[#082032] text-[15px] mb-4">Top Courses</h3>
+              <div className="flex flex-wrap items-center text-[13px] text-[#4a7298] leading-8">
+                 {TOP_COURSES.map((course, i) => (
+                    <React.Fragment key={course}>
+                       <Link href="#" className="hover:text-primary transition-colors whitespace-nowrap">{course}</Link>
+                       {i < TOP_COURSES.length - 1 && <span className="mx-3 text-gray-300">|</span>}
+                    </React.Fragment>
+                 ))}
+              </div>
+           </div>
 
-          <p className="max-w-5xl text-[12px] leading-6 text-white/42">
-            Certification marks and course names remain the property of their respective owners. ULearnSystems provides professional training programs through authorised and partner-led frameworks where applicable.
-          </p>
-
-          <div className="mt-6 flex flex-col justify-between gap-3 text-xs text-white/45 md:flex-row">
-            <span>© 2018-2026 ULearnSystems Solutions Private Limited. All rights reserved.</span>
-            <div className="flex flex-wrap gap-x-4 gap-y-1">
-              <Link href="#" className="inline-flex min-h-[32px] items-center hover:text-primary sm:min-h-0">Privacy Policy</Link>
-              <Link href="#" className="inline-flex min-h-[32px] items-center hover:text-primary sm:min-h-0">Terms</Link>
-              <Link href="#" className="inline-flex min-h-[32px] items-center hover:text-primary sm:min-h-0">Refund Policy</Link>
-            </div>
-          </div>
+           <div className="text-[11px] text-gray-400 text-center leading-[1.8] max-w-7xl mx-auto space-y-4">
+              <p>Disclaimer: The content on the website and/or Platform is for informational and educational purposes only. The user of this website and/or Platform (User) should not construe any such information as legal, investment, tax, financial or any other advice. Nothing contained herein constitutes any representation, solicitation, recommendation, promotion or advertisement on behalf of ULearnSystems and / or its Affiliates (including but not limited to its subsidiaries, associates, employees, directors, key managerial personnel, consultants, trainers, advisors).</p>
+              <p>The User is solely responsible for evaluating the merits and risks associated with use of the information included as part of the content. The User agrees and covenants not to hold ULearnSystems and its Affiliates responsible for any and all losses or damages arising from such decision made by them basis the information provided in the course and / or available on the website and/or platform. ULearnSystems reserves the right to cancel or reschedule events in case of insufficient registrations, or if presenters cannot attend due to unforeseen circumstances. You are therefore advised to consult a ULearnSystems agent prior to making any travel arrangements for a workshop. For more details, please refer to the <Link href="#" className="text-primary hover:underline">Cancellation & Refund Policy</Link>.</p>
+              <p>CSM®, CSPO®, CSD®, CSP®, A-CSPO®, A-CSM® are registered trademarks of Scrum Alliance®. ULearnSystems Private Limited is a Licensed Training Partner (LTP) of Scrum Alliance®. PMP is a registered mark of the Project Management Institute, Inc. CAPM is a registered mark of the Project Management Institute, Inc. PMI-ACP is a registered mark of the Project Management Institute, Inc. PMI-RMP is a registered mark of the Project Management Institute, Inc. PMI-PBA is a registered mark of the Project Management Institute, Inc. PgMP is a registered mark of the Project Management Institute, Inc. PfMP is a registered mark of the Project Management Institute, Inc. ULearnSystems Private Limited is a Premier Authorized Training Partner (ATP) of Project Management Institute, Inc. The PMI Premier Authorized Training Partner logo is a registered mark of the Project Management Institute, Inc. PMBOK is a registered mark of the Project Management Institute, Inc. ITIL®, PRINCE2®, PRINCE2 Agile®, AgileSHIFT® are registered trademarks of AXELOS Limited, used under permission of AXELOS Limited. All rights reserved. COBIT® is a registered trademark of the Information Systems Audit and Control Association® (ISACA®). (ISC)2® is a registered trademark of International Information Systems Security Certification Consortium, Inc. CompTIA Authorized Training Partner. CMMI® is registered in the U.S. Patent and Trademark Office by Carnegie Mellon University. FRM®, GARP™, and Global Association of Risk Professionals™ are trademarks owned by the Global Association of Risk Professionals, Inc. Global Association of Risk Professionals, Inc. (GARP™) does not endorse, promote, review, or warrant the accuracy of the products or services offered by ULearnSystems Private Limited for FRM® related information, nor does it endorse any pass rates claimed by the provider. Further, GARP is not responsible for any fees or costs paid by the user. IIBA®, the IIBA® logo, BABOK®, and Business Analysis Body of Knowledge® are registered trademarks owned by the International Institute of Business Analysis. ULearnSystems Private Limited is an Endorsed Education Provider of IIBA®. Scaled Agile Framework® and SAFe® are registered trademarks of Scaled Agile, Inc.® ULearnSystems Private Limited is a Platinum SPCT Partner of Scaled Agile, Inc.® ULearnSystems Private Limited is an Authorized Training Partner of CertNexus. ULearnSystems Private Limited is a Microsoft Partner. ULearnSystems Private Limited is an AWS Training Partner (ATP). ULearnSystems Private Limited is an ICAgile Member Training Organization. ULearnSystems Private Limited is a Professional Training Network member of scrum.org. ULearnSystems Private Limited is an Accredited Examination Centre of IASSC. ULearnSystems Private Limited is a Registered Education Partner (REP) of the DevOps Institute (DOI). ULearnSystems Private Limited is an ATO of PeopleCert. ULearnSystems Private Limited is an Authorized Training Partner (ATP) and Accredited Training Center (ATC) of the EC-Council.</p>
+           </div>
         </div>
       </div>
     </footer>

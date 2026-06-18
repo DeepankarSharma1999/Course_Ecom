@@ -1,25 +1,27 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Play, Star, Users } from "lucide-react";
-
-const trustedCompanies = [
-  { name: "NETFLIX", className: "text-[#E50914] tracking-tight" },
-  { name: "cognizant", className: "text-[#000080] lowercase italic" },
-  { name: "Meta", className: "text-[#0668E1] tracking-tighter" },
-  { name: "Infosys", className: "font-serif text-[#007CC3]" },
-  { name: "Capgemini", className: "text-[#0070AD] tracking-tighter" },
-];
+import { ArrowRight, Star } from "lucide-react";
+import * as Lucide from "lucide-react";
 
 const learnerAvatars = [
-  "https://i.pravatar.cc/80?img=11",
-  "https://i.pravatar.cc/80?img=32",
-  "https://i.pravatar.cc/80?img=5",
-  "https://i.pravatar.cc/80?img=48",
-  "https://i.pravatar.cc/80?img=16",
+  "https://i.pravatar.cc/100?img=11",
+  "https://i.pravatar.cc/100?img=32",
+  "https://i.pravatar.cc/100?img=5",
+  "https://i.pravatar.cc/100?img=48",
+  "https://i.pravatar.cc/100?img=16",
 ];
 
 function TrustedCompanyCarousel() {
+  const trustedCompanies = [
+    { name: "Infosys", className: "text-[#007CC3]" },
+    { name: "Hewlett Packard", className: "text-gray-800" },
+    { name: "TIGER ANALYTICS", className: "text-black tracking-tighter" },
+    { name: "WELSPUN", className: "text-blue-600" },
+    { name: "terrapay", className: "text-blue-800 lowercase italic" },
+    { name: "Reliance", className: "text-red-600" }
+  ];
+
   const companySet = (
-    <div className="flex items-center gap-8 pr-8">
+    <div className="flex items-center gap-12 pr-12">
       {trustedCompanies.map((company) => (
         <span key={company.name} className={`shrink-0 text-[20px] font-black ${company.className}`}>
           {company.name}
@@ -29,60 +31,19 @@ function TrustedCompanyCarousel() {
   );
 
   return (
-    <div className="mt-8 max-w-xl rounded-2xl border border-[#082032]/5 bg-white/70 p-4 shadow-[0_10px_28px_rgba(8,32,50,0.05)]">
-      <div className="mb-3 text-sm font-black text-[#082032]">Trusted by</div>
+    <div className="mt-14 max-w-xl">
+      <div className="text-[14px] font-semibold text-gray-500 mb-4">Trusted by</div>
       <div
         className="relative w-full max-w-full overflow-hidden [contain:paint]"
         style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
       >
-        <div className="flex w-max animate-marquee text-slate-700/70 hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-marquee grayscale opacity-70 hover:[animation-play-state:paused]">
           {companySet}
           <div aria-hidden="true">{companySet}</div>
         </div>
       </div>
-      <div className="mt-2 text-[13px] font-medium text-muted-foreground">and 6,000+ companies across the globe</div>
-    </div>
-  );
-}
-
-function HeroImage({ className = "" }: { className?: string }) {
-  return (
-    <div className={`relative mx-auto w-full max-w-[540px] ${className}`}>
-      <div className="absolute -right-5 top-10 h-72 w-72 rounded-[48px] bg-[#DDF3F3]" />
-      <div className="absolute -left-4 bottom-8 h-40 w-40 rounded-full bg-white" />
-      <div className="absolute right-4 top-2 hidden h-64 w-44 bg-[radial-gradient(#9BCBCD_2px,transparent_2px)] [background-size:18px_18px] opacity-60 md:block" />
-
-      <div className="relative overflow-hidden rounded-[24px] border border-white bg-white shadow-[0_24px_70px_rgba(8,32,50,0.15)]">
-        <img
-          src="https://images.pexels.com/photos/18999469/pexels-photo-18999469.jpeg?auto=compress&cs=tinysrgb&w=1200"
-          alt="Professionals collaborating in a certification training workshop"
-          className="aspect-[16/10] w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#082032]/20 via-transparent to-primary/10" />
-      </div>
-
-      <div className="absolute -left-2 top-8 rounded-2xl bg-white/95 p-4 shadow-[0_18px_50px_rgba(8,32,50,0.14)] ring-1 ring-[#082032]/5 sm:-left-8">
-        <div className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-primary">
-            <Users className="h-5 w-5" />
-          </span>
-          <div>
-            <div className="text-xl font-bold text-primary">5,000+</div>
-            <div className="text-xs font-medium text-muted-foreground">Learners certified</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute -bottom-5 right-4 rounded-2xl bg-white/95 p-4 shadow-[0_18px_50px_rgba(8,32,50,0.14)] ring-1 ring-[#082032]/5 sm:right-8">
-        <div className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#082032] text-white">
-            <CheckCircle2 className="h-5 w-5" />
-          </span>
-          <div>
-            <div className="text-xl font-bold text-[#082032]">130+</div>
-            <div className="text-xs font-medium text-muted-foreground">Expert-led courses</div>
-          </div>
-        </div>
+      <div className="mt-4 text-[13px] font-bold text-[#0a66c2] hover:underline cursor-pointer">
+        and 4,500+ companies across the globe
       </div>
     </div>
   );
@@ -91,72 +52,120 @@ function HeroImage({ className = "" }: { className?: string }) {
 export function HomeHero() {
   return (
     <section className="relative overflow-hidden bg-white font-sans">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_20%,rgba(31,168,168,0.13),transparent_28%),linear-gradient(90deg,rgba(240,246,248,0.95),rgba(255,255,255,0)_60%)]" />
-
-      <div className="container-tight relative grid items-center gap-12 pb-16 pt-12 md:pb-20 md:pt-16 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
-        <div className="min-w-0 max-w-2xl text-left">
-          <div className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-primary/20 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary/80 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-primary" />
-            Global professional learning platform
-          </div>
-
-          <h1 className="max-w-[640px] text-[36px] font-bold leading-[1.04] tracking-tight text-[#082032] sm:text-5xl lg:text-[56px]">
-            Build globally recognised skills with expert-led certification training.
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_20%,rgba(31,168,168,0.13),transparent_28%),linear-gradient(90deg,rgba(240,246,248,0.95),rgba(255,255,255,0)_60%)] pointer-events-none" />
+      <div className="container-tight relative grid items-center gap-12 pt-16 pb-12 md:pt-20 lg:grid-cols-[1fr_1fr] lg:pt-24 lg:pb-16 z-10">
+        
+        {/* LEFT COLUMN */}
+        <div className="min-w-0 max-w-2xl text-left z-10">
+          <h1 className="max-w-[600px] text-[40px] font-bold leading-[1.1] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
+            Learn In-Demand Skills for Tomorrow&apos;s Jobs
           </h1>
 
-          <p className="mt-5 max-w-[560px] text-[17px] leading-8 text-muted-foreground">
-            Prepare for the next step in your career with live training, practical learning paths, and corporate programs led by experienced practitioners.
+          <p className="mt-6 max-w-[500px] text-[16px] leading-relaxed text-gray-600 font-medium">
+            Experience learning that delivers results. We&apos;re disrupting the way you learn <span className="font-bold text-[#082032]">new-age technologies</span> and we&apos;ll help you get <span className="font-bold text-[#082032]">job-ready</span>, fast.
           </p>
 
-          <HeroImage className="mt-9 lg:hidden" />
-
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <Link href="/courses" className="btn-primary rounded-md">
-              Explore Courses <ArrowRight className="h-4 w-4" />
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <Link href="/courses" className="btn-primary rounded text-center py-3.5 px-8">
+              Explore All Courses
             </Link>
-            <Link href="/corporate" className="btn-outline rounded-md">
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-secondary text-primary">
-                <Play className="h-3.5 w-3.5 fill-current" />
-              </span>
-              Book Consultation
+            <Link href="/corporate" className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
+              Corporate Training <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <TrustedCompanyCarousel />
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
             <div className="flex -space-x-3">
               {learnerAvatars.map((src, i) => (
                 <img
                   key={src}
                   src={src}
                   alt=""
-                  className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-sm"
+                  className="h-10 w-10 rounded-full border-2 border-[#fafafa] object-cover shadow-sm"
                   style={{ zIndex: 5 - i }}
                 />
               ))}
             </div>
-            <div className="flex items-center gap-2 text-sm font-bold text-[#082032]">
-              <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-              4.9/5
-              <span className="font-medium text-muted-foreground">10,000+ reviews</span>
+            <div className="flex flex-col text-left">
+              <div className="text-[12px] text-gray-500 font-medium">Rated by Learners</div>
+              <div className="flex items-center gap-1.5 text-[14px] font-bold text-[#082032]">
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                4.8/5 <span className="font-normal text-gray-400 px-1">•</span> <span className="font-medium text-gray-500 text-[13px]">12,500+ Reviews</span>
+              </div>
             </div>
           </div>
-
-          <TrustedCompanyCarousel />
         </div>
 
-        <HeroImage className="hidden lg:block lg:ml-auto" />
-      </div>
+        {/* RIGHT COLUMN - VISUAL GRAPHIC */}
+        <div className="relative h-[600px] hidden lg:block z-0">
+          
+          {/* Top Right Girl (Microsoft) */}
+          <div className="absolute top-[0%] right-[0%] w-[200px] h-[200px] bg-[#27ae60] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
+             <img src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[85%] object-cover object-top h-[95%]" />
+          </div>
+          <div className="absolute top-[28%] right-[-10%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" className="w-5 h-5" />
+             <div>
+               <div className="text-[13px] font-bold text-[#082032] flex items-center gap-1.5">150% Salary Hike <Lucide.TrendingUp className="w-3.5 h-3.5 text-[#e11d48]" strokeWidth={3} /></div>
+               <div className="text-[10px] text-gray-500 font-medium mt-0.5">SDE II @ Microsoft</div>
+             </div>
+          </div>
 
-      <div className="border-y border-[#082032]/5 bg-white/70 py-5 backdrop-blur">
-        <div className="container-tight grid gap-4 text-sm font-black text-[#082032] sm:grid-cols-3">
-          {["Globally recognized frameworks", "Expert-led live learning", "Corporate and individual programs"].map((item) => (
-            <div key={item} className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5 text-primary" />
-              {item}
-            </div>
-          ))}
+          {/* Left Middle Girl (Citi) */}
+          <div className="absolute top-[25%] left-[5%] w-[180px] h-[180px] bg-[#fcd34d] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
+            <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[80%] object-cover object-top h-[90%]" />
+          </div>
+          <div className="absolute top-[50%] left-[-5%] bg-white p-2.5 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20 min-w-[200px]">
+             <div className="flex-1">
+               <div className="text-[9px] text-gray-400 font-medium line-through mb-0.5">Business Analyst</div>
+               <div className="text-[12px] font-bold text-[#082032] flex items-center gap-1.5"><Lucide.TrendingUp className="w-3.5 h-3.5 text-[#082032]" strokeWidth={3} /> To Project Manager</div>
+             </div>
+             <div className="font-black text-[#003B70] text-lg relative shrink-0">citi<span className="absolute -top-1 right-0 text-red-500 text-[10px]">◝</span></div>
+          </div>
+
+          {/* Bottom Right Boy (Oracle) */}
+          <div className="absolute bottom-[2%] right-[5%] w-[190px] h-[190px] bg-[#fde047] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
+             <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[90%] object-cover object-top h-[95%]" />
+          </div>
+          <div className="absolute bottom-[-2%] right-[-5%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20">
+             <div className="font-black text-[#C74634] text-base tracking-tighter">ORACLE</div>
+             <div>
+               <div className="text-[13px] font-bold text-[#082032] flex items-center gap-1.5">200% Salary Hike <Lucide.TrendingUp className="w-3.5 h-3.5 text-[#e11d48]" strokeWidth={3} /></div>
+               <div className="text-[10px] text-gray-500 font-medium mt-0.5">Cloud Architect @ Oracle</div>
+             </div>
+          </div>
+
+          {/* Bottom Left Boy (Walmart) */}
+          <div className="absolute bottom-[0%] left-[15%] w-[210px] h-[210px] bg-[#34d399] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
+             <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[85%] object-cover object-top h-[95%]" />
+          </div>
+          <div className="absolute bottom-[-10%] left-[5%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-4 z-20">
+             <div>
+               <div className="text-[9px] text-gray-400 font-medium mb-0.5">Data Analyst</div>
+               <div className="text-[12px] font-bold text-[#082032] flex items-center gap-1.5"><Lucide.TrendingUp className="w-3.5 h-3.5 text-[#e11d48]" strokeWidth={3} /> To Data Engineer</div>
+             </div>
+             <div className="font-bold text-[#0071CE] text-base flex items-center gap-1">Walmart<Lucide.Sun className="w-3.5 h-3.5 text-[#FFC220] fill-current" /></div>
+          </div>
+
+          {/* Floating Icons */}
+          <div className="absolute top-[18%] left-[20%] w-12 h-12 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2.5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" alt="Slack" className="w-full h-full object-contain" />
+          </div>
+          <div className="absolute top-[8%] right-[45%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
+            <svg viewBox="0 0 24 24" className="w-full h-full fill-current text-red-600"><path d="M12 2L2 22h20L12 2zm0 4l7 14H5l7-14z"/></svg>
+          </div>
+          <div className="absolute top-[60%] right-[5%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" className="w-full h-full object-contain" />
+          </div>
+          <div className="absolute bottom-[5%] left-[0%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" className="w-full h-full object-contain" />
+          </div>
         </div>
       </div>
+
     </section>
   );
 }
+
