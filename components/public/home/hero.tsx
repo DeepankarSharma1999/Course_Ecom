@@ -1,6 +1,16 @@
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import * as Lucide from "lucide-react";
+
+function resolveCompanyLogo(file: string): string | null {
+  const dir = path.join(process.cwd(), "public", "companies");
+  for (const ext of ["svg", "png", "webp", "jpg", "jpeg"]) {
+    if (fs.existsSync(path.join(dir, `${file}.${ext}`))) return `/companies/${file}.${ext}`;
+  }
+  return null;
+}
 
 const learnerAvatars = [
   "https://i.pravatar.cc/100?img=11",
@@ -12,20 +22,26 @@ const learnerAvatars = [
 
 function TrustedCompanyCarousel() {
   const trustedCompanies = [
-    { name: "Infosys", className: "text-[#007CC3]" },
-    { name: "Hewlett Packard", className: "text-gray-800" },
-    { name: "TIGER ANALYTICS", className: "text-black tracking-tighter" },
-    { name: "WELSPUN", className: "text-blue-600" },
-    { name: "terrapay", className: "text-blue-800 lowercase italic" },
-    { name: "Reliance", className: "text-red-600" }
-  ];
+    { name: "Infosys", file: "infosys", wordmark: "Infosys", className: "text-[#007CC3]" },
+    { name: "Hewlett Packard Enterprise", file: "hpe", wordmark: "Hewlett Packard", className: "text-gray-800" },
+    { name: "Bennett Coleman & Co.", file: "bennett-coleman", wordmark: "Bennett Coleman", className: "text-gray-800" },
+    { name: "Tiger Analytics", file: "tiger-analytics", wordmark: "TIGER ANALYTICS", className: "text-black tracking-tighter" },
+    { name: "Welspun", file: "welspun", wordmark: "WELSPUN", className: "text-blue-600" },
+    { name: "TerraPay", file: "terrapay", wordmark: "terrapay", className: "text-blue-800 lowercase italic" },
+    { name: "Reliance", file: "reliance", wordmark: "Reliance", className: "text-red-600" },
+  ].map((c) => ({ ...c, src: resolveCompanyLogo(c.file) }));
 
   const companySet = (
-    <div className="flex items-center gap-12 pr-12">
+    <div className="flex items-center">
       {trustedCompanies.map((company) => (
-        <span key={company.name} className={`shrink-0 text-[20px] font-black ${company.className}`}>
-          {company.name}
-        </span>
+        <div key={company.name} className="grid h-10 w-36 shrink-0 place-items-center px-3" title={company.name}>
+          {company.src ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={company.src} alt={company.name} className="max-h-9 max-w-[110px] object-contain" />
+          ) : (
+            <span className={`text-[18px] font-black ${company.className}`}>{company.wordmark}</span>
+          )}
+        </div>
       ))}
     </div>
   );
@@ -37,7 +53,7 @@ function TrustedCompanyCarousel() {
         className="relative w-full max-w-full overflow-hidden [contain:paint]"
         style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
       >
-        <div className="flex w-max animate-marquee grayscale opacity-70 hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
           {companySet}
           <div aria-hidden="true">{companySet}</div>
         </div>

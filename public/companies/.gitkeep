@@ -1,0 +1,12 @@
+# "Trusted by" company logos go here (committed to git so they deploy).
+#
+# Drop transparent-background PNG/SVG files named exactly:
+#   infosys.png
+#   hpe.png            (Hewlett Packard Enterprise)
+#   tiger-analytics.png
+#   welspun.png
+#   terrapay.png
+#   reliance.png
+#
+# Until a file exists, a clean text wordmark renders in its place.
+# Use logos of companies whose employees you've genuinely trained.
