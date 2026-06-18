@@ -1,37 +1,85 @@
+import fs from "node:fs";
+import path from "node:path";
+
+type Cert = {
+  name: string;
+  /** Short label shown beneath the logo. */
+  label: string;
+  /** Base filename (without extension) expected in public/certifications/. */
+  file: string;
+};
+
+// Accreditation / partner badges. Official images live in
+// public/certifications/<file>.(png|svg).
+const CERTS: Cert[] = [
+  { name: "Scaled Agile (SAFe)", label: "Scaled Agile", file: "scaled-agile" },
+  { name: "Scrum Alliance", label: "Scrum Alliance", file: "scrum-alliance" },
+  { name: "Scrum.org", label: "Scrum.org", file: "scrum-org" },
+  { name: "IIBA", label: "IIBA", file: "iiba" },
+  { name: "ICAgile", label: "ICAgile", file: "icagile" },
+  { name: "AWS Training Partner", label: "AWS", file: "aws" },
+  { name: "DevOps Institute", label: "DevOps Institute", file: "devops-institute" },
+  { name: "EC-Council", label: "EC-Council", file: "ec-council" },
+  { name: "IASSC", label: "IASSC", file: "iassc" },
+];
+
+// Resolve which logo image (if any) exists on disk — runs on the server.
+function resolveLogo(file: string): string | null {
+  const dir = path.join(process.cwd(), "public", "certifications");
+  for (const ext of ["svg", "png", "webp", "jpg", "jpeg"]) {
+    if (fs.existsSync(path.join(dir, `${file}.${ext}`))) return `/certifications/${file}.${ext}`;
+  }
+  return null;
+}
+
 export function PartnerLogos() {
-  const visualLogos = [
-    { name: "SAFe 6", el: <div className="text-[#cc0f35] font-black text-3xl flex flex-col items-center leading-none"><span>S</span><span className="text-[10px] text-gray-500 font-bold uppercase mt-1">SAFe 6</span></div> },
-    { name: "IIBA", el: <div className="border-2 border-[#1c4b79] p-1 flex flex-col items-center"><div className="bg-[#1c4b79] text-white text-xs font-bold px-2 py-0.5">IIBA</div><div className="bg-[#1FA8A8] text-white text-[8px] font-bold px-1 py-0.5 leading-tight text-center">ENDORSED<br />PROVIDER</div></div> },
-    { name: "Scrum Alliance", el: <div className="flex items-center gap-1.5 text-[#185e93]"><span className="text-[#1FA8A8] text-2xl">*</span><span className="font-serif text-sm font-bold leading-tight">Scrum<br />Alliance</span></div> },
-    { name: "PMI", el: <div className="bg-[#592283] text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xs border-[3px] border-[#31104e]">PMI</div> },
-    { name: "ICAgile", el: <div className="text-[#136699] font-serif italic text-2xl tracking-tight">IC<span className="font-sans text-[#333] font-bold">Agile</span></div> },
-    { name: "PeopleCert", el: <div className="w-12 h-12 rounded-full border-[3px] border-[#1FA8A8] flex items-center justify-center"><div className="w-9 h-9 rounded-full bg-[#1FA8A8] text-white flex items-center justify-center text-[8px] font-bold">PC</div></div> },
-    { name: "LTP", el: <div className="w-12 h-12 rounded-full border-2 border-[#224b7a] flex items-center justify-center bg-[#f0f4f8] text-[#224b7a] font-black text-sm">LTP</div> },
-  ];
+  const items = CERTS.map((c) => ({ ...c, src: resolveLogo(c.file) }));
+
+  const group = (groupKey: string, hidden = false) => (
+    <div className="flex shrink-0 items-start" aria-hidden={hidden}>
+      {items.map((cert, i) => (
+        <div
+          key={`${groupKey}-${cert.name}-${i}`}
+          className="flex w-44 shrink-0 flex-col items-center gap-3 px-3"
+          title={cert.name}
+        >
+          <div className="grid h-12 w-full place-items-center">
+            {cert.src ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={cert.src}
+                alt={cert.name}
+                className="max-h-11 max-w-[96px] object-contain"
+              />
+            ) : (
+              <span className="text-center text-[14px] font-bold tracking-tight text-[#0a2540]">
+                {cert.label}
+              </span>
+            )}
+          </div>
+          <span className="text-center text-[13px] font-medium text-muted-foreground">
+            {cert.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <section className="relative z-20 bg-white px-4 py-12 font-sans">
       <div className="container-tight max-w-6xl">
         <div className="rounded-xl border border-[#082032]/5 bg-white p-7 shadow-[0_16px_50px_rgba(8,32,50,0.08)] md:p-9">
-          <h2 className="mb-8 text-center text-xs font-black uppercase tracking-[0.24em] text-muted-foreground">
-            Built on globally recognised certification frameworks
+          <h2 className="mb-8 text-center text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            Accredited &amp; recognised training partner
           </h2>
-          <div className="relative w-full max-w-full overflow-hidden [contain:paint]" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
-            <div className="flex w-max animate-marquee gap-x-12 opacity-90 hover:[animation-play-state:paused]">
-              <div className="flex items-center gap-x-12 pr-12">
-                {[...visualLogos, ...visualLogos, ...visualLogos].map((logo, i) => (
-                  <div key={`set1-${i}`} className="shrink-0 cursor-default opacity-80 transition-opacity hover:opacity-100" title={logo.name}>
-                    {logo.el}
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-x-12 pr-12" aria-hidden="true">
-                {[...visualLogos, ...visualLogos, ...visualLogos].map((logo, i) => (
-                  <div key={`set2-${i}`} className="shrink-0 cursor-default opacity-80 transition-opacity hover:opacity-100" title={logo.name}>
-                    {logo.el}
-                  </div>
-                ))}
-              </div>
+          <div
+            className="group relative w-full max-w-full overflow-hidden [contain:paint]"
+            style={{ maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)" }}
+          >
+            {/* Two identical groups; the track slides exactly one group width (-50%) for a seamless loop. */}
+            <div className="flex w-max animate-marquee items-center group-hover:[animation-play-state:paused]">
+              {group("a")}
+              {group("b", true)}
             </div>
           </div>
         </div>

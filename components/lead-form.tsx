@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, Download, Loader2 } from "lucide-react";
 
 type Props = {
-  variant?: "card" | "inline";
+  variant?: "card" | "inline" | "sidebar";
   courseSlug?: string;
   countrySlug?: string;
   citySlug?: string;
@@ -91,7 +91,7 @@ export function LeadForm({
 
   if (state === "success") {
     return (
-      <div className={variant === "card" ? "card p-8" : ""}>
+      <div className={variant !== "inline" ? "card p-8" : ""}>
         <div className="flex flex-col items-center text-center py-6">
           <CheckCircle2 className="w-12 h-12 text-green-500 mb-3" />
           <h3 className="h3 mb-2">Thank you!</h3>
@@ -111,8 +111,8 @@ export function LeadForm({
   }
 
   return (
-    <div className={variant === "card" ? "card p-6" : ""}>
-      {variant === "card" && (
+    <div className={variant !== "inline" ? "card p-6" : ""}>
+      {variant !== "inline" && (
         <div className="mb-4">
           <h3 className="text-lg font-bold text-ink-900">{title}</h3>
           <p className="text-sm text-ink-500">{subtitle}</p>

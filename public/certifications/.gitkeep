@@ -1,0 +1,13 @@
+# Official certification-body logos go here (committed to git so they deploy).
+#
+# Drop transparent-background PNG or SVG files named exactly:
+#   scaled-agile.png   (or .svg)   — Scaled Agile / SAFe
+#   pmi.png                          — Project Management Institute
+#   scrum-alliance.png               — Scrum Alliance
+#   axelos.png                       — AXELOS (ITIL / PRINCE2)
+#   iiba.png                         — IIBA
+#   icagile.png                      — ICAgile
+#   peoplecert.png                   — PeopleCert
+#
+# Source each from the body's official partner/accreditation resource kit.
+# Until a file exists, the homepage shows a clean text wordmark fallback.
