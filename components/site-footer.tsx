@@ -49,11 +49,11 @@ const TOP_COURSES = [
 function LinkGroup({ data }: { data: { title: string; links: string[] } }) {
   return (
     <div>
-      <h3 className="font-bold text-[#082032] mb-5">{data.title}</h3>
+      <h3 className="font-bold text-brand-950 mb-5">{data.title}</h3>
       <ul className="space-y-3">
         {data.links.map((link) => (
           <li key={link}>
-            <Link href="#" className="text-[13px] text-[#4a7298] hover:text-primary transition-colors block">
+            <Link href="#" className="text-[13px] text-brand-700 hover:text-brand-600 transition-colors block">
               {link}
             </Link>
           </li>
@@ -65,7 +65,7 @@ function LinkGroup({ data }: { data: { title: string; links: string[] } }) {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#f8fcfc] font-sans pt-16 pb-8 border-t border-gray-100">
+    <footer className="bg-brand-50/30 font-sans pt-16 pb-8 border-t border-brand-100/50">
       <div className="container-tight max-w-[1400px] px-6 md:px-12">
         <div className="grid lg:grid-cols-[1fr_500px] gap-16">
            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
@@ -87,17 +87,17 @@ export function SiteFooter() {
 
            <div>
               <div className="mb-10">
-                 <h3 className="font-bold text-[#082032] mb-4">Connect with us</h3>
+                 <h3 className="font-bold text-brand-950 mb-4">Connect with us</h3>
                  <div className="flex gap-4">
-                    <a href="#" className="w-8 h-8 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Linkedin className="w-4 h-4" /></a>
-                    <a href="#" className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Instagram className="w-4 h-4" /></a>
-                    <a href="#" className="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Facebook className="w-4 h-4" /></a>
-                    <a href="#" className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:opacity-80 transition-opacity"><Twitter className="w-4 h-4 fill-current" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Linkedin className="w-4 h-4" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Instagram className="w-4 h-4" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Facebook className="w-4 h-4" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Twitter className="w-4 h-4 fill-current" /></a>
                  </div>
               </div>
               
               <div className="mb-10">
-                 <h3 className="font-bold text-[#082032] mb-4">We Accept</h3>
+                 <h3 className="font-bold text-brand-950 mb-4">We Accept</h3>
                  <div className="flex gap-5 items-center flex-wrap">
                      <span className="font-black text-blue-800 italic text-xl leading-none">PayPal</span>
                      <span className="font-black text-blue-600 text-[10px] leading-tight w-14 uppercase">American Express</span>
@@ -114,8 +114,8 @@ export function SiteFooter() {
                  <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6">
                     {CONTACT_NUMBERS.map(c => (
                         <div key={c.country}>
-                           <div className="flex items-center gap-2 mb-2 font-bold text-[#082032] text-[13px]"><span className="text-lg leading-none">{c.flag}</span> {c.country}</div>
-                           <div className="text-[12px] text-[#4a7298] space-y-1 whitespace-pre-line leading-relaxed">{c.number}</div>
+                           <div className="flex items-center gap-2 mb-2 font-bold text-brand-950 text-[13px]"><span className="text-lg leading-none">{c.flag}</span> {c.country}</div>
+                           <div className="text-[12px] text-brand-700 space-y-1 whitespace-pre-line leading-relaxed">{c.number}</div>
                         </div>
                     ))}
                  </div>
@@ -123,25 +123,25 @@ export function SiteFooter() {
            </div>
         </div>
 
-        <div className="mt-16 border-t border-gray-200 pt-10">
+        <div className="mt-16 border-t border-brand-100/50 pt-10">
            <div className="mb-8">
-              <h3 className="font-bold text-[#082032] text-[15px] mb-4">Top Categories</h3>
-              <div className="flex flex-wrap items-center text-[13px] text-[#4a7298] leading-8">
+              <h3 className="font-bold text-brand-950 text-[15px] mb-4">Top Categories</h3>
+              <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
                  {TOP_CATEGORIES.map((cat, i) => (
                     <React.Fragment key={cat}>
-                       <Link href="#" className="hover:text-primary transition-colors whitespace-nowrap">{cat}</Link>
-                       {i < TOP_CATEGORIES.length - 1 && <span className="mx-3 text-gray-300">|</span>}
+                       <Link href="#" className="hover:text-brand-600 transition-colors whitespace-nowrap">{cat}</Link>
+                       {i < TOP_CATEGORIES.length - 1 && <span className="mx-3 text-brand-200">|</span>}
                     </React.Fragment>
                  ))}
               </div>
            </div>
            <div className="mb-10">
-              <h3 className="font-bold text-[#082032] text-[15px] mb-4">Top Courses</h3>
-              <div className="flex flex-wrap items-center text-[13px] text-[#4a7298] leading-8">
+              <h3 className="font-bold text-brand-950 text-[15px] mb-4">Top Courses</h3>
+              <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
                  {TOP_COURSES.map((course, i) => (
                     <React.Fragment key={course}>
-                       <Link href="#" className="hover:text-primary transition-colors whitespace-nowrap">{course}</Link>
-                       {i < TOP_COURSES.length - 1 && <span className="mx-3 text-gray-300">|</span>}
+                       <Link href="#" className="hover:text-brand-600 transition-colors whitespace-nowrap">{course}</Link>
+                       {i < TOP_COURSES.length - 1 && <span className="mx-3 text-brand-200">|</span>}
                     </React.Fragment>
                  ))}
               </div>
@@ -151,6 +151,11 @@ export function SiteFooter() {
               <p>Disclaimer: The content on the website and/or Platform is for informational and educational purposes only. The user of this website and/or Platform (User) should not construe any such information as legal, investment, tax, financial or any other advice. Nothing contained herein constitutes any representation, solicitation, recommendation, promotion or advertisement on behalf of ULearnSystems and / or its Affiliates (including but not limited to its subsidiaries, associates, employees, directors, key managerial personnel, consultants, trainers, advisors).</p>
               <p>The User is solely responsible for evaluating the merits and risks associated with use of the information included as part of the content. The User agrees and covenants not to hold ULearnSystems and its Affiliates responsible for any and all losses or damages arising from such decision made by them basis the information provided in the course and / or available on the website and/or platform. ULearnSystems reserves the right to cancel or reschedule events in case of insufficient registrations, or if presenters cannot attend due to unforeseen circumstances. You are therefore advised to consult a ULearnSystems agent prior to making any travel arrangements for a workshop. For more details, please refer to the <Link href="#" className="text-primary hover:underline">Cancellation & Refund Policy</Link>.</p>
               <p>CSM®, CSPO®, CSD®, CSP®, A-CSPO®, A-CSM® are registered trademarks of Scrum Alliance®. ULearnSystems Private Limited is a Licensed Training Partner (LTP) of Scrum Alliance®. PMP is a registered mark of the Project Management Institute, Inc. CAPM is a registered mark of the Project Management Institute, Inc. PMI-ACP is a registered mark of the Project Management Institute, Inc. PMI-RMP is a registered mark of the Project Management Institute, Inc. PMI-PBA is a registered mark of the Project Management Institute, Inc. PgMP is a registered mark of the Project Management Institute, Inc. PfMP is a registered mark of the Project Management Institute, Inc. ULearnSystems Private Limited is a Premier Authorized Training Partner (ATP) of Project Management Institute, Inc. The PMI Premier Authorized Training Partner logo is a registered mark of the Project Management Institute, Inc. PMBOK is a registered mark of the Project Management Institute, Inc. ITIL®, PRINCE2®, PRINCE2 Agile®, AgileSHIFT® are registered trademarks of AXELOS Limited, used under permission of AXELOS Limited. All rights reserved. COBIT® is a registered trademark of the Information Systems Audit and Control Association® (ISACA®). (ISC)2® is a registered trademark of International Information Systems Security Certification Consortium, Inc. CompTIA Authorized Training Partner. CMMI® is registered in the U.S. Patent and Trademark Office by Carnegie Mellon University. FRM®, GARP™, and Global Association of Risk Professionals™ are trademarks owned by the Global Association of Risk Professionals, Inc. Global Association of Risk Professionals, Inc. (GARP™) does not endorse, promote, review, or warrant the accuracy of the products or services offered by ULearnSystems Private Limited for FRM® related information, nor does it endorse any pass rates claimed by the provider. Further, GARP is not responsible for any fees or costs paid by the user. IIBA®, the IIBA® logo, BABOK®, and Business Analysis Body of Knowledge® are registered trademarks owned by the International Institute of Business Analysis. ULearnSystems Private Limited is an Endorsed Education Provider of IIBA®. Scaled Agile Framework® and SAFe® are registered trademarks of Scaled Agile, Inc.® ULearnSystems Private Limited is a Platinum SPCT Partner of Scaled Agile, Inc.® ULearnSystems Private Limited is an Authorized Training Partner of CertNexus. ULearnSystems Private Limited is a Microsoft Partner. ULearnSystems Private Limited is an AWS Training Partner (ATP). ULearnSystems Private Limited is an ICAgile Member Training Organization. ULearnSystems Private Limited is a Professional Training Network member of scrum.org. ULearnSystems Private Limited is an Accredited Examination Centre of IASSC. ULearnSystems Private Limited is a Registered Education Partner (REP) of the DevOps Institute (DOI). ULearnSystems Private Limited is an ATO of PeopleCert. ULearnSystems Private Limited is an Authorized Training Partner (ATP) and Accredited Training Center (ATC) of the EC-Council.</p>
+           </div>
+           
+           <div className="mt-8 pt-6 border-t border-brand-100/50 text-center text-xs text-brand-600/70 flex items-center justify-center gap-2">
+              <Link href="/privacy-policy" className="hover:text-brand-600 transition-colors underline underline-offset-2">Our Privacy Policy</Link>
+              <span>© 2011-{new Date().getFullYear()}, ULearnSystems Private Limited. All Rights Reserved</span>
            </div>
         </div>
       </div>

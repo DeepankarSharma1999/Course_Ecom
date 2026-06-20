@@ -80,7 +80,14 @@ export function AccoladesSection() {
           
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500 max-w-5xl mx-auto">
              {LOGOS.map((logo, i) => (
-                <span key={i} className={`font-black text-lg ${i%2===0 ? 'text-[#e11d48]' : 'text-[#082032]'} tracking-tighter shrink-0`}>{logo}</span>
+                <div key={i} className="flex items-center justify-center shrink-0">
+                  <svg width="140" height="40" viewBox="0 0 140 40" className="w-auto h-8 md:h-10">
+                    <rect width="140" height="40" rx="4" fill="transparent" />
+                    <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill={i%2===0 ? '#e11d48' : '#082032'} fontSize="14" fontWeight="900" fontFamily="sans-serif" letterSpacing="-0.5">
+                      {logo}
+                    </text>
+                  </svg>
+                </div>
              ))}
           </div>
         </div>
