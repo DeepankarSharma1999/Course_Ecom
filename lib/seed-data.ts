@@ -123,14 +123,14 @@ export const CITIES_IN = [
 
 
 const mockAiCourses = [
-  { slug: "applied-agentic-ai-certification", title: "Applied Agentic AI Certification" },
-  { slug: "gen-ai-for-scrum-masters", title: "Gen AI for Scrum Masters" },
-  { slug: "gen-ai-for-project-managers", title: "Gen AI for Project Managers" },
-  { slug: "gen-ai-for-product-owners", title: "Gen AI for Product Owners/Product Managers" },
-  { slug: "gen-ai-for-enterprise-agilist", title: "Gen AI for Enterprise Agilist" },
-  { slug: "gen-ai-for-business-analysts", title: "Gen AI for Business Analysts" },
-  { slug: "ai-powered-software-development", title: "AI Powered Software Development" },
-  { slug: "no-code-ai-agents", title: "No-Code AI Agents & Automation" }
+  { slug: "applied-agentic-ai-certification", title: "Applied Agentic AI Certification", heroImage: "/images/courses/agentic_ai_1781964207523.png" },
+  { slug: "gen-ai-for-scrum-masters", title: "Gen AI for Scrum Masters", heroImage: "/images/courses/ai_scrum_master_1781964220173.png" },
+  { slug: "gen-ai-for-project-managers", title: "Gen AI for Project Managers", heroImage: "/images/courses/ai_project_manager_1781964235559.png" },
+  { slug: "gen-ai-for-product-owners", title: "Gen AI for Product Owners/Product Managers", heroImage: "/images/courses/ai_product_owner_1781964264209.png" },
+  { slug: "gen-ai-for-enterprise-agilist", title: "Gen AI for Enterprise Agilist", heroImage: "/images/courses/ai_enterprise_agilist_1781964279835.png" },
+  { slug: "gen-ai-for-business-analysts", title: "Gen AI for Business Analysts", heroImage: "/images/courses/ai_business_analyst_1781964309553.png" },
+  { slug: "ai-powered-software-development", title: "AI Powered Software Development", heroImage: "/images/courses/ai_software_development_1781964322288.png" },
+  { slug: "no-code-ai-agents", title: "No-Code AI Agents & Automation", heroImage: "/images/courses/ai_no_code_agents_1781964381914.png" }
 ].map(c => ({
   slug: c.slug,
   title: c.title,
@@ -147,7 +147,7 @@ const mockAiCourses = [
   examIncluded: true,
   ratingAvg: 4.8,
   ratingCount: 1200 + Math.floor(Math.random() * 1000),
-  heroImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80", // AI themed
+  heroImage: c.heroImage,
   keyFeatures: [],
   learningOutcomes: ["Master core concepts", "Real-world application", "Pass the certification exam"],
   whoShouldAttend: ["Professionals seeking certification", "Career switchers", "Team leads"],

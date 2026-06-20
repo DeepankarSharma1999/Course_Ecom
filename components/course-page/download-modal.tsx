@@ -30,9 +30,9 @@ export function DownloadModal({ isOpen, onClose, title, subtitle }: DownloadModa
               {/* Decorative placeholder for the illustration */}
               <div className="absolute inset-0 bg-[#e0f2f1] rounded-full opacity-50 blur-2xl"></div>
               <div className="relative z-10 w-full h-full border-4 border-white shadow-xl bg-[#f0f7f7] rounded-xl flex items-center justify-center overflow-hidden">
-                <ImageIcon className="w-16 h-16 text-[#1FA8A8]/30" />
-                <div className="absolute top-4 left-4 bg-white px-2 py-1 rounded shadow text-[8px] font-bold text-gray-500">Career switch</div>
-                <div className="absolute bottom-4 right-4 bg-white px-2 py-1 rounded shadow text-[8px] font-bold text-gray-500">Salary Hike</div>
+                <img src="/images/courses/guide_modal_illustration_1781964394583.png" alt="Download Guide" className="w-full h-full object-cover" />
+                <div className="absolute top-4 left-4 bg-white px-2 py-1 rounded shadow text-[8px] font-bold text-[#082032]">Career switch</div>
+                <div className="absolute bottom-4 right-4 bg-white px-2 py-1 rounded shadow text-[8px] font-bold text-[#082032]">Salary Hike</div>
               </div>
            </div>
         </div>

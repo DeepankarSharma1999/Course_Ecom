@@ -18,25 +18,29 @@ export function SecretSauceSection() {
       title: "Experiential learning",
       subtitle: "with games, role-plays, simulations, and case studies",
       features: ["Games", "Role-Plays", "Simulations", "Case-Studies"],
-      bgColor: "bg-[#f8fdfdf]"
+      bgColor: "bg-[#f8fdfdf]",
+      image: "/images/courses/feature_experiential_1781964406598.png"
     },
     {
       title: "Mock Tests",
       subtitle: "4+ Tests",
       features: [],
-      bgColor: "bg-[#f0fdf4]"
+      bgColor: "bg-[#f0fdf4]",
+      image: "/images/courses/feature_mock_tests_1781964418747.png"
     },
     {
       title: "Educational Units",
       subtitle: "Earn 16 SEUs and 16 PDUs",
       features: [],
-      bgColor: "bg-[#f8fafc]"
+      bgColor: "bg-[#f8fafc]",
+      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80"
     },
     {
       title: "Lifetime Access",
       subtitle: "To course materials and updates",
       features: [],
-      bgColor: "bg-[#fffbeb]"
+      bgColor: "bg-[#fffbeb]",
+      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=400&q=80"
     }
   ];
 
@@ -82,8 +86,12 @@ export function SecretSauceSection() {
 
             {/* Mock Image Placeholder aligned to bottom right */}
             <div className="mt-8 flex justify-end px-4 pb-4">
-              <div className="w-48 h-32 bg-white rounded-lg shadow-md border border-gray-100 flex items-center justify-center">
-                <span className="text-gray-300 font-bold">Image</span>
+              <div className="w-48 h-32 bg-white rounded-lg shadow-md border border-gray-100 flex items-center justify-center overflow-hidden">
+                {item.image ? (
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                ) : (
+                  <span className="text-gray-300 font-bold">Image</span>
+                )}
               </div>
             </div>
           </div>

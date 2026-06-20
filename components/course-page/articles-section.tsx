@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { type CourseContent } from "@/lib/seed-data";
 
@@ -20,21 +21,24 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
       desc: "Scrum adoption is growing very fast and companies are looking for well...",
       views: "13774 views",
       date: "May 2024",
-      bg: "bg-orange-100"
+      bg: "bg-orange-100",
+      image: "/images/articles/article_thumb_1_1781964920607.png"
     },
     {
       title: "Certified Scrum Master (CSM) Future: Trends & Predictions",
       desc: "A scrum master is a professional who uses lightweight Agile project...",
       views: "6407 views",
       date: "November 2023",
-      bg: "bg-blue-100"
+      bg: "bg-blue-100",
+      image: "/images/articles/article_thumb_2_1781964933185.png"
     },
     {
       title: "What are the Major Differences Between CSM vs SAFe...",
       desc: "Today businesses are complex, and business environments are extremely...",
       views: "14720 views",
       date: "May 2024",
-      bg: "bg-purple-100"
+      bg: "bg-purple-100",
+      image: "/images/articles/article_thumb_3_1781964947383.png"
     }
   ];
 
@@ -65,9 +69,9 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
         {articles.map((article, i) => (
           <div key={i} className="min-w-[300px] md:min-w-[350px] bg-white rounded-2xl border border-gray-200 p-4 shadow-sm snap-start flex flex-col hover:shadow-md transition-shadow">
             
-            {/* Mock Thumbnail Image */}
-            <div className={`w-full h-40 rounded-xl mb-4 flex items-center justify-center ${article.bg}`}>
-               <span className="font-bold text-gray-600">Thumbnail</span>
+            {/* Article Thumbnail Image */}
+            <div className={`w-full h-40 rounded-xl mb-4 flex items-center justify-center overflow-hidden ${article.bg}`}>
+               <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
             </div>
             
             <div className="flex items-center justify-between mb-4">
@@ -82,9 +86,9 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
             <h3 className="font-bold text-[#082032] text-[16px] mb-2 line-clamp-2">{article.title}</h3>
             <p className="text-[13px] text-gray-500 mb-6 line-clamp-2 flex-1">{article.desc}</p>
             
-            <button className="text-[13px] font-bold text-[#082032] underline text-left w-max hover:text-[#1FA8A8] transition-colors">
+            <Link href="#" className="text-[13px] font-bold text-[#082032] underline text-left w-max hover:text-[#1FA8A8] transition-colors">
               Read more
-            </button>
+            </Link>
           </div>
         ))}
       </div>
