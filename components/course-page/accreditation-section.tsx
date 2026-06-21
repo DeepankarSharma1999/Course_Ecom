@@ -9,12 +9,12 @@ export function AccreditationSection({ course }: { course: CourseContent }) {
 
   return (
     <section className="scroll-mt-24 pt-8 border-t border-gray-100 pb-2">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-        <h2 className="text-[24px] font-bold text-[#082032] mb-4">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-8 overflow-hidden">
+        <h2 className="text-[20px] md:text-[24px] font-bold text-[#082032] mb-4 break-words leading-tight">
           ULearnSystems is a {course.accreditedBy || "Scrum Alliance"} Licensed Training Partner (LTP)
         </h2>
         
-        <p className="font-bold text-[#082032] text-[15px] mb-6">
+        <p className="font-bold text-[#082032] text-[14px] md:text-[15px] mb-6 break-words">
           Two-Year Professional Membership | Authorized Curriculum | Certified Trainers | Global Recognition | Hands-On Practice | Career Tools | Premium Resources
         </p>
         

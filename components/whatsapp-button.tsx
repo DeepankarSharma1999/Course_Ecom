@@ -18,7 +18,7 @@ export function FloatingWhatsApp({ phone, message }: { phone?: string | null; me
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 left-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-emerald-500 text-white shadow-card-lg transition-all hover:scale-105 hover:bg-emerald-600"
+      className="fixed bottom-24 lg:bottom-5 left-4 lg:left-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-emerald-500 text-white shadow-card-lg transition-all hover:scale-105 hover:bg-emerald-600"
     >
       <WhatsappIcon className="w-6 h-6" />
     </Link>

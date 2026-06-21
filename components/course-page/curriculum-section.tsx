@@ -195,7 +195,7 @@ export function CurriculumSection({ course }: { course: CourseContent }) {
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
         {course.shortTitle} Certification Training Curriculum
       </div>
-      <h2 className="text-[32px] font-bold text-[#082032] mb-8">Curriculum</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Curriculum</h2>
       
       <div className="space-y-4">
         {curriculumToRender.map((m: any, i: number) => {

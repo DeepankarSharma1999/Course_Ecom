@@ -109,10 +109,11 @@ export function SiteHeader({
           
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-2 bg-black/20 rounded-lg px-3 py-1.5 border border-white/10">
-              <span className="text-white/70 text-[10px] font-bold uppercase tracking-widest text-right leading-none">
-                USE CODE<br/><span className="text-[#1FA8A8] font-black text-[12px]">FLAT 10% OFF</span>
-              </span>
-              <span className="text-amber-400 font-black text-[16px] tracking-widest bg-amber-400/10 px-2 py-0.5 rounded">
+              <div className="text-right">
+                <span className="block text-white/70 text-[9px] font-bold uppercase tracking-widest mb-0.5 leading-none">USE CODE</span>
+                <span className="block text-[#1FA8A8] font-black text-[12px] leading-none">FLAT 10% OFF</span>
+              </div>
+              <span className="text-amber-400 font-black text-[16px] tracking-widest bg-amber-400/10 px-2 py-0.5 rounded ml-1">
                 ULEARN10
               </span>
             </div>
@@ -416,7 +417,7 @@ export function SiteHeader({
               <ChevronRight className="w-4 h-4 opacity-50" />
             </Link>
             <Link href="/resources" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Resources <ChevronRight className="w-4 h-4 opacity-50" /></Link>
-            <Link href="/corporate" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Corporate <ChevronRight className="w-4 h-4 opacity-50" /></Link>
+            <Link href="/corporate-training" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Corporate <ChevronRight className="w-4 h-4 opacity-50" /></Link>
           </div>
         </div>
       )}

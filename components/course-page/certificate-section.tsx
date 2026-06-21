@@ -7,10 +7,10 @@ export function CertificateSection({ course }: { course: CourseContent }) {
 
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100">
-      <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
+      <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-2 break-words">
         GET THE {certName} CERTIFICATION
       </div>
-      <h2 className="text-[32px] font-bold text-[#082032] mb-6">Earn the Coveted {certName} Credential</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-6 break-words leading-tight">Earn the Coveted {certName} Credential</h2>
       
       <p className="text-[14px] text-[#475569] leading-relaxed mb-10">
         Earning the {course.shortTitle} certification goes beyond acquiring a new skill—it's validation of your mastery. This certification isn't just a certificate; it's a testament to your dedication and expertise. It unlocks a realm of opportunities in your professional journey, signaling to employers and peers that you possess the knowledge and commitment to excel in guiding projects with agility and efficiency. You also get access to the global community and free resources.
@@ -35,22 +35,22 @@ export function CertificateSection({ course }: { course: CourseContent }) {
               for completing the prescribed requirements for this certification and is hereby entitled to all privileges and benefits offered.
             </p>
 
-            <div className="flex justify-between w-full max-w-2xl px-8 items-end mt-auto">
-              <div className="text-center">
-                <div className="w-32 border-b border-gray-400 mb-2"></div>
-                <div className="text-[10px] text-gray-500 uppercase tracking-widest">Certified Trainer</div>
+            <div className="flex flex-col sm:flex-row justify-between w-full max-w-2xl px-2 md:px-8 items-center sm:items-end mt-auto gap-6 sm:gap-0">
+              <div className="text-center order-2 sm:order-1">
+                <div className="w-24 md:w-32 border-b border-gray-400 mb-2 mx-auto"></div>
+                <div className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest">Certified Trainer</div>
               </div>
               
-              <div className="w-20 h-20 rounded-full border-4 border-yellow-400 bg-yellow-50 flex items-center justify-center relative">
-                <div className="absolute inset-2 border border-yellow-400 rounded-full border-dashed"></div>
-                <div className="text-[10px] font-black text-yellow-600 uppercase text-center leading-tight">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-yellow-400 bg-yellow-50 flex items-center justify-center relative order-1 sm:order-2 shrink-0">
+                <div className="absolute inset-1.5 md:inset-2 border border-yellow-400 rounded-full border-dashed"></div>
+                <div className="text-[8px] md:text-[10px] font-black text-yellow-600 uppercase text-center leading-tight">
                   Certified<br/>Award
                 </div>
               </div>
 
-              <div className="text-center">
-                <div className="w-32 border-b border-gray-400 mb-2"></div>
-                <div className="text-[10px] text-gray-500 uppercase tracking-widest">Chairman of Board</div>
+              <div className="text-center order-3">
+                <div className="w-24 md:w-32 border-b border-gray-400 mb-2 mx-auto"></div>
+                <div className="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest">Chairman of Board</div>
               </div>
             </div>
           </div>

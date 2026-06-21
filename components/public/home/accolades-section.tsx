@@ -1,5 +1,40 @@
+"use client";
+
 import { ChevronLeft, ChevronRight, Mail } from "lucide-react";
 import Link from "next/link";
+import { useState, memo } from "react";
+import Image from "next/image";
+
+const SPOTLIGHT_ARTICLES = [
+  {
+    org: "Business Standard",
+    logo: "BS",
+    title: "ULearnSystems crosses 10 million enrollments across 100+ nations!",
+    img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
+    color: "text-red-700"
+  },
+  {
+    org: "ET BRAND EQUITY",
+    logo: "ET",
+    title: "How ULearnSystems is reshaping corporate Agile training globally.",
+    img: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600",
+    color: "text-[#E42E35]"
+  },
+  {
+    org: "moneycontrol",
+    logo: "mc",
+    title: "The rise of Micro-credentials: ULearnSystems leads the way in 2026.",
+    img: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600",
+    color: "text-green-700"
+  },
+  {
+    org: "YOURSTORY",
+    logo: "YS",
+    title: "From a startup to an enterprise learning giant: The ULearnSystems journey.",
+    img: "https://images.pexels.com/photos/3184315/pexels-photo-3184315.jpeg?auto=compress&cs=tinysrgb&w=600",
+    color: "text-orange-600"
+  }
+];
 
 const ACCOLADES = [
   { title: "Employee Choice Award", org: "ULearnSystems rated Top 3 in Tech Firms", logo: "cube-icon" },
@@ -11,8 +46,100 @@ const ACCOLADES = [
 ];
 
 const LOGOS = [
-  "Business Standard", "ET BRAND EQUITY", "THE TIMES OF INDIA", "Hindustan Times", "moneycontrol", "Bloomberg", "FINANCIAL EXPRESS", "YOURSTORY", "CXOToday.com", "EXPRESS COMPUTER"
+  { name: "Business Standard", content: <div className="font-serif font-black text-[18px] text-red-700 tracking-tight whitespace-nowrap">Business Standard</div> },
+  { name: "Economic Times", content: <div className="flex items-center gap-1 whitespace-nowrap"><span className="bg-[#E42E35] text-white font-serif font-bold px-1.5 py-0.5 text-[11px]">ET</span><span className="font-sans font-bold text-[15px] tracking-tight text-black">BrandEquity</span></div> },
+  { name: "The Times of India", content: <div className="font-serif font-bold text-[16px] tracking-tight uppercase text-black whitespace-nowrap">The Times of India</div> },
+  { name: "Hindustan Times", content: <div className="font-serif font-black text-[18px] tracking-tighter text-[#00a0e3] whitespace-nowrap">Hindustan Times</div> },
+  { name: "Moneycontrol", content: <div className="font-sans font-black text-[18px] tracking-tighter text-[#1f2937] whitespace-nowrap">money<span className="text-[#009245]">control</span></div> },
+  { name: "Bloomberg", content: <div className="font-sans font-black text-[18px] tracking-tight text-black uppercase whitespace-nowrap">BLOOMBERG</div> },
+  { name: "Financial Express", content: <div className="font-serif font-bold text-[15px] text-[#003b73] uppercase tracking-wide whitespace-nowrap">Financial Express</div> },
+  { name: "YourStory", content: <div className="font-sans font-bold text-[18px] text-[#f15a22] whitespace-nowrap">YOURSTORY</div> },
+  { name: "CXOToday", content: <div className="font-sans font-bold text-[16px] tracking-tight whitespace-nowrap"><span className="text-[#d82a2a]">CXO</span>today.com</div> },
+  { name: "Express Computer", content: <div className="font-sans font-black text-[15px] tracking-tight text-[#c62828] uppercase whitespace-nowrap">Express Computer</div> }
 ];
+
+// Memoized Marquee to prevent re-rendering when carousel state changes, fixing INP.
+const AccoladesMarquee = memo(function AccoladesMarquee() {
+  return (
+    <div className="relative flex overflow-hidden group max-w-[100vw]">
+      <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0">
+         {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
+            <div key={`a-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
+               <div className="h-[80px] flex items-center justify-center mb-6 w-full">
+                  {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
+                  {accolade.logo === "VCCIRCLE" && <div className="bg-black text-white text-xl font-bold px-4 py-2 uppercase tracking-tighter leading-none">VCCIRCLE</div>}
+                  {accolade.logo === "BWEDUCATION" && <div className="text-xl font-black text-blue-600">BW<span className="text-red-500">EDUC</span>TION</div>}
+                  {accolade.logo === "cube-icon" && <div className="text-blue-600 text-[60px] leading-none">⬢</div>}
+                  {accolade.logo === "H" && <div className="text-orange-400 font-serif text-[60px] leading-none">H</div>}
+                  {accolade.logo === "EDU" && <div className="text-green-600 font-bold text-3xl leading-none border-2 border-green-600 p-2">EDU</div>}
+               </div>
+               <h3 className="text-[15px] font-bold text-[#082032] mb-3 whitespace-normal leading-tight">{accolade.title}</h3>
+               <p className="text-[12px] text-gray-500 font-medium whitespace-normal leading-relaxed">{accolade.org}</p>
+            </div>
+         ))}
+      </div>
+      <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0" aria-hidden="true">
+         {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
+            <div key={`b-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
+               <div className="h-[80px] flex items-center justify-center mb-6 w-full">
+                  {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
+                  {accolade.logo === "VCCIRCLE" && <div className="bg-black text-white text-xl font-bold px-4 py-2 uppercase tracking-tighter leading-none">VCCIRCLE</div>}
+                  {accolade.logo === "BWEDUCATION" && <div className="text-xl font-black text-blue-600">BW<span className="text-red-500">EDUC</span>TION</div>}
+                  {accolade.logo === "cube-icon" && <div className="text-blue-600 text-[60px] leading-none">⬢</div>}
+                  {accolade.logo === "H" && <div className="text-orange-400 font-serif text-[60px] leading-none">H</div>}
+                  {accolade.logo === "EDU" && <div className="text-green-600 font-bold text-3xl leading-none border-2 border-green-600 p-2">EDU</div>}
+               </div>
+               <h3 className="text-[15px] font-bold text-[#082032] mb-3 whitespace-normal leading-tight">{accolade.title}</h3>
+               <p className="text-[12px] text-gray-500 font-medium whitespace-normal leading-relaxed">{accolade.org}</p>
+            </div>
+         ))}
+      </div>
+    </div>
+  );
+});
+
+// Extracted Carousel to isolate state updates and fix INP.
+function SpotlightCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? SPOTLIGHT_ARTICLES.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === SPOTLIGHT_ARTICLES.length - 1 ? 0 : prev + 1));
+  };
+
+  const activeArticle = SPOTLIGHT_ARTICLES[currentIndex];
+
+  return (
+    <div className="flex items-center justify-between gap-6">
+      <button onClick={handlePrev} className="w-10 h-10 shrink-0 rounded-full border border-gray-300 flex items-center justify-center text-[#082032] hover:bg-gray-50 transition-colors bg-white shadow-sm z-20 hover:scale-105 active:scale-95">
+         <ChevronLeft className="w-5 h-5" />
+      </button>
+      
+      <div className="flex-1 bg-white rounded-[24px] border border-gray-200 shadow-[0_15px_50px_rgba(0,0,0,0.06)] p-3 flex flex-col md:flex-row items-center gap-6 overflow-hidden relative">
+         <div className="w-full md:w-[240px] h-[160px] rounded-2xl overflow-hidden shrink-0 bg-gray-100">
+            <img key={activeArticle.img} src={activeArticle.img} className="w-full h-full object-cover animate-in fade-in duration-500" alt={activeArticle.org} />
+         </div>
+         <div className="flex-1 pr-0 md:pr-8 py-4 md:py-0 text-center md:text-left relative z-10">
+            <div className="flex flex-col md:flex-row items-center justify-between mb-3 gap-2">
+               <h3 className="text-xl font-bold text-[#082032] animate-in fade-in duration-300" key={activeArticle.org}>{activeArticle.org}</h3>
+               <div className={`${activeArticle.color} font-serif font-black text-2xl tracking-tighter`}>{activeArticle.logo}</div>
+            </div>
+            <p key={activeArticle.title} className="text-[14px] text-gray-500 font-medium mb-6 animate-in slide-in-from-bottom-2 fade-in duration-500">{activeArticle.title}</p>
+            <Link href="#" className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-gray-200 text-[13px] font-bold text-[#082032] hover:border-gray-400 transition-colors">
+               Read more <span className="text-[10px]">↗</span>
+            </Link>
+         </div>
+      </div>
+
+      <button onClick={handleNext} className="w-10 h-10 shrink-0 rounded-full border border-gray-300 flex items-center justify-center text-[#082032] hover:bg-gray-50 transition-colors bg-white shadow-sm z-20 hover:scale-105 active:scale-95">
+         <ChevronRight className="w-5 h-5" />
+      </button>
+    </div>
+  );
+}
 
 export function AccoladesSection() {
   return (
@@ -34,42 +161,7 @@ export function AccoladesSection() {
           <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">Our Commitment to Quality,<br/>Reflected in Accolades</h2>
         </div>
         
-        {/* Marquee Container */}
-        <div className="relative flex overflow-hidden group max-w-[100vw]">
-          <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0">
-             {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
-                <div key={`a-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
-                   <div className="h-[80px] flex items-center justify-center mb-6 w-full">
-                      {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
-                      {accolade.logo === "VCCIRCLE" && <div className="bg-black text-white text-xl font-bold px-4 py-2 uppercase tracking-tighter leading-none">VCCIRCLE</div>}
-                      {accolade.logo === "BWEDUCATION" && <div className="text-xl font-black text-blue-600">BW<span className="text-red-500">EDUC</span>TION</div>}
-                      {accolade.logo === "cube-icon" && <div className="text-blue-600 text-[60px] leading-none">⬢</div>}
-                      {accolade.logo === "H" && <div className="text-orange-400 font-serif text-[60px] leading-none">H</div>}
-                      {accolade.logo === "EDU" && <div className="text-green-600 font-bold text-3xl leading-none border-2 border-green-600 p-2">EDU</div>}
-                   </div>
-                   <h3 className="text-[15px] font-bold text-[#082032] mb-3 whitespace-normal leading-tight">{accolade.title}</h3>
-                   <p className="text-[12px] text-gray-500 font-medium whitespace-normal leading-relaxed">{accolade.org}</p>
-                </div>
-             ))}
-          </div>
-          {/* Duplicate for seamless looping */}
-          <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0" aria-hidden="true">
-             {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
-                <div key={`b-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
-                   <div className="h-[80px] flex items-center justify-center mb-6 w-full">
-                      {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
-                      {accolade.logo === "VCCIRCLE" && <div className="bg-black text-white text-xl font-bold px-4 py-2 uppercase tracking-tighter leading-none">VCCIRCLE</div>}
-                      {accolade.logo === "BWEDUCATION" && <div className="text-xl font-black text-blue-600">BW<span className="text-red-500">EDUC</span>TION</div>}
-                      {accolade.logo === "cube-icon" && <div className="text-blue-600 text-[60px] leading-none">⬢</div>}
-                      {accolade.logo === "H" && <div className="text-orange-400 font-serif text-[60px] leading-none">H</div>}
-                      {accolade.logo === "EDU" && <div className="text-green-600 font-bold text-3xl leading-none border-2 border-green-600 p-2">EDU</div>}
-                   </div>
-                   <h3 className="text-[15px] font-bold text-[#082032] mb-3 whitespace-normal leading-tight">{accolade.title}</h3>
-                   <p className="text-[12px] text-gray-500 font-medium whitespace-normal leading-relaxed">{accolade.org}</p>
-                </div>
-             ))}
-          </div>
-        </div>
+        <AccoladesMarquee />
       </div>
 
       {/* 2. Spotlight Section */}
@@ -78,15 +170,10 @@ export function AccoladesSection() {
           <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">ULEARNSYSTEMS NEWS AND INSIGHTS</div>
           <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-12">ULearnSystems in the Spotlight</h2>
           
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 max-w-4xl mx-auto">
              {LOGOS.map((logo, i) => (
-                <div key={i} className="flex items-center justify-center shrink-0">
-                  <svg width="140" height="40" viewBox="0 0 140 40" className="w-auto h-8 md:h-10">
-                    <rect width="140" height="40" rx="4" fill="transparent" />
-                    <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill={i%2===0 ? '#e11d48' : '#082032'} fontSize="14" fontWeight="900" fontFamily="sans-serif" letterSpacing="-0.5">
-                      {logo}
-                    </text>
-                  </svg>
+                <div key={i} className="flex items-center justify-center shrink-0 w-[160px] h-[40px] grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-default">
+                  {logo.content}
                 </div>
              ))}
           </div>
@@ -100,31 +187,7 @@ export function AccoladesSection() {
               <div className="h-px bg-gray-200 flex-1"></div>
            </div>
 
-           <div className="flex items-center justify-between gap-6">
-              <button className="w-10 h-10 shrink-0 rounded-full border border-gray-300 flex items-center justify-center text-[#082032] hover:bg-gray-50 transition-colors bg-white shadow-sm z-20">
-                 <ChevronLeft className="w-5 h-5" />
-              </button>
-              
-              <div className="flex-1 bg-white rounded-[24px] border border-gray-200 shadow-[0_15px_50px_rgba(0,0,0,0.06)] p-3 flex flex-col md:flex-row items-center gap-6">
-                 <div className="w-full md:w-[240px] h-[160px] rounded-2xl overflow-hidden shrink-0 bg-gray-100">
-                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" className="w-full h-full object-cover" alt="Team" />
-                 </div>
-                 <div className="flex-1 pr-0 md:pr-8 py-4 md:py-0 text-center md:text-left">
-                    <div className="flex flex-col md:flex-row items-center justify-between mb-3 gap-2">
-                       <h3 className="text-xl font-bold text-[#082032]">Business Standard</h3>
-                       <div className="text-red-700 font-serif font-black text-2xl tracking-tighter">BS</div>
-                    </div>
-                    <p className="text-[14px] text-gray-500 font-medium mb-6">ULearnSystems crosses 10 million enrollments across 100+ nations!</p>
-                    <Link href="#" className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-gray-200 text-[13px] font-bold text-[#082032] hover:border-gray-400 transition-colors">
-                       Read more <span className="text-[10px]">↗</span>
-                    </Link>
-                 </div>
-              </div>
-
-              <button className="w-10 h-10 shrink-0 rounded-full border border-gray-300 flex items-center justify-center text-[#082032] hover:bg-gray-50 transition-colors bg-white shadow-sm z-20">
-                 <ChevronRight className="w-5 h-5" />
-              </button>
-           </div>
+           <SpotlightCarousel />
         </div>
       </div>
 

@@ -26,7 +26,7 @@ export function LearningObjectivesSection({ course }: { course: CourseContent })
         <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
           WHAT YOU WILL LEARN IN {course.shortTitle.toUpperCase()} CERTIFICATION
         </div>
-        <h2 className="text-[32px] font-bold text-[#082032] mb-10">Learning Objectives</h2>
+        <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-10 break-words leading-tight">Learning Objectives</h2>
         
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
           {objectives.slice(0, displayCount).map((obj, i) => (

@@ -1,7 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE, cn } from "@/lib/utils";
 import { Plus_Jakarta_Sans } from "next/font/google";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 0.85,
+  maximumScale: 5,
+};
 
 const jakarta = Plus_Jakarta_Sans({subsets:['latin'],variable:'--font-sans'});
 

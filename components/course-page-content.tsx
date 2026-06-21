@@ -5,7 +5,7 @@ import {
   Star, Users, ArrowRight, MapPin, Globe, Tag, AlarmClock, Shield,
 } from "lucide-react";
 import * as Lucide from "lucide-react";
-import { type CourseContent, type FaqItem, findCity, findCountry } from "@/lib/seed-data";
+import { type CourseContent, type FaqItem, findCity, findCountry, CITIES_IN, COURSES } from "@/lib/seed-data";
 import { LeadForm } from "@/components/lead-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { BrochureButton } from "@/components/brochure-button";
@@ -43,18 +43,20 @@ type Schedule = {
 function generateSchedules(course: CourseContent): Schedule[] {
   const out: Schedule[] = [];
   const now = new Date();
-  for (let i = 1; i <= 6; i++) {
-    const start = new Date(now); start.setDate(now.getDate() + i * 14);
-    const end = new Date(start); end.setDate(start.getDate() + 1);
-    out.push({
-      mode: i % 2 === 0 ? "Live Online Classroom" : "Live Online Classroom",
-      startDate: start, endDate: end,
-      timeLabel: "09:00 AM - 06:00 PM",
-      priceInr: course.basePriceInr,
-      discountPct: i % 3 === 0 ? 15 : 10,
-      seatsLeft: 12 - i,
-      isFilling: i <= 2,
-    });
+  for (let m = 0; m < 12; m++) {
+    for (let i = 1; i <= 2; i++) {
+      const start = new Date(now.getFullYear(), now.getMonth() + m, i * 10);
+      const end = new Date(start); end.setDate(start.getDate() + 1);
+      out.push({
+        mode: "Live Online Classroom",
+        startDate: start, endDate: end,
+        timeLabel: "09:00 AM - 06:00 PM",
+        priceInr: course.basePriceInr,
+        discountPct: (m + i) % 3 === 0 ? 15 : 10,
+        seatsLeft: 12 - ((m + i) % 5),
+        isFilling: m === 0,
+      });
+    }
   }
   return out;
 }
@@ -111,8 +113,8 @@ export function CoursePageContent({
 
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Left Content */}
-            <div className="flex-1 max-w-3xl">
-              <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3">
+            <div className="flex-1 max-w-3xl overflow-hidden">
+              <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-3 break-words">
                 {course.shortTitle} CERTIFICATION TRAINING
               </div>
 
@@ -210,9 +212,9 @@ export function CoursePageContent({
       </section>
 
       {/* Sticky Secondary Navigation */}
-      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-[0_2px_10px_rgb(0,0,0,0.03)]">
-        <div className="container-tight flex items-center justify-between">
-          <nav className="flex items-center overflow-x-auto hide-scrollbar">
+      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-[0_2px_10px_rgb(0,0,0,0.03)] w-full">
+        <div className="container-tight flex items-center justify-between gap-2">
+          <nav className="flex items-center overflow-x-auto hide-scrollbar flex-1 min-w-0">
             {[
               { id: "highlights", label: "Course Highlights" },
               { id: "curriculum", label: "Curriculum" },
@@ -222,15 +224,15 @@ export function CoursePageContent({
               <a 
                 key={link.id} 
                 href={`#${link.id}`}
-                className={`px-5 py-4 text-[14px] font-bold whitespace-nowrap transition-colors border-b-[3px] ${i === 0 ? "text-[#1FA8A8] border-[#1FA8A8]" : "text-gray-600 hover:text-[#1FA8A8] border-transparent hover:border-[#1FA8A8]"}`}
+                className={`px-4 md:px-5 py-4 text-[13px] md:text-[14px] font-bold whitespace-nowrap transition-colors border-b-[3px] ${i === 0 ? "text-[#1FA8A8] border-[#1FA8A8]" : "text-gray-600 hover:text-[#1FA8A8] border-transparent hover:border-[#1FA8A8]"}`}
               >
                 {link.label}
               </a>
             ))}
           </nav>
           {/* Mobile Enquire CTA (only visible on mobile sticky) */}
-          <div className="lg:hidden pl-4 pr-2 py-2">
-            <a href="#enquire" className="px-4 py-2 bg-[#082032] text-white text-[13px] font-bold rounded-[4px] whitespace-nowrap">
+          <div className="lg:hidden shrink-0 py-2 pl-2">
+            <a href="#enquire" className="px-4 py-2 bg-[#082032] text-white text-[12px] font-bold rounded-[4px] whitespace-nowrap">
               Enroll
             </a>
           </div>
@@ -241,7 +243,7 @@ export function CoursePageContent({
       <div className="container-tight py-10 flex flex-col lg:flex-row gap-10 items-start">
         
         {/* LEFT COLUMN: Main Content */}
-        <div className="flex-1 space-y-16 min-w-0">
+        <div className="flex-1 space-y-16 min-w-0 w-full max-w-full overflow-x-hidden">
           
           {/* Highlights */}
           <HighlightsSection course={course} />
@@ -383,16 +385,31 @@ export function CoursePageContent({
         <section className="pt-16">
           <h3 className="text-[22px] font-bold text-[#082032] mb-6">ULearnSystems Trending Courses</h3>
           <div className="flex flex-wrap gap-2 mb-10">
-            {["CSM Certification", "CSPO Certification", "Leading SAFe Certification", "PSM Certification", "PMP Certification", "ITIL Certification", "PRINCE2 Certification", "Python Certification Training"].map(t => (
-              <span key={t} className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded cursor-pointer hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors">{t}</span>
+            {COURSES.filter(c => c.slug !== course.slug).slice(0, 8).map(c => (
+              <Link 
+                key={c.slug} 
+                href={`/${c.slug}`}
+                className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors"
+              >
+                {c.title}
+              </Link>
             ))}
           </div>
 
           <h3 className="text-[22px] font-bold text-[#082032] mb-6">Find {course.shortTitle} Courses in Other Top Cities</h3>
           <div className="flex flex-wrap gap-2">
-            {["Bangalore", "Hyderabad", "Chennai", "Pune", "Mumbai", "Delhi", "Kolkata", "Sambhaji Nagar", "Lucknow", "Noida"].map(t => (
-              <span key={t} className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded cursor-pointer hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors">{t}</span>
-            ))}
+            {CITIES_IN.map(c => {
+              if (c.slug === citySlug) return null;
+              return (
+                <Link 
+                  key={c.slug} 
+                  href={`/${countrySlug || 'in'}/${course.slug}/${c.slug}`}
+                  className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors"
+                >
+                  {c.name}
+                </Link>
+              );
+            })}
           </div>
         </section>
       </div>

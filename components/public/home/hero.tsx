@@ -73,11 +73,11 @@ export function HomeHero() {
         
         {/* LEFT COLUMN */}
         <div className="min-w-0 max-w-2xl text-left z-10">
-          <h1 className="max-w-[600px] text-[40px] font-bold leading-[1.1] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
+          <h1 className="max-w-[600px] text-[32px] md:text-[40px] font-bold leading-[1.15] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
             Learn In-Demand Skills for Tomorrow&apos;s Jobs
           </h1>
 
-          <p className="mt-6 max-w-[500px] text-[16px] leading-relaxed text-gray-600 font-medium">
+          <p className="mt-4 md:mt-6 max-w-[500px] text-[14px] md:text-[16px] leading-relaxed text-gray-600 font-medium">
             Experience learning that delivers results. We&apos;re disrupting the way you learn <span className="font-bold text-[#082032]">new-age technologies</span> and we&apos;ll help you get <span className="font-bold text-[#082032]">job-ready</span>, fast.
           </p>
 
@@ -85,7 +85,7 @@ export function HomeHero() {
             <Link href="/courses" className="btn-primary rounded text-center py-3.5 px-8">
               Explore All Courses
             </Link>
-            <Link href="/corporate" className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
+            <Link href="/corporate-training" className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
               Corporate Training <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

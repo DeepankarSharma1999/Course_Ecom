@@ -82,7 +82,7 @@ export default async function HomePage() {
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/courses" className="btn-primary">Explore Courses</Link>
-                <Link href="/corporate" className="btn-outline border-white/20 bg-transparent text-white hover:bg-white/10">Corporate Training</Link>
+                <Link href="/corporate-training" className="btn-outline border-white/20 bg-transparent text-white hover:bg-white/10">Corporate Training</Link>
               </div>
             </div>
             <div className="relative opacity-95">

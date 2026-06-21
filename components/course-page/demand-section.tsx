@@ -5,9 +5,31 @@ import { Award, ChevronDown, ChevronUp, X, Image as ImageIcon } from "lucide-rea
 import { type CourseContent } from "@/lib/seed-data";
 import { DownloadModal } from "./download-modal";
 
+const ROLE_DATA = {
+  "Scrum Master": {
+    salary: { min: "₹9L", avg: "₹15L", max: "₹20L" },
+    companies: ["Coca-Cola", "Amazon", "Sapient", "HSBC", "Walmart", "Accenture"],
+    demand: { percent: "87%", text: "Agile practitioners use Scrum" }
+  },
+  "Senior Scrum Master": {
+    salary: { min: "₹14L", avg: "₹22L", max: "₹30L" },
+    companies: ["Microsoft", "IBM", "Deloitte", "TCS", "Infosys", "Wipro"],
+    demand: { percent: "92%", text: "Organizations adopting scaled Agile" }
+  },
+  "Chief Scrum Master": {
+    salary: { min: "₹20L", avg: "₹35L", max: "₹50L" },
+    companies: ["Google", "Meta", "Apple", "Netflix", "Uber", "Airbnb"],
+    demand: { percent: "95%", text: "Enterprise Agile transformation" }
+  }
+};
+type RoleType = keyof typeof ROLE_DATA;
+
 export function DemandSection({ course }: { course: CourseContent }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeRole, setActiveRole] = useState<RoleType>("Scrum Master");
+
+  const currentData = ROLE_DATA[activeRole];
 
   return (
     <>
@@ -16,14 +38,20 @@ export function DemandSection({ course }: { course: CourseContent }) {
           <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
             High Demand for {course.shortTitle} Professionals
           </div>
-          <h2 className="text-[32px] font-bold text-[#082032] mb-10">Soaring Demand and Accelerated Growth</h2>
+          <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-10 break-words leading-tight">Soaring Demand and Accelerated Growth</h2>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
             {/* Tabs */}
             <div className="flex items-center gap-1 border border-gray-200 rounded-full p-1.5 mb-10 mx-auto max-w-fit overflow-x-auto hide-scrollbar">
-              <div className="px-6 py-2 bg-[#f0f7f7] text-[#1FA8A8] font-bold text-[14px] rounded-full cursor-pointer whitespace-nowrap">Scrum Master</div>
-              <div className="px-6 py-2 text-gray-500 font-semibold text-[14px] hover:text-gray-900 cursor-pointer whitespace-nowrap">Senior Scrum Master</div>
-              <div className="px-6 py-2 text-gray-500 font-semibold text-[14px] hover:text-gray-900 cursor-pointer whitespace-nowrap">Chief Scrum Master</div>
+              {(Object.keys(ROLE_DATA) as RoleType[]).map((role) => (
+                <div 
+                  key={role}
+                  onClick={() => setActiveRole(role)}
+                  className={`px-6 py-2 font-bold text-[14px] rounded-full cursor-pointer whitespace-nowrap transition-colors ${activeRole === role ? "bg-[#f0f7f7] text-[#1FA8A8]" : "text-gray-500 hover:text-gray-900"}`}
+                >
+                  {role}
+                </div>
+              ))}
             </div>
 
             <div className="grid md:grid-cols-3 gap-10">
@@ -31,9 +59,9 @@ export function DemandSection({ course }: { course: CourseContent }) {
               <div>
                 <h4 className="text-[14px] font-bold text-[#082032] mb-6">Average Salary</h4>
                 <div className="h-32 flex items-end gap-3 justify-center">
-                  <div className="w-12 bg-orange-100 h-[40%] rounded-t-sm relative"><span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 font-bold">₹9L</span></div>
-                  <div className="w-12 bg-orange-300 h-[80%] rounded-t-sm relative"><span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[12px] font-black text-[#082032]">₹15L</span></div>
-                  <div className="w-12 bg-orange-100 h-[60%] rounded-t-sm relative"><span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 font-bold">₹20L</span></div>
+                  <div className="w-12 bg-orange-100 h-[40%] rounded-t-sm relative"><span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 font-bold">{currentData.salary.min}</span></div>
+                  <div className="w-12 bg-orange-300 h-[80%] rounded-t-sm relative"><span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[12px] font-black text-[#082032]">{currentData.salary.avg}</span></div>
+                  <div className="w-12 bg-orange-100 h-[60%] rounded-t-sm relative"><span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 font-bold">{currentData.salary.max}</span></div>
                 </div>
                 <div className="flex justify-center gap-5 mt-3 text-[11px] text-gray-400 font-bold uppercase tracking-wider">
                   <span>Min</span><span>Average</span><span>Max</span>
@@ -44,7 +72,7 @@ export function DemandSection({ course }: { course: CourseContent }) {
               <div className="md:border-l md:border-r border-gray-100 md:px-8">
                 <h4 className="text-[14px] font-bold text-[#082032] mb-6">Hiring Companies</h4>
                 <div className="grid grid-cols-2 gap-y-5 gap-x-4">
-                  {["Coca-Cola", "Amazon", "Sapient", "HSBC", "Walmart", "Accenture"].map(c => (
+                  {currentData.companies.map(c => (
                     <div key={c} className="text-[13px] font-bold text-gray-400 flex items-center justify-center h-8">
                       {c}
                     </div>
@@ -59,8 +87,8 @@ export function DemandSection({ course }: { course: CourseContent }) {
                   <div className="w-10 h-10 bg-yellow-50 rounded flex items-center justify-center mb-4">
                     <Award className="w-5 h-5 text-yellow-600" />
                   </div>
-                  <div className="text-3xl font-black text-[#082032] mb-1">87%</div>
-                  <div className="text-[13px] text-gray-500 leading-tight pr-4">Agile practitioners use Scrum</div>
+                  <div className="text-3xl font-black text-[#082032] mb-1">{currentData.demand.percent}</div>
+                  <div className="text-[13px] text-gray-500 leading-tight pr-4">{currentData.demand.text}</div>
                 </div>
               </div>
             </div>
