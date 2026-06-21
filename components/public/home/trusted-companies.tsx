@@ -11,8 +11,9 @@ const COMPANIES = [
 ];
 
 export function TrustedCompanies() {
-  // Duplicate array to create a seamless loop
-  const logos = [...COMPANIES, ...COMPANIES];
+  // Duplicate array multiple times to create a seamless loop even on ultra-wide screens
+  const base = [...COMPANIES, ...COMPANIES, ...COMPANIES, ...COMPANIES];
+  const logos = [...base, ...base];
 
   return (
     <section className="py-10 bg-white font-sans overflow-hidden border-t border-gray-100">

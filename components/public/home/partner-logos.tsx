@@ -76,10 +76,12 @@ export function PartnerLogos() {
             className="group relative w-full max-w-full overflow-hidden [contain:paint]"
             style={{ maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)" }}
           >
-            {/* Two identical groups; the track slides exactly one group width (-50%) for a seamless loop. */}
+            {/* Four identical groups; the track slides exactly two group widths (-50%) for a seamless loop. */}
             <div className="flex w-max animate-marquee items-center group-hover:[animation-play-state:paused]">
               {group("a")}
               {group("b", true)}
+              {group("c", true)}
+              {group("d", true)}
             </div>
           </div>
         </div>
