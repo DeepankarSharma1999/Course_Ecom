@@ -20,7 +20,7 @@ export function RelatedCoursesSection({ course }: { course: CourseContent }) {
         RECOMMENDED COURSES FOR {course.shortTitle.toUpperCase()}
       </div>
       <div className="flex justify-between items-end mb-8">
-        <h2 className="text-[32px] font-bold text-[#082032]">Learners Also Enrolled For</h2>
+        <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] break-words leading-tight">Learners Also Enrolled For</h2>
         <div className="flex gap-2">
           <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-50 transition-colors">
             <ChevronLeft className="w-5 h-5" />

@@ -43,13 +43,13 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
   ];
 
   return (
-    <section className="scroll-mt-24 pt-12 pb-12 border-t border-gray-100">
+    <section className="scroll-mt-24 pt-12 pb-12 border-t border-gray-100 overflow-hidden">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-        <div className="max-w-3xl">
-          <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
+        <div className="max-w-3xl overflow-hidden">
+          <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-2 break-words">
             RECOMMENDED BLOGS FOR {course.shortTitle.toUpperCase()}
           </div>
-          <h2 className="text-[32px] font-bold text-[#082032] mb-4">Expert Articles on {course.shortTitle}</h2>
+          <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-4 break-words leading-tight">Expert Articles on {course.shortTitle}</h2>
           <p className="text-[14px] text-gray-500 leading-relaxed max-w-2xl">
             Looking to learn more about the {course.shortTitle} role and how it is making an impact in the leading organizations across the world? Read about our curated list of articles written based on actual events and projects in the real world.
           </p>

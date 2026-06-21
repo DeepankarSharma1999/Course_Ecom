@@ -29,7 +29,7 @@ export function FaqSection({ faqs, shortTitle }: { faqs: FaqItem[], shortTitle: 
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
         {shortTitle.toUpperCase()} CERTIFICATION COURSE FAQS
       </div>
-      <h2 className="text-[32px] font-bold text-[#082032] mb-8">Frequently Asked Questions</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Frequently Asked Questions</h2>
       
       {/* Tabs */}
       <div className="flex overflow-x-auto hide-scrollbar mb-8 bg-white border border-gray-200 rounded-full p-1.5 w-max max-w-full shadow-sm">

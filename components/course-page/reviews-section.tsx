@@ -39,10 +39,10 @@ export function ReviewsSection() {
 
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100 pb-10 overflow-hidden">
-      <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
+      <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-2 break-words">
         CSM CERTIFICATION COURSE REVIEWS
       </div>
-      <h2 className="text-[32px] font-bold text-[#082032] mb-8">Our Learners Love Us</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Our Learners Love Us</h2>
       
       <div className="flex items-center justify-between mb-8">
         <div className="flex bg-white rounded-full border border-gray-200 p-1">
@@ -101,31 +101,37 @@ export function ReviewsSection() {
       </div>
 
       {/* Aggregate Stats */}
-      <div className="mt-6 bg-white rounded-2xl border border-gray-200 p-6 flex flex-wrap justify-between items-center gap-6 shadow-sm">
-        <div className="flex flex-col items-center">
-          <div className="text-xl font-bold mb-1 text-gray-800 flex items-center gap-1">Google</div>
-          <div className="flex items-center gap-2">
+      <div className="mt-6 bg-white rounded-xl md:rounded-2xl border border-gray-200 p-4 md:p-6 flex flex-col md:flex-row justify-between items-center shadow-sm divide-y md:divide-y-0 md:divide-x divide-gray-100">
+        <div className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
+          <div className="text-[15px] md:text-xl font-bold text-gray-800 md:mb-1">Google</div>
+          <div className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[14px]">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-bold text-[14px]">4.8/5</span>
-            <span className="text-[12px] text-gray-500">• 6,028 Reviews</span>
+            <span className="font-bold">4.8/5</span>
+            <span className="text-gray-500 text-[11px] md:text-[12px]">
+               <span className="hidden md:inline">• </span>6,028 <span className="hidden sm:inline">Reviews</span>
+            </span>
           </div>
         </div>
-        <div className="hidden md:block w-px h-10 bg-gray-200"></div>
-        <div className="flex flex-col items-center">
-          <div className="text-xl font-bold mb-1 text-blue-600 flex items-center gap-1">facebook</div>
-          <div className="flex items-center gap-2">
+
+        <div className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
+          <div className="text-[15px] md:text-xl font-bold text-blue-600 md:mb-1">facebook</div>
+          <div className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[14px]">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-bold text-[14px]">4.7/5</span>
-            <span className="text-[12px] text-gray-500">• 991 Reviews</span>
+            <span className="font-bold">4.7/5</span>
+            <span className="text-gray-500 text-[11px] md:text-[12px]">
+               <span className="hidden md:inline">• </span>991 <span className="hidden sm:inline">Reviews</span>
+            </span>
           </div>
         </div>
-        <div className="hidden md:block w-px h-10 bg-gray-200"></div>
-        <div className="flex flex-col items-center">
-          <div className="text-xl font-bold mb-1 text-red-600 flex items-center gap-1">switchup</div>
-          <div className="flex items-center gap-2">
+
+        <div className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
+          <div className="text-[15px] md:text-xl font-bold text-red-600 md:mb-1">switchup</div>
+          <div className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[14px]">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-bold text-[14px]">4.9/5</span>
-            <span className="text-[12px] text-gray-500">• 228 Reviews</span>
+            <span className="font-bold">4.9/5</span>
+            <span className="text-gray-500 text-[11px] md:text-[12px]">
+               <span className="hidden md:inline">• </span>228 <span className="hidden sm:inline">Reviews</span>
+            </span>
           </div>
         </div>
       </div>

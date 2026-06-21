@@ -9,11 +9,11 @@ export function HighlightsSection({ course }: { course: CourseContent }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="highlights" className="scroll-mt-24 pt-4">
-      <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
+    <section id="highlights" className="scroll-mt-24 pt-4 overflow-hidden">
+      <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-2 break-words">
         {course.category?.name || "CSM"} Certification Highlights
       </div>
-      <h2 className="text-[32px] font-bold text-[#082032] mb-10">{course.shortTitle} Course Highlights</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-10 break-words leading-tight">{course.shortTitle} Course Highlights</h2>
       
       <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
         {course.keyFeatures.map((kf, i) => {

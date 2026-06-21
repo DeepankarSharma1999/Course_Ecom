@@ -111,8 +111,8 @@ export function CoursePageContent({
 
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Left Content */}
-            <div className="flex-1 max-w-3xl">
-              <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3">
+            <div className="flex-1 max-w-3xl overflow-hidden">
+              <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-3 break-words">
                 {course.shortTitle} CERTIFICATION TRAINING
               </div>
 
@@ -210,9 +210,9 @@ export function CoursePageContent({
       </section>
 
       {/* Sticky Secondary Navigation */}
-      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-[0_2px_10px_rgb(0,0,0,0.03)]">
-        <div className="container-tight flex items-center justify-between">
-          <nav className="flex items-center overflow-x-auto hide-scrollbar">
+      <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-[0_2px_10px_rgb(0,0,0,0.03)] w-full">
+        <div className="container-tight flex items-center justify-between gap-2">
+          <nav className="flex items-center overflow-x-auto hide-scrollbar flex-1 min-w-0">
             {[
               { id: "highlights", label: "Course Highlights" },
               { id: "curriculum", label: "Curriculum" },
@@ -222,15 +222,15 @@ export function CoursePageContent({
               <a 
                 key={link.id} 
                 href={`#${link.id}`}
-                className={`px-5 py-4 text-[14px] font-bold whitespace-nowrap transition-colors border-b-[3px] ${i === 0 ? "text-[#1FA8A8] border-[#1FA8A8]" : "text-gray-600 hover:text-[#1FA8A8] border-transparent hover:border-[#1FA8A8]"}`}
+                className={`px-4 md:px-5 py-4 text-[13px] md:text-[14px] font-bold whitespace-nowrap transition-colors border-b-[3px] ${i === 0 ? "text-[#1FA8A8] border-[#1FA8A8]" : "text-gray-600 hover:text-[#1FA8A8] border-transparent hover:border-[#1FA8A8]"}`}
               >
                 {link.label}
               </a>
             ))}
           </nav>
           {/* Mobile Enquire CTA (only visible on mobile sticky) */}
-          <div className="lg:hidden pl-4 pr-2 py-2">
-            <a href="#enquire" className="px-4 py-2 bg-[#082032] text-white text-[13px] font-bold rounded-[4px] whitespace-nowrap">
+          <div className="lg:hidden shrink-0 py-2 pl-2">
+            <a href="#enquire" className="px-4 py-2 bg-[#082032] text-white text-[12px] font-bold rounded-[4px] whitespace-nowrap">
               Enroll
             </a>
           </div>
@@ -241,7 +241,7 @@ export function CoursePageContent({
       <div className="container-tight py-10 flex flex-col lg:flex-row gap-10 items-start">
         
         {/* LEFT COLUMN: Main Content */}
-        <div className="flex-1 space-y-16 min-w-0">
+        <div className="flex-1 space-y-16 min-w-0 w-full max-w-full overflow-x-hidden">
           
           {/* Highlights */}
           <HighlightsSection course={course} />

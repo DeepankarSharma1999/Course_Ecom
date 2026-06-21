@@ -73,11 +73,11 @@ export function HomeHero() {
         
         {/* LEFT COLUMN */}
         <div className="min-w-0 max-w-2xl text-left z-10">
-          <h1 className="max-w-[600px] text-[40px] font-bold leading-[1.1] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
+          <h1 className="max-w-[600px] text-[32px] md:text-[40px] font-bold leading-[1.15] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
             Learn In-Demand Skills for Tomorrow&apos;s Jobs
           </h1>
 
-          <p className="mt-6 max-w-[500px] text-[16px] leading-relaxed text-gray-600 font-medium">
+          <p className="mt-4 md:mt-6 max-w-[500px] text-[14px] md:text-[16px] leading-relaxed text-gray-600 font-medium">
             Experience learning that delivers results. We&apos;re disrupting the way you learn <span className="font-bold text-[#082032]">new-age technologies</span> and we&apos;ll help you get <span className="font-bold text-[#082032]">job-ready</span>, fast.
           </p>
 

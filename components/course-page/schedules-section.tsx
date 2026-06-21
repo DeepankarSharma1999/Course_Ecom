@@ -53,7 +53,7 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
   return (
     <section id="schedules" className="scroll-mt-24 pt-8 border-t border-gray-100">
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">Explore Our Schedules</div>
-      <h2 className="text-[32px] font-bold text-[#082032] mb-8">Schedules</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Schedules</h2>
       
       <div className="mb-6 text-[13px] font-semibold text-gray-500">{displaySchedules.length} Results</div>
 
@@ -94,20 +94,20 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
           const isWeekend = i % 2 !== 0;
 
           return (
-            <div key={i} className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 grid lg:grid-cols-[1fr_auto_auto] gap-8 items-center hover:border-[#1FA8A8]/50 transition-colors">
+            <div key={i} className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 lg:p-6 grid lg:grid-cols-[1fr_auto_auto] gap-4 lg:gap-8 items-center hover:border-[#1FA8A8]/50 transition-colors">
               
               {/* Info */}
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`px-2.5 py-1 rounded text-[11px] font-bold flex items-center gap-1 ${!isWeekend ? 'bg-orange-50 text-orange-800' : 'bg-indigo-50 text-indigo-800'}`}>
+                <div className="flex items-center gap-2 mb-2 lg:mb-3">
+                  <span className={`px-2 py-0.5 lg:px-2.5 lg:py-1 rounded text-[10px] lg:text-[11px] font-bold flex items-center gap-1 ${!isWeekend ? 'bg-orange-50 text-orange-800' : 'bg-indigo-50 text-indigo-800'}`}>
                     <Sun className="w-3 h-3" /> {!isWeekend ? "Afternoon" : "Evening"}
                   </span>
                 </div>
-                <h3 className="text-[18px] font-black text-[#082032] mb-2">{fmtDate(s.startDate)} - {fmtDate(s.endDate)}</h3>
-                <div className="flex items-center gap-3 text-[13px] text-gray-500 mb-3">
+                <h3 className="text-[15px] lg:text-[18px] font-black text-[#082032] mb-1 lg:mb-2 leading-tight">{fmtDate(s.startDate)} - {fmtDate(s.endDate)}</h3>
+                <div className="flex items-center gap-3 text-[12px] lg:text-[13px] text-gray-500 mb-2 lg:mb-3">
                   <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> IST • {s.timeLabel}</span>
                 </div>
-                <div className="flex items-center gap-3 text-[13px] font-semibold text-gray-700 mb-6">
+                <div className="flex items-center gap-3 text-[12px] lg:text-[13px] font-semibold text-gray-700 mb-4 lg:mb-6">
                   <span className="flex items-center gap-1 text-[#1FA8A8]">
                     <Globe className="w-3.5 h-3.5" /> {s.mode}
                   </span>
@@ -117,12 +117,12 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
                 
                 {/* Trainer */}
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm ${!isWeekend ? "bg-blue-600" : "bg-red-400"}`}>
+                  <div className={`w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center text-white font-bold text-xs lg:text-sm ${!isWeekend ? "bg-blue-600" : "bg-red-400"}`}>
                     {!isWeekend ? "GA" : "TM"}
                   </div>
                   <div>
-                    <div className="text-[14px] font-bold text-[#082032]">{!isWeekend ? "Govind Abkari" : "Tobias Mayer"}</div>
-                    <div className="text-[12px] text-gray-500">Trainer</div>
+                    <div className="text-[13px] lg:text-[14px] font-bold text-[#082032] leading-tight">{!isWeekend ? "Govind Abkari" : "Tobias Mayer"}</div>
+                    <div className="text-[11px] lg:text-[12px] text-gray-500">Trainer</div>
                   </div>
                 </div>
               </div>
@@ -143,21 +143,21 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
               </div>
 
               {/* Price & Action */}
-              <div className="text-right flex flex-col justify-center min-w-[200px]">
+              <div className="text-left lg:text-right flex flex-col justify-center min-w-0 lg:min-w-[200px] mt-2 lg:mt-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-gray-100">
                 {s.discountPct && (
-                  <div className="text-[11px] font-bold text-red-500 mb-1.5 flex items-center justify-end gap-2">
+                  <div className="text-[10px] lg:text-[11px] font-bold text-red-500 mb-1 lg:mb-1.5 flex items-center justify-start lg:justify-end gap-2">
                     <span className="italic">Hurry, Sale ends soon!</span>
-                    <span className="px-1.5 py-0.5 bg-red-500 text-white rounded">{s.discountPct}% OFF</span>
+                    <span className="px-1.5 py-0.5 bg-red-500 text-white rounded leading-none">{s.discountPct}% OFF</span>
                   </div>
                 )}
-                <div className="text-[22px] font-black text-[#082032] flex items-center justify-end gap-2 mb-1">
+                <div className="text-[18px] lg:text-[22px] font-black text-[#082032] flex items-center justify-start lg:justify-end gap-2 mb-1">
                   {formatInCurrency(s.priceInr * qty * (1 - (s.discountPct ?? 0) / 100), currency)}
-                  {s.discountPct && <span className="text-[14px] font-semibold text-gray-400 line-through">{formatInCurrency(s.priceInr * qty, currency)}</span>}
+                  {s.discountPct && <span className="text-[12px] lg:text-[14px] font-semibold text-gray-400 line-through">{formatInCurrency(s.priceInr * qty, currency)}</span>}
                 </div>
-                <div className="text-[11px] text-gray-500 mb-4">
+                <div className="text-[10px] lg:text-[11px] text-gray-500 mb-3 lg:mb-4">
                   As low as {formatInCurrency(s.priceInr * qty * 0.1, currency)}/month <Info className="w-3 h-3 inline" />
                 </div>
-                <a href="#enquire" className="w-full h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[14px]">
+                <a href="#enquire" className="w-full h-9 lg:h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[13px] lg:text-[14px]">
                   Enroll Now
                 </a>
               </div>

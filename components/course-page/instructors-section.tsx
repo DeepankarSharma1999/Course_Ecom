@@ -43,7 +43,7 @@ export function InstructorsSection({ course }: { course: CourseContent }) {
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
         OUR SUPPORT SYSTEM FOR {course.shortTitle.toUpperCase()} TRAINING
       </div>
-      <h2 className="text-[32px] font-bold text-[#082032] mb-8">Meet the Team That's Invested in Your Success</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Meet the Team That's Invested in Your Success</h2>
       
       <div className="flex items-center justify-between mb-8">
         <button className="px-5 py-2 rounded-full bg-[#1FA8A8] text-white font-bold text-[14px] flex items-center gap-2">

@@ -16,7 +16,7 @@ export function DemandSection({ course }: { course: CourseContent }) {
           <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
             High Demand for {course.shortTitle} Professionals
           </div>
-          <h2 className="text-[32px] font-bold text-[#082032] mb-10">Soaring Demand and Accelerated Growth</h2>
+          <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-10 break-words leading-tight">Soaring Demand and Accelerated Growth</h2>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
             {/* Tabs */}

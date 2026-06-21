@@ -143,7 +143,7 @@ export function LeadForm({
           <input name="consentMarketing" type="checkbox" defaultChecked className="mt-0.5" />
           <span>I agree to receive course information and updates.</span>
         </label>
-        <button type="submit" disabled={state === "loading"} className="btn-accent w-full">
+        <button type="submit" disabled={state === "loading"} className="btn-primary w-full">
           {state === "loading"
             ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</>
             : (ctaLabel || (brochureCourseSlug ? "Send me the brochure" : "Request a Callback"))}
