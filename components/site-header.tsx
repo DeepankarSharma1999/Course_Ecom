@@ -88,21 +88,35 @@ export function SiteHeader({
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#f8fcfc] border-b border-gray-200 font-sans transition-all duration-300">
-      {/* Top Banner (Skillup Sale) */}
-      <div className="bg-[#E9F4F4] text-[#082032] text-[13px] py-2 relative overflow-hidden hidden md:block border-b border-primary/10">
-        <div className="container-tight flex items-center justify-between relative z-10 font-sans">
-          <div className="flex items-center gap-3">
-            <span className="bg-primary text-white px-3 py-1 font-black text-[15px] rounded shadow-sm">Skillup <span className="font-normal text-xs uppercase align-top">Sale</span></span>
-            <span className="font-black text-gray-800 text-[15px]">8 - 15 June</span>
-          </div>
-          <div className="font-black text-xl flex items-center gap-2 text-primary uppercase tracking-wide">
-            Upskill Today, Lead Tomorrow! <span className="text-2xl ml-1 leading-none font-bold">&#8594;</span>
-          </div>
+      {/* Top Banner (Promo Sale) */}
+      <div className="bg-gradient-to-r from-[#082032] via-[#0d5c5c] to-[#082032] text-white text-[13px] py-2.5 relative overflow-hidden hidden md:block shadow-md">
+        {/* Subtle moving background overlay */}
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-[marquee_5s_linear_infinite]" style={{ transform: "skewX(-20deg)" }} />
+
+        <div className="container-tight flex items-center justify-between relative z-10 font-sans group cursor-pointer">
           <div className="flex items-center gap-4">
-            <span className="border border-primary/20 rounded px-2 py-0.5 font-bold text-gray-700 bg-white shadow-sm flex flex-col items-center leading-none text-[10px]">
-              Use SKILL10<br/><span className="text-primary text-xs uppercase">Flat 10% OFF</span>
+            <span className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-3.5 py-1 font-black text-[14px] rounded-lg shadow-sm flex items-center gap-2">
+              <span className="animate-pulse text-amber-400">⚡</span> FLASH <span className="font-medium text-xs uppercase text-white/80">SALE</span>
             </span>
-            <span className="font-black text-[#082032] text-[15px]">Ends Soon!</span>
+            <span className="font-bold text-white/90 text-[14px] tracking-wide">Limited Time Offer</span>
+          </div>
+          
+          <div className="font-black text-lg flex items-center gap-2 text-white uppercase tracking-wider drop-shadow-sm">
+            Master New Skills with ULearnSystems 
+            <span className="text-2xl ml-1 leading-none font-bold group-hover:translate-x-2 transition-transform duration-300">&#8594;</span>
+          </div>
+          
+          <div className="flex items-center gap-5">
+            <div className="flex items-center gap-2 bg-black/20 rounded-lg px-3 py-1.5 border border-white/10">
+              <span className="text-white/70 text-[10px] font-bold uppercase tracking-widest text-right leading-none">
+                USE CODE<br/><span className="text-[#1FA8A8] font-black text-[12px]">FLAT 10% OFF</span>
+              </span>
+              <span className="text-amber-400 font-black text-[16px] tracking-widest bg-amber-400/10 px-2 py-0.5 rounded">
+                ULEARN10
+              </span>
+            </div>
+            <span className="font-bold text-white/80 text-[13px] uppercase tracking-wider">Ends Soon!</span>
           </div>
         </div>
       </div>
