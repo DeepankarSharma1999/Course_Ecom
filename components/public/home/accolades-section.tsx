@@ -18,12 +18,12 @@ export function AccoladesSection() {
   return (
     <section className="font-sans w-full overflow-hidden bg-white">
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes marquee {
+        @keyframes marquee-100 {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-100%); }
         }
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
+        .animate-marquee-100 {
+          animation: marquee-100 30s linear infinite;
         }
       `}} />
 
@@ -36,7 +36,7 @@ export function AccoladesSection() {
         
         {/* Marquee Container */}
         <div className="relative flex overflow-hidden group max-w-[100vw]">
-          <div className="animate-marquee flex gap-6 py-6 pr-6 w-max shrink-0">
+          <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0">
              {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
                 <div key={`a-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
                    <div className="h-[80px] flex items-center justify-center mb-6 w-full">
@@ -53,7 +53,7 @@ export function AccoladesSection() {
              ))}
           </div>
           {/* Duplicate for seamless looping */}
-          <div className="animate-marquee flex gap-6 py-6 pr-6 w-max shrink-0" aria-hidden="true">
+          <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0" aria-hidden="true">
              {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
                 <div key={`b-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
                    <div className="h-[80px] flex items-center justify-center mb-6 w-full">

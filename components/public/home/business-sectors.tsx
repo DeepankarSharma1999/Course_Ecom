@@ -50,7 +50,10 @@ function MarqueeRow({ items, reverse = false }: { items: typeof domains, reverse
         <div className="flex items-center gap-4 pr-4" aria-hidden="true">
           {content}
         </div>
-        {/* Render a 3rd time just in case the screen is wider than 2 sets of items */}
+        <div className="flex items-center gap-4 pr-4" aria-hidden="true">
+          {content}
+        </div>
+        {/* Render a 4th time so total is even. -50% translation shifts by exactly 2 sets for a seamless loop on any screen width */}
         <div className="flex items-center gap-4 pr-4" aria-hidden="true">
           {content}
         </div>
