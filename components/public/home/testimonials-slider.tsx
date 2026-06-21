@@ -89,6 +89,7 @@ const TESTIMONIALS = [
 export function TestimonialsSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -97,8 +98,9 @@ export function TestimonialsSlider() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const filteredTestimonials = TESTIMONIALS.filter(t => activeFilter === "All" || t.platform === activeFilter);
   const itemsPerView = isMobile ? 1 : 3;
-  const maxIndex = Math.max(0, TESTIMONIALS.length - itemsPerView);
+  const maxIndex = Math.max(0, filteredTestimonials.length - itemsPerView);
 
   // Auto-slide every 3 seconds
   useEffect(() => {
@@ -111,6 +113,11 @@ export function TestimonialsSlider() {
   const handlePrev = () => setActiveIndex((c) => (c > 0 ? c - 1 : maxIndex));
   const handleNext = () => setActiveIndex((c) => (c < maxIndex ? c + 1 : 0));
 
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    setActiveIndex(0);
+  };
+
   return (
     <section className="section bg-[#f8fcfc] font-sans py-24 overflow-hidden">
       <div className="container-tight max-w-[1200px]">
@@ -122,13 +129,22 @@ export function TestimonialsSlider() {
         {/* Custom Tab Bar */}
         <div className="mb-12 flex items-center justify-center">
           <div className="flex items-center border border-primary/30 rounded-full p-1 bg-white shadow-sm overflow-x-auto">
-            <button className="px-6 py-2.5 text-[13px] font-bold whitespace-nowrap transition-colors rounded-full text-primary bg-[#E9F4F4]">
+            <button 
+              onClick={() => handleFilterChange("All")}
+              className={`px-6 py-2.5 text-[13px] font-bold whitespace-nowrap transition-colors rounded-full ${activeFilter === "All" ? "text-primary bg-[#E9F4F4]" : "text-gray-600 hover:bg-gray-50"}`}
+            >
               All Reviews
             </button>
-            <button className="px-6 py-2.5 text-[13px] font-bold whitespace-nowrap transition-colors rounded-full text-gray-600 hover:bg-gray-50 flex items-center gap-2">
+            <button 
+              onClick={() => handleFilterChange("Google")}
+              className={`px-6 py-2.5 text-[13px] font-bold whitespace-nowrap transition-colors rounded-full flex items-center gap-2 ${activeFilter === "Google" ? "text-primary bg-[#E9F4F4]" : "text-gray-600 hover:bg-gray-50"}`}
+            >
                <span className="text-red-500 text-lg leading-none font-bold">G</span> Google
             </button>
-            <button className="px-6 py-2.5 text-[13px] font-bold whitespace-nowrap transition-colors rounded-full text-gray-600 hover:bg-gray-50 flex items-center gap-2">
+            <button 
+              onClick={() => handleFilterChange("LinkedIn")}
+              className={`px-6 py-2.5 text-[13px] font-bold whitespace-nowrap transition-colors rounded-full flex items-center gap-2 ${activeFilter === "LinkedIn" ? "text-primary bg-[#E9F4F4]" : "text-gray-600 hover:bg-gray-50"}`}
+            >
                <span className="text-[#0A66C2] font-black text-lg leading-none">in</span> LinkedIn
             </button>
           </div>
@@ -139,7 +155,7 @@ export function TestimonialsSlider() {
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${activeIndex * (isMobile ? 100 : 33.333)}%)` }}
           >
-            {TESTIMONIALS.map((testimonial, index) => (
+            {filteredTestimonials.map((testimonial, index) => (
               <div key={index} className="w-full md:w-1/3 shrink-0 px-3">
                 <article className="bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] p-8 flex flex-col relative pt-10 h-full">
                   

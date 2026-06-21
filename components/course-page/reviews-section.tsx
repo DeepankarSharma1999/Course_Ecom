@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 export function ReviewsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState("All Reviews");
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -34,8 +35,52 @@ export function ReviewsSection() {
       author: "Rupali Bhosale",
       role: "Developer",
       source: "Google"
+    },
+    {
+      title: "Excellent curriculum and mentors",
+      content: "The content was top notch and the mentorship I received was invaluable for my career growth. Highly recommended.",
+      author: "Priya Sharma",
+      role: "Agile Coach",
+      source: "LinkedIn"
+    },
+    {
+      title: "Transformed my team's workflow",
+      content: "After taking this training, I was able to implement Scrum practices that improved our delivery speed by 40%.",
+      author: "David Chen",
+      role: "Engineering Manager",
+      source: "LinkedIn"
+    },
+    {
+      title: "Practical and applicable",
+      content: "Unlike other theoretical courses, this one gave me tools I could use on Monday morning with my team.",
+      author: "Sarah Jenkins",
+      role: "Scrum Master",
+      source: "LinkedIn"
+    },
+    {
+      title: "Best investment for my career",
+      content: "Switching into product management was hard, but this course gave me the exact frameworks I needed to succeed.",
+      author: "Rahul Verma",
+      role: "Product Manager",
+      source: "SwitchUp"
+    },
+    {
+      title: "Intense but totally worth it",
+      content: "The bootcamp pace is fast, but the instructors make sure no one is left behind. Great community of alumni.",
+      author: "Emily Davis",
+      role: "Career Switcher",
+      source: "SwitchUp"
+    },
+    {
+      title: "Top-tier instruction",
+      content: "I evaluated several providers before choosing ULearnSystems. Their trainers are truly world-class experts.",
+      author: "Marcus Johnson",
+      role: "Director of Product",
+      source: "SwitchUp"
     }
   ];
+
+  const filteredReviews = reviews.filter(r => activeFilter === "All Reviews" || r.source === activeFilter);
 
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100 pb-10 overflow-hidden">
@@ -45,13 +90,16 @@ export function ReviewsSection() {
       <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Our Learners Love Us</h2>
       
       <div className="flex items-center justify-between mb-8">
-        <div className="flex bg-white rounded-full border border-gray-200 p-1">
-          <button className="px-5 py-2 rounded-full bg-[#f0f7f7] text-[#1FA8A8] font-bold text-[14px]">
-            All Reviews
-          </button>
-          <button className="px-5 py-2 rounded-full text-gray-500 font-bold text-[14px] flex items-center gap-2 hover:bg-gray-50 transition-colors">
-            Google
-          </button>
+        <div className="flex flex-wrap bg-white rounded-full border border-gray-200 p-1 hide-scrollbar overflow-x-auto">
+          {["All Reviews", "Google", "LinkedIn", "SwitchUp"].map(filter => (
+            <button 
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-5 py-2 rounded-full font-bold text-[14px] whitespace-nowrap transition-colors ${activeFilter === filter ? "bg-[#f0f7f7] text-[#1FA8A8]" : "text-gray-500 hover:bg-gray-50"}`}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
         
         <div className="flex gap-2">
@@ -65,7 +113,7 @@ export function ReviewsSection() {
       </div>
 
       <div ref={scrollRef} className="flex gap-6 overflow-x-auto hide-scrollbar pb-6 -mx-4 px-4 snap-x">
-        {reviews.map((r, i) => (
+        {filteredReviews.map((r, i) => (
           <div key={i} className="min-w-[300px] md:min-w-[350px] bg-white rounded-2xl border border-gray-200 p-6 shadow-sm snap-start relative">
             <div className="text-[60px] text-gray-100 font-serif absolute top-2 left-4 leading-none select-none">"</div>
             <div className="relative z-10">
@@ -92,7 +140,9 @@ export function ReviewsSection() {
                 </div>
                 <div className="text-right">
                   <div className="text-[10px] text-gray-400 mb-1">Read on</div>
-                  <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-bold mx-auto">G</div>
+                  <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-bold mx-auto text-gray-600">
+                    {r.source.charAt(0)}
+                  </div>
                 </div>
               </div>
             </div>

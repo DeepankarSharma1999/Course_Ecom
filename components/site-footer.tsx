@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { getAllCourses } from "@/lib/content";
+import { CATEGORIES } from "@/lib/seed-data";
 
 const LINKS = {
   company: {
@@ -38,32 +40,43 @@ const CONTACT_NUMBERS = [
   { country: "UAE: Toll Free", flag: "🇦🇪", number: "8000180960" },
 ];
 
-const TOP_CATEGORIES = [
-  "Agile Management Courses", "Project Management Courses", "Cloud Computing Courses", "IT Service Management Courses", "Business Management Courses", "Devops Courses", "BI and Visualization Courses", "Cybersecurity Courses", "Quality Management Courses", "Data Science Courses", "Web Development Courses", "Programming Courses"
-];
 
-const TOP_COURSES = [
-  "CSM Certification", "PMP Certification", "CSPO Certification", "Leading SAFe 6.0 Certification", "ITIL Foundation Certification", "PRINCE2 Certifications", "PSM Certification", "SAFe 6.0 POPM Certification", "SAFe 6.0 Practice Consultant Certification", "SAFe 6.0 Scrum Master Certification", "SAFe 6.0 RTE Certification", "ECBA Certification", "CAPM Certification", "PSPO Certification", "PMI-ACP Certification", "ICP-ACC Certification", "Microsoft Power BI", "A-CSM Certification", "PgMP Certification", "AWS Solutions Architect Associate Certification", "CBAP Certification", "A-CSPO Certification", "Lean Six Sigma Green Belt Certification", "SAFe 6.0 Agile Product Management", "SAFe 6.0 Lean Portfolio Management", "AWS Cloud Architect Master's Program", "CISSP Certification", "SAFe 6.0 Advanced Scrum Master Certification", "PSM-A Certification", "SAFe 6.0 DevOps Certification", "PRINCE2 Foundation Certification", "Agile Master's Program", "PSPO-A Certification", "Azure Data Engineer Master's Program", "Project Management Master's Program", "PRINCE2 Agile Certifications", "Agile Excellence Master's Program", "Certified Scrum Developer Certification"
-];
+
+const URL_OVERRIDES: Record<string, string> = {
+  "About Us": "/about",
+  "Corporate Training": "/corporate-training",
+  "Refer and Earn": "/refer-earn",
+  "Practice Tests": "/practice-tests",
+  "Free Courses": "/free-course",
+};
+
+function slugify(text: string) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
 
 function LinkGroup({ data }: { data: { title: string; links: string[] } }) {
   return (
     <div>
       <h3 className="font-bold text-brand-950 mb-5">{data.title}</h3>
       <ul className="space-y-3">
-        {data.links.map((link) => (
-          <li key={link}>
-            <Link href="#" className="text-[13px] text-brand-700 hover:text-brand-600 transition-colors block">
-              {link}
-            </Link>
-          </li>
-        ))}
+        {data.links.map((link) => {
+          const href = URL_OVERRIDES[link] || `/info/${slugify(link)}`;
+          return (
+            <li key={link}>
+              <Link href={href} className="text-[13px] text-brand-700 hover:text-brand-600 transition-colors block">
+                {link}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 }
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const courses = await getAllCourses();
+  const categories = CATEGORIES;
   return (
     <footer className="bg-brand-50/30 font-sans pt-16 pb-8 border-t border-brand-100/50">
       <div className="container-tight max-w-[1400px] px-6 md:px-12">
@@ -127,10 +140,10 @@ export function SiteFooter() {
            <div className="mb-8">
               <h3 className="font-bold text-brand-950 text-[15px] mb-4">Top Categories</h3>
               <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
-                 {TOP_CATEGORIES.map((cat, i) => (
-                    <React.Fragment key={cat}>
-                       <Link href="#" className="hover:text-brand-600 transition-colors whitespace-nowrap">{cat}</Link>
-                       {i < TOP_CATEGORIES.length - 1 && <span className="mx-3 text-brand-200">|</span>}
+                 {categories.slice(0, 15).map((cat, i, arr) => (
+                    <React.Fragment key={cat.slug}>
+                       <Link href={`/category/${cat.slug}`} className="hover:text-brand-600 transition-colors whitespace-nowrap">{cat.name}</Link>
+                       {i < arr.length - 1 && <span className="mx-3 text-brand-200">|</span>}
                     </React.Fragment>
                  ))}
               </div>
@@ -138,10 +151,10 @@ export function SiteFooter() {
            <div className="mb-10">
               <h3 className="font-bold text-brand-950 text-[15px] mb-4">Top Courses</h3>
               <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
-                 {TOP_COURSES.map((course, i) => (
-                    <React.Fragment key={course}>
-                       <Link href="#" className="hover:text-brand-600 transition-colors whitespace-nowrap">{course}</Link>
-                       {i < TOP_COURSES.length - 1 && <span className="mx-3 text-brand-200">|</span>}
+                 {courses.slice(0, 40).map((course, i, arr) => (
+                    <React.Fragment key={course.slug}>
+                       <Link href={`/${course.slug}`} className="hover:text-brand-600 transition-colors whitespace-nowrap">{course.shortTitle || course.title}</Link>
+                       {i < arr.length - 1 && <span className="mx-3 text-brand-200">|</span>}
                     </React.Fragment>
                  ))}
               </div>
@@ -149,12 +162,12 @@ export function SiteFooter() {
 
            <div className="text-[11px] text-gray-400 text-center leading-[1.8] max-w-7xl mx-auto space-y-4">
               <p>Disclaimer: The content on the website and/or Platform is for informational and educational purposes only. The user of this website and/or Platform (User) should not construe any such information as legal, investment, tax, financial or any other advice. Nothing contained herein constitutes any representation, solicitation, recommendation, promotion or advertisement on behalf of ULearnSystems and / or its Affiliates (including but not limited to its subsidiaries, associates, employees, directors, key managerial personnel, consultants, trainers, advisors).</p>
-              <p>The User is solely responsible for evaluating the merits and risks associated with use of the information included as part of the content. The User agrees and covenants not to hold ULearnSystems and its Affiliates responsible for any and all losses or damages arising from such decision made by them basis the information provided in the course and / or available on the website and/or platform. ULearnSystems reserves the right to cancel or reschedule events in case of insufficient registrations, or if presenters cannot attend due to unforeseen circumstances. You are therefore advised to consult a ULearnSystems agent prior to making any travel arrangements for a workshop. For more details, please refer to the <Link href="#" className="text-primary hover:underline">Cancellation & Refund Policy</Link>.</p>
+              <p>The User is solely responsible for evaluating the merits and risks associated with use of the information included as part of the content. The User agrees and covenants not to hold ULearnSystems and its Affiliates responsible for any and all losses or damages arising from such decision made by them basis the information provided in the course and / or available on the website and/or platform. ULearnSystems reserves the right to cancel or reschedule events in case of insufficient registrations, or if presenters cannot attend due to unforeseen circumstances. You are therefore advised to consult a ULearnSystems agent prior to making any travel arrangements for a workshop. For more details, please refer to the <Link href="/info/cancellation-and-refund-policy" className="text-primary hover:underline">Cancellation & Refund Policy</Link>.</p>
               <p>CSM®, CSPO®, CSD®, CSP®, A-CSPO®, A-CSM® are registered trademarks of Scrum Alliance®. ULearnSystems Private Limited is a Licensed Training Partner (LTP) of Scrum Alliance®. PMP is a registered mark of the Project Management Institute, Inc. CAPM is a registered mark of the Project Management Institute, Inc. PMI-ACP is a registered mark of the Project Management Institute, Inc. PMI-RMP is a registered mark of the Project Management Institute, Inc. PMI-PBA is a registered mark of the Project Management Institute, Inc. PgMP is a registered mark of the Project Management Institute, Inc. PfMP is a registered mark of the Project Management Institute, Inc. ULearnSystems Private Limited is a Premier Authorized Training Partner (ATP) of Project Management Institute, Inc. The PMI Premier Authorized Training Partner logo is a registered mark of the Project Management Institute, Inc. PMBOK is a registered mark of the Project Management Institute, Inc. ITIL®, PRINCE2®, PRINCE2 Agile®, AgileSHIFT® are registered trademarks of AXELOS Limited, used under permission of AXELOS Limited. All rights reserved. COBIT® is a registered trademark of the Information Systems Audit and Control Association® (ISACA®). (ISC)2® is a registered trademark of International Information Systems Security Certification Consortium, Inc. CompTIA Authorized Training Partner. CMMI® is registered in the U.S. Patent and Trademark Office by Carnegie Mellon University. FRM®, GARP™, and Global Association of Risk Professionals™ are trademarks owned by the Global Association of Risk Professionals, Inc. Global Association of Risk Professionals, Inc. (GARP™) does not endorse, promote, review, or warrant the accuracy of the products or services offered by ULearnSystems Private Limited for FRM® related information, nor does it endorse any pass rates claimed by the provider. Further, GARP is not responsible for any fees or costs paid by the user. IIBA®, the IIBA® logo, BABOK®, and Business Analysis Body of Knowledge® are registered trademarks owned by the International Institute of Business Analysis. ULearnSystems Private Limited is an Endorsed Education Provider of IIBA®. Scaled Agile Framework® and SAFe® are registered trademarks of Scaled Agile, Inc.® ULearnSystems Private Limited is a Platinum SPCT Partner of Scaled Agile, Inc.® ULearnSystems Private Limited is an Authorized Training Partner of CertNexus. ULearnSystems Private Limited is a Microsoft Partner. ULearnSystems Private Limited is an AWS Training Partner (ATP). ULearnSystems Private Limited is an ICAgile Member Training Organization. ULearnSystems Private Limited is a Professional Training Network member of scrum.org. ULearnSystems Private Limited is an Accredited Examination Centre of IASSC. ULearnSystems Private Limited is a Registered Education Partner (REP) of the DevOps Institute (DOI). ULearnSystems Private Limited is an ATO of PeopleCert. ULearnSystems Private Limited is an Authorized Training Partner (ATP) and Accredited Training Center (ATC) of the EC-Council.</p>
            </div>
            
            <div className="mt-8 pt-6 border-t border-brand-100/50 text-center text-xs text-brand-600/70 flex items-center justify-center gap-2">
-              <Link href="/privacy-policy" className="hover:text-brand-600 transition-colors underline underline-offset-2">Our Privacy Policy</Link>
+              <Link href="/info/privacy-policy-and-disclaimer" className="hover:text-brand-600 transition-colors underline underline-offset-2">Our Privacy Policy</Link>
               <span>© 2011-{new Date().getFullYear()}, ULearnSystems Private Limited. All Rights Reserved</span>
            </div>
         </div>

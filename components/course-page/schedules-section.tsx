@@ -18,6 +18,10 @@ type Schedule = {
 export function SchedulesSection({ schedules, currency = "INR" }: { schedules: Schedule[], currency?: CurrencyCode }) {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [quantities, setQuantities] = useState<Record<number, number>>({});
+  const [isMonthOpen, setIsMonthOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   const toggleFilter = (f: string) => {
     setActiveFilters(prev => prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]);
@@ -48,6 +52,7 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
                          : activeFilters.includes("Next Month") ? schedules.slice(2, 4)
                          : activeFilters.includes("Weekend") ? schedules.filter((_, i) => i % 2 !== 0)
                          : activeFilters.includes("Weekday") ? schedules.filter((_, i) => i % 2 === 0)
+                         : selectedMonth ? schedules.filter(s => s.startDate.toLocaleString('default', { month: 'long' }) === selectedMonth || s.startDate.getMonth() === months.indexOf(selectedMonth)) // use basic fallback for finding
                          : schedules;
 
   return (
@@ -83,9 +88,36 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
         <button className="h-10 px-4 rounded-full border border-gray-200 text-[13px] font-semibold text-gray-600 hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors bg-white flex items-center gap-1.5">
           Live Online Classroom
         </button>
-        <button className="h-10 px-4 rounded-full border border-gray-200 text-[13px] font-semibold text-gray-600 hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors bg-white flex items-center gap-1.5">
-          <Calendar className="w-3.5 h-3.5" /> Month <ChevronDown className="w-3.5 h-3.5" />
-        </button>
+        
+        {/* Functional Month Dropdown */}
+        <div className="relative">
+          <button 
+            onClick={() => setIsMonthOpen(!isMonthOpen)}
+            className={`h-10 px-4 rounded-full border text-[13px] font-semibold transition-colors flex items-center gap-1.5 ${
+              selectedMonth || isMonthOpen ? "border-[#1FA8A8] text-[#1FA8A8] bg-[#e0f2f1]" : "border-gray-200 text-gray-600 hover:border-[#1FA8A8] hover:text-[#1FA8A8] bg-white"
+            }`}
+          >
+            <Calendar className="w-3.5 h-3.5" /> {selectedMonth || "Month"} <ChevronDown className="w-3.5 h-3.5" />
+          </button>
+          
+          {isMonthOpen && (
+            <div className="absolute top-full left-0 mt-2 w-48 max-h-60 overflow-y-auto bg-white border border-gray-100 rounded-xl shadow-lg z-50 py-2">
+               {months.map(m => (
+                 <button 
+                   key={m}
+                   onClick={() => {
+                     setSelectedMonth(m === selectedMonth ? null : m);
+                     setIsMonthOpen(false);
+                     setActiveFilters([]); // Clear other filters so month works exclusively
+                   }}
+                   className={`w-full text-left px-4 py-2 text-[13px] hover:bg-gray-50 transition-colors ${selectedMonth === m ? 'font-bold text-[#1FA8A8]' : 'text-gray-600 font-medium'}`}
+                 >
+                   {m}
+                 </button>
+               ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="space-y-5">

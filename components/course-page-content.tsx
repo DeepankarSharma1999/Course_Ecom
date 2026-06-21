@@ -5,7 +5,7 @@ import {
   Star, Users, ArrowRight, MapPin, Globe, Tag, AlarmClock, Shield,
 } from "lucide-react";
 import * as Lucide from "lucide-react";
-import { type CourseContent, type FaqItem, findCity, findCountry } from "@/lib/seed-data";
+import { type CourseContent, type FaqItem, findCity, findCountry, CITIES_IN, COURSES } from "@/lib/seed-data";
 import { LeadForm } from "@/components/lead-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { BrochureButton } from "@/components/brochure-button";
@@ -43,18 +43,20 @@ type Schedule = {
 function generateSchedules(course: CourseContent): Schedule[] {
   const out: Schedule[] = [];
   const now = new Date();
-  for (let i = 1; i <= 6; i++) {
-    const start = new Date(now); start.setDate(now.getDate() + i * 14);
-    const end = new Date(start); end.setDate(start.getDate() + 1);
-    out.push({
-      mode: i % 2 === 0 ? "Live Online Classroom" : "Live Online Classroom",
-      startDate: start, endDate: end,
-      timeLabel: "09:00 AM - 06:00 PM",
-      priceInr: course.basePriceInr,
-      discountPct: i % 3 === 0 ? 15 : 10,
-      seatsLeft: 12 - i,
-      isFilling: i <= 2,
-    });
+  for (let m = 0; m < 12; m++) {
+    for (let i = 1; i <= 2; i++) {
+      const start = new Date(now.getFullYear(), now.getMonth() + m, i * 10);
+      const end = new Date(start); end.setDate(start.getDate() + 1);
+      out.push({
+        mode: "Live Online Classroom",
+        startDate: start, endDate: end,
+        timeLabel: "09:00 AM - 06:00 PM",
+        priceInr: course.basePriceInr,
+        discountPct: (m + i) % 3 === 0 ? 15 : 10,
+        seatsLeft: 12 - ((m + i) % 5),
+        isFilling: m === 0,
+      });
+    }
   }
   return out;
 }
@@ -383,16 +385,31 @@ export function CoursePageContent({
         <section className="pt-16">
           <h3 className="text-[22px] font-bold text-[#082032] mb-6">ULearnSystems Trending Courses</h3>
           <div className="flex flex-wrap gap-2 mb-10">
-            {["CSM Certification", "CSPO Certification", "Leading SAFe Certification", "PSM Certification", "PMP Certification", "ITIL Certification", "PRINCE2 Certification", "Python Certification Training"].map(t => (
-              <span key={t} className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded cursor-pointer hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors">{t}</span>
+            {COURSES.filter(c => c.slug !== course.slug).slice(0, 8).map(c => (
+              <Link 
+                key={c.slug} 
+                href={`/${c.slug}`}
+                className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors"
+              >
+                {c.title}
+              </Link>
             ))}
           </div>
 
           <h3 className="text-[22px] font-bold text-[#082032] mb-6">Find {course.shortTitle} Courses in Other Top Cities</h3>
           <div className="flex flex-wrap gap-2">
-            {["Bangalore", "Hyderabad", "Chennai", "Pune", "Mumbai", "Delhi", "Kolkata", "Sambhaji Nagar", "Lucknow", "Noida"].map(t => (
-              <span key={t} className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded cursor-pointer hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors">{t}</span>
-            ))}
+            {CITIES_IN.map(c => {
+              if (c.slug === citySlug) return null;
+              return (
+                <Link 
+                  key={c.slug} 
+                  href={`/${countrySlug || 'in'}/${course.slug}/${c.slug}`}
+                  className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors"
+                >
+                  {c.name}
+                </Link>
+              );
+            })}
           </div>
         </section>
       </div>

@@ -85,7 +85,7 @@ export function HomeHero() {
             <Link href="/courses" className="btn-primary rounded text-center py-3.5 px-8">
               Explore All Courses
             </Link>
-            <Link href="/corporate" className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
+            <Link href="/corporate-training" className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
               Corporate Training <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
