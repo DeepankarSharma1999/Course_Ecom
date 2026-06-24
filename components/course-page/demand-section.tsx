@@ -69,15 +69,18 @@ export function DemandSection({ course }: { course: CourseContent }) {
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
             {/* Tabs */}
-            <div className="flex items-center gap-1 border border-gray-200 rounded-full p-1.5 mb-10 mx-auto max-w-fit overflow-x-auto hide-scrollbar">
+            <div role="tablist" aria-label="Job roles" className="flex items-center gap-1 border border-gray-200 rounded-full p-1.5 mb-10 mx-auto max-w-fit overflow-x-auto hide-scrollbar">
               {tabs.map((label, idx) => (
-                <div
+                <button
                   key={label}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeRole === idx}
                   onClick={() => setActiveRole(idx)}
                   className={`px-6 py-2 font-bold text-[14px] rounded-full cursor-pointer whitespace-nowrap transition-colors ${activeRole === idx ? "bg-[#f0f7f7] text-[#1FA8A8]" : "text-gray-500 hover:text-gray-900"}`}
                 >
                   {label}
-                </div>
+                </button>
               ))}
             </div>
 

@@ -45,8 +45,9 @@ export function LearningObjectivesSection({ course }: { course: CourseContent })
         </div>
 
         <div className="mt-10 flex justify-center border-t border-gray-200 pt-6">
-          <button 
+          <button
             onClick={() => setIsExpanded(!isExpanded)}
+            aria-expanded={isExpanded}
             className="text-[13px] font-bold text-[#082032] hover:text-[#1FA8A8] transition-colors flex items-center justify-center gap-1"
           >
             {isExpanded ? "View less" : "View more"} 

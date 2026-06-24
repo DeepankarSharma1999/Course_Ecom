@@ -40,6 +40,7 @@ export function AccreditationSection({ course }: { course: CourseContent }) {
 
         <button
           onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
           className="mt-6 text-[#082032] font-bold flex items-center gap-1 cursor-pointer transition-colors hover:text-[#1FA8A8]"
         >
           {isExpanded ? (

@@ -67,9 +67,10 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
         {["This Month", "Next Month", "Weekend", "Weekday"].map(f => {
           const isActive = activeFilters.includes(f);
           return (
-            <button 
-              key={f} 
+            <button
+              key={f}
               onClick={() => toggleFilter(f)}
+              aria-pressed={isActive}
               className={`h-10 px-4 rounded-full border text-[13px] font-semibold transition-colors ${
                 isActive 
                   ? "border-[#1FA8A8] bg-[#e0f2f1] text-[#1FA8A8]" 
@@ -91,8 +92,10 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
         
         {/* Functional Month Dropdown */}
         <div className="relative">
-          <button 
+          <button
             onClick={() => setIsMonthOpen(!isMonthOpen)}
+            aria-expanded={isMonthOpen}
+            aria-haspopup="listbox"
             className={`h-10 px-4 rounded-full border text-[13px] font-semibold transition-colors flex items-center gap-1.5 ${
               selectedMonth || isMonthOpen ? "border-[#1FA8A8] text-[#1FA8A8] bg-[#e0f2f1]" : "border-gray-200 text-gray-600 hover:border-[#1FA8A8] hover:text-[#1FA8A8] bg-white"
             }`}
