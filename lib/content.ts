@@ -2,8 +2,9 @@
 // This lets the public site keep working without Postgres while the admin writes through the DB.
 
 import { prisma } from "./prisma";
+import { resolveHeroImage } from "./course-images";
 import {
-  COURSES as STATIC_COURSES,
+  COURSES as RAW_STATIC_COURSES,
   CATEGORIES as STATIC_CATEGORIES,
   COUNTRIES as STATIC_COUNTRIES,
   CITIES_IN as STATIC_CITIES,
@@ -12,6 +13,12 @@ import {
 } from "./seed-data";
 
 export { STATIC_COUNTRIES as COUNTRIES, STATIC_CITIES as CITIES_IN };
+
+// Static fallback courses with per-course hero images (the seed data shares one image).
+const STATIC_COURSES: CourseContent[] = RAW_STATIC_COURSES.map((c) => ({
+  ...c,
+  heroImage: resolveHeroImage(c.heroImage, c.slug, c.category?.name),
+}));
 
 function dbCourseToContent(c: any): CourseContent {
   return {
@@ -30,7 +37,7 @@ function dbCourseToContent(c: any): CourseContent {
     examIncluded: !!c.examIncluded,
     ratingAvg: c.ratingAvg ?? 4.8,
     ratingCount: c.ratingCount ?? 0,
-    heroImage: c.heroImage ?? "",
+    heroImage: resolveHeroImage(c.heroImage, c.slug, c.category?.slug ?? c.category?.name),
     keyFeatures: (c.keyFeatures as any) ?? [],
     learningOutcomes: (c.learningOutcomes as any) ?? [],
     whoShouldAttend: (c.whoShouldAttend as any) ?? [],
