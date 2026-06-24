@@ -111,7 +111,9 @@ export function TrainersSection() {
 
                {/* Cutout image at the bottom */}
                <div className="mt-auto relative w-full h-[220px] z-10">
-                 <img src={trainer.photo} className="absolute inset-0 w-full h-full object-cover object-center" alt={trainer.name} />
+                 {/* ponytail: raw img — trainer.photo is admin/DB-driven; next/image throws on unconfigured hosts. */}
+                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                 <img src={trainer.photo} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-center" alt={trainer.name} />
                </div>
             </div>
           ))}

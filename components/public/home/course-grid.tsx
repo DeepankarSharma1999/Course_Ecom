@@ -132,13 +132,13 @@ function CourseDiscoveryCard({ course, currency, index }: { course: CourseConten
         </div>
 
         <div className="flex items-center gap-2 md:gap-3 pt-4 border-t border-gray-100">
-          <Link 
-            href={`/${course.slug}`} 
-            className="flex-1 text-center py-2 md:py-2.5 border border-[#082032] text-[#082032] rounded text-[12px] md:text-[13px] font-bold hover:bg-gray-50 transition-colors"
+          <Link
+            href={`/${course.slug}`}
+            className="flex-1 flex items-center justify-center min-h-[44px] text-center py-2 md:py-2.5 border border-[#082032] text-[#082032] rounded text-[12px] md:text-[13px] font-bold hover:bg-gray-50 transition-colors"
           >
             View Details
           </Link>
-          <button className="flex-1 flex items-center justify-center gap-1.5 py-2 md:py-2.5 bg-[#082032] text-white rounded text-[12px] md:text-[13px] font-bold hover:bg-black transition-colors">
+          <button className="flex-1 flex items-center justify-center gap-1.5 min-h-[44px] py-2 md:py-2.5 bg-[#082032] text-white rounded text-[12px] md:text-[13px] font-bold hover:bg-black transition-colors">
             <Download className="w-3.5 h-3.5" /> Curriculum
           </button>
         </div>

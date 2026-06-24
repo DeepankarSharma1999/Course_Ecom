@@ -51,7 +51,10 @@ export default async function TrainerDetail({ params }: { params: Promise<{ slug
     <>
       <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
         <div className="container-tight py-14 grid lg:grid-cols-[200px_1fr] gap-8 items-center">
-          {t.photo ? <img src={t.photo} alt={t.name} className="w-40 h-40 rounded-full object-cover border-4 border-white/20" /> : <div className="w-40 h-40 rounded-full bg-white/10 grid place-items-center text-5xl font-bold">{t.name.charAt(0)}</div>}
+          {t.photo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={t.photo} alt={t.name} width={160} height={160} className="w-40 h-40 rounded-full object-cover border-4 border-white/20" />
+          ) : <div className="w-40 h-40 rounded-full bg-white/10 grid place-items-center text-5xl font-bold">{t.name.charAt(0)}</div>}
           <div>
             <div className="text-sm text-brand-200 mb-2">Trainer</div>
             <h1 className="text-4xl md:text-5xl font-bold mb-2">{t.name}</h1>

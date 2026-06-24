@@ -37,14 +37,16 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-ink-900 mb-8">Unbeatable Saving Combo Schedule</h1>
           
-          <div className="flex justify-center border-b border-ink-200">
+          <div role="tablist" aria-label="Combo categories" className="flex justify-start sm:justify-center border-b border-ink-200 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {tabs.map(tab => (
               <button
                 key={tab}
+                role="tab"
+                aria-selected={activeTab === tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 font-medium transition-colors ${
-                  activeTab === tab 
-                  ? "text-primary border-b-2 border-primary" 
+                className={`whitespace-nowrap px-5 sm:px-6 py-3 font-medium transition-colors ${
+                  activeTab === tab
+                  ? "text-primary border-b-2 border-primary"
                   : "text-muted-foreground hover:text-primary"
                 }`}
               >
@@ -70,7 +72,7 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
                 </div>
 
                 {/* Share Icon */}
-                <button className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
+                <button aria-label="Share this combo" className="absolute top-4 right-4 grid h-9 w-9 place-items-center text-muted-foreground hover:text-primary transition-colors">
                   <Share2 className="w-5 h-5" />
                 </button>
 
@@ -94,7 +96,7 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
                   <div className="flex items-center justify-center gap-4 text-xs text-primary mb-6">
                     <span className="flex items-center gap-1">
                       <TrendingUp className="w-3 h-3" />
-                      {Math.floor(Math.random() * 5 + 4)}k enrolled
+                      {((course.slug || course.title).split("").reduce((acc: number, ch: string) => acc + ch.charCodeAt(0), 0) % 5) + 4}k enrolled
                     </span>
                     <span className="text-muted-foreground flex items-center gap-1">
                        Live Classroom
@@ -110,7 +112,7 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
                         {formatPrice(originalPrice, "INR")}
                       </span>
                       <span className="bg-secondary text-primary text-[11px] font-bold px-2 py-1 rounded">
-                        % {formatPrice(discount, "INR").replace('₹', '')} off
+                        Save {formatPrice(discount, "INR")}
                       </span>
                     </div>
 

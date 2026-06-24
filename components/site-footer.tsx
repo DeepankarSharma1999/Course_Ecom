@@ -101,11 +101,17 @@ export async function SiteFooter() {
            <div>
               <div className="mb-10">
                  <h3 className="font-bold text-brand-950 mb-4">Connect with us</h3>
-                 <div className="flex gap-4">
-                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Linkedin className="w-4 h-4" /></a>
-                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Instagram className="w-4 h-4" /></a>
-                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Facebook className="w-4 h-4" /></a>
-                    <a href="#" className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"><Twitter className="w-4 h-4 fill-current" /></a>
+                 <div className="flex gap-3">
+                    {[
+                      { label: "LinkedIn", href: "https://www.linkedin.com/company/ulearnsystems", Icon: Linkedin },
+                      { label: "Instagram", href: "https://www.instagram.com/ulearnsystems", Icon: Instagram },
+                      { label: "Facebook", href: "https://www.facebook.com/ulearnsystems", Icon: Facebook },
+                      { label: "Twitter", href: "https://twitter.com/ulearnsystems", Icon: Twitter, fill: true },
+                    ].map(({ label, href, Icon, fill }) => (
+                      <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer" className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 text-brand-700 hover:bg-brand-600 hover:text-white transition-all">
+                        <Icon className={`w-4 h-4 ${fill ? "fill-current" : ""}`} />
+                      </a>
+                    ))}
                  </div>
               </div>
               

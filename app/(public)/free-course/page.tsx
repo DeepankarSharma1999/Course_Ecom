@@ -145,7 +145,7 @@ export default function FreeCoursePage() {
     <main>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-[#0f6b6b] text-primary-foreground py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/frontend_assets/image/homban-dots.webp')] opacity-20 bg-repeat"></div>
+        <div className="absolute inset-0 hero-dots text-white opacity-20"></div>
         <div className="container-tight relative z-10 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6">
             <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />

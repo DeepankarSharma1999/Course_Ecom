@@ -4,10 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
-  ChevronDown, ChevronRight, Menu, Search, X, Phone,
+  ChevronDown, ChevronRight, Menu, Search, X,
 } from "lucide-react";
 import * as Lucide from "lucide-react";
-import { CurrencySwitcher } from "@/components/currency-switcher";
 import { useLearnerAuth } from "@/components/learner-auth-provider";
 import { LearnerDropdown } from "@/components/learner-dropdown";
 
@@ -33,16 +32,8 @@ type Props = {
   featuredCourses?: FeaturedCourse[];
 };
 
-function Icon({ name, className }: { name?: string | null; className?: string }) {
-  const C = (name && (Lucide as any)[name]) || Lucide.BookOpen;
-  return <C className={className} />;
-}
-
 export function SiteHeader({
-  currency = "USD",
   brandName = "ULearnSystems",
-  logoUrl = null,
-  phone = "+91 80 4710 6633",
   navCategories = [],
 }: Props) {
   const pathname = usePathname();
@@ -71,20 +62,6 @@ export function SiteHeader({
     setOpenSubMenu(null);
     setMobileOpen(false);
   }, [pathname]);
-
-  const navLink = (href: string, label: string, isNew = false) => (
-    <Link
-      href={href}
-      className={`relative px-3 py-6 text-[14px] font-bold transition-colors flex items-center h-full text-gray-600 hover:text-[#082032]`}
-    >
-      {isNew && (
-        <span className="absolute top-3 right-0 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5 rounded-full leading-none font-bold">
-          New
-        </span>
-      )}
-      {label}
-    </Link>
-  );
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#f8fcfc] border-b border-gray-200 font-sans transition-all duration-300">
@@ -132,7 +109,7 @@ export function SiteHeader({
         {/* All Courses Dropdown & Search (Desktop) */}
         <div className="hidden lg:flex items-center ml-6 flex-1">
           <div className="relative h-[42px] flex items-center group" onMouseEnter={() => openSoft("courses")} onMouseLeave={closeSoft}>
-            <button className="h-full flex items-center justify-between gap-3 px-4 border border-[#CBD5E1] rounded-[6px] text-[14px] font-bold text-[#1E293B] bg-white transition-all w-[150px]">
+            <button aria-haspopup="true" aria-expanded={openMenu === "courses"} onClick={() => setOpenMenu(openMenu === "courses" ? null : "courses")} className="h-full flex items-center justify-between gap-3 px-4 border border-[#CBD5E1] rounded-[6px] text-[14px] font-bold text-[#1E293B] bg-white transition-all w-[150px]">
               <span className="flex items-center gap-2.5"><Menu className="w-4 h-4 text-[#64748b]" /> All Courses</span> <ChevronDown className="w-4 h-4 text-[#94a3b8]" />
             </button>
             {openMenu === "courses" && (
@@ -387,14 +364,14 @@ export function SiteHeader({
             </button>
           )}
 
-          <button className="relative p-2 text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full lg:hidden">
+          <button aria-label="Cart (0 items)" className="relative grid h-11 w-11 place-items-center text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full lg:hidden">
             <Lucide.ShoppingCart className="w-5 h-5" />
             <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
               0
             </span>
           </button>
 
-          <button onClick={() => setMobileOpen(true)} className="lg:hidden p-2 text-foreground/80 hover:text-primary bg-secondary rounded-full">
+          <button aria-label="Open menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)} className="lg:hidden grid h-11 w-11 place-items-center text-foreground/80 hover:text-primary bg-secondary rounded-full">
             <Menu className="w-5 h-5" />
           </button>
         </div>
@@ -404,20 +381,30 @@ export function SiteHeader({
         <div className="fixed inset-0 z-[100] bg-background lg:hidden overflow-y-auto">
           <div className="p-4 flex items-center justify-between border-b border-border/50 bg-card">
             <img src="/logo.png" alt={brandName} className="h-20 w-auto object-contain" />
-            <button onClick={() => setMobileOpen(false)} className="p-2 bg-secondary rounded-full text-foreground/80"><X className="w-5 h-5" /></button>
+            <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="grid h-11 w-11 place-items-center bg-secondary rounded-full text-foreground/80"><X className="w-5 h-5" /></button>
           </div>
-          <div className="p-6 space-y-4">
+          <div className="p-6 space-y-1">
             <form action="/courses" method="get" className="relative mb-6">
               <Search className="w-4 h-4 text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2" />
-              <input type="text" name="q" placeholder="What do you want to learn today?" className="w-full pl-11 pr-4 py-3.5 border border-border/50 rounded-full text-sm bg-secondary focus:outline-none focus:border-primary" />
+              <input type="text" name="q" aria-label="Search courses" placeholder="What do you want to learn today?" className="w-full pl-11 pr-4 py-3.5 border border-border/50 rounded-full text-base bg-secondary focus:outline-none focus:border-primary" />
             </form>
-            <Link href="/courses" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">All Courses <ChevronRight className="w-4 h-4 opacity-50" /></Link>
-            <Link href="/combo-courses" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">
-              <span className="flex items-center gap-2">Combo Courses <span className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full">New</span></span>
-              <ChevronRight className="w-4 h-4 opacity-50" />
-            </Link>
-            <Link href="/resources" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Resources <ChevronRight className="w-4 h-4 opacity-50" /></Link>
-            <Link href="/corporate-training" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Corporate <ChevronRight className="w-4 h-4 opacity-50" /></Link>
+            {[
+              { href: "/courses", label: "All Courses" },
+              { href: "/ai-courses", label: "AI Courses" },
+              { href: "/combo-courses", label: "Combo Courses", isNew: true },
+              { href: "/self-paced", label: "Self-Paced" },
+              { href: "/corporate-training", label: "Enterprise" },
+              { href: "/refer-earn", label: "Refer & Earn" },
+              { href: "/resources", label: "Resources" },
+            ].map((item) => (
+              <Link key={item.href} href={item.href} className="min-h-[52px] py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">
+                <span className="flex items-center gap-2">{item.label}{item.isNew && <span className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full">New</span>}</span>
+                <ChevronRight className="w-4 h-4 opacity-50" />
+              </Link>
+            ))}
+            {!isLoggedIn && (
+              <button onClick={() => { setMobileOpen(false); openModal(); }} className="btn-primary mt-6 w-full">Sign In</button>
+            )}
           </div>
         </div>
       )}

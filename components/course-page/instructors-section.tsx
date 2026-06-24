@@ -51,10 +51,10 @@ export function InstructorsSection({ course }: { course: CourseContent }) {
         </button>
         
         <div className="flex gap-2">
-          <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-400">
+          <button onClick={() => scroll("left")} aria-label="Scroll left" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-600">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
+          <button onClick={() => scroll("right")} aria-label="Scroll right" className="w-11 h-11 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>

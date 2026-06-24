@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronRight, ShieldCheck, CheckCircle2, Globe, Users, Trophy, Target } from "lucide-react";
+import { ShieldCheck, CheckCircle2, Globe, Users, Trophy, Target } from "lucide-react";
 import Link from "next/link";
 
 export function AboutClient() {
@@ -29,7 +30,7 @@ export function AboutClient() {
     <main className="bg-white min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-[#0f6b6b] text-primary-foreground py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/frontend_assets/image/homban-dots.webp')] opacity-20 bg-repeat"></div>
+        <div className="absolute inset-0 hero-dots text-white opacity-20"></div>
         <div className="container-tight relative z-10 flex flex-col items-center text-center">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
@@ -124,7 +125,7 @@ export function AboutClient() {
               className="flex-1 relative"
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl relative border border-ink-100">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80" alt="ULearnSystems Team" className="w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80" alt="ULearnSystems team collaborating" fill sizes="(max-width: 1024px) 100vw, 600px" className="object-cover" />
               </div>
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-ink-100 max-w-xs hidden md:block">
                 <div className="flex items-center gap-4 mb-2">

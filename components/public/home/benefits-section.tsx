@@ -160,7 +160,7 @@ export function BenefitsSection() {
              
              <div className="w-full h-[220px] bg-[#fcf9f2] rounded-[24px] border border-gray-100 relative p-4 flex gap-6 overflow-hidden">
                 <div className="w-[150px] h-full rounded-[16px] overflow-hidden relative shadow-sm">
-                  <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" className="w-full h-full object-cover" alt="Student" />
+                  <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Student learning online" />
                   
                   {/* Large floating play button */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg cursor-pointer hover:scale-105 transition-transform z-10">

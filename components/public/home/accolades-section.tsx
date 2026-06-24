@@ -205,7 +205,7 @@ export function AccoladesSection() {
          <div className="container-tight relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16 max-w-6xl w-full">
             {/* Woman Image Placeholder */}
             <div className="w-[180px] h-[180px] -mt-20 md:mt-0 relative hidden md:block shrink-0">
-               <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=300" className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl" alt="Support" />
+               <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=300" loading="lazy" decoding="async" className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl" alt="Support team member" />
                <div className="absolute top-4 -left-16 bg-white rounded-xl shadow-lg p-3 flex items-center gap-3">
                  <Mail className="text-primary w-5 h-5" />
                  <div className="w-16 h-2 bg-gray-100 rounded-full"></div>

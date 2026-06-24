@@ -58,14 +58,15 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
       <aside className={`${showFilters ? "fixed inset-0 z-40 bg-white p-4 overflow-y-auto" : "hidden"} lg:block lg:static lg:p-0`}>
         <div className="flex items-center justify-between mb-4 lg:hidden">
           <div className="font-semibold">Filters</div>
-          <button onClick={() => setShowFilters(false)}><X className="w-5 h-5" /></button>
+          <button onClick={() => setShowFilters(false)} aria-label="Close filters" className="grid h-11 w-11 place-items-center -mr-2"><X className="w-5 h-5" /></button>
         </div>
         <div className="card p-5 space-y-5 sticky top-24">
           <div>
-            <label className="text-xs font-bold uppercase text-ink-500 mb-2 block">Search</label>
+            <label htmlFor="cx-search" className="text-xs font-bold uppercase text-ink-500 mb-2 block">Search</label>
             <div className="relative">
               <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-ink-400" />
               <input
+                id="cx-search"
                 value={q} onChange={(e) => setQ(e.target.value)}
                 placeholder="Search courses…"
                 className="w-full pl-9 pr-3 py-2 rounded-lg border border-ink-200 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"
@@ -84,9 +85,10 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
           </div>
 
           <div>
-            <label className="text-xs font-bold uppercase text-ink-500 mb-2 block">Max Price ({currency})</label>
+            <label htmlFor="cx-max-price" className="text-xs font-bold uppercase text-ink-500 mb-2 block">Max Price ({currency})</label>
             <input
-              type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value === "" ? "" : Number(e.target.value))}
+              id="cx-max-price"
+              type="number" inputMode="numeric" min={0} value={maxPrice} onChange={(e) => setMaxPrice(e.target.value === "" ? "" : Number(e.target.value))}
               placeholder="e.g. 30000"
               className="w-full px-3 py-2 rounded-lg border border-ink-200 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"
             />
@@ -109,10 +111,10 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
             Showing <span className="font-semibold text-ink-900">{filtered.length}</span> of {courses.length} courses
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={() => setShowFilters(true)} className="lg:hidden inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-ink-200 text-sm">
+            <button onClick={() => setShowFilters(true)} className="lg:hidden inline-flex items-center gap-1 min-h-[40px] px-3 py-1.5 rounded-lg border border-ink-200 text-sm">
               <SlidersHorizontal className="w-4 h-4" /> Filters
             </button>
-            <select value={sort} onChange={(e) => setSort(e.target.value)} className="px-3 py-1.5 rounded-lg border border-ink-200 text-sm focus:border-brand-500 outline-none">
+            <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort courses" className="min-h-[40px] px-3 py-1.5 rounded-lg border border-ink-200 text-sm focus:border-brand-500 outline-none">
               {SORTS.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
             </select>
           </div>

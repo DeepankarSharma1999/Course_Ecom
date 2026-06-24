@@ -208,10 +208,10 @@ export function TestimonialsSlider() {
 
         {/* Pagination Controls */}
         <div className="flex items-center justify-center gap-4 mt-10">
-          <button onClick={handlePrev} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-gray-500 hover:text-gray-600 transition-colors bg-white shadow-sm">
+          <button onClick={handlePrev} aria-label="Previous testimonial" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-700 transition-colors bg-white shadow-sm">
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <button onClick={handleNext} className="w-8 h-8 rounded-full border border-[#082032] flex items-center justify-center text-[#082032] hover:bg-[#082032] hover:text-white transition-colors bg-white shadow-sm">
+          <button onClick={handleNext} aria-label="Next testimonial" className="w-11 h-11 rounded-full border border-[#082032] flex items-center justify-center text-[#082032] hover:bg-[#082032] hover:text-white transition-colors bg-white shadow-sm">
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>

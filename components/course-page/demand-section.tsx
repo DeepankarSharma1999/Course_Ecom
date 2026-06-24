@@ -5,31 +5,58 @@ import { Award, ChevronDown, ChevronUp, X, Image as ImageIcon } from "lucide-rea
 import { type CourseContent } from "@/lib/seed-data";
 import { DownloadModal } from "./download-modal";
 
-const ROLE_DATA = {
-  "Scrum Master": {
+// Seniority tiers with illustrative market data. The tab LABELS are derived
+// from the course so each course page shows relevant job roles (not always
+// "Scrum Master").
+const TIERS = [
+  {
+    prefix: "",
     salary: { min: "₹9L", avg: "₹15L", max: "₹20L" },
     companies: ["Coca-Cola", "Amazon", "Sapient", "HSBC", "Walmart", "Accenture"],
-    demand: { percent: "87%", text: "Agile practitioners use Scrum" }
+    demand: { percent: "87%", text: "of employers prefer certified professionals" },
   },
-  "Senior Scrum Master": {
+  {
+    prefix: "Senior ",
     salary: { min: "₹14L", avg: "₹22L", max: "₹30L" },
     companies: ["Microsoft", "IBM", "Deloitte", "TCS", "Infosys", "Wipro"],
-    demand: { percent: "92%", text: "Organizations adopting scaled Agile" }
+    demand: { percent: "92%", text: "of organizations are scaling these skills" },
   },
-  "Chief Scrum Master": {
+  {
+    prefix: "Lead ",
     salary: { min: "₹20L", avg: "₹35L", max: "₹50L" },
     companies: ["Google", "Meta", "Apple", "Netflix", "Uber", "Airbnb"],
-    demand: { percent: "95%", text: "Enterprise Agile transformation" }
-  }
-};
-type RoleType = keyof typeof ROLE_DATA;
+    demand: { percent: "95%", text: "growth in leadership-level demand" },
+  },
+];
+
+// Turn a course short title into a concise job-role base, e.g.
+// "SAFe Scrum Master Certification" -> "Scrum Master",
+// "AI Powered Software Development" -> "AI Powered Software Development Specialist".
+function deriveRole(course: CourseContent): string {
+  const raw = (course.shortTitle || course.title)
+    .replace(/\b(certification|training|course|program|certificate)\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (/scrum master/i.test(raw)) return "Scrum Master";
+  if (/product owner|product manager|popm/i.test(raw)) return "Product Owner";
+  if (/devops/i.test(raw)) return "DevOps Engineer";
+  if (/architect/i.test(raw)) return "Solutions Architect";
+  if (/business analy/i.test(raw)) return "Business Analyst";
+  if (/project manage|pmp|prince2/i.test(raw)) return "Project Manager";
+  if (/data scien/i.test(raw)) return "Data Scientist";
+  if (/develop|engineer|software/i.test(raw)) return `${raw} Engineer`.replace(/Engineer Engineer$/, "Engineer");
+  // Fallback: use the course name + "Specialist"
+  return raw.length > 26 ? `${raw} Specialist` : `${raw} Professional`;
+}
 
 export function DemandSection({ course }: { course: CourseContent }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeRole, setActiveRole] = useState<RoleType>("Scrum Master");
+  const [activeRole, setActiveRole] = useState(0);
 
-  const currentData = ROLE_DATA[activeRole];
+  const role = deriveRole(course);
+  const tabs = TIERS.map((t) => `${t.prefix}${role}`);
+  const currentData = TIERS[activeRole];
 
   return (
     <>
@@ -43,13 +70,13 @@ export function DemandSection({ course }: { course: CourseContent }) {
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
             {/* Tabs */}
             <div className="flex items-center gap-1 border border-gray-200 rounded-full p-1.5 mb-10 mx-auto max-w-fit overflow-x-auto hide-scrollbar">
-              {(Object.keys(ROLE_DATA) as RoleType[]).map((role) => (
-                <div 
-                  key={role}
-                  onClick={() => setActiveRole(role)}
-                  className={`px-6 py-2 font-bold text-[14px] rounded-full cursor-pointer whitespace-nowrap transition-colors ${activeRole === role ? "bg-[#f0f7f7] text-[#1FA8A8]" : "text-gray-500 hover:text-gray-900"}`}
+              {tabs.map((label, idx) => (
+                <div
+                  key={label}
+                  onClick={() => setActiveRole(idx)}
+                  className={`px-6 py-2 font-bold text-[14px] rounded-full cursor-pointer whitespace-nowrap transition-colors ${activeRole === idx ? "bg-[#f0f7f7] text-[#1FA8A8]" : "text-gray-500 hover:text-gray-900"}`}
                 >
-                  {role}
+                  {label}
                 </div>
               ))}
             </div>
@@ -96,7 +123,7 @@ export function DemandSection({ course }: { course: CourseContent }) {
 
           <div className="mt-8 text-[14px] text-[#475569] leading-relaxed max-w-4xl mx-auto space-y-4">
             <p>
-              Armed with this coveted <span className="text-blue-600">Scrum certification</span>, not only will you be well positioned to command salaries <span className="text-blue-600">21% on average higher</span> than that earned by your non-certified peers, but also be ready to land in-demand Scrum roles like Scrum Master, Delivery Lead, Agile Scrum Master, <span className="text-blue-600">Agile Coach</span>, Program Manager, and Project Manager.
+              Armed with this coveted <span className="text-blue-600">{course.shortTitle} certification</span>, not only will you be well positioned to command salaries <span className="text-blue-600">21% on average higher</span> than that earned by your non-certified peers, but also be ready to land in-demand roles like {role}, {`Senior ${role}`}, and {`Lead ${role}`}.
             </p>
 
             {isExpanded && (

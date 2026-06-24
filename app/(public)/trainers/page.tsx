@@ -24,7 +24,7 @@ export default async function TrainersIndex() {
   return (
     <>
       <section className="bg-gradient-to-br from-primary to-[#0f6b6b] text-primary-foreground py-14 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/frontend_assets/image/homban-dots.webp')] opacity-20 bg-repeat"></div>
+        <div className="absolute inset-0 hero-dots text-white opacity-20"></div>
         <div className="container-tight relative z-10 text-center flex flex-col items-center">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
             <span className="text-sm font-semibold text-white">Our Trainers</span>
@@ -42,7 +42,10 @@ export default async function TrainersIndex() {
               {trainers.map((t) => (
                 <Link key={t.id} href={`/trainers/${t.slug}`} className="card p-6 hover:shadow-card-lg hover:-translate-y-0.5 transition-all">
                   <div className="flex items-start gap-4 mb-4">
-                    {t.photo ? <img src={t.photo} alt={t.name} className="w-16 h-16 rounded-full object-cover" /> : <div className="w-16 h-16 rounded-full bg-brand-100 text-brand-700 grid place-items-center font-bold text-xl">{t.name.charAt(0)}</div>}
+                    {t.photo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={t.photo} alt={t.name} width={64} height={64} loading="lazy" className="w-16 h-16 rounded-full object-cover" />
+                    ) : <div className="w-16 h-16 rounded-full bg-brand-100 text-brand-700 grid place-items-center font-bold text-xl">{t.name.charAt(0)}</div>}
                     <div className="flex-1">
                       <div className="font-semibold text-ink-900">{t.name}</div>
                       <div className="text-xs text-ink-500">{t.title}</div>

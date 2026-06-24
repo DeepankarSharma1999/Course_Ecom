@@ -190,7 +190,9 @@ export function CoursePageContent({
             <div className="w-full lg:w-[480px] shrink-0">
               <div className="rounded-2xl overflow-hidden shadow-2xl relative bg-gray-100 aspect-[4/3] flex items-center justify-center border border-gray-200">
                 <div className="absolute inset-0 bg-[#082032]/5 z-10"></div>
-                <img src={course.heroImage} alt={course.title} className="absolute inset-0 w-full h-full object-cover" />
+                {/* ponytail: raw img — course.heroImage is admin free-text; next/image throws on unconfigured hosts. Migrate if uploads are constrained to known hosts. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={course.heroImage} alt={course.title} loading="eager" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute top-4 right-4 bg-white rounded-lg px-2 py-1 shadow text-[10px] font-bold flex items-center gap-1 z-20">
                   <Award className="w-3 h-3 text-yellow-500" /> Global Certification
                 </div>

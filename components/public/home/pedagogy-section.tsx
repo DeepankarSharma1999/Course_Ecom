@@ -95,7 +95,7 @@ export function PedagogySection() {
                          </div>
                          <div className="hidden md:flex justify-end">
                             <div className="w-[380px] h-[240px] bg-white rounded-2xl border border-gray-100 shadow-xl flex items-center justify-center overflow-hidden p-2">
-                               <img src={`https://images.pexels.com/photos/${step.img}.jpeg?auto=compress&cs=tinysrgb&w=600`} className="w-full h-full object-cover rounded-xl" alt="Platform UI" />
+                               <img src={`https://images.pexels.com/photos/${step.img}.jpeg?auto=compress&cs=tinysrgb&w=600`} loading="lazy" decoding="async" className="w-full h-full object-cover rounded-xl" alt="Learning platform interface" />
                             </div>
                          </div>
                       </div>

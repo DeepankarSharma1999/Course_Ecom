@@ -96,7 +96,7 @@ export default function PracticeTestsPage() {
     <main>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-[#0f6b6b] text-primary-foreground py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/frontend_assets/image/homban-dots.webp')] opacity-20 bg-repeat"></div>
+        <div className="absolute inset-0 hero-dots text-white opacity-20"></div>
         <div className="container-tight relative z-10 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">

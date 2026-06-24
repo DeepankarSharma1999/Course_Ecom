@@ -8,15 +8,12 @@ import dynamic from "next/dynamic";
 
 import { HomeHero } from "@/components/public/home/hero";
 import { PartnerLogos } from "@/components/public/home/partner-logos";
-import { TrustedCompanies } from "@/components/public/home/trusted-companies";
 import { BusinessSectors } from "@/components/public/home/business-sectors";
 
 const CourseGrid = dynamic(() => import("@/components/public/home/course-grid").then(m => m.CourseGrid));
 const ComboSchedule = dynamic(() => import("@/components/public/home/combo-schedule").then(m => m.ComboSchedule));
 const PedagogySection = dynamic(() => import("@/components/public/home/pedagogy-section").then(m => m.PedagogySection));
 const TrainersSection = dynamic(() => import("@/components/public/home/trainers-section").then(m => m.TrainersSection));
-const StatsBanner = dynamic(() => import("@/components/public/home/stats-banner").then(m => m.StatsBanner));
-const CtaStrip = dynamic(() => import("@/components/public/home/cta-strip").then(m => m.CtaStrip));
 const WorldMap = dynamic(() => import("@/components/world-map").then(m => m.WorldMap));
 const TestimonialsSlider = dynamic(() => import("@/components/public/home/testimonials-slider").then(m => m.TestimonialsSlider));
 const AccoladesSection = dynamic(() => import("@/components/public/home/accolades-section").then(m => m.AccoladesSection));
@@ -64,7 +61,7 @@ export default async function HomePage() {
               <h2 className="text-3xl font-black leading-tight text-white md:text-5xl">
                 Training professionals across borders and industries.
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-8 text-white/65">
+              <p className="mt-5 max-w-xl text-base leading-8 text-white/75">
                 Join learners and teams using expert-led programs to build capability across Agile, product, project, technology, and AI domains.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
@@ -76,7 +73,7 @@ export default async function HomePage() {
                 ].map(([value, label]) => (
                   <div key={label} className="rounded-2xl border border-white/10 bg-white/6 p-4">
                     <div className="text-2xl font-black text-white">{value}</div>
-                    <div className="mt-1 text-xs font-bold uppercase tracking-wide text-white/55">{label}</div>
+                    <div className="mt-1 text-xs font-bold uppercase tracking-wide text-white/70">{label}</div>
                   </div>
                 ))}
               </div>

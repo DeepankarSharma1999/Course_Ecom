@@ -40,6 +40,8 @@ body {
   .badge { @apply inline-flex items-center gap-1 rounded-full bg-secondary px-4 py-1.5 text-xs font-bold text-secondary-foreground; }
   .section-eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-primary/75; }
   .accent-badge { @apply inline-flex items-center rounded-full bg-[#FFE8E8] px-3 py-1 text-xs font-extrabold text-[#E23B3B]; }
+  /* Subtle dot texture for hero overlays — replaces the missing /frontend_assets/image/homban-dots.webp (uses currentColor) */
+  .hero-dots { background-image: radial-gradient(currentColor 1px, transparent 1px); background-size: 20px 20px; }
 }
 
 @layer base {

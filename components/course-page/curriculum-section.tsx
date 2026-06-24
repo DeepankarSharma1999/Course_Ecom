@@ -210,9 +210,10 @@ export function CurriculumSection({ course }: { course: CourseContent }) {
                   : "bg-[#fcfdfd] border border-[#e2ecec] hover:bg-gray-50"
               }`}
             >
-              <button 
+              <button
                 onClick={() => toggleAccordion(i)}
-                className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                aria-expanded={isOpen}
+                className="w-full flex items-center justify-between p-5 text-left"
               >
                 <h3 className="font-bold text-[#082032] text-[15px]">
                   {i + 1}. {m.title}
