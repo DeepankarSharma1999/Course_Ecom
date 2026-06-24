@@ -43,7 +43,11 @@ export default async function LeadsPage({
         <PageHeader
           title="Leads"
           description="All enquiries submitted from the public site."
-          actions={<a href="/admin/leads/export" className="btn-outline"><Download className="w-4 h-4" /> Export CSV</a>}
+          actions={
+            // CSV download endpoint (route handler) — a plain <a download> is correct here; <Link> would break the download.
+            // eslint-disable-next-line @next/next/no-html-link-for-pages
+            <a href="/admin/leads/export" download className="btn-outline"><Download className="w-4 h-4" /> Export CSV</a>
+          }
         />
 
         <div className="flex flex-wrap items-center gap-2 mb-4">

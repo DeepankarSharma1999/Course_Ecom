@@ -97,7 +97,7 @@ export default function WebinarsPage() {
                   <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> 45:12</span>
                 </div>
                 <div className="flex gap-2">
-                  <input type="text" placeholder="Ask a question..." className="flex-1 bg-black/20 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/50 outline-none focus:border-white/30" />
+                  <input type="text" placeholder="Ask a question..." aria-label="Ask a question" className="flex-1 bg-black/20 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/50 outline-none focus:border-white/30" />
                   <button className="bg-white/20 hover:bg-white/30 text-white rounded-lg px-4 py-2 text-sm font-semibold transition-colors">Send</button>
                 </div>
               </div>
