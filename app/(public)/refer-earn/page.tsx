@@ -115,23 +115,24 @@ export default function ReferAndEarnPage() {
                       <div className="bg-slate-100 text-slate-600 px-4 py-3 rounded-xl font-mono text-sm flex-1 truncate select-all border border-slate-200">
                         {referralLink}
                       </div>
-                      <button 
+                      <button
                         onClick={handleCopy}
                         className="p-3 rounded-xl bg-brand-50 text-brand-600 hover:bg-brand-100 hover:text-brand-700 transition-colors border border-brand-200"
                         title="Copy to clipboard"
+                        aria-label={copied ? "Copied" : "Copy referral link"}
                       >
                         {copied ? <CheckCircle2 className="w-5 h-5 text-green-600" /> : <Copy className="w-5 h-5" />}
                       </button>
                     </div>
                     
                     <div className="mt-6 flex justify-center gap-4">
-                      <button className="w-12 h-12 rounded-full bg-[#0a66c2]/10 text-[#0a66c2] hover:bg-[#0a66c2] hover:text-white flex items-center justify-center transition-colors">
+                      <button aria-label="Share on LinkedIn" className="w-12 h-12 rounded-full bg-[#0a66c2]/10 text-[#0a66c2] hover:bg-[#0a66c2] hover:text-white flex items-center justify-center transition-colors">
                         <Linkedin className="w-5 h-5" />
                       </button>
-                      <button className="w-12 h-12 rounded-full bg-[#1da1f2]/10 text-[#1da1f2] hover:bg-[#1da1f2] hover:text-white flex items-center justify-center transition-colors">
+                      <button aria-label="Share on Twitter" className="w-12 h-12 rounded-full bg-[#1da1f2]/10 text-[#1da1f2] hover:bg-[#1da1f2] hover:text-white flex items-center justify-center transition-colors">
                         <Twitter className="w-5 h-5" />
                       </button>
-                      <button className="w-12 h-12 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white flex items-center justify-center transition-colors">
+                      <button aria-label="Share via email" className="w-12 h-12 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white flex items-center justify-center transition-colors">
                         <Mail className="w-5 h-5" />
                       </button>
                     </div>

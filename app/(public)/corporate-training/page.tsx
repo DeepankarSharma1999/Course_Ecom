@@ -75,7 +75,8 @@ export default function CorporatePage() {
               <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Trusted by industry leaders</p>
               <div className="flex flex-wrap items-center gap-10 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
                 {TRUSTED_LOGOS.map((logo, i) => (
-                  <img key={i} src={logo} alt="Partner" className="h-7 object-contain" />
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={i} src={logo} alt="" loading="lazy" className="h-7 object-contain" />
                 ))}
               </div>
             </div>
@@ -89,23 +90,23 @@ export default function CorporatePage() {
             <form className="space-y-4">
               <div>
                 <label className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-1 block">Full Name *</label>
-                <input type="text" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="John Doe" required />
+                <input type="text" aria-label="Full name" autoComplete="name" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="John Doe" required />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-1 block">Work Email *</label>
-                <input type="email" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="john@company.com" required />
+                <input type="email" aria-label="Work email" autoComplete="email" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="john@company.com" required />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-1 block">Phone Number *</label>
-                <input type="tel" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="+1 (555) 000-0000" required />
+                <input type="tel" aria-label="Phone number" autoComplete="tel" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="+1 (555) 000-0000" required />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-1 block">Company Name *</label>
-                <input type="text" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="Acme Corp" required />
+                <input type="text" aria-label="Company name" autoComplete="organization" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white" placeholder="Acme Corp" required />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-1 block">Team Size</label>
-                <select className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white text-gray-700">
+                <select aria-label="Team size" className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:border-[#1FA8A8] focus:ring-1 focus:ring-[#1FA8A8] outline-none text-sm transition-all bg-gray-50 focus:bg-white text-gray-700">
                   <option>1-10 learners</option>
                   <option>11-50 learners</option>
                   <option>51-200 learners</option>
