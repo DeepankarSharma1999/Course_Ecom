@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Check } from "lucide-react";
 import { useLearnerAuth } from "./learner-auth-provider";
 
@@ -9,6 +9,13 @@ export function AuthModal() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeModal(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isModalOpen, closeModal]);
 
   if (!isModalOpen) return null;
 
@@ -24,12 +31,13 @@ export function AuthModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-900/60 backdrop-blur-sm p-4 sm:p-6">
-      <div className="bg-white rounded-[24px] shadow-2xl w-full max-w-[900px] flex flex-col md:flex-row overflow-hidden relative animate-in fade-in zoom-in-95 duration-300 border border-ink-100">
-        
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-900/60 backdrop-blur-sm p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title" onClick={closeModal}>
+      <div className="bg-white rounded-[24px] shadow-2xl w-full max-w-[900px] flex flex-col md:flex-row overflow-hidden relative animate-in fade-in zoom-in-95 duration-300 border border-ink-100" onClick={(e) => e.stopPropagation()}>
+
         {/* Close Button */}
         <button
           onClick={closeModal}
+          aria-label="Close dialog"
           className="absolute top-5 right-5 z-20 p-2.5 bg-ink-50 hover:bg-ink-100 rounded-full transition-colors text-ink-500 hover:text-ink-900"
         >
           <X className="w-5 h-5" />
@@ -78,7 +86,7 @@ export function AuthModal() {
           <div className="max-w-[400px] mx-auto w-full">
             
             <div className="mb-10">
-              <h2 className="text-[28px] font-extrabold text-ink-900 mb-2 tracking-tight">
+              <h2 id="auth-modal-title" className="text-[28px] font-extrabold text-ink-900 mb-2 tracking-tight">
                 {isLogin ? "Welcome back learner" : "Create an account"} <span className="inline-block origin-bottom-right hover:animate-wave">{isLogin ? "👋" : "✨"}</span>
               </h2>
               <p className="text-ink-500 text-[15px]">
@@ -91,6 +99,8 @@ export function AuthModal() {
                 <input
                   type="email"
                   placeholder="Email address"
+                  aria-label="Email address"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-5 py-4 bg-ink-50 border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/20 focus:border-primary transition-all text-ink-900 placeholder:text-ink-400 font-medium"
@@ -101,6 +111,8 @@ export function AuthModal() {
                 <input
                   type="password"
                   placeholder="Password"
+                  aria-label="Password"
+                  autoComplete={isLogin ? "current-password" : "new-password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-5 py-4 bg-ink-50 border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/20 focus:border-primary transition-all text-ink-900 placeholder:text-ink-400 font-medium"
