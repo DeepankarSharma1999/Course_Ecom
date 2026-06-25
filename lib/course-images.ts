@@ -6,6 +6,8 @@
 // ponytail: deterministic theme + slug-hash pick. Worst case is a less-on-topic image,
 // never a crash — resolveHeroImage always returns a valid pool URL and never the dup.
 
+import { COURSE_IMAGE_MAP } from "./course-image-map";
+
 // Images are hosted locally under public/images/vendor/unsplash/ (downloaded once via
 // scripts/localize-images.mjs) so the site never fetches from an external host at runtime.
 const U = (id: string) => `/images/vendor/unsplash/${id}.jpg`;
@@ -76,7 +78,10 @@ function hash(s: string): number {
  * replaces an empty value or the old shared placeholder with a topic-matched one.
  */
 export function resolveHeroImage(current: string | null | undefined, slug: string, category?: string): string {
-  if (current && !current.includes(DUP)) return current;
+  // Keep a genuinely custom image (e.g. the bespoke course PNGs); ignore the old shared
+  // placeholder and any prior theme-pool path so the curated per-course map can take over.
+  if (current && !current.includes(DUP) && !current.includes("/vendor/unsplash/")) return current;
+  if (COURSE_IMAGE_MAP[slug]) return COURSE_IMAGE_MAP[slug];
   const pool = THEMES[themeFor(`${category ?? ""} ${slug}`)];
   return pool[hash(slug) % pool.length];
 }
