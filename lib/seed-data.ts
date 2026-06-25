@@ -122,7 +122,100 @@ export const CITIES_IN = [
 
 
 
-const mockAiCourses = [
+// ponytail: minimal factory — courses with empty curriculum/faqs still render via the shared template.
+// Pass `category` to place a course outside Generative AI; defaults to Generative AI.
+const SAFE_HERO = "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80";
+
+// Real curriculum + FAQs for the 5 SimpliAxis-parity courses, keyed by slug.
+// Factory pulls from here; any slug not listed keeps the empty defaults.
+const COURSE_CONTENT: Record<string, { curriculum: CurriculumModule[]; faqs: { q: string; a: string }[] }> = {
+  "agentic-ai-for-software-testers-workshop": {
+    curriculum: [
+      { title: "Foundations of Agentic AI for Testing", topics: ["What makes an AI agent vs a chatbot", "LLM capabilities and limits for QA", "The agentic test loop: perceive, plan, act, verify", "Where agents fit in the SDLC"] },
+      { title: "Setting Up Your Agentic Testing Stack", topics: ["Choosing an LLM and orchestration framework", "Connecting agents to Playwright/Selenium", "Tool calling for UI, API, and DB checks", "Safe sandboxes and credentials handling"] },
+      { title: "Generating and Maintaining Tests with Agents", topics: ["Test case generation from requirements and user stories", "Self-healing locators and flaky-test reduction", "Exploratory testing driven by an agent", "Reviewing and approving agent-written tests"] },
+      { title: "Agentic API and Data Testing", topics: ["Contract and schema validation via agents", "Generating edge-case and negative test data", "Chained API workflows", "Assertions the agent can reason about"] },
+      { title: "Evaluation, Guardrails and Reporting", topics: ["Measuring agent test coverage and reliability", "Hallucination and false-pass detection", "Human-in-the-loop sign-off", "Defect triage and reporting to the team"] },
+      { title: "Capstone: Build an Agentic Test Suite", topics: ["Scope a real application under test", "Stand up the agent and toolset", "Generate, run, and triage a full suite", "Present results and ROI"] },
+    ],
+    faqs: [
+      { q: "Do I need to know how to code to attend?", a: "Basic scripting in any language (Python or JavaScript) is enough. We focus on directing agents, not building frameworks from scratch." },
+      { q: "Which tools and models are used in the workshop?", a: "A mainstream LLM plus an orchestration framework wired to Playwright/Selenium and REST clients. The patterns transfer to whatever stack your team already uses." },
+      { q: "Will agentic testing replace manual testers?", a: "No. It removes repetitive authoring and maintenance so testers spend more time on exploratory testing, risk analysis, and reviewing what the agent produces." },
+      { q: "Is this hands-on or lecture-based?", a: "It is a hands-on workshop. You build and run a working agentic test suite on a sample application by the end." },
+      { q: "What do I get on completion?", a: "A ULearnSystems certificate of completion and a reusable starter project you can take back to your team." },
+    ],
+  },
+  "artificial-intelligence-governance-professional": {
+    curriculum: [
+      { title: "AI Governance Fundamentals", topics: ["Why AI governance matters now", "Key terms: model, system, deployer, provider", "Risk-based thinking for AI", "Stakeholders and accountability"] },
+      { title: "Regulatory and Standards Landscape", topics: ["EU AI Act risk tiers and obligations", "NIST AI Risk Management Framework", "ISO/IEC 42001 AI management systems", "Sector and regional regulations"] },
+      { title: "Building an AI Governance Program", topics: ["AI policy and acceptable-use design", "Roles: AI governance board, owners, reviewers", "Model inventory and use-case registry", "Approval and exception workflows"] },
+      { title: "Risk, Ethics and Trustworthy AI", topics: ["Bias, fairness, and explainability", "Privacy and data governance", "Security and adversarial risks", "Human oversight and transparency"] },
+      { title: "Lifecycle Controls and Assurance", topics: ["Impact assessments and documentation", "Testing, validation, and monitoring", "Incident response for AI failures", "Third-party and vendor model risk"] },
+      { title: "Audit, Reporting and Continuous Improvement", topics: ["Evidence and audit trails", "Metrics and board-level reporting", "Internal and external audits", "Maturing the program over time"] },
+    ],
+    faqs: [
+      { q: "Who should take this certification?", a: "Risk, compliance, legal, privacy, security, and product leaders who need to oversee responsible AI use, plus practitioners moving into AI governance roles." },
+      { q: "Do I need a technical background?", a: "No deep ML background is required. We explain technical concepts in governance terms; the focus is policy, risk, and assurance." },
+      { q: "Does this map to the EU AI Act and ISO 42001?", a: "Yes. The course explicitly maps practices to the EU AI Act, the NIST AI RMF, and ISO/IEC 42001 so you can apply them in real programs." },
+      { q: "Will this prepare me to set up governance from scratch?", a: "Yes. You leave with templates and a step-by-step approach to stand up an AI governance program, including policies, registries, and review workflows." },
+      { q: "Is the exam included?", a: "Yes, the certification assessment is included in the course fee." },
+    ],
+  },
+  "agentic-ai-engineering-workshop": {
+    curriculum: [
+      { title: "Agentic AI Engineering Foundations", topics: ["Agents vs prompt chains vs RAG", "Anatomy of an agent: model, tools, memory, loop", "Single-agent vs multi-agent designs", "When not to use an agent"] },
+      { title: "Tools, Function Calling and Integrations", topics: ["Designing reliable tool schemas", "Calling APIs, databases, and code execution", "Error handling and retries", "Structured outputs and validation"] },
+      { title: "Memory, Context and Retrieval", topics: ["Short-term vs long-term memory", "Retrieval-augmented context", "Context window management", "State across multi-step tasks"] },
+      { title: "Orchestration and Multi-Agent Patterns", topics: ["Planner-executor and supervisor patterns", "Agent-to-agent handoffs", "Human-in-the-loop checkpoints", "Cost and latency trade-offs"] },
+      { title: "Evaluation, Safety and Guardrails", topics: ["Evals for agent reliability", "Preventing prompt injection and tool misuse", "Observability and tracing", "Failure modes and fallbacks"] },
+      { title: "Capstone: Ship a Working Agent", topics: ["Define a real task and tools", "Build the agent loop", "Add evals and guardrails", "Deploy and demo"] },
+    ],
+    faqs: [
+      { q: "What programming experience do I need?", a: "Comfort with Python is expected. You should be able to read and write functions and call APIs; we handle the agent-specific concepts in the workshop." },
+      { q: "Is this tied to one vendor's framework?", a: "No. We teach vendor-neutral agent engineering patterns and apply them with a mainstream LLM and orchestration toolkit, so the skills transfer across stacks." },
+      { q: "How is this different from a prompt engineering course?", a: "Prompt engineering is one input. This workshop covers tools, memory, orchestration, evaluation, and deployment — the full engineering of an autonomous agent." },
+      { q: "Will I build something real?", a: "Yes. You ship a working, evaluated agent as a capstone and leave with the code." },
+      { q: "Do you cover safety and guardrails?", a: "Yes. A full module covers prompt injection, tool-misuse prevention, observability, and fallbacks, since these are non-negotiable for production agents." },
+    ],
+  },
+  "production-grade-ai-applications-openai": {
+    curriculum: [
+      { title: "From Prototype to Production", topics: ["Why most AI prototypes never ship", "Reference architecture for AI apps", "Non-functional requirements: cost, latency, reliability", "Environments and configuration"] },
+      { title: "Building with OpenAI APIs", topics: ["Chat, responses, and structured outputs", "Function/tool calling at scale", "Embeddings and retrieval", "Streaming and token/cost management"] },
+      { title: "RAG and Data Pipelines", topics: ["Chunking and indexing strategies", "Vector stores and hybrid search", "Keeping knowledge fresh", "Evaluation of retrieval quality"] },
+      { title: "SDLC Automation with AI", topics: ["AI in code review and test generation", "CI/CD assistants and PR automation", "Documentation and release notes generation", "Guardrails for AI-assisted delivery"] },
+      { title: "Evaluation, Observability and Safety", topics: ["Offline and online evals", "Tracing, logging, and monitoring", "Prompt injection and content safety", "Regression detection for prompts and models"] },
+      { title: "Deployment, Scaling and Cost Control", topics: ["Caching and batching", "Rate limits, retries, and fallbacks", "Model selection and routing", "Capstone: deploy a production-grade AI service"] },
+    ],
+    faqs: [
+      { q: "Who is this course for?", a: "Software engineers, ML engineers, and tech leads who need to take AI features beyond a demo and run them reliably in production." },
+      { q: "Do I need prior OpenAI experience?", a: "No. We start from the APIs and build up, but you should be a working developer comfortable with backend code and HTTP APIs." },
+      { q: "Does it cover SDLC automation specifically?", a: "Yes. A dedicated module covers using AI for code review, test generation, CI/CD assistants, and documentation, with guardrails." },
+      { q: "How much of the course is hands-on?", a: "The majority. You build and deploy a production-grade AI service as the capstone, including evals, observability, and cost controls." },
+      { q: "Will the patterns work with other model providers?", a: "Yes. We use OpenAI as the reference implementation, but the architecture, RAG, eval, and deployment patterns are provider-agnostic." },
+    ],
+  },
+  "leading-safe-6-for-government": {
+    curriculum: [
+      { title: "Thriving in the Digital Age with Business Agility", topics: ["The case for agility in government", "SAFe core values and principles", "Lean-Agile mindset in the public sector", "The seven core competencies"] },
+      { title: "Building a Lean-Agile Government Organization", topics: ["Lean-Agile leadership in agencies", "Applying SAFe principles to public programs", "Working within governance and oversight", "Compliance-friendly agility"] },
+      { title: "Establishing Team and Technical Agility", topics: ["Agile teams and Agile Release Trains", "Built-in quality for government systems", "Organizing around value, not contracts", "Acquisition and vendor considerations"] },
+      { title: "Planning and Delivering with Agile Product Delivery", topics: ["Program Increment (PI) Planning in government", "Customer centricity and design thinking for citizens", "Cadence and synchronization", "DevSecOps and continuous delivery in regulated environments"] },
+      { title: "Lean Portfolio Management for Public Funding", topics: ["Connecting strategy to execution", "Lean budgeting within appropriations", "Agile contracts and procurement", "Portfolio flow and governance"] },
+      { title: "Leading the Change in the Public Sector", topics: ["Leading by example", "Building a continuous learning culture", "Overcoming bureaucratic impediments", "Preparing for SAFe Agilist (SA) certification"] },
+    ],
+    faqs: [
+      { q: "How is this different from standard Leading SAFe?", a: "It teaches the same Leading SAFe 6.0 content but frames examples, contracting, budgeting, and compliance around public-sector and government realities." },
+      { q: "Which certification does this lead to?", a: "It prepares you for the SAFe Agilist (SA) certification exam, the same credential as standard Leading SAFe." },
+      { q: "Who should attend?", a: "Government leaders, program and portfolio managers, contracting officers, and consultants driving Agile transformation in public-sector agencies." },
+      { q: "Are there prerequisites?", a: "None are required, though 5+ years in software, systems, or program management and familiarity with Agile concepts is helpful." },
+      { q: "Is the exam attempt included?", a: "Yes. The first SAFe Agilist exam attempt and a SAFe Studio membership are included with the course." },
+    ],
+  },
+};
+const mockAiCourses = ([
   { slug: "applied-agentic-ai-certification", title: "Applied Agentic AI Certification", heroImage: "/images/courses/agentic_ai_1781964207523.png" },
   { slug: "gen-ai-for-scrum-masters", title: "Gen AI for Scrum Masters", heroImage: "/images/courses/ai_scrum_master_1781964220173.png" },
   { slug: "gen-ai-for-project-managers", title: "Gen AI for Project Managers", heroImage: "/images/courses/ai_project_manager_1781964235559.png" },
@@ -130,15 +223,21 @@ const mockAiCourses = [
   { slug: "gen-ai-for-enterprise-agilist", title: "Gen AI for Enterprise Agilist", heroImage: "/images/courses/ai_enterprise_agilist_1781964279835.png" },
   { slug: "gen-ai-for-business-analysts", title: "Gen AI for Business Analysts", heroImage: "/images/courses/ai_business_analyst_1781964309553.png" },
   { slug: "ai-powered-software-development", title: "AI Powered Software Development", heroImage: "/images/courses/ai_software_development_1781964322288.png" },
-  { slug: "no-code-ai-agents", title: "No-Code AI Agents & Automation", heroImage: "/images/courses/ai_no_code_agents_1781964381914.png" }
-].map(c => ({
+  { slug: "no-code-ai-agents", title: "No-Code AI Agents & Automation", heroImage: "/images/courses/ai_no_code_agents_1781964381914.png" },
+  // --- Courses SimpliAxis offers that we were missing (added 2026-06) ---
+  { slug: "agentic-ai-for-software-testers-workshop", title: "Agentic AI for Software Testers Workshop", heroImage: "/images/courses/agentic_ai_1781964207523.png" },
+  { slug: "artificial-intelligence-governance-professional", title: "Artificial Intelligence Governance Professional", heroImage: "/images/courses/agentic_ai_1781964207523.png" },
+  { slug: "agentic-ai-engineering-workshop", title: "Agentic AI Engineering Workshop", heroImage: "/images/courses/agentic_ai_1781964207523.png" },
+  { slug: "production-grade-ai-applications-openai", title: "Production-Grade AI Applications & SDLC Automation with OpenAI Technologies", heroImage: "/images/courses/ai_software_development_1781964322288.png" },
+  { slug: "leading-safe-6-for-government", title: "AI-Empowered Leading SAFe® 6.0 for Government Certification Training", heroImage: SAFE_HERO, category: { slug: "safe", name: "SAFe" } },
+] as { slug: string; title: string; heroImage: string; category?: { slug: string; name: string } }[]).map(c => ({
   slug: c.slug,
   title: c.title,
   shortTitle: c.title,
   subtitle: `Master ${c.title} with ULearnSystems.`,
   summary: `Comprehensive training for ${c.title}. Led by industry experts.`,
   description: `Enroll in the ${c.title} course at ULearnSystems to accelerate your career.`,
-  category: { slug: "generative-ai", name: "Generative AI" },
+  category: c.category || { slug: "generative-ai", name: "Generative AI" },
   durationLabel: "2 Days | Live Classes",
   level: "Intermediate",
   accreditedBy: "Global Certification Body",
@@ -152,9 +251,9 @@ const mockAiCourses = [
   learningOutcomes: ["Master core concepts", "Real-world application", "Pass the certification exam"],
   whoShouldAttend: ["Professionals seeking certification", "Career switchers", "Team leads"],
   prerequisites: ["Basic understanding of the domain"],
-  curriculum: [],
+  curriculum: COURSE_CONTENT[c.slug]?.curriculum || [],
   whyChooseUs: [],
-  faqs: [],
+  faqs: COURSE_CONTENT[c.slug]?.faqs || [],
   seoTitle: `${c.title} | ULearnSystems`,
   seoDescription: `Get certified in ${c.title} with ULearnSystems. Expert-led training and comprehensive curriculum.`,
   seoKeywords: `${c.title.toLowerCase()}, ai training, certification`

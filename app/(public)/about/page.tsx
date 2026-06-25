@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { AboutClient } from "./about-client";
+import { getPageContent } from "@/lib/page-content";
 
+const SLUG = "about";
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { 
-    title: "About Us | ULearnSystems", 
-    description: "ULearnSystems is a globally recognized leader in professional certification and corporate training, dedicated to bridging the global skills gap." 
-  };
+  const c = await getPageContent(SLUG);
+  return { title: c.metaTitle, description: c.metaDescription };
 }
 
 export default async function AboutPage() {
-  return <AboutClient />;
+  const c = await getPageContent(SLUG);
+  return <AboutClient content={c} />;
 }

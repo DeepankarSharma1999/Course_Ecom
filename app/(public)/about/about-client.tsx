@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ShieldCheck, CheckCircle2, Globe, Users, Trophy, Target } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import Link from "next/link";
+import { DynamicIcon } from "@/components/public/dynamic-icon";
 
-export function AboutClient() {
+export function AboutClient({ content: c }: { content: any }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,12 +20,7 @@ export function AboutClient() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
-  const stats = [
-    { label: "Global Learners", value: "100k+" },
-    { label: "Corporate Partners", value: "500+" },
-    { label: "Expert Instructors", value: "250+" },
-    { label: "Countries Served", value: "45+" },
-  ];
+  const stats = c.stats as any[];
 
   return (
     <main className="bg-white min-h-screen">
@@ -38,7 +34,7 @@ export function AboutClient() {
             className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6"
           >
             <ShieldCheck className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm font-semibold">Transforming Enterprise Learning</span>
+            <span className="text-sm font-semibold">{c.heroBadge}</span>
           </motion.div>
           
           <motion.h1 
@@ -47,7 +43,7 @@ export function AboutClient() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 max-w-5xl leading-tight"
           >
-            Empowering the Future of <span className="text-yellow-400">Agile & Tech</span>
+            {c.heroHeading} <span className="text-yellow-400">{c.heroHeadingHighlight}</span>
           </motion.h1>
           
           <motion.p 
@@ -56,7 +52,7 @@ export function AboutClient() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-2xl text-primary-foreground/90 max-w-3xl mb-12 leading-relaxed font-medium"
           >
-            ULearnSystems is a globally recognized leader in professional certification and corporate training, dedicated to bridging the global skills gap.
+            {c.heroSubtitle}
           </motion.p>
         </div>
       </section>
@@ -90,32 +86,25 @@ export function AboutClient() {
               viewport={{ once: true }}
               className="flex-1"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Mission</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{c.missionTitle}</h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Founded with the vision to democratize elite enterprise training, ULearnSystems has grown into a premier destination for professionals seeking to upskill in Agile, Scrum, Project Management, and Cloud computing.
+                {c.missionBody1}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                We believe that continuous learning is the cornerstone of organizational agility and individual career growth. Our curriculum is constantly evolving, built by industry practitioners for the real-world challenges of tomorrow.
+                {c.missionBody2}
               </p>
               <div className="grid sm:grid-cols-2 gap-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <Target className="w-5 h-5 text-primary" />
+                {(c.missionPoints as any[]).map((pt, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <DynamicIcon name={pt.icon} className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-foreground mb-1">{pt.title}</h4>
+                      <p className="text-sm text-muted-foreground">{pt.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-foreground mb-1">Outcome Driven</h4>
-                    <p className="text-sm text-muted-foreground">Focus on practical skills and exam success.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <Trophy className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground mb-1">Global Accreditations</h4>
-                    <p className="text-sm text-muted-foreground">Partners with Scrum Alliance, PMI, and SAFe.</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </motion.div>
             <motion.div 
@@ -125,7 +114,7 @@ export function AboutClient() {
               className="flex-1 relative"
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl relative border border-ink-100">
-                <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80" alt="ULearnSystems team collaborating" fill sizes="(max-width: 1024px) 100vw, 600px" className="object-cover" />
+                <Image src={c.storyImage} alt={c.storyImageAlt} fill sizes="(max-width: 1024px) 100vw, 600px" className="object-cover" />
               </div>
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-ink-100 max-w-xs hidden md:block">
                 <div className="flex items-center gap-4 mb-2">
@@ -134,9 +123,9 @@ export function AboutClient() {
                     <img src="https://i.pravatar.cc/100?img=2" className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar 2"/>
                     <img src="https://i.pravatar.cc/100?img=3" className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar 3"/>
                   </div>
-                  <div className="font-bold text-sm text-foreground">Trusted by Teams</div>
+                  <div className="font-bold text-sm text-foreground">{c.storyCardTitle}</div>
                 </div>
-                <p className="text-xs text-muted-foreground">Empowering Fortune 500 companies globally.</p>
+                <p className="text-xs text-muted-foreground">{c.storyCardText}</p>
               </div>
             </motion.div>
           </div>
@@ -147,9 +136,9 @@ export function AboutClient() {
       <section className="section bg-ink-50 py-20">
         <div className="container-tight">
           <div className="text-center mb-16">
-            <h2 className="h2 mb-4 text-foreground">Why Choose ULearnSystems?</h2>
+            <h2 className="h2 mb-4 text-foreground">{c.valuesTitle}</h2>
             <p className="lead max-w-2xl mx-auto text-muted-foreground">
-              We stand apart through our commitment to instructional excellence, enterprise-grade curriculum, and unparalleled post-training support.
+              {c.valuesSubtitle}
             </p>
           </div>
           
@@ -160,30 +149,14 @@ export function AboutClient() {
             viewport={{ once: true, margin: "-50px" }}
             className="grid md:grid-cols-3 gap-8"
           >
-            {[
-              {
-                icon: <Users className="w-6 h-6 text-primary" />,
-                title: "Elite Instructors",
-                body: "Our trainers are not just certified; they are active industry practitioners with decades of hands-on experience in leading enterprise agile transformations."
-              },
-              {
-                icon: <Globe className="w-6 h-6 text-primary" />,
-                title: "Flexible Delivery",
-                body: "Whether you prefer Live Virtual Classrooms, in-person Bootcamps, or Self-Paced learning, we offer modalities that fit your schedule and learning style."
-              },
-              {
-                icon: <CheckCircle2 className="w-6 h-6 text-primary" />,
-                title: "Continuous Mentorship",
-                body: "We provide extensive exam prep materials, post-training mentorship, and access to an exclusive alumni network to ensure your long-term success."
-              }
-            ].map((value, index) => (
-              <motion.div 
-                variants={itemVariants} 
-                key={index} 
+            {(c.values as any[]).map((value, index) => (
+              <motion.div
+                variants={itemVariants}
+                key={index}
                 className="card p-8 bg-white hover:-translate-y-1 transition-transform duration-300 border border-border/50 shadow-sm"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                  {value.icon}
+                  <DynamicIcon name={value.icon} className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-bold text-xl mb-4 text-foreground">{value.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -206,16 +179,16 @@ export function AboutClient() {
           >
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
             <div className="relative z-10 max-w-2xl">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">Ready to start your learning journey?</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">{c.ctaTitle}</h2>
               <p className="text-lg md:text-xl text-background/80 mb-10 leading-relaxed">
-                Join our community of over 100,000 professionals and take the next big step in your career.
+                {c.ctaSubtitle}
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/courses" className="btn bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg font-bold rounded-md transition-all">
-                  Explore Courses
+                <Link href={c.ctaPrimaryLink} className="btn bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg font-bold rounded-md transition-all">
+                  {c.ctaPrimaryText}
                 </Link>
-                <Link href="/corporate-training" className="btn bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 text-lg font-bold rounded-md transition-all">
-                  Enterprise Solutions
+                <Link href={c.ctaSecondaryLink} className="btn bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 text-lg font-bold rounded-md transition-all">
+                  {c.ctaSecondaryText}
                 </Link>
               </div>
             </div>

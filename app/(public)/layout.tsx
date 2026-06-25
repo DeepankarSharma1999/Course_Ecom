@@ -6,17 +6,19 @@ import { LiveChatWidget } from "@/components/live-chat-widget";
 import { getDisplayCurrency } from "@/lib/geo";
 import { getSiteSettings } from "@/lib/site-content";
 import { getAllCourses, getCategories } from "@/lib/content";
+import { getPageContent } from "@/lib/page-content";
 import Link from "next/link";
 
 import { LearnerAuthProvider } from "@/components/learner-auth-provider";
 import { AuthModal } from "@/components/auth-modal";
 
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
-  const [currency, settings, categories, courses] = await Promise.all([
+  const [currency, settings, categories, courses, nav] = await Promise.all([
     getDisplayCurrency(),
     getSiteSettings(),
     getCategories(),
     getAllCourses(),
+    getPageContent("navigation"),
   ]);
 
   // Build the nav data: categories with their courses
@@ -58,6 +60,7 @@ export default async function PublicLayout({ children }: { children: React.React
         topBarMessages={(settings.topBarMessages as string[]) || []}
         navCategories={navCategories}
         featuredCourses={featuredCourses}
+        nav={nav}
       />
       <main>{children}</main>
       <SiteFooter />

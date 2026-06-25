@@ -1,146 +1,25 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, ChevronRight, PlayCircle, BookOpen, Clock, Star, Gift, MonitorPlay, Users } from "lucide-react";
+import { CheckCircle2, ChevronRight, PlayCircle, BookOpen, Clock, Star, Gift, Users } from "lucide-react";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { DynamicIcon } from "@/components/public/dynamic-icon";
+import { getPageContent } from "@/lib/page-content";
 
-export const metadata: Metadata = {
-  title: "Free Courses | ULearnSystems",
-  description: "Level Up Your Career with Free Online Courses from ULearnSystems. Explore handpicked, high-impact courses designed for professionals and beginners alike.",
-};
+const SLUG = "free-course";
+export const revalidate = 60;
 
-const BENEFITS = [
-  {
-    icon: <Users className="w-6 h-6 text-primary" />,
-    title: "Learn from Certified Experts",
-    desc: "Our free courses are crafted by seasoned instructors and experts who bring real-world insights to every lesson.",
-  },
-  {
-    icon: <MonitorPlay className="w-6 h-6 text-primary" />,
-    title: "Skill-Focused Learning",
-    desc: "Focus on hands-on, outcome-driven learning in areas like Agile, Scrum, Project Management, and Digital Transformation.",
-  },
-  {
-    icon: <Gift className="w-6 h-6 text-primary" />,
-    title: "Zero-Cost Learning Tools",
-    desc: "Gain access to free downloadable toolkits, career maps, and expert tips—no strings attached.",
-  },
-  {
-    icon: <Clock className="w-6 h-6 text-primary" />,
-    title: "Study on Your Schedule",
-    desc: "Study at your own pace—on desktop or mobile—anytime, anywhere in the world.",
-  },
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getPageContent(SLUG);
+  return { title: c.metaTitle, description: c.metaDescription };
+}
 
-const FREE_COURSES = [
-  {
-    title: "Change Management",
-    slug: "change-management",
-  },
-  {
-    title: "Cryptocurrency Investing Master Class Course",
-    slug: "cryptocurrency-investing-master-class-course",
-  },
-  {
-    title: "Agile Leadership Bootcamp",
-    slug: "agile-leadership-bootcamp",
-  },
-  {
-    title: "AI for Scrum Developers",
-    slug: "ai-for-scrum-developers",
-  },
-  {
-    title: "Design Thinking Basics",
-    slug: "design-thinking-basics",
-  },
-  {
-    title: "Project Management Fundamentals",
-    slug: "project-management-fundamentals",
-  }
-];
-
-const PRACTICE_TESTS = [
-  {
-    title: "Certified Scrum Master (CSM) Practice Test",
-    slug: "csm",
-    tests: 3,
-    hours: 3,
-    questions: 150,
-    marks: 150,
-    users: "73k+"
-  },
-  {
-    title: "Leading SAFe Practice Test | SAFe Agilist Mock Test",
-    slug: "leading-safe",
-    tests: 4,
-    hours: 6,
-    questions: 180,
-    marks: 180,
-    users: "9K+"
-  },
-  {
-    title: "ITIL Practice Test: Ace Your Certification",
-    slug: "itil",
-    tests: 5,
-    hours: 5,
-    questions: 200,
-    marks: 200,
-    users: "5K+"
-  },
-  {
-    title: "DevOps Practice Test: Prepare Efficiently",
-    slug: "devops",
-    tests: 3,
-    hours: 4,
-    questions: 120,
-    marks: 120,
-    users: "3K+"
-  }
-];
-
-const WEBINARS = [
-  {
-    title: "Agile Leadership Bootcamp: Leading in the AI Era",
-    date: "Jun 13, 2026",
-    time: "06:30 pm - 07:30 pm (IST)",
-    instructor: "Raquel Silva",
-    duration: "60 minutes"
-  },
-  {
-    title: "Become a Certified SAFe® Agilist — and Lead with Confidence",
-    date: "Jun 16, 2026",
-    time: "09:00 AM - 10:00 am (IST)",
-    instructor: "Keith Erik Wilson",
-    duration: "60 minutes"
-  },
-  {
-    title: "AI for Scrum Developers: Tools & Real-World Use Cases",
-    date: "Jun 23, 2026",
-    time: "06:30 pm - 07:30 pm (IST)",
-    instructor: "Axel Berle",
-    duration: "60 minutes"
-  }
-];
-
-const FAQS = [
-  {
-    q: "What are the requirements to enroll in a free course?",
-    a: "There are no special requirements. Anyone can enroll and start learning instantly without any prerequisites."
-  },
-  {
-    q: "Do I need to create an account to access free courses?",
-    a: "Yes, you need to create a free account to track your progress and access the course materials."
-  },
-  {
-    q: "How do I sign up for a free course?",
-    a: "Simply click on 'Enroll Now' on any of the course cards, create an account, and you will get instant access."
-  },
-  {
-    q: "Will I get a certificate upon completion?",
-    a: "Yes, all our free courses come with a verifiable Completion Certificate that you can share on your LinkedIn profile."
-  }
-];
-
-export default function FreeCoursePage() {
+export default async function FreeCoursePage() {
+  const c = await getPageContent(SLUG);
+  const BENEFITS = c.benefits as any[];
+  const FREE_COURSES = c.freeCourses as any[];
+  const PRACTICE_TESTS = c.practiceTests as any[];
+  const WEBINARS = c.webinars as any[];
+  const FAQS = c.faqs as any[];
   return (
     <main>
       {/* Hero Section */}
@@ -149,16 +28,16 @@ export default function FreeCoursePage() {
         <div className="container-tight relative z-10 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6">
             <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-            <span className="text-sm font-semibold">10K+ Reviews from Learners Worldwide</span>
+            <span className="text-sm font-semibold">{c.heroBadge}</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl">
-            Level Up Your Career with <span className="text-yellow-400">Free Online Courses</span>
+            {c.heroHeading} <span className="text-yellow-400">{c.heroHighlight}</span>
           </h1>
           <p className="text-lg md:text-xl text-primary-foreground/90 max-w-3xl mb-10 leading-relaxed">
-            Explore handpicked, high-impact courses designed for professionals and beginners alike—completely free and fully online.
+            {c.heroSubtitle}
           </p>
           <a href="#courses" className="btn bg-white text-primary hover:bg-white/90 shadow-lg px-8 py-4 text-lg font-bold">
-            Explore Free Courses
+            {c.heroCtaText}
             <ChevronRight className="w-5 h-5 ml-1" />
           </a>
         </div>
@@ -168,16 +47,16 @@ export default function FreeCoursePage() {
       <section className="section bg-ink-50">
         <div className="container-tight">
           <div className="text-center mb-12">
-            <h2 className="h2 mb-4">Courses Designed to Build Real-World Skills</h2>
+            <h2 className="h2 mb-4">{c.benefitsTitle}</h2>
             <p className="lead max-w-2xl mx-auto">
-              Unlock your potential with our meticulously crafted free resources and training materials.
+              {c.benefitsSubtitle}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {BENEFITS.map((b, i) => (
               <div key={i} className="card p-6 bg-white hover:-translate-y-1 transition-transform duration-300">
                 <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-6">
-                  {b.icon}
+                  <DynamicIcon name={b.icon} className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-bold text-lg mb-3">{b.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{b.desc}</p>
@@ -191,8 +70,8 @@ export default function FreeCoursePage() {
       <section id="courses" className="section bg-white">
         <div className="container-tight">
           <div className="text-center mb-12">
-            <h2 className="h2 mb-4">Explore Our Free Online Courses</h2>
-            <p className="lead">Start learning today with these top-rated free programs.</p>
+            <h2 className="h2 mb-4">{c.coursesTitle}</h2>
+            <p className="lead">{c.coursesSubtitle}</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {FREE_COURSES.map((course, i) => (
@@ -223,8 +102,8 @@ export default function FreeCoursePage() {
       <section className="section bg-ink-50">
         <div className="container-tight">
           <div className="text-center mb-12">
-            <h2 className="h2 mb-4">Explore Our Free Practice Tests</h2>
-            <p className="lead">Test your knowledge and prepare for your certification exams.</p>
+            <h2 className="h2 mb-4">{c.practiceTestsTitle}</h2>
+            <p className="lead">{c.practiceTestsSubtitle}</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {PRACTICE_TESTS.map((test, i) => (
@@ -260,12 +139,12 @@ export default function FreeCoursePage() {
           <div className="bg-foreground text-background rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
             <div className="relative z-10 max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Invite Your Friends & Unlock Unlimited Learning</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{c.referTitle}</h2>
               <p className="text-lg text-background/80 mb-8">
-                Share the knowledge! Enjoy unlimited access to all ULearnSystems courses—enroll in as many as you want, 100% free.
+                {c.referSubtitle}
               </p>
               <Link href="/enquire" className="btn bg-accent text-accent-foreground hover:opacity-90">
-                Invite Now
+                {c.referButton}
               </Link>
             </div>
             <div className="relative z-10 hidden md:flex shrink-0">
@@ -281,8 +160,8 @@ export default function FreeCoursePage() {
       <section className="section bg-ink-50">
         <div className="container-tight">
           <div className="text-center mb-12">
-            <h2 className="h2 mb-4">Upcoming Live Webinars</h2>
-            <p className="lead">Join our expert-led sessions to gain real-world insights.</p>
+            <h2 className="h2 mb-4">{c.webinarsTitle}</h2>
+            <p className="lead">{c.webinarsSubtitle}</p>
           </div>
           <div className="flex flex-col gap-4 max-w-4xl mx-auto">
             {WEBINARS.map((webinar, i) => (
@@ -314,8 +193,8 @@ export default function FreeCoursePage() {
       <section className="section bg-white">
         <div className="container-tight max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="h2 mb-4">Frequently Asked Questions</h2>
-            <p className="lead">Everything you need to know about our free courses.</p>
+            <h2 className="h2 mb-4">{c.faqTitle}</h2>
+            <p className="lead">{c.faqSubtitle}</p>
           </div>
           <FaqAccordion items={FAQS} />
         </div>

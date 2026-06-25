@@ -30,11 +30,18 @@ type Props = {
   topBarMessages?: string[];
   navCategories?: NavCategory[];
   featuredCourses?: FeaturedCourse[];
+  nav?: {
+    aiCourses?: { name: string; href: string }[];
+    enterpriseAgile?: { name: string; href: string }[];
+    enterpriseProduct?: { name: string; href: string }[];
+    resources?: { name: string; href: string; arrow?: boolean }[];
+  };
 };
 
 export function SiteHeader({
   brandName = "ULearnSystems",
   navCategories = [],
+  nav = {},
 }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -226,16 +233,7 @@ export function SiteHeader({
             {openMenu === "ai-courses" && (
               <div className="absolute left-0 top-[72px] pt-1 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[320px] overflow-hidden py-2 flex flex-col">
-                  {[
-                    { name: "Applied Agentic AI certification", href: "/applied-agentic-ai-certification" },
-                    { name: "Gen AI for Scrum Masters", href: "/gen-ai-for-scrum-masters" },
-                    { name: "Gen AI for Project Managers", href: "/gen-ai-for-project-managers" },
-                    { name: "Gen AI for Product Owners/Product Managers", href: "/gen-ai-for-product-owners" },
-                    { name: "Gen AI for Enterprise Agilist", href: "/gen-ai-for-enterprise-agilist" },
-                    { name: "Gen AI for Business Analysts", href: "/gen-ai-for-business-analysts" },
-                    { name: "AI Powered Software Development", href: "/ai-powered-software-development" },
-                    { name: "No-Code AI Agents & Automation", href: "/no-code-ai-agents" },
-                  ].map((link, i) => (
+                  {(nav.aiCourses ?? []).map((link, i) => (
                     <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
                       {link.name}
                     </Link>
@@ -271,14 +269,7 @@ export function SiteHeader({
                     {openSubMenu === "agile" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
-                          {[
-                            { name: "SAFe Implementation", href: "/safe-implementation" },
-                            { name: "Business Agility", href: "/business-agility" },
-                            { name: "Value Stream Workshop / Optimization", href: "/value-stream" },
-                            { name: "DevOps Cultural Transformation", href: "/devops-cultural-transformation" },
-                            { name: "Technology & Business Management", href: "/tech-business-management" },
-                            { name: "Lean Portfolio Management", href: "/lean-portfolio-management" }
-                          ].map((item, idx) => (
+                          {(nav.enterpriseAgile ?? []).map((item, idx) => (
                             <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
                               {item.name}
                             </Link>
@@ -296,12 +287,7 @@ export function SiteHeader({
                     {openSubMenu === "product" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
-                          {[
-                            { name: "Product Coaching", href: "/product-coaching" },
-                            { name: "Design Thinking Workshops", href: "/design-thinking-workshops" },
-                            { name: "Project to Product (Culture Shift)", href: "/project-to-product" },
-                            { name: "Product Development Training", href: "/product-development-training" }
-                          ].map((item, idx) => (
+                          {(nav.enterpriseProduct ?? []).map((item, idx) => (
                             <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
                               {item.name}
                             </Link>
@@ -330,16 +316,7 @@ export function SiteHeader({
             {openMenu === "resources" && (
               <div className="absolute right-0 top-[72px] pt-1 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[260px] overflow-hidden py-2 flex flex-col">
-                  {[
-                    { name: "Free Courses", href: "/free-courses" },
-                    { name: "Blogs", href: "/resources" },
-                    { name: "Tutorials", href: "/tutorials" },
-                    { name: "Practice Tests", href: "/practice-tests" },
-                    { name: "Interview Questions", href: "/interview-questions" },
-                    { name: "Events", href: "/events", arrow: true },
-                    { name: "Scrum Master Certification Guide", href: "/scrum-master-certification-guide" },
-                    { name: "Course Info", href: "/course-info" },
-                  ].map((link, i) => (
+                  {(nav.resources ?? []).map((link, i) => (
                     <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0 flex justify-between items-center group">
                       {link.name}
                       {link.arrow && <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}

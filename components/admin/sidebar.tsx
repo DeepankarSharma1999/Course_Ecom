@@ -7,6 +7,7 @@ import { BookOpen, Calendar, FileText, FolderTree, GraduationCap, Home, HelpCirc
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: Home, exact: true },
   { href: "/admin/home-content", label: "Home Page", icon: LayoutDashboard },
+  { href: "/admin/site-pages", label: "Site Pages", icon: FileText },
   { href: "/admin/pages", label: "Pages", icon: FileText },
   { href: "/admin/courses", label: "Courses", icon: BookOpen },
   { href: "/admin/combo-courses", label: "Combo Courses", icon: Layers },
