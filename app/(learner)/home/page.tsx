@@ -82,7 +82,7 @@ export default async function LearnerDashboardPage() {
                 <div className="bg-white rounded-2xl border border-ink-100 overflow-hidden group hover:shadow-lg transition-all">
                   <div className="relative h-[160px]">
                     <div className="absolute top-3 left-3 bg-[#10b981] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider z-10">FREE</div>
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Agile Leadership" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src="/images/vendor/unsplash/photo-1573496359142-b8d87734a5a2.jpg" alt="Agile Leadership" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-5 flex flex-col h-[100px]">
                     <h4 className="font-bold text-[14px] text-ink-900 leading-snug">Agile Leadership Bootcamp: Leading in the AI Era</h4>
@@ -91,7 +91,7 @@ export default async function LearnerDashboardPage() {
                 <div className="bg-white rounded-2xl border border-ink-100 overflow-hidden group hover:shadow-lg transition-all">
                   <div className="relative h-[160px]">
                     <div className="absolute top-3 left-3 bg-[#10b981] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider z-10">FREE</div>
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="SAFe Agilist" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src="/images/vendor/unsplash/photo-1560250097-0b93528c311a.jpg" alt="SAFe Agilist" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-5 flex flex-col h-[100px]">
                     <h4 className="font-bold text-[14px] text-ink-900 leading-snug">Become a Certified SAFe® Agilist — and Lead with Confidence</h4>

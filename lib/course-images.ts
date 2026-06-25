@@ -6,7 +6,9 @@
 // ponytail: deterministic theme + slug-hash pick. Worst case is a less-on-topic image,
 // never a crash — resolveHeroImage always returns a valid pool URL and never the dup.
 
-const U = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=80`;
+// Images are hosted locally under public/images/vendor/unsplash/ (downloaded once via
+// scripts/localize-images.mjs) so the site never fetches from an external host at runtime.
+const U = (id: string) => `/images/vendor/unsplash/${id}.jpg`;
 
 // The one image every course shared before this change.
 const DUP = "photo-1552664730-d307ca884978";

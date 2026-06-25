@@ -9,35 +9,35 @@ const STEPS = [
     title: "Learn",
     text: "Choose from live Instructor-led training, on-demand courses, or a blended approach. Master in-demand skills with a comprehensive curriculum, engaging resources, and one-on-one mentoring.",
     color: "green",
-    img: "3184291/pexels-photo-3184291"
+    img: "/images/vendor/pexels/pexels-photo-3184291.jpeg"
   },
   {
     num: 2,
     title: "Practice",
     text: "Perfect your skills with our Playground Labs. Access on-demand, hands-on exercises and guided practice to solidify your learning and boost your confidence.",
     color: "red",
-    img: "1181675/pexels-photo-1181675"
+    img: "/images/vendor/pexels/pexels-photo-1181675.jpeg"
   },
   {
     num: 3,
     title: "Assess",
     text: "Take a variety of assessments, from multiple-choice quizzes to coding challenges, all automatically graded for instant feedback.",
     color: "green",
-    img: "3184328/pexels-photo-3184328"
+    img: "/images/vendor/pexels/pexels-photo-3184328.jpeg"
   },
   {
     num: 4,
     title: "Insights",
     text: "Get a clear picture of your progress. Identify areas where you shine and where you can improve with personalized insights based on your performance.",
     color: "red",
-    img: "3183150/pexels-photo-3183150"
+    img: "/images/vendor/pexels/pexels-photo-3183150.jpeg"
   },
   {
     num: 5,
     title: "Apply",
     text: "Go beyond theory and create professional-grade projects, just like the top tech talent. Plus, gamification keeps things fun - earn points, badges, and climb the leaderboard!",
     color: "green",
-    img: "3184287/pexels-photo-3184287"
+    img: "/images/vendor/pexels/pexels-photo-3184287.jpeg"
   }
 ];
 
@@ -95,7 +95,7 @@ export function PedagogySection() {
                          </div>
                          <div className="hidden md:flex justify-end">
                             <div className="w-[380px] h-[240px] bg-white rounded-2xl border border-gray-100 shadow-xl flex items-center justify-center overflow-hidden p-2">
-                               <img src={`https://images.pexels.com/photos/${step.img}.jpeg?auto=compress&cs=tinysrgb&w=600`} loading="lazy" decoding="async" className="w-full h-full object-cover rounded-xl" alt="Learning platform interface" />
+                               <img src={step.img} loading="lazy" decoding="async" className="w-full h-full object-cover rounded-xl" alt="Learning platform interface" />
                             </div>
                          </div>
                       </div>

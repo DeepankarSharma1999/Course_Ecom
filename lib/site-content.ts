@@ -99,7 +99,7 @@ const DEFAULT_HOME = {
   whyUsBadge: "Why Ulearnsystems",
   whyUsTitle: "A Training Partner Built for Outcomes, Not Just Certificates",
   whyUsSubtitle: "We combine globally accredited curriculum, hands-on practitioner-led delivery, and modern learning experiences to ensure you don't just pass your exam — you actually apply what you learn at work.",
-  whyUsImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
+  whyUsImage: "/images/vendor/unsplash/photo-1522202176988-66273c2fd55f.jpg",
   whyUsItems: [
     { icon: "GraduationCap", title: "Accredited Curriculum", body: "Official courseware from Scaled Agile, PMI, Scrum Alliance, AXELOS and more." },
     { icon: "Users", title: "Practitioner-Led Training", body: "Trainers are working SPCs, PMPs, and certified coaches with 15+ years of experience." },

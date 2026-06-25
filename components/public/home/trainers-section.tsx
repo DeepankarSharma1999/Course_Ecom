@@ -5,7 +5,7 @@ const TRAINERS = [
     name: "Carl Pritchard",
     title: "Project Management Guru",
     companies: [ "BNY Mellon", "AT&T" ],
-    photo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300",
+    photo: "/images/vendor/pexels/pexels-photo-220453.jpeg",
     color: "yellow",
     offset: false
   },
@@ -13,7 +13,7 @@ const TRAINERS = [
     name: "Chris Ward",
     title: "Project Management Expert",
     companies: [ "iLinc", "PASSION" ],
-    photo: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=300",
+    photo: "/images/vendor/pexels/pexels-photo-1043471.jpeg",
     color: "green",
     offset: true
   },
@@ -21,7 +21,7 @@ const TRAINERS = [
     name: "Cristina Shuval",
     title: "Cyber Security Consultant",
     companies: [ "accenture", "FORTINET" ],
-    photo: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300",
+    photo: "/images/vendor/pexels/pexels-photo-415829.jpeg",
     color: "yellow",
     offset: false
   },
@@ -29,7 +29,7 @@ const TRAINERS = [
     name: "Kevin Davis",
     title: "Project Management Expert",
     companies: [ "bmc", "CLARK" ],
-    photo: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
+    photo: "/images/vendor/pexels/pexels-photo-1222271.jpeg",
     color: "green",
     offset: true
   },
@@ -37,7 +37,7 @@ const TRAINERS = [
     name: "Juan Galvan",
     title: "Digital Entrepreneur",
     companies: [ "KOBE", "QLE" ],
-    photo: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300",
+    photo: "/images/vendor/pexels/pexels-photo-91227.jpeg",
     color: "yellow",
     offset: false
   }

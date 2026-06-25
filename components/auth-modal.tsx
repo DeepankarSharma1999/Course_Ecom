@@ -59,7 +59,7 @@ export function AuthModal() {
             <div className="w-56 h-56 rounded-full bg-white/5 p-2 mb-8 relative border border-white/10 shadow-2xl">
               <div className="absolute inset-0 bg-primary/20 rounded-full animate-pulse"></div>
               <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" 
+                src="/images/vendor/unsplash/photo-1573496359142-b8d87734a5a2.jpg" 
                 alt="Learner" 
                 className="w-full h-full object-cover rounded-full border-[6px] border-white/20 shadow-inner relative z-10"
               />

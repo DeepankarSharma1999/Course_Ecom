@@ -10,28 +10,28 @@ const SPOTLIGHT_ARTICLES = [
     org: "Business Standard",
     logo: "BS",
     title: "ULearnSystems crosses 10 million enrollments across 100+ nations!",
-    img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-3184291.jpeg",
     color: "text-red-700"
   },
   {
     org: "ET BRAND EQUITY",
     logo: "ET",
     title: "How ULearnSystems is reshaping corporate Agile training globally.",
-    img: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-1181406.jpeg",
     color: "text-[#E42E35]"
   },
   {
     org: "moneycontrol",
     logo: "mc",
     title: "The rise of Micro-credentials: ULearnSystems leads the way in 2026.",
-    img: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-3182773.jpeg",
     color: "text-green-700"
   },
   {
     org: "YOURSTORY",
     logo: "YS",
     title: "From a startup to an enterprise learning giant: The ULearnSystems journey.",
-    img: "https://images.pexels.com/photos/3184315/pexels-photo-3184315.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-3184315.jpeg",
     color: "text-orange-600"
   }
 ];
@@ -205,7 +205,7 @@ export function AccoladesSection() {
          <div className="container-tight relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16 max-w-6xl w-full">
             {/* Woman Image Placeholder */}
             <div className="w-[180px] h-[180px] -mt-20 md:mt-0 relative hidden md:block shrink-0">
-               <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=300" loading="lazy" decoding="async" className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl" alt="Support team member" />
+               <img src="/images/vendor/pexels/pexels-photo-733872.jpeg" loading="lazy" decoding="async" className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl" alt="Support team member" />
                <div className="absolute top-4 -left-16 bg-white rounded-xl shadow-lg p-3 flex items-center gap-3">
                  <Mail className="text-primary w-5 h-5" />
                  <div className="w-16 h-2 bg-gray-100 rounded-full"></div>

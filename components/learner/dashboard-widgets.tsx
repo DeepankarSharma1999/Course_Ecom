@@ -16,7 +16,7 @@ export function ComboOfferCard({ course }: { course: any }) {
 
       {/* Image Side */}
       <div className="w-full md:w-2/5 relative">
-        <img src={course.heroImage || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"} alt={course.title} className="w-full h-[180px] object-cover rounded-xl shadow-sm border border-white/50" />
+        <img src={course.heroImage || "/images/vendor/unsplash/photo-1573496359142-b8d87734a5a2.jpg"} alt={course.title} className="w-full h-[180px] object-cover rounded-xl shadow-sm border border-white/50" />
       </div>
 
       {/* Content Side */}
@@ -52,7 +52,7 @@ export function FreeCourseCard({ course }: { course: any }) {
         <div className="absolute top-3 left-3 bg-[#10b981] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider z-10 shadow-sm">
           FREE
         </div>
-        <img src={course.heroImage || "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <img src={course.heroImage || "/images/vendor/unsplash/photo-1531482615713-2afd69097998.jpg"} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
       </div>
       <div className="p-5 flex flex-col h-[140px]">
         <h4 className="font-bold text-[14px] text-ink-900 leading-snug mb-auto line-clamp-2 group-hover:text-primary transition-colors">{course.title}</h4>

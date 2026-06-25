@@ -8,7 +8,7 @@ export function ReferralBanner() {
       {/* Image Placeholder */}
       <div className="w-[45%] h-full flex items-end relative z-10">
         <img 
-          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" 
+          src="/images/vendor/unsplash/photo-1573496359142-b8d87734a5a2.jpg" 
           alt="Referral" 
           className="w-full h-auto object-cover rounded-xl shadow-lg -mb-2 border-2 border-white/20"
         />

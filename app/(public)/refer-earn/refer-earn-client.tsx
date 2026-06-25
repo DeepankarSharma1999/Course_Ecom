@@ -21,7 +21,7 @@ export function ReferEarnClient({ content: c }: { content: any }) {
     <div className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-brand-950 pt-24 pb-20 md:pt-32 md:pb-28 text-white">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/images/vendor/textures/cubes.png')] mix-blend-overlay"></div>
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-500 rounded-full blur-[128px] opacity-20 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent"></div>
 

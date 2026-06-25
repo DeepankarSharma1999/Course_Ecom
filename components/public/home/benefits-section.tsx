@@ -52,8 +52,8 @@ export function BenefitsSection() {
               {/* Desktop Video Mockup */}
               <div className="absolute bottom-[10%] right-[10%] w-[55%] h-[45%] bg-white rounded-t-xl shadow-md border-x border-t border-gray-100 z-10 p-1.5 flex flex-col">
                  <div className="flex-1 bg-gray-200 rounded-md overflow-hidden relative flex">
-                    <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400" className="w-full h-full object-cover" alt="Student" />
-                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400" className="w-1/3 h-full object-cover border-l border-white" alt="Student" />
+                    <img src="/images/vendor/pexels/pexels-photo-415829.jpeg" className="w-full h-full object-cover" alt="Student" />
+                    <img src="/images/vendor/pexels/pexels-photo-1043471.jpeg" className="w-1/3 h-full object-cover border-l border-white" alt="Student" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-6 h-6 bg-black/50 rounded-full flex items-center justify-center"><Play className="w-3 h-3 text-white ml-0.5" /></div>
                     </div>
@@ -92,13 +92,13 @@ export function BenefitsSection() {
                    What is SAAS?
                    <span className="text-gray-400">Ask</span>
                    <div className="w-4 h-4 bg-gray-200 rounded-full overflow-hidden absolute -right-2 -top-2 border border-white">
-                      <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=50" alt="" />
+                      <img src="/images/vendor/pexels/pexels-photo-220453.jpeg" alt="" />
                    </div>
                  </div>
                  <div className="grid grid-cols-3 gap-1.5 w-max">
-                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
-                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
-                    <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
+                    <img src="/images/vendor/pexels/pexels-photo-220453.jpeg" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
+                    <img src="/images/vendor/pexels/pexels-photo-1043471.jpeg" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
+                    <img src="/images/vendor/pexels/pexels-photo-415829.jpeg" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
                  </div>
               </div>
 
@@ -160,7 +160,7 @@ export function BenefitsSection() {
              
              <div className="w-full h-[220px] bg-[#fcf9f2] rounded-[24px] border border-gray-100 relative p-4 flex gap-6 overflow-hidden">
                 <div className="w-[150px] h-full rounded-[16px] overflow-hidden relative shadow-sm">
-                  <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Student learning online" />
+                  <img src="/images/vendor/pexels/pexels-photo-415829.jpeg" loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Student learning online" />
                   
                   {/* Large floating play button */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg cursor-pointer hover:scale-105 transition-transform z-10">

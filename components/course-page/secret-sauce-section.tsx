@@ -33,14 +33,14 @@ export function SecretSauceSection() {
       subtitle: "Earn 16 SEUs and 16 PDUs",
       features: [],
       bgColor: "bg-[#f8fafc]",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80"
+      image: "/images/vendor/unsplash/photo-1523240795612-9a054b0db644.jpg"
     },
     {
       title: "Lifetime Access",
       subtitle: "To course materials and updates",
       features: [],
       bgColor: "bg-[#fffbeb]",
-      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=400&q=80"
+      image: "/images/vendor/unsplash/photo-1501504905252-473c47e087f8.jpg"
     }
   ];
 

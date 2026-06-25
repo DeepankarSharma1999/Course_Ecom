@@ -22,7 +22,7 @@ export function GiftVoucherBanner() {
 
       <div className="w-full md:w-2/5 flex justify-center md:justify-end">
         <img 
-          src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80" 
+          src="/images/vendor/unsplash/photo-1549465220-1a8b9238cd48.jpg" 
           alt="Gift Learning" 
           className="w-[200px] h-[200px] object-cover rounded-full border-4 border-white shadow-xl"
         />
