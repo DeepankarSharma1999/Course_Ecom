@@ -85,7 +85,7 @@ export function ReviewsSection({ course }: { course?: CourseContent }) {
                 <div className="text-right">
                   <div className="text-[10px] text-gray-400 mb-1">Read on</div>
                   <div className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-bold mx-auto text-gray-600">
-                    {r.source.charAt(0)}
+                    {(r.source ?? "?").charAt(0)}
                   </div>
                 </div>
               </div>

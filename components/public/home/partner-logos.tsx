@@ -43,7 +43,7 @@ export function PartnerLogos({ content }: { content?: any }) {
 
   const group = (groupKey: string, hidden = false) => (
     <div className="flex shrink-0 items-start" aria-hidden={hidden}>
-      {items.map((cert, i) => (
+      {items.map((cert: any, i: number) => (
         <div
           key={`${groupKey}-${cert.name}-${i}`}
           className="flex w-44 shrink-0 flex-col items-center gap-3 px-3"

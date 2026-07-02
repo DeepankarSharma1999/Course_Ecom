@@ -29,7 +29,7 @@ export function PedagogySection({ content }: { content?: any }) {
           {/* Slider Container */}
           <div className="relative flex justify-center items-center h-[400px] w-full">
              
-             {STEPS.map((step, i) => {
+             {STEPS.map((step: any, i: number) => {
                 let position = 'hidden';
                 let style: React.CSSProperties = { transform: 'translateX(200%) scale(0.5)', opacity: 0, zIndex: 0 };
                 

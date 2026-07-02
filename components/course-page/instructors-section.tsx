@@ -64,7 +64,7 @@ export function InstructorsSection({ course }: { course: CourseContent }) {
             </p>
             
             <div className="flex items-center gap-4 mb-6 opacity-60">
-              {inst.companies.map((company, j) => (
+              {(inst.companies ?? []).map((company, j) => (
                 <div key={j} className="text-[12px] font-bold text-gray-400">{company}</div>
               ))}
             </div>
