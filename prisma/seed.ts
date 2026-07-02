@@ -26,13 +26,10 @@ async function main() {
   });
   console.log("  -> demo@ulearnsystems.com (password: demo1234)");
 
-  // Seed the full content set ONLY when the DB is empty. Re-running on every
-  // container restart would clobber admin edits and generated content, so once
-  // courses exist we stop here (the admin user above is always ensured).
-  if ((await prisma.course.count()) > 0) {
-    console.log("Database already seeded — skipping content seed to preserve edits.");
-    return;
-  }
+  // On a fresh DB we seed everything. On a re-run we still ensure categories and
+  // any *missing* courses exist (backfill), but skip existing courses and the
+  // destructive global re-seeds below so admin edits / generated content survive.
+  const firstSeed = (await prisma.course.count()) === 0;
 
   console.log("Seeding categories...");
   for (const cat of CATEGORIES) {
@@ -45,37 +42,13 @@ async function main() {
 
   console.log("Seeding courses...");
   for (const c of COURSES) {
+    // Skip courses that already exist — preserves admin edits & generated content.
+    // Missing courses still get created (backfill after a partial seed).
+    if (await prisma.course.findUnique({ where: { slug: c.slug }, select: { id: true } })) continue;
+
     const category = await prisma.category.findUnique({ where: { slug: c.category.slug } });
-    const course = await prisma.course.upsert({
-      where: { slug: c.slug },
-      update: {
-        title: c.title,
-        shortTitle: c.shortTitle,
-        subtitle: c.subtitle,
-        summary: c.summary,
-        description: c.description,
-        durationLabel: c.durationLabel,
-        level: c.level,
-        accreditedBy: c.accreditedBy,
-        basePriceInr: c.basePriceInr,
-        basePriceUsd: c.basePriceUsd,
-        heroImage: c.heroImage,
-        examIncluded: c.examIncluded,
-        ratingAvg: c.ratingAvg,
-        ratingCount: c.ratingCount,
-        isFeatured: true,
-        categoryId: category?.id,
-        keyFeatures: c.keyFeatures as any,
-        learningOutcomes: c.learningOutcomes as any,
-        whoShouldAttend: c.whoShouldAttend as any,
-        prerequisites: c.prerequisites as any,
-        curriculum: c.curriculum as any,
-        whyChooseUs: c.whyChooseUs as any,
-        seoTitle: c.seoTitle,
-        seoDescription: c.seoDescription,
-        seoKeywords: c.seoKeywords,
-      },
-      create: {
+    const course = await prisma.course.create({
+      data: {
         slug: c.slug,
         title: c.title,
         shortTitle: c.shortTitle,
@@ -153,10 +126,12 @@ async function main() {
     }
   }
 
-  console.log("Seeding global FAQs...");
-  await prisma.fAQ.deleteMany({ where: { scope: "global" } });
-  for (const [i, f] of GLOBAL_FAQS.entries()) {
-    await prisma.fAQ.create({ data: { scope: "global", question: f.q, answer: f.a, order: i } });
+  if (firstSeed) {
+    console.log("Seeding global FAQs...");
+    await prisma.fAQ.deleteMany({ where: { scope: "global" } });
+    for (const [i, f] of GLOBAL_FAQS.entries()) {
+      await prisma.fAQ.create({ data: { scope: "global", question: f.q, answer: f.a, order: i } });
+    }
   }
 
   console.log("Seeding trainers...");
@@ -184,12 +159,14 @@ async function main() {
     }
   }
 
-  console.log("Seeding testimonials...");
-  await prisma.testimonial.deleteMany();
-  for (const t of TESTIMONIALS) {
-    await prisma.testimonial.create({
-      data: { name: t.name, role: t.role, company: t.company, quote: t.quote, rating: t.rating, course: t.course },
-    });
+  if (firstSeed) {
+    console.log("Seeding testimonials...");
+    await prisma.testimonial.deleteMany();
+    for (const t of TESTIMONIALS) {
+      await prisma.testimonial.create({
+        data: { name: t.name, role: t.role, company: t.company, quote: t.quote, rating: t.rating, course: t.course },
+      });
+    }
   }
 
   console.log("Seeding SiteSettings...");
