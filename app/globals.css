@@ -40,6 +40,8 @@ body {
   .badge { @apply inline-flex items-center gap-1 rounded-full bg-secondary px-4 py-1.5 text-xs font-bold text-secondary-foreground; }
   .section-eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-primary/75; }
   .accent-badge { @apply inline-flex items-center rounded-full bg-[#FFE8E8] px-3 py-1 text-xs font-extrabold text-[#E23B3B]; }
+  /* Subtle dot texture for hero overlays — replaces the missing /frontend_assets/image/homban-dots.webp (uses currentColor) */
+  .hero-dots { background-image: radial-gradient(currentColor 1px, transparent 1px); background-size: 20px 20px; }
 }
 
 @layer base {
@@ -115,3 +117,15 @@ body {
     }
   }
 }
+
+/* Per-course Overview content (HTML stored in course.description). */
+.course-prose { color: #334155; font-size: 15px; line-height: 1.75; }
+.course-prose h2 { color: #082032; font-weight: 700; font-size: 26px; line-height: 1.25; margin: 2rem 0 0.75rem; }
+.course-prose h3 { color: #082032; font-weight: 700; font-size: 19px; margin: 1.5rem 0 0.5rem; }
+.course-prose p { margin: 0 0 1rem; }
+.course-prose ul { list-style: disc; padding-left: 1.4rem; margin: 0 0 1rem; }
+.course-prose ol { list-style: decimal; padding-left: 1.4rem; margin: 0 0 1rem; }
+.course-prose li { margin: 0.35rem 0; }
+.course-prose li::marker { color: #1FA8A8; }
+.course-prose strong { color: #082032; font-weight: 700; }
+.course-prose a { color: #0a66c2; text-decoration: underline; }

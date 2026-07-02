@@ -24,7 +24,7 @@ export default function AnimatedContent({ content, slug }: { content: InfoPageCo
     <main className="bg-white min-h-screen">
       {/* Hero Section - Matching /free-course */}
       <section className="bg-gradient-to-br from-primary to-[#0f6b6b] text-primary-foreground py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/frontend_assets/image/homban-dots.webp')] opacity-20 bg-repeat"></div>
+        <div className="absolute inset-0 hero-dots text-white opacity-20"></div>
         <div className="container-tight relative z-10 flex flex-col items-center text-center">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}

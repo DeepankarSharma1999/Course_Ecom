@@ -19,10 +19,10 @@ export default function ParallaxHeroImagesEdgeFocusDemo() {
 }
 
 const images = [
-  "https://assets.aceternity.com/components/hero-section-with-mesh-gradient.webp",
-  "https://assets.aceternity.com/components/3d-globe.webp",
-  "https://assets.aceternity.com/components/keyboard-2.webp",
-  "https://assets.aceternity.com/components/hero-1.webp",
-  "https://assets.aceternity.com/components/hero-2.webp",
-  "https://assets.aceternity.com/components/hero-3.webp",
+  "/images/vendor/aceternity/hero-section-with-mesh-gradient.webp",
+  "/images/vendor/aceternity/3d-globe.webp",
+  "/images/vendor/aceternity/keyboard-2.webp",
+  "/images/vendor/aceternity/hero-1.webp",
+  "/images/vendor/aceternity/hero-2.webp",
+  "/images/vendor/aceternity/hero-3.webp",
 ];

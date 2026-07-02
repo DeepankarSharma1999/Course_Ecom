@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { type CourseContent } from "@/lib/seed-data";
@@ -56,10 +57,10 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
         </div>
         
         <div className="flex gap-2 shrink-0">
-          <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-400">
+          <button onClick={() => scroll("left")} aria-label="Scroll left" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-600">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
+          <button onClick={() => scroll("right")} aria-label="Scroll right" className="w-11 h-11 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
@@ -70,8 +71,8 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
           <div key={i} className="min-w-[300px] md:min-w-[350px] bg-white rounded-2xl border border-gray-200 p-4 shadow-sm snap-start flex flex-col hover:shadow-md transition-shadow">
             
             {/* Article Thumbnail Image */}
-            <div className={`w-full h-40 rounded-xl mb-4 flex items-center justify-center overflow-hidden ${article.bg}`}>
-               <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
+            <div className={`relative w-full h-40 rounded-xl mb-4 overflow-hidden ${article.bg}`}>
+               <Image src={article.image} alt={article.title} fill sizes="(max-width: 768px) 300px, 350px" className="object-cover" />
             </div>
             
             <div className="flex items-center justify-between mb-4">

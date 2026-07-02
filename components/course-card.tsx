@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Clock, Star, Award } from "lucide-react";
 import type { CourseContent } from "@/lib/seed-data";
-import { formatInCurrency, type CurrencyCode } from "@/lib/currency";
+import { formatInCurrency, type CurrencyCode, type CurrencyConfig } from "@/lib/currency";
 
-export function CourseCard({ course, country, city, currency = "INR" }: { course: CourseContent; country?: string; city?: string; currency?: CurrencyCode }) {
+export function CourseCard({ course, country, city, currency = "USD", currencies }: { course: CourseContent; country?: string; city?: string; currency?: CurrencyCode; currencies?: CurrencyConfig[] }) {
   const href = [country, course.slug, city].filter(Boolean).join("/");
   return (
     <Link
@@ -38,7 +38,7 @@ export function CourseCard({ course, country, city, currency = "INR" }: { course
             <span className="font-semibold text-ink-900">{course.ratingAvg}</span>
             <span className="text-ink-500">({course.ratingCount.toLocaleString()})</span>
           </div>
-          <div className="text-brand-600 font-bold">{formatInCurrency(course.basePriceInr, currency)}</div>
+          <div className="text-brand-600 font-bold">{formatInCurrency(course.basePriceUsd, currency, currencies)}</div>
         </div>
       </div>
     </Link>

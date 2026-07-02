@@ -32,8 +32,14 @@ function resolveLogo(file: string): string | null {
   return null;
 }
 
-export function PartnerLogos() {
-  const items = CERTS.map((c) => ({ ...c, src: resolveLogo(c.file) }));
+export function PartnerLogos({ content }: { content?: any }) {
+  const source = content?.partnerLogos?.length ? content.partnerLogos : CERTS;
+  // Each item: explicit image URL wins; otherwise resolve a bundled logo file by name.
+  const items = source.map((c: any) => ({
+    name: c.name,
+    label: c.label,
+    src: c.image || (c.file ? resolveLogo(c.file) : null),
+  }));
 
   const group = (groupKey: string, hidden = false) => (
     <div className="flex shrink-0 items-start" aria-hidden={hidden}>

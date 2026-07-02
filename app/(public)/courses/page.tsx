@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-export default async function CoursesPage() {
+export default async function CoursesPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+  const { q } = await searchParams;
   const [COURSES, CATEGORIES, currency] = await Promise.all([getAllCourses(), getCategories(), getDisplayCurrency()]);
   return (
     <>
@@ -22,7 +23,7 @@ export default async function CoursesPage() {
       </section>
       <section className="section">
         <div className="container-tight">
-          <CoursesExplorer courses={COURSES} categories={CATEGORIES} currency={currency} />
+          <CoursesExplorer courses={COURSES} categories={CATEGORIES} currency={currency} initialQuery={q} />
         </div>
       </section>
     </>

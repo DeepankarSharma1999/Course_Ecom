@@ -86,8 +86,10 @@ const TESTIMONIALS = [
   }
 ];
 
-export function TestimonialsSlider() {
+export function TestimonialsSlider({ content }: { content?: any }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const tBadge = content?.testimonialsBadge || "Learner Reviews From The World Over";
+  const tTitle = content?.testimonialsTitle || "Testimonials That Speak Volumes";
   const [isMobile, setIsMobile] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -122,8 +124,8 @@ export function TestimonialsSlider() {
     <section className="section bg-[#f8fcfc] font-sans py-24 overflow-hidden">
       <div className="container-tight max-w-[1200px]">
         <div className="mx-auto mb-8 max-w-3xl text-center">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">Learner Reviews From The World Over</div>
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">Testimonials That Speak Volumes</h2>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">{tBadge}</div>
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">{tTitle}</h2>
         </div>
 
         {/* Custom Tab Bar */}
@@ -208,10 +210,10 @@ export function TestimonialsSlider() {
 
         {/* Pagination Controls */}
         <div className="flex items-center justify-center gap-4 mt-10">
-          <button onClick={handlePrev} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-gray-500 hover:text-gray-600 transition-colors bg-white shadow-sm">
+          <button onClick={handlePrev} aria-label="Previous testimonial" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-700 transition-colors bg-white shadow-sm">
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <button onClick={handleNext} className="w-8 h-8 rounded-full border border-[#082032] flex items-center justify-center text-[#082032] hover:bg-[#082032] hover:text-white transition-colors bg-white shadow-sm">
+          <button onClick={handleNext} aria-label="Next testimonial" className="w-11 h-11 rounded-full border border-[#082032] flex items-center justify-center text-[#082032] hover:bg-[#082032] hover:text-white transition-colors bg-white shadow-sm">
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>

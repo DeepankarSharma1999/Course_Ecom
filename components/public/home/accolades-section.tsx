@@ -10,28 +10,28 @@ const SPOTLIGHT_ARTICLES = [
     org: "Business Standard",
     logo: "BS",
     title: "ULearnSystems crosses 10 million enrollments across 100+ nations!",
-    img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-3184291.jpeg",
     color: "text-red-700"
   },
   {
     org: "ET BRAND EQUITY",
     logo: "ET",
     title: "How ULearnSystems is reshaping corporate Agile training globally.",
-    img: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-1181406.jpeg",
     color: "text-[#E42E35]"
   },
   {
     org: "moneycontrol",
     logo: "mc",
     title: "The rise of Micro-credentials: ULearnSystems leads the way in 2026.",
-    img: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-3182773.jpeg",
     color: "text-green-700"
   },
   {
     org: "YOURSTORY",
     logo: "YS",
     title: "From a startup to an enterprise learning giant: The ULearnSystems journey.",
-    img: "https://images.pexels.com/photos/3184315/pexels-photo-3184315.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "/images/vendor/pexels/pexels-photo-3184315.jpeg",
     color: "text-orange-600"
   }
 ];
@@ -59,11 +59,11 @@ const LOGOS = [
 ];
 
 // Memoized Marquee to prevent re-rendering when carousel state changes, fixing INP.
-const AccoladesMarquee = memo(function AccoladesMarquee() {
+const AccoladesMarquee = memo(function AccoladesMarquee({ items = ACCOLADES }: { items?: typeof ACCOLADES }) {
   return (
     <div className="relative flex overflow-hidden group max-w-[100vw]">
       <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0">
-         {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
+         {[...items, ...items, ...items].map((accolade, i) => (
             <div key={`a-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
                <div className="h-[80px] flex items-center justify-center mb-6 w-full">
                   {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
@@ -79,7 +79,7 @@ const AccoladesMarquee = memo(function AccoladesMarquee() {
          ))}
       </div>
       <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0" aria-hidden="true">
-         {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
+         {[...items, ...items, ...items].map((accolade, i) => (
             <div key={`b-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
                <div className="h-[80px] flex items-center justify-center mb-6 w-full">
                   {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
@@ -141,7 +141,9 @@ function SpotlightCarousel() {
   );
 }
 
-export function AccoladesSection() {
+export function AccoladesSection({ content }: { content?: any }) {
+  const accolades = content?.accolades?.length ? content.accolades : ACCOLADES;
+  const title = content?.accoladesTitle || "Our Commitment to Quality, Reflected in Accolades";
   return (
     <section className="font-sans w-full overflow-hidden bg-white">
       <style dangerouslySetInnerHTML={{__html: `
@@ -158,10 +160,10 @@ export function AccoladesSection() {
       <div className="py-20 border-b border-gray-100">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">ULEARNSYSTEMS AWARDS AND RECOGNITION</div>
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">Our Commitment to Quality,<br/>Reflected in Accolades</h2>
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">{title}</h2>
         </div>
-        
-        <AccoladesMarquee />
+
+        <AccoladesMarquee items={accolades} />
       </div>
 
       {/* 2. Spotlight Section */}
@@ -205,7 +207,7 @@ export function AccoladesSection() {
          <div className="container-tight relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16 max-w-6xl w-full">
             {/* Woman Image Placeholder */}
             <div className="w-[180px] h-[180px] -mt-20 md:mt-0 relative hidden md:block shrink-0">
-               <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=300" className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl" alt="Support" />
+               <img src="/images/vendor/pexels/pexels-photo-733872.jpeg" loading="lazy" decoding="async" className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl" alt="Support team member" />
                <div className="absolute top-4 -left-16 bg-white rounded-xl shadow-lg p-3 flex items-center gap-3">
                  <Mail className="text-primary w-5 h-5" />
                  <div className="w-16 h-2 bg-gray-100 rounded-full"></div>

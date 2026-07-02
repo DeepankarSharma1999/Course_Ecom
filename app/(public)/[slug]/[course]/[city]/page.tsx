@@ -6,7 +6,7 @@ import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { CITIES_IN, COUNTRIES, findCountry, findCity, getAllCourses, getCourseBySlug, getCourseVariant } from "@/lib/content";
-import { getDisplayCurrency } from "@/lib/geo";
+import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
 export const dynamicParams = true;
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string; course: string; city: string }> }) {
   const { slug, course, city } = await params;
-  const [c, currency] = await Promise.all([getCourseBySlug(course), getDisplayCurrency()]);
+  const [c, currency, currencyCfg] = await Promise.all([getCourseBySlug(course), getDisplayCurrency(), getCurrencyConfig()]);
   const co = findCountry(slug); const ct = findCity(city);
   if (!c || !co || !ct) notFound();
 
@@ -54,9 +54,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
       {jsonLd.map((d, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
       ))}
-      <CoursePageContent course={c} countrySlug={slug} citySlug={city} currency={currency} />
+      <CoursePageContent course={c} countrySlug={slug} citySlug={city} currency={currency} currencies={currencyCfg.currencies} />
       <TrainerSection courseSlug={c.slug} />
-      <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceInr ? formatInCurrency(c.basePriceInr, currency) : undefined} />
+      <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceUsd ? formatInCurrency(c.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
     </>
   );
 }

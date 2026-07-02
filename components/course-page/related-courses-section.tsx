@@ -22,10 +22,10 @@ export function RelatedCoursesSection({ course }: { course: CourseContent }) {
       <div className="flex justify-between items-end mb-8">
         <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] break-words leading-tight">Learners Also Enrolled For</h2>
         <div className="flex gap-2">
-          <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-50 transition-colors">
+          <button onClick={() => scroll("left")} aria-label="Scroll left" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-50 transition-colors">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center text-gray-800 hover:bg-gray-50 transition-colors">
+          <button onClick={() => scroll("right")} aria-label="Scroll right" className="w-11 h-11 rounded-full border border-gray-800 flex items-center justify-center text-gray-800 hover:bg-gray-50 transition-colors">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE, cn } from "@/lib/utils";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { LearnerAuthProvider } from "@/components/learner-auth-provider";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
-      <body>{children}</body>
+      <body>
+        <LearnerAuthProvider>{children}</LearnerAuthProvider>
+      </body>
     </html>
   );
 }

@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { CourseCard } from "@/components/course-card";
-import { type CurrencyCode, convertFromInr } from "@/lib/currency";
+import { type CurrencyCode } from "@/lib/currency";
+import { usePricing } from "@/components/pricing-provider";
 
 type Course = any;
 type Category = { slug: string; name: string };
@@ -17,8 +18,9 @@ const SORTS = [
   { value: "popular", label: "Most Reviewed" },
 ];
 
-export function CoursesExplorer({ courses, categories, currency = "INR" }: { courses: Course[]; categories: Category[]; currency?: CurrencyCode }) {
-  const [q, setQ] = useState("");
+export function CoursesExplorer({ courses, categories, initialQuery }: { courses: Course[]; categories: Category[]; currency?: CurrencyCode; initialQuery?: string }) {
+  const { convert, currency, currencies } = usePricing();
+  const [q, setQ] = useState(initialQuery ?? "");
   const [cat, setCat] = useState<string>("");
   const [examOnly, setExamOnly] = useState(false);
   const [maxPrice, setMaxPrice] = useState<number | "">("");
@@ -38,13 +40,13 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
     if (cat) list = list.filter((c) => c.category?.slug === cat);
     if (examOnly) list = list.filter((c) => c.examIncluded);
     if (maxPrice !== "" && maxPrice > 0) {
-      list = list.filter((c) => convertFromInr(c.basePriceInr ?? 0, currency) <= maxPrice);
+      list = list.filter((c) => convert(c.basePriceUsd ?? 0) <= maxPrice);
     }
 
     switch (sort) {
       case "rating": list.sort((a, b) => (b.ratingAvg ?? 0) - (a.ratingAvg ?? 0)); break;
-      case "price-low": list.sort((a, b) => (a.basePriceInr ?? 0) - (b.basePriceInr ?? 0)); break;
-      case "price-high": list.sort((a, b) => (b.basePriceInr ?? 0) - (a.basePriceInr ?? 0)); break;
+      case "price-low": list.sort((a, b) => (a.basePriceUsd ?? 0) - (b.basePriceUsd ?? 0)); break;
+      case "price-high": list.sort((a, b) => (b.basePriceUsd ?? 0) - (a.basePriceUsd ?? 0)); break;
       case "popular": list.sort((a, b) => (b.ratingCount ?? 0) - (a.ratingCount ?? 0)); break;
     }
     return list;
@@ -58,14 +60,15 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
       <aside className={`${showFilters ? "fixed inset-0 z-40 bg-white p-4 overflow-y-auto" : "hidden"} lg:block lg:static lg:p-0`}>
         <div className="flex items-center justify-between mb-4 lg:hidden">
           <div className="font-semibold">Filters</div>
-          <button onClick={() => setShowFilters(false)}><X className="w-5 h-5" /></button>
+          <button onClick={() => setShowFilters(false)} aria-label="Close filters" className="grid h-11 w-11 place-items-center -mr-2"><X className="w-5 h-5" /></button>
         </div>
         <div className="card p-5 space-y-5 sticky top-24">
           <div>
-            <label className="text-xs font-bold uppercase text-ink-500 mb-2 block">Search</label>
+            <label htmlFor="cx-search" className="text-xs font-bold uppercase text-ink-500 mb-2 block">Search</label>
             <div className="relative">
               <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-ink-400" />
               <input
+                id="cx-search"
                 value={q} onChange={(e) => setQ(e.target.value)}
                 placeholder="Search courses…"
                 className="w-full pl-9 pr-3 py-2 rounded-lg border border-ink-200 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"
@@ -84,9 +87,10 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
           </div>
 
           <div>
-            <label className="text-xs font-bold uppercase text-ink-500 mb-2 block">Max Price ({currency})</label>
+            <label htmlFor="cx-max-price" className="text-xs font-bold uppercase text-ink-500 mb-2 block">Max Price ({currency})</label>
             <input
-              type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value === "" ? "" : Number(e.target.value))}
+              id="cx-max-price"
+              type="number" inputMode="numeric" min={0} value={maxPrice} onChange={(e) => setMaxPrice(e.target.value === "" ? "" : Number(e.target.value))}
               placeholder="e.g. 30000"
               className="w-full px-3 py-2 rounded-lg border border-ink-200 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"
             />
@@ -109,10 +113,10 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
             Showing <span className="font-semibold text-ink-900">{filtered.length}</span> of {courses.length} courses
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={() => setShowFilters(true)} className="lg:hidden inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-ink-200 text-sm">
+            <button onClick={() => setShowFilters(true)} className="lg:hidden inline-flex items-center gap-1 min-h-[40px] px-3 py-1.5 rounded-lg border border-ink-200 text-sm">
               <SlidersHorizontal className="w-4 h-4" /> Filters
             </button>
-            <select value={sort} onChange={(e) => setSort(e.target.value)} className="px-3 py-1.5 rounded-lg border border-ink-200 text-sm focus:border-brand-500 outline-none">
+            <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort courses" className="min-h-[40px] px-3 py-1.5 rounded-lg border border-ink-200 text-sm focus:border-brand-500 outline-none">
               {SORTS.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
             </select>
           </div>
@@ -125,7 +129,7 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
           </div>
         ) : (
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {filtered.map((c: any) => <CourseCard key={c.slug} course={c} currency={currency} />)}
+            {filtered.map((c: any) => <CourseCard key={c.slug} course={c} currency={currency} currencies={currencies} />)}
           </div>
         )}
       </div>

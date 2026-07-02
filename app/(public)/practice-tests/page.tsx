@@ -1,123 +1,42 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, ChevronRight, BookOpen, Clock, Users, PlayCircle, Star, Quote, Award } from "lucide-react";
+import { CheckCircle2, ChevronRight, Users, Star, Quote } from "lucide-react";
+import { DynamicIcon } from "@/components/public/dynamic-icon";
+import { getPageContent } from "@/lib/page-content";
 
-export const metadata: Metadata = {
-  title: "Free Online Practice Tests | ULearnSystems",
-  description: "Free, up-to-date IT practice tests to help you learn faster, spot weak areas, and pass your certification exams with confidence.",
-};
+const SLUG = "practice-tests";
+export const revalidate = 60;
 
-const FEATURES = [
-  {
-    icon: <PlayCircle className="w-6 h-6 text-primary" />,
-    title: "Focused Learning Journey",
-    desc: "Tailored paths to help you concentrate on what truly matters for your exam.",
-  },
-  {
-    icon: <Award className="w-6 h-6 text-primary" />,
-    title: "Boost Exam Confidence",
-    desc: "Practice regularly to reduce anxiety and feel ready for the real certification test.",
-  },
-  {
-    icon: <Clock className="w-6 h-6 text-primary" />,
-    title: "Study Anytime",
-    desc: "Access tests online, 24/7, from any device. Fit studying into your busy schedule seamlessly.",
-  },
-  {
-    icon: <BookOpen className="w-6 h-6 text-primary" />,
-    title: "Self-Paced Learning",
-    desc: "Learn at your own speed, anytime, anywhere. Review explanations to deepen your understanding.",
-  },
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getPageContent(SLUG);
+  return { title: c.metaTitle, description: c.metaDescription };
+}
 
-const TESTS = [
-  {
-    title: "Certified Scrum Master (CSM) Practice Test",
-    slug: "csm",
-    tests: 3,
-    users: "73k+"
-  },
-  {
-    title: "Leading SAFe Practice Test | SAFe Agilist Mock Test",
-    slug: "leading-safe",
-    tests: 4,
-    users: "9K+"
-  },
-  {
-    title: "ITIL Practice Test: Ace Your Certification",
-    slug: "itil",
-    tests: 5,
-    users: "5K+"
-  },
-  {
-    title: "PMP Practice Test | Project Management Mock Test",
-    slug: "pmp",
-    tests: 38,
-    users: "30K+"
-  },
-  {
-    title: "Free SAFe® Scrum Master (SSM) Practice Test",
-    slug: "safe-scrum-master",
-    tests: 4,
-    users: "8K+"
-  },
-  {
-    title: "DevOps Practice Test: Prepare Efficiently",
-    slug: "devops",
-    tests: 0,
-    users: "3K+",
-    isRequest: true
-  }
-];
-
-const REVIEWS = [
-  {
-    name: "Daniel Harper",
-    role: "Product Manager",
-    company: "Simpliaxis Inc",
-    text: "Outstanding training from ULearnSystems! The curriculum on multi-agent architectures and RAG pipeline development was thorough and current. Real-world use cases across industries gave me the confidence to lead AI initiatives at my organization immediately.",
-  },
-  {
-    name: "Sarah Mitchell",
-    role: "Cloud AI Architect",
-    company: "Simpliaxis Inc",
-    text: "I enrolled in this course to upskill as a software architect, and ULearnSystems exceeded my expectations. The MCP server integration labs and API demos were practical and industry-relevant. The trainer's mentorship made complex concepts easy to grasp.",
-  },
-  {
-    name: "Arjun Krishnamurthy",
-    role: "AI/ML Engineer",
-    company: "Simpliaxis Inc",
-    text: "ULearnSystems delivered exceptional value through this Agentic AI Engineering course. Building autonomous agents with the SDK, integrating MCP servers, and deploying on cloud platforms gave me skills that no other training provided.",
-  }
-];
-
-export default function PracticeTestsPage() {
+export default async function PracticeTestsPage() {
+  const c = await getPageContent(SLUG);
+  const FEATURES = c.features as any[];
+  const TESTS = c.tests as any[];
+  const REVIEWS = c.reviews as any[];
   return (
     <main>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-[#0f6b6b] text-primary-foreground py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/frontend_assets/image/homban-dots.webp')] opacity-20 bg-repeat"></div>
+        <div className="absolute inset-0 hero-dots text-white opacity-20"></div>
         <div className="container-tight relative z-10 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
               <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-              <span className="text-sm font-semibold">Rated 4.9/5 by Professionals</span>
+              <span className="text-sm font-semibold">{c.heroBadge}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-              Master Your <br /> <span className="text-yellow-400">Certifications</span>
+              {c.heroHeading} <br /> <span className="text-yellow-400">{c.heroHighlight}</span>
             </h1>
             <p className="text-lg text-primary-foreground/90 mb-8 leading-relaxed max-w-xl">
-              Free, up-to-date IT practice tests to help you learn faster, spot weak areas, and pass with confidence.
+              {c.heroSubtitle}
             </p>
-            
+
             <ul className="space-y-4 mb-10 text-primary-foreground/90">
-              {[
-                "Boost Your Confidence with Practice Test",
-                "Expert-Curated Content for Reliable Learning",
-                "Detailed Explanations for Better Understanding",
-                "Immediate Result after Test",
-                "Comprehensive Question Bank explanation for Preparation"
-              ].map((item, i) => (
+              {(c.heroBullets as string[]).map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-white shrink-0 opacity-80" />
                   <span className="font-medium text-sm md:text-base">{item}</span>
@@ -126,7 +45,7 @@ export default function PracticeTestsPage() {
             </ul>
 
             <a href="#tests" className="btn bg-white text-primary hover:bg-white/90 rounded-full px-8 py-3 text-lg font-bold inline-flex items-center transition-colors shadow-lg">
-              Get Started Now
+              {c.heroCtaText}
               <ChevronRight className="w-5 h-5 ml-2" />
             </a>
           </div>
@@ -177,7 +96,7 @@ export default function PracticeTestsPage() {
             {FEATURES.map((feature, i) => (
               <div key={i} className="group p-6 rounded-2xl hover:bg-ink-50 transition-colors">
                 <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  {feature.icon}
+                  <DynamicIcon name={feature.icon} className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-bold text-lg text-ink-900 mb-2">{feature.title}</h3>
                 <p className="text-ink-600 text-sm leading-relaxed">{feature.desc}</p>
@@ -191,9 +110,9 @@ export default function PracticeTestsPage() {
       <section id="tests" className="section bg-ink-50">
         <div className="container-tight">
           <div className="text-center mb-12">
-            <h2 className="h2 mb-4">Choose Your Practice Test</h2>
+            <h2 className="h2 mb-4">{c.testsTitle}</h2>
             <p className="lead max-w-2xl mx-auto">
-              Simulate the real exam environment with our expert-crafted tests. Get detailed explanations for every question.
+              {c.testsSubtitle}
             </p>
           </div>
           
@@ -244,8 +163,8 @@ export default function PracticeTestsPage() {
           </div>
           
           <div className="text-center mb-16 relative z-10">
-            <h2 className="h2 mb-4">What Our Learners Say</h2>
-            <p className="lead">Join thousands of professionals who have advanced their careers with ULearnSystems.</p>
+            <h2 className="h2 mb-4">{c.reviewsTitle}</h2>
+            <p className="lead">{c.reviewsSubtitle}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 relative z-10">

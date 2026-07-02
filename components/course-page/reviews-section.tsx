@@ -2,8 +2,10 @@
 
 import { useState, useRef } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { type CourseContent } from "@/lib/seed-data";
+import { DEFAULT_REVIEWS, DEFAULT_REVIEW_STATS } from "@/lib/course-section-defaults";
 
-export function ReviewsSection() {
+export function ReviewsSection({ course }: { course?: CourseContent }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState("All Reviews");
 
@@ -14,71 +16,13 @@ export function ReviewsSection() {
     }
   };
 
-  const reviews = [
-    {
-      title: "User-friendly and interactive",
-      content: "I completed my CSM training and certification through ULearnSystems last week. It was a great learning experience. The Scrum Trainer was highly experienced.",
-      author: "Anandamoorthy",
-      role: "Project Leader",
-      source: "Google"
-    },
-    {
-      title: "Informative sessions",
-      content: "I recently wrapped up my CSM training and certification with ULearnSystems, and I must say it was an excellent learning journey. Our trainer was fantastic.",
-      author: "Hitesh Prajapati",
-      role: "Product Manager",
-      source: "Google"
-    },
-    {
-      title: "A great learning experience",
-      content: "I completed my CSM training and certification through ULearnSystems, and it was a great learning experience. The Scrum Trainer was very knowledgeable and patient.",
-      author: "Rupali Bhosale",
-      role: "Developer",
-      source: "Google"
-    },
-    {
-      title: "Excellent curriculum and mentors",
-      content: "The content was top notch and the mentorship I received was invaluable for my career growth. Highly recommended.",
-      author: "Priya Sharma",
-      role: "Agile Coach",
-      source: "LinkedIn"
-    },
-    {
-      title: "Transformed my team's workflow",
-      content: "After taking this training, I was able to implement Scrum practices that improved our delivery speed by 40%.",
-      author: "David Chen",
-      role: "Engineering Manager",
-      source: "LinkedIn"
-    },
-    {
-      title: "Practical and applicable",
-      content: "Unlike other theoretical courses, this one gave me tools I could use on Monday morning with my team.",
-      author: "Sarah Jenkins",
-      role: "Scrum Master",
-      source: "LinkedIn"
-    },
-    {
-      title: "Best investment for my career",
-      content: "Switching into product management was hard, but this course gave me the exact frameworks I needed to succeed.",
-      author: "Rahul Verma",
-      role: "Product Manager",
-      source: "SwitchUp"
-    },
-    {
-      title: "Intense but totally worth it",
-      content: "The bootcamp pace is fast, but the instructors make sure no one is left behind. Great community of alumni.",
-      author: "Emily Davis",
-      role: "Career Switcher",
-      source: "SwitchUp"
-    },
-    {
-      title: "Top-tier instruction",
-      content: "I evaluated several providers before choosing ULearnSystems. Their trainers are truly world-class experts.",
-      author: "Marcus Johnson",
-      role: "Director of Product",
-      source: "SwitchUp"
-    }
-  ];
+  // Per-course override from admin, else the shared defaults.
+  const reviews = course?.pageSections?.reviews?.length
+    ? course.pageSections.reviews
+    : DEFAULT_REVIEWS;
+  const stats = course?.pageSections?.reviewStats?.length
+    ? course.pageSections.reviewStats
+    : DEFAULT_REVIEW_STATS;
 
   const filteredReviews = reviews.filter(r => activeFilter === "All Reviews" || r.source === activeFilter);
 
@@ -103,10 +47,10 @@ export function ReviewsSection() {
         </div>
         
         <div className="flex gap-2">
-          <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-400">
+          <button onClick={() => scroll("left")} aria-label="Scroll left" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-600">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
+          <button onClick={() => scroll("right")} aria-label="Scroll right" className="w-11 h-11 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
@@ -150,40 +94,20 @@ export function ReviewsSection() {
         ))}
       </div>
 
-      {/* Aggregate Stats */}
+      {/* Aggregate Stats — editable per course (course.pageSections.reviewStats) */}
       <div className="mt-6 bg-white rounded-xl md:rounded-2xl border border-gray-200 p-4 md:p-6 flex flex-col md:flex-row justify-between items-center shadow-sm divide-y md:divide-y-0 md:divide-x divide-gray-100">
-        <div className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
-          <div className="text-[15px] md:text-xl font-bold text-gray-800 md:mb-1">Google</div>
-          <div className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[14px]">
-            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-bold">4.8/5</span>
-            <span className="text-gray-500 text-[11px] md:text-[12px]">
-               <span className="hidden md:inline">• </span>6,028 <span className="hidden sm:inline">Reviews</span>
-            </span>
+        {stats.map((s, i) => (
+          <div key={i} className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
+            <div className="text-[15px] md:text-xl font-bold text-gray-800 md:mb-1">{s.label}</div>
+            <div className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[14px]">
+              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              <span className="font-bold">{s.rating}</span>
+              <span className="text-gray-500 text-[11px] md:text-[12px]">
+                <span className="hidden md:inline">• </span>{s.count}
+              </span>
+            </div>
           </div>
-        </div>
-
-        <div className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
-          <div className="text-[15px] md:text-xl font-bold text-blue-600 md:mb-1">facebook</div>
-          <div className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[14px]">
-            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-bold">4.7/5</span>
-            <span className="text-gray-500 text-[11px] md:text-[12px]">
-               <span className="hidden md:inline">• </span>991 <span className="hidden sm:inline">Reviews</span>
-            </span>
-          </div>
-        </div>
-
-        <div className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
-          <div className="text-[15px] md:text-xl font-bold text-red-600 md:mb-1">switchup</div>
-          <div className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[14px]">
-            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-bold">4.9/5</span>
-            <span className="text-gray-500 text-[11px] md:text-[12px]">
-               <span className="hidden md:inline">• </span>228 <span className="hidden sm:inline">Reviews</span>
-            </span>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -14,9 +14,11 @@ type Props = {
   previewAspect?: "square" | "wide";
   /** Optional small helper text. */
   hint?: string;
+  /** Optional controlled callback — fired with the new URL on upload/clear. */
+  onChange?: (url: string) => void;
 };
 
-export function ImageUploader({ name, kind, defaultValue, previewAspect = "wide", hint }: Props) {
+export function ImageUploader({ name, kind, defaultValue, previewAspect = "wide", hint, onChange }: Props) {
   const [url, setUrl] = useState<string | null>(defaultValue || null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +36,7 @@ export function ImageUploader({ name, kind, defaultValue, previewAspect = "wide"
       const body = await res.json();
       if (!res.ok) throw new Error(body?.error || "Upload failed");
       setUrl(body.url);
+      onChange?.(body.url);
     } catch (e: any) {
       setError(e.message || "Upload failed");
     } finally {
@@ -43,6 +46,7 @@ export function ImageUploader({ name, kind, defaultValue, previewAspect = "wide"
 
   function clear() {
     setUrl(null);
+    onChange?.("");
     if (inputRef.current) inputRef.current.value = "";
   }
 

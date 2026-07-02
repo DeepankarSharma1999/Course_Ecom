@@ -62,8 +62,9 @@ export function FaqSection({ faqs, shortTitle }: { faqs: FaqItem[], shortTitle: 
               key={i} 
               className={`rounded-xl border overflow-hidden transition-colors ${isOpen ? 'border-[#1FA8A8] bg-[#fcfdfd]' : 'border-gray-200 bg-white hover:border-gray-300'}`}
             >
-              <button 
-                className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+              <button
+                className="w-full flex items-center justify-between p-5 text-left"
+                aria-expanded={isOpen}
                 onClick={() => setOpenIndex(isOpen ? null : i)}
               >
                 <span className={`font-bold text-[15px] ${isOpen ? 'text-[#082032]' : 'text-[#475569]'}`}>

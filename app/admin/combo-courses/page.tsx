@@ -32,7 +32,7 @@ export default async function ComboCoursesList() {
               <tr>
                 <th className="px-4 py-3">Title</th>
                 <th className="px-4 py-3">Category</th>
-                <th className="px-4 py-3">Price (INR)</th>
+                <th className="px-4 py-3">Price (USD)</th>
                 <th className="px-4 py-3">Status</th>
                 <th className="px-4 py-3">Relations</th>
                 <th className="px-4 py-3"></th>
@@ -49,7 +49,7 @@ export default async function ComboCoursesList() {
                     <div className="text-xs text-ink-500">/{c.slug}</div>
                   </td>
                   <td className="px-4 py-3 text-ink-700">{c.category?.name || "—"}</td>
-                  <td className="px-4 py-3">{c.basePriceInr ? formatPrice(c.basePriceInr, "INR") : "—"}</td>
+                  <td className="px-4 py-3">{c.basePriceUsd ? formatPrice(c.basePriceUsd, "USD") : "—"}</td>
                   <td className="px-4 py-3 space-x-1">
                     {c.isPublished ? <Badge tone="green">Published</Badge> : <Badge tone="yellow">Draft</Badge>}
                     {c.isFeatured && <Badge tone="blue">Featured</Badge>}

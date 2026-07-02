@@ -1,4 +1,9 @@
 import { Field, Input, Textarea, Select, Checkbox, Section } from "./ui";
+import { COURSE_SECTIONS } from "@/lib/course-sections";
+import {
+  InstructorsEditor, ReviewsEditor, CertificateEditor, AccreditationEditor, DemandEditor, ReviewStatsEditor,
+} from "./course-sections-editor";
+import { RichTextEditor } from "./rich-text-editor";
 
 type Category = { id: string; slug: string; name: string };
 type Course = any;
@@ -27,8 +32,8 @@ export function CourseForm({ course, categories }: { course?: Course; categories
           <Field label="Summary" hint="2-3 sentences for course cards" required>
             <Textarea name="summary" rows={3} defaultValue={c.summary ?? ""} required />
           </Field>
-          <Field label="Description" hint="Full course overview shown on the page" required>
-            <Textarea name="description" rows={6} defaultValue={c.description ?? ""} required />
+          <Field label="Description (Overview)" hint="The full course overview shown on the page. Use the toolbar to format and insert images.">
+            <RichTextEditor name="description" defaultValue={c.description ?? ""} />
           </Field>
         </Section>
 
@@ -67,8 +72,8 @@ export function CourseForm({ course, categories }: { course?: Course; categories
 
         <Section title="Pricing & Rating">
           <div className="grid md:grid-cols-4 gap-4">
-            <Field label="Base Price (INR)"><Input type="number" name="basePriceInr" defaultValue={c.basePriceInr ?? ""} /></Field>
-            <Field label="Base Price (USD)"><Input type="number" name="basePriceUsd" defaultValue={c.basePriceUsd ?? ""} /></Field>
+            <Field label="Base Price (USD)" hint="Base price — all currencies convert from this"><Input type="number" name="basePriceUsd" defaultValue={c.basePriceUsd ?? ""} /></Field>
+            <Field label="Base Price (INR)" hint="Legacy — display uses USD"><Input type="number" name="basePriceInr" defaultValue={c.basePriceInr ?? ""} /></Field>
             <Field label="Rating Avg"><Input type="number" step="0.1" name="ratingAvg" defaultValue={c.ratingAvg ?? 4.8} /></Field>
             <Field label="Rating Count"><Input type="number" name="ratingCount" defaultValue={c.ratingCount ?? 0} /></Field>
           </div>
@@ -78,6 +83,7 @@ export function CourseForm({ course, categories }: { course?: Course; categories
           <Field label="Hero Image URL"><Input name="heroImage" defaultValue={c.heroImage ?? ""} placeholder="https://images.unsplash.com/..." /></Field>
           <Field label="Thumbnail Image URL"><Input name="thumbnailImage" defaultValue={c.thumbnailImage ?? ""} /></Field>
           <Field label="Brochure URL" hint="PDF link shown when a visitor requests the brochure"><Input name="brochureUrl" defaultValue={c.brochureUrl ?? ""} placeholder="https://.../brochure.pdf" /></Field>
+          <Field label="Live Class Meeting Link" hint="Zoom/Meet/Teams link — shown only to enrolled learners in their LMS"><Input name="meetingUrl" defaultValue={c.meetingUrl ?? ""} placeholder="https://zoom.us/j/..." /></Field>
         </Section>
 
         <Section title="Course Content (JSON arrays)" description="Edit the structured content as JSON. The form validates and stores these as JSON in the database.">
@@ -100,6 +106,30 @@ export function CourseForm({ course, categories }: { course?: Course; categories
             <Textarea name="whyChooseUs" rows={6} defaultValue={j(c.whyChooseUs)} />
           </Field>
         </Section>
+
+        <Section title="Instructors" description="Add, edit or remove instructors shown on this course. Leave empty to use the site defaults.">
+          <InstructorsEditor name="ps_instructors" value={c.pageSections?.instructors} />
+        </Section>
+
+        <Section title="Reviews" description="Learner review cards, and the aggregate platform stats below them. Leave empty to use defaults.">
+          <ReviewsEditor name="ps_reviews" value={c.pageSections?.reviews} />
+          <div className="pt-4 mt-4 border-t border-ink-100">
+            <p className="text-sm font-semibold text-ink-700 mb-2">Aggregate review stats</p>
+            <ReviewStatsEditor name="ps_reviewstats" value={c.pageSections?.reviewStats} />
+          </div>
+        </Section>
+
+        <Section title="Certificate" description="The certificate block. Add an image to replace the drawn certificate.">
+          <CertificateEditor name="ps_certificate" value={c.pageSections?.certificate} />
+        </Section>
+
+        <Section title="Accreditation" description="The accreditation / training-partner block.">
+          <AccreditationEditor name="ps_accreditation" value={c.pageSections?.accreditation} />
+        </Section>
+
+        <Section title="Demand & Roles" description="Job role and the salary / hiring-company / demand tiers.">
+          <DemandEditor name="ps_demand" value={c.pageSections?.demand} />
+        </Section>
       </div>
 
       <div className="space-y-6">
@@ -107,6 +137,19 @@ export function CourseForm({ course, categories }: { course?: Course; categories
           <Field label="SEO Title" hint="Up to ~60 chars"><Input name="seoTitle" defaultValue={c.seoTitle ?? ""} /></Field>
           <Field label="Meta Description" hint="Up to ~160 chars"><Textarea name="seoDescription" rows={3} defaultValue={c.seoDescription ?? ""} /></Field>
           <Field label="Keywords" hint="Comma separated"><Textarea name="seoKeywords" rows={2} defaultValue={c.seoKeywords ?? ""} /></Field>
+        </Section>
+
+        <Section title="Page Sections" description="Untick a section to hide it on this course's page.">
+          <div className="flex flex-col gap-2">
+            {COURSE_SECTIONS.map((s) => (
+              <Checkbox
+                key={s.key}
+                name={`section_${s.key}`}
+                label={s.label}
+                defaultChecked={!((c.hiddenSections ?? []) as string[]).includes(s.key)}
+              />
+            ))}
+          </div>
         </Section>
 
         <Section title="Save">

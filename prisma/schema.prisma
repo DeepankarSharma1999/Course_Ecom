@@ -40,12 +40,15 @@ model Course {
   heroImage       String?
   thumbnailImage  String?
   brochureUrl     String?
+  meetingUrl      String?  // live-class join link (Zoom/Meet/Teams), shown to enrolled learners
   examIncluded    Boolean  @default(false)
   pduCredits      Int?
   ratingAvg       Float    @default(4.8)
   ratingCount     Int      @default(0)
   isFeatured      Boolean  @default(false)
   isPublished     Boolean  @default(true)
+  hiddenSections  String[] @default([]) // course-page section keys to hide (see lib/course-sections.ts)
+  pageSections    Json?    // per-course content overrides for instructors/reviews/certificate (see lib/course-section-defaults.ts)
 
   categoryId      String?
   category        Category? @relation(fields: [categoryId], references: [id])
@@ -189,6 +192,11 @@ model SiteSettings {
   announcementLink   String?
   announcementEnabled Boolean @default(false)
 
+  // Pricing/currency. Prices are stored per course in USD (base). Each currency
+  // is computed = usd * perUsd * (1 + premiumPct/100). Admin-editable.
+  defaultCurrency    String  @default("USD")
+  currencyConfig     Json?     // { code, label, symbol, perUsd, premiumPct, enabled }[]
+
   defaultSeoTitle    String?
   defaultSeoDescription String? @db.Text
 
@@ -243,6 +251,22 @@ model HomePageContent {
   seoTitle            String?
   seoDescription      String? @db.Text
 
+  // Editable home sections (lists). Null => component falls back to lib/home-defaults.ts.
+  partnerLogos        Json?     // { name, label, image }[]
+  businessSectors     Json?     // { name, icon }[]
+  pedagogyTitle       String  @default("Experience Immersive Learning")
+  pedagogySteps       Json?     // { title, text, img }[]
+  spotlightArticles   Json?     // { logo, title, img }[]
+  accoladesTitle      String  @default("Awards & Recognition")
+  accolades           Json?     // { title, org, logo }[]
+  reachBadge          String  @default("Global reach")
+  reachTitle          String  @default("Training professionals across borders and industries.")
+  reachSubtitle       String  @default("Join learners and teams using expert-led programs to build capability across Agile, product, project, technology, and AI domains.") @db.Text
+  reachStats          Json?     // { value, label }[]
+
+  // Ordered list of home sections with per-section visibility. Null => default order, all shown.
+  sections            Json?     // { key, hidden }[]  (see lib/home-sections.ts)
+
   updatedAt           DateTime @updatedAt
 }
 
@@ -275,6 +299,29 @@ model AdminUser {
   lastLoginAt  DateTime?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+}
+
+model Learner {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime  @default(now())
+  lastLoginAt  DateTime?
+  enrollments  Enrollment[]
+}
+
+// A learner's enrollment in a course (free enrollments today; paid later).
+model Enrollment {
+  id          String   @id @default(cuid())
+  learnerId   String
+  learner     Learner  @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  courseSlug  String
+  courseTitle String
+  priceUsd    Int      @default(0) // 0 = free enrollment
+  createdAt   DateTime @default(now())
+
+  @@unique([learnerId, courseSlug])
 }
 
 model Lead {
@@ -312,4 +359,13 @@ model Page {
   isPublished  Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+}
+
+// Structured per-page content overrides for the bespoke marketing pages and nav.
+// `content` is a JSON tree whose shape matches the page's defaults in lib/page-defaults.ts.
+// Absent row or absent key => the code default is used, so pages render before any edit.
+model PageContent {
+  slug      String   @id
+  content   Json
+  updatedAt DateTime @updatedAt
 }

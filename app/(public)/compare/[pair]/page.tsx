@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, X } from "lucide-react";
 import { getAllCourses, getCourseBySlug } from "@/lib/content";
+import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
+import { formatInCurrency } from "@/lib/currency";
 import { LeadForm } from "@/components/lead-form";
-import { SITE, formatPrice } from "@/lib/utils";
+import { SITE } from "@/lib/utils";
 
 export const revalidate = 60;
 
@@ -60,7 +62,7 @@ export default async function ComparePair({ params }: { params: Promise<{ pair: 
   const { pair } = await params;
   const parts = parsePair(pair);
   if (!parts) notFound();
-  const [a, b] = await Promise.all([getCourseBySlug(parts[0]), getCourseBySlug(parts[1])]);
+  const [a, b, currency, currencyCfg] = await Promise.all([getCourseBySlug(parts[0]), getCourseBySlug(parts[1]), getDisplayCurrency(), getCurrencyConfig()]);
   if (!a || !b) notFound();
 
   return (
@@ -96,7 +98,7 @@ export default async function ComparePair({ params }: { params: Promise<{ pair: 
                 <Row label="Level" a={a.level} b={b.level} />
                 <Row label="Accredited by" a={a.accreditedBy} b={b.accreditedBy} />
                 <Row label="Exam fee included" a={a.examIncluded ? <Check className="w-4 h-4 text-emerald-600" /> : <X className="w-4 h-4 text-red-500" />} b={b.examIncluded ? <Check className="w-4 h-4 text-emerald-600" /> : <X className="w-4 h-4 text-red-500" />} />
-                <Row label="Price (INR)" a={a.basePriceInr ? formatPrice(a.basePriceInr, "INR") : "—"} b={b.basePriceInr ? formatPrice(b.basePriceInr, "INR") : "—"} highlight />
+                <Row label="Price" a={a.basePriceUsd ? formatInCurrency(a.basePriceUsd, currency, currencyCfg.currencies) : "—"} b={b.basePriceUsd ? formatInCurrency(b.basePriceUsd, currency, currencyCfg.currencies) : "—"} highlight />
                 <Row label="Rating" a={`${a.ratingAvg}/5 (${a.ratingCount})`} b={`${b.ratingAvg}/5 (${b.ratingCount})`} />
                 <Row label="Key features" a={<ListCell items={a.keyFeatures as any} />} b={<ListCell items={b.keyFeatures as any} />} />
                 <Row label="Who should attend" a={<ListCell items={a.whoShouldAttend} />} b={<ListCell items={b.whoShouldAttend} />} />

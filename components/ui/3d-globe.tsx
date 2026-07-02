@@ -80,9 +80,9 @@ interface Globe3DProps {
 // ============================================================================
 
 const DEFAULT_EARTH_TEXTURE =
-  "https://unpkg.com/three-globe@2.31.0/example/img/earth-blue-marble.jpg";
+  "/images/vendor/unpkg/earth-blue-marble.jpg";
 const DEFAULT_BUMP_TEXTURE =
-  "https://unpkg.com/three-globe@2.31.0/example/img/earth-topology.png";
+  "/images/vendor/unpkg/earth-topology.png";
 
 // ============================================================================
 // Utility Functions

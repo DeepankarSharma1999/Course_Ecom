@@ -9,18 +9,15 @@ import { type CourseContent, type FaqItem, findCity, findCountry, CITIES_IN, COU
 import { LeadForm } from "@/components/lead-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { BrochureButton } from "@/components/brochure-button";
-import { type CurrencyCode, formatInCurrency } from "@/lib/currency";
-import { DemandSection } from "@/components/course-page/demand-section";
-import { HighlightsSection } from "@/components/course-page/highlights-section";
+import { type CurrencyCode, type CurrencyConfig, formatInCurrency } from "@/lib/currency";
 import { AccreditationSection } from "@/components/course-page/accreditation-section";
-import { AdvantageSection } from "@/components/course-page/advantage-section";
+import { DemandSection } from "@/components/course-page/demand-section";
 import { CertificateSection } from "@/components/course-page/certificate-section";
 import { ReviewsSection } from "@/components/course-page/reviews-section";
 import { InstructorsSection } from "@/components/course-page/instructors-section";
 import { CurriculumSection } from "@/components/course-page/curriculum-section";
 import { FaqSection } from "@/components/course-page/faq-section";
-import { SecretSauceSection } from "@/components/course-page/secret-sauce-section";
-import { LearningObjectivesSection } from "@/components/course-page/learning-objectives-section";
+import { isSectionHidden, type CourseSectionKey } from "@/lib/course-sections";
 import { AdvisorBanner } from "@/components/course-page/advisor-banner";
 import { ArticlesSection } from "@/components/course-page/articles-section";
 import { SchedulesSection } from "@/components/course-page/schedules-section";
@@ -34,7 +31,7 @@ type Schedule = {
   startDate: Date;
   endDate: Date;
   timeLabel?: string;
-  priceInr: number;
+  priceUsd: number;
   discountPct?: number;
   seatsLeft?: number;
   isFilling?: boolean;
@@ -51,7 +48,7 @@ function generateSchedules(course: CourseContent): Schedule[] {
         mode: "Live Online Classroom",
         startDate: start, endDate: end,
         timeLabel: "09:00 AM - 06:00 PM",
-        priceInr: course.basePriceInr,
+        priceUsd: course.basePriceUsd,
         discountPct: (m + i) % 3 === 0 ? 15 : 10,
         seatsLeft: 12 - ((m + i) % 5),
         isFilling: m === 0,
@@ -69,16 +66,21 @@ export function CoursePageContent({
   course,
   countrySlug,
   citySlug,
-  currency = "INR",
+  currency = "USD",
+  currencies,
 }: {
   course: CourseContent;
   countrySlug?: string;
   citySlug?: string;
   currency?: CurrencyCode;
+  currencies?: CurrencyConfig[];
 }) {
+  const format = (usd: number) => formatInCurrency(usd, currency, currencies);
   const country = countrySlug ? findCountry(countrySlug) : null;
   const city = citySlug ? findCity(citySlug) : null;
   const locationLabel = city?.name && country?.name ? `${city.name}, ${country.name}` : country?.name;
+
+  const show = (k: CourseSectionKey) => !isSectionHidden(course.hiddenSections, k);
 
   const baseTitle = course.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim();
   const heroTitle = city
@@ -190,7 +192,9 @@ export function CoursePageContent({
             <div className="w-full lg:w-[480px] shrink-0">
               <div className="rounded-2xl overflow-hidden shadow-2xl relative bg-gray-100 aspect-[4/3] flex items-center justify-center border border-gray-200">
                 <div className="absolute inset-0 bg-[#082032]/5 z-10"></div>
-                <img src={course.heroImage} alt={course.title} className="absolute inset-0 w-full h-full object-cover" />
+                {/* ponytail: raw img — course.heroImage is admin free-text; next/image throws on unconfigured hosts. Migrate if uploads are constrained to known hosts. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={course.heroImage} alt={course.title} loading="eager" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute top-4 right-4 bg-white rounded-lg px-2 py-1 shadow text-[10px] font-bold flex items-center gap-1 z-20">
                   <Award className="w-3 h-3 text-yellow-500" /> Global Certification
                 </div>
@@ -216,11 +220,11 @@ export function CoursePageContent({
         <div className="container-tight flex items-center justify-between gap-2">
           <nav className="flex items-center overflow-x-auto hide-scrollbar flex-1 min-w-0">
             {[
-              { id: "highlights", label: "Course Highlights" },
+              { id: "overview", label: "Overview" },
               { id: "curriculum", label: "Curriculum" },
               { id: "schedules", label: "Schedules" },
               { id: "faq", label: "FAQ" },
-            ].map((link, i) => (
+            ].filter((link) => show(link.id as CourseSectionKey)).map((link, i) => (
               <a 
                 key={link.id} 
                 href={`#${link.id}`}
@@ -244,48 +248,46 @@ export function CoursePageContent({
         
         {/* LEFT COLUMN: Main Content */}
         <div className="flex-1 space-y-16 min-w-0 w-full max-w-full overflow-x-hidden">
-          
-          {/* Highlights */}
-          <HighlightsSection course={course} />
 
-          {/* Secret Sauce Carousel */}
-          <SecretSauceSection />
-
-          {/* Learning Objectives */}
-          <LearningObjectivesSection course={course} />
-
-          {/* Advantage Section */}
-          <AdvantageSection course={course} />
-
-          {/* Demand */}
-          <DemandSection course={course} />
+          {/* Overview — per-course SEO content (HTML stored in course.description). */}
+          {show("overview") && course.description && course.description.trim().startsWith("<") && (
+            <section id="overview" className="scroll-mt-24">
+              <div
+                className="course-prose max-w-none"
+                dangerouslySetInnerHTML={{ __html: course.description }}
+              />
+            </section>
+          )}
 
           {/* Certificate Section */}
-          <CertificateSection course={course} />
+          {show("certificate") && <CertificateSection course={course} />}
 
           {/* Accreditation / LTP Section */}
-          <AccreditationSection course={course} />
-          
+          {show("accreditation") && <AccreditationSection course={course} />}
+
           {/* Reviews */}
-          <ReviewsSection />
+          {show("reviews") && <ReviewsSection course={course} />}
 
           {/* Instructors */}
-          <InstructorsSection course={course} />
+          {show("instructors") && <InstructorsSection course={course} />}
 
-          {/* Curriculum Accordion */}
-          <CurriculumSection course={course} />
+          {/* Curriculum Accordion — per-course modules (generator fills course.curriculum) */}
+          {show("curriculum") && <CurriculumSection course={course} />}
+
+          {/* Demand & Roles — industry-recognised job roles derived per course */}
+          {show("demand") && <DemandSection course={course} />}
 
           {/* Schedules Table (Redesigned & Componentized) */}
-          <SchedulesSection schedules={schedules} currency={currency} />
+          {show("schedules") && <SchedulesSection schedules={schedules} currency={currency} />}
 
           {/* Advisor Banner */}
           <AdvisorBanner />
 
           {/* Articles Section */}
-          <ArticlesSection course={course} />
+          {show("articles") && <ArticlesSection course={course} />}
 
           {/* FAQ */}
-          <FaqSection faqs={course.faqs} shortTitle={course.shortTitle} />
+          {show("faq") && <FaqSection faqs={course.faqs} shortTitle={course.shortTitle} />}
         </div>
 
         {/* RIGHT COLUMN: Sticky Sidebar */}
@@ -319,10 +321,10 @@ export function CoursePageContent({
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <div className="text-[20px] font-black text-[#082032] flex items-center gap-2">
-                    {formatInCurrency(course.basePriceInr * 0.7, currency)}
-                    <span className="text-[13px] font-semibold text-gray-400 line-through">{formatInCurrency(course.basePriceInr, currency)}</span>
+                    {format(course.basePriceUsd * 0.7)}
+                    <span className="text-[13px] font-semibold text-gray-400 line-through">{format(course.basePriceUsd)}</span>
                   </div>
-                  <div className="text-[10px] text-gray-500">As low as ₹1,904/month <Lucide.Info className="w-3 h-3 inline" /></div>
+                  <div className="text-[10px] text-gray-500">As low as {format(course.basePriceUsd * 0.7 / 12)}/month <Lucide.Info className="w-3 h-3 inline" /></div>
                 </div>
                 {/* Quantity Input */}
                 <div className="flex items-center border border-gray-200 rounded px-1.5 py-0.5 bg-white">

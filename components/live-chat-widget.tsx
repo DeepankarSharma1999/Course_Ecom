@@ -38,7 +38,7 @@ export function LiveChatWidget() {
             {/* Header */}
             <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center justify-center relative">
               <span className="font-bold text-[15px]">Chat with us</span>
-              <button onClick={() => setIsOpen(false)} className="absolute right-4 hover:opacity-70 transition-opacity">
+              <button onClick={() => setIsOpen(false)} aria-label="Minimize chat" className="absolute right-4 grid h-9 w-9 place-items-center hover:opacity-70 transition-opacity">
                 <Minus className="w-5 h-5 text-primary-foreground" />
               </button>
             </div>
@@ -51,18 +51,18 @@ export function LiveChatWidget() {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="font-bold text-sm text-[#2f3941]">Name</label>
-                <input type="text" className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-primary transition-colors" />
+                <label htmlFor="lc-name" className="font-bold text-sm text-[#2f3941]">Name</label>
+                <input id="lc-name" name="name" type="text" autoComplete="name" className="border border-gray-300 rounded p-2 text-base sm:text-sm outline-none focus:border-primary transition-colors" />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="font-bold text-sm text-[#2f3941]">Email</label>
-                <input type="email" className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-primary transition-colors" />
+                <label htmlFor="lc-email" className="font-bold text-sm text-[#2f3941]">Email</label>
+                <input id="lc-email" name="email" type="email" autoComplete="email" className="border border-gray-300 rounded p-2 text-base sm:text-sm outline-none focus:border-primary transition-colors" />
               </div>
 
               <div className="flex flex-col gap-1.5 mb-2">
-                <label className="font-bold text-sm text-[#2f3941]">Message</label>
-                <textarea className="border border-gray-300 rounded p-2 text-sm outline-none focus:border-primary transition-colors resize-none min-h-[100px]" />
+                <label htmlFor="lc-message" className="font-bold text-sm text-[#2f3941]">Message</label>
+                <textarea id="lc-message" name="message" className="border border-gray-300 rounded p-2 text-base sm:text-sm outline-none focus:border-primary transition-colors resize-none min-h-[100px]" />
               </div>
             </div>
 

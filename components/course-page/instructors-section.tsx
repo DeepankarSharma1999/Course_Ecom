@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight, User } from "lucide-react";
 import { type CourseContent } from "@/lib/seed-data";
+import { DEFAULT_INSTRUCTORS } from "@/lib/course-section-defaults";
 
 export function InstructorsSection({ course }: { course: CourseContent }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -14,29 +15,10 @@ export function InstructorsSection({ course }: { course: CourseContent }) {
     }
   };
 
-  const instructors = [
-    {
-      name: "Naveen Nanjundappa",
-      role: "Certified Scrum Trainer (CST)",
-      desc: "Naveen works with organisations and teams that struggle to accomplish everything they want to in product and people development.",
-      exp: "20+",
-      companies: ["NOKIA", "wipro"]
-    },
-    {
-      name: "Taghi Paksima",
-      role: "Enterprise and Leadership Agility...",
-      desc: "Taghi, a Certified Scrum Trainer and Enterprise Agile Coach, boasts two decades of experience in the software/IT industry.",
-      exp: "24+",
-      companies: ["Microsoft", "Scrum Alliance"]
-    },
-    {
-      name: "Raj Kasturi",
-      role: "Certified Scrum Trainer (CST)",
-      desc: "Raj Kasturi is a seasoned Agile Coach with 30 years of global application delivery and leadership experience.",
-      exp: "30+",
-      companies: ["Bank of America"]
-    }
-  ];
+  // Per-course override from admin, else the shared defaults.
+  const instructors = course.pageSections?.instructors?.length
+    ? course.pageSections.instructors
+    : DEFAULT_INSTRUCTORS;
 
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100">
@@ -51,10 +33,10 @@ export function InstructorsSection({ course }: { course: CourseContent }) {
         </button>
         
         <div className="flex gap-2">
-          <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-400">
+          <button onClick={() => scroll("left")} aria-label="Scroll left" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-600">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
+          <button onClick={() => scroll("right")} aria-label="Scroll right" className="w-11 h-11 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
@@ -65,7 +47,11 @@ export function InstructorsSection({ course }: { course: CourseContent }) {
           <div key={i} className="min-w-[300px] md:min-w-[350px] bg-white rounded-2xl border border-gray-200 p-6 shadow-sm snap-start flex flex-col h-full">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-16 h-16 rounded-full bg-gray-200 shrink-0 flex items-center justify-center overflow-hidden">
-                <User className="w-8 h-8 text-gray-400" />
+                {inst.image ? (
+                  <img src={inst.image} alt={inst.name} className="w-full h-full object-cover" loading="lazy" />
+                ) : (
+                  <User className="w-8 h-8 text-gray-400" />
+                )}
               </div>
               <div>
                 <h3 className="font-bold text-[#082032] text-[16px]">{inst.name}</h3>

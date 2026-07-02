@@ -4,25 +4,32 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
-  ChevronDown, ChevronRight, Menu, Search, X, Phone,
+  ChevronDown, ChevronRight, Menu, Search, X,
 } from "lucide-react";
 import * as Lucide from "lucide-react";
-import { CurrencySwitcher } from "@/components/currency-switcher";
 import { useLearnerAuth } from "@/components/learner-auth-provider";
 import { LearnerDropdown } from "@/components/learner-dropdown";
+import { CurrencySwitcher } from "@/components/currency-switcher";
+import issuerManifest from "@/lib/issuer-manifest.json";
+
+// Issuing bodies are keyed by normalized category name (matches scripts/build-issuers.js).
+const normCat = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+const issuersFor = (name?: string) =>
+  (issuerManifest as Record<string, { name: string; logo: string }[]>)[normCat(name ?? "")] ?? [];
 
 type NavCategory = {
   slug: string;
   name: string;
   tagline?: string | null;
   icon?: string | null;
-  courses: { slug: string; title: string }[];
+  courses: { slug: string; title: string; image?: string | null }[];
 };
 
 type FeaturedCourse = { slug: string; title: string; category: string };
 
 type Props = {
   currency?: string;
+  currencies?: import("@/lib/currency").CurrencyConfig[];
   brandName?: string;
   logoUrl?: string | null;
   tagline?: string;
@@ -31,19 +38,20 @@ type Props = {
   topBarMessages?: string[];
   navCategories?: NavCategory[];
   featuredCourses?: FeaturedCourse[];
+  nav?: {
+    aiCourses?: { name: string; href: string }[];
+    enterpriseAgile?: { name: string; href: string }[];
+    enterpriseProduct?: { name: string; href: string }[];
+    resources?: { name: string; href: string; arrow?: boolean }[];
+  };
 };
 
-function Icon({ name, className }: { name?: string | null; className?: string }) {
-  const C = (name && (Lucide as any)[name]) || Lucide.BookOpen;
-  return <C className={className} />;
-}
-
 export function SiteHeader({
-  currency = "USD",
   brandName = "ULearnSystems",
-  logoUrl = null,
-  phone = "+91 80 4710 6633",
   navCategories = [],
+  nav = {},
+  currency = "USD",
+  currencies = [],
 }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -71,20 +79,6 @@ export function SiteHeader({
     setOpenSubMenu(null);
     setMobileOpen(false);
   }, [pathname]);
-
-  const navLink = (href: string, label: string, isNew = false) => (
-    <Link
-      href={href}
-      className={`relative px-3 py-6 text-[14px] font-bold transition-colors flex items-center h-full text-gray-600 hover:text-[#082032]`}
-    >
-      {isNew && (
-        <span className="absolute top-3 right-0 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5 rounded-full leading-none font-bold">
-          New
-        </span>
-      )}
-      {label}
-    </Link>
-  );
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#f8fcfc] border-b border-gray-200 font-sans transition-all duration-300">
@@ -132,7 +126,7 @@ export function SiteHeader({
         {/* All Courses Dropdown & Search (Desktop) */}
         <div className="hidden lg:flex items-center ml-6 flex-1">
           <div className="relative h-[42px] flex items-center group" onMouseEnter={() => openSoft("courses")} onMouseLeave={closeSoft}>
-            <button className="h-full flex items-center justify-between gap-3 px-4 border border-[#CBD5E1] rounded-[6px] text-[14px] font-bold text-[#1E293B] bg-white transition-all w-[150px]">
+            <button aria-haspopup="true" aria-expanded={openMenu === "courses"} onClick={() => setOpenMenu(openMenu === "courses" ? null : "courses")} className="h-full flex items-center justify-between gap-3 px-4 border border-[#CBD5E1] rounded-[6px] text-[14px] font-bold text-[#1E293B] bg-white transition-all w-[150px]">
               <span className="flex items-center gap-2.5"><Menu className="w-4 h-4 text-[#64748b]" /> All Courses</span> <ChevronDown className="w-4 h-4 text-[#94a3b8]" />
             </button>
             {openMenu === "courses" && (
@@ -184,7 +178,13 @@ export function SiteHeader({
                             {activeCat.courses.slice(0, 10).map((c, i) => (
                               <Link key={c.slug} href={`/${c.slug}`} onClick={() => setOpenMenu(null)} className="flex items-start gap-4 group/course">
                                 <div className="w-12 h-12 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
-                                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px] text-center leading-none">ITIL</div>
+                                  {c.image ? (
+                                    <img src={c.image} alt="" className="w-full h-full object-contain p-1.5" loading="lazy" />
+                                  ) : (
+                                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px] text-center leading-none">
+                                      {c.title.slice(0, 4).toUpperCase()}
+                                    </div>
+                                  )}
                                 </div>
                                 <div className="flex-1 pt-0.5">
                                   <div className="flex items-center flex-wrap gap-2 mb-1.5">
@@ -206,20 +206,31 @@ export function SiteHeader({
                     })()}
                   </div>
 
-                  {/* Right Column: Issuing Bodies */}
-                  <div className="w-[280px] shrink-0 bg-white flex flex-col">
-                    <div className="px-6 py-4 border-b border-gray-100 font-bold text-[#082032] text-[15px]">
-                      Credential Issuing Bodies
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
-                          <span className="text-primary font-bold text-[10px]">PC</span>
+                  {/* Right Column: Issuing Bodies — hidden entirely when the category has none (matches simpliaxis) */}
+                  {(() => {
+                    const activeCat = activeCategorySlug
+                      ? navCategories.find(c => c.slug === activeCategorySlug)
+                      : navCategories[0];
+                    const bodies = issuersFor(activeCat?.name);
+                    if (bodies.length === 0) return null;
+                    return (
+                      <div className="w-[280px] shrink-0 bg-white flex flex-col">
+                        <div className="px-6 py-4 border-b border-gray-100 font-bold text-[#082032] text-[15px]">
+                          Credential Issuing Bodies
                         </div>
-                        <div className="text-[13px] font-bold text-[#082032]">PeopleCert ATO</div>
+                        <div className="p-6 space-y-5">
+                          {bodies.map((b) => (
+                            <div key={b.name} className="flex items-center gap-4">
+                              <div className="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center shrink-0 overflow-hidden">
+                                <img src={b.logo} alt="" className="w-full h-full object-contain p-1.5" loading="lazy" />
+                              </div>
+                              <div className="text-[13px] font-bold text-[#082032] leading-snug">{b.name}</div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })()}
 
                 </div>
               </div>
@@ -249,16 +260,7 @@ export function SiteHeader({
             {openMenu === "ai-courses" && (
               <div className="absolute left-0 top-[72px] pt-1 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[320px] overflow-hidden py-2 flex flex-col">
-                  {[
-                    { name: "Applied Agentic AI certification", href: "/applied-agentic-ai-certification" },
-                    { name: "Gen AI for Scrum Masters", href: "/gen-ai-for-scrum-masters" },
-                    { name: "Gen AI for Project Managers", href: "/gen-ai-for-project-managers" },
-                    { name: "Gen AI for Product Owners/Product Managers", href: "/gen-ai-for-product-owners" },
-                    { name: "Gen AI for Enterprise Agilist", href: "/gen-ai-for-enterprise-agilist" },
-                    { name: "Gen AI for Business Analysts", href: "/gen-ai-for-business-analysts" },
-                    { name: "AI Powered Software Development", href: "/ai-powered-software-development" },
-                    { name: "No-Code AI Agents & Automation", href: "/no-code-ai-agents" },
-                  ].map((link, i) => (
+                  {(nav.aiCourses ?? []).map((link, i) => (
                     <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
                       {link.name}
                     </Link>
@@ -294,14 +296,7 @@ export function SiteHeader({
                     {openSubMenu === "agile" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
-                          {[
-                            { name: "SAFe Implementation", href: "/safe-implementation" },
-                            { name: "Business Agility", href: "/business-agility" },
-                            { name: "Value Stream Workshop / Optimization", href: "/value-stream" },
-                            { name: "DevOps Cultural Transformation", href: "/devops-cultural-transformation" },
-                            { name: "Technology & Business Management", href: "/tech-business-management" },
-                            { name: "Lean Portfolio Management", href: "/lean-portfolio-management" }
-                          ].map((item, idx) => (
+                          {(nav.enterpriseAgile ?? []).map((item, idx) => (
                             <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
                               {item.name}
                             </Link>
@@ -319,12 +314,7 @@ export function SiteHeader({
                     {openSubMenu === "product" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
-                          {[
-                            { name: "Product Coaching", href: "/product-coaching" },
-                            { name: "Design Thinking Workshops", href: "/design-thinking-workshops" },
-                            { name: "Project to Product (Culture Shift)", href: "/project-to-product" },
-                            { name: "Product Development Training", href: "/product-development-training" }
-                          ].map((item, idx) => (
+                          {(nav.enterpriseProduct ?? []).map((item, idx) => (
                             <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
                               {item.name}
                             </Link>
@@ -353,16 +343,7 @@ export function SiteHeader({
             {openMenu === "resources" && (
               <div className="absolute right-0 top-[72px] pt-1 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[260px] overflow-hidden py-2 flex flex-col">
-                  {[
-                    { name: "Free Courses", href: "/free-courses" },
-                    { name: "Blogs", href: "/resources" },
-                    { name: "Tutorials", href: "/tutorials" },
-                    { name: "Practice Tests", href: "/practice-tests" },
-                    { name: "Interview Questions", href: "/interview-questions" },
-                    { name: "Events", href: "/events", arrow: true },
-                    { name: "Scrum Master Certification Guide", href: "/scrum-master-certification-guide" },
-                    { name: "Course Info", href: "/course-info" },
-                  ].map((link, i) => (
+                  {(nav.resources ?? []).map((link, i) => (
                     <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0 flex justify-between items-center group">
                       {link.name}
                       {link.arrow && <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
@@ -376,6 +357,9 @@ export function SiteHeader({
 
         {/* Right Icons */}
         <div className="flex items-center gap-4 ml-6">
+          <div className="hidden lg:flex items-center text-[13px] font-semibold text-foreground/80">
+            <CurrencySwitcher current={currency} currencies={currencies} />
+          </div>
           {isLoggedIn ? (
             <LearnerDropdown />
           ) : (
@@ -387,14 +371,14 @@ export function SiteHeader({
             </button>
           )}
 
-          <button className="relative p-2 text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full lg:hidden">
+          <button aria-label="Cart (0 items)" className="relative grid h-11 w-11 place-items-center text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full lg:hidden">
             <Lucide.ShoppingCart className="w-5 h-5" />
             <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
               0
             </span>
           </button>
 
-          <button onClick={() => setMobileOpen(true)} className="lg:hidden p-2 text-foreground/80 hover:text-primary bg-secondary rounded-full">
+          <button aria-label="Open menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)} className="lg:hidden grid h-11 w-11 place-items-center text-foreground/80 hover:text-primary bg-secondary rounded-full">
             <Menu className="w-5 h-5" />
           </button>
         </div>
@@ -404,20 +388,30 @@ export function SiteHeader({
         <div className="fixed inset-0 z-[100] bg-background lg:hidden overflow-y-auto">
           <div className="p-4 flex items-center justify-between border-b border-border/50 bg-card">
             <img src="/logo.png" alt={brandName} className="h-20 w-auto object-contain" />
-            <button onClick={() => setMobileOpen(false)} className="p-2 bg-secondary rounded-full text-foreground/80"><X className="w-5 h-5" /></button>
+            <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="grid h-11 w-11 place-items-center bg-secondary rounded-full text-foreground/80"><X className="w-5 h-5" /></button>
           </div>
-          <div className="p-6 space-y-4">
+          <div className="p-6 space-y-1">
             <form action="/courses" method="get" className="relative mb-6">
               <Search className="w-4 h-4 text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2" />
-              <input type="text" name="q" placeholder="What do you want to learn today?" className="w-full pl-11 pr-4 py-3.5 border border-border/50 rounded-full text-sm bg-secondary focus:outline-none focus:border-primary" />
+              <input type="text" name="q" aria-label="Search courses" placeholder="What do you want to learn today?" className="w-full pl-11 pr-4 py-3.5 border border-border/50 rounded-full text-base bg-secondary focus:outline-none focus:border-primary" />
             </form>
-            <Link href="/courses" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">All Courses <ChevronRight className="w-4 h-4 opacity-50" /></Link>
-            <Link href="/combo-courses" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">
-              <span className="flex items-center gap-2">Combo Courses <span className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full">New</span></span>
-              <ChevronRight className="w-4 h-4 opacity-50" />
-            </Link>
-            <Link href="/resources" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Resources <ChevronRight className="w-4 h-4 opacity-50" /></Link>
-            <Link href="/corporate-training" className="py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">Corporate <ChevronRight className="w-4 h-4 opacity-50" /></Link>
+            {[
+              { href: "/courses", label: "All Courses" },
+              { href: "/ai-courses", label: "AI Courses" },
+              { href: "/combo-courses", label: "Combo Courses", isNew: true },
+              { href: "/self-paced", label: "Self-Paced" },
+              { href: "/corporate-training", label: "Enterprise" },
+              { href: "/refer-earn", label: "Refer & Earn" },
+              { href: "/resources", label: "Resources" },
+            ].map((item) => (
+              <Link key={item.href} href={item.href} className="min-h-[52px] py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">
+                <span className="flex items-center gap-2">{item.label}{item.isNew && <span className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full">New</span>}</span>
+                <ChevronRight className="w-4 h-4 opacity-50" />
+              </Link>
+            ))}
+            {!isLoggedIn && (
+              <button onClick={() => { setMobileOpen(false); openModal(); }} className="btn-primary mt-6 w-full">Sign In</button>
+            )}
           </div>
         </div>
       )}

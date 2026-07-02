@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  Home, Users, Clock, Gift, FileText, BookOpen, 
-  HelpCircle, Settings, PhoneCall
+import {
+  Home, Users, Clock, Gift, BookOpen,
+  HelpCircle, PhoneCall
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -12,7 +12,6 @@ const NAV_ITEMS = [
   { icon: Users, label: "Referral", href: "/home/referral" },
   { icon: Clock, label: "Purchase History", href: "/home/purchases" },
   { icon: Gift, label: "Gift Card", href: "/home/gifts" },
-  { icon: FileText, label: "Practice Tests", href: "/home/practice-tests" },
   { icon: BookOpen, label: "LMS", href: "/home/lms" },
   { icon: HelpCircle, label: "Help & Support", href: "/home/support" },
 ];

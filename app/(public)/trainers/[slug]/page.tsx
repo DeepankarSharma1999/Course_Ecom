@@ -7,6 +7,7 @@ import { CourseCard } from "@/components/course-card";
 import { LeadForm } from "@/components/lead-form";
 import { SITE } from "@/lib/utils";
 import { getAllCourses } from "@/lib/content";
+import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 
 export const dynamicParams = true;
 export const revalidate = 60;
@@ -43,7 +44,7 @@ export default async function TrainerDetail({ params }: { params: Promise<{ slug
   const t = await getTrainer(slug);
   if (!t) notFound();
 
-  const allCourses = await getAllCourses();
+  const [allCourses, currency, currencyCfg] = await Promise.all([getAllCourses(), getDisplayCurrency(), getCurrencyConfig()]);
   const assignedSlugs = t.courses.map((ct) => ct.course.slug);
   const courses = allCourses.filter((c) => assignedSlugs.includes(c.slug));
 
@@ -51,7 +52,10 @@ export default async function TrainerDetail({ params }: { params: Promise<{ slug
     <>
       <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
         <div className="container-tight py-14 grid lg:grid-cols-[200px_1fr] gap-8 items-center">
-          {t.photo ? <img src={t.photo} alt={t.name} className="w-40 h-40 rounded-full object-cover border-4 border-white/20" /> : <div className="w-40 h-40 rounded-full bg-white/10 grid place-items-center text-5xl font-bold">{t.name.charAt(0)}</div>}
+          {t.photo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={t.photo} alt={t.name} width={160} height={160} className="w-40 h-40 rounded-full object-cover border-4 border-white/20" />
+          ) : <div className="w-40 h-40 rounded-full bg-white/10 grid place-items-center text-5xl font-bold">{t.name.charAt(0)}</div>}
           <div>
             <div className="text-sm text-brand-200 mb-2">Trainer</div>
             <h1 className="text-4xl md:text-5xl font-bold mb-2">{t.name}</h1>
@@ -93,7 +97,7 @@ export default async function TrainerDetail({ params }: { params: Promise<{ slug
               <div className="mt-10">
                 <h3 className="font-semibold text-ink-900 mb-4">Courses delivered by {t.name.split(" ")[0]}</h3>
                 <div className="grid md:grid-cols-2 gap-5">
-                  {courses.map((c) => <CourseCard key={c.slug} course={c} />)}
+                  {courses.map((c) => <CourseCard key={c.slug} course={c} currency={currency} currencies={currencyCfg.currencies} />)}
                 </div>
               </div>
             )}

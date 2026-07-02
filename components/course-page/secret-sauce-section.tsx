@@ -18,7 +18,7 @@ export function SecretSauceSection() {
       title: "Experiential learning",
       subtitle: "with games, role-plays, simulations, and case studies",
       features: ["Games", "Role-Plays", "Simulations", "Case-Studies"],
-      bgColor: "bg-[#f8fdfdf]",
+      bgColor: "bg-[#f0fdfa]",
       image: "/images/courses/feature_experiential_1781964406598.png"
     },
     {
@@ -33,28 +33,28 @@ export function SecretSauceSection() {
       subtitle: "Earn 16 SEUs and 16 PDUs",
       features: [],
       bgColor: "bg-[#f8fafc]",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80"
+      image: "/images/vendor/unsplash/photo-1523240795612-9a054b0db644.jpg"
     },
     {
       title: "Lifetime Access",
       subtitle: "To course materials and updates",
       features: [],
       bgColor: "bg-[#fffbeb]",
-      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=400&q=80"
+      image: "/images/vendor/unsplash/photo-1501504905252-473c47e087f8.jpg"
     }
   ];
 
   return (
-    <section className="scroll-mt-24 pt-12">
+    <section className="scroll-mt-24 pt-12 border-t border-gray-100">
       <h2 className="text-[28px] md:text-[32px] font-bold text-[#082032] mb-8 text-center">
         Our Secret Sauce for Exam and Career Success
       </h2>
       
       <div className="flex justify-end gap-2 mb-4">
-        <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-400">
+        <button onClick={() => scroll("left")} aria-label="Scroll left" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-600">
           <ChevronLeft className="w-5 h-5" />
         </button>
-        <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
+        <button onClick={() => scroll("right")} aria-label="Scroll right" className="w-11 h-11 rounded-full border border-gray-800 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-800">
           <ChevronRight className="w-5 h-5" />
         </button>
       </div>
@@ -84,8 +84,8 @@ export function SecretSauceSection() {
               )}
             </div>
 
-            {/* Mock Image Placeholder aligned to bottom right */}
-            <div className="mt-8 flex justify-end px-4 pb-4">
+            {/* Image anchored to the card bottom so every card aligns (no mid-card void). */}
+            <div className="mt-auto pt-8 flex justify-end px-4 pb-4">
               <div className="w-48 h-32 bg-white rounded-lg shadow-md border border-gray-100 flex items-center justify-center overflow-hidden">
                 {item.image ? (
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover" />

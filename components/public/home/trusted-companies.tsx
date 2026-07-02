@@ -3,11 +3,11 @@
 import Image from "next/image";
 
 const COMPANIES = [
-  { name: "Cognizant", url: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg" },
-  { name: "Infosys", url: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" },
-  { name: "Capgemini", url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" },
-  { name: "Accenture", url: "https://cdn.worldvectorlogo.com/logos/accenture-4.svg" },
-  { name: "IBM", url: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
+  { name: "Cognizant", url: "/images/vendor/wikimedia/Cognizant_logo_2022.svg" },
+  { name: "Infosys", url: "/images/vendor/wikimedia/Infosys_logo.svg" },
+  { name: "Capgemini", url: "/images/vendor/wikimedia/Capgemini_201x_logo.svg" },
+  { name: "Accenture", url: "/images/vendor/worldvectorlogo/accenture-4.svg" },
+  { name: "IBM", url: "/images/vendor/wikimedia/IBM_logo.svg" },
 ];
 
 export function TrustedCompanies() {

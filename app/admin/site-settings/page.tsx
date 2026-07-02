@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { AdminTopbar } from "@/components/admin/topbar";
 import { Checkbox, Field, Input, PageHeader, Section, Textarea } from "@/components/admin/ui";
 import { ImageUploader } from "@/components/admin/image-uploader";
+import { FooterColumnsEditor, SocialLinksEditor } from "@/components/admin/footer-editors";
+import { DEFAULT_FOOTER_COLUMNS } from "@/lib/footer-defaults";
 import { saveSiteSettings } from "@/lib/admin-actions";
 
 export const dynamic = "force-dynamic";
@@ -47,12 +49,12 @@ export default async function SiteSettingsPage({ searchParams }: { searchParams:
             </Field>
           </Section>
           <Section title="Social Links">
-            <Field label="JSON object"><Textarea name="socialLinks" rows={6} defaultValue={j(s?.socialLinks)} placeholder='{ "linkedin": "...", "twitter": "...", "facebook": "...", "instagram": "...", "youtube": "..." }' /></Field>
+            <SocialLinksEditor name="socialLinks" value={s?.socialLinks} />
           </Section>
           <Section title="Footer">
             <Field label="About text"><Textarea name="footerAbout" rows={4} defaultValue={s?.footerAbout ?? ""} /></Field>
-            <Field label="Footer columns (JSON)" hint='[{ "title": "...", "links": [{"label","href"}] }]'>
-              <Textarea name="footerColumns" rows={10} defaultValue={j(s?.footerColumns)} />
+            <Field label="Footer columns" hint="The link columns in the footer. Add/remove columns and links.">
+              <FooterColumnsEditor name="footerColumns" value={s?.footerColumns ?? DEFAULT_FOOTER_COLUMNS} />
             </Field>
             <Field label="Copyright"><Input name="copyrightText" defaultValue={s?.copyrightText ?? ""} /></Field>
           </Section>

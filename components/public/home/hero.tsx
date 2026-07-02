@@ -65,28 +65,38 @@ function TrustedCompanyCarousel() {
   );
 }
 
-export function HomeHero() {
+export function HomeHero({ content }: { content?: any }) {
+  const h = content ?? {};
+  const headline = h.heroHeadline || "Learn In-Demand Skills";
+  const highlight = h.heroHeadlineHighlight || "for Tomorrow's";
+  const suffix = h.heroHeadlineSuffix || "Jobs";
+  const subheading = h.heroSubheading || "Experience learning that delivers results. We're disrupting the way you learn new-age technologies and we'll help you get job-ready, fast.";
+  const ctaPrimaryText = h.heroCtaPrimaryText || "Explore All Courses";
+  const ctaPrimaryLink = h.heroCtaPrimaryLink || "/courses";
+  const ctaSecondaryText = h.heroCtaSecondaryText || "Corporate Training";
+  const ctaSecondaryLink = h.heroCtaSecondaryLink || "/corporate-training";
+
   return (
     <section className="relative overflow-hidden bg-white font-sans">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_20%,rgba(31,168,168,0.13),transparent_28%),linear-gradient(90deg,rgba(240,246,248,0.95),rgba(255,255,255,0)_60%)] pointer-events-none" />
       <div className="container-tight relative grid items-center gap-12 pt-16 pb-12 md:pt-20 lg:grid-cols-[1fr_1fr] lg:pt-24 lg:pb-16 z-10">
-        
+
         {/* LEFT COLUMN */}
         <div className="min-w-0 max-w-2xl text-left z-10">
           <h1 className="max-w-[600px] text-[32px] md:text-[40px] font-bold leading-[1.15] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
-            Learn In-Demand Skills for Tomorrow&apos;s Jobs
+            {headline} <span className="text-[#f97316]">{highlight}</span> {suffix}
           </h1>
 
           <p className="mt-4 md:mt-6 max-w-[500px] text-[14px] md:text-[16px] leading-relaxed text-gray-600 font-medium">
-            Experience learning that delivers results. We&apos;re disrupting the way you learn <span className="font-bold text-[#082032]">new-age technologies</span> and we&apos;ll help you get <span className="font-bold text-[#082032]">job-ready</span>, fast.
+            {subheading}
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link href="/courses" className="btn-primary rounded text-center py-3.5 px-8">
-              Explore All Courses
+            <Link href={ctaPrimaryLink} className="btn-primary rounded text-center py-3.5 px-8">
+              {ctaPrimaryText}
             </Link>
-            <Link href="/corporate-training" className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
-              Corporate Training <ArrowRight className="h-4 w-4" />
+            <Link href={ctaSecondaryLink} className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
+              {ctaSecondaryText} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
@@ -119,10 +129,10 @@ export function HomeHero() {
           
           {/* Top Right Girl (Microsoft) */}
           <div className="absolute top-[0%] right-[0%] w-[200px] h-[200px] bg-[#27ae60] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-             <img src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[85%] object-cover object-top h-[95%]" />
+             <img src="/images/vendor/pexels/pexels-photo-3756679.jpeg" alt="" className="w-[85%] object-cover object-top h-[95%]" />
           </div>
           <div className="absolute top-[28%] right-[-10%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" className="w-5 h-5" />
+             <img src="/images/vendor/wikimedia/Microsoft_logo.svg" alt="Microsoft" className="w-5 h-5" />
              <div>
                <div className="text-[13px] font-bold text-[#082032] flex items-center gap-1.5">150% Salary Hike <Lucide.TrendingUp className="w-3.5 h-3.5 text-[#e11d48]" strokeWidth={3} /></div>
                <div className="text-[10px] text-gray-500 font-medium mt-0.5">SDE II @ Microsoft</div>
@@ -131,7 +141,7 @@ export function HomeHero() {
 
           {/* Left Middle Girl (Citi) */}
           <div className="absolute top-[25%] left-[5%] w-[180px] h-[180px] bg-[#fcd34d] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-            <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[80%] object-cover object-top h-[90%]" />
+            <img src="/images/vendor/pexels/pexels-photo-1181686.jpeg" alt="" className="w-[80%] object-cover object-top h-[90%]" />
           </div>
           <div className="absolute top-[50%] left-[-5%] bg-white p-2.5 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20 min-w-[200px]">
              <div className="flex-1">
@@ -143,7 +153,7 @@ export function HomeHero() {
 
           {/* Bottom Right Boy (Oracle) */}
           <div className="absolute bottom-[2%] right-[5%] w-[190px] h-[190px] bg-[#fde047] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-             <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[90%] object-cover object-top h-[95%]" />
+             <img src="/images/vendor/pexels/pexels-photo-2379004.jpeg" alt="" className="w-[90%] object-cover object-top h-[95%]" />
           </div>
           <div className="absolute bottom-[-2%] right-[-5%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20">
              <div className="font-black text-[#C74634] text-base tracking-tighter">ORACLE</div>
@@ -155,7 +165,7 @@ export function HomeHero() {
 
           {/* Bottom Left Boy (Walmart) */}
           <div className="absolute bottom-[0%] left-[15%] w-[210px] h-[210px] bg-[#34d399] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-             <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" className="w-[85%] object-cover object-top h-[95%]" />
+             <img src="/images/vendor/pexels/pexels-photo-220453.jpeg" alt="" className="w-[85%] object-cover object-top h-[95%]" />
           </div>
           <div className="absolute bottom-[-10%] left-[5%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-4 z-20">
              <div>
@@ -167,16 +177,16 @@ export function HomeHero() {
 
           {/* Floating Icons */}
           <div className="absolute top-[18%] left-[20%] w-12 h-12 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2.5">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" alt="Slack" className="w-full h-full object-contain" />
+            <img src="/images/vendor/wikimedia/Slack_icon_2019.svg" alt="Slack" className="w-full h-full object-contain" />
           </div>
           <div className="absolute top-[8%] right-[45%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
             <svg viewBox="0 0 24 24" className="w-full h-full fill-current text-red-600"><path d="M12 2L2 22h20L12 2zm0 4l7 14H5l7-14z"/></svg>
           </div>
           <div className="absolute top-[60%] right-[5%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" className="w-full h-full object-contain" />
+            <img src="/images/vendor/wikimedia/Python-logo-notext.svg" alt="Python" className="w-full h-full object-contain" />
           </div>
           <div className="absolute bottom-[5%] left-[0%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" className="w-full h-full object-contain" />
+            <img src="/images/vendor/wikimedia/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" className="w-full h-full object-contain" />
           </div>
         </div>
       </div>

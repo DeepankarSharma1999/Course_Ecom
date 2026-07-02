@@ -1,0 +1,54 @@
+{
+  "agile": [
+    {
+      "name": "ICAgile Member Training Organization",
+      "logo": "/images/courses/issuers/accreditation_module_IC_agile_1726658228.png"
+    },
+    {
+      "name": "Scrum Alliance® Licensed Training Partner (LTP)",
+      "logo": "/images/courses/issuers/accreditation_module_LTP-logo_1770127173.webp"
+    },
+    {
+      "name": "Member of Scrum.org",
+      "logo": "/images/courses/issuers/accreditation_module_certificate-2_1629442295.png"
+    }
+  ],
+  "safe": [
+    {
+      "name": "Platinum SPCT of Scaled Agile",
+      "logo": "/images/courses/issuers/accreditation_module_PlatinumSPCT-img_1758626766.webp"
+    }
+  ],
+  "project": [
+    {
+      "name": "ATO Of PeopleCert",
+      "logo": "/images/courses/issuers/accreditation_module_PeoplesCert_Logo_1637915287.png"
+    },
+    {
+      "name": "PMI Authorized Training Partner (ATP)",
+      "logo": "/images/courses/issuers/accreditation_module_PMI-Nov_1669118571.png"
+    }
+  ],
+  "business": [
+    {
+      "name": "Endorsed Education Provider of IIBA®",
+      "logo": "/images/courses/issuers/accreditation_module_IIBA-Logo_1629636929.png"
+    }
+  ],
+  "microcredentials": [
+    {
+      "name": "Scrum Alliance® Licensed Training Partner",
+      "logo": "/images/courses/issuers/accreditation_module_accreditation_module_ScrumAlliance_1730264966_1739364612.png"
+    },
+    {
+      "name": "ICAgile - Member Training Organization",
+      "logo": "/images/courses/issuers/accreditation_module_accreditation_module_IC_agile_1769666067.png"
+    }
+  ],
+  "service": [
+    {
+      "name": "PeopleCert ATO",
+      "logo": "/images/courses/issuers/accreditation_module_accreditation_module_PeoplesCert_Logo_1637915287_1730265243.png"
+    }
+  ]
+}

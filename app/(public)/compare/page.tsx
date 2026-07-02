@@ -2,29 +2,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getAllCourses } from "@/lib/content";
+import { getPageContent } from "@/lib/page-content";
 import { ComparePicker } from "@/components/compare-picker";
 
-export const metadata: Metadata = {
-  title: "Compare Certification Courses",
-  description: "Side-by-side comparison of certification training courses — duration, price, exam, prerequisites and outcomes.",
-};
-
+const SLUG = "compare";
 export const revalidate = 60;
 
-const SUGGESTED = [
-  ["safe-scrum-master-certification", "safe-product-owner-product-manager-certification"],
-  ["safe-scrum-master-certification", "safe-devops-certification"],
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getPageContent(SLUG);
+  return { title: c.metaTitle, description: c.metaDescription };
+}
 
 export default async function ComparePage() {
-  const courses = await getAllCourses();
+  const [courses, c] = await Promise.all([getAllCourses(), getPageContent(SLUG)]);
+  const suggested: { a: string; b: string }[] = (c.suggested as any) ?? [];
   return (
     <>
       <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
         <div className="container-tight py-14">
-          <div className="badge mb-3 bg-white/10 text-white border border-white/20">Compare</div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">Compare Certification Courses</h1>
-          <p className="text-brand-100 text-lg max-w-2xl">Not sure which course is right for you? Pick any two to see them side-by-side.</p>
+          <div className="badge mb-3 bg-white/10 text-white border border-white/20">{c.heroBadge}</div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3">{c.heroHeading}</h1>
+          <p className="text-brand-100 text-lg max-w-2xl">{c.heroSubtitle}</p>
         </div>
       </section>
 
@@ -34,9 +32,9 @@ export default async function ComparePage() {
             <ComparePicker courses={courses.map((c) => ({ slug: c.slug, title: c.shortTitle }))} />
           </div>
 
-          <h2 className="h3 mb-4">Popular Comparisons</h2>
+          <h2 className="h3 mb-4">{c.popularTitle}</h2>
           <div className="grid md:grid-cols-2 gap-3">
-            {SUGGESTED.map(([a, b]) => {
+            {suggested.map(({ a, b }) => {
               const A = courses.find((c) => c.slug === a); const B = courses.find((c) => c.slug === b);
               if (!A || !B) return null;
               return (

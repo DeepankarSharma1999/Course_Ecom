@@ -2,20 +2,22 @@
 
 import { useState } from "react";
 import { Clock, Globe, Calendar, Info, Sun, ChevronDown } from "lucide-react";
-import { type CurrencyCode, formatInCurrency } from "@/lib/currency";
+import { type CurrencyCode } from "@/lib/currency";
+import { usePricing } from "@/components/pricing-provider";
 
 type Schedule = {
   mode: string;
   startDate: Date;
   endDate: Date;
   timeLabel?: string;
-  priceInr: number;
+  priceUsd: number;
   discountPct?: number;
   seatsLeft?: number;
   isFilling?: boolean;
 };
 
-export function SchedulesSection({ schedules, currency = "INR" }: { schedules: Schedule[], currency?: CurrencyCode }) {
+export function SchedulesSection({ schedules }: { schedules: Schedule[], currency?: CurrencyCode }) {
+  const { format } = usePricing();
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [quantities, setQuantities] = useState<Record<number, number>>({});
   const [isMonthOpen, setIsMonthOpen] = useState(false);
@@ -56,7 +58,7 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
                          : schedules;
 
   return (
-    <section id="schedules" className="scroll-mt-24 pt-8 border-t border-gray-100">
+    <section id="schedules" className="scroll-mt-24 pt-12 border-t border-gray-100">
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">Explore Our Schedules</div>
       <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Schedules</h2>
       
@@ -67,9 +69,10 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
         {["This Month", "Next Month", "Weekend", "Weekday"].map(f => {
           const isActive = activeFilters.includes(f);
           return (
-            <button 
-              key={f} 
+            <button
+              key={f}
               onClick={() => toggleFilter(f)}
+              aria-pressed={isActive}
               className={`h-10 px-4 rounded-full border text-[13px] font-semibold transition-colors ${
                 isActive 
                   ? "border-[#1FA8A8] bg-[#e0f2f1] text-[#1FA8A8]" 
@@ -91,8 +94,10 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
         
         {/* Functional Month Dropdown */}
         <div className="relative">
-          <button 
+          <button
             onClick={() => setIsMonthOpen(!isMonthOpen)}
+            aria-expanded={isMonthOpen}
+            aria-haspopup="listbox"
             className={`h-10 px-4 rounded-full border text-[13px] font-semibold transition-colors flex items-center gap-1.5 ${
               selectedMonth || isMonthOpen ? "border-[#1FA8A8] text-[#1FA8A8] bg-[#e0f2f1]" : "border-gray-200 text-gray-600 hover:border-[#1FA8A8] hover:text-[#1FA8A8] bg-white"
             }`}
@@ -183,11 +188,11 @@ export function SchedulesSection({ schedules, currency = "INR" }: { schedules: S
                   </div>
                 )}
                 <div className="text-[18px] lg:text-[22px] font-black text-[#082032] flex items-center justify-start lg:justify-end gap-2 mb-1">
-                  {formatInCurrency(s.priceInr * qty * (1 - (s.discountPct ?? 0) / 100), currency)}
-                  {s.discountPct && <span className="text-[12px] lg:text-[14px] font-semibold text-gray-400 line-through">{formatInCurrency(s.priceInr * qty, currency)}</span>}
+                  {format(s.priceUsd * qty * (1 - (s.discountPct ?? 0) / 100))}
+                  {s.discountPct && <span className="text-[12px] lg:text-[14px] font-semibold text-gray-400 line-through">{format(s.priceUsd * qty)}</span>}
                 </div>
                 <div className="text-[10px] lg:text-[11px] text-gray-500 mb-3 lg:mb-4">
-                  As low as {formatInCurrency(s.priceInr * qty * 0.1, currency)}/month <Info className="w-3 h-3 inline" />
+                  As low as {format(s.priceUsd * qty * 0.1)}/month <Info className="w-3 h-3 inline" />
                 </div>
                 <a href="#enquire" className="w-full h-9 lg:h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[13px] lg:text-[14px]">
                   Enroll Now

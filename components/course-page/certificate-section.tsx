@@ -5,17 +5,25 @@ export function CertificateSection({ course }: { course: CourseContent }) {
   const isCSM = course.slug.includes("csm");
   const certName = isCSM ? "CSM" : course.shortTitle;
 
+  // Per-course override from admin, else computed defaults.
+  const cert = course.pageSections?.certificate;
+  const heading = cert?.heading || `Earn the Coveted ${certName} Credential`;
+  const body = cert?.body || `Earning the ${course.shortTitle} certification goes beyond acquiring a new skill—it's validation of your mastery. This certification isn't just a certificate; it's a testament to your dedication and expertise. It unlocks a realm of opportunities in your professional journey, signaling to employers and peers that you possess the knowledge and commitment to excel in guiding projects with agility and efficiency. You also get access to the global community and free resources.`;
+
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100">
       <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-2 break-words">
         GET THE {certName} CERTIFICATION
       </div>
-      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-6 break-words leading-tight">Earn the Coveted {certName} Credential</h2>
-      
-      <p className="text-[14px] text-[#475569] leading-relaxed mb-10">
-        Earning the {course.shortTitle} certification goes beyond acquiring a new skill—it's validation of your mastery. This certification isn't just a certificate; it's a testament to your dedication and expertise. It unlocks a realm of opportunities in your professional journey, signaling to employers and peers that you possess the knowledge and commitment to excel in guiding projects with agility and efficiency. You also get access to the global community and free resources.
-      </p>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-6 break-words leading-tight">{heading}</h2>
 
+      <p className="text-[14px] text-[#475569] leading-relaxed mb-10">{body}</p>
+
+      {cert?.image ? (
+        <div className="relative w-full max-w-4xl mx-auto">
+          <img src={cert.image} alt={`${certName} certificate`} className="w-full rounded-2xl border border-gray-200 shadow-xl" loading="lazy" />
+        </div>
+      ) : (
       <div className="relative w-full max-w-4xl mx-auto">
         {/* Background blobs for the certificate */}
         <div className="absolute top-1/2 left-0 w-64 h-32 bg-[#e8f3e8] rounded-[100px] -rotate-45 -translate-x-10 -translate-y-1/2 -z-10 blur-xl"></div>
@@ -60,6 +68,7 @@ export function CertificateSection({ course }: { course: CourseContent }) {
           Shareable on <span className="font-black text-[#0a66c2] text-xl flex items-center">Linked<span className="bg-[#0a66c2] text-white px-1 rounded ml-0.5 text-lg">in</span></span>
         </div>
       </div>
+      )}
     </section>
   );
 }

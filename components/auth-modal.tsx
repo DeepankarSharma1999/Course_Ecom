@@ -1,35 +1,52 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Check } from "lucide-react";
 import { useLearnerAuth } from "./learner-auth-provider";
 
 export function AuthModal() {
-  const { isModalOpen, closeModal, login } = useLearnerAuth();
+  const { isModalOpen, closeModal, login, register } = useLearnerAuth();
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeModal(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isModalOpen, closeModal]);
+
+  // Reset transient state when switching mode or reopening.
+  useEffect(() => { setError(""); }, [isLogin, isModalOpen]);
 
   if (!isModalOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) login(email);
+    if (busy) return;
+    setError("");
+    setBusy(true);
+    const result = isLogin ? await login(email, password) : await register(name, email, password);
+    setBusy(false);
+    if (!result.ok) setError(result.error || "Something went wrong.");
   };
 
   const handleSocialLogin = (provider: "Google" | "LinkedIn") => {
-    // Simulated social login flow
-    const dummyEmail = `${provider.toLowerCase()}_user@example.com`;
-    login(dummyEmail, provider);
+    setError(`${provider} sign-in isn't available yet — please use email and password.`);
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-900/60 backdrop-blur-sm p-4 sm:p-6">
-      <div className="bg-white rounded-[24px] shadow-2xl w-full max-w-[900px] flex flex-col md:flex-row overflow-hidden relative animate-in fade-in zoom-in-95 duration-300 border border-ink-100">
-        
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-900/60 backdrop-blur-sm p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title" onClick={closeModal}>
+      <div className="bg-white rounded-[24px] shadow-2xl w-full max-w-[900px] flex flex-col md:flex-row overflow-hidden relative animate-in fade-in zoom-in-95 duration-300 border border-ink-100" onClick={(e) => e.stopPropagation()}>
+
         {/* Close Button */}
         <button
           onClick={closeModal}
+          aria-label="Close dialog"
           className="absolute top-5 right-5 z-20 p-2.5 bg-ink-50 hover:bg-ink-100 rounded-full transition-colors text-ink-500 hover:text-ink-900"
         >
           <X className="w-5 h-5" />
@@ -51,7 +68,7 @@ export function AuthModal() {
             <div className="w-56 h-56 rounded-full bg-white/5 p-2 mb-8 relative border border-white/10 shadow-2xl">
               <div className="absolute inset-0 bg-primary/20 rounded-full animate-pulse"></div>
               <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" 
+                src="/images/vendor/unsplash/photo-1573496359142-b8d87734a5a2.jpg" 
                 alt="Learner" 
                 className="w-full h-full object-cover rounded-full border-[6px] border-white/20 shadow-inner relative z-10"
               />
@@ -78,7 +95,7 @@ export function AuthModal() {
           <div className="max-w-[400px] mx-auto w-full">
             
             <div className="mb-10">
-              <h2 className="text-[28px] font-extrabold text-ink-900 mb-2 tracking-tight">
+              <h2 id="auth-modal-title" className="text-[28px] font-extrabold text-ink-900 mb-2 tracking-tight">
                 {isLogin ? "Welcome back learner" : "Create an account"} <span className="inline-block origin-bottom-right hover:animate-wave">{isLogin ? "👋" : "✨"}</span>
               </h2>
               <p className="text-ink-500 text-[15px]">
@@ -87,10 +104,26 @@ export function AuthModal() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
+              {!isLogin && (
+                <div className="space-y-1.5">
+                  <input
+                    type="text"
+                    placeholder="Full name"
+                    aria-label="Full name"
+                    autoComplete="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full px-5 py-4 bg-ink-50 border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/20 focus:border-primary transition-all text-ink-900 placeholder:text-ink-400 font-medium"
+                    required
+                  />
+                </div>
+              )}
               <div className="space-y-1.5">
                 <input
                   type="email"
                   placeholder="Email address"
+                  aria-label="Email address"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-5 py-4 bg-ink-50 border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/20 focus:border-primary transition-all text-ink-900 placeholder:text-ink-400 font-medium"
@@ -101,12 +134,22 @@ export function AuthModal() {
                 <input
                   type="password"
                   placeholder="Password"
+                  aria-label="Password"
+                  autoComplete={isLogin ? "current-password" : "new-password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-5 py-4 bg-ink-50 border border-transparent rounded-xl focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/20 focus:border-primary transition-all text-ink-900 placeholder:text-ink-400 font-medium"
+                  minLength={isLogin ? undefined : 8}
                   required
                 />
+                {!isLogin && <p className="text-[13px] text-ink-400 pl-1">At least 8 characters.</p>}
               </div>
+
+              {error && (
+                <p role="alert" className="text-[14px] text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
+                  {error}
+                </p>
+              )}
 
               {isLogin && (
                 <div className="flex items-center justify-between text-[14px] pt-1">
@@ -120,9 +163,10 @@ export function AuthModal() {
 
               <button
                 type="submit"
-                className="w-full bg-primary hover:bg-[#0f6b6b] text-white font-bold text-[15px] py-4 rounded-xl transition-all shadow-[0_8px_20px_rgb(13,148,136,0.25)] hover:shadow-[0_12px_24px_rgb(13,148,136,0.35)] hover:-translate-y-0.5 mt-4"
+                disabled={busy}
+                className="w-full bg-primary hover:bg-[#0f6b6b] text-white font-bold text-[15px] py-4 rounded-xl transition-all shadow-[0_8px_20px_rgb(13,148,136,0.25)] hover:shadow-[0_12px_24px_rgb(13,148,136,0.35)] hover:-translate-y-0.5 mt-4 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               >
-                {isLogin ? "LOGIN" : "SIGN UP"}
+                {busy ? "Please wait…" : isLogin ? "LOGIN" : "SIGN UP"}
               </button>
             </form>
 

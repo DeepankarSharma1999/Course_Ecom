@@ -182,16 +182,15 @@ export function CurriculumSection({ course }: { course: CourseContent }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Use the detailed mock curriculum for CSM, otherwise fallback to the basic one from props
-  const isCSM = course.slug.includes("csm");
-  const curriculumToRender = isCSM ? MOCK_CSM_CURRICULUM : course.curriculum;
+  // Always render the per-course, admin-editable curriculum (uniform across courses).
+  const curriculumToRender = course.curriculum;
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="curriculum" className="scroll-mt-24 pt-8 border-t border-gray-100">
+    <section id="curriculum" className="scroll-mt-24 pt-12 border-t border-gray-100">
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
         {course.shortTitle} Certification Training Curriculum
       </div>
@@ -210,9 +209,10 @@ export function CurriculumSection({ course }: { course: CourseContent }) {
                   : "bg-[#fcfdfd] border border-[#e2ecec] hover:bg-gray-50"
               }`}
             >
-              <button 
+              <button
                 onClick={() => toggleAccordion(i)}
-                className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                aria-expanded={isOpen}
+                className="w-full flex items-center justify-between p-5 text-left"
               >
                 <h3 className="font-bold text-[#082032] text-[15px]">
                   {i + 1}. {m.title}

@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { LayoutDashboard, Users, Clock, User, FileText, Gift, ClipboardList, BookOpen, HelpCircle, LogOut, ChevronDown } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Gift, BookOpen, HelpCircle, LogOut, ChevronDown } from "lucide-react";
 import { useLearnerAuth } from "./learner-auth-provider";
 
 export function LearnerDropdown() {
@@ -24,12 +24,9 @@ export function LearnerDropdown() {
 
   const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", href: "/home" },
-    { icon: Users, label: "Referrals", href: "/home/referrals" },
-    { icon: Clock, label: "Redeem History", href: "/home/redeem-history" },
-    { icon: User, label: "Profile", href: "/home/profile" },
+    { icon: Users, label: "Referral", href: "/home/referral" },
     { icon: FileText, label: "Purchase History", href: "/home/purchases" },
     { icon: Gift, label: "Gift Card", href: "/home/gifts" },
-    { icon: ClipboardList, label: "Practice Tests", href: "/home/practice-tests" },
     { icon: BookOpen, label: "LMS", href: "/home/lms" },
     { icon: HelpCircle, label: "Help and Support", href: "/home/support" },
   ];
