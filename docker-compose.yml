@@ -1,0 +1,45 @@
+# ponytail: dev-mode compose — bind-mount + `next dev`, no multi-stage build image.
+# Add a prod Dockerfile target when you actually deploy via Docker.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mindclick-postgres
+    environment:
+      POSTGRES_USER: mindclick
+      POSTGRES_PASSWORD: mindclick
+      POSTGRES_DB: mindclick
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mindclick"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    # node:20 (Debian) bundles OpenSSL — Prisma's engine needs it; alpine/musl breaks it.
+    image: node:20
+    container_name: mindclick-web
+    working_dir: /app
+    command: sh -c "npm install && npm run db:push && npm run db:seed && npx tsx scripts/generate-course-content.ts && npm run dev"
+    environment:
+      # In-container app talks to the db service, not localhost.
+      DATABASE_URL: "postgresql://mindclick:mindclick@postgres:5432/mindclick?schema=public"
+      # Windows bind mounts don't fire inotify — poll so Next.js HMR sees edits.
+      WATCHPACK_POLLING: "true"
+      CHOKIDAR_USEPOLLING: "true"
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:

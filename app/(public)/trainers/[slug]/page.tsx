@@ -7,6 +7,7 @@ import { CourseCard } from "@/components/course-card";
 import { LeadForm } from "@/components/lead-form";
 import { SITE } from "@/lib/utils";
 import { getAllCourses } from "@/lib/content";
+import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 
 export const dynamicParams = true;
 export const revalidate = 60;
@@ -43,7 +44,7 @@ export default async function TrainerDetail({ params }: { params: Promise<{ slug
   const t = await getTrainer(slug);
   if (!t) notFound();
 
-  const allCourses = await getAllCourses();
+  const [allCourses, currency, currencyCfg] = await Promise.all([getAllCourses(), getDisplayCurrency(), getCurrencyConfig()]);
   const assignedSlugs = t.courses.map((ct) => ct.course.slug);
   const courses = allCourses.filter((c) => assignedSlugs.includes(c.slug));
 
@@ -96,7 +97,7 @@ export default async function TrainerDetail({ params }: { params: Promise<{ slug
               <div className="mt-10">
                 <h3 className="font-semibold text-ink-900 mb-4">Courses delivered by {t.name.split(" ")[0]}</h3>
                 <div className="grid md:grid-cols-2 gap-5">
-                  {courses.map((c) => <CourseCard key={c.slug} course={c} />)}
+                  {courses.map((c) => <CourseCard key={c.slug} course={c} currency={currency} currencies={currencyCfg.currencies} />)}
                 </div>
               </div>
             )}

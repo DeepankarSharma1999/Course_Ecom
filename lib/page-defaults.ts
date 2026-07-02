@@ -193,6 +193,73 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     ],
   }),
 
+  "devops-cultural-transformation": enterprise({
+    category: "Agile Solutions",
+    title: "DevOps Cultural Transformation",
+    subtitle: "Bridge the Gap Between Development and Operations",
+    description:
+      "DevOps is more than just tools—it's a fundamental shift in culture. We help you tear down silos, establish shared goals, and implement automation strategies that enable continuous integration, continuous delivery, and highly reliable systems.",
+    metaTitle: "DevOps Cultural Transformation | ULearnSystems",
+    metaDescription: "Foster a collaborative DevOps culture to accelerate software delivery and improve reliability.",
+    benefits: [
+      { icon: "users", title: "Break Down Silos", description: "Create cross-functional teams with shared accountability for the entire software lifecycle." },
+      { icon: "zap", title: "Accelerated Delivery", description: "Implement CI/CD pipelines to release high-quality software to market faster and more frequently." },
+      { icon: "shield", title: "Enhanced Reliability", description: "Improve system stability and drastically reduce mean time to recovery (MTTR)." },
+      { icon: "code", title: "Automation First", description: "Automate testing, provisioning, and deployment to eliminate manual errors and toil." },
+      { icon: "target", title: "Continuous Feedback", description: "Embed monitoring and telemetry to create tight feedback loops for continuous improvement." },
+      { icon: "briefcase", title: "Higher Employee Satisfaction", description: "Empower engineers by removing friction, leading to higher morale and retention." },
+    ],
+    approach: [
+      { title: "Cultural Assessment", description: "Evaluate existing workflows, team dynamics, and toolchains to baseline your current DevOps maturity." },
+      { title: "Define the Target State", description: "Establish a clear vision for your DevOps culture, defining metrics like deployment frequency and lead time." },
+      { title: "Implement Automation", description: "Introduce modern CI/CD, Infrastructure as Code (IaC), and automated testing practices." },
+      { title: "Coach & Scale", description: "Provide hands-on coaching to embed DevOps mindsets and scale practices across all engineering teams." },
+    ],
+    relatedCourses: [{ title: "DevOps Foundation", href: "/courses" }],
+  }),
+
+  "product-development-training": enterprise({
+    category: "Product Building",
+    title: "Product Development Training",
+    subtitle: "Build Better Products, Faster",
+    description:
+      "Modern product development requires tight alignment between product management, design, and engineering. Our comprehensive training programs equip your entire cross-functional organization with the latest methodologies to build scalable, user-centric software.",
+    metaTitle: "Product Development Training | ULearnSystems",
+    metaDescription: "Equip your engineering and product teams with modern development practices.",
+    benefits: [
+      { icon: "code", title: "Technical Excellence", description: "Train engineering teams in Agile engineering practices like TDD, BDD, and Pair Programming." },
+      { icon: "zap", title: "Accelerated Delivery", description: "Optimize your delivery pipelines to ensure faster, safer, and more frequent product releases." },
+      { icon: "users", title: "Cross-Functional Synergy", description: "Break down silos by training Product, Design, and Engineering to collaborate seamlessly." },
+      { icon: "shield", title: "Built-In Quality", description: "Shift testing left and build quality into the product from the very first line of code." },
+      { icon: "layers", title: "Scalable Architecture", description: "Learn to design microservices and cloud-native architectures that scale with your business." },
+      { icon: "target", title: "User-Centric Engineering", description: "Connect developers directly to user feedback to ensure technical decisions align with user needs." },
+    ],
+    approach: [
+      { title: "Assess Capabilities", description: "Benchmark your team's current technical and product development capabilities." },
+      { title: "Customized Training Tracks", description: "Deliver specialized training tracks for Engineers, Designers, and Product Managers." },
+      { title: "Hands-On Labs", description: "Ensure high retention through interactive, real-world coding labs and architectural exercises." },
+      { title: "Continuous Coaching", description: "Provide post-training mentorship to help teams implement new practices in their daily work." },
+    ],
+    relatedCourses: [{ title: "AI Powered Software Development", href: "/courses" }],
+  }),
+
+  "compare": {
+    label: "Compare Courses",
+    group: "Marketing Pages",
+    content: {
+      metaTitle: "Compare Certification Courses",
+      metaDescription: "Side-by-side comparison of certification training courses — duration, price, exam, prerequisites and outcomes.",
+      heroBadge: "Compare",
+      heroHeading: "Compare Certification Courses",
+      heroSubtitle: "Not sure which course is right for you? Pick any two to see them side-by-side.",
+      popularTitle: "Popular Comparisons",
+      suggested: [
+        { a: "safe-scrum-master-certification", b: "safe-product-owner-product-manager-certification" },
+        { a: "safe-scrum-master-certification", b: "safe-devops-certification" },
+      ],
+    },
+  },
+
   "navigation": {
     label: "Header Navigation Menus",
     group: "Navigation",

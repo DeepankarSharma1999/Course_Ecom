@@ -13,3 +13,10 @@ tsconfig.tsbuildinfo
 # Throwaway scripts / debug helpers
 check-trainers.ts
 replace.js
+
+# Badge-scraper working dir
+.badge-tmp
+
+# Local editor / agent config
+.claude/
+.vscode/

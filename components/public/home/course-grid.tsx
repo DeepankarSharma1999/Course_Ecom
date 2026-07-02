@@ -5,17 +5,22 @@ import Link from "next/link";
 import { Clock, Users, Search, Download } from "lucide-react";
 import { useState } from "react";
 import type { CategoryContent, CourseContent } from "@/lib/seed-data";
-import { formatInCurrency, type CurrencyCode } from "@/lib/currency";
+import { type CurrencyCode } from "@/lib/currency";
+import { usePricing } from "@/components/pricing-provider";
 
 export function CourseGrid({
   courses,
   categories,
   currency,
+  content,
 }: {
   courses: CourseContent[];
   categories: CategoryContent[];
   currency: CurrencyCode;
+  content?: any;
 }) {
+  const coursesBadge = content?.coursesBadge || "Find the course right for your goals";
+  const coursesTitle = content?.coursesTitle || "Explore From Over 400+ Courses";
   const tabs = ["All Courses", ...categories.slice(0, 7).map((c) => c.name)];
   const [activeTab, setActiveTab] = useState("All Courses");
 
@@ -26,9 +31,9 @@ export function CourseGrid({
     <section className="section bg-white font-sans pt-10 pb-24">
       <div className="container-tight max-w-[1200px]">
         <div className="mx-auto mb-10 text-center">
-          <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-wider text-[#4a7298] mb-2">Find the course right for your goals</div>
+          <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-wider text-[#4a7298] mb-2">{coursesBadge}</div>
           <h2 className="text-[26px] md:text-[36px] font-bold text-[#082032] tracking-tight leading-tight">
-            Explore From Over 400+ Courses
+            {coursesTitle}
           </h2>
         </div>
 
@@ -71,6 +76,7 @@ export function CourseGrid({
 }
 
 function CourseDiscoveryCard({ course, currency, index }: { course: CourseContent; currency: CurrencyCode; index: number }) {
+  const { format } = usePricing();
   // Mock some tag logic for the UI reference
   const isRecommended = index === 0 || index === 1 || index === 2;
   const isTrending = index === 3 || index === 4;
@@ -126,7 +132,7 @@ function CourseDiscoveryCard({ course, currency, index }: { course: CourseConten
           <div className="text-right">
             <div className="text-[10px] md:text-[11px] text-gray-500 font-medium mb-0.5">Start from</div>
             <div className="text-[16px] md:text-[18px] font-bold text-[#082032] leading-none">
-              {formatInCurrency(course.basePriceInr, currency).replace(".00", "")}
+              {format(course.basePriceUsd).replace(".00", "")}
             </div>
           </div>
         </div>

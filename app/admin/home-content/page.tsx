@@ -1,7 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import { AdminTopbar } from "@/components/admin/topbar";
 import { Field, Input, PageHeader, Section, Textarea } from "@/components/admin/ui";
-import { saveHomeContent } from "@/lib/admin-actions";
+import { ImageUploader } from "@/components/admin/image-uploader";
+import { ListEditor } from "@/components/admin/list-editor";
+import {
+  DEFAULT_PARTNER_LOGOS, DEFAULT_BUSINESS_SECTORS, DEFAULT_PEDAGOGY_STEPS, DEFAULT_ACCOLADES, DEFAULT_REACH_STATS,
+} from "@/lib/home-defaults";
+import { saveHomeContent, saveHomeSections } from "@/lib/admin-actions";
+import { resolveHomeSections } from "@/lib/home-sections";
+import { HomeSectionsEditor } from "@/components/admin/home-sections-editor";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +22,14 @@ export default async function HomeContentPage({ searchParams }: { searchParams: 
       <div className="p-6 max-w-5xl">
         <PageHeader title="Home Page Content" description="Every section on the home page is editable here." />
         {sp.saved && <div className="mb-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2 text-sm">Saved.</div>}
+
+        <form action={saveHomeSections} className="mb-8">
+          <Section title="Section Visibility & Order" description="Show, hide, and reorder the sections on the home page.">
+            <HomeSectionsEditor initial={resolveHomeSections(h?.sections)} />
+            <button type="submit" className="btn-primary mt-4">Save Layout</button>
+          </Section>
+        </form>
+
         <form action={saveHomeContent} className="grid lg:grid-cols-2 gap-6">
           <Section title="Hero">
             <Field label="Badge text"><Input name="heroBadgeText" defaultValue={h?.heroBadgeText ?? ""} /></Field>
@@ -28,7 +43,9 @@ export default async function HomeContentPage({ searchParams }: { searchParams: 
               <Field label="Secondary CTA text"><Input name="heroCtaSecondaryText" defaultValue={h?.heroCtaSecondaryText ?? ""} /></Field>
               <Field label="Secondary CTA link"><Input name="heroCtaSecondaryLink" defaultValue={h?.heroCtaSecondaryLink ?? ""} /></Field>
             </div>
-            <Field label="Stats (JSON)" hint='[{ "value": "4.8/5", "label": "Rating" }]'><Textarea name="heroStats" rows={4} defaultValue={j(h?.heroStats)} /></Field>
+            <Field label="Stats" hint="The small stats shown in the hero (e.g. rating, learners).">
+              <ListEditor name="heroStats" value={h?.heroStats} itemLabel="Stat" fields={[{ key: "value", label: "Value (e.g. 4.8/5)" }, { key: "label", label: "Label (e.g. Rating)" }]} />
+            </Field>
             <Field label="Hero form title"><Input name="heroFormTitle" defaultValue={h?.heroFormTitle ?? ""} /></Field>
             <Field label="Hero form subtitle"><Input name="heroFormSubtitle" defaultValue={h?.heroFormSubtitle ?? ""} /></Field>
           </Section>
@@ -53,8 +70,10 @@ export default async function HomeContentPage({ searchParams }: { searchParams: 
             <Field label="Badge"><Input name="whyUsBadge" defaultValue={h?.whyUsBadge ?? ""} /></Field>
             <Field label="Title"><Input name="whyUsTitle" defaultValue={h?.whyUsTitle ?? ""} /></Field>
             <Field label="Subtitle"><Textarea name="whyUsSubtitle" rows={3} defaultValue={h?.whyUsSubtitle ?? ""} /></Field>
-            <Field label="Image URL"><Input name="whyUsImage" defaultValue={h?.whyUsImage ?? ""} /></Field>
-            <Field label="Items (JSON)" hint='[{ "icon": "GraduationCap", "title": "...", "body": "..." }]'><Textarea name="whyUsItems" rows={8} defaultValue={j(h?.whyUsItems)} /></Field>
+            <Field label="Image"><ImageUploader name="whyUsImage" kind="asset" defaultValue={h?.whyUsImage} /></Field>
+            <Field label="Items" hint="The feature/benefit cards in this section.">
+              <ListEditor name="whyUsItems" value={h?.whyUsItems} itemLabel="Item" fields={[{ key: "icon", label: "Icon (lucide name, e.g. GraduationCap)" }, { key: "title", label: "Title" }, { key: "body", label: "Body", textarea: true }]} />
+            </Field>
           </Section>
 
           <Section title="Testimonials Section">
@@ -78,6 +97,37 @@ export default async function HomeContentPage({ searchParams }: { searchParams: 
               <Field label="Secondary text"><Input name="ctaSecondaryText" defaultValue={h?.ctaSecondaryText ?? ""} /></Field>
               <Field label="Secondary link"><Input name="ctaSecondaryLink" defaultValue={h?.ctaSecondaryLink ?? ""} /></Field>
             </div>
+          </Section>
+
+          <Section title="Partner Logos" description="The accredited/partner logos marquee.">
+            <ListEditor name="partnerLogos" value={h?.partnerLogos ?? DEFAULT_PARTNER_LOGOS} itemLabel="Logo" fields={[{ key: "name", label: "Name (tooltip)" }, { key: "label", label: "Label (shown)" }, { key: "image", label: "Logo image", image: true }]} />
+          </Section>
+
+          <Section title="Business Sectors" description="The scrolling domain cards. Icon = a Lucide icon name (e.g. Cloud, Server, Cpu).">
+            <ListEditor name="businessSectors" value={h?.businessSectors ?? DEFAULT_BUSINESS_SECTORS} itemLabel="Sector" fields={[{ key: "name", label: "Name" }, { key: "icon", label: "Lucide icon name" }]} />
+          </Section>
+
+          <Section title="Pedagogy Section">
+            <Field label="Title"><Input name="pedagogyTitle" defaultValue={h?.pedagogyTitle ?? ""} /></Field>
+            <Field label="Steps">
+              <ListEditor name="pedagogySteps" value={h?.pedagogySteps ?? DEFAULT_PEDAGOGY_STEPS} itemLabel="Step" fields={[{ key: "title", label: "Title" }, { key: "text", label: "Text", textarea: true }, { key: "img", label: "Image", image: true }]} />
+            </Field>
+          </Section>
+
+          <Section title="Accolades Section">
+            <Field label="Title"><Input name="accoladesTitle" defaultValue={h?.accoladesTitle ?? ""} /></Field>
+            <Field label="Award cards">
+              <ListEditor name="accolades" value={h?.accolades ?? DEFAULT_ACCOLADES} itemLabel="Award" fields={[{ key: "title", label: "Title" }, { key: "org", label: "Description" }, { key: "logo", label: "Logo tag (e.g. ET, VCCIRCLE)" }]} />
+            </Field>
+          </Section>
+
+          <Section title="Global Reach Band">
+            <Field label="Badge"><Input name="reachBadge" defaultValue={h?.reachBadge ?? ""} /></Field>
+            <Field label="Title"><Input name="reachTitle" defaultValue={h?.reachTitle ?? ""} /></Field>
+            <Field label="Subtitle"><Textarea name="reachSubtitle" rows={2} defaultValue={h?.reachSubtitle ?? ""} /></Field>
+            <Field label="Stats">
+              <ListEditor name="reachStats" value={h?.reachStats ?? DEFAULT_REACH_STATS} itemLabel="Stat" fields={[{ key: "value", label: "Value (e.g. 120+)" }, { key: "label", label: "Label (e.g. Countries)" }]} />
+            </Field>
           </Section>
 
           <Section title="SEO">

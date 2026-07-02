@@ -59,11 +59,11 @@ const LOGOS = [
 ];
 
 // Memoized Marquee to prevent re-rendering when carousel state changes, fixing INP.
-const AccoladesMarquee = memo(function AccoladesMarquee() {
+const AccoladesMarquee = memo(function AccoladesMarquee({ items = ACCOLADES }: { items?: typeof ACCOLADES }) {
   return (
     <div className="relative flex overflow-hidden group max-w-[100vw]">
       <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0">
-         {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
+         {[...items, ...items, ...items].map((accolade, i) => (
             <div key={`a-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
                <div className="h-[80px] flex items-center justify-center mb-6 w-full">
                   {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
@@ -79,7 +79,7 @@ const AccoladesMarquee = memo(function AccoladesMarquee() {
          ))}
       </div>
       <div className="animate-marquee-100 flex gap-6 py-6 pr-6 w-max shrink-0" aria-hidden="true">
-         {[...ACCOLADES, ...ACCOLADES, ...ACCOLADES].map((accolade, i) => (
+         {[...items, ...items, ...items].map((accolade, i) => (
             <div key={`b-${i}`} className="w-[280px] shrink-0 bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col items-center text-center">
                <div className="h-[80px] flex items-center justify-center mb-6 w-full">
                   {accolade.logo === "ET" && <div className="bg-[#E42E35] text-white font-serif text-4xl font-bold px-4 py-2 leading-none">ET</div>}
@@ -141,7 +141,9 @@ function SpotlightCarousel() {
   );
 }
 
-export function AccoladesSection() {
+export function AccoladesSection({ content }: { content?: any }) {
+  const accolades = content?.accolades?.length ? content.accolades : ACCOLADES;
+  const title = content?.accoladesTitle || "Our Commitment to Quality, Reflected in Accolades";
   return (
     <section className="font-sans w-full overflow-hidden bg-white">
       <style dangerouslySetInnerHTML={{__html: `
@@ -158,10 +160,10 @@ export function AccoladesSection() {
       <div className="py-20 border-b border-gray-100">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">ULEARNSYSTEMS AWARDS AND RECOGNITION</div>
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">Our Commitment to Quality,<br/>Reflected in Accolades</h2>
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">{title}</h2>
         </div>
-        
-        <AccoladesMarquee />
+
+        <AccoladesMarquee items={accolades} />
       </div>
 
       {/* 2. Spotlight Section */}

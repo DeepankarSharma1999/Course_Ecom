@@ -65,28 +65,38 @@ function TrustedCompanyCarousel() {
   );
 }
 
-export function HomeHero() {
+export function HomeHero({ content }: { content?: any }) {
+  const h = content ?? {};
+  const headline = h.heroHeadline || "Learn In-Demand Skills";
+  const highlight = h.heroHeadlineHighlight || "for Tomorrow's";
+  const suffix = h.heroHeadlineSuffix || "Jobs";
+  const subheading = h.heroSubheading || "Experience learning that delivers results. We're disrupting the way you learn new-age technologies and we'll help you get job-ready, fast.";
+  const ctaPrimaryText = h.heroCtaPrimaryText || "Explore All Courses";
+  const ctaPrimaryLink = h.heroCtaPrimaryLink || "/courses";
+  const ctaSecondaryText = h.heroCtaSecondaryText || "Corporate Training";
+  const ctaSecondaryLink = h.heroCtaSecondaryLink || "/corporate-training";
+
   return (
     <section className="relative overflow-hidden bg-white font-sans">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_20%,rgba(31,168,168,0.13),transparent_28%),linear-gradient(90deg,rgba(240,246,248,0.95),rgba(255,255,255,0)_60%)] pointer-events-none" />
       <div className="container-tight relative grid items-center gap-12 pt-16 pb-12 md:pt-20 lg:grid-cols-[1fr_1fr] lg:pt-24 lg:pb-16 z-10">
-        
+
         {/* LEFT COLUMN */}
         <div className="min-w-0 max-w-2xl text-left z-10">
           <h1 className="max-w-[600px] text-[32px] md:text-[40px] font-bold leading-[1.15] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
-            Learn In-Demand Skills for Tomorrow&apos;s Jobs
+            {headline} <span className="text-[#f97316]">{highlight}</span> {suffix}
           </h1>
 
           <p className="mt-4 md:mt-6 max-w-[500px] text-[14px] md:text-[16px] leading-relaxed text-gray-600 font-medium">
-            Experience learning that delivers results. We&apos;re disrupting the way you learn <span className="font-bold text-[#082032]">new-age technologies</span> and we&apos;ll help you get <span className="font-bold text-[#082032]">job-ready</span>, fast.
+            {subheading}
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link href="/courses" className="btn-primary rounded text-center py-3.5 px-8">
-              Explore All Courses
+            <Link href={ctaPrimaryLink} className="btn-primary rounded text-center py-3.5 px-8">
+              {ctaPrimaryText}
             </Link>
-            <Link href="/corporate-training" className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
-              Corporate Training <ArrowRight className="h-4 w-4" />
+            <Link href={ctaSecondaryLink} className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
+              {ctaSecondaryText} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 

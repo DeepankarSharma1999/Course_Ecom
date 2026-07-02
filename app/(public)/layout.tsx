@@ -3,18 +3,20 @@ import { SiteFooter } from "@/components/site-footer";
 import { ExitIntentPopup } from "@/components/exit-intent-popup";
 import { FloatingWhatsApp } from "@/components/whatsapp-button";
 import { LiveChatWidget } from "@/components/live-chat-widget";
-import { getDisplayCurrency } from "@/lib/geo";
+import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
+import { PricingProvider } from "@/components/pricing-provider";
 import { getSiteSettings } from "@/lib/site-content";
 import { getAllCourses, getCategories } from "@/lib/content";
+import { courseBadge } from "@/lib/course-badge";
 import { getPageContent } from "@/lib/page-content";
 import Link from "next/link";
 
-import { LearnerAuthProvider } from "@/components/learner-auth-provider";
 import { AuthModal } from "@/components/auth-modal";
 
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
-  const [currency, settings, categories, courses, nav] = await Promise.all([
+  const [currency, currencyCfg, settings, categories, courses, nav] = await Promise.all([
     getDisplayCurrency(),
+    getCurrencyConfig(),
     getSiteSettings(),
     getCategories(),
     getAllCourses(),
@@ -30,6 +32,7 @@ export default async function PublicLayout({ children }: { children: React.React
     courses: courses.filter((c) => c.category.slug === cat.slug).map((c) => ({
       slug: c.slug,
       title: c.shortTitle || c.title,
+      image: courseBadge(c.slug), // certifying-body logo, or null -> initials fallback
     })),
   })).filter((c) => c.courses.length > 0);
 
@@ -40,7 +43,7 @@ export default async function PublicLayout({ children }: { children: React.React
   }));
 
   return (
-    <LearnerAuthProvider>
+    <PricingProvider currency={currency} currencies={currencyCfg.currencies}>
       {settings.announcementEnabled && settings.announcementText && (
         <div className="bg-accent-500 text-white text-xs font-semibold">
           <div className="container-tight py-2 text-center">
@@ -52,6 +55,7 @@ export default async function PublicLayout({ children }: { children: React.React
       )}
       <SiteHeader
         currency={currency}
+        currencies={currencyCfg.enabled}
         brandName={settings.brandName}
         logoUrl={settings.logoUrl}
         tagline={settings.tagline}
@@ -68,6 +72,6 @@ export default async function PublicLayout({ children }: { children: React.React
       <FloatingWhatsApp phone={settings.whatsappNumber} message={`Hi ${settings.brandName} team, I'd like to know more about your courses.`} />
       <LiveChatWidget />
       <AuthModal />
-    </LearnerAuthProvider>
+    </PricingProvider>
   );
 }

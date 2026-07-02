@@ -3,29 +3,8 @@ import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { getAllCourses } from "@/lib/content";
 import { CATEGORIES } from "@/lib/seed-data";
-
-const LINKS = {
-  company: {
-    title: "Company",
-    links: ["About Us", "Careers", "Accreditation", "Customer Speak", "Contact Us", "Grievance Redressal"],
-  },
-  offerings: {
-    title: "Offerings",
-    links: ["Live Virtual (Online)", "Classroom", "Agile Services", "Refer and Earn", "Corporate Training"],
-  },
-  resources: {
-    title: "Resources",
-    links: ["Course Info", "Tutorials", "Blogs", "Interview Questions", "Practice Tests", "Free Courses", "Masterclasses"],
-  },
-  partner: {
-    title: "Partner with Us",
-    links: ["Become an Instructor", "Become a Training Partner", "Affiliate"],
-  },
-  support: {
-    title: "Support",
-    links: ["FAQs", "Terms and Conditions", "Privacy Policy and Disclaimer", "Cancellation and Refund Policy", "Report a Vulnerability"],
-  },
-};
+import { getSiteSettings } from "@/lib/site-content";
+import { DEFAULT_FOOTER_COLUMNS, type FooterColumn } from "@/lib/footer-defaults";
 
 const CONTACT_NUMBERS = [
   { country: "USA", flag: "🇺🇸", number: "+1-469-442-0620\n+1-832-684-0080" },
@@ -42,72 +21,47 @@ const CONTACT_NUMBERS = [
 
 
 
-const URL_OVERRIDES: Record<string, string> = {
-  "About Us": "/about",
-  "Corporate Training": "/corporate-training",
-  "Refer and Earn": "/refer-earn",
-  "Practice Tests": "/practice-tests",
-  "Free Courses": "/free-course",
-};
-
-function slugify(text: string) {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-}
-
-function LinkGroup({ data }: { data: { title: string; links: string[] } }) {
+function LinkGroup({ data }: { data: FooterColumn }) {
   return (
     <div>
       <h3 className="font-bold text-brand-950 mb-5">{data.title}</h3>
       <ul className="space-y-3">
-        {data.links.map((link) => {
-          const href = URL_OVERRIDES[link] || `/info/${slugify(link)}`;
-          return (
-            <li key={link}>
-              <Link href={href} className="text-[13px] text-brand-700 hover:text-brand-600 transition-colors block">
-                {link}
-              </Link>
-            </li>
-          );
-        })}
+        {data.links.map((link) => (
+          <li key={link.label}>
+            <Link href={link.href} className="text-[13px] text-brand-700 hover:text-brand-600 transition-colors block">
+              {link.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
 
 export async function SiteFooter() {
-  const courses = await getAllCourses();
+  const [courses, settings] = await Promise.all([getAllCourses(), getSiteSettings()]);
   const categories = CATEGORIES;
+  const columns: FooterColumn[] = (settings.footerColumns as any)?.length ? (settings.footerColumns as any) : DEFAULT_FOOTER_COLUMNS;
+  const social = (settings.socialLinks as any) || {};
+  const socialIcons = [
+    { label: "LinkedIn", href: social.linkedin || "https://www.linkedin.com/company/ulearnsystems", Icon: Linkedin },
+    { label: "Instagram", href: social.instagram || "https://www.instagram.com/ulearnsystems", Icon: Instagram },
+    { label: "Facebook", href: social.facebook || "https://www.facebook.com/ulearnsystems", Icon: Facebook },
+    { label: "Twitter", href: social.twitter || "https://twitter.com/ulearnsystems", Icon: Twitter, fill: true },
+  ].filter((s) => s.href);
   return (
     <footer className="bg-brand-50/30 font-sans pt-16 pb-8 border-t border-brand-100/50">
       <div className="container-tight max-w-[1400px] px-6 md:px-12">
         <div className="grid lg:grid-cols-[1fr_500px] gap-16">
-           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-              {/* Col 1 */}
-              <div className="flex flex-col gap-12">
-                 <LinkGroup data={LINKS.company} />
-                 <LinkGroup data={LINKS.partner} />
-              </div>
-              {/* Col 2 */}
-              <div className="flex flex-col gap-12">
-                 <LinkGroup data={LINKS.offerings} />
-                 <LinkGroup data={LINKS.support} />
-              </div>
-              {/* Col 3 */}
-              <div className="flex flex-col gap-12">
-                 <LinkGroup data={LINKS.resources} />
-              </div>
+           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
+              {columns.map((col, i) => <LinkGroup key={i} data={col} />)}
            </div>
 
            <div>
               <div className="mb-10">
                  <h3 className="font-bold text-brand-950 mb-4">Connect with us</h3>
                  <div className="flex gap-3">
-                    {[
-                      { label: "LinkedIn", href: "https://www.linkedin.com/company/ulearnsystems", Icon: Linkedin },
-                      { label: "Instagram", href: "https://www.instagram.com/ulearnsystems", Icon: Instagram },
-                      { label: "Facebook", href: "https://www.facebook.com/ulearnsystems", Icon: Facebook },
-                      { label: "Twitter", href: "https://twitter.com/ulearnsystems", Icon: Twitter, fill: true },
-                    ].map(({ label, href, Icon, fill }) => (
+                    {socialIcons.map(({ label, href, Icon, fill }) => (
                       <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer" className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 text-brand-700 hover:bg-brand-600 hover:text-white transition-all">
                         <Icon className={`w-4 h-4 ${fill ? "fill-current" : ""}`} />
                       </a>
@@ -174,7 +128,7 @@ export async function SiteFooter() {
            
            <div className="mt-8 pt-6 border-t border-brand-100/50 text-center text-xs text-brand-600/70 flex items-center justify-center gap-2">
               <Link href="/info/privacy-policy-and-disclaimer" className="hover:text-brand-600 transition-colors underline underline-offset-2">Our Privacy Policy</Link>
-              <span>© 2011-{new Date().getFullYear()}, ULearnSystems Private Limited. All Rights Reserved</span>
+              <span>{settings.copyrightText || `© 2011-${new Date().getFullYear()}, ULearnSystems Private Limited. All Rights Reserved`}</span>
            </div>
         </div>
       </div>

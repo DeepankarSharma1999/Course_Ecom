@@ -44,6 +44,8 @@ function dbCourseToContent(c: any): CourseContent {
     prerequisites: (c.prerequisites as any) ?? [],
     curriculum: (c.curriculum as any) ?? [],
     whyChooseUs: (c.whyChooseUs as any) ?? [],
+    hiddenSections: (c.hiddenSections as any) ?? [],
+    pageSections: (c.pageSections as any) ?? null,
     faqs: (c.faqs ?? []).map((f: any) => ({ q: f.question, a: f.answer })),
     seoTitle: c.seoTitle ?? c.title,
     seoDescription: c.seoDescription ?? c.summary,

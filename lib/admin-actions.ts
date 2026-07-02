@@ -4,6 +4,33 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getCurrentUser, hashPassword } from "@/lib/auth";
+import { COURSE_SECTIONS } from "@/lib/course-sections";
+import { COUNTRIES } from "@/lib/seed-data";
+
+// A section is hidden when its show/hide checkbox (section_<key>) is unticked.
+function hiddenSectionsFrom(formData: FormData): string[] {
+  return COURSE_SECTIONS.filter((s) => !formData.get(`section_${s.key}`)).map((s) => s.key);
+}
+
+// Per-course content overrides for instructors/reviews. Only non-empty keys are kept.
+function pageSectionsFrom(formData: FormData) {
+  const out: Record<string, unknown> = {};
+  const arr = (k: string) => { const v = toJson(formData.get(k)); if (Array.isArray(v) && v.length) return v; };
+  const obj = (k: string) => { const v = toJson(formData.get(k)); if (v && typeof v === "object" && !Array.isArray(v) && Object.keys(v).length) return v; };
+  const instructors = arr("ps_instructors");
+  const reviews = arr("ps_reviews");
+  const reviewStats = arr("ps_reviewstats");
+  const certificate = obj("ps_certificate");
+  const accreditation = obj("ps_accreditation");
+  const demand = obj("ps_demand");
+  if (instructors) out.instructors = instructors;
+  if (reviews) out.reviews = reviews;
+  if (reviewStats) out.reviewStats = reviewStats;
+  if (certificate) out.certificate = certificate;
+  if (accreditation) out.accreditation = accreditation;
+  if (demand) out.demand = demand;
+  return Object.keys(out).length ? out : undefined;
+}
 
 async function requireAdmin() {
   const u = await getCurrentUser();
@@ -60,12 +87,15 @@ export async function createCourse(formData: FormData) {
       heroImage: toStr(formData.get("heroImage")),
       thumbnailImage: toStr(formData.get("thumbnailImage")),
       brochureUrl: toStr(formData.get("brochureUrl")),
+      meetingUrl: toStr(formData.get("meetingUrl")),
       examIncluded: toBool(formData.get("examIncluded")),
       pduCredits: toInt(formData.get("pduCredits")),
       ratingAvg: toFloat(formData.get("ratingAvg")) ?? 4.8,
       ratingCount: toInt(formData.get("ratingCount")) ?? 0,
       isFeatured: toBool(formData.get("isFeatured")),
       isPublished: toBool(formData.get("isPublished")),
+      hiddenSections: hiddenSectionsFrom(formData),
+      pageSections: pageSectionsFrom(formData),
       categoryId: category?.id,
       keyFeatures: toJson(formData.get("keyFeatures")) ?? undefined,
       learningOutcomes: toJson(formData.get("learningOutcomes")) ?? undefined,
@@ -128,12 +158,15 @@ export async function updateCourse(id: string, formData: FormData) {
       heroImage: toStr(formData.get("heroImage")),
       thumbnailImage: toStr(formData.get("thumbnailImage")),
       brochureUrl: toStr(formData.get("brochureUrl")),
+      meetingUrl: toStr(formData.get("meetingUrl")),
       examIncluded: toBool(formData.get("examIncluded")),
       pduCredits: toInt(formData.get("pduCredits")),
       ratingAvg: toFloat(formData.get("ratingAvg")) ?? 4.8,
       ratingCount: toInt(formData.get("ratingCount")) ?? 0,
       isFeatured: toBool(formData.get("isFeatured")),
       isPublished: toBool(formData.get("isPublished")),
+      hiddenSections: hiddenSectionsFrom(formData),
+      pageSections: pageSectionsFrom(formData),
       categoryId: category?.id ?? null,
       keyFeatures: toJson(formData.get("keyFeatures")) ?? undefined,
       learningOutcomes: toJson(formData.get("learningOutcomes")) ?? undefined,
@@ -314,6 +347,73 @@ export async function createSchedule(courseId: string, formData: FormData) {
   redirect(`/admin/courses/${courseId}/schedules`);
 }
 
+// Generate a recurring set of schedules across many courses in one go.
+// Cadence: `count` batches, each `intervalDays` apart, starting `startDate`,
+// each running `durationDays`. Scope: all published courses, or one category.
+export async function bulkCreateSchedules(formData: FormData) {
+  await requireAdmin();
+
+  const categorySlug = toStr(formData.get("categorySlug")); // empty => all courses
+  const count = Math.min(Math.max(toInt(formData.get("count")) ?? 4, 1), 52);
+  const intervalDays = Math.max(toInt(formData.get("intervalDays")) ?? 7, 1);
+  const durationDays = Math.max(toInt(formData.get("durationDays")) ?? 2, 1);
+  const start = new Date(String(formData.get("startDate")));
+  if (isNaN(start.getTime())) redirect(`/admin/schedules/bulk?error=date`);
+
+  const mode = String(formData.get("mode") || "Live Online");
+  const timeLabel = toStr(formData.get("timeLabel"));
+  const timezone = toStr(formData.get("timezone"));
+  const allLocations = toBool(formData.get("allLocations"));
+  const countrySlug = toStr(formData.get("countrySlug"));
+  const citySlug = toStr(formData.get("citySlug"));
+  const priceInr = toInt(formData.get("priceInr"));
+  const priceUsd = toInt(formData.get("priceUsd"));
+  const discountPct = toInt(formData.get("discountPct"));
+  const seatsLeft = toInt(formData.get("seatsLeft"));
+  const isFilling = toBool(formData.get("isFilling"));
+
+  const replaceFuture = toBool(formData.get("replaceFuture"));
+
+  const courses = await prisma.course.findMany({
+    where: { isPublished: true, ...(categorySlug ? { category: { slug: categorySlug } } : {}) },
+    select: { id: true },
+  });
+  const courseIds = courses.map((c) => c.id);
+
+  // Optionally wipe upcoming batches for these courses before adding the new set.
+  if (replaceFuture) {
+    await prisma.schedule.deleteMany({
+      where: { courseId: { in: courseIds }, startDate: { gte: new Date() } },
+    });
+  }
+
+  // "All locations" fans out across every country (plus India's cities) instead of the one slug pair typed above.
+  const locations = allLocations
+    ? [
+        ...COUNTRIES.map((c) => ({ countrySlug: c.slug, citySlug: null as string | null })),
+        ...CITIES_IN.map((city) => ({ countrySlug: "in", citySlug: city.slug as string | null })),
+      ]
+    : [{ countrySlug, citySlug }];
+
+  const addDays = (d: Date, n: number) => new Date(d.getTime() + n * 86400000);
+  const rows = courses.flatMap((c) =>
+    locations.flatMap((loc) =>
+      Array.from({ length: count }, (_, i) => {
+        const s = addDays(start, i * intervalDays);
+        return {
+          courseId: c.id, countrySlug: loc.countrySlug, citySlug: loc.citySlug, mode,
+          startDate: s, endDate: addDays(s, durationDays - 1),
+          timezone, timeLabel, priceInr, priceUsd, discountPct, seatsLeft, isFilling,
+        };
+      })
+    )
+  );
+
+  await prisma.schedule.createMany({ data: rows });
+  revalidatePublic();
+  redirect(`/admin/schedules?added=${rows.length}`);
+}
+
 export async function deleteSchedule(id: string, courseId: string) {
   await requireAdmin();
   await prisma.schedule.delete({ where: { id } });
@@ -377,6 +477,8 @@ export async function createVariant(courseId: string, formData: FormData) {
       seoTitle: toStr(formData.get("seoTitle")),
       seoDescription: toStr(formData.get("seoDescription")),
       isPublished: toBool(formData.get("isPublished")),
+      hiddenSections: hiddenSectionsFrom(formData),
+      pageSections: pageSectionsFrom(formData),
     },
   });
   revalidatePublic();
@@ -401,6 +503,8 @@ export async function updateVariant(id: string, courseId: string, formData: Form
       seoTitle: toStr(formData.get("seoTitle")),
       seoDescription: toStr(formData.get("seoDescription")),
       isPublished: toBool(formData.get("isPublished")),
+      hiddenSections: hiddenSectionsFrom(formData),
+      pageSections: pageSectionsFrom(formData),
     },
   });
   revalidatePublic();
@@ -520,6 +624,34 @@ export async function saveSiteSettings(formData: FormData) {
   redirect("/admin/site-settings?saved=1");
 }
 
+// =========== CURRENCY / PRICING ============
+// Inputs are keyed per currency code: perUsd_<CODE>, premium_<CODE>, enabled_<CODE>.
+export async function saveCurrencySettings(formData: FormData) {
+  await requireAdmin();
+  const { DEFAULT_CURRENCIES } = await import("@/lib/currency");
+  const config = DEFAULT_CURRENCIES.map((c) => {
+    const perUsd = parseFloat(String(formData.get(`perUsd_${c.code}`) ?? ""));
+    const premiumPct = parseFloat(String(formData.get(`premium_${c.code}`) ?? ""));
+    return {
+      code: c.code,
+      label: c.label,
+      symbol: c.symbol,
+      locale: c.locale,
+      perUsd: Number.isFinite(perUsd) ? perUsd : c.perUsd,
+      premiumPct: Number.isFinite(premiumPct) ? premiumPct : 0,
+      enabled: toBool(formData.get(`enabled_${c.code}`)),
+    };
+  });
+  const defaultCurrency = String(formData.get("defaultCurrency") || "USD");
+  await prisma.siteSettings.upsert({
+    where: { id: "singleton" },
+    update: { defaultCurrency, currencyConfig: config },
+    create: { id: "singleton", defaultCurrency, currencyConfig: config },
+  });
+  revalidatePublic();
+  redirect("/admin/currency?saved=1");
+}
+
 // =========== HOME PAGE CONTENT ============
 export async function saveHomeContent(formData: FormData) {
   await requireAdmin();
@@ -564,8 +696,31 @@ export async function saveHomeContent(formData: FormData) {
       ctaSecondaryLink: text("ctaSecondaryLink"),
       seoTitle: opt("seoTitle"),
       seoDescription: opt("seoDescription"),
+      partnerLogos: toJson(formData.get("partnerLogos")) ?? undefined,
+      businessSectors: toJson(formData.get("businessSectors")) ?? undefined,
+      pedagogyTitle: text("pedagogyTitle"),
+      pedagogySteps: toJson(formData.get("pedagogySteps")) ?? undefined,
+      accoladesTitle: text("accoladesTitle"),
+      accolades: toJson(formData.get("accolades")) ?? undefined,
+      reachBadge: text("reachBadge"),
+      reachTitle: text("reachTitle"),
+      reachSubtitle: text("reachSubtitle"),
+      reachStats: toJson(formData.get("reachStats")) ?? undefined,
     },
     create: { id: "singleton", heroSubheading: text("heroSubheading") || "", categoriesSubtitle: text("categoriesSubtitle") || "", whyUsSubtitle: text("whyUsSubtitle") || "", ctaSubtitle: text("ctaSubtitle") || "" },
+  });
+  revalidatePublic();
+  redirect("/admin/home-content?saved=1");
+}
+
+// Persist home-section order + visibility (JSON [{key,hidden}] built by the editor).
+export async function saveHomeSections(formData: FormData) {
+  await requireAdmin();
+  const sections = toJson(formData.get("sections"));
+  await prisma.homePageContent.upsert({
+    where: { id: "singleton" },
+    update: { sections: sections ?? undefined },
+    create: { id: "singleton", heroSubheading: "", categoriesSubtitle: "", whyUsSubtitle: "", ctaSubtitle: "", sections: sections ?? undefined },
   });
   revalidatePublic();
   redirect("/admin/home-content?saved=1");

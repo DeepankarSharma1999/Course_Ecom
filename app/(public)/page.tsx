@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { getAllCourses, getCategories } from "@/lib/content";
 import { getHomeContent, getSiteSettings } from "@/lib/site-content";
-import { getDisplayCurrency } from "@/lib/geo";
+import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
+import { DEFAULT_REACH_STATS as REACH_STATS_DEFAULT } from "@/lib/home-defaults";
+import { resolveHomeSections } from "@/lib/home-sections";
+import { Fragment } from "react";
 import type { Metadata } from "next";
 
 import dynamic from "next/dynamic";
@@ -29,51 +32,41 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [COURSES, CATEGORIES, currency] = await Promise.all([
+  const [COURSES, CATEGORIES, currency, currencyCfg, h] = await Promise.all([
     getAllCourses(),
     getCategories(),
     getDisplayCurrency(),
+    getCurrencyConfig(),
+    getHomeContent(),
   ]);
 
-  return (
-    <>
-      <HomeHero />
-      <PartnerLogos />
-      
-      <BusinessSectors />
-      
-      <CourseGrid courses={COURSES} categories={CATEGORIES} currency={currency} />
-      <ComboSchedule />
-      
-      <PedagogySection />
-
-      <TrainersSection />
-
-      <TestimonialsSlider />
-      
-      <AccoladesSection />
-
+  const sectionEls: Record<string, React.ReactNode> = {
+    hero: <HomeHero content={h} />,
+    partners: <PartnerLogos content={h} />,
+    sectors: <BusinessSectors content={h} />,
+    courses: <CourseGrid courses={COURSES} categories={CATEGORIES} currency={currency} content={h} />,
+    combos: <ComboSchedule combos={COURSES.filter((c) => c.category?.slug === "combo-courses")} currency={currency} currencies={currencyCfg.currencies} />,
+    pedagogy: <PedagogySection content={h} />,
+    trainers: <TrainersSection />,
+    testimonials: <TestimonialsSlider content={h} />,
+    accolades: <AccoladesSection content={h} />,
+    reach: (
       <section className="overflow-hidden bg-[#082032] py-16 font-sans md:py-20">
         <div className="container-tight">
           <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <div className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Global reach</div>
+              <div className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">{h.reachBadge || "Global reach"}</div>
               <h2 className="text-3xl font-black leading-tight text-white md:text-5xl">
-                Training professionals across borders and industries.
+                {h.reachTitle || "Training professionals across borders and industries."}
               </h2>
               <p className="mt-5 max-w-xl text-base leading-8 text-white/75">
-                Join learners and teams using expert-led programs to build capability across Agile, product, project, technology, and AI domains.
+                {h.reachSubtitle || "Join learners and teams using expert-led programs to build capability across Agile, product, project, technology, and AI domains."}
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {[
-                  ["120+", "Countries"],
-                  ["130+", "Courses"],
-                  ["5,000+", "Learners"],
-                  ["98%", "Satisfaction"],
-                ].map(([value, label]) => (
-                  <div key={label} className="rounded-2xl border border-white/10 bg-white/6 p-4">
-                    <div className="text-2xl font-black text-white">{value}</div>
-                    <div className="mt-1 text-xs font-bold uppercase tracking-wide text-white/70">{label}</div>
+                {(h.reachStats?.length ? h.reachStats : REACH_STATS_DEFAULT).map((s: any) => (
+                  <div key={s.label} className="rounded-2xl border border-white/10 bg-white/6 p-4">
+                    <div className="text-2xl font-black text-white">{s.value}</div>
+                    <div className="mt-1 text-xs font-bold uppercase tracking-wide text-white/70">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -99,6 +92,15 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+    ),
+  };
+
+  const ordered = resolveHomeSections(h.sections).filter((s) => !s.hidden);
+  return (
+    <>
+      {ordered.map((s) => (
+        <Fragment key={s.key}>{sectionEls[s.key]}</Fragment>
+      ))}
     </>
   );
 }

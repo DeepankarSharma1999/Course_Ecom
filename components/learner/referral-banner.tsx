@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function ReferralBanner() {
   return (
     <div className="bg-gradient-to-br from-[#00b4d8] to-[#0284c7] rounded-2xl p-6 relative overflow-hidden h-[180px] flex text-white shadow-md">
@@ -23,18 +25,12 @@ export function ReferralBanner() {
           Share, Get Paid & Repeat.
         </p>
         
-        <button className="bg-transparent border border-white text-white hover:bg-white hover:text-[#0284c7] text-[11px] font-bold px-4 py-1.5 rounded-full transition-colors w-fit mb-4">
-          Learn more
-        </button>
-
-        {/* Social Icons */}
-        <div className="flex items-center gap-2">
-          {['IG', 'FB', 'X', 'IN', 'Mail'].map((platform) => (
-            <button key={platform} className="w-6 h-6 rounded-full border border-white flex items-center justify-center text-[8px] font-bold hover:bg-white hover:text-[#0284c7] transition-colors">
-              {platform}
-            </button>
-          ))}
-        </div>
+        <Link
+          href="/home/referral"
+          className="bg-transparent border border-white text-white hover:bg-white hover:text-[#0284c7] text-[11px] font-bold px-4 py-1.5 rounded-full transition-colors w-fit"
+        >
+          Get your referral link
+        </Link>
       </div>
     </div>
   );

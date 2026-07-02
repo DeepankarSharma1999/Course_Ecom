@@ -86,8 +86,10 @@ const TESTIMONIALS = [
   }
 ];
 
-export function TestimonialsSlider() {
+export function TestimonialsSlider({ content }: { content?: any }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const tBadge = content?.testimonialsBadge || "Learner Reviews From The World Over";
+  const tTitle = content?.testimonialsTitle || "Testimonials That Speak Volumes";
   const [isMobile, setIsMobile] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -122,8 +124,8 @@ export function TestimonialsSlider() {
     <section className="section bg-[#f8fcfc] font-sans py-24 overflow-hidden">
       <div className="container-tight max-w-[1200px]">
         <div className="mx-auto mb-8 max-w-3xl text-center">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">Learner Reviews From The World Over</div>
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">Testimonials That Speak Volumes</h2>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">{tBadge}</div>
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">{tTitle}</h2>
         </div>
 
         {/* Custom Tab Bar */}

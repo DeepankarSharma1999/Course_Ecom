@@ -5,7 +5,8 @@ import { Badge, PageHeader } from "@/components/admin/ui";
 
 export const dynamic = "force-dynamic";
 
-export default async function AllSchedulesPage() {
+export default async function AllSchedulesPage({ searchParams }: { searchParams: Promise<{ added?: string }> }) {
+  const { added } = await searchParams;
   const schedules = await prisma.schedule.findMany({
     orderBy: { startDate: "asc" },
     include: { course: { select: { id: true, shortTitle: true, slug: true } } },
@@ -15,7 +16,12 @@ export default async function AllSchedulesPage() {
     <>
       <AdminTopbar title="All Schedules" />
       <div className="p-6">
-        <PageHeader title="Schedules" description="All upcoming and past batches across courses. To add or delete, open the course's Schedules tab." />
+        <PageHeader
+          title="Schedules"
+          description="All upcoming and past batches across courses. To add or delete one batch, open the course's Schedules tab."
+          actions={<Link href="/admin/schedules/bulk" className="btn-primary">Bulk add</Link>}
+        />
+        {added && <p className="mb-4 text-sm text-green-700">Created {added} schedules across courses.</p>}
         <div className="card overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-ink-50 text-left text-xs uppercase text-ink-500">

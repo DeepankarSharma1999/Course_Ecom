@@ -9,79 +9,92 @@ type UserProfile = {
   avatar?: string;
 };
 
+type AuthResult = { ok: boolean; error?: string };
+
 type LearnerAuthContextType = {
   isLoggedIn: boolean;
   user: UserProfile | null;
   isModalOpen: boolean;
   openModal: () => void;
   closeModal: () => void;
-  login: (email: string, provider?: string) => void;
-  logout: () => void;
+  login: (email: string, password: string) => Promise<AuthResult>;
+  register: (name: string, email: string, password: string) => Promise<AuthResult>;
+  logout: () => Promise<void>;
 };
 
 const LearnerAuthContext = createContext<LearnerAuthContextType | undefined>(undefined);
 
+// Build a display profile from the server's { name, email }.
+function toProfile(u: { name: string | null; email: string }): UserProfile {
+  return {
+    name: u.name || u.email.split("@")[0].replace(/[^a-zA-Z]/g, " ") || "Learner",
+    email: u.email,
+    avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(u.email)}`,
+  };
+}
+
 export function LearnerAuthProvider({ children }: { children: React.ReactNode }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<UserProfile | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const router = useRouter();
 
+  // Hydrate from the httpOnly session cookie via the server.
   useEffect(() => {
-    // Check local storage for dummy session on mount
-    const storedUser = localStorage.getItem("learner_session");
-    if (storedUser) {
-      try {
-        const parsed = JSON.parse(storedUser);
-        setUser(parsed);
-        setIsLoggedIn(true);
-      } catch {
-        // invalid JSON
-      }
-    }
+    fetch("/api/learner/me")
+      .then((r) => r.json())
+      .then((d) => { if (d.user) setUser(toProfile(d.user)); })
+      .catch(() => {});
   }, []);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const login = async (email: string, provider?: string) => {
-    const profile = {
-      name: email.split("@")[0].replace(/[^a-zA-Z]/g, " "),
-      email,
-      avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${email}`,
-    };
-    setUser(profile);
-    setIsLoggedIn(true);
-    setIsModalOpen(false);
-    localStorage.setItem("learner_session", JSON.stringify(profile));
-
-    router.push("/home");
-
+  async function postAuth(path: string, body: Record<string, string>): Promise<AuthResult> {
     try {
-      await fetch("/api/leads", {
+      const res = await fetch(path, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: profile.name,
-          email: profile.email,
-          phone: "N/A",
-          source: provider ? `Learner Login - ${provider}` : "Learner Login",
-        }),
+        body: JSON.stringify(body),
       });
-    } catch (error) {
-      console.error("Failed to store lead", error);
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) return { ok: false, error: data.error || "Something went wrong. Please try again." };
+      setUser(toProfile(data.user));
+      setIsModalOpen(false);
+      router.push("/home");
+      router.refresh();
+      return { ok: true };
+    } catch {
+      return { ok: false, error: "Network error. Please try again." };
     }
+  }
+
+  const login = (email: string, password: string) => postAuth("/api/learner/login", { email, password });
+
+  const register = async (name: string, email: string, password: string) => {
+    const result = await postAuth("/api/learner/register", { name, email, password });
+    // Keep the lead-capture behaviour on successful sign-up.
+    if (result.ok) {
+      fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // /api/leads requires a phone (min 6 chars); learner signup doesn't collect one.
+        body: JSON.stringify({ name, email, phone: "0000000000", source: "Learner Sign-up" }),
+      }).catch(() => {});
+    }
+    return result;
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await fetch("/api/learner/logout", { method: "POST" }).catch(() => {});
     setUser(null);
-    setIsLoggedIn(false);
-    localStorage.removeItem("learner_session");
+    router.push("/");
+    router.refresh();
   };
 
   return (
-    <LearnerAuthContext.Provider value={{ isLoggedIn, user, isModalOpen, openModal, closeModal, login, logout }}>
+    <LearnerAuthContext.Provider
+      value={{ isLoggedIn: !!user, user, isModalOpen, openModal, closeModal, login, register, logout }}
+    >
       {children}
     </LearnerAuthContext.Provider>
   );

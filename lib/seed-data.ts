@@ -29,6 +29,8 @@ export type CourseContent = {
   prerequisites: string[];
   curriculum: CurriculumModule[];
   whyChooseUs: { title: string; body: string }[];
+  hiddenSections?: string[];
+  pageSections?: import("./course-section-defaults").PageSections | null;
   faqs: FaqItem[];
   seoTitle: string;
   seoDescription: string;
@@ -50,6 +52,7 @@ export const CATEGORIES = [
   { slug: "cloud-computing", name: "Cloud Computing", tagline: "Explore our Cloud Computing courses", icon: "Cloud" },
   { slug: "technology", name: "Technology", tagline: "Explore our Technology courses", icon: "Code" },
   { slug: "others", name: "Others", tagline: "Explore our Others courses", icon: "Grid" },
+  { slug: "combo-courses", name: "Combo Courses", tagline: "Bundled certification combos", icon: "Layers" },
 ];
 
 

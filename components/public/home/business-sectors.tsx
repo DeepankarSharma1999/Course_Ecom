@@ -1,35 +1,31 @@
 import Link from "next/link";
-import { 
-  ShieldCheck, Server, Cpu, Cloud, PieChart, Briefcase, Bookmark, Wifi, UserCheck, 
-  Database, LineChart, Code2, CheckCircle, GraduationCap, Users
+import * as Lucide from "lucide-react";
+import {
+  Briefcase, UserCheck, CheckCircle, Users, Bookmark,
 } from "lucide-react";
+import { DEFAULT_BUSINESS_SECTORS } from "@/lib/home-defaults";
 
-const domains = [
-  { name: "Cybersecurity", icon: ShieldCheck, color: "text-blue-500", bg: "bg-blue-50" },
-  { name: "DevOps", icon: Server, color: "text-red-500", bg: "bg-red-50" },
-  { name: "Artificial Intelligence", icon: Cpu, color: "text-green-500", bg: "bg-green-50" },
-  { name: "Cloud Computing", icon: Cloud, color: "text-indigo-500", bg: "bg-indigo-50" },
-  { name: "Data Science", icon: PieChart, color: "text-amber-500", bg: "bg-amber-50" },
-  { name: "Project Management", icon: Briefcase, color: "text-blue-400", bg: "bg-blue-50" },
-  { name: "Others", icon: Bookmark, color: "text-indigo-400", bg: "bg-indigo-50" },
-  { name: "CompTIA", icon: Wifi, color: "text-red-500", bg: "bg-red-50" },
-  { name: "Machine Learning", icon: Cpu, color: "text-green-600", bg: "bg-green-50" },
-  { name: "Database", icon: Database, color: "text-purple-500", bg: "bg-purple-50" },
-  { name: "Digital Marketing", icon: LineChart, color: "text-orange-500", bg: "bg-orange-50" },
-  { name: "Software Testing", icon: Code2, color: "text-blue-600", bg: "bg-blue-50" },
+// Rotating accent colours so sectors stay visually varied regardless of count.
+const ACCENTS = [
+  { color: "text-blue-500", bg: "bg-blue-50" }, { color: "text-red-500", bg: "bg-red-50" },
+  { color: "text-green-500", bg: "bg-green-50" }, { color: "text-indigo-500", bg: "bg-indigo-50" },
+  { color: "text-amber-500", bg: "bg-amber-50" }, { color: "text-purple-500", bg: "bg-purple-50" },
 ];
 
-function MarqueeRow({ items, reverse = false }: { items: typeof domains, reverse?: boolean }) {
+type Domain = { name: string; icon: string };
+
+function MarqueeRow({ items, reverse = false }: { items: Domain[]; reverse?: boolean }) {
   const content = items.map((domain, i) => {
-    const Icon = domain.icon;
+    const Icon = (Lucide as any)[domain.icon] || Bookmark;
+    const accent = ACCENTS[i % ACCENTS.length];
     return (
       <Link 
         key={domain.name + i} 
         href="/courses" 
         className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-3 pr-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all w-[260px] md:w-[240px] shrink-0"
       >
-        <div className={`w-12 h-12 rounded-full ${domain.bg} flex items-center justify-center shrink-0`}>
-          <Icon className={`w-5 h-5 ${domain.color}`} />
+        <div className={`w-12 h-12 rounded-full ${accent.bg} flex items-center justify-center shrink-0`}>
+          <Icon className={`w-5 h-5 ${accent.color}`} />
         </div>
         <div>
           <div className="text-[14px] font-bold text-[#082032] mb-0.5">{domain.name}</div>
@@ -62,9 +58,11 @@ function MarqueeRow({ items, reverse = false }: { items: typeof domains, reverse
   );
 }
 
-export function BusinessSectors() {
-  const row1 = domains.slice(0, 6);
-  const row2 = domains.slice(6, 12);
+export function BusinessSectors({ content }: { content?: any }) {
+  const domains: Domain[] = content?.businessSectors?.length ? content.businessSectors : DEFAULT_BUSINESS_SECTORS;
+  const mid = Math.ceil(domains.length / 2);
+  const row1 = domains.slice(0, mid);
+  const row2 = domains.slice(mid);
 
   return (
     <section className="section bg-[#F8FAFC] font-sans relative overflow-hidden pb-32">

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllCourses, getCategories } from "@/lib/content";
+import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { CourseCard } from "@/components/course-card";
 
 export const dynamicParams = true;
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const [cats, all] = await Promise.all([getCategories(), getAllCourses()]);
+  const [cats, all, currency, currencyCfg] = await Promise.all([getCategories(), getAllCourses(), getDisplayCurrency(), getCurrencyConfig()]);
   const cat = cats.find((c) => c.slug === slug);
   if (!cat) notFound();
   const courses = all.filter((c) => c.category.slug === cat.slug);
@@ -44,7 +45,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <div className="container-tight">
           {courses.length ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {courses.map((c) => <CourseCard key={c.slug} course={c} />)}
+              {courses.map((c) => <CourseCard key={c.slug} course={c} currency={currency} currencies={currencyCfg.currencies} />)}
             </div>
           ) : (
             <div className="text-center text-ink-500 py-12">More courses launching soon in this category.</div>

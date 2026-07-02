@@ -9,19 +9,27 @@ import {
 import * as Lucide from "lucide-react";
 import { useLearnerAuth } from "@/components/learner-auth-provider";
 import { LearnerDropdown } from "@/components/learner-dropdown";
+import { CurrencySwitcher } from "@/components/currency-switcher";
+import issuerManifest from "@/lib/issuer-manifest.json";
+
+// Issuing bodies are keyed by normalized category name (matches scripts/build-issuers.js).
+const normCat = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+const issuersFor = (name?: string) =>
+  (issuerManifest as Record<string, { name: string; logo: string }[]>)[normCat(name ?? "")] ?? [];
 
 type NavCategory = {
   slug: string;
   name: string;
   tagline?: string | null;
   icon?: string | null;
-  courses: { slug: string; title: string }[];
+  courses: { slug: string; title: string; image?: string | null }[];
 };
 
 type FeaturedCourse = { slug: string; title: string; category: string };
 
 type Props = {
   currency?: string;
+  currencies?: import("@/lib/currency").CurrencyConfig[];
   brandName?: string;
   logoUrl?: string | null;
   tagline?: string;
@@ -42,6 +50,8 @@ export function SiteHeader({
   brandName = "ULearnSystems",
   navCategories = [],
   nav = {},
+  currency = "USD",
+  currencies = [],
 }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -168,7 +178,13 @@ export function SiteHeader({
                             {activeCat.courses.slice(0, 10).map((c, i) => (
                               <Link key={c.slug} href={`/${c.slug}`} onClick={() => setOpenMenu(null)} className="flex items-start gap-4 group/course">
                                 <div className="w-12 h-12 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
-                                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px] text-center leading-none">ITIL</div>
+                                  {c.image ? (
+                                    <img src={c.image} alt="" className="w-full h-full object-contain p-1.5" loading="lazy" />
+                                  ) : (
+                                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px] text-center leading-none">
+                                      {c.title.slice(0, 4).toUpperCase()}
+                                    </div>
+                                  )}
                                 </div>
                                 <div className="flex-1 pt-0.5">
                                   <div className="flex items-center flex-wrap gap-2 mb-1.5">
@@ -190,20 +206,31 @@ export function SiteHeader({
                     })()}
                   </div>
 
-                  {/* Right Column: Issuing Bodies */}
-                  <div className="w-[280px] shrink-0 bg-white flex flex-col">
-                    <div className="px-6 py-4 border-b border-gray-100 font-bold text-[#082032] text-[15px]">
-                      Credential Issuing Bodies
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
-                          <span className="text-primary font-bold text-[10px]">PC</span>
+                  {/* Right Column: Issuing Bodies — hidden entirely when the category has none (matches simpliaxis) */}
+                  {(() => {
+                    const activeCat = activeCategorySlug
+                      ? navCategories.find(c => c.slug === activeCategorySlug)
+                      : navCategories[0];
+                    const bodies = issuersFor(activeCat?.name);
+                    if (bodies.length === 0) return null;
+                    return (
+                      <div className="w-[280px] shrink-0 bg-white flex flex-col">
+                        <div className="px-6 py-4 border-b border-gray-100 font-bold text-[#082032] text-[15px]">
+                          Credential Issuing Bodies
                         </div>
-                        <div className="text-[13px] font-bold text-[#082032]">PeopleCert ATO</div>
+                        <div className="p-6 space-y-5">
+                          {bodies.map((b) => (
+                            <div key={b.name} className="flex items-center gap-4">
+                              <div className="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center shrink-0 overflow-hidden">
+                                <img src={b.logo} alt="" className="w-full h-full object-contain p-1.5" loading="lazy" />
+                              </div>
+                              <div className="text-[13px] font-bold text-[#082032] leading-snug">{b.name}</div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })()}
 
                 </div>
               </div>
@@ -330,6 +357,9 @@ export function SiteHeader({
 
         {/* Right Icons */}
         <div className="flex items-center gap-4 ml-6">
+          <div className="hidden lg:flex items-center text-[13px] font-semibold text-foreground/80">
+            <CurrencySwitcher current={currency} currencies={currencies} />
+          </div>
           {isLoggedIn ? (
             <LearnerDropdown />
           ) : (

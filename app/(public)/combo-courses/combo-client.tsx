@@ -1,66 +1,29 @@
 "use client";
 
-import { useState } from "react";
-import { formatPrice } from "@/lib/utils";
 import { Share2, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { usePricing } from "@/components/pricing-provider";
 
 type ComboCourseProps = {
   courses: any[];
 };
 
+// ponytail: combos come from the admin Combos section (category "combo-courses").
+// No classification tabs — one grid of everything.
 export function ComboCoursesClient({ courses }: ComboCourseProps) {
-  const [activeTab, setActiveTab] = useState("Other Combo");
-
-  const tabs = ["Other Combo", "PMI Combo", "Scaled Agile Combo", "Scrum Alliance Combo"];
-
-  // Categorize
-  const categorized: Record<string, any[]> = {
-    "PMI Combo": courses.filter(c => c.title.includes("PMP") || c.title.includes("PMI") || c.title.includes("CAPM")),
-    "Scaled Agile Combo": courses.filter(c => c.title.includes("SAFe") || c.title.includes("SSM") || c.title.includes("POPM") || c.title.includes("RTE") || c.title.includes("SPC") || c.title.includes("LPM")),
-    "Scrum Alliance Combo": courses.filter(c => c.title.includes("CSM") || c.title.includes("CSPO") || c.title.includes("CSD") || c.title.includes("A-CSM") || c.title.includes("A-CSPO") || c.title.includes("CSP-SM")),
-  };
-
-  const categorizedIds = new Set([
-    ...categorized["PMI Combo"].map(c => c.id),
-    ...categorized["Scaled Agile Combo"].map(c => c.id),
-    ...categorized["Scrum Alliance Combo"].map(c => c.id),
-  ]);
-
-  categorized["Other Combo"] = courses.filter(c => !categorizedIds.has(c.id));
-
-  const currentCourses = categorized[activeTab] || [];
-
+  const { format } = usePricing();
   return (
     <div className="py-16 bg-ink-50 min-h-screen">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-ink-900 mb-8">Unbeatable Saving Combo Schedule</h1>
-          
-          <div role="tablist" aria-label="Combo categories" className="flex justify-start sm:justify-center border-b border-ink-200 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {tabs.map(tab => (
-              <button
-                key={tab}
-                role="tab"
-                aria-selected={activeTab === tab}
-                onClick={() => setActiveTab(tab)}
-                className={`whitespace-nowrap px-5 sm:px-6 py-3 font-medium transition-colors ${
-                  activeTab === tab
-                  ? "text-primary border-b-2 border-primary"
-                  : "text-muted-foreground hover:text-primary"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+          <h1 className="text-4xl font-bold text-ink-900">Unbeatable Saving Combo Schedule</h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentCourses.map(course => {
-            // Dummy discounts matching screenshot
-            const basePrice = course.basePriceInr || 70999;
-            const originalPrice = basePrice + 13400;
+          {courses.map(course => {
+            // USD base; show a ~16% "original" strike for the saving badge.
+            const basePrice = course.basePriceUsd || 899;
+            const originalPrice = Math.round(basePrice * 1.19);
             const discount = originalPrice - basePrice;
 
             return (
@@ -106,18 +69,18 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
                   <div className="mt-auto w-full">
                     <div className="flex items-center justify-center gap-2 mb-4 flex-wrap">
                       <span className="font-bold text-xl text-foreground">
-                        {formatPrice(basePrice, "INR")}
+                        {format(basePrice)}
                       </span>
                       <span className="text-muted-foreground line-through text-sm">
-                        {formatPrice(originalPrice, "INR")}
+                        {format(originalPrice)}
                       </span>
                       <span className="bg-secondary text-primary text-[11px] font-bold px-2 py-1 rounded">
-                        Save {formatPrice(discount, "INR")}
+                        Save {format(discount)}
                       </span>
                     </div>
 
                     <Link 
-                      href={`/combo-courses/${course.slug}`} 
+                      href={`/${course.slug}`}
                       className="block w-full text-center bg-primary hover:opacity-90 text-primary-foreground font-bold py-3 rounded-md transition-colors"
                     >
                       ENROLL NOW
@@ -128,9 +91,9 @@ export function ComboCoursesClient({ courses }: ComboCourseProps) {
             );
           })}
           
-          {currentCourses.length === 0 && (
+          {courses.length === 0 && (
             <div className="col-span-full py-12 text-center text-ink-500">
-              No combo courses found for this category.
+              No combo courses available yet.
             </div>
           )}
         </div>

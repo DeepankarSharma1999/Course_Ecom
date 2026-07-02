@@ -17,6 +17,23 @@ async function main() {
   });
   console.log(`  -> ${adminEmail} (password: ${adminPassword})`);
 
+  // Demo learner account (always ensured, like the admin above).
+  const demoHash = await bcrypt.hash("demo1234", 10);
+  await prisma.learner.upsert({
+    where: { email: "demo@ulearnsystems.com" },
+    update: { passwordHash: demoHash, name: "Demo Learner" },
+    create: { email: "demo@ulearnsystems.com", name: "Demo Learner", passwordHash: demoHash },
+  });
+  console.log("  -> demo@ulearnsystems.com (password: demo1234)");
+
+  // Seed the full content set ONLY when the DB is empty. Re-running on every
+  // container restart would clobber admin edits and generated content, so once
+  // courses exist we stop here (the admin user above is always ensured).
+  if ((await prisma.course.count()) > 0) {
+    console.log("Database already seeded — skipping content seed to preserve edits.");
+    return;
+  }
+
   console.log("Seeding categories...");
   for (const cat of CATEGORIES) {
     await prisma.category.upsert({

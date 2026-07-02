@@ -2,47 +2,15 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DEFAULT_PEDAGOGY_STEPS } from "@/lib/home-defaults";
 
-const STEPS = [
-  {
-    num: 1,
-    title: "Learn",
-    text: "Choose from live Instructor-led training, on-demand courses, or a blended approach. Master in-demand skills with a comprehensive curriculum, engaging resources, and one-on-one mentoring.",
-    color: "green",
-    img: "/images/vendor/pexels/pexels-photo-3184291.jpeg"
-  },
-  {
-    num: 2,
-    title: "Practice",
-    text: "Perfect your skills with our Playground Labs. Access on-demand, hands-on exercises and guided practice to solidify your learning and boost your confidence.",
-    color: "red",
-    img: "/images/vendor/pexels/pexels-photo-1181675.jpeg"
-  },
-  {
-    num: 3,
-    title: "Assess",
-    text: "Take a variety of assessments, from multiple-choice quizzes to coding challenges, all automatically graded for instant feedback.",
-    color: "green",
-    img: "/images/vendor/pexels/pexels-photo-3184328.jpeg"
-  },
-  {
-    num: 4,
-    title: "Insights",
-    text: "Get a clear picture of your progress. Identify areas where you shine and where you can improve with personalized insights based on your performance.",
-    color: "red",
-    img: "/images/vendor/pexels/pexels-photo-3183150.jpeg"
-  },
-  {
-    num: 5,
-    title: "Apply",
-    text: "Go beyond theory and create professional-grade projects, just like the top tech talent. Plus, gamification keeps things fun - earn points, badges, and climb the leaderboard!",
-    color: "green",
-    img: "/images/vendor/pexels/pexels-photo-3184287.jpeg"
-  }
-];
-
-export function PedagogySection() {
+export function PedagogySection({ content }: { content?: any }) {
   const [active, setActive] = useState(0);
+
+  const source = content?.pedagogySteps?.length ? content.pedagogySteps : DEFAULT_PEDAGOGY_STEPS;
+  // num + alternating accent are derived so admins only edit title/text/img.
+  const STEPS = source.map((s: any, i: number) => ({ ...s, num: i + 1, color: i % 2 === 0 ? "green" : "red" }));
+  const title = content?.pedagogyTitle || "Experience Immersive Learning";
 
   const prev = () => setActive(c => c === 0 ? STEPS.length - 1 : c - 1);
   const next = () => setActive(c => c === STEPS.length - 1 ? 0 : c + 1);
@@ -51,8 +19,8 @@ export function PedagogySection() {
     <section className="py-24 bg-white overflow-hidden font-sans">
        <div className="container-tight max-w-[1200px] relative">
           <div className="text-center mb-16">
-             <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">UPGRAD KNOWLEDGEHUT'S UNIQUE PEDAGOGY</div>
-             <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-4">Experience Immersive Learning</h2>
+             <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">OUR UNIQUE PEDAGOGY</div>
+             <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-4">{title}</h2>
              <p className="text-[14px] text-gray-500 max-w-2xl mx-auto leading-relaxed">
                Join the learning revolution with the ultimate AI-Powered Integrated Learning Platform. Designed to provide a highly engaging, immersive learning experience, it's always YOU at the centre of the learning.
              </p>

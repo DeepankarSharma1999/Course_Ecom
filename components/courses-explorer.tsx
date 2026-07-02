@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { CourseCard } from "@/components/course-card";
-import { type CurrencyCode, convertFromInr } from "@/lib/currency";
+import { type CurrencyCode } from "@/lib/currency";
+import { usePricing } from "@/components/pricing-provider";
 
 type Course = any;
 type Category = { slug: string; name: string };
@@ -17,8 +18,9 @@ const SORTS = [
   { value: "popular", label: "Most Reviewed" },
 ];
 
-export function CoursesExplorer({ courses, categories, currency = "INR" }: { courses: Course[]; categories: Category[]; currency?: CurrencyCode }) {
-  const [q, setQ] = useState("");
+export function CoursesExplorer({ courses, categories, initialQuery }: { courses: Course[]; categories: Category[]; currency?: CurrencyCode; initialQuery?: string }) {
+  const { convert, currency, currencies } = usePricing();
+  const [q, setQ] = useState(initialQuery ?? "");
   const [cat, setCat] = useState<string>("");
   const [examOnly, setExamOnly] = useState(false);
   const [maxPrice, setMaxPrice] = useState<number | "">("");
@@ -38,13 +40,13 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
     if (cat) list = list.filter((c) => c.category?.slug === cat);
     if (examOnly) list = list.filter((c) => c.examIncluded);
     if (maxPrice !== "" && maxPrice > 0) {
-      list = list.filter((c) => convertFromInr(c.basePriceInr ?? 0, currency) <= maxPrice);
+      list = list.filter((c) => convert(c.basePriceUsd ?? 0) <= maxPrice);
     }
 
     switch (sort) {
       case "rating": list.sort((a, b) => (b.ratingAvg ?? 0) - (a.ratingAvg ?? 0)); break;
-      case "price-low": list.sort((a, b) => (a.basePriceInr ?? 0) - (b.basePriceInr ?? 0)); break;
-      case "price-high": list.sort((a, b) => (b.basePriceInr ?? 0) - (a.basePriceInr ?? 0)); break;
+      case "price-low": list.sort((a, b) => (a.basePriceUsd ?? 0) - (b.basePriceUsd ?? 0)); break;
+      case "price-high": list.sort((a, b) => (b.basePriceUsd ?? 0) - (a.basePriceUsd ?? 0)); break;
       case "popular": list.sort((a, b) => (b.ratingCount ?? 0) - (a.ratingCount ?? 0)); break;
     }
     return list;
@@ -127,7 +129,7 @@ export function CoursesExplorer({ courses, categories, currency = "INR" }: { cou
           </div>
         ) : (
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {filtered.map((c: any) => <CourseCard key={c.slug} course={c} currency={currency} />)}
+            {filtered.map((c: any) => <CourseCard key={c.slug} course={c} currency={currency} currencies={currencies} />)}
           </div>
         )}
       </div>

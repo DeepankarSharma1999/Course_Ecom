@@ -5,48 +5,41 @@ import { Award, ChevronDown, ChevronUp, X, Image as ImageIcon } from "lucide-rea
 import { type CourseContent } from "@/lib/seed-data";
 import { DownloadModal } from "./download-modal";
 
-// Seniority tiers with illustrative market data. The tab LABELS are derived
-// from the course so each course page shows relevant job roles (not always
-// "Scrum Master").
-const TIERS = [
-  {
-    prefix: "",
-    salary: { min: "₹9L", avg: "₹15L", max: "₹20L" },
-    companies: ["Coca-Cola", "Amazon", "Sapient", "HSBC", "Walmart", "Accenture"],
-    demand: { percent: "87%", text: "of employers prefer certified professionals" },
-  },
-  {
-    prefix: "Senior ",
-    salary: { min: "₹14L", avg: "₹22L", max: "₹30L" },
-    companies: ["Microsoft", "IBM", "Deloitte", "TCS", "Infosys", "Wipro"],
-    demand: { percent: "92%", text: "of organizations are scaling these skills" },
-  },
-  {
-    prefix: "Lead ",
-    salary: { min: "₹20L", avg: "₹35L", max: "₹50L" },
-    companies: ["Google", "Meta", "Apple", "Netflix", "Uber", "Airbnb"],
-    demand: { percent: "95%", text: "growth in leadership-level demand" },
-  },
-];
+import { DEFAULT_DEMAND_TIERS } from "@/lib/course-section-defaults";
 
-// Turn a course short title into a concise job-role base, e.g.
-// "SAFe Scrum Master Certification" -> "Scrum Master",
-// "AI Powered Software Development" -> "AI Powered Software Development Specialist".
+// Map a course to a concise, industry-recognised job-role base.
+// Title keywords win first; otherwise fall back to the course category.
+const CATEGORY_ROLE: Record<string, string> = {
+  agile: "Scrum Master",
+  safe: "Agile Coach",
+  project: "Project Manager",
+  business: "Business Analyst",
+  "data science": "Data Scientist",
+  "generative ai": "AI Engineer",
+  devops: "DevOps Engineer",
+  "cloud computing": "Cloud Engineer",
+  quality: "Quality Analyst",
+  service: "IT Service Manager",
+  technology: "Software Engineer",
+  microcredentials: "Agile Practitioner",
+  "on demand microcredentials": "Agile Practitioner",
+};
 function deriveRole(course: CourseContent): string {
-  const raw = (course.shortTitle || course.title)
-    .replace(/\b(certification|training|course|program|certificate)\b/gi, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  const raw = (course.shortTitle || course.title);
   if (/scrum master/i.test(raw)) return "Scrum Master";
   if (/product owner|product manager|popm/i.test(raw)) return "Product Owner";
+  if (/release train|rte/i.test(raw)) return "Release Train Engineer";
   if (/devops/i.test(raw)) return "DevOps Engineer";
   if (/architect/i.test(raw)) return "Solutions Architect";
-  if (/business analy/i.test(raw)) return "Business Analyst";
-  if (/project manage|pmp|prince2/i.test(raw)) return "Project Manager";
+  if (/business analy|cbap|ccba/i.test(raw)) return "Business Analyst";
+  if (/project manage|pmp|prince2|capm/i.test(raw)) return "Project Manager";
   if (/data scien/i.test(raw)) return "Data Scientist";
-  if (/develop|engineer|software/i.test(raw)) return `${raw} Engineer`.replace(/Engineer Engineer$/, "Engineer");
-  // Fallback: use the course name + "Specialist"
-  return raw.length > 26 ? `${raw} Specialist` : `${raw} Professional`;
+  if (/\bitil\b|service management/i.test(raw)) return "IT Service Manager";
+  if (/six sigma|quality/i.test(raw)) return "Quality Analyst";
+  if (/\bai\b|machine learning|generative/i.test(raw)) return "AI Engineer";
+  if (/cloud|aws|azure/i.test(raw)) return "Cloud Engineer";
+  // Category fallback — always an industry-recognised title.
+  return CATEGORY_ROLE[(course.category?.name || "").toLowerCase()] ?? "Agile Practitioner";
 }
 
 export function DemandSection({ course }: { course: CourseContent }) {
@@ -54,13 +47,16 @@ export function DemandSection({ course }: { course: CourseContent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeRole, setActiveRole] = useState(0);
 
-  const role = deriveRole(course);
-  const tabs = TIERS.map((t) => `${t.prefix}${role}`);
-  const currentData = TIERS[activeRole];
+  // Per-course override from admin, else derived role + default tiers.
+  const demand = course.pageSections?.demand;
+  const role = demand?.role || deriveRole(course);
+  const tiers = demand?.tiers?.length ? demand.tiers : DEFAULT_DEMAND_TIERS;
+  const tabs = tiers.map((t) => `${t.prefix}${role}`);
+  const currentData = tiers[activeRole] ?? tiers[0];
 
   return (
     <>
-      <section className="scroll-mt-24 pt-8 border-t border-gray-100">
+      <section className="scroll-mt-24 pt-12 border-t border-gray-100">
         <div className="bg-[#fcfdfd] rounded-2xl p-8 md:p-10 border border-[#e2ecec]">
           <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
             High Demand for {course.shortTitle} Professionals
@@ -132,60 +128,49 @@ export function DemandSection({ course }: { course: CourseContent }) {
             {isExpanded && (
               <div className="space-y-6 pt-2 animate-in fade-in slide-in-from-top-4 duration-500">
                 <p>
-                  At the end of the course, participants will take an online exam to demonstrate their understanding of Scrum and earn their Certified ScrumMaster Certification. This certification is recognized globally and demonstrates that the individual has the knowledge and skills to effectively facilitate Scrum in a team or organization.
+                  On completing the program you sit a recognised assessment that validates your understanding and earns you the {course.shortTitle} credential. The certification is acknowledged across industries and signals to employers that you have the knowledge and practical skills to deliver in the role.
                 </p>
 
-                <h3 className="text-[18px] font-bold text-[#082032] pt-4">Roles that Benefit from a CSM Certification</h3>
+                <h3 className="text-[18px] font-bold text-[#082032] pt-4">Roles that benefit from the {course.shortTitle} certification</h3>
                 <p>
-                  Scrum Master is a key role in any <span className="text-blue-600">Scrum team</span>. CSM is one of the most popular certifications for a Scrum Master. A Scrum Master is responsible for ensuring all the Scrum values, Agile principles, processes, and ceremonies are performed within a team. The CSM course is beginner-friendly and hence it makes a great choice for professionals who are starting their careers or switching their profiles.
-                </p>
-                <p>
-                  The skills professionals acquire through CSM certification can be applied across many job roles. Some of the most relevant roles are as follows:
+                  The skills you gain in this training apply across a range of positions. Three of the most relevant career paths are:
                 </p>
 
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-bold text-[#082032]">1) Scrum Master</h4>
+                    <h4 className="font-bold text-[#082032]">1) {role}</h4>
                     <p className="mt-1">
-                      A Scrum Master is responsible for ensuring that the Scrum methodology is followed across the team. Scrum ceremonies like a daily sprint, Definition of Done, Definition of Ready, Agile estimation techniques, Agile project management, <span className="text-blue-600">Agile framework</span>, retrospectives, etc. These are key components of Scrum. They play a key role in how Scrum teams perform in an organization.
-                    </p>
-                    <p className="mt-2">
-                      A CSM certification from Scrum Alliance familiarizes learners with the Scrum framework and the responsibilities of a Scrum Master. The average annual salary for a Scrum Master ranges from $98K to $121K, according to Salary.com, with variations depending on factors like industry, experience, organization, and specific responsibilities.
+                      As a {role}, you put the core practices of this discipline to work day to day — applying the right techniques, collaborating with stakeholders and delivering measurable outcomes. The {course.shortTitle} certification gives you a strong, recognised foundation for the role and helps you stand out to employers.
                     </p>
                   </div>
-
                   <div>
-                    <h4 className="font-bold text-[#082032]">2) Senior Scrum Master</h4>
+                    <h4 className="font-bold text-[#082032]">2) Senior {role}</h4>
                     <p className="mt-1">
-                      If you are a professional who has experience as a Scrum Master, getting a CSM certification will consolidate your credibility and help you progress in your career. A senior Scrum Master can handle more complex Agile initiatives than what is in the scope of a traditional Scrum Master role. It also sets you up for higher certifications like A-CSM.
+                      With experience, a Senior {role} takes on larger, more complex initiatives and mentors others. This certification consolidates your credibility, demonstrates depth of capability and supports your progression into more senior, higher-impact work.
                     </p>
                   </div>
-
                   <div>
-                    <h4 className="font-bold text-[#082032]">3) Chief Scrum Master</h4>
+                    <h4 className="font-bold text-[#082032]">3) Lead {role}</h4>
                     <p className="mt-1">
-                      A Chief Scrum Master is a leader who oversees Scrum implementation across the organization. They mostly work in organizations that have scaled Scrum across teams. CSM training provides the basic knowledge and skills required for Scrum Masters at any level of the organization.
+                      A Lead {role} sets direction and drives adoption of best practice across teams and the wider organisation. The skills validated by this credential underpin the strategic, leadership-level work expected at this level.
                     </p>
                   </div>
                 </div>
 
-                <h3 className="text-[18px] font-bold text-[#082032] pt-4">Benefits of CSM Certification</h3>
-                <p>
-                  A CSM certification is one of the most in-demand certifications in Agile. It is a great certification for familiarizing yourself with Scrum. The Scrum Master plays a vital role in any Scrum team, hence the CSM certification takes center stage among all the other Agile certifications.
-                </p>
-                
+                <h3 className="text-[18px] font-bold text-[#082032] pt-4">Benefits of the {course.shortTitle} certification</h3>
+
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-bold text-[#082032]">1) Globally Recognized Credential</h4>
-                    <p className="mt-1">Certified ScrumMaster is one of the most popular certifications in Scrum. The CSM certification is a great start to your Scrum career. CSM certifications are issued by the Scrum Alliance, a renowned accreditation body for globally recognized Scrum certifications.</p>
+                    <h4 className="font-bold text-[#082032]">1) Globally recognised credential</h4>
+                    <p className="mt-1">The certification is awarded against standards recognised across the industry, giving your skills credibility with employers anywhere in the world.</p>
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#082032]">2) Increased Employability</h4>
-                    <p className="mt-1">A CSM certification is proof of your knowledge and skills as a ScrumMaster. Having a CSM certification will get you noticed by recruiters looking to hire Scrum professionals of a high caliber. The skills gained in this training will be useful even in organizations that are not currently using Scrum.</p>
+                    <h4 className="font-bold text-[#082032]">2) Increased employability</h4>
+                    <p className="mt-1">A respected credential is clear proof of your knowledge and helps you get noticed by recruiters looking to hire capable, certified professionals.</p>
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#082032]">3) Higher Earning Potential</h4>
-                    <p className="mt-1">Certified professionals earn significantly more than their non-certified counterparts across roles and designations. CSM is no different, CSM certification opens new avenues and since most of the leading organizations use Scrum, a CSM certification leads to a high-paying job at one of the leading organizations.</p>
+                    <h4 className="font-bold text-[#082032]">3) Higher earning potential</h4>
+                    <p className="mt-1">Certified professionals consistently earn more than their non-certified peers, and the credential opens the door to better-paid, in-demand roles.</p>
                   </div>
                 </div>
               </div>

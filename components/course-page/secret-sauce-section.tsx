@@ -18,7 +18,7 @@ export function SecretSauceSection() {
       title: "Experiential learning",
       subtitle: "with games, role-plays, simulations, and case studies",
       features: ["Games", "Role-Plays", "Simulations", "Case-Studies"],
-      bgColor: "bg-[#f8fdfdf]",
+      bgColor: "bg-[#f0fdfa]",
       image: "/images/courses/feature_experiential_1781964406598.png"
     },
     {
@@ -45,7 +45,7 @@ export function SecretSauceSection() {
   ];
 
   return (
-    <section className="scroll-mt-24 pt-12">
+    <section className="scroll-mt-24 pt-12 border-t border-gray-100">
       <h2 className="text-[28px] md:text-[32px] font-bold text-[#082032] mb-8 text-center">
         Our Secret Sauce for Exam and Career Success
       </h2>
@@ -84,8 +84,8 @@ export function SecretSauceSection() {
               )}
             </div>
 
-            {/* Mock Image Placeholder aligned to bottom right */}
-            <div className="mt-8 flex justify-end px-4 pb-4">
+            {/* Image anchored to the card bottom so every card aligns (no mid-card void). */}
+            <div className="mt-auto pt-8 flex justify-end px-4 pb-4">
               <div className="w-48 h-32 bg-white rounded-lg shadow-md border border-gray-100 flex items-center justify-center overflow-hidden">
                 {item.image ? (
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
