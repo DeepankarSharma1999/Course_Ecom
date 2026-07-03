@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-import { getAllCourses } from "@/lib/content";
+import { getAllCourses, getCountries } from "@/lib/content";
+import { FooterCountrySelect } from "@/components/footer-country-select";
 import { CATEGORIES } from "@/lib/seed-data";
 import { getSiteSettings } from "@/lib/site-content";
 import { DEFAULT_FOOTER_COLUMNS, type FooterColumn } from "@/lib/footer-defaults";
@@ -39,7 +40,7 @@ function LinkGroup({ data }: { data: FooterColumn }) {
 }
 
 export async function SiteFooter() {
-  const [courses, settings] = await Promise.all([getAllCourses(), getSiteSettings()]);
+  const [courses, settings, countries] = await Promise.all([getAllCourses(), getSiteSettings(), getCountries()]);
   const categories = CATEGORIES;
   const columns: FooterColumn[] = (settings.footerColumns as any)?.length ? (settings.footerColumns as any) : DEFAULT_FOOTER_COLUMNS;
   const social = (settings.socialLinks as any) || {};
@@ -58,6 +59,11 @@ export async function SiteFooter() {
            </div>
 
            <div>
+              <div className="mb-10">
+                 <h3 className="font-bold text-brand-950 mb-4">Your Country</h3>
+                 <FooterCountrySelect countries={countries.map((c) => ({ slug: c.slug, name: c.name, currency: c.currency }))} />
+              </div>
+
               <div className="mb-10">
                  <h3 className="font-bold text-brand-950 mb-4">Connect with us</h3>
                  <div className="flex gap-3">
