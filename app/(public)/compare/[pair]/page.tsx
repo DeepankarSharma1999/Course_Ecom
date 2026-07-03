@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, X } from "lucide-react";
-import { getAllCourses, getCourseBySlug } from "@/lib/content";
+import { getCourseBySlug } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 import { LeadForm } from "@/components/lead-form";
 import { SITE } from "@/lib/utils";
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
 function parsePair(pair: string): [string, string] | null {
   const parts = pair.split("-vs-");
@@ -16,11 +17,10 @@ function parsePair(pair: string): [string, string] | null {
   return [parts[0], parts[1]];
 }
 
-export async function generateStaticParams() {
-  const courses = await getAllCourses();
-  const out: { pair: string }[] = [];
-  for (const a of courses) for (const b of courses) if (a.slug !== b.slug) out.push({ pair: `${a.slug}-vs-${b.slug}` });
-  return out;
+// N-vs-N course pairs = ~42,000 pages. Never pre-build these — render on demand
+// (dynamicParams) so a comparison page is generated + cached on first visit.
+export function generateStaticParams() {
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ pair: string }> }): Promise<Metadata> {
