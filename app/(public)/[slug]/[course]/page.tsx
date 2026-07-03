@@ -4,15 +4,15 @@ import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { getAllCourses, getCourseBySlug, getCountries, getCountryBySlug, getCities, getCourseVariant } from "@/lib/content";
+import { getCourseBySlug, getCountryBySlug, getCities, getCourseVariant } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 
 export const dynamicParams = true;
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const [courses, countries] = await Promise.all([getAllCourses(), getCountries()]);
-  return countries.flatMap((country) => courses.map((c) => ({ slug: country.slug, course: c.slug })));
+// Render on demand: country×course is ~10k pages, too many to pre-build.
+export function generateStaticParams() {
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; course: string }> }): Promise<Metadata> {

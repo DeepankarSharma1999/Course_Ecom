@@ -6,20 +6,18 @@ import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE } from "@/lib/utils";
-import { getAllCourses, getCourseBySlug, getCountries, getCountryBySlug, getCities, getCityBySlug } from "@/lib/content";
+import { getAllCourses, getCourseBySlug, getCountryBySlug, getCityBySlug } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
 export const dynamicParams = true;
 export const revalidate = 60;
 
+// Pre-build only the canonical course pages (~200). Country/city landing pages
+// render on demand (dynamicParams) to keep the build fast and DB reads low.
 export async function generateStaticParams() {
-  const [courses, countries, cities] = await Promise.all([getAllCourses(), getCountries(), getCities()]);
-  return [
-    ...courses.map((c) => ({ slug: c.slug })),
-    ...countries.map((co) => ({ slug: co.slug })),
-    ...cities.map((ct) => ({ slug: ct.slug })),
-  ];
+  const courses = await getAllCourses();
+  return courses.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

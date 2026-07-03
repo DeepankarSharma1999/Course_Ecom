@@ -5,17 +5,18 @@ import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { getCities, getCityBySlug, getAllCourses, getCourseBySlug, getCourseVariant } from "@/lib/content";
+import { getCities, getCityBySlug, getCourseBySlug, getCourseVariant } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
 export const dynamicParams = true;
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const [courses, cities] = await Promise.all([getAllCourses(), getCities()]);
-  // Each city is tied to its own country, so /uk/.../hyderabad is never pre-built.
-  return courses.flatMap((c) => cities.map((city) => ({ slug: city.country.slug, course: c.slug, city: city.slug })));
+// Render on demand (dynamicParams + revalidate below). Pre-building every
+// country×course×city combo is tens of thousands of pages — it times out the
+// build and hammers the DB. First visit generates + caches the page instead.
+export function generateStaticParams() {
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; course: string; city: string }> }): Promise<Metadata> {
