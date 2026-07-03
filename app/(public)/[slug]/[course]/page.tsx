@@ -7,13 +7,9 @@ import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data
 import { getCourseBySlug, getCountryBySlug, getCities, getCourseVariant } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 
-export const dynamicParams = true;
-export const revalidate = 60;
-
-// Render on demand: country×course is ~10k pages, too many to pre-build.
-export function generateStaticParams() {
-  return [];
-}
+// Per-request (currency via cookies/headers) and ~10k country×course combos —
+// render dynamically on each request rather than pre-building or caching.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; course: string }> }): Promise<Metadata> {
   const { slug, course } = await params;

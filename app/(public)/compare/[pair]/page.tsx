@@ -8,8 +8,8 @@ import { formatInCurrency } from "@/lib/currency";
 import { LeadForm } from "@/components/lead-form";
 import { SITE } from "@/lib/utils";
 
-export const revalidate = 60;
-export const dynamicParams = true;
+// Per-request (currency via cookies/headers) and ~42k course pairs — dynamic.
+export const dynamic = "force-dynamic";
 
 function parsePair(pair: string): [string, string] | null {
   const parts = pair.split("-vs-");
@@ -17,11 +17,6 @@ function parsePair(pair: string): [string, string] | null {
   return [parts[0], parts[1]];
 }
 
-// N-vs-N course pairs = ~42,000 pages. Never pre-build these — render on demand
-// (dynamicParams) so a comparison page is generated + cached on first visit.
-export function generateStaticParams() {
-  return [];
-}
 
 export async function generateMetadata({ params }: { params: Promise<{ pair: string }> }): Promise<Metadata> {
   const { pair } = await params;

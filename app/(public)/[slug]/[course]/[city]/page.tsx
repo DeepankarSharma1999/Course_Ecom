@@ -9,15 +9,9 @@ import { getCities, getCityBySlug, getCourseBySlug, getCourseVariant } from "@/l
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
-export const dynamicParams = true;
-export const revalidate = 60;
-
-// Render on demand (dynamicParams + revalidate below). Pre-building every
-// country×course×city combo is tens of thousands of pages — it times out the
-// build and hammers the DB. First visit generates + caches the page instead.
-export function generateStaticParams() {
-  return [];
-}
+// Per-request (currency via cookies/headers) and far too many combos to
+// pre-build (country×course×city), so render dynamically on each request.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; course: string; city: string }> }): Promise<Metadata> {
   const { slug, course, city } = await params;
