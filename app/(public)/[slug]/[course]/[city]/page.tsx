@@ -1,11 +1,11 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { CITIES_IN, COUNTRIES, findCountry, findCity, getAllCourses, getCourseBySlug, getCourseVariant } from "@/lib/content";
+import { getCities, getCityBySlug, getAllCourses, getCourseBySlug, getCourseVariant } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
@@ -13,14 +13,16 @@ export const dynamicParams = true;
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const courses = await getAllCourses();
-  return courses.flatMap((c) => CITIES_IN.map((city) => ({ slug: "in", course: c.slug, city: city.slug })));
+  const [courses, cities] = await Promise.all([getAllCourses(), getCities()]);
+  // Each city is tied to its own country, so /uk/.../hyderabad is never pre-built.
+  return courses.flatMap((c) => cities.map((city) => ({ slug: city.country.slug, course: c.slug, city: city.slug })));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; course: string; city: string }> }): Promise<Metadata> {
   const { slug, course, city } = await params;
-  const c = await getCourseBySlug(course); const co = findCountry(slug); const ct = findCity(city);
-  if (!c || !co || !ct) return {};
+  const c = await getCourseBySlug(course); const ct = await getCityBySlug(city);
+  // City must exist and belong to the country in the URL, else no useful metadata.
+  if (!c || !ct || ct.country.slug !== slug) return {};
   const variant = await getCourseVariant(course, slug, city);
   const base = baseCourseTitle(c.shortTitle);
   const title = stripBrandSuffix(variant?.seoTitle) || composeCourseTitle(c.shortTitle, { city: ct.name });
@@ -34,9 +36,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string; course: string; city: string }> }) {
   const { slug, course, city } = await params;
-  const [c, currency, currencyCfg] = await Promise.all([getCourseBySlug(course), getDisplayCurrency(), getCurrencyConfig()]);
-  const co = findCountry(slug); const ct = findCity(city);
-  if (!c || !co || !ct) notFound();
+  const [c, ct, currency, currencyCfg] = await Promise.all([getCourseBySlug(course), getCityBySlug(city), getDisplayCurrency(), getCurrencyConfig()]);
+  if (!c || !ct) notFound();
+  // City belongs to exactly one country. If the URL names a different country
+  // (e.g. /uk/.../hyderabad), redirect to the city's real country page.
+  if (ct.country.slug !== slug) redirect(`/${ct.country.slug}/${course}/${city}`);
+  const co = ct.country;
 
   const jsonLd = [
     courseJsonLd(c, { country: co.name, city: ct.name }),

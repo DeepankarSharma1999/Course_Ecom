@@ -127,9 +127,40 @@ export async function getSchedulesForCourse(courseSlug: string, citySlug?: strin
   }
 }
 
+// ---- Sync static helpers (legacy consumers: schedule form, variant autogen) ----
 export function findCountry(slug: string) {
   return STATIC_COUNTRIES.find((c) => c.slug === slug);
 }
 export function findCity(slug: string) {
   return STATIC_CITIES.find((c) => c.slug === slug);
+}
+
+// ---- DB-backed locations (admin-managed). Static arrays are the cold-start
+// fallback only: once the Country/City tables have rows, the DB is authoritative
+// so admin add/edit/delete actually takes effect. ----
+export type CountryRec = { slug: string; name: string; code?: string; currency?: string };
+export type CityRec = { slug: string; name: string; country: { slug: string; name: string } };
+
+export async function getCountries(): Promise<CountryRec[]> {
+  try {
+    const rows = await prisma.country.findMany({ where: { enabled: true }, orderBy: [{ order: "asc" }, { name: "asc" }] });
+    if (rows.length) return rows.map((c) => ({ slug: c.slug, name: c.name, code: c.code ?? undefined, currency: c.currency ?? undefined }));
+  } catch { /* fall through */ }
+  return STATIC_COUNTRIES.map((c) => ({ slug: c.slug, name: c.name, code: c.code, currency: c.currency }));
+}
+
+export async function getCities(): Promise<CityRec[]> {
+  try {
+    const rows = await prisma.city.findMany({ where: { enabled: true }, include: { country: true }, orderBy: [{ order: "asc" }, { name: "asc" }] });
+    if (rows.length) return rows.map((c) => ({ slug: c.slug, name: c.name, country: { slug: c.country.slug, name: c.country.name } }));
+  } catch { /* fall through */ }
+  // Static fallback: the only seeded static cities are Indian.
+  return STATIC_CITIES.map((c) => ({ slug: c.slug, name: c.name, country: { slug: "in", name: "India" } }));
+}
+
+export async function getCountryBySlug(slug: string): Promise<CountryRec | null> {
+  return (await getCountries()).find((c) => c.slug === slug) ?? null;
+}
+export async function getCityBySlug(slug: string): Promise<CityRec | null> {
+  return (await getCities()).find((c) => c.slug === slug) ?? null;
 }

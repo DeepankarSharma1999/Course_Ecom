@@ -541,6 +541,52 @@ export async function deleteCategory(id: string) {
   redirect("/admin/categories");
 }
 
+// =========== LOCATIONS (countries & cities) ============
+export async function saveCountry(id: string | null, formData: FormData) {
+  await requireAdmin();
+  const data = {
+    slug: String(formData.get("slug") || "").trim().toLowerCase(),
+    name: String(formData.get("name") || "").trim(),
+    code: toStr(formData.get("code")),
+    currency: toStr(formData.get("currency")),
+    enabled: toBool(formData.get("enabled")),
+    order: toInt(formData.get("order")) ?? 0,
+  };
+  if (id) await prisma.country.update({ where: { id }, data });
+  else await prisma.country.create({ data });
+  revalidatePublic();
+  redirect("/admin/locations");
+}
+
+export async function deleteCountry(id: string) {
+  await requireAdmin();
+  await prisma.country.delete({ where: { id } }); // cascades to its cities
+  revalidatePublic();
+  redirect("/admin/locations");
+}
+
+export async function saveCity(id: string | null, formData: FormData) {
+  await requireAdmin();
+  const data = {
+    slug: String(formData.get("slug") || "").trim().toLowerCase(),
+    name: String(formData.get("name") || "").trim(),
+    countryId: String(formData.get("countryId") || ""),
+    enabled: toBool(formData.get("enabled")),
+    order: toInt(formData.get("order")) ?? 0,
+  };
+  if (id) await prisma.city.update({ where: { id }, data });
+  else await prisma.city.create({ data });
+  revalidatePublic();
+  redirect("/admin/locations");
+}
+
+export async function deleteCity(id: string) {
+  await requireAdmin();
+  await prisma.city.delete({ where: { id } });
+  revalidatePublic();
+  redirect("/admin/locations");
+}
+
 // =========== TESTIMONIALS ============
 export async function saveTestimonial(id: string | null, formData: FormData) {
   await requireAdmin();

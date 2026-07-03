@@ -6,7 +6,7 @@ import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE } from "@/lib/utils";
-import { COUNTRIES, getAllCourses, getCourseBySlug, findCountry } from "@/lib/content";
+import { getAllCourses, getCourseBySlug, getCountries, getCountryBySlug, getCities, getCityBySlug } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
@@ -14,10 +14,11 @@ export const dynamicParams = true;
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const courses = await getAllCourses();
+  const [courses, countries, cities] = await Promise.all([getAllCourses(), getCountries(), getCities()]);
   return [
     ...courses.map((c) => ({ slug: c.slug })),
-    ...COUNTRIES.map((co) => ({ slug: co.slug })),
+    ...countries.map((co) => ({ slug: co.slug })),
+    ...cities.map((ct) => ({ slug: ct.slug })),
   ];
 }
 
@@ -33,11 +34,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       openGraph: { title: course.seoTitle, description: course.seoDescription, images: course.heroImage ? [course.heroImage] : [], url: `${SITE.url}/${slug}` },
     };
   }
-  const country = findCountry(slug);
+  const country = await getCountryBySlug(slug);
   if (country) {
     return {
       title: `Certification Training in ${country.name}`,
       description: `Globally accredited certification training in ${country.name}. Live online & classroom batches in major cities.`,
+      alternates: { canonical: `/${slug}` },
+    };
+  }
+  const city = await getCityBySlug(slug);
+  if (city) {
+    return {
+      title: `Certification Training in ${city.name}`,
+      description: `Globally accredited certification training in ${city.name}, ${city.country.name}. Live online & classroom batches.`,
       alternates: { canonical: `/${slug}` },
     };
   }
@@ -69,7 +78,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     );
   }
 
-  const country = findCountry(slug);
+  const country = await getCountryBySlug(slug);
   if (country) {
     const all = await getAllCourses();
     return (
@@ -85,6 +94,31 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <div className="container-tight">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {all.map((c) => <CourseCard key={c.slug} course={c} country={country.slug} currency={currency} currencies={currencyCfg.currencies} />)}
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
+
+  // City landing page — behaves like the country page but scoped to one city.
+  // Course links point at /{country}/{course}/{city}.
+  const city = await getCityBySlug(slug);
+  if (city) {
+    const all = await getAllCourses();
+    return (
+      <>
+        <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
+          <div className="container-tight py-14">
+            <div className="text-sm text-brand-200 mb-2">City · {city.country.name}</div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-3">Certification Training in {city.name}</h1>
+            <p className="text-brand-100 text-lg max-w-2xl">Live online & classroom certification training in {city.name}, {city.country.name}.</p>
+          </div>
+        </section>
+        <section className="section">
+          <div className="container-tight">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {all.map((c) => <CourseCard key={c.slug} course={c} country={city.country.slug} city={city.slug} currency={currency} currencies={currencyCfg.currencies} />)}
             </div>
           </div>
         </section>

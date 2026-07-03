@@ -23,6 +23,35 @@ model Category {
   updatedAt DateTime @updatedAt
 }
 
+// Countries and cities drive the /[country] and /[country]/[course]/[city] URLs.
+// City.slug is globally unique so a bare /london resolves to exactly one city.
+model Country {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  code      String?
+  name      String
+  currency  String?
+  enabled   Boolean  @default(true)
+  order     Int      @default(0)
+  cities    City[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model City {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  countryId String
+  country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  enabled   Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([countryId])
+}
+
 model Course {
   id              String   @id @default(cuid())
   slug            String   @unique

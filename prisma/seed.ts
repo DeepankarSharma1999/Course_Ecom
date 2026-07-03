@@ -40,6 +40,38 @@ async function main() {
     });
   }
 
+  // Countries & cities: create-if-missing so admin edits/deletes are never
+  // clobbered on re-seed, but a fresh (or partially seeded) DB gets backfilled.
+  console.log("Seeding countries...");
+  for (const [i, co] of COUNTRIES.entries()) {
+    if (await prisma.country.findUnique({ where: { slug: co.slug }, select: { id: true } })) continue;
+    await prisma.country.create({ data: { slug: co.slug, code: co.code, name: co.name, currency: co.currency, order: i } });
+  }
+
+  console.log("Seeding cities...");
+  // Indian cities from seed-data plus a starter set of major cities per country.
+  const CITIES: { slug: string; name: string; country: string }[] = [
+    ...CITIES_IN.map((c) => ({ ...c, country: "in" })),
+    { slug: "london", name: "London", country: "uk" },
+    { slug: "manchester", name: "Manchester", country: "uk" },
+    { slug: "birmingham", name: "Birmingham", country: "uk" },
+    { slug: "new-york", name: "New York", country: "us" },
+    { slug: "san-francisco", name: "San Francisco", country: "us" },
+    { slug: "chicago", name: "Chicago", country: "us" },
+    { slug: "dubai", name: "Dubai", country: "ae" },
+    { slug: "abu-dhabi", name: "Abu Dhabi", country: "ae" },
+    { slug: "singapore", name: "Singapore", country: "sg" },
+    { slug: "sydney", name: "Sydney", country: "au" },
+    { slug: "melbourne", name: "Melbourne", country: "au" },
+    { slug: "toronto", name: "Toronto", country: "ca" },
+    { slug: "vancouver", name: "Vancouver", country: "ca" },
+  ];
+  for (const [i, ct] of CITIES.entries()) {
+    if (await prisma.city.findUnique({ where: { slug: ct.slug }, select: { id: true } })) continue;
+    const country = await prisma.country.findUnique({ where: { slug: ct.country }, select: { id: true } });
+    if (country) await prisma.city.create({ data: { slug: ct.slug, name: ct.name, countryId: country.id, order: i } });
+  }
+
   console.log("Seeding courses...");
   for (const c of COURSES) {
     // Skip courses that already exist — preserves admin edits & generated content.

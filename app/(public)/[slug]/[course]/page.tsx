@@ -4,20 +4,20 @@ import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { COUNTRIES, getAllCourses, getCourseBySlug, findCountry, getCourseVariant } from "@/lib/content";
+import { getAllCourses, getCourseBySlug, getCountries, getCountryBySlug, getCourseVariant } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 
 export const dynamicParams = true;
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const courses = await getAllCourses();
-  return COUNTRIES.flatMap((country) => courses.map((c) => ({ slug: country.slug, course: c.slug })));
+  const [courses, countries] = await Promise.all([getAllCourses(), getCountries()]);
+  return countries.flatMap((country) => courses.map((c) => ({ slug: country.slug, course: c.slug })));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; course: string }> }): Promise<Metadata> {
   const { slug, course } = await params;
-  const c = await getCourseBySlug(course); const co = findCountry(slug);
+  const c = await getCourseBySlug(course); const co = await getCountryBySlug(slug);
   if (!c || !co) return {};
   const variant = await getCourseVariant(course, slug);
   const title = stripBrandSuffix(variant?.seoTitle) || composeCourseTitle(c.shortTitle, { country: co.name });
@@ -31,8 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string; course: string }> }) {
   const { slug, course } = await params;
-  const [c, currency, currencyCfg] = await Promise.all([getCourseBySlug(course), getDisplayCurrency(), getCurrencyConfig()]);
-  const co = findCountry(slug);
+  const [c, co, currency, currencyCfg] = await Promise.all([getCourseBySlug(course), getCountryBySlug(slug), getDisplayCurrency(), getCurrencyConfig()]);
   if (!c || !co) notFound();
 
   const jsonLd = [

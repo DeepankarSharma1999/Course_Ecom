@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Calendar, FileText, FolderTree, GraduationCap, Home, HelpCircle, Inbox, LayoutDashboard, MessageSquareQuote, Settings, Users, Layers, Coins } from "lucide-react";
+import { BookOpen, Calendar, FileText, FolderTree, GraduationCap, Home, HelpCircle, Inbox, LayoutDashboard, MessageSquareQuote, Settings, Users, Layers, Coins, MapPin } from "lucide-react";
 
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: Home, exact: true },
@@ -14,6 +14,7 @@ const NAV = [
   { href: "/admin/schedules", label: "Schedules", icon: Calendar },
   { href: "/admin/trainers", label: "Trainers", icon: GraduationCap },
   { href: "/admin/categories", label: "Categories", icon: FolderTree },
+  { href: "/admin/locations", label: "Locations", icon: MapPin },
   { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
   { href: "/admin/global-faqs", label: "Global FAQs", icon: HelpCircle },
   { href: "/admin/leads", label: "Leads", icon: Inbox },
