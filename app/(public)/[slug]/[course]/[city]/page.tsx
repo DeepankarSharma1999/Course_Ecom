@@ -42,6 +42,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
   // (e.g. /uk/.../hyderabad), redirect to the city's real country page.
   if (ct.country.slug !== slug) redirect(`/${ct.country.slug}/${course}/${city}`);
   const co = ct.country;
+  const cities = (await getCities()).filter((x) => x.country.slug === co.slug).map((x) => ({ slug: x.slug, name: x.name }));
 
   const jsonLd = [
     courseJsonLd(c, { country: co.name, city: ct.name }),
@@ -59,7 +60,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
       {jsonLd.map((d, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
       ))}
-      <CoursePageContent course={c} countrySlug={slug} citySlug={city} currency={currency} currencies={currencyCfg.currencies} />
+      <CoursePageContent course={c} countrySlug={slug} citySlug={city} countryName={co.name} cityName={ct.name} cities={cities} currency={currency} currencies={currencyCfg.currencies} />
       <TrainerSection courseSlug={c.slug} />
       <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceUsd ? formatInCurrency(c.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
     </>

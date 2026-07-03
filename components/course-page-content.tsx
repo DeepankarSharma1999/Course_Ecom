@@ -66,29 +66,38 @@ export function CoursePageContent({
   course,
   countrySlug,
   citySlug,
+  countryName: countryNameProp,
+  cityName: cityNameProp,
+  cities,
   currency = "USD",
   currencies,
 }: {
   course: CourseContent;
   countrySlug?: string;
   citySlug?: string;
+  countryName?: string;
+  cityName?: string;
+  cities?: { slug: string; name: string }[];
   currency?: CurrencyCode;
   currencies?: CurrencyConfig[];
 }) {
   const format = (usd: number) => formatInCurrency(usd, currency, currencies);
-  const country = countrySlug ? findCountry(countrySlug) : null;
-  const city = citySlug ? findCity(citySlug) : null;
-  const locationLabel = city?.name && country?.name ? `${city.name}, ${country.name}` : country?.name;
+  // Prefer resolved names/cities passed by the server page (DB-backed); fall back
+  // to the static seed list for the bare /[course] page which passes none.
+  const countryName = countryNameProp ?? (countrySlug ? findCountry(countrySlug)?.name : undefined);
+  const cityName = cityNameProp ?? (citySlug ? findCity(citySlug)?.name : undefined);
+  const otherCities = cities ?? CITIES_IN;
+  const locationLabel = cityName && countryName ? `${cityName}, ${countryName}` : countryName;
 
   const show = (k: CourseSectionKey) => !isSectionHidden(course.hiddenSections, k);
 
   const baseTitle = course.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim();
-  const heroTitle = city
-    ? `${baseTitle} Certification Training in ${city.name}`
+  const heroTitle = cityName
+    ? `${baseTitle} Certification Training in ${cityName}`
     : `${baseTitle} Certification Training`;
-  const breadcrumbLabel = city ? `${baseTitle} Training in ${city.name}` : baseTitle;
-  const featuresHeading = city
-    ? `Key Features of ${baseTitle} Training in ${city.name}`
+  const breadcrumbLabel = cityName ? `${baseTitle} Training in ${cityName}` : baseTitle;
+  const featuresHeading = cityName
+    ? `Key Features of ${baseTitle} Training in ${cityName}`
     : `Key Features of ${baseTitle} Certification Training`;
 
   const schedules = generateSchedules(course);
@@ -104,9 +113,9 @@ export function CoursePageContent({
             <span className="text-gray-300">›</span>
             <Link href={`/category/${course.category.slug}`} className="hover:text-[#082032] transition-colors">{course.category.name}</Link>
             <span className="text-gray-300">›</span>
-            {country && (
+            {countryName && (
               <>
-                <Link href={`/${countrySlug}`} className="hover:text-[#082032] transition-colors">{country.name}</Link>
+                <Link href={`/${countrySlug}`} className="hover:text-[#082032] transition-colors">{countryName}</Link>
                 <span className="text-gray-300">›</span>
               </>
             )}
@@ -125,7 +134,7 @@ export function CoursePageContent({
               </h1>
               
               <p className="text-[18px] text-[#475569] leading-relaxed mb-6 font-medium">
-                {city ? `${course.subtitle} Join ${city.name}'s leading certification training provider.` : course.subtitle}
+                {cityName ? `${course.subtitle} Join ${cityName}'s leading certification training provider.` : course.subtitle}
               </p>
 
               {/* Metrics Row */}
@@ -361,7 +370,7 @@ export function CoursePageContent({
             <div className="bg-white rounded-xl border border-gray-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
               <div className="p-6 bg-[#f8fcfc] border-b border-gray-100">
                 <h3 className="text-[18px] font-bold text-[#082032] mb-1">Request a Callback</h3>
-                <p className="text-[13px] text-gray-500">Get pricing & schedules{city ? ` for ${city.name}` : ""}.</p>
+                <p className="text-[13px] text-gray-500">Get pricing & schedules{cityName ? ` for ${cityName}` : ""}.</p>
               </div>
               <div className="p-6">
                 <LeadForm
@@ -400,11 +409,11 @@ export function CoursePageContent({
 
           <h3 className="text-[22px] font-bold text-[#082032] mb-6">Find {course.shortTitle} Courses in Other Top Cities</h3>
           <div className="flex flex-wrap gap-2">
-            {CITIES_IN.map(c => {
+            {otherCities.map(c => {
               if (c.slug === citySlug) return null;
               return (
-                <Link 
-                  key={c.slug} 
+                <Link
+                  key={c.slug}
                   href={`/${countrySlug || 'in'}/${course.slug}/${c.slug}`}
                   className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors"
                 >
