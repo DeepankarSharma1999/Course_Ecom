@@ -1,6 +1,7 @@
 // Content adapter: reads from DB first, falls back to static seed-data when DB is unavailable.
 // This lets the public site keep working without Postgres while the admin writes through the DB.
 
+import { cache } from "react";
 import { prisma } from "./prisma";
 import { resolveHeroImage } from "./course-images";
 import {
@@ -149,14 +150,14 @@ export async function getCountries(): Promise<CountryRec[]> {
   return STATIC_COUNTRIES.map((c) => ({ slug: c.slug, name: c.name, code: c.code, currency: c.currency }));
 }
 
-export async function getCities(): Promise<CityRec[]> {
+export const getCities = cache(async (): Promise<CityRec[]> => {
   try {
     const rows = await prisma.city.findMany({ where: { enabled: true }, include: { country: true }, orderBy: [{ order: "asc" }, { name: "asc" }] });
     if (rows.length) return rows.map((c) => ({ slug: c.slug, name: c.name, country: { slug: c.country.slug, name: c.country.name } }));
   } catch { /* fall through */ }
   // Static fallback: the only seeded static cities are Indian.
   return STATIC_CITIES.map((c) => ({ slug: c.slug, name: c.name, country: { slug: "in", name: "India" } }));
-}
+});
 
 export async function getCountryBySlug(slug: string): Promise<CountryRec | null> {
   return (await getCountries()).find((c) => c.slug === slug) ?? null;

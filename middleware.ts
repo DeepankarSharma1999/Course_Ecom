@@ -32,8 +32,15 @@ async function isValidSession(token: string | undefined, secret: Uint8Array) {
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  if (!pathname.startsWith("/admin")) return NextResponse.next();
-  if (pathname === "/admin/login") return NextResponse.next();
+
+  // Expose the pathname to server components so currency can follow the URL's
+  // country/city (see lib/geo.ts). Forwarded on every pass-through response.
+  const forwardHeaders = new Headers(req.headers);
+  forwardHeaders.set("x-pathname", pathname);
+  const pass = () => NextResponse.next({ request: { headers: forwardHeaders } });
+
+  if (!pathname.startsWith("/admin")) return pass();
+  if (pathname === "/admin/login") return pass();
 
   const secretValue = process.env.AUTH_SECRET;
   if (!secretValue) {
@@ -47,9 +54,10 @@ export async function middleware(req: NextRequest) {
     if (pathname !== "/admin") url.searchParams.set("from", pathname);
     return NextResponse.redirect(url);
   }
-  return NextResponse.next();
+  return pass();
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  // Run on everything except static assets so x-pathname is always set.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|ico|webp|css|js|txt|xml)).*)"],
 };
