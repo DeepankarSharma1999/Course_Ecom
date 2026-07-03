@@ -73,7 +73,11 @@ async function main() {
   }
 
   console.log("Seeding courses...");
-  for (const c of COURSES) {
+  // Fast path: count how many of *these* seed slugs already exist (one query).
+  // If all present, skip the per-course scan so steady-state builds do no work.
+  // Counting by slug avoids combos/other courses masking a missing seed course.
+  const seededCount = await prisma.course.count({ where: { slug: { in: COURSES.map((c) => c.slug) } } });
+  for (const c of (seededCount >= COURSES.length ? [] : COURSES)) {
     // Skip courses that already exist — preserves admin edits & generated content.
     // Missing courses still get created (backfill after a partial seed).
     if (await prisma.course.findUnique({ where: { slug: c.slug }, select: { id: true } })) continue;

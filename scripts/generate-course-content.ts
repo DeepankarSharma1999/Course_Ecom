@@ -296,6 +296,13 @@ const curriculumFor = (categoryName: string) => CURRICULUM[categoryName.toLowerC
 const isStub = (d: string | null | undefined) => !!d && d.startsWith("Enroll in the");
 
 async function main() {
+  // Fast path: if no course still has stub content, everything is already
+  // generated — skip the full 200-row fetch/loop so re-deploys stay quick.
+  const stubCount = await prisma.course.count({ where: { description: { startsWith: "Enroll in the" } } });
+  if (stubCount === 0) {
+    console.log("All courses already have content — skipping generation.");
+    return;
+  }
   const courses = await prisma.course.findMany({ include: { category: true } });
   let rich = 0, skipped = 0;
   for (const c of courses) {
