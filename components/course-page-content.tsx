@@ -92,12 +92,15 @@ export function CoursePageContent({
   const show = (k: CourseSectionKey) => !isSectionHidden(course.hiddenSections, k);
 
   const baseTitle = course.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim();
-  const heroTitle = cityName
-    ? `${baseTitle} Certification Training in ${cityName}`
+  // Location for titles: city if we have one, else the country (country pages),
+  // else nothing (bare /[course] page).
+  const locationName = cityName ?? countryName;
+  const heroTitle = locationName
+    ? `${baseTitle} Certification Training in ${locationName}`
     : `${baseTitle} Certification Training`;
-  const breadcrumbLabel = cityName ? `${baseTitle} Training in ${cityName}` : baseTitle;
-  const featuresHeading = cityName
-    ? `Key Features of ${baseTitle} Training in ${cityName}`
+  const breadcrumbLabel = locationName ? `${baseTitle} Training in ${locationName}` : baseTitle;
+  const featuresHeading = locationName
+    ? `Key Features of ${baseTitle} Training in ${locationName}`
     : `Key Features of ${baseTitle} Certification Training`;
 
   const schedules = generateSchedules(course);
