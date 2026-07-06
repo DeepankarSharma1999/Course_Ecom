@@ -45,14 +45,9 @@ export async function getDisplayCurrency(): Promise<CurrencyCode> {
   const { enabled, defaultCurrency } = await getCurrencyConfig();
   const isEnabled = (code?: string): code is CurrencyCode => !!code && enabled.some((x) => x.code === code);
 
-  // 1. Manual switcher override (cookie) always wins.
-  const c = await cookies();
-  const override = c.get("mc_currency")?.value;
-  if (isEnabled(override)) return override;
-
   const h = await headers();
 
-  // 2. Location from the URL: /[country]/... or a /[city] landing page.
+  // 1. Location from the URL wins: /[country]/... or a /[city] landing page.
   const seg = (h.get("x-pathname") || "").split("/").filter(Boolean)[0]?.toLowerCase();
   if (seg) {
     const byCountry = COUNTRY_TO_CURRENCY[seg.toUpperCase()];
@@ -65,6 +60,11 @@ export async function getDisplayCurrency(): Promise<CurrencyCode> {
       if (isEnabled(byCity)) return byCity;
     } catch { /* ignore */ }
   }
+
+  // 2. Manual switcher override (cookie) — applies everywhere off country/city URLs.
+  const c = await cookies();
+  const override = c.get("mc_currency")?.value;
+  if (isEnabled(override)) return override;
 
   // 3. Visitor IP geolocation.
   const country = (

@@ -23,6 +23,21 @@ model Category {
   updatedAt DateTime @updatedAt
 }
 
+// Blog articles shown on /resources, managed from admin > Blogs.
+model Blog {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  category    String?
+  excerpt     String?   @db.Text
+  content     String    @db.Text // HTML body
+  readMins    Int?
+  isPublished Boolean   @default(true)
+  publishedAt DateTime  @default(now())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
 // Countries and cities drive the /[country] and /[country]/[course]/[city] URLs.
 // City.slug is globally unique so a bare /london resolves to exactly one city.
 model Country {

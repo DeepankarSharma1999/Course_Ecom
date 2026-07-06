@@ -549,6 +549,33 @@ export async function deleteCategory(id: string) {
   redirect("/admin/categories");
 }
 
+// =========== BLOGS ============
+export async function saveBlog(id: string | null, formData: FormData) {
+  await requireAdmin();
+  const title = String(formData.get("title") || "").trim();
+  const slugIn = String(formData.get("slug") || "").trim().toLowerCase();
+  const data = {
+    title,
+    slug: slugIn || title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+    category: toStr(formData.get("category")),
+    excerpt: toStr(formData.get("excerpt")),
+    content: String(formData.get("content") || ""),
+    readMins: toInt(formData.get("readMins")),
+    isPublished: toBool(formData.get("isPublished")),
+  };
+  if (id) await prisma.blog.update({ where: { id }, data });
+  else await prisma.blog.create({ data });
+  revalidatePublic();
+  redirect("/admin/blogs");
+}
+
+export async function deleteBlog(id: string) {
+  await requireAdmin();
+  await prisma.blog.delete({ where: { id } });
+  revalidatePublic();
+  redirect("/admin/blogs");
+}
+
 // =========== LOCATIONS (countries & cities) ============
 export async function saveCountry(id: string | null, formData: FormData) {
   await requireAdmin();

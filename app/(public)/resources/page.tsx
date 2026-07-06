@@ -1,6 +1,8 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { CheckCircle2, ChevronRight, BookOpen, Calendar, FileText } from "lucide-react";
 import { getPageContent } from "@/lib/page-content";
+import { prisma } from "@/lib/prisma";
 
 const SLUG = "resources";
 export const revalidate = 60;
@@ -12,7 +14,19 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ResourcesPage() {
   const c = await getPageContent(SLUG);
-  const RESOURCES = c.articles as any[];
+  // Admin-managed blogs; fall back to the static page-content cards until any exist.
+  let blogs: { slug: string | null; title: string; category: string | null; excerpt: string | null; date: string; readTime: string }[] = [];
+  try {
+    const rows = await prisma.blog.findMany({ where: { isPublished: true }, orderBy: { publishedAt: "desc" } });
+    blogs = rows.map((b) => ({
+      slug: b.slug, title: b.title, category: b.category, excerpt: b.excerpt,
+      date: b.publishedAt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      readTime: b.readMins ? `${b.readMins} min read` : "",
+    }));
+  } catch { /* fall back */ }
+  const RESOURCES = blogs.length
+    ? blogs
+    : (c.articles as any[]).map((a) => ({ slug: null, title: a.title, category: a.category, excerpt: a.desc, date: a.date, readTime: a.readTime }));
   return (
     <main>
       {/* Hero Section */}
@@ -97,23 +111,27 @@ export default async function ResourcesPage() {
                 </h3>
                 
                 <p className="text-ink-600 mb-6 flex-1 line-clamp-3">
-                  {resource.desc}
+                  {resource.excerpt}
                 </p>
-                
+
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-ink-100">
                   <div className="flex items-center gap-3 text-xs text-ink-500">
                     <div className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       <span>{resource.date}</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5" />
-                      <span>{resource.readTime}</span>
-                    </div>
+                    {resource.readTime && (
+                      <div className="flex items-center gap-1.5">
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>{resource.readTime}</span>
+                      </div>
+                    )}
                   </div>
-                  <button className="text-[#4676f5] font-semibold text-sm hover:underline inline-flex items-center gap-1">
-                    Read More <ChevronRight className="w-4 h-4" />
-                  </button>
+                  {resource.slug && (
+                    <Link href={`/resources/${resource.slug}`} className="text-[#4676f5] font-semibold text-sm hover:underline inline-flex items-center gap-1">
+                      Read More <ChevronRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
