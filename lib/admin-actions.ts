@@ -190,6 +190,14 @@ export async function deleteCourse(id: string) {
   redirect("/admin/courses");
 }
 
+export async function bulkDeleteCourses(formData: FormData) {
+  await requireAdmin();
+  const ids = formData.getAll("ids").map(String).filter(Boolean);
+  if (ids.length) await prisma.course.deleteMany({ where: { id: { in: ids } } });
+  revalidatePublic();
+  redirect("/admin/courses");
+}
+
 export async function toggleCoursePublished(id: string) {
   await requireAdmin();
   const c = await prisma.course.findUnique({ where: { id } });
