@@ -124,69 +124,58 @@ export function HomeHero({ content }: { content?: any }) {
           </div>
         </div>
 
-        {/* RIGHT COLUMN - VISUAL GRAPHIC */}
-        <div className="relative h-[600px] hidden lg:block z-0">
-          
-          {/* Top Right Girl (Microsoft) */}
-          <div className="absolute top-[0%] right-[0%] w-[200px] h-[200px] bg-[#27ae60] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-             <img src="/images/vendor/pexels/pexels-photo-3756679.jpeg" alt="" className="w-[85%] object-cover object-top h-[95%]" />
+        {/* RIGHT COLUMN - arch-portrait collage with career cards */}
+        <div className="relative h-[620px] hidden lg:block z-0">
+
+          {/* dotted accent */}
+          <div className="absolute top-[6%] left-[8%] w-24 h-16 opacity-60 z-0"
+               style={{ backgroundImage: "radial-gradient(circle, #99c2bc 1.5px, transparent 1.5px)", backgroundSize: "14px 14px" }} />
+
+          {/* Top-centre: hijabi professional */}
+          <div className="absolute top-0 left-[26%] w-[215px] h-[300px] bg-[#dcede6] rounded-t-full overflow-hidden shadow-lg z-10">
+            <img src="/images/vendor/pexels/pexels-photo-10341448.jpeg" alt="" className="w-full h-full object-cover object-top" />
           </div>
-          <div className="absolute top-[28%] right-[-10%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20">
-             <img src="/images/vendor/wikimedia/Microsoft_logo.svg" alt="Microsoft" className="w-5 h-5" />
-             <div>
-               <div className="text-[13px] font-bold text-[#082032] flex items-center gap-1.5">150% Salary Hike <Lucide.TrendingUp className="w-3.5 h-3.5 text-[#e11d48]" strokeWidth={3} /></div>
-               <div className="text-[10px] text-gray-500 font-medium mt-0.5">SDE II @ Microsoft</div>
-             </div>
+          <div className="absolute top-[16%] left-[-4%] bg-white p-2.5 pr-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center gap-3 z-20">
+            <div className="w-10 h-10 rounded-xl bg-[#e0f2ef] flex items-center justify-center shrink-0">
+              <Lucide.BarChart3 className="w-5 h-5 text-[#0d7d74]" strokeWidth={2.5} />
+            </div>
+            <div>
+              <div className="text-[13px] font-bold text-[#082032] flex items-center gap-2">Data Analyst <Lucide.ArrowUpRight className="w-3.5 h-3.5 text-[#b8860b]" strokeWidth={3} /></div>
+              <div className="text-[11px] text-gray-500 font-medium mt-0.5">to <span className="text-[#0d7d74] font-bold">Data Engineer</span></div>
+            </div>
           </div>
 
-          {/* Left Middle Girl (Citi) */}
-          <div className="absolute top-[25%] left-[5%] w-[180px] h-[180px] bg-[#fcd34d] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-            <img src="/images/vendor/pexels/pexels-photo-1181686.jpeg" alt="" className="w-[80%] object-cover object-top h-[90%]" />
+          {/* Right: businessman in suit (Dubai skyline) */}
+          <div className="absolute top-[9%] right-0 w-[195px] h-[290px] bg-[#e8eef4] rounded-t-full overflow-hidden shadow-lg z-10">
+            <img src="/images/vendor/pexels/pexels-photo-3307862.jpeg" alt="" className="w-full h-full object-cover object-[center_30%]" />
           </div>
-          <div className="absolute top-[50%] left-[-5%] bg-white p-2.5 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20 min-w-[200px]">
-             <div className="flex-1">
-               <div className="text-[9px] text-gray-400 font-medium line-through mb-0.5">Business Analyst</div>
-               <div className="text-[12px] font-bold text-[#082032] flex items-center gap-1.5"><Lucide.TrendingUp className="w-3.5 h-3.5 text-[#082032]" strokeWidth={3} /> To Project Manager</div>
-             </div>
-             <div className="font-black text-[#003B70] text-lg relative shrink-0">citi<span className="absolute -top-1 right-0 text-red-500 text-[10px]">◝</span></div>
-          </div>
-
-          {/* Bottom Right Boy (Oracle) */}
-          <div className="absolute bottom-[2%] right-[5%] w-[190px] h-[190px] bg-[#fde047] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-             <img src="/images/vendor/pexels/pexels-photo-2379004.jpeg" alt="" className="w-[90%] object-cover object-top h-[95%]" />
-          </div>
-          <div className="absolute bottom-[-2%] right-[-5%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-3 z-20">
-             <div className="font-black text-[#C74634] text-base tracking-tighter">ORACLE</div>
-             <div>
-               <div className="text-[13px] font-bold text-[#082032] flex items-center gap-1.5">200% Salary Hike <Lucide.TrendingUp className="w-3.5 h-3.5 text-[#e11d48]" strokeWidth={3} /></div>
-               <div className="text-[10px] text-gray-500 font-medium mt-0.5">Cloud Architect @ Oracle</div>
-             </div>
+          <div className="absolute top-[56%] right-[-6%] bg-white p-2.5 pr-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center gap-3 z-20">
+            <div className="w-10 h-10 rounded-xl bg-[#e0f2ef] flex items-center justify-center shrink-0">
+              <Lucide.Cloud className="w-5 h-5 text-[#0d7d74]" strokeWidth={2.5} fill="currentColor" />
+            </div>
+            <div>
+              <div className="text-[13px] font-bold text-[#082032] flex items-center gap-2">Cloud Engineer <Lucide.ArrowUpRight className="w-3.5 h-3.5 text-[#0d7d74]" strokeWidth={3} /></div>
+              <div className="text-[11px] text-gray-500 font-medium mt-0.5">• <span className="text-[#0d7d74] font-bold">180% Salary Growth</span></div>
+            </div>
           </div>
 
-          {/* Bottom Left Boy (Walmart) */}
-          <div className="absolute bottom-[0%] left-[15%] w-[210px] h-[210px] bg-[#34d399] rounded-t-full overflow-hidden flex items-end justify-center shadow-lg">
-             <img src="/images/vendor/pexels/pexels-photo-220453.jpeg" alt="" className="w-[85%] object-cover object-top h-[95%]" />
+          {/* Middle-left: Emirati man in kandura */}
+          <div className="absolute top-[36%] left-[2%] w-[185px] h-[270px] bg-[#f2e9db] rounded-t-full overflow-hidden shadow-lg z-10">
+            <img src="/images/vendor/pexels/pexels-photo-5416859.jpeg" alt="" className="w-full h-full object-cover object-top" />
           </div>
-          <div className="absolute bottom-[-10%] left-[5%] bg-white p-3 pr-4 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex items-center gap-4 z-20">
-             <div>
-               <div className="text-[9px] text-gray-400 font-medium mb-0.5">Data Analyst</div>
-               <div className="text-[12px] font-bold text-[#082032] flex items-center gap-1.5"><Lucide.TrendingUp className="w-3.5 h-3.5 text-[#e11d48]" strokeWidth={3} /> To Data Engineer</div>
-             </div>
-             <div className="font-bold text-[#0071CE] text-base flex items-center gap-1">Walmart<Lucide.Sun className="w-3.5 h-3.5 text-[#FFC220] fill-current" /></div>
+          <div className="absolute top-[76%] left-[-5%] bg-white p-2.5 pr-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center gap-3 z-20">
+            <div className="w-10 h-10 rounded-xl bg-[#fdf3e0] flex items-center justify-center shrink-0">
+              <Lucide.Briefcase className="w-5 h-5 text-[#b8860b]" strokeWidth={2.5} />
+            </div>
+            <div>
+              <div className="text-[13px] font-bold text-[#082032] flex items-center gap-2">Project Coordinator <Lucide.ArrowUpRight className="w-3.5 h-3.5 text-[#b8860b]" strokeWidth={3} /></div>
+              <div className="text-[11px] text-gray-500 font-medium mt-0.5">to <span className="text-[#0d7d74] font-bold">Product Manager</span></div>
+            </div>
           </div>
 
-          {/* Floating Icons */}
-          <div className="absolute top-[18%] left-[20%] w-12 h-12 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2.5">
-            <img src="/images/vendor/wikimedia/Slack_icon_2019.svg" alt="Slack" className="w-full h-full object-contain" />
-          </div>
-          <div className="absolute top-[8%] right-[45%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
-            <svg viewBox="0 0 24 24" className="w-full h-full fill-current text-red-600"><path d="M12 2L2 22h20L12 2zm0 4l7 14H5l7-14z"/></svg>
-          </div>
-          <div className="absolute top-[60%] right-[5%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
-            <img src="/images/vendor/wikimedia/Python-logo-notext.svg" alt="Python" className="w-full h-full object-contain" />
-          </div>
-          <div className="absolute bottom-[5%] left-[0%] w-10 h-10 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center z-10 p-2">
-            <img src="/images/vendor/wikimedia/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" className="w-full h-full object-contain" />
+          {/* Bottom-centre: businesswoman with laptop */}
+          <div className="absolute bottom-0 left-[36%] w-[205px] h-[280px] bg-[#dce9e4] rounded-t-full overflow-hidden shadow-lg z-10">
+            <img src="/images/vendor/pexels/pexels-photo-8424944.jpeg" alt="" className="w-full h-full object-cover object-top" />
           </div>
         </div>
       </div>
