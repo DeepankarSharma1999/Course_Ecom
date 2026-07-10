@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { ComboCoursesClient } from "./combo-client";
 
 export const metadata = {
-  title: "Combo Courses | Ulearnsystems",
+  title: "Combo Courses | Simplilead",
   description: "Unbeatable saving combo schedules. Explore our combo courses for maximum value.",
 };
 

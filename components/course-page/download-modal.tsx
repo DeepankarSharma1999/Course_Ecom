@@ -115,7 +115,7 @@ export function DownloadModal({ isOpen, onClose, title, subtitle }: DownloadModa
             </button>
 
             <p className="text-[11px] text-gray-500 text-center pt-2 leading-relaxed">
-              By tapping submit, you agree to ULearnSystems <a href="/info/privacy-policy-and-disclaimer" className="font-bold text-[#082032] hover:underline">Privacy Policy</a> and <a href="/info/terms-and-conditions" className="font-bold text-[#082032] hover:underline">Terms &amp; Conditions</a>
+              By tapping submit, you agree to Simplilead <a href="/info/privacy-policy-and-disclaimer" className="font-bold text-[#082032] hover:underline">Privacy Policy</a> and <a href="/info/terms-and-conditions" className="font-bold text-[#082032] hover:underline">Terms &amp; Conditions</a>
             </p>
           </form>
         </div>

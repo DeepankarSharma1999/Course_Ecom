@@ -27,7 +27,7 @@ export default async function GiftCardPage() {
       <div className="grid lg:grid-cols-2 gap-8 items-start">
         <div className="bg-gradient-to-br from-primary to-[#0f6b6b] rounded-2xl p-8 text-white shadow-md">
           <div className="flex items-center gap-2 font-bold text-[13px] uppercase tracking-wider mb-3 text-white/80">
-            <Gift className="w-4 h-4" /> ULearnSystems Gift Card
+            <Gift className="w-4 h-4" /> Simplilead Gift Card
           </div>
           <h2 className="text-[24px] font-extrabold leading-tight mb-4">A smarter way to gift learning</h2>
           <div className="flex flex-wrap gap-2 mb-8">

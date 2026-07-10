@@ -24,7 +24,7 @@ export function LearnerSidebar() {
       {/* Logo */}
       <div className="h-20 flex items-center px-6 bg-white border-b border-ink-200">
         <Link href="/home" className="flex items-center">
-          <img src="/logo.png" alt="ULearnSystems" className="h-10 w-auto object-contain" />
+          <img src="/logo.png" alt="Simplilead" className="h-10 w-auto object-contain" />
         </Link>
       </div>
 
@@ -56,7 +56,7 @@ export function LearnerSidebar() {
             <PhoneCall className="w-7 h-7 text-primary" />
           </div>
           <p className="text-[13px] text-ink-600 font-medium mb-4 leading-snug">
-            Do you have any problem<br />while using ULearnSystems?
+            Do you have any problem<br />while using Simplilead?
           </p>
           <button className="w-full bg-primary hover:bg-[#0f6b6b] text-white text-[13px] font-bold py-2.5 rounded-lg transition-colors shadow-sm shadow-primary/20">
             Contact Our Advisor

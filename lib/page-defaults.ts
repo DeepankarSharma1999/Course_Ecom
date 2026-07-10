@@ -23,7 +23,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Adapt, Innovate, and Thrive in a Disruptive Market",
     description:
       "Business agility goes beyond IT. We help you transform your entire organization—from HR and marketing to finance and operations—to quickly respond to market changes, emerging opportunities, and customer demands.",
-    metaTitle: "Business Agility Transformation | ULearnSystems",
+    metaTitle: "Business Agility Transformation | Simplilead",
     metaDescription:
       "Achieve enterprise-wide Business Agility to respond quickly to market changes and outpace competitors.",
     benefits: [
@@ -48,9 +48,9 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Scale Agile Seamlessly Across Your Enterprise",
     description:
       "Leverage the Scaled Agile Framework (SAFe®) to align strategy with execution, accelerate delivery, and drive business agility. Our expert SAFe Practice Consultants (SPCs) guide you through every step of your transformation.",
-    metaTitle: "SAFe Implementation | ULearnSystems Enterprise",
+    metaTitle: "SAFe Implementation | Simplilead Enterprise",
     metaDescription:
-      "Scale Agile across your enterprise with expert SAFe Implementation services from ULearnSystems.",
+      "Scale Agile across your enterprise with expert SAFe Implementation services from Simplilead.",
     benefits: [
       { icon: "trending", title: "Faster Time-to-Market", description: "Streamline workflows and synchronize cross-functional teams to deliver value rapidly." },
       { icon: "target", title: "Strategic Alignment", description: "Connect portfolio strategy directly to agile execution to ensure teams build what matters." },
@@ -74,7 +74,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Align Strategy and Execution with Lean Budgeting",
     description:
       "Connect your enterprise strategy to execution. We help you implement Lean Portfolio Management (LPM) to govern investment, fund value streams, and accelerate flow across your organization.",
-    metaTitle: "Lean Portfolio Management | ULearnSystems",
+    metaTitle: "Lean Portfolio Management | Simplilead",
     metaDescription:
       "Align strategy with execution using Lean Portfolio Management—Lean budgeting, value-stream funding, and portfolio flow.",
     benefits: [
@@ -99,7 +99,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Optimize the End-to-End Flow of Value",
     description:
       "Identify, map, and optimize your value streams to eliminate waste and accelerate delivery. We help you see how value flows from concept to cash and remove the bottlenecks that slow you down.",
-    metaTitle: "Value Stream Management | ULearnSystems",
+    metaTitle: "Value Stream Management | Simplilead",
     metaDescription:
       "Map and optimize your value streams to eliminate waste, reduce lead time, and accelerate delivery.",
     benefits: [
@@ -124,7 +124,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Solve Complex Problems with a Human-Centered Mindset",
     description:
       "Equip your teams to innovate with confidence. Our hands-on Design Thinking workshops teach the mindset and tools to empathize with users, frame problems, and rapidly prototype winning solutions.",
-    metaTitle: "Design Thinking Workshops | ULearnSystems",
+    metaTitle: "Design Thinking Workshops | Simplilead",
     metaDescription:
       "Hands-on Design Thinking workshops that teach teams to empathize, ideate, prototype, and test customer-centered solutions.",
     benefits: [
@@ -149,7 +149,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Build Empowered, Outcome-Driven Product Teams",
     description:
       "Move from feature factories to outcome-driven product teams. Our product coaches work alongside your product managers and leaders to build the skills, mindset, and practices of world-class product organizations.",
-    metaTitle: "Product Coaching | ULearnSystems",
+    metaTitle: "Product Coaching | Simplilead",
     metaDescription:
       "Product coaching that transforms feature factories into empowered, outcome-driven product teams.",
     benefits: [
@@ -174,7 +174,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Shift from Temporary Projects to Lasting Products",
     description:
       "Move beyond the start-stop cycle of project funding. We help you adopt a product operating model—stable teams, value-stream funding, and outcome ownership—that delivers continuous value.",
-    metaTitle: "Project to Product | ULearnSystems",
+    metaTitle: "Project to Product | Simplilead",
     metaDescription:
       "Transition from project-based delivery to a product operating model with stable teams and outcome ownership.",
     benefits: [
@@ -199,7 +199,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Bridge the Gap Between Development and Operations",
     description:
       "DevOps is more than just tools—it's a fundamental shift in culture. We help you tear down silos, establish shared goals, and implement automation strategies that enable continuous integration, continuous delivery, and highly reliable systems.",
-    metaTitle: "DevOps Cultural Transformation | ULearnSystems",
+    metaTitle: "DevOps Cultural Transformation | Simplilead",
     metaDescription: "Foster a collaborative DevOps culture to accelerate software delivery and improve reliability.",
     benefits: [
       { icon: "users", title: "Break Down Silos", description: "Create cross-functional teams with shared accountability for the entire software lifecycle." },
@@ -224,7 +224,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Build Better Products, Faster",
     description:
       "Modern product development requires tight alignment between product management, design, and engineering. Our comprehensive training programs equip your entire cross-functional organization with the latest methodologies to build scalable, user-centric software.",
-    metaTitle: "Product Development Training | ULearnSystems",
+    metaTitle: "Product Development Training | Simplilead",
     metaDescription: "Equip your engineering and product teams with modern development practices.",
     benefits: [
       { icon: "code", title: "Technical Excellence", description: "Train engineering teams in Agile engineering practices like TDD, BDD, and Pair Programming." },
@@ -305,8 +305,8 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Free Courses",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Free Courses | ULearnSystems",
-      metaDescription: "Level Up Your Career with Free Online Courses from ULearnSystems. Explore handpicked, high-impact courses designed for professionals and beginners alike.",
+      metaTitle: "Free Courses | Simplilead",
+      metaDescription: "Level Up Your Career with Free Online Courses from Simplilead. Explore handpicked, high-impact courses designed for professionals and beginners alike.",
       heroBadge: "10K+ Reviews from Learners Worldwide",
       heroHeading: "Level Up Your Career with",
       heroHighlight: "Free Online Courses",
@@ -339,7 +339,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 3, hours: 4, questions: 120, marks: 120, users: "3K+" },
       ],
       referTitle: "Invite Your Friends & Unlock Unlimited Learning",
-      referSubtitle: "Share the knowledge! Enjoy unlimited access to all ULearnSystems courses—enroll in as many as you want, 100% free.",
+      referSubtitle: "Share the knowledge! Enjoy unlimited access to all Simplilead courses—enroll in as many as you want, 100% free.",
       referButton: "Invite Now",
       webinarsTitle: "Upcoming Live Webinars",
       webinarsSubtitle: "Join our expert-led sessions to gain real-world insights.",
@@ -363,7 +363,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Practice Tests",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Free Online Practice Tests | ULearnSystems",
+      metaTitle: "Free Online Practice Tests | Simplilead",
       metaDescription: "Free, up-to-date IT practice tests to help you learn faster, spot weak areas, and pass your certification exams with confidence.",
       heroBadge: "Rated 4.9/5 by Professionals",
       heroHeading: "Master Your",
@@ -394,11 +394,11 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 0, users: "3K+", isRequest: true },
       ],
       reviewsTitle: "What Our Learners Say",
-      reviewsSubtitle: "Join thousands of professionals who have advanced their careers with ULearnSystems.",
+      reviewsSubtitle: "Join thousands of professionals who have advanced their careers with Simplilead.",
       reviews: [
-        { name: "Daniel Harper", role: "Product Manager", company: "ULearnSystems", text: "Outstanding training from ULearnSystems! The curriculum on multi-agent architectures and RAG pipeline development was thorough and current. Real-world use cases across industries gave me the confidence to lead AI initiatives at my organization immediately." },
-        { name: "Sarah Mitchell", role: "Cloud AI Architect", company: "ULearnSystems", text: "I enrolled in this course to upskill as a software architect, and ULearnSystems exceeded my expectations. The MCP server integration labs and API demos were practical and industry-relevant. The trainer's mentorship made complex concepts easy to grasp." },
-        { name: "Arjun Krishnamurthy", role: "AI/ML Engineer", company: "ULearnSystems", text: "ULearnSystems delivered exceptional value through this Agentic AI Engineering course. Building autonomous agents with the SDK, integrating MCP servers, and deploying on cloud platforms gave me skills that no other training provided." },
+        { name: "Daniel Harper", role: "Product Manager", company: "Simplilead", text: "Outstanding training from Simplilead! The curriculum on multi-agent architectures and RAG pipeline development was thorough and current. Real-world use cases across industries gave me the confidence to lead AI initiatives at my organization immediately." },
+        { name: "Sarah Mitchell", role: "Cloud AI Architect", company: "Simplilead", text: "I enrolled in this course to upskill as a software architect, and Simplilead exceeded my expectations. The MCP server integration labs and API demos were practical and industry-relevant. The trainer's mentorship made complex concepts easy to grasp." },
+        { name: "Arjun Krishnamurthy", role: "AI/ML Engineer", company: "Simplilead", text: "Simplilead delivered exceptional value through this Agentic AI Engineering course. Building autonomous agents with the SDK, integrating MCP servers, and deploying on cloud platforms gave me skills that no other training provided." },
       ],
     },
   },
@@ -407,9 +407,9 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Refer & Earn",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Refer & Earn | ULearnSystems",
-      metaDescription: "Refer friends to ULearnSystems and earn rewards for every successful enrollment. Up to 10% of the course value.",
-      heroBadge: "ULearnSystems Referral Program",
+      metaTitle: "Refer & Earn | Simplilead",
+      metaDescription: "Refer friends to Simplilead and earn rewards for every successful enrollment. Up to 10% of the course value.",
+      heroBadge: "Simplilead Referral Program",
       heroLine1: "Refer More.",
       heroHighlight: "Earn More.",
       heroLine3: "Repeat.",
@@ -438,16 +438,16 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
       ],
       benefitsNote: "*Rewards vary based on the user's location and the final purchased price of the course.",
       faqTitle: "Frequently Asked Questions",
-      faqSubtitle: "Everything you need to know about the ULearnSystems Referral Program.",
+      faqSubtitle: "Everything you need to know about the Simplilead Referral Program.",
       faqs: [
-        { question: "How does the Refer and Earn program work?", answer: "It's simple! Generate your unique referral link using the form above. Share it with your friends, colleagues, or network. When they enroll in a Ulearnsystems course using your link, they get a discount, and you earn a reward once their enrollment is confirmed." },
+        { question: "How does the Refer and Earn program work?", answer: "It's simple! Generate your unique referral link using the form above. Share it with your friends, colleagues, or network. When they enroll in a Simplilead course using your link, they get a discount, and you earn a reward once their enrollment is confirmed." },
         { question: "Is there a limit to how many people I can refer?", answer: "No, there is absolutely no limit! The more people you refer, the more you can earn. Our top referrers earn significant rewards every month." },
         { question: "When do I get my reward?", answer: "Rewards are processed 30 days after your referral successfully starts their course. This ensures there are no cancellations or refunds during the standard guarantee period." },
         { question: "What courses are eligible for referral rewards?", answer: "Almost all our certification training programs are eligible. However, the exact reward amount varies depending on the course tier. Please check the 'Course-Wise Benefits' table for specific details." },
         { question: "How will I receive my reward?", answer: "Rewards are typically sent as Amazon Gift Cards or direct bank transfers, depending on your region and preference. Our support team will contact you to confirm your preferred payout method." },
       ],
       ctaTitle: "Ready to start earning?",
-      ctaSubtitle: "Join hundreds of ULearnSystems alumni and partners who are earning great rewards by helping others advance their careers.",
+      ctaSubtitle: "Join hundreds of Simplilead alumni and partners who are earning great rewards by helping others advance their careers.",
       ctaButton: "Get My Referral Link",
     },
   },
@@ -456,12 +456,12 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "About Us",
     group: "Marketing Pages",
     content: {
-      metaTitle: "About Us | ULearnSystems",
-      metaDescription: "ULearnSystems is a globally recognized leader in professional certification and corporate training, dedicated to bridging the global skills gap.",
+      metaTitle: "About Us | Simplilead",
+      metaDescription: "Simplilead is a globally recognized leader in professional certification and corporate training, dedicated to bridging the global skills gap.",
       heroBadge: "Transforming Enterprise Learning",
       heroHeading: "Empowering the Future of",
       heroHeadingHighlight: "Agile & Tech",
-      heroSubtitle: "ULearnSystems is a globally recognized leader in professional certification and corporate training, dedicated to bridging the global skills gap.",
+      heroSubtitle: "Simplilead is a globally recognized leader in professional certification and corporate training, dedicated to bridging the global skills gap.",
       stats: [
         { value: "100k+", label: "Global Learners" },
         { value: "500+", label: "Corporate Partners" },
@@ -469,17 +469,17 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { value: "45+", label: "Countries Served" },
       ],
       missionTitle: "Our Mission",
-      missionBody1: "Founded with the vision to democratize elite enterprise training, ULearnSystems has grown into a premier destination for professionals seeking to upskill in Agile, Scrum, Project Management, and Cloud computing.",
+      missionBody1: "Founded with the vision to democratize elite enterprise training, Simplilead has grown into a premier destination for professionals seeking to upskill in Agile, Scrum, Project Management, and Cloud computing.",
       missionBody2: "We believe that continuous learning is the cornerstone of organizational agility and individual career growth. Our curriculum is constantly evolving, built by industry practitioners for the real-world challenges of tomorrow.",
       missionPoints: [
         { icon: "target", title: "Outcome Driven", desc: "Focus on practical skills and exam success." },
         { icon: "trophy", title: "Global Accreditations", desc: "Partners with Scrum Alliance, PMI, and SAFe." },
       ],
       storyImage: "/images/vendor/unsplash/photo-1522071820081-009f0129c71c.jpg",
-      storyImageAlt: "ULearnSystems team collaborating",
+      storyImageAlt: "Simplilead team collaborating",
       storyCardTitle: "Trusted by Teams",
       storyCardText: "Empowering Fortune 500 companies globally.",
-      valuesTitle: "Why Choose ULearnSystems?",
+      valuesTitle: "Why Choose Simplilead?",
       valuesSubtitle: "We stand apart through our commitment to instructional excellence, enterprise-grade curriculum, and unparalleled post-training support.",
       values: [
         { icon: "users", title: "Elite Instructors", body: "Our trainers are not just certified; they are active industry practitioners with decades of hands-on experience in leading enterprise agile transformations." },
@@ -499,7 +499,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Corporate Training",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Corporate Training and Development Programs | ULearnSystems",
+      metaTitle: "Corporate Training and Development Programs | Simplilead",
       metaDescription: "Corporate courses customized to training needs. Hands-on training sessions help trainees implement learning to projects.",
       heroBadge: "Corporate Training Solutions",
       heroHeading: "Drive Business Outcomes with",
@@ -533,7 +533,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { icon: "server", color: "text-indigo-500", title: "DevOps", courses: "14+ Courses" },
         { icon: "layout", color: "text-teal-500", title: "IT Service Management", courses: "8+ Courses" },
       ],
-      advantageEyebrow: "The ULearnSystems Advantage",
+      advantageEyebrow: "The Simplilead Advantage",
       advantageTitle: "Immersive Learning Model for Maximum ROI",
       advantageSubtitle: "Our proven 5-step framework ensures that training translates directly into measurable business performance and sustained skill retention.",
       steps: [
@@ -550,7 +550,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Resources & Blogs",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Learning Resources & Blogs | ULearnSystems",
+      metaTitle: "Learning Resources & Blogs | Simplilead",
       metaDescription: "Explore our collection of articles, whitepapers, and guides on Agile, Scrum, DevOps, and more. Stay ahead with expert insights.",
       heroBadge: "Insights & Guides",
       heroHeading: "Learning Resources",
@@ -578,7 +578,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Webinars",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Live Webinars | ULearnSystems",
+      metaTitle: "Live Webinars | Simplilead",
       metaDescription: "Join our exclusive live webinars led by industry experts. Learn new skills, get your questions answered, and stay up-to-date with the latest trends.",
       heroBadge: "Live Events & Masterclasses",
       heroHeading: "Exclusive Live",
@@ -607,7 +607,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     group: "Marketing Pages",
     content: {
       metaTitle: "Self-Paced Online Training Courses",
-      metaDescription: "Learn at your own pace with our comprehensive self-paced online courses. Gain globally recognized certifications from Ulearnsystems.",
+      metaDescription: "Learn at your own pace with our comprehensive self-paced online courses. Gain globally recognized certifications from Simplilead.",
       heroBadge: "100% Online & Self-Paced",
       heroHeading: "Master New Skills at",
       heroHeadingHighlight: "Your Own Pace.",
@@ -635,7 +635,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Run Technology Like a Business",
     description:
       "Bring transparency and discipline to technology spend. We help you adopt Technology Business Management (TBM) to align IT investment with business value and make confident, data-driven decisions.",
-    metaTitle: "Technology Business Management | ULearnSystems",
+    metaTitle: "Technology Business Management | Simplilead",
     metaDescription:
       "Adopt Technology Business Management (TBM) to align IT spend with business value and drive data-driven decisions.",
     benefits: [

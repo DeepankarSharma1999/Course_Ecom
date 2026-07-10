@@ -60,7 +60,7 @@ export function AuthModal() {
           
           <div className="relative z-10">
             <h2 className="text-[28px] font-extrabold tracking-tight mb-2 flex items-center gap-2">
-              ULearnSystems <span className="text-accent-400 text-3xl leading-none">⚡</span>
+              Simplilead <span className="text-accent-400 text-3xl leading-none">⚡</span>
             </h2>
           </div>
 

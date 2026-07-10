@@ -397,7 +397,7 @@ export function CoursePageContent({
 
         {/* Tags Section */}
         <section className="pt-16">
-          <h3 className="text-[22px] font-bold text-[#082032] mb-6">ULearnSystems Trending Courses</h3>
+          <h3 className="text-[22px] font-bold text-[#082032] mb-6">Simplilead Trending Courses</h3>
           <div className="flex flex-wrap gap-2 mb-10">
             {COURSES.filter(c => c.slug !== course.slug).slice(0, 8).map(c => (
               <Link 

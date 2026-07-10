@@ -122,7 +122,7 @@ export async function createCourse(formData: FormData) {
     priceLocal: course.basePriceInr || 0,
     heroHeadline: `${shortTitle} Training in ${city.name}`,
     heroSubheadline: `${course.subtitle || ""} Join thousands of learners in ${city.name}.`.trim(),
-    seoTitle: `${shortTitle} Certification Training in ${city.name} | Ulearnsystems`,
+    seoTitle: `${shortTitle} Certification Training in ${city.name} | Simplilead`,
     seoDescription: `${course.summary || ""} Live online & classroom batches available in ${city.name}.`.trim(),
     isPublished: true,
   }));
@@ -694,7 +694,7 @@ export async function saveSiteSettings(formData: FormData) {
     },
     create: {
       id: "singleton",
-      brandName: String(formData.get("brandName") || "Ulearnsystems"),
+      brandName: String(formData.get("brandName") || "Simplilead"),
       tagline: String(formData.get("tagline") || ""),
       phone: String(formData.get("phone") || ""),
       email: String(formData.get("email") || ""),

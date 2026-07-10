@@ -6,7 +6,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const BRAND = "ULearnSystems";
+const BRAND = "Simplilead";
 
 // Acronym = text inside the first (...) in the title, else null.
 const acronymOf = (title: string) => (title.match(/\(([^)]+)\)/)?.[1] ?? "").replace(/[®™℠]/g, "").trim() || null;

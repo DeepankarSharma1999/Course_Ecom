@@ -46,16 +46,16 @@ export const DEFAULT_PEDAGOGY_STEPS: PedagogyStep[] = [
 ];
 
 export const DEFAULT_SPOTLIGHT_ARTICLES: SpotlightArticle[] = [
-  { logo: "BS", title: "ULearnSystems crosses 10 million enrollments across 100+ nations!", img: "/images/vendor/pexels/pexels-photo-3184291.jpeg" },
-  { logo: "ET", title: "How ULearnSystems is reshaping corporate Agile training globally.", img: "/images/vendor/pexels/pexels-photo-1181406.jpeg" },
-  { logo: "mc", title: "The rise of Micro-credentials: ULearnSystems leads the way in 2026.", img: "/images/vendor/pexels/pexels-photo-3182773.jpeg" },
-  { logo: "YS", title: "From a startup to an enterprise learning giant: The ULearnSystems journey.", img: "/images/vendor/pexels/pexels-photo-3184315.jpeg" },
+  { logo: "BS", title: "Simplilead crosses 10 million enrollments across 100+ nations!", img: "/images/vendor/pexels/pexels-photo-3184291.jpeg" },
+  { logo: "ET", title: "How Simplilead is reshaping corporate Agile training globally.", img: "/images/vendor/pexels/pexels-photo-1181406.jpeg" },
+  { logo: "mc", title: "The rise of Micro-credentials: Simplilead leads the way in 2026.", img: "/images/vendor/pexels/pexels-photo-3182773.jpeg" },
+  { logo: "YS", title: "From a startup to an enterprise learning giant: The Simplilead journey.", img: "/images/vendor/pexels/pexels-photo-3184315.jpeg" },
 ];
 
 export const DEFAULT_ACCOLADES: Accolade[] = [
-  { title: "Employee Choice Award", org: "ULearnSystems rated Top 3 in Tech Firms", logo: "cube-icon" },
-  { title: "Most Promising Brand", org: "ULearnSystems: Economic Times' Most Promising Brand 2022", logo: "ET" },
-  { title: "Ed Company of the Year", org: "ULearnSystems won VC Circle Education Company of the Year, Feb 2022", logo: "VCCIRCLE" },
+  { title: "Employee Choice Award", org: "Simplilead rated Top 3 in Tech Firms", logo: "cube-icon" },
+  { title: "Most Promising Brand", org: "Simplilead: Economic Times' Most Promising Brand 2022", logo: "ET" },
+  { title: "Ed Company of the Year", org: "Simplilead won VC Circle Education Company of the Year, Feb 2022", logo: "VCCIRCLE" },
 ];
 
 export const DEFAULT_REACH_STATS: Stat[] = [

@@ -20,11 +20,11 @@ async function main() {
   // Demo learner account (always ensured, like the admin above).
   const demoHash = await bcrypt.hash("demo1234", 10);
   await prisma.learner.upsert({
-    where: { email: "demo@ulearnsystems.com" },
+    where: { email: "demo@simplilead.com" },
     update: { passwordHash: demoHash, name: "Demo Learner" },
-    create: { email: "demo@ulearnsystems.com", name: "Demo Learner", passwordHash: demoHash },
+    create: { email: "demo@simplilead.com", name: "Demo Learner", passwordHash: demoHash },
   });
-  console.log("  -> demo@ulearnsystems.com (password: demo1234)");
+  console.log("  -> demo@simplilead.com (password: demo1234)");
 
   // On a fresh DB we seed everything. On a re-run we still ensure categories and
   // any *missing* courses exist (backfill), but skip existing courses and the
@@ -127,16 +127,16 @@ async function main() {
       update: {
         countryCode: "IN", countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
-        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Ulearnsystems.`,
-        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Ulearnsystems`,
+        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Simplilead.`,
+        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Simplilead`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
       create: {
         courseId: course.id, countryCode: "IN", countrySlug: "in", citySlug: "delhi",
         countryName: "India", cityName: "Delhi", currency: "INR", priceLocal: c.basePriceInr,
         heroHeadline: `${c.shortTitle} Training in Delhi`,
-        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Ulearnsystems.`,
-        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Ulearnsystems`,
+        heroSubheadline: `${c.subtitle} Join 5,000+ learners in Delhi-NCR who advanced their careers with Simplilead.`,
+        seoTitle: `${c.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim()} Certification Training in Delhi | Simplilead`,
         seoDescription: `${c.seoDescription} Live online & classroom batches available in Delhi.`,
       },
     });

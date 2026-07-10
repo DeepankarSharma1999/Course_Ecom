@@ -30,7 +30,7 @@ export default async function TrainersIndex() {
             <span className="text-sm font-semibold text-white">Our Trainers</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">World-Class Practitioner Trainers</h1>
-          <p className="text-primary-foreground/90 text-lg max-w-2xl leading-relaxed">Every Ulearnsystems trainer is an accredited practitioner with decades of real-world experience. They don&apos;t just teach the material — they live it every day.</p>
+          <p className="text-primary-foreground/90 text-lg max-w-2xl leading-relaxed">Every Simplilead trainer is an accredited practitioner with decades of real-world experience. They don&apos;t just teach the material — they live it every day.</p>
         </div>
       </section>
       <section className="section">

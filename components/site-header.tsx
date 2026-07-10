@@ -47,7 +47,7 @@ type Props = {
 };
 
 export function SiteHeader({
-  brandName = "ULearnSystems",
+  brandName = "Simplilead",
   navCategories = [],
   nav = {},
   currency = "USD",
@@ -97,7 +97,7 @@ export function SiteHeader({
           </div>
           
           <div className="font-black text-lg flex items-center gap-2 text-white uppercase tracking-wider drop-shadow-sm">
-            Master New Skills with ULearnSystems 
+            Master New Skills with Simplilead 
             <span className="text-2xl ml-1 leading-none font-bold group-hover:translate-x-2 transition-transform duration-300">&#8594;</span>
           </div>
           
@@ -108,7 +108,7 @@ export function SiteHeader({
                 <span className="block text-[#1FA8A8] font-black text-[12px] leading-none">FLAT 10% OFF</span>
               </div>
               <span className="text-amber-400 font-black text-[16px] tracking-widest bg-amber-400/10 px-2 py-0.5 rounded ml-1">
-                ULEARN10
+                SIMPLILEAD10
               </span>
             </div>
             <span className="font-bold text-white/80 text-[13px] uppercase tracking-wider">Ends Soon!</span>

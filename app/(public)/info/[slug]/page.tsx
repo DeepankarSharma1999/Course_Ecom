@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = INFO_PAGES[slug];
 
   if (!content) {
-    return { title: "Page Not Found | ULearnSystems" };
+    return { title: "Page Not Found | Simplilead" };
   }
 
   return {

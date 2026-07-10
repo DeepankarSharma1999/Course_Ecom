@@ -81,7 +81,7 @@ export function BusinessSectors({ content }: { content?: any }) {
           <p className="mt-4 text-[14px] leading-relaxed text-gray-500 max-w-2xl mx-auto font-medium">
             Our immersive courses in booming fields like Data Science, AI, and Cloud Computing
             provide you with the practical knowledge and experience you need to succeed in the ever-
-            evolving job market. Don't just learn, get future-ready with ULearnSystems.
+            evolving job market. Don't just learn, get future-ready with Simplilead.
           </p>
         </div>
 

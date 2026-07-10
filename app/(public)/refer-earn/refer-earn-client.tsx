@@ -9,7 +9,7 @@ import { DynamicIcon } from "@/components/public/dynamic-icon";
 export function ReferEarnClient({ content: c }: { content: any }) {
   const [email, setEmail] = useState("");
   const [copied, setCopied] = useState(false);
-  const referralLink = "https://ulearnsystems.com/ref/A9X8K2M";
+  const referralLink = "https://simplilead.com/ref/A9X8K2M";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(referralLink);

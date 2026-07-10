@@ -10,8 +10,8 @@ export function AccreditationSection({ course }: { course: CourseContent }) {
   // Per-course override from admin, else computed defaults.
   const body = course.accreditedBy || "Scrum Alliance";
   const acc = course.pageSections?.accreditation;
-  const heading = acc?.heading || `ULearnSystems is a ${body} Licensed Training Partner (LTP)`;
-  const intro = acc?.intro || `As a ${body} Licensed Training Partner (LTP), ULearnSystems is officially authorized to deliver trainings based on the world's most prestigious agile curriculum.`;
+  const heading = acc?.heading || `Simplilead is a ${body} Licensed Training Partner (LTP)`;
+  const intro = acc?.intro || `As a ${body} Licensed Training Partner (LTP), Simplilead is officially authorized to deliver trainings based on the world's most prestigious agile curriculum.`;
   const more = acc?.more?.length ? acc.more : [
     "This isn't just a partnership — it's a promise of quality, credibility, and career transformation.",
     "Every training is led by a certified trainer, every course meets rigorous global standards, and every certificate you earn is recognized by employers worldwide.",

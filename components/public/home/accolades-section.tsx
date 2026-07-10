@@ -9,36 +9,36 @@ const SPOTLIGHT_ARTICLES = [
   {
     org: "Business Standard",
     logo: "BS",
-    title: "ULearnSystems crosses 10 million enrollments across 100+ nations!",
+    title: "Simplilead crosses 10 million enrollments across 100+ nations!",
     img: "/images/vendor/pexels/pexels-photo-3184291.jpeg",
     color: "text-red-700"
   },
   {
     org: "ET BRAND EQUITY",
     logo: "ET",
-    title: "How ULearnSystems is reshaping corporate Agile training globally.",
+    title: "How Simplilead is reshaping corporate Agile training globally.",
     img: "/images/vendor/pexels/pexels-photo-1181406.jpeg",
     color: "text-[#E42E35]"
   },
   {
     org: "moneycontrol",
     logo: "mc",
-    title: "The rise of Micro-credentials: ULearnSystems leads the way in 2026.",
+    title: "The rise of Micro-credentials: Simplilead leads the way in 2026.",
     img: "/images/vendor/pexels/pexels-photo-3182773.jpeg",
     color: "text-green-700"
   },
   {
     org: "YOURSTORY",
     logo: "YS",
-    title: "From a startup to an enterprise learning giant: The ULearnSystems journey.",
+    title: "From a startup to an enterprise learning giant: The Simplilead journey.",
     img: "/images/vendor/pexels/pexels-photo-3184315.jpeg",
     color: "text-orange-600"
   }
 ];
 
 const ACCOLADES = [
-  { title: "Employee Choice Award", org: "ULearnSystems rated Top 3 in Tech Firms", logo: "cube-icon" },
-  { title: "Most Promising Brand", org: "ULearnSystems: Economic Times' Most Promising Brand 2022", logo: "ET" },
+  { title: "Employee Choice Award", org: "Simplilead rated Top 3 in Tech Firms", logo: "cube-icon" },
+  { title: "Most Promising Brand", org: "Simplilead: Economic Times' Most Promising Brand 2022", logo: "ET" },
   { title: "Ed Company of the Year", org: "uG won VC Circle Education Company of the Year, Feb 2022", logo: "VCCIRCLE" },
   { title: "BW Top Ed Award 2023", org: "uG wins BW Top Education Award 2023", logo: "BWEDUCATION" },
   { title: "Special Commendation", org: "uG's DS Program Special Commendation", logo: "H" },
@@ -159,7 +159,7 @@ export function AccoladesSection({ content }: { content?: any }) {
       {/* 1. Accolades Marquee */}
       <div className="py-20 border-b border-gray-100">
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">ULEARNSYSTEMS AWARDS AND RECOGNITION</div>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">SIMPLILEAD AWARDS AND RECOGNITION</div>
           <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight">{title}</h2>
         </div>
 
@@ -169,8 +169,8 @@ export function AccoladesSection({ content }: { content?: any }) {
       {/* 2. Spotlight Section */}
       <div className="py-20 pb-24 relative">
         <div className="mx-auto mb-16 max-w-4xl text-center px-4">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">ULEARNSYSTEMS NEWS AND INSIGHTS</div>
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-12">ULearnSystems in the Spotlight</h2>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">SIMPLILEAD NEWS AND INSIGHTS</div>
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-12">Simplilead in the Spotlight</h2>
           
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 max-w-4xl mx-auto">
              {LOGOS.map((logo, i) => (

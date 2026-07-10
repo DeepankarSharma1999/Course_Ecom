@@ -12,7 +12,7 @@ export function BenefitsSection() {
         {/* Header Section */}
         <div className="mx-auto mb-16 text-center max-w-2xl">
           <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">
-            Ulearnsystems' Unique Pedagogy
+            Simplilead' Unique Pedagogy
           </div>
           <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-4">
             Experience Immersive Learning
@@ -186,7 +186,7 @@ export function BenefitsSection() {
 
            <div className="relative z-10 flex-1 pl-4">
              <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-3">
-               Ulearnsystems' Prism
+               Simplilead' Prism
              </div>
              <h3 className="text-[26px] md:text-[28px] font-bold text-[#082032] mb-6 leading-tight">
                Get a Peek Into Our AI-Based Immersive Learning Platform

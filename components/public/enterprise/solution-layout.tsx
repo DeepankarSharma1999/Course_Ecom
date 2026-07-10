@@ -136,7 +136,7 @@ export function EnterpriseSolutionLayout({
         <div className="container-tight max-w-4xl mx-auto text-center">
           <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] mb-6 leading-tight">Ready to Transform Your Organization?</h2>
           <p className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto">
-            Partner with ULearnSystems to implement customized {category.toLowerCase()} that drive measurable business outcomes.
+            Partner with Simplilead to implement customized {category.toLowerCase()} that drive measurable business outcomes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/corporate-training" className="bg-[#082032] hover:bg-[#061a29] text-white rounded-lg px-8 py-4 font-bold transition-colors shadow-lg flex items-center justify-center text-lg">

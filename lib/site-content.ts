@@ -8,7 +8,7 @@ export type SiteSettings = NonNullable<Awaited<ReturnType<typeof getSiteSettings
 export type HomePageContent = NonNullable<Awaited<ReturnType<typeof getHomeContent>>>;
 
 const DEFAULT_SETTINGS = {
-  brandName: "ULearnSystems",
+  brandName: "Simplilead",
   tagline: "Training & Certifications",
   logoUrl: null,
   faviconUrl: null,
@@ -25,7 +25,7 @@ const DEFAULT_SETTINGS = {
     { name: "AXELOS" }, { name: "EXIN" }, { name: "PeopleCert" }, { name: "IIBA®" },
   ],
   socialLinks: { linkedin: "", twitter: "", facebook: "", instagram: "", youtube: "" },
-  footerAbout: "Ulearnsystems is a global certification training provider, helping 500,000+ professionals across 50+ countries advance their careers with globally accredited programs.",
+  footerAbout: "Simplilead is a global certification training provider, helping 500,000+ professionals across 50+ countries advance their careers with globally accredited programs.",
   footerColumns: [
     {
       title: "AGILE",
@@ -67,12 +67,12 @@ const DEFAULT_SETTINGS = {
       ],
     },
   ],
-  copyrightText: "© ULearnSystems. All rights reserved.",
+  copyrightText: "© Simplilead. All rights reserved.",
   announcementText: null,
   announcementLink: null,
   announcementEnabled: false,
-  defaultSeoTitle: "ULearnSystems - Training & Certifications",
-  defaultSeoDescription: "Ulearnsystems delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more.",
+  defaultSeoTitle: "Simplilead - Training & Certifications",
+  defaultSeoDescription: "Simplilead delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more.",
 };
 
 const DEFAULT_HOME = {
@@ -96,7 +96,7 @@ const DEFAULT_HOME = {
   categoriesSubtitle: "From individual certifications to enterprise transformation, find the right program for your career stage.",
   coursesBadge: "Most Popular",
   coursesTitle: "Bestselling Certification Courses",
-  whyUsBadge: "Why Ulearnsystems",
+  whyUsBadge: "Why Simplilead",
   whyUsTitle: "A Training Partner Built for Outcomes, Not Just Certificates",
   whyUsSubtitle: "We combine globally accredited curriculum, hands-on practitioner-led delivery, and modern learning experiences to ensure you don't just pass your exam — you actually apply what you learn at work.",
   whyUsImage: "/images/vendor/unsplash/photo-1522202176988-66273c2fd55f.jpg",
@@ -108,15 +108,15 @@ const DEFAULT_HOME = {
   ],
   testimonialsBadge: "Learner Stories",
   testimonialsTitle: "What Our Learners Say",
-  testimonialsSubtitle: "Real reviews from professionals who advanced their careers with Ulearnsystems.",
+  testimonialsSubtitle: "Real reviews from professionals who advanced their careers with Simplilead.",
   faqBadge: "FAQ",
   faqTitle: "Frequently Asked Questions",
   ctaTitle: "Ready to Advance Your Career?",
   ctaSubtitle: "Speak with a training advisor today. Get curated course recommendations, batch schedules and exclusive offers tailored to your goals.",
   ctaPrimaryText: "Enquire Now", ctaPrimaryLink: "/enquire",
   ctaSecondaryText: "Corporate Training", ctaSecondaryLink: "/corporate",
-  seoTitle: "ULearnSystems | Globally Accredited Certification Training", 
-  seoDescription: "Join 500,000+ professionals worldwide. Ulearnsystems offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management.",
+  seoTitle: "Simplilead | Globally Accredited Certification Training", 
+  seoDescription: "Join 500,000+ professionals worldwide. Simplilead offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management.",
 };
 
 const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
@@ -125,7 +125,7 @@ const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
     heroBadge: "For Enterprises",
     heroHeadline: "Upskill Your Teams With Globally Accredited Training",
     heroSubheading: "Custom curriculum, private group batches, bulk enrollments and dedicated success management for your enterprise.",
-    body: "Ulearnsystems partners with Fortune 500 enterprises and high-growth product companies to deliver world-class training programs at scale.\n\nWe combine accredited curriculum, practitioner-led delivery and modern learning experiences to ensure your teams don't just complete training — they apply it.\n\n**What we offer**\n- Private cohorts and custom curriculum\n- Bulk enrollment discounts (10+ learners)\n- Dedicated learning experience manager\n- Onsite, virtual or hybrid delivery\n- LMS access for 12 months\n- Detailed reporting and certification tracking",
+    body: "Simplilead partners with Fortune 500 enterprises and high-growth product companies to deliver world-class training programs at scale.\n\nWe combine accredited curriculum, practitioner-led delivery and modern learning experiences to ensure your teams don't just complete training — they apply it.\n\n**What we offer**\n- Private cohorts and custom curriculum\n- Bulk enrollment discounts (10+ learners)\n- Dedicated learning experience manager\n- Onsite, virtual or hybrid delivery\n- LMS access for 12 months\n- Detailed reporting and certification tracking",
     showLeadForm: true,
     leadFormTitle: "Request a Corporate Proposal",
     leadFormSubtitle: "Our enterprise team will respond within one business day.",
@@ -141,11 +141,11 @@ const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
     leadFormSubtitle: "Quick form — we'll do the rest.",
   },
   about: {
-    slug: "about", title: "About Ulearnsystems",
+    slug: "about", title: "About Simplilead",
     heroBadge: "About",
     heroHeadline: "Building Careers Through World-Class Training",
-    heroSubheading: "Ulearnsystems is a global training and certification provider, trusted by 500,000+ professionals and 1,000+ enterprises.",
-    body: "Founded with a mission to make globally accredited certification training accessible across geographies, Ulearnsystems partners with Scaled Agile, PMI, Scrum Alliance, AXELOS, EXIN and PeopleCert to deliver world-class programs in Agile, SAFe, DevOps, Project Management, IT Service Management, Quality, Cybersecurity and emerging tech.\n\n**Our mission** — give every professional an unfair career advantage through practitioner-led training, modern learning experiences and outcome-focused certification programs.\n\n**Why choose Ulearnsystems** — accredited training partners, only SPC/PMP-certified instructors, free retake policy, 24×7 learner support and a single point of contact through your learning journey.",
+    heroSubheading: "Simplilead is a global training and certification provider, trusted by 500,000+ professionals and 1,000+ enterprises.",
+    body: "Founded with a mission to make globally accredited certification training accessible across geographies, Simplilead partners with Scaled Agile, PMI, Scrum Alliance, AXELOS, EXIN and PeopleCert to deliver world-class programs in Agile, SAFe, DevOps, Project Management, IT Service Management, Quality, Cybersecurity and emerging tech.\n\n**Our mission** — give every professional an unfair career advantage through practitioner-led training, modern learning experiences and outcome-focused certification programs.\n\n**Why choose Simplilead** — accredited training partners, only SPC/PMP-certified instructors, free retake policy, 24×7 learner support and a single point of contact through your learning journey.",
     showLeadForm: false,
   },
 };

@@ -42,9 +42,9 @@ export function AdvantageSection({ course }: { course: CourseContent }) {
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100">
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
-        Why ULearnSystems for {isCSM ? "CSM" : course.shortTitle} Certification Training
+        Why Simplilead for {isCSM ? "CSM" : course.shortTitle} Certification Training
       </div>
-      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-10 break-words leading-tight">The ULearnSystems Advantage</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-10 break-words leading-tight">The Simplilead Advantage</h2>
       
       <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
         {advantages.map((item, i) => (

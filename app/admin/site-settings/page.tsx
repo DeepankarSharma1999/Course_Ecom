@@ -20,7 +20,7 @@ export default async function SiteSettingsPage({ searchParams }: { searchParams:
         {sp.saved && <div className="mb-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2 text-sm">Saved.</div>}
         <form action={saveSiteSettings} className="grid lg:grid-cols-2 gap-6">
           <Section title="Brand">
-            <Field label="Brand Name" required><Input name="brandName" defaultValue={s?.brandName ?? "Ulearnsystems"} required /></Field>
+            <Field label="Brand Name" required><Input name="brandName" defaultValue={s?.brandName ?? "Simplilead"} required /></Field>
             <Field label="Tagline"><Input name="tagline" defaultValue={s?.tagline ?? ""} /></Field>
             <Field label="Logo" hint="Saved under /public/uploads/ and committed with your repo">
               <ImageUploader name="logoUrl" kind="logo" defaultValue={s?.logoUrl ?? null} previewAspect="wide" />
