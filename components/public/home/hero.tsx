@@ -58,9 +58,6 @@ function TrustedCompanyCarousel() {
           <div aria-hidden="true">{companySet}</div>
         </div>
       </div>
-      <div className="mt-4 text-[13px] font-bold text-[#0a66c2] hover:underline cursor-pointer">
-        and 4,500+ companies across the globe
-      </div>
     </div>
   );
 }
@@ -78,47 +75,64 @@ export function HomeHero({ content }: { content?: any }) {
 
   return (
     <section className="relative overflow-hidden bg-white font-sans">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_20%,rgba(31,168,168,0.13),transparent_28%),linear-gradient(90deg,rgba(240,246,248,0.95),rgba(255,255,255,0)_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(20,102,92,0.07),transparent_32%),linear-gradient(180deg,#f7f9f9,rgba(255,255,255,0)_55%)] pointer-events-none" />
       <div className="container-tight relative grid items-center gap-12 pt-16 pb-12 md:pt-20 lg:grid-cols-[1fr_1fr] lg:pt-24 lg:pb-16 z-10">
 
         {/* LEFT COLUMN */}
         <div className="min-w-0 max-w-2xl text-left z-10">
-          <h1 className="max-w-[600px] text-[32px] md:text-[40px] font-bold leading-[1.15] tracking-tight text-[#082032] sm:text-[44px] lg:text-[48px] font-sans">
-            {headline} <span className="text-[#f97316]">{highlight}</span> {suffix}
+          {/* badge pill */}
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#e4efe9] pl-1.5 pr-4 py-1.5 mb-6">
+            <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm">
+              <Star className="w-3 h-3 fill-[#14665c] text-[#14665c]" />
+            </span>
+            <span className="text-[13px] font-semibold text-[#14665c]">{h.heroBadge || "Learn. Enhance. Adapt. Deliver."}</span>
+          </div>
+
+          <h1 className="max-w-[620px] text-[34px] md:text-[44px] font-extrabold leading-[1.12] tracking-tight text-[#0f1f2e] sm:text-[48px] lg:text-[54px] font-sans">
+            {headline} <span className="text-[#14665c]">{highlight}</span> {suffix}
           </h1>
 
-          <p className="mt-4 md:mt-6 max-w-[500px] text-[14px] md:text-[16px] leading-relaxed text-gray-600 font-medium">
+          <p className="mt-5 md:mt-6 max-w-[520px] text-[15px] md:text-[17px] leading-relaxed text-gray-500 font-normal">
             {subheading}
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link href={ctaPrimaryLink} className="btn-primary rounded text-center py-3.5 px-8">
-              {ctaPrimaryText}
+            <Link href={ctaPrimaryLink} className="rounded-lg bg-[#14665c] hover:bg-[#0f544c] text-white font-bold text-[15px] text-center py-3.5 px-8 flex items-center justify-center gap-2 transition-colors shadow-sm">
+              {ctaPrimaryText} <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href={ctaSecondaryLink} className="btn-outline rounded text-center py-3.5 px-8 flex items-center justify-center gap-2">
-              {ctaSecondaryText} <ArrowRight className="h-4 w-4" />
+            <Link href={ctaSecondaryLink} className="rounded-lg border-[1.5px] border-[#14665c] bg-white hover:bg-[#f2f8f6] text-[#14665c] font-bold text-[15px] text-center py-3.5 px-8 flex items-center justify-center gap-2 transition-colors">
+              {ctaSecondaryText} <Lucide.Users className="h-4 w-4" />
             </Link>
           </div>
 
           <TrustedCompanyCarousel />
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <div className="flex -space-x-3">
+          {/* shield trust line */}
+          <div className="mt-5 flex items-center gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-[#14665c] flex items-center justify-center shrink-0">
+              <Lucide.ShieldCheck className="w-3.5 h-3.5 text-white" />
+            </span>
+            <span className="text-[14px] font-medium text-gray-600">and 4,500+ companies across the globe</span>
+          </div>
+
+          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="flex -space-x-3 items-center">
               {learnerAvatars.map((src, i) => (
                 <img
                   key={src}
                   src={src}
                   alt=""
-                  className="h-10 w-10 rounded-full border-2 border-[#fafafa] object-cover shadow-sm"
-                  style={{ zIndex: 5 - i }}
+                  className="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm"
+                  style={{ zIndex: 6 - i }}
                 />
               ))}
+              <span className="h-11 w-11 rounded-full bg-[#14665c] border-2 border-white text-white text-[12px] font-bold flex items-center justify-center shadow-sm relative z-0">12K+</span>
             </div>
             <div className="flex flex-col text-left">
-              <div className="text-[12px] text-gray-500 font-medium">Rated by Learners</div>
-              <div className="flex items-center gap-1.5 text-[14px] font-bold text-[#082032]">
+              <div className="text-[13px] text-gray-500 font-medium">Rated by Learners</div>
+              <div className="flex items-center gap-1.5 text-[15px] font-bold text-[#0f1f2e]">
                 <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                4.8/5 <span className="font-normal text-gray-400 px-1">•</span> <span className="font-medium text-gray-500 text-[13px]">12,500+ Reviews</span>
+                4.8/5 <span className="font-normal text-gray-400 px-1">•</span> <span className="font-medium text-gray-500 text-[14px]">12,500+ Reviews</span>
               </div>
             </div>
           </div>
