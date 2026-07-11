@@ -11,8 +11,15 @@ const BRAND = "Simplilead";
 // Acronym = text inside the first (...) in the title, else null.
 const acronymOf = (title: string) => (title.match(/\(([^)]+)\)/)?.[1] ?? "").replace(/[®™℠]/g, "").trim() || null;
 // Plain name without the trailing "Certification Training"/"Training" noise.
-const baseNameOf = (s: string) =>
-  s.replace(/[®™℠]/g, "").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+(Certification Training|Certification|Training|Course)$/i, "").replace(/\s+/g, " ").trim();
+const baseNameOf = (s: string) => {
+  let x = s.replace(/[®™℠]/g, "").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+  for (;;) {
+    const n = x.replace(/\s+(Certification Training|Certification|Training|Course)$/i, "").trim();
+    if (n === x || !n) break;
+    x = n;
+  }
+  return x;
+};
 
 const ul = (items: string[]) => `<ul>${items.map((i) => `<li>${i}</li>`).join("")}</ul>`;
 

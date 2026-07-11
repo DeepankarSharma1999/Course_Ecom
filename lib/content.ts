@@ -39,8 +39,13 @@ function dbCourseToContent(c: any): CourseContent {
   let description = c.description;
   if (c.shortTitle && typeof description === "string") {
     const baked = baseNameOf(c.shortTitle);
-    const clean = baseNameOf(c.title);
-    if (baked && baked !== clean) description = description.split(baked).join(clean);
+    // Clean name must be fully de-suffixed (baseCourseTitle strips *stacked*
+    // suffixes) — baseNameOf alone leaves "X Certification Training" on titles
+    // like "X Certification Training Course", which would wrongly rewrite prose.
+    const clean = baseNameOf(baseCourseTitle(c.title));
+    if (baked && baked !== clean && description.includes(baked)) {
+      description = description.split(baked).join(clean);
+    }
   }
   return {
     slug: c.slug,
