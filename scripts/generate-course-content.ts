@@ -87,7 +87,7 @@ const hash = (s: string) => { let h = 0; for (let i = 0; i < s.length; i++) h = 
 
 // ---- Rich, category-aware generator for the long tail ------------------------
 function generate(c: { slug: string; title: string; shortTitle: string | null; categoryName: string }) {
-  const name = baseNameOf(c.shortTitle || c.title);
+  const name = baseNameOf(c.title);
   const acr = acronymOf(c.title);
   const label = acr ? `${name} (${acr})` : name;
   const p = profileFor(c.categoryName);
@@ -311,13 +311,13 @@ async function main() {
     const hasCurric = Array.isArray(c.curriculum) && c.curriculum.length > 0;
     if (!isStub(c.description) && hasCurric) { skipped++; continue; }
     const categoryName = c.category?.name ?? "Professional";
-    const name = baseNameOf(c.shortTitle || c.title);
+    const name = baseNameOf(c.title);
     const acr = acronymOf(c.title);
     const description = RICH[c.slug] ?? generate({ slug: c.slug, title: c.title, shortTitle: c.shortTitle, categoryName });
     if (RICH[c.slug]) rich++;
 
     const summary = `${name}${acr ? ` (${acr})` : ""} training at ${BRAND}: live, instructor-led ${categoryName.toLowerCase()} certification with hands-on practice, expert trainers and real-world application.`;
-    const seoTitle = `${c.shortTitle || c.title} | ${BRAND}`;
+    const seoTitle = `${c.title} | ${BRAND}`;
     const seoDescription = `Join ${name}${acr ? ` (${acr})` : ""} certification training at ${BRAND}. Live online classes, expert instructors, hands-on practice and full exam support. Enrol today.`;
     const seoKeywords = [name, acr, `${name} certification`, `${name} training`, `${name} course`, categoryName]
       .filter(Boolean).join(", ");

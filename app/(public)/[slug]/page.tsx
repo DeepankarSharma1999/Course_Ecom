@@ -5,7 +5,7 @@ import { CoursePageContent } from "@/components/course-page-content";
 import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { SITE } from "@/lib/utils";
+import { SITE, baseCourseTitle, composeCourseTitle } from "@/lib/utils";
 import { getAllCourses, getCourseBySlug, getCountryBySlug, getCityBySlug } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
@@ -24,12 +24,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const course = await getCourseBySlug(slug);
   if (course) {
+    // Compose from the full `title`; the stored seoTitle was built from the
+    // 50-char-truncated shortTitle (and already carries a brand suffix that the
+    // layout template would double).
+    const composed = composeCourseTitle(course.title);
     return {
-      title: course.seoTitle,
+      title: composed,
       description: course.seoDescription,
       keywords: course.seoKeywords,
       alternates: { canonical: `/${slug}` },
-      openGraph: { title: course.seoTitle, description: course.seoDescription, images: course.heroImage ? [course.heroImage] : [], url: `${SITE.url}/${slug}` },
+      openGraph: { title: `${composed} | ${SITE.name}`, description: course.seoDescription, images: course.heroImage ? [course.heroImage] : [], url: `${SITE.url}/${slug}` },
     };
   }
   const country = await getCountryBySlug(slug);
@@ -61,7 +65,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       breadcrumbJsonLd([
         { name: "Home", url: SITE.url },
         { name: course.category.name, url: `${SITE.url}/category/${course.category.slug}` },
-        { name: course.shortTitle, url: `${SITE.url}/${course.slug}` },
+        { name: baseCourseTitle(course.title), url: `${SITE.url}/${course.slug}` },
       ]),
     ];
     return (
@@ -71,7 +75,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         ))}
         <CoursePageContent course={course} currency={currency} currencies={currencyCfg.currencies} />
         <TrainerSection courseSlug={course.slug} />
-        <StickyCta courseTitle={course.shortTitle} priceLabel={course.basePriceUsd ? formatInCurrency(course.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
+        <StickyCta courseTitle={baseCourseTitle(course.title)} priceLabel={course.basePriceUsd ? formatInCurrency(course.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
       </>
     );
   }

@@ -76,7 +76,7 @@ export function HomeHero({ content }: { content?: any }) {
   return (
     <section className="relative overflow-hidden bg-white font-sans">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(20,102,92,0.07),transparent_32%),linear-gradient(180deg,#f7f9f9,rgba(255,255,255,0)_55%)] pointer-events-none" />
-      <div className="container-tight relative grid items-center gap-12 pt-16 pb-12 md:pt-20 lg:grid-cols-[1fr_1fr] lg:pt-24 lg:pb-16 z-10">
+      <div className="container-tight relative grid items-center gap-12 pt-8 pb-12 md:pt-10 lg:grid-cols-[1fr_1fr] lg:pt-12 lg:pb-16 z-10">
 
         {/* LEFT COLUMN */}
         <div className="min-w-0 max-w-2xl text-left z-10">
@@ -138,59 +138,20 @@ export function HomeHero({ content }: { content?: any }) {
           </div>
         </div>
 
-        {/* RIGHT COLUMN - arch-portrait collage with career cards */}
-        <div className="relative h-[620px] hidden lg:block z-0">
-
-          {/* dotted accent */}
-          <div className="absolute top-[6%] left-[8%] w-24 h-16 opacity-60 z-0"
-               style={{ backgroundImage: "radial-gradient(circle, #99c2bc 1.5px, transparent 1.5px)", backgroundSize: "14px 14px" }} />
-
-          {/* Top-centre: hijabi professional */}
-          <div className="absolute top-0 left-[26%] w-[215px] h-[300px] bg-[#dcede6] rounded-t-full overflow-hidden shadow-lg z-10">
-            <img src="/images/vendor/pexels/pexels-photo-10341448.jpeg" alt="" className="w-full h-full object-cover object-top" />
-          </div>
-          <div className="absolute top-[16%] left-[-4%] bg-white p-2.5 pr-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center gap-3 z-20">
-            <div className="w-10 h-10 rounded-xl bg-[#e0f2ef] flex items-center justify-center shrink-0">
-              <Lucide.BarChart3 className="w-5 h-5 text-[#0d7d74]" strokeWidth={2.5} />
-            </div>
-            <div>
-              <div className="text-[13px] font-bold text-[#082032] flex items-center gap-2">Data Analyst <Lucide.ArrowUpRight className="w-3.5 h-3.5 text-[#b8860b]" strokeWidth={3} /></div>
-              <div className="text-[11px] text-gray-500 font-medium mt-0.5">to <span className="text-[#0d7d74] font-bold">Data Engineer</span></div>
-            </div>
-          </div>
-
-          {/* Right: businessman in suit (Dubai skyline) */}
-          <div className="absolute top-[9%] right-0 w-[195px] h-[290px] bg-[#e8eef4] rounded-t-full overflow-hidden shadow-lg z-10">
-            <img src="/images/vendor/pexels/pexels-photo-3307862.jpeg" alt="" className="w-full h-full object-cover object-[center_30%]" />
-          </div>
-          <div className="absolute top-[56%] right-[-6%] bg-white p-2.5 pr-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center gap-3 z-20">
-            <div className="w-10 h-10 rounded-xl bg-[#e0f2ef] flex items-center justify-center shrink-0">
-              <Lucide.Cloud className="w-5 h-5 text-[#0d7d74]" strokeWidth={2.5} fill="currentColor" />
-            </div>
-            <div>
-              <div className="text-[13px] font-bold text-[#082032] flex items-center gap-2">Cloud Engineer <Lucide.ArrowUpRight className="w-3.5 h-3.5 text-[#0d7d74]" strokeWidth={3} /></div>
-              <div className="text-[11px] text-gray-500 font-medium mt-0.5">• <span className="text-[#0d7d74] font-bold">180% Salary Growth</span></div>
-            </div>
-          </div>
-
-          {/* Middle-left: Emirati man in kandura */}
-          <div className="absolute top-[36%] left-[2%] w-[185px] h-[270px] bg-[#f2e9db] rounded-t-full overflow-hidden shadow-lg z-10">
-            <img src="/images/vendor/pexels/pexels-photo-5416859.jpeg" alt="" className="w-full h-full object-cover object-top" />
-          </div>
-          <div className="absolute top-[76%] left-[-5%] bg-white p-2.5 pr-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex items-center gap-3 z-20">
-            <div className="w-10 h-10 rounded-xl bg-[#fdf3e0] flex items-center justify-center shrink-0">
-              <Lucide.Briefcase className="w-5 h-5 text-[#b8860b]" strokeWidth={2.5} />
-            </div>
-            <div>
-              <div className="text-[13px] font-bold text-[#082032] flex items-center gap-2">Project Coordinator <Lucide.ArrowUpRight className="w-3.5 h-3.5 text-[#b8860b]" strokeWidth={3} /></div>
-              <div className="text-[11px] text-gray-500 font-medium mt-0.5">to <span className="text-[#0d7d74] font-bold">Product Manager</span></div>
-            </div>
-          </div>
-
-          {/* Bottom-centre: businesswoman with laptop */}
-          <div className="absolute bottom-0 left-[36%] w-[205px] h-[280px] bg-[#dce9e4] rounded-t-full overflow-hidden shadow-lg z-10">
-            <img src="/images/vendor/pexels/pexels-photo-8424944.jpeg" alt="" className="w-full h-full object-cover object-top" />
-          </div>
+        {/* RIGHT COLUMN — single composed collage (people + arches + skyline + cards) */}
+        <div className="relative hidden lg:block">
+          <img
+            src="/Hero/hero-right-side.webp"
+            alt="Professionals who advanced their careers with Simplilead"
+            className="w-full h-auto max-w-[620px] ml-auto select-none"
+            style={{
+              // ponytail: CSS edge feather instead of re-exporting the image with a transparent bg
+              maskImage:
+                "linear-gradient(to bottom, transparent, black 8%, black 90%, transparent), linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+              WebkitMaskComposite: "source-in",
+              maskComposite: "intersect",
+            }}
+          />
         </div>
       </div>
 

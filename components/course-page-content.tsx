@@ -18,6 +18,7 @@ import { InstructorsSection } from "@/components/course-page/instructors-section
 import { CurriculumSection } from "@/components/course-page/curriculum-section";
 import { FaqSection } from "@/components/course-page/faq-section";
 import { isSectionHidden, type CourseSectionKey } from "@/lib/course-sections";
+import { baseCourseTitle } from "@/lib/utils";
 import { AdvisorBanner } from "@/components/course-page/advisor-banner";
 import { ArticlesSection } from "@/components/course-page/articles-section";
 import { SchedulesSection } from "@/components/course-page/schedules-section";
@@ -91,7 +92,9 @@ export function CoursePageContent({
 
   const show = (k: CourseSectionKey) => !isSectionHidden(course.hiddenSections, k);
 
-  const baseTitle = course.shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim();
+  // Derive from the full `title` — `shortTitle` was truncated to 50 chars at seed
+  // time ("...(PSM I) Certif"), so it can't be cleanly de-suffixed.
+  const baseTitle = baseCourseTitle(course.title);
   // Location for titles: city if we have one, else the country (country pages),
   // else nothing (bare /[course] page).
   const locationName = cityName ?? countryName;
@@ -129,7 +132,7 @@ export function CoursePageContent({
             {/* Left Content */}
             <div className="flex-1 max-w-3xl overflow-hidden">
               <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-3 break-words">
-                {course.shortTitle} CERTIFICATION TRAINING
+                {baseTitle} CERTIFICATION TRAINING
               </div>
 
               <h1 className="text-3xl md:text-[42px] font-bold leading-[1.2] mb-4 text-[#082032]">

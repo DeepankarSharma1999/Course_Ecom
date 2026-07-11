@@ -24,17 +24,17 @@ export const DEFAULT_PARTNER_LOGOS: PartnerLogo[] = [
 
 export const DEFAULT_BUSINESS_SECTORS: BusinessSector[] = [
   { name: "Cybersecurity", icon: "ShieldCheck" },
-  { name: "DevOps", icon: "Server" },
-  { name: "Artificial Intelligence", icon: "Cpu" },
+  { name: "DevOps", icon: "Infinity" },
+  { name: "Artificial Intelligence", icon: "BrainCircuit" },
   { name: "Cloud Computing", icon: "Cloud" },
-  { name: "Data Science", icon: "PieChart" },
-  { name: "Project Management", icon: "Briefcase" },
-  { name: "Others", icon: "Bookmark" },
-  { name: "CompTIA", icon: "Wifi" },
-  { name: "Machine Learning", icon: "Cpu" },
+  { name: "Data Science", icon: "BarChart3" },
+  { name: "Project Management", icon: "KanbanSquare" },
+  { name: "Others", icon: "LayoutGrid" },
+  { name: "CompTIA", icon: "BadgeCheck" },
+  { name: "Machine Learning", icon: "Bot" },
   { name: "Database", icon: "Database" },
-  { name: "Digital Marketing", icon: "LineChart" },
-  { name: "Software Testing", icon: "Code2" },
+  { name: "Digital Marketing", icon: "Megaphone" },
+  { name: "Software Testing", icon: "Bug" },
 ];
 
 export const DEFAULT_PEDAGOGY_STEPS: PedagogyStep[] = [

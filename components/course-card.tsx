@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Clock, Star, Award } from "lucide-react";
 import type { CourseContent } from "@/lib/seed-data";
 import { formatInCurrency, type CurrencyCode, type CurrencyConfig } from "@/lib/currency";
+import { composeCourseTitle } from "@/lib/utils";
 
 export function CourseCard({ course, country, city, currency = "USD", currencies }: { course: CourseContent; country?: string; city?: string; currency?: CurrencyCode; currencies?: CurrencyConfig[] }) {
   const href = [country, course.slug, city].filter(Boolean).join("/");
@@ -25,7 +26,7 @@ export function CourseCard({ course, country, city, currency = "USD", currencies
       </div>
       <div className="p-5 flex flex-col flex-1">
         <h3 className="font-semibold text-ink-900 leading-snug line-clamp-2 mb-2 group-hover:text-brand-600">
-          {course.shortTitle} Certification Training
+          {composeCourseTitle(course.title)}
         </h3>
         <div className="flex items-center gap-3 text-xs text-ink-500 mb-3">
           <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {course.durationLabel}</span>

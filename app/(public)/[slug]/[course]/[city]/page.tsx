@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // City must exist and belong to the country in the URL, else no useful metadata.
   if (!c || !ct || ct.country.slug !== slug) return {};
   const variant = await getCourseVariant(course, slug, city);
-  const base = baseCourseTitle(c.shortTitle);
+  const base = baseCourseTitle(c.title);
   const title = stripBrandSuffix(variant?.seoTitle) || composeCourseTitle(c.shortTitle, { city: ct.name });
   const description = variant?.seoDescription || `Become a certified ${base} in ${ct.name}. ${c.summary} Weekend & weekday batches available.`;
   return {
@@ -45,8 +45,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
     breadcrumbJsonLd([
       { name: "Home", url: SITE.url },
       { name: co.name, url: `${SITE.url}/${slug}` },
-      { name: baseCourseTitle(c.shortTitle), url: `${SITE.url}/${slug}/${course}` },
-      { name: `${baseCourseTitle(c.shortTitle)} in ${ct.name}`, url: `${SITE.url}/${slug}/${course}/${city}` },
+      { name: baseCourseTitle(c.title), url: `${SITE.url}/${slug}/${course}` },
+      { name: `${baseCourseTitle(c.title)} in ${ct.name}`, url: `${SITE.url}/${slug}/${course}/${city}` },
     ]),
   ];
 

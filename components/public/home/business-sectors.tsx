@@ -5,27 +5,19 @@ import {
 } from "lucide-react";
 import { DEFAULT_BUSINESS_SECTORS } from "@/lib/home-defaults";
 
-// Rotating accent colours so sectors stay visually varied regardless of count.
-const ACCENTS = [
-  { color: "text-blue-500", bg: "bg-blue-50" }, { color: "text-red-500", bg: "bg-red-50" },
-  { color: "text-green-500", bg: "bg-green-50" }, { color: "text-indigo-500", bg: "bg-indigo-50" },
-  { color: "text-amber-500", bg: "bg-amber-50" }, { color: "text-purple-500", bg: "bg-purple-50" },
-];
-
 type Domain = { name: string; icon: string };
 
 function MarqueeRow({ items, reverse = false }: { items: Domain[]; reverse?: boolean }) {
   const content = items.map((domain, i) => {
     const Icon = (Lucide as any)[domain.icon] || Bookmark;
-    const accent = ACCENTS[i % ACCENTS.length];
     return (
       <Link 
         key={domain.name + i} 
         href="/courses" 
         className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-3 pr-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all w-[260px] md:w-[240px] shrink-0"
       >
-        <div className={`w-12 h-12 rounded-full ${accent.bg} flex items-center justify-center shrink-0`}>
-          <Icon className={`w-5 h-5 ${accent.color}`} />
+        <div className="w-12 h-12 rounded-full bg-[#e4efe9] flex items-center justify-center shrink-0">
+          <Icon className="w-5 h-5 text-[#14665c]" />
         </div>
         <div>
           <div className="text-[14px] font-bold text-[#082032] mb-0.5">{domain.name}</div>
@@ -104,7 +96,7 @@ export function BusinessSectors({ content }: { content?: any }) {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
             <div className="flex items-center gap-4 border-r-0 md:border-r border-gray-100 last:border-0 pr-4">
-              <div className="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 bg-[#e4efe9] text-[#14665c] rounded-xl flex items-center justify-center shrink-0">
                 <UserCheck className="w-6 h-6" />
               </div>
               <div>
@@ -114,7 +106,7 @@ export function BusinessSectors({ content }: { content?: any }) {
             </div>
             
             <div className="flex items-center gap-4 border-r-0 md:border-r border-gray-100 last:border-0 pr-4 pl-0 md:pl-2">
-              <div className="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 bg-[#e4efe9] text-[#14665c] rounded-xl flex items-center justify-center shrink-0">
                 <CheckCircle className="w-6 h-6" />
               </div>
               <div>
@@ -124,7 +116,7 @@ export function BusinessSectors({ content }: { content?: any }) {
             </div>
 
             <div className="flex items-center gap-4 border-r-0 md:border-r border-gray-100 last:border-0 pr-4 pl-0 md:pl-2">
-              <div className="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 bg-[#e4efe9] text-[#14665c] rounded-xl flex items-center justify-center shrink-0">
                 <Briefcase className="w-6 h-6" />
               </div>
               <div>
@@ -134,7 +126,7 @@ export function BusinessSectors({ content }: { content?: any }) {
             </div>
 
             <div className="flex items-center gap-4 pr-4 pl-0 md:pl-2">
-              <div className="w-12 h-12 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 bg-[#e4efe9] text-[#14665c] rounded-xl flex items-center justify-center shrink-0">
                 <Users className="w-6 h-6" />
               </div>
               <div>

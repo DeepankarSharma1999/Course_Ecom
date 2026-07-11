@@ -48,14 +48,14 @@ export function TrainersSection() {
     <section className="section bg-white font-sans py-24 overflow-hidden">
       <div className="container-tight max-w-[1200px]">
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-[#4a7298] mb-4">Our Seasoned Support System</div>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-[#14665c] mb-4">Our Seasoned Support System</div>
           <h2 className="text-[32px] md:text-[40px] font-bold text-[#082032] tracking-tight mb-4">Learn from Experts Who've Been There and Done That</h2>
         </div>
 
         {/* Top Stats Bar */}
         <div className="mx-auto mb-16 max-w-5xl bg-white rounded-full border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] py-6 px-10 hidden md:flex items-center justify-between">
           <div className="flex items-center gap-4">
-             <div className="text-primary"><Award className="w-8 h-8" /></div>
+             <div className="text-[#14665c]"><Award className="w-8 h-8" /></div>
              <div>
                <div className="text-xl font-bold text-[#082032] leading-none mb-1">1,250+</div>
                <div className="text-[12px] text-gray-500 font-medium">Industry Experts</div>
@@ -63,7 +63,7 @@ export function TrainersSection() {
           </div>
           <div className="w-px h-10 bg-gray-200" />
           <div className="flex items-center gap-4">
-             <div className="text-red-500"><ShieldCheck className="w-8 h-8" /></div>
+             <div className="text-[#E23B3B]"><ShieldCheck className="w-8 h-8" /></div>
              <div>
                <div className="text-xl font-bold text-[#082032] leading-none mb-1">400+</div>
                <div className="text-[12px] text-gray-500 font-medium">Comprehensive Courses</div>
@@ -71,7 +71,7 @@ export function TrainersSection() {
           </div>
           <div className="w-px h-10 bg-gray-200" />
           <div className="flex items-center gap-4">
-             <div className="text-primary"><Check className="w-8 h-8" /></div>
+             <div className="text-[#14665c]"><Check className="w-8 h-8" /></div>
              <div>
                <div className="text-xl font-bold text-[#082032] leading-none mb-1">300+</div>
                <div className="text-[12px] text-gray-500 font-medium">Agile Transformations Facilitated</div>
@@ -79,7 +79,7 @@ export function TrainersSection() {
           </div>
           <div className="w-px h-10 bg-gray-200" />
           <div className="flex items-center gap-4">
-             <div className="text-red-500"><Globe className="w-8 h-8" /></div>
+             <div className="text-[#14665c]"><Globe className="w-8 h-8" /></div>
              <div>
                <div className="text-xl font-bold text-[#082032] leading-none mb-1">100+</div>
                <div className="text-[12px] text-gray-500 font-medium">Countries & Counting</div>
@@ -93,7 +93,7 @@ export function TrainersSection() {
             <div key={trainer.name} className={`w-[220px] shrink-0 rounded-t-3xl rounded-b-[110px] bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.06)] relative flex flex-col pt-8 pb-0 items-center overflow-hidden transition-transform hover:-translate-y-2 ${trainer.offset ? 'mt-12' : ''}`}>
                
                {/* Gradient Background */}
-               <div className={`absolute inset-0 z-0 opacity-80 ${trainer.color === 'yellow' ? 'bg-gradient-to-b from-white via-white to-[#fde047]' : 'bg-gradient-to-b from-white via-white to-[#86efac]'}`} />
+               <div className={`absolute inset-0 z-0 opacity-80 ${trainer.color === 'yellow' ? 'bg-gradient-to-b from-white via-white to-[#8fd0c2]' : 'bg-gradient-to-b from-white via-white to-[#f2b9b1]'}`} />
 
                <div className="text-center px-4 mb-4 relative z-10">
                  <h3 className="text-[16px] font-bold text-[#082032] mb-1.5 leading-tight">{trainer.name}</h3>

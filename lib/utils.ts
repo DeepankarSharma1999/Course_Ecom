@@ -29,7 +29,16 @@ export function stripBrandSuffix(title?: string | null) {
 }
 
 export function baseCourseTitle(shortTitle: string) {
-  return shortTitle.replace(/\s+(Certification Training|Certification|Training)$/i, "").trim();
+  // Strip trailing course-type words repeatedly — some titles stack them
+  // ("X Certification Training Course", "X Training") which a single pass leaves
+  // half-suffixed and callers then re-append "Certification Training" onto.
+  let s = shortTitle.trim();
+  for (;;) {
+    const next = s.replace(/\s+(Certification Training|Certification Course|Certification|Training|Course)$/i, "").trim();
+    if (next === s || !next) break;
+    s = next;
+  }
+  return s;
 }
 
 /**

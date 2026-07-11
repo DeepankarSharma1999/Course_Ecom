@@ -4,6 +4,7 @@
 import { cache } from "react";
 import { prisma } from "./prisma";
 import { resolveHeroImage } from "./course-images";
+import { baseCourseTitle } from "./utils";
 import {
   COURSES as RAW_STATIC_COURSES,
   CATEGORIES as STATIC_CATEGORIES,
@@ -18,17 +19,36 @@ export { STATIC_COUNTRIES as COUNTRIES, STATIC_CITIES as CITIES_IN };
 // Static fallback courses with per-course hero images (the seed data shares one image).
 const STATIC_COURSES: CourseContent[] = RAW_STATIC_COURSES.map((c) => ({
   ...c,
+  // Seed `shortTitle` was truncated to 50 chars; derive the clean base name
+  // from the full title so downstream sections never render "...Certif".
+  shortTitle: baseCourseTitle(c.title),
   heroImage: resolveHeroImage(c.heroImage, c.slug, c.category?.name),
 }));
 
+// Mirror of baseNameOf() in scripts/generate-course-content.ts — how the stored
+// `description` prose derived the course name it interpolates.
+const baseNameOf = (s: string) =>
+  s.replace(/[®™℠]/g, "").replace(/\s*\([^)]*\)\s*/g, " ")
+    .replace(/\s+(Certification Training|Certification|Training|Course)$/i, "")
+    .replace(/\s+/g, " ").trim();
+
 function dbCourseToContent(c: any): CourseContent {
+  // ponytail: heal descriptions generated from the 50-char-truncated shortTitle
+  // (e.g. "...Developer Certification Tra"). No-op once content is regenerated
+  // by the fixed scripts/generate-course-content.ts. Real fix: re-run db:deploy.
+  let description = c.description;
+  if (c.shortTitle && typeof description === "string") {
+    const baked = baseNameOf(c.shortTitle);
+    const clean = baseNameOf(c.title);
+    if (baked && baked !== clean) description = description.split(baked).join(clean);
+  }
   return {
     slug: c.slug,
     title: c.title,
-    shortTitle: c.shortTitle ?? c.title,
+    shortTitle: baseCourseTitle(c.title),
     subtitle: c.subtitle ?? "",
     summary: c.summary,
-    description: c.description,
+    description,
     category: c.category ? { slug: c.category.slug, name: c.category.name } : { slug: "", name: "" },
     durationLabel: c.durationLabel ?? "",
     level: c.level ?? "",
