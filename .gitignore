@@ -20,3 +20,4 @@ replace.js
 # Local editor / agent config
 .claude/
 .vscode/
+.env*

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/db-sync.js && next build",
+    "db:sync": "node scripts/db-sync.js",
     "db:deploy": "tsx scripts/db-ready.ts && prisma db push --skip-generate && tsx --env-file=.env prisma/seed.ts && tsx --env-file=.env scripts/generate-course-content.ts && tsx --env-file=.env scripts/seed-combos.ts",
     "start": "next start",
     "lint": "eslint .",

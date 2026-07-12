@@ -1,0 +1,82 @@
+// Runs before `next build` (see package.json "build") so every deployment
+// carries the schema plus one-time data migrations to whatever database the
+// environment points at. Every step is idempotent: safe on every build, and
+// none of them overwrite values an admin has since edited.
+// Skips silently when DATABASE_URL is absent (e.g. static preview builds).
+const { execSync } = require("child_process");
+
+if (!process.env.DATABASE_URL) {
+  console.log("db-sync: no DATABASE_URL — skipping.");
+  process.exit(0);
+}
+
+(async () => {
+  // 1. Schema.
+  execSync("npx prisma db push --skip-generate", { stdio: "inherit" });
+
+  const { PrismaClient } = require("@prisma/client");
+  const p = new PrismaClient();
+  const fs = require("fs");
+
+  // 2. Policy pages (script skips slugs that already exist).
+  await new Promise((res, rej) => {
+    try { execSync("node scripts/seed-policy-pages.js", { stdio: "inherit" }); res(); } catch (e) { rej(e); }
+  });
+
+  // 3. Real certification bodies — only while courses still carry the
+  //    original placeholder, so admin edits are never overwritten.
+  const placeholders = await p.course.count({ where: { accreditedBy: "Global Certification Body" } });
+  if (placeholders > 0) {
+    console.log(`db-sync: assigning certification bodies (${placeholders} placeholder courses)…`);
+    execSync("node scripts/assign-certificates.js", { stdio: "inherit" });
+  }
+
+  // 4. Cert-badge hero images (composed webps are committed in the repo).
+  //    Only replaces heroes that are still the generic pool / AI-generated ones.
+  const certHeroDir = "public/images/courses/cert-hero";
+  if (fs.existsSync(certHeroDir)) {
+    let set = 0;
+    for (const f of fs.readdirSync(certHeroDir)) {
+      const slug = f.replace(/\.webp$/, "");
+      const r = await p.course.updateMany({
+        where: {
+          slug,
+          OR: [
+            { heroImage: null },
+            { heroImage: { startsWith: "/images/vendor/unsplash/" } },
+            { heroImage: { startsWith: "/images/courses/a" } },
+            { heroImage: { startsWith: "/images/courses/media_" } },
+          ],
+        },
+        data: { heroImage: `/images/courses/cert-hero/${f}` },
+      });
+      set += r.count;
+    }
+    if (set) console.log(`db-sync: cert hero images set on ${set} courses.`);
+  }
+
+  // 5. Clear remaining AI-generated hero PNGs (curated photo map takes over).
+  const ai = await p.course.updateMany({
+    where: { OR: [{ heroImage: { startsWith: "/images/courses/ai_" } }, { heroImage: { startsWith: "/images/courses/agentic_" } }, { heroImage: { startsWith: "/images/courses/media_" } }] },
+    data: { heroImage: null },
+  });
+  if (ai.count) console.log(`db-sync: cleared ${ai.count} AI-generated heroes.`);
+
+  // 6. WhatsApp number — only migrates the old default, keeps admin edits.
+  const wa = await p.siteSettings.updateMany({
+    where: { whatsappNumber: "918047106633" },
+    data: { whatsappNumber: "971585232875" },
+  });
+  if (wa.count) console.log("db-sync: WhatsApp number migrated.");
+
+  // 7. Enrollments created before the pending/confirmed flow shipped
+  //    (2026-07-12) were instant enrollments — keep them visible.
+  const en = await p.enrollment.updateMany({
+    where: { status: "pending", createdAt: { lt: new Date("2026-07-12T00:00:00Z") } },
+    data: { status: "confirmed" },
+  });
+  if (en.count) console.log(`db-sync: confirmed ${en.count} pre-flow enrollments.`);
+
+  await p.$disconnect();
+  console.log("db-sync: done.");
+})().catch((e) => { console.error("db-sync failed:", e.message); process.exit(1); });
