@@ -2,8 +2,9 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCurrentLearner } from "@/lib/learner-auth";
 
-// Free enrollment: records the learner into the course. Paid checkout can
-// replace this later; the Enrollment row shape already carries priceUsd.
+// Course registration: records the learner's request as a *pending* enrollment.
+// An admin confirms participation (Admin > Registrations) before the course
+// shows up in the learner's dashboard. No payment gateway yet.
 export async function POST(req: Request) {
   const session = await getCurrentLearner();
   if (!session) return NextResponse.json({ error: "Please log in first." }, { status: 401 });
@@ -23,9 +24,12 @@ export async function POST(req: Request) {
 
   const enrollment = await prisma.enrollment.upsert({
     where: { learnerId_courseSlug: { learnerId: session.sub, courseSlug: course.slug } },
-    update: {},
-    create: { learnerId: session.sub, courseSlug: course.slug, courseTitle: course.title, priceUsd: 0 },
+    update: {}, // already registered: keep its current status
+    create: { learnerId: session.sub, courseSlug: course.slug, courseTitle: course.title, priceUsd: 0, status: "pending" },
   });
 
-  return NextResponse.json({ ok: true, enrollment: { courseSlug: enrollment.courseSlug, createdAt: enrollment.createdAt } });
+  return NextResponse.json({
+    ok: true,
+    enrollment: { courseSlug: enrollment.courseSlug, createdAt: enrollment.createdAt, status: enrollment.status },
+  });
 }

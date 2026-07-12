@@ -310,7 +310,7 @@ export function CoursePageContent({
           {show("demand") && <DemandSection course={course} />}
 
           {/* Schedules Table (Redesigned & Componentized) */}
-          {show("schedules") && <SchedulesSection schedules={schedules} currency={currency} />}
+          {show("schedules") && <SchedulesSection schedules={schedules} currency={currency} courseSlug={course.slug} />}
 
           {/* Advisor Banner */}
           <AdvisorBanner />
@@ -366,9 +366,9 @@ export function CoursePageContent({
                 </div>
               </div>
               
-              <a href="#enquire" className="w-full h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[14px]">
+              <Link href={`/register?course=${course.slug}`} className="w-full h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[14px]">
                 Enroll Now
-              </a>
+              </Link>
               <div className="text-center pt-1">
                 <a href="#schedules" className="text-[12px] font-bold text-[#1FA8A8] hover:underline flex items-center justify-center gap-1">View all Schedules <Lucide.ChevronRight className="w-3 h-3" /></a>
               </div>

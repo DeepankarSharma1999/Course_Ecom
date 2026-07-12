@@ -422,6 +422,21 @@ export async function bulkCreateSchedules(formData: FormData) {
   redirect(`/admin/schedules?added=${rows.length}`);
 }
 
+// =========== COURSE REGISTRATIONS ============
+// No payment gateway yet: learners register, an admin confirms participation,
+// and only confirmed enrollments show in the learner dashboard.
+export async function confirmEnrollment(id: string) {
+  await requireAdmin();
+  await prisma.enrollment.update({ where: { id }, data: { status: "confirmed" } });
+  redirect("/admin/registrations");
+}
+
+export async function deleteEnrollment(id: string) {
+  await requireAdmin();
+  await prisma.enrollment.delete({ where: { id } });
+  redirect("/admin/registrations");
+}
+
 export async function bulkDeleteSchedules(formData: FormData) {
   await requireAdmin();
   const ids = formData.getAll("ids").map(String).filter(Boolean);

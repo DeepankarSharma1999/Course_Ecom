@@ -16,7 +16,7 @@ type Schedule = {
   isFilling?: boolean;
 };
 
-export function SchedulesSection({ schedules }: { schedules: Schedule[], currency?: CurrencyCode }) {
+export function SchedulesSection({ schedules, courseSlug }: { schedules: Schedule[], currency?: CurrencyCode, courseSlug?: string }) {
   const { format } = usePricing();
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [quantities, setQuantities] = useState<Record<number, number>>({});
@@ -194,7 +194,7 @@ export function SchedulesSection({ schedules }: { schedules: Schedule[], currenc
                 <div className="text-[10px] lg:text-[11px] text-gray-500 mb-3 lg:mb-4">
                   As low as {format(s.priceUsd * qty * 0.1)}/month <Info className="w-3 h-3 inline" />
                 </div>
-                <a href="#enquire" className="w-full h-9 lg:h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[13px] lg:text-[14px]">
+                <a href={courseSlug ? `/register?course=${courseSlug}` : "#enquire"} className="w-full h-9 lg:h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[13px] lg:text-[14px]">
                   Enroll Now
                 </a>
               </div>

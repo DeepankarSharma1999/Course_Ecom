@@ -371,13 +371,6 @@ export function SiteHeader({
             </button>
           )}
 
-          <button aria-label="Cart (0 items)" className="relative grid h-11 w-11 place-items-center text-foreground/80 hover:text-primary transition-colors bg-secondary rounded-full lg:hidden">
-            <Lucide.ShoppingCart className="w-5 h-5" />
-            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-              0
-            </span>
-          </button>
-
           <button aria-label="Open menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)} className="lg:hidden grid h-11 w-11 place-items-center text-foreground/80 hover:text-primary bg-secondary rounded-full">
             <Menu className="w-5 h-5" />
           </button>

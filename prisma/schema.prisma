@@ -364,6 +364,7 @@ model Enrollment {
   courseSlug  String
   courseTitle String
   priceUsd    Int      @default(0) // 0 = free enrollment
+  status      String   @default("pending") // "pending" (awaiting admin confirmation) | "confirmed"
   createdAt   DateTime @default(now())
 
   @@unique([learnerId, courseSlug])

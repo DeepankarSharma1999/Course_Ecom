@@ -13,11 +13,11 @@ export default async function LearnerCoursePage({ params }: { params: Promise<{ 
 
   const { slug } = await params;
 
-  // Must be enrolled to see the classroom (the meeting link is learner-only).
+  // Must be enrolled AND admin-confirmed to see the classroom (the meeting link is learner-only).
   const enrollment = await prisma.enrollment.findUnique({
     where: { learnerId_courseSlug: { learnerId: learner.sub, courseSlug: slug } },
   });
-  if (!enrollment) redirect("/home/lms");
+  if (!enrollment || enrollment.status !== "confirmed") redirect("/home/lms");
 
   const course = await prisma.course.findUnique({
     where: { slug },

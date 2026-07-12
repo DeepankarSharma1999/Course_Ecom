@@ -11,8 +11,9 @@ export default async function LmsPage() {
   const learner = await getCurrentLearner();
   if (!learner) redirect("/");
 
+  // Only admin-confirmed registrations unlock course content.
   const enrollments = await prisma.enrollment.findMany({
-    where: { learnerId: learner.sub },
+    where: { learnerId: learner.sub, status: "confirmed" },
     orderBy: { createdAt: "desc" },
   });
 
