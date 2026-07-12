@@ -357,11 +357,11 @@ export async function createSchedule(courseId: string, formData: FormData) {
 
 // Generate a recurring set of schedules across many courses in one go.
 // Cadence: `count` batches, each `intervalDays` apart, starting `startDate`,
-// each running `durationDays`. Scope: all published courses, or one category.
+// each running `durationDays`. Scope: the selected courses, or every published course.
 export async function bulkCreateSchedules(formData: FormData) {
   await requireAdmin();
 
-  const categorySlug = toStr(formData.get("categorySlug")); // empty => all courses
+  const selectedCourseIds = formData.getAll("courseIds").map(String).filter(Boolean); // empty => all courses
   const count = Math.min(Math.max(toInt(formData.get("count")) ?? 4, 1), 52);
   const intervalDays = Math.max(toInt(formData.get("intervalDays")) ?? 7, 1);
   const durationDays = Math.max(toInt(formData.get("durationDays")) ?? 2, 1);
@@ -383,7 +383,7 @@ export async function bulkCreateSchedules(formData: FormData) {
   const replaceFuture = toBool(formData.get("replaceFuture"));
 
   const courses = await prisma.course.findMany({
-    where: { isPublished: true, ...(categorySlug ? { category: { slug: categorySlug } } : {}) },
+    where: { isPublished: true, ...(selectedCourseIds.length ? { id: { in: selectedCourseIds } } : {}) },
     select: { id: true },
   });
   const courseIds = courses.map((c) => c.id);
@@ -420,6 +420,14 @@ export async function bulkCreateSchedules(formData: FormData) {
   await prisma.schedule.createMany({ data: rows });
   revalidatePublic();
   redirect(`/admin/schedules?added=${rows.length}`);
+}
+
+export async function bulkDeleteSchedules(formData: FormData) {
+  await requireAdmin();
+  const ids = formData.getAll("ids").map(String).filter(Boolean);
+  if (ids.length) await prisma.schedule.deleteMany({ where: { id: { in: ids } } });
+  revalidatePublic();
+  redirect("/admin/schedules");
 }
 
 export async function deleteSchedule(id: string, courseId: string) {

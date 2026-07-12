@@ -7,7 +7,17 @@ export const dynamic = "force-dynamic";
 
 export default async function BulkSchedulesPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
-  const categories = await prisma.category.findMany({ orderBy: { order: "asc" }, select: { slug: true, name: true } });
+  const courses = await prisma.course.findMany({
+    where: { isPublished: true },
+    orderBy: [{ category: { order: "asc" } }, { title: "asc" }],
+    select: { id: true, title: true, category: { select: { name: true } } },
+  });
+  const byCategory = new Map<string, typeof courses>();
+  for (const c of courses) {
+    const key = c.category?.name ?? "Uncategorised";
+    if (!byCategory.has(key)) byCategory.set(key, []);
+    byCategory.get(key)!.push(c);
+  }
   const today = new Date().toISOString().slice(0, 10);
 
   return (
@@ -19,10 +29,13 @@ export default async function BulkSchedulesPage({ searchParams }: { searchParams
 
         <form action={bulkCreateSchedules} className="space-y-6">
           <Section title="Scope">
-            <Field label="Courses" hint="Apply to every published course, or just one category.">
-              <Select name="categorySlug" defaultValue="">
-                <option value="">All courses</option>
-                {categories.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
+            <Field label="Courses" hint="Ctrl/Cmd-click to pick multiple courses across categories. Leave empty to apply to every published course.">
+              <Select name="courseIds" multiple size={14}>
+                {[...byCategory].map(([cat, list]) => (
+                  <optgroup key={cat} label={cat}>
+                    {list.map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
+                  </optgroup>
+                ))}
               </Select>
             </Field>
           </Section>
