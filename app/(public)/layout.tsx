@@ -12,6 +12,7 @@ import { getPageContent } from "@/lib/page-content";
 import Link from "next/link";
 
 import { AuthModal } from "@/components/auth-modal";
+import { CookieConsent } from "@/components/cookie-consent";
 
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
   const [currency, currencyCfg, settings, categories, courses, nav] = await Promise.all([
@@ -72,6 +73,7 @@ export default async function PublicLayout({ children }: { children: React.React
       <FloatingWhatsApp phone={settings.whatsappNumber} message={`Hi ${settings.brandName} team, I'd like to know more about your courses.`} />
       <LiveChatWidget />
       <AuthModal />
+      <CookieConsent />
     </PricingProvider>
   );
 }

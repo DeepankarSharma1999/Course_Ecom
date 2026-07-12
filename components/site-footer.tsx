@@ -6,6 +6,7 @@ import { FooterCountrySelect } from "@/components/footer-country-select";
 import { CATEGORIES } from "@/lib/seed-data";
 import { getSiteSettings } from "@/lib/site-content";
 import { DEFAULT_FOOTER_COLUMNS, type FooterColumn } from "@/lib/footer-defaults";
+import { FooterAccordion, ReadMore } from "@/components/footer-collapsible";
 
 const CONTACT_NUMBERS = [
   { country: "USA", flag: "🇺🇸", number: "+1-469-442-0620\n+1-832-684-0080" },
@@ -104,36 +105,46 @@ export async function SiteFooter() {
 
         <div className="mt-16 border-t border-brand-100/50 pt-10">
            <div className="mb-8">
-              <h3 className="font-bold text-brand-950 text-[15px] mb-4">Top Categories</h3>
-              <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
-                 {categories.slice(0, 15).map((cat, i, arr) => (
-                    <React.Fragment key={cat.slug}>
-                       <Link href={`/category/${cat.slug}`} className="hover:text-brand-600 transition-colors whitespace-nowrap">{cat.name}</Link>
-                       {i < arr.length - 1 && <span className="mx-3 text-brand-200">|</span>}
-                    </React.Fragment>
-                 ))}
-              </div>
+              <FooterAccordion title="Top Categories">
+                 <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
+                    {categories.slice(0, 15).map((cat, i, arr) => (
+                       <React.Fragment key={cat.slug}>
+                          <Link href={`/category/${cat.slug}`} className="hover:text-brand-600 transition-colors whitespace-nowrap">{cat.name}</Link>
+                          {i < arr.length - 1 && <span className="mx-3 text-brand-200">|</span>}
+                       </React.Fragment>
+                    ))}
+                 </div>
+              </FooterAccordion>
            </div>
            <div className="mb-10">
-              <h3 className="font-bold text-brand-950 text-[15px] mb-4">Top Courses</h3>
-              <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
-                 {courses.slice(0, 40).map((course, i, arr) => (
-                    <React.Fragment key={course.slug}>
-                       <Link href={`/${course.slug}`} className="hover:text-brand-600 transition-colors whitespace-nowrap">{course.shortTitle || course.title}</Link>
-                       {i < arr.length - 1 && <span className="mx-3 text-brand-200">|</span>}
-                    </React.Fragment>
-                 ))}
-              </div>
+              <FooterAccordion title="Top Courses">
+                 <div className="flex flex-wrap items-center text-[13px] text-brand-700 leading-8">
+                    {courses.slice(0, 40).map((course, i, arr) => (
+                       <React.Fragment key={course.slug}>
+                          <Link href={`/${course.slug}`} className="hover:text-brand-600 transition-colors whitespace-nowrap">{course.shortTitle || course.title}</Link>
+                          {i < arr.length - 1 && <span className="mx-3 text-brand-200">|</span>}
+                       </React.Fragment>
+                    ))}
+                 </div>
+              </FooterAccordion>
            </div>
 
-           <div className="text-[11px] text-gray-400 text-center leading-[1.8] max-w-7xl mx-auto space-y-4">
+           <div className="text-[11px] text-gray-400 text-center leading-[1.8] max-w-7xl mx-auto">
+              <ReadMore collapsedHeight={110}>
+              <div className="space-y-4">
               <p>Disclaimer: The content on the website and/or Platform is for informational and educational purposes only. The user of this website and/or Platform (User) should not construe any such information as legal, investment, tax, financial or any other advice. Nothing contained herein constitutes any representation, solicitation, recommendation, promotion or advertisement on behalf of Simplilead and / or its Affiliates (including but not limited to its subsidiaries, associates, employees, directors, key managerial personnel, consultants, trainers, advisors).</p>
-              <p>The User is solely responsible for evaluating the merits and risks associated with use of the information included as part of the content. The User agrees and covenants not to hold Simplilead and its Affiliates responsible for any and all losses or damages arising from such decision made by them basis the information provided in the course and / or available on the website and/or platform. Simplilead reserves the right to cancel or reschedule events in case of insufficient registrations, or if presenters cannot attend due to unforeseen circumstances. You are therefore advised to consult a Simplilead agent prior to making any travel arrangements for a workshop. For more details, please refer to the <Link href="/info/cancellation-and-refund-policy" className="text-primary hover:underline">Cancellation & Refund Policy</Link>.</p>
+              <p>The User is solely responsible for evaluating the merits and risks associated with use of the information included as part of the content. The User agrees and covenants not to hold Simplilead and its Affiliates responsible for any and all losses or damages arising from such decision made by them basis the information provided in the course and / or available on the website and/or platform. Simplilead reserves the right to cancel or reschedule events in case of insufficient registrations, or if presenters cannot attend due to unforeseen circumstances. You are therefore advised to consult a Simplilead agent prior to making any travel arrangements for a workshop. For more details, please refer to the <Link href="/cancellation-policy" className="text-primary hover:underline">Cancellation Policy</Link> and <Link href="/refund-policy" className="text-primary hover:underline">Refund Policy</Link>.</p>
               <p>CSM®, CSPO®, CSD®, CSP®, A-CSPO®, A-CSM® are registered trademarks of Scrum Alliance®. Simplilead Private Limited is a Licensed Training Partner (LTP) of Scrum Alliance®. PMP is a registered mark of the Project Management Institute, Inc. CAPM is a registered mark of the Project Management Institute, Inc. PMI-ACP is a registered mark of the Project Management Institute, Inc. PMI-RMP is a registered mark of the Project Management Institute, Inc. PMI-PBA is a registered mark of the Project Management Institute, Inc. PgMP is a registered mark of the Project Management Institute, Inc. PfMP is a registered mark of the Project Management Institute, Inc. Simplilead Private Limited is a Premier Authorized Training Partner (ATP) of Project Management Institute, Inc. The PMI Premier Authorized Training Partner logo is a registered mark of the Project Management Institute, Inc. PMBOK is a registered mark of the Project Management Institute, Inc. ITIL®, PRINCE2®, PRINCE2 Agile®, AgileSHIFT® are registered trademarks of AXELOS Limited, used under permission of AXELOS Limited. All rights reserved. COBIT® is a registered trademark of the Information Systems Audit and Control Association® (ISACA®). (ISC)2® is a registered trademark of International Information Systems Security Certification Consortium, Inc. CompTIA Authorized Training Partner. CMMI® is registered in the U.S. Patent and Trademark Office by Carnegie Mellon University. FRM®, GARP™, and Global Association of Risk Professionals™ are trademarks owned by the Global Association of Risk Professionals, Inc. Global Association of Risk Professionals, Inc. (GARP™) does not endorse, promote, review, or warrant the accuracy of the products or services offered by Simplilead Private Limited for FRM® related information, nor does it endorse any pass rates claimed by the provider. Further, GARP is not responsible for any fees or costs paid by the user. IIBA®, the IIBA® logo, BABOK®, and Business Analysis Body of Knowledge® are registered trademarks owned by the International Institute of Business Analysis. Simplilead Private Limited is an Endorsed Education Provider of IIBA®. Scaled Agile Framework® and SAFe® are registered trademarks of Scaled Agile, Inc.® Simplilead Private Limited is a Platinum SPCT Partner of Scaled Agile, Inc.® Simplilead Private Limited is an Authorized Training Partner of CertNexus. Simplilead Private Limited is a Microsoft Partner. Simplilead Private Limited is an AWS Training Partner (ATP). Simplilead Private Limited is an ICAgile Member Training Organization. Simplilead Private Limited is a Professional Training Network member of scrum.org. Simplilead Private Limited is an Accredited Examination Centre of IASSC. Simplilead Private Limited is a Registered Education Partner (REP) of the DevOps Institute (DOI). Simplilead Private Limited is an ATO of PeopleCert. Simplilead Private Limited is an Authorized Training Partner (ATP) and Accredited Training Center (ATC) of the EC-Council.</p>
+              </div>
+              </ReadMore>
            </div>
            
-           <div className="mt-8 pt-6 border-t border-brand-100/50 text-center text-xs text-brand-600/70 flex items-center justify-center gap-2">
-              <Link href="/info/privacy-policy-and-disclaimer" className="hover:text-brand-600 transition-colors underline underline-offset-2">Our Privacy Policy</Link>
+           <div className="mt-8 pt-6 border-t border-brand-100/50 text-center text-xs text-brand-600/70 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+              <Link href="/about" className="hover:text-brand-600 transition-colors underline underline-offset-2">About Us</Link>
+              <Link href="/info/privacy-policy-and-disclaimer" className="hover:text-brand-600 transition-colors underline underline-offset-2">Privacy Policy</Link>
+              <Link href="/refund-policy" className="hover:text-brand-600 transition-colors underline underline-offset-2">Refund Policy</Link>
+              <Link href="/cancellation-policy" className="hover:text-brand-600 transition-colors underline underline-offset-2">Cancellation Policy</Link>
+              <Link href="/cookies-policy" className="hover:text-brand-600 transition-colors underline underline-offset-2">Cookies Policy</Link>
               <span>{settings.copyrightText || `© 2011-${new Date().getFullYear()}, Simplilead Private Limited. All Rights Reserved`}</span>
            </div>
         </div>

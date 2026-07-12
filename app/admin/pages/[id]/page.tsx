@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { updatePage } from "@/lib/page-actions";
 import { ArrowLeft, Save } from "lucide-react";
 import Link from "next/link";
+import { RichTextEditor } from "@/components/admin/rich-text-editor";
 
 export const dynamic = "force-dynamic";
 
@@ -83,14 +84,8 @@ export default async function EditPage({ params }: { params: Promise<{ id: strin
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-ink-900 mb-1.5">Page Content (HTML/Markdown support can be added later)</label>
-            <textarea 
-              name="content" 
-              defaultValue={page.content} 
-              rows={15}
-              className="w-full px-4 py-3 border border-ink-200 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none font-mono text-sm"
-              placeholder="<h1>Your page content...</h1>"
-            ></textarea>
+            <label className="block text-sm font-bold text-ink-900 mb-1.5">Page Content</label>
+            <RichTextEditor name="content" defaultValue={page.content} minHeight={380} />
           </div>
 
           <div className="flex justify-end pt-4 border-t border-ink-100">

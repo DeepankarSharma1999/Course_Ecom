@@ -87,7 +87,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <>
         <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
           <div className="container-tight py-14">
-            <div className="text-sm text-brand-200 mb-2">Country</div>
             <h1 className="text-4xl md:text-5xl font-bold mb-3">Certification Training in {country.name}</h1>
             <p className="text-brand-100 text-lg max-w-2xl">Live online & classroom certification training across {country.name}.</p>
           </div>
@@ -112,7 +111,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <>
         <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
           <div className="container-tight py-14">
-            <div className="text-sm text-brand-200 mb-2">City · {city.country.name}</div>
             <h1 className="text-4xl md:text-5xl font-bold mb-3">Certification Training in {city.name}</h1>
             <p className="text-brand-100 text-lg max-w-2xl">Live online & classroom certification training in {city.name}, {city.country.name}.</p>
           </div>

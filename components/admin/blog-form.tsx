@@ -1,4 +1,5 @@
 import { Checkbox, Field, Input, Section, Textarea } from "@/components/admin/ui";
+import { RichTextEditor } from "@/components/admin/rich-text-editor";
 import { saveBlog } from "@/lib/admin-actions";
 
 type BlogValues = {
@@ -17,7 +18,7 @@ export function BlogForm({ id, b }: { id: string | null; b?: BlogValues }) {
           <Field label="Read time (minutes)"><Input type="number" name="readMins" defaultValue={b?.readMins ?? ""} /></Field>
         </div>
         <Field label="Excerpt (card description)"><Textarea name="excerpt" rows={3} defaultValue={b?.excerpt ?? ""} /></Field>
-        <Field label="Content (HTML)" required><Textarea name="content" rows={16} defaultValue={b?.content} required placeholder="<p>Write the article body as HTML…</p>" /></Field>
+        <Field label="Content"><RichTextEditor name="content" defaultValue={b?.content ?? ""} minHeight={380} /></Field>
         <div className="py-2"><Checkbox name="isPublished" label="Published" defaultChecked={b?.isPublished ?? true} /></div>
         <button className="btn-primary w-full">Save Blog</button>
       </Section>

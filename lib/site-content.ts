@@ -14,7 +14,7 @@ const DEFAULT_SETTINGS = {
   faviconUrl: null,
   phone: "+91 80 4710 6633",
   email: "info@course-ecom.com",
-  whatsappNumber: "918047106633",
+  whatsappNumber: "971585232875",
   address: null,
   topBarMessages: [
     "Globally accredited certification training",
