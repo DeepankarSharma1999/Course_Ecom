@@ -121,10 +121,23 @@ export async function getCourseVariant(courseSlug: string, countrySlug: string, 
 export async function getCategories() {
   try {
     const rows = await prisma.category.findMany({ orderBy: { order: "asc" } });
-    if (rows.length === 0) return STATIC_CATEGORIES;
-    return rows.map((c) => ({ slug: c.slug, name: c.name, tagline: c.tagline ?? "", icon: c.icon ?? "" }));
+    if (rows.length === 0) return STATIC_CATEGORIES.map((c) => ({ ...c, image: "" }));
+    // ponytail: image fetched via raw SQL — the running Prisma client may predate
+    // the Category.image column; the raw read works either way.
+    let images = new Map<string, string | null>();
+    try {
+      const r = await prisma.$queryRaw<{ slug: string; image: string | null }[]>`SELECT "slug", "image" FROM "Category"`;
+      images = new Map(r.map((x) => [x.slug, x.image]));
+    } catch { /* column not migrated yet */ }
+    return rows.map((c) => ({
+      slug: c.slug,
+      name: c.name,
+      tagline: c.tagline ?? "",
+      icon: c.icon ?? "",
+      image: images.get(c.slug) ?? (c as any).image ?? "",
+    }));
   } catch {
-    return STATIC_CATEGORIES;
+    return STATIC_CATEGORIES.map((c) => ({ ...c, image: "" }));
   }
 }
 

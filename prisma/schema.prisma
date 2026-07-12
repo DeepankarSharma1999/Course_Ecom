@@ -17,6 +17,7 @@ model Category {
   name      String
   tagline   String?
   icon      String?
+  image     String?  // banner image URL for the public category page
   order     Int      @default(0)
   courses   Course[]
   createdAt DateTime @default(now())

@@ -538,6 +538,12 @@ export async function saveCategory(id: string | null, formData: FormData) {
   };
   if (id) await prisma.category.update({ where: { id }, data });
   else await prisma.category.create({ data });
+  // ponytail: image via raw SQL — the running Prisma client may predate the
+  // Category.image column. Harmless (1 extra query) once the client is regenerated.
+  try {
+    const image = toStr(formData.get("image"));
+    await prisma.$executeRaw`UPDATE "Category" SET "image" = ${image} WHERE "slug" = ${data.slug}`;
+  } catch { /* column not migrated yet — image simply not persisted */ }
   revalidatePublic();
   redirect("/admin/categories");
 }

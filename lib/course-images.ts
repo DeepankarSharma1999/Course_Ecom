@@ -77,6 +77,12 @@ function hash(s: string): number {
  * Returns a stable hero image for a course. Keeps a genuinely custom image;
  * replaces an empty value or the old shared placeholder with a topic-matched one.
  */
+/** Topic-matched banner image for a category page (name+slug drive the theme). */
+export function categoryHeroImage(slug: string, name?: string): string {
+  const pool = THEMES[themeFor(`${name ?? ""} ${slug}`)];
+  return pool[hash(slug) % pool.length];
+}
+
 export function resolveHeroImage(current: string | null | undefined, slug: string, category?: string): string {
   // Keep a genuinely custom image (e.g. the bespoke course PNGs); ignore the old shared
   // placeholder and any prior theme-pool path so the curated per-course map can take over.

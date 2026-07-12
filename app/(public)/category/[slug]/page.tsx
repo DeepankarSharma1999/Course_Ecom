@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllCourses, getCategories } from "@/lib/content";
+import { categoryHeroImage } from "@/lib/course-images";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { CourseCard } from "@/components/course-card";
 
@@ -31,14 +32,21 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const courses = all.filter((c) => c.category.slug === cat.slug);
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary to-[#0f6b6b] text-white">
-        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white/10 blur-3xl rounded-full opacity-50 pointer-events-none"></div>
+      <section className="relative overflow-hidden bg-[#0c4f47] text-white">
+        {/* Category-related photo, dimmed under a teal brand wash so text stays readable */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={cat.image || categoryHeroImage(cat.slug, cat.name)} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c4f47] via-[#0f5d53]/90 to-[#14665c]/45" />
+        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white/10 blur-3xl rounded-full opacity-50 pointer-events-none" />
         <div className="container-tight py-16 lg:py-20 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-medium mb-6">
             Category
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-4">{cat.name}</h1>
           <p className="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed">{cat.tagline}</p>
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold">
+            {courses.length} course{courses.length === 1 ? "" : "s"}
+          </div>
         </div>
       </section>
       <section className="section">
