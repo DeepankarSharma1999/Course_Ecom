@@ -11,12 +11,28 @@ if (!process.env.DATABASE_URL) {
 }
 
 (async () => {
-  // 1. Schema.
-  execSync("npx prisma db push --skip-generate", { stdio: "inherit" });
-
   const { PrismaClient } = require("@prisma/client");
   const p = new PrismaClient();
   const fs = require("fs");
+
+  // Serverless Postgres (e.g. Neon) autosuspends: wake it with a trivial query,
+  // retrying while the compute spins up.
+  for (let i = 1; ; i++) {
+    try { await p.$queryRaw`SELECT 1`; break; }
+    catch (e) {
+      if (i >= 6) throw e;
+      console.log(`db-sync: database not awake yet (attempt ${i}), retrying…`);
+      await new Promise((r) => setTimeout(r, 5000));
+    }
+  }
+
+  // 1. Schema. `db push` needs a direct connection — Neon's pgbouncer pooler
+  // (host contains "-pooler") doesn't support it, so strip the suffix.
+  const directUrl = process.env.DATABASE_URL.replace("-pooler.", ".");
+  execSync("npx prisma db push --skip-generate", {
+    stdio: "inherit",
+    env: { ...process.env, DATABASE_URL: directUrl },
+  });
 
   // 2. Policy pages (script skips slugs that already exist).
   await new Promise((res, rej) => {
