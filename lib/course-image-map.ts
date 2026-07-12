@@ -90,10 +90,10 @@ export const COURSE_IMAGE_MAP: Record<string, string> = {
   "gen-ai-for-business-analysts": "/images/vendor/unsplash/photo-1677442136019-21780ecad995.jpg",
   "gen-ai-for-enterprise-agilist": "/images/vendor/unsplash/photo-1677756119517-756a188d2d94.jpg",
   "gen-ai-for-product-owners": "/images/vendor/unsplash/photo-1542744173-8e7e53415bb0.jpg",
-  "gen-ai-for-project-managers": "/images/vendor/unsplash/photo-1560250097-0b93528c311a.jpg",
+  "gen-ai-for-project-managers": "/images/vendor/unsplash/photo-1454165804606-c3d57bc86b40.jpg", // landscape: portrait shots crop badly in the wide course card
   "gen-ai-for-scrum-masters": "/images/vendor/unsplash/photo-1542626991-cbc4e32524cc.jpg",
   "generative-ai-architect-advanced-program": "/images/vendor/unsplash/photo-1712002641088-9d76f9080889.jpg",
-  "generative-ai-for-agile-leaders-training": "/images/vendor/unsplash/photo-1573496359142-b8d87734a5a2.jpg",
+  "generative-ai-for-agile-leaders-training": "/images/vendor/unsplash/photo-1522071820081-009f0129c71c.jpg", // landscape: portrait shots crop badly in the wide course card
   "generative-ai-for-business-analysts-and-it-consultants": "/images/vendor/unsplash/photo-1677442136019-21780ecad995.jpg",
   "generative-ai-for-business-leaders": "/images/vendor/unsplash/photo-1556155092-490a1ba16284.jpg",
   "generative-ai-for-product-owners-managers-training": "/images/vendor/unsplash/photo-1551836022-d5d88e9218df.jpg",

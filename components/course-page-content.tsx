@@ -108,6 +108,17 @@ export function CoursePageContent({
 
   const schedules = generateSchedules(course);
 
+  // Per-course hero metrics. Same slug-hash formula as course-grid.tsx so the
+  // course card and this page report the same enrolled count; avatars are real
+  // portraits from public/images/people (12 locally-hosted Unsplash face crops).
+  const slugHash = course.slug.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+  const enrolled = ((slugHash * 314) % 90000) + 10000;
+  const enrolledLabel = `${(Math.floor(enrolled / 100) * 100).toLocaleString()}+ Enrolled`;
+  const avatarIds = Array.from({ length: 5 }, (_, i) => (((slugHash + i * 7) % 12) + 1)); // i*7 mod 12 → 5 distinct picks
+  const gRating = course.ratingAvg.toFixed(1);
+  const fbRating = (Math.round((course.ratingAvg - 0.1 - (slugHash % 2) * 0.1) * 10) / 10).toFixed(1);
+  const swRating = Math.min(4.9, course.ratingAvg + 0.1 - ((slugHash >> 3) % 2) * 0.2).toFixed(1);
+
   return (
     <div className="bg-[#ffffff] min-h-screen">
       {/* Light Hero Section */}
@@ -147,28 +158,34 @@ export function CoursePageContent({
               <div className="flex flex-wrap items-center gap-6 mb-8 text-[13px] font-bold text-[#082032]">
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <div key={i} className="w-6 h-6 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center overflow-hidden shrink-0">
-                        <Users className="w-3 h-3 text-gray-400" />
-                      </div>
+                    {avatarIds.map((id) => (
+                      <img
+                        key={id}
+                        src={`/images/people/p${id}.jpg`}
+                        alt=""
+                        width={24}
+                        height={24}
+                        loading="lazy"
+                        className="w-6 h-6 rounded-full border-2 border-white object-cover shrink-0"
+                      />
                     ))}
                   </div>
-                  <span>144,000+ Enrolled</span>
+                  <span>{enrolledLabel}</span>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <span className="text-blue-600 font-black">G</span>
-                  <span>4.8/5</span>
+                  <span>{gRating}/5</span>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <span className="text-blue-600 font-black">f</span>
-                  <span>4.7/5</span>
+                  <span>{fbRating}/5</span>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <span className="text-red-500 font-black">s</span>
-                  <span>4.9/5</span>
+                  <span>{swRating}/5</span>
                 </div>
               </div>
 

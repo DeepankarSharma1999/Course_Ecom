@@ -6,7 +6,7 @@ All external images currently used on the site, with source + licence. Audited 2
 
 | Source | Licence | Attribution required? | Where used |
 |--------|---------|----------------------|------------|
-| Unsplash (`images.unsplash.com`) | [Unsplash Licence](https://unsplash.com/license) | No (free commercial use) | Course hero fallbacks, section visuals |
+| Unsplash (`images.unsplash.com`) | [Unsplash Licence](https://unsplash.com/license) | No (free commercial use) | Course hero fallbacks, section visuals, enrolled-learner avatar strip (`public/images/people/p1-12.jpg`, 96px face crops hosted locally) |
 | Pexels (`images.pexels.com`) | [Pexels Licence](https://www.pexels.com/license/) | No (free commercial use) | Home hero collage, testimonials, pedagogy steps |
 | Wikimedia Commons (`upload.wikimedia.org`) | Per-file (mostly CC-BY / trademark logos) | Logos used nominatively under fair use | Company / tech logos in hero + partner strips |
 
