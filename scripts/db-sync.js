@@ -16,11 +16,18 @@ if (!process.env.DATABASE_URL) {
   const fs = require("fs");
 
   // Serverless Postgres (e.g. Neon) autosuspends: wake it with a trivial query,
-  // retrying while the compute spins up.
+  // retrying while the compute spins up. If the database stays unreachable,
+  // warn and let the build continue — the site has static fallbacks, and a
+  // dead database should not also take down code deployments.
   for (let i = 1; ; i++) {
     try { await p.$queryRaw`SELECT 1`; break; }
     catch (e) {
-      if (i >= 6) throw e;
+      if (i >= 6) {
+        console.warn("db-sync: DATABASE UNREACHABLE — skipping schema/data sync!");
+        console.warn("db-sync: last error:", (e && (e.message || e.code)) || e);
+        console.warn("db-sync: check the database (e.g. Neon project status) and DATABASE_URL, then redeploy.");
+        process.exit(0);
+      }
       console.log(`db-sync: database not awake yet (attempt ${i}), retrying…`);
       await new Promise((r) => setTimeout(r, 5000));
     }
