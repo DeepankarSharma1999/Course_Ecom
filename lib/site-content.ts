@@ -82,7 +82,7 @@ const DEFAULT_HOME = {
   heroHeadlineSuffix: "Training",
   heroSubheading: "Live instructor-led, classroom and corporate training in Agile, SAFe, DevOps, Project Management, IT Service Management, Quality and emerging technologies — by accredited trainers.",
   heroCtaPrimaryText: "Explore All Courses", heroCtaPrimaryLink: "/courses",
-  heroCtaSecondaryText: "Corporate Training", heroCtaSecondaryLink: "/corporate",
+  heroCtaSecondaryText: "Corporate Training", heroCtaSecondaryLink: "/corporate-training",
   heroStats: [
     { value: "4.8/5", label: "Average Rating" },
     { value: "98%", label: "Pass Rate" },
@@ -114,7 +114,7 @@ const DEFAULT_HOME = {
   ctaTitle: "Ready to Advance Your Career?",
   ctaSubtitle: "Speak with a training advisor today. Get curated course recommendations, batch schedules and exclusive offers tailored to your goals.",
   ctaPrimaryText: "Enquire Now", ctaPrimaryLink: "/enquire",
-  ctaSecondaryText: "Corporate Training", ctaSecondaryLink: "/corporate",
+  ctaSecondaryText: "Corporate Training", ctaSecondaryLink: "/corporate-training",
   seoTitle: "Simplilead | Globally Accredited Certification Training", 
   seoDescription: "Join 500,000+ professionals worldwide. Simplilead offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management.",
 };

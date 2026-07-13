@@ -301,7 +301,7 @@ export function CoursePageContent({
           {show("reviews") && <ReviewsSection course={course} />}
 
           {/* Instructors */}
-          {show("instructors") && <InstructorsSection course={course} />}
+          {/* Instructors section intentionally not rendered: trainer names are not shown on public pages (only the homepage trainers strip remains). */}
 
           {/* Curriculum Accordion — per-course modules (generator fills course.curriculum) */}
           {show("curriculum") && <CurriculumSection course={course} />}
@@ -342,9 +342,6 @@ export function CoursePageContent({
               
               <div className="flex items-center gap-2 text-[12px] text-gray-600 font-semibold mb-3">
                 <Globe className="w-3.5 h-3.5 text-[#1FA8A8]" /> {schedules[0]?.mode} <span className="text-gray-300">•</span> Weekend Batch
-              </div>
-              <div className="flex items-center gap-2 text-[12px] text-gray-600 font-semibold">
-                <Users className="w-3.5 h-3.5 text-[#1FA8A8]" /> Govind Abkari
               </div>
             </div>
             

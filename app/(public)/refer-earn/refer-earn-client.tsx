@@ -111,7 +111,7 @@ export function ReferEarnClient({ content: c }: { content: any }) {
                   </div>
                 </div>
                 <div className="bg-slate-50 p-4 text-center text-xs text-slate-500 border-t border-slate-100">
-                  By joining, you agree to our <Link href="/terms" className="text-brand-600 hover:underline">Referral Terms & Conditions</Link>.
+                  By joining, you agree to our <Link href="/info/terms-and-conditions" className="text-brand-600 hover:underline">Referral Terms & Conditions</Link>.
                 </div>
               </div>
             </div>

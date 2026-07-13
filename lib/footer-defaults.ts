@@ -28,12 +28,8 @@ export const DEFAULT_FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Resources",
     links: [
-      { label: "Course Info", href: "/info/course-info" },
-      { label: "Tutorials", href: "/info/tutorials" },
       { label: "Blogs", href: "/info/blogs" },
-      { label: "Interview Questions", href: "/info/interview-questions" },
       { label: "Practice Tests", href: "/practice-tests" },
-      { label: "Free Courses", href: "/free-course" },
       { label: "Masterclasses", href: "/info/masterclasses" },
     ],
   },

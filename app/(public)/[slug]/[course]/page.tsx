@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
-import { TrainerSection } from "@/components/trainer-section";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { getCourseBySlug, getCountryBySlug, getCities, getCourseVariant } from "@/lib/content";
@@ -47,7 +46,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
       ))}
       <CoursePageContent course={c} countrySlug={slug} countryName={co.name} cities={cities} currency={currency} currencies={currencyCfg.currencies} />
-      <TrainerSection courseSlug={c.slug} />
     </>
   );
 }

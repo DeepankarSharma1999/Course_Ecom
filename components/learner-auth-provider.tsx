@@ -44,6 +44,13 @@ export function LearnerAuthProvider({ children }: { children: React.ReactNode })
       .then((r) => r.json())
       .then((d) => { if (d.user) setUser(toProfile(d.user)); })
       .catch(() => {});
+    // Failed OAuth redirects land on /?error=oauth — reopen the modal so the
+    // AuthModal (which reads the param before this parent effect strips it)
+    // can show the error.
+    if (new URLSearchParams(window.location.search).get("error") === "oauth") {
+      setIsModalOpen(true);
+      window.history.replaceState(null, "", window.location.pathname);
+    }
   }, []);
 
   const openModal = () => setIsModalOpen(true);
@@ -60,7 +67,9 @@ export function LearnerAuthProvider({ children }: { children: React.ReactNode })
       if (!res.ok) return { ok: false, error: data.error || "Something went wrong. Please try again." };
       setUser(toProfile(data.user));
       setIsModalOpen(false);
-      router.push("/home");
+      // Mid-flow pages (e.g. /register) need the user to stay put and finish
+      // what they were doing; only bounce to the dashboard from everywhere else.
+      if (!window.location.pathname.startsWith("/register")) router.push("/home");
       router.refresh();
       return { ok: true };
     } catch {

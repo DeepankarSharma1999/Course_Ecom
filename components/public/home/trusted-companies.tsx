@@ -8,6 +8,12 @@ const COMPANIES = [
   { name: "Capgemini", url: "/images/vendor/wikimedia/Capgemini_201x_logo.svg" },
   { name: "Accenture", url: "/images/vendor/worldvectorlogo/accenture-4.svg" },
   { name: "IBM", url: "/images/vendor/wikimedia/IBM_logo.svg" },
+  { name: "Meta", url: "/images/companies/meta.webp" },
+  { name: "Bosch", url: "/images/companies/bosch.webp" },
+  { name: "Amazon", url: "/images/companies/amazon.webp" },
+  { name: "NVIDIA", url: "/images/companies/nvidia.webp" },
+  { name: "TCS", url: "/images/companies/tcs.webp" },
+  { name: "Microsoft", url: "/images/companies/microsoft.webp" },
 ];
 
 export function TrustedCompanies() {

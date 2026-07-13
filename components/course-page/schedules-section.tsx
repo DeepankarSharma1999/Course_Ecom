@@ -152,16 +152,6 @@ export function SchedulesSection({ schedules, courseSlug }: { schedules: Schedul
                   <span>{isWeekend ? "Weekend Batch" : "Weekday Batch"}</span>
                 </div>
                 
-                {/* Trainer */}
-                <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center text-white font-bold text-xs lg:text-sm ${!isWeekend ? "bg-blue-600" : "bg-red-400"}`}>
-                    {!isWeekend ? "GA" : "TM"}
-                  </div>
-                  <div>
-                    <div className="text-[13px] lg:text-[14px] font-bold text-[#082032] leading-tight">{!isWeekend ? "Govind Abkari" : "Tobias Mayer"}</div>
-                    <div className="text-[11px] lg:text-[12px] text-gray-500">Trainer</div>
-                  </div>
-                </div>
               </div>
               
               {/* Quantity */}

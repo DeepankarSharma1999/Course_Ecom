@@ -8,11 +8,14 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+// Placeholder info pages hidden until they carry real content.
+const HIDDEN = new Set(["tutorials", "interview-questions", "course-info"]);
+
 // Generate static routes for all info pages
 export async function generateStaticParams() {
-  return Object.keys(INFO_PAGES).map((slug) => ({
-    slug,
-  }));
+  return Object.keys(INFO_PAGES)
+    .filter((slug) => !HIDDEN.has(slug))
+    .map((slug) => ({ slug }));
 }
 
 // Generate SEO metadata for each page
@@ -35,7 +38,7 @@ export default async function InfoPage({ params }: Props) {
   const { slug } = await params;
   const content = INFO_PAGES[slug];
 
-  if (!content) {
+  if (!content || HIDDEN.has(slug)) {
     notFound();
   }
 

@@ -113,7 +113,9 @@ export function formatInCurrency(amountUsd: number | null | undefined, currency:
   const cfg = cfgFor(currency, currencies);
   const v = convertFromUsd(amountUsd, currency, currencies);
   try {
-    return new Intl.NumberFormat(cfg.locale ?? "en-US", { style: "currency", currency: cfg.code, maximumFractionDigits: 0 }).format(v);
+    // numberingSystem "latn": always Western digits (384), even for locales
+    // that default to Arabic-Indic (ar-SA) or Bengali (bn-BD) numerals.
+    return new Intl.NumberFormat(cfg.locale ?? "en-US", { style: "currency", currency: cfg.code, maximumFractionDigits: 0, numberingSystem: "latn" }).format(v);
   } catch {
     return `${cfg.symbol}${v.toLocaleString()}`;
   }

@@ -5,28 +5,28 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TESTIMONIALS = [
   {
-    title: "Comprehensive course!",
-    name: "Preethi N",
-    role: "Project Manager",
-    text: "Recently attended the Scrum Master course. The instructor demonstrated profound knowledge of Agile methodologies and Scrum in particular. Comprehensive course materials, including slides,",
-    avatar: "https://i.pravatar.cc/150?img=47",
-    platform: "Google"
-  },
-  {
-    title: "Amazing training ecosystem!",
-    name: "Rangarajan Rajamani",
-    role: "NA",
-    text: "This is an amazing training ecosystem. They had assigned individual relationship managers who not only did the tactical things of reminding of sessions etc, but they also connected me with people who were",
-    avatar: "https://i.pravatar.cc/150?img=11",
-    platform: "Google"
-  },
-  {
-    title: "Well-organized event",
-    name: "Karthik Raj Manupatty Ponraj",
-    role: "Lead consultant",
-    text: "The workshop was a well-organized event. The trainer was an expert which made it a valuable training.",
-    avatar: "https://i.pravatar.cc/150?img=68",
+    title: "They reshaped how we deliver value",
+    name: "Head of Transformation",
+    role: "Tier-1 GCC Bank · Riyadh",
+    text: "SimpliLEAD didn't just train our teams — they reshaped how we deliver value. Practitioner-led, deeply contextual and outcome-oriented.",
+    avatar: "/images/people/p3.jpg",
     platform: "LinkedIn"
+  },
+  {
+    title: "A trusted partner",
+    name: "Chief People Officer",
+    role: "Federal Authority · UAE",
+    text: "The blend of certification rigor with hands-on, regionally-grounded scenarios is exactly what our talent needs. A trusted partner.",
+    avatar: "/images/people/p6.jpg",
+    platform: "LinkedIn"
+  },
+  {
+    title: "Closing the knowledge-to-execution gap",
+    name: "CIO",
+    role: "National Energy Company · Doha",
+    text: "From AI strategy to agile@scale, SimpliLEAD has been instrumental in helping us close the knowledge-to-execution gap.",
+    avatar: "/images/people/p5.jpg",
+    platform: "Google"
   },
   {
     title: "Excellent learning experience",

@@ -29,6 +29,13 @@ function TrustedCompanyCarousel() {
     { name: "Welspun", file: "welspun", wordmark: "WELSPUN", className: "text-blue-600" },
     { name: "TerraPay", file: "terrapay", wordmark: "terrapay", className: "text-blue-800 lowercase italic" },
     { name: "Reliance", file: "reliance", wordmark: "Reliance", className: "text-red-600" },
+    { name: "Meta", file: "meta", wordmark: "Meta", className: "text-[#0668E1]" },
+    { name: "Bosch", file: "bosch", wordmark: "BOSCH", className: "text-red-600" },
+    { name: "Amazon", file: "amazon", wordmark: "amazon", className: "text-black lowercase" },
+    { name: "NVIDIA", file: "nvidia", wordmark: "NVIDIA", className: "text-[#76B900]" },
+    { name: "TCS", file: "tcs", wordmark: "tcs", className: "text-purple-700 lowercase" },
+    { name: "Microsoft", file: "microsoft", wordmark: "Microsoft", className: "text-gray-700" },
+    { name: "IBM", file: "ibm", wordmark: "IBM", className: "text-[#0f62fe]" },
   ].map((c) => ({ ...c, src: resolveCompanyLogo(c.file) }));
 
   const companySet = (

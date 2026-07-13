@@ -68,8 +68,8 @@ export function AboutClient({ content: c }: { content: any }) {
           >
             {stats.map((stat, i) => (
               <div key={i} className="text-center px-4">
-                <div className="text-3xl md:text-5xl font-black text-primary mb-2">{stat.value}</div>
-                <div className="text-sm md:text-base font-semibold text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+                <div className="text-lg md:text-2xl font-black text-primary mb-2">{stat.value}</div>
+                <div className="text-xs md:text-sm font-semibold text-muted-foreground uppercase tracking-wider">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -119,9 +119,9 @@ export function AboutClient({ content: c }: { content: any }) {
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-ink-100 max-w-xs hidden md:block">
                 <div className="flex items-center gap-4 mb-2">
                   <div className="flex -space-x-3">
-                    <img src="https://i.pravatar.cc/100?img=1" className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar 1"/>
-                    <img src="https://i.pravatar.cc/100?img=2" className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar 2"/>
-                    <img src="https://i.pravatar.cc/100?img=3" className="w-10 h-10 rounded-full border-2 border-white" alt="Avatar 3"/>
+                    <img src="/images/people/p1.jpg" className="w-10 h-10 rounded-full border-2 border-white object-cover" alt=""/>
+                    <img src="/images/people/p2.jpg" className="w-10 h-10 rounded-full border-2 border-white object-cover" alt=""/>
+                    <img src="/images/people/p4.jpg" className="w-10 h-10 rounded-full border-2 border-white object-cover" alt=""/>
                   </div>
                   <div className="font-bold text-sm text-foreground">{c.storyCardTitle}</div>
                 </div>
@@ -131,6 +131,32 @@ export function AboutClient({ content: c }: { content: any }) {
           </div>
         </div>
       </section>
+
+      {/* LEAD framework */}
+      {Array.isArray(c.leadSteps) && c.leadSteps.length > 0 && (
+        <section className="section bg-gradient-to-br from-brand-950 to-brand-800 text-white py-20">
+          <div className="container-tight">
+            <h2 className="h2 mb-12 text-center text-white">{c.leadTitle}</h2>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              {(c.leadSteps as any[]).map((step, i) => (
+                <motion.div variants={itemVariants} key={i} className="bg-white/10 border border-white/15 backdrop-blur-sm rounded-2xl p-7">
+                  <div className="w-12 h-12 rounded-xl bg-yellow-400 text-brand-950 font-black text-2xl flex items-center justify-center mb-5">
+                    {step.letter}
+                  </div>
+                  <h3 className="font-bold text-xl mb-3">{step.title}</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">{step.body}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Values Section */}
       <section className="section bg-ink-50 py-20">
@@ -147,7 +173,7 @@ export function AboutClient({ content: c }: { content: any }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 gap-8"
           >
             {(c.values as any[]).map((value, index) => (
               <motion.div
@@ -167,6 +193,24 @@ export function AboutClient({ content: c }: { content: any }) {
           </motion.div>
         </div>
       </section>
+
+      {/* For Individuals */}
+      {c.individualsTitle && (
+        <section className="py-16 bg-white">
+          <div className="container-tight">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-3xl border border-brand-100 bg-brand-50/50 p-8 md:p-12 text-center max-w-3xl mx-auto"
+            >
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold mb-4">{c.individualsBadge}</div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{c.individualsTitle}</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">{c.individualsBody}</p>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Explore Courses Banner */}
       <section className="py-20 bg-white">

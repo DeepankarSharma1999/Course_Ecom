@@ -254,7 +254,7 @@ export function SiteHeader({
           
           {/* AI Courses */}
           <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "ai-courses" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("ai-courses")} onMouseLeave={closeSoft}>
-            <Link href="/ai-courses" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+            <Link href="/category/generative-ai" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
               AI Courses <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "ai-courses" ? "text-[#1FA8A8] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
             </Link>
             {openMenu === "ai-courses" && (
@@ -289,10 +289,11 @@ export function SiteHeader({
                   </Link>
                   
                   <div className="relative group" onMouseEnter={() => setOpenSubMenu("agile")}>
-                    <Link href="/agile-solutions" className={`px-5 py-3 text-[13px] font-medium transition-colors border-b border-gray-50 flex justify-between items-center ${openSubMenu === "agile" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
-                      Agile Solutions 
+                    {/* Flyout parent only — no standalone page exists for it. */}
+                    <span className={`cursor-default px-5 py-3 text-[13px] font-medium transition-colors border-b border-gray-50 flex justify-between items-center ${openSubMenu === "agile" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
+                      Agile Solutions
                       {openSubMenu === "agile" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
-                    </Link>
+                    </span>
                     {openSubMenu === "agile" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
@@ -307,10 +308,11 @@ export function SiteHeader({
                   </div>
 
                   <div className="relative group" onMouseEnter={() => setOpenSubMenu("product")}>
-                    <Link href="/product-building" className={`px-5 py-3 text-[13px] font-medium transition-colors flex justify-between items-center ${openSubMenu === "product" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
-                      Product Building 
+                    {/* Flyout parent only — no standalone page exists for it. */}
+                    <span className={`cursor-default px-5 py-3 text-[13px] font-medium transition-colors flex justify-between items-center ${openSubMenu === "product" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
+                      Product Building
                       {openSubMenu === "product" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
-                    </Link>
+                    </span>
                     {openSubMenu === "product" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
@@ -390,7 +392,7 @@ export function SiteHeader({
             </form>
             {[
               { href: "/courses", label: "All Courses" },
-              { href: "/ai-courses", label: "AI Courses" },
+              { href: "/category/generative-ai", label: "AI Courses" },
               { href: "/combo-courses", label: "Combo Courses", isNew: true },
               { href: "/self-paced", label: "Self-Paced" },
               { href: "/corporate-training", label: "Enterprise" },

@@ -1,7 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
-import { TrainerSection } from "@/components/trainer-section";
 import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
@@ -56,7 +55,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
       ))}
       <CoursePageContent course={c} countrySlug={slug} citySlug={city} countryName={co.name} cityName={ct.name} cities={cities} currency={currency} currencies={currencyCfg.currencies} />
-      <TrainerSection courseSlug={c.slug} />
       <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceUsd ? formatInCurrency(c.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
     </>
   );

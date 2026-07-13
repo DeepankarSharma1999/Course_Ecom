@@ -23,13 +23,6 @@ export function LearnerTopbar() {
 
       {/* Right Section */}
       <div className="flex items-center gap-6 ml-auto">
-        <Link
-          href="/webinars"
-          className="hidden lg:flex items-center gap-2 text-[13px] font-bold text-ink-600 hover:text-primary transition-colors"
-        >
-          <Calendar className="w-4 h-4" /> Webinars
-        </Link>
-
         {/* User Dropdown */}
         <div className="pl-2">
           <LearnerDropdown />

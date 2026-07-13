@@ -23,12 +23,20 @@ export function AuthModal() {
   // Reset transient state when switching mode or reopening.
   useEffect(() => { setError(""); }, [isLogin, isModalOpen]);
 
+  // A failed OAuth attempt bounces back to /?error=oauth (the provider strips
+  // the param and reopens the modal).
+  const [oauthError, setOauthError] = useState(false);
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("error") === "oauth") setOauthError(true);
+  }, []);
+
   if (!isModalOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (busy) return;
     setError("");
+    setOauthError(false);
     setBusy(true);
     const result = isLogin ? await login(email, password) : await register(name, email, password);
     setBusy(false);
@@ -36,7 +44,7 @@ export function AuthModal() {
   };
 
   const handleSocialLogin = (provider: "Google" | "LinkedIn") => {
-    setError(`${provider} sign-in isn't available yet — please use email and password.`);
+    window.location.href = `/api/learner/oauth/${provider.toLowerCase()}`;
   };
 
   return (
@@ -145,9 +153,9 @@ export function AuthModal() {
                 {!isLogin && <p className="text-[13px] text-ink-400 pl-1">At least 8 characters.</p>}
               </div>
 
-              {error && (
+              {(error || oauthError) && (
                 <p role="alert" className="text-[14px] text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
-                  {error}
+                  {error || "Social sign-in failed. Please try again or use email and password."}
                 </p>
               )}
 
