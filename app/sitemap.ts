@@ -8,9 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/courses`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/corporate`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/corporate-training`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/info/contact-us`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
   ];
   for (const cat of CATEGORIES) urls.push({ url: `${base}/category/${cat.slug}`, lastModified: now, changeFrequency: "weekly", priority: 0.8 });
   for (const c of COURSES) {

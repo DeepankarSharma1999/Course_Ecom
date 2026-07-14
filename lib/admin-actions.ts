@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getCurrentUser, hashPassword } from "@/lib/auth";
@@ -29,7 +30,7 @@ function pageSectionsFrom(formData: FormData) {
   if (certificate) out.certificate = certificate;
   if (accreditation) out.accreditation = accreditation;
   if (demand) out.demand = demand;
-  return Object.keys(out).length ? out : undefined;
+  return Object.keys(out).length ? (out as Prisma.InputJsonValue) : undefined;
 }
 
 async function requireAdmin() {
@@ -508,8 +509,6 @@ export async function createVariant(courseId: string, formData: FormData) {
       seoTitle: toStr(formData.get("seoTitle")),
       seoDescription: toStr(formData.get("seoDescription")),
       isPublished: toBool(formData.get("isPublished")),
-      hiddenSections: hiddenSectionsFrom(formData),
-      pageSections: pageSectionsFrom(formData),
     },
   });
   revalidatePublic();
@@ -534,8 +533,6 @@ export async function updateVariant(id: string, courseId: string, formData: Form
       seoTitle: toStr(formData.get("seoTitle")),
       seoDescription: toStr(formData.get("seoDescription")),
       isPublished: toBool(formData.get("isPublished")),
-      hiddenSections: hiddenSectionsFrom(formData),
-      pageSections: pageSectionsFrom(formData),
     },
   });
   revalidatePublic();
