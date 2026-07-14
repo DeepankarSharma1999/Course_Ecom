@@ -24,6 +24,9 @@ async function isValidSession(token: string | undefined, secret: Uint8Array) {
 
     const payloadObj = JSON.parse(base64urlDecode(payload));
     if (payloadObj.exp && payloadObj.exp * 1000 < Date.now()) return false;
+    // Only admin-panel roles may pass. Learner tokens are signed with the same
+    // AUTH_SECRET but carry no role, so a replayed learner token fails here.
+    if (payloadObj.role !== "admin" && payloadObj.role !== "editor") return false;
     return true;
   } catch {
     return false;

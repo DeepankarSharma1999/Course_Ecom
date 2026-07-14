@@ -40,7 +40,9 @@ function safeKind(input: string | null): string {
 
 export async function POST(req: Request) {
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!user || (user.role !== "admin" && user.role !== "editor")) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   let form: FormData;
   try {

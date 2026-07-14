@@ -9,13 +9,19 @@ async function main() {
   console.log("Seeding admin user...");
   const adminEmail = process.env.ADMIN_EMAIL || "admin@course-ecom.com";
   const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
+  if (!process.env.ADMIN_PASSWORD) {
+    console.warn("  !! ADMIN_PASSWORD not set — using the weak default 'admin123'. Set a strong ADMIN_PASSWORD and change it after first login.");
+  }
   const passwordHash = await bcrypt.hash(adminPassword, 10);
+  // On re-seed, DO NOT reset the password — that would silently restore a known
+  // default over a password the admin has since changed. Only ensure the account
+  // exists, is active, and keeps its role.
   await prisma.adminUser.upsert({
     where: { email: adminEmail },
-    update: { passwordHash, isActive: true, role: "admin" },
+    update: { isActive: true, role: "admin" },
     create: { email: adminEmail, passwordHash, name: "Administrator", role: "admin" },
   });
-  console.log(`  -> ${adminEmail} (password: ${adminPassword})`);
+  console.log(`  -> ${adminEmail} (password unchanged on re-seed; set on first create only)`);
 
   // Demo learner account (always ensured, like the admin above).
   const demoHash = await bcrypt.hash("demo1234", 10);

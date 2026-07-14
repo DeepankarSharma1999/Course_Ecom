@@ -35,7 +35,7 @@ function pageSectionsFrom(formData: FormData) {
 
 async function requireAdmin() {
   const u = await getCurrentUser();
-  if (!u) redirect("/admin/login");
+  if (!u || (u.role !== "admin" && u.role !== "editor")) redirect("/admin/login");
   return u;
 }
 

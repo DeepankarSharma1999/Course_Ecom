@@ -71,9 +71,6 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
             />
           </div>
           <button type="submit" className="btn-primary w-full">Sign in</button>
-          <div className="text-xs text-ink-500 text-center">
-            Default: <code className="font-mono">admin@course-ecom.com</code> / <code className="font-mono">admin123</code>
-          </div>
         </form>
 
         <div className="text-center mt-4">

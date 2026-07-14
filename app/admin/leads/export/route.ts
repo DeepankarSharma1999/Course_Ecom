@@ -4,7 +4,9 @@ import { getCurrentUser } from "@/lib/auth";
 
 export async function GET() {
   const user = await getCurrentUser();
-  if (!user) return NextResponse.redirect(new URL("/admin/login", "http://localhost"));
+  if (!user || (user.role !== "admin" && user.role !== "editor")) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const leads = await prisma.lead.findMany({ orderBy: { createdAt: "desc" } });
   const header = ["createdAt", "name", "email", "phone", "courseSlug", "countrySlug", "citySlug", "source", "status", "message", "notes"];
