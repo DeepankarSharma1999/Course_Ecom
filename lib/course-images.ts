@@ -83,10 +83,16 @@ export function categoryHeroImage(slug: string, name?: string): string {
   return pool[hash(slug) % pool.length];
 }
 
+// Retired AI-generated hero PNGs. db-sync nulls these in the DB, but that write
+// needs a reachable DB; rejecting them here means they never render even if a
+// stale/quota-blocked DB still serves the old path.
+const isAiHero = (s: string) => /\/images\/courses\/(ai_|agentic_|media_)/.test(s);
+
 export function resolveHeroImage(current: string | null | undefined, slug: string, category?: string): string {
   // Keep a genuinely custom image (e.g. the bespoke course PNGs); ignore the old shared
-  // placeholder and any prior theme-pool path so the curated per-course map can take over.
-  if (current && !current.includes(DUP) && !current.includes("/vendor/unsplash/")) return current;
+  // placeholder, retired AI heroes, and any prior theme-pool path so the curated
+  // per-course map can take over.
+  if (current && !current.includes(DUP) && !current.includes("/vendor/unsplash/") && !isAiHero(current)) return current;
   if (COURSE_IMAGE_MAP[slug]) return COURSE_IMAGE_MAP[slug];
   const pool = THEMES[themeFor(`${category ?? ""} ${slug}`)];
   return pool[hash(slug) % pool.length];
