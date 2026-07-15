@@ -79,21 +79,49 @@ function dbCourseToContent(c: any): CourseContent {
   };
 }
 
-export async function getAllCourses(): Promise<CourseContent[]> {
+// Card/listing fields only. The big JSON blobs (curriculum, pageSections,
+// learningOutcomes…) and FAQs are course-detail-only — pulling them for every
+// listing/footer render was the bulk of Neon egress. Detail pages use
+// getCourseBySlug (full row) instead.
+const LIST_SELECT = {
+  slug: true, title: true, shortTitle: true, summary: true,
+  durationLabel: true, level: true, accreditedBy: true,
+  basePriceInr: true, basePriceUsd: true, examIncluded: true,
+  ratingAvg: true, ratingCount: true, heroImage: true,
+  category: { select: { slug: true, name: true } },
+} as const;
+
+function listRowToContent(c: any): CourseContent {
+  return {
+    slug: c.slug, title: c.title, shortTitle: baseCourseTitle(c.title),
+    subtitle: "", summary: c.summary, description: "",
+    category: c.category ? { slug: c.category.slug, name: c.category.name } : { slug: "", name: "" },
+    durationLabel: c.durationLabel ?? "", level: c.level ?? "", accreditedBy: c.accreditedBy ?? "",
+    basePriceInr: c.basePriceInr ?? 0, basePriceUsd: c.basePriceUsd ?? 0,
+    examIncluded: !!c.examIncluded, ratingAvg: c.ratingAvg ?? 4.8, ratingCount: c.ratingCount ?? 0,
+    heroImage: resolveHeroImage(c.heroImage, c.slug, c.category?.slug ?? c.category?.name),
+    keyFeatures: [], learningOutcomes: [], whoShouldAttend: [], prerequisites: [],
+    curriculum: [], whyChooseUs: [], hiddenSections: [], pageSections: null,
+    faqs: [], seoTitle: c.title, seoDescription: c.summary, seoKeywords: "",
+  };
+}
+
+// cache(): dedupes the layout + footer + page calls within one render into a single query.
+export const getAllCourses = cache(async (): Promise<CourseContent[]> => {
   try {
     const rows = await prisma.course.findMany({
       where: { isPublished: true },
-      include: { category: true, faqs: { orderBy: { order: "asc" } } },
+      select: LIST_SELECT,
       orderBy: { isFeatured: "desc" },
     });
     if (rows.length === 0) return STATIC_COURSES;
-    return rows.map(dbCourseToContent);
+    return rows.map(listRowToContent);
   } catch {
     return STATIC_COURSES;
   }
-}
+});
 
-export async function getCourseBySlug(slug: string): Promise<CourseContent | null> {
+export const getCourseBySlug = cache(async (slug: string): Promise<CourseContent | null> => {
   try {
     const c = await prisma.course.findUnique({
       where: { slug },
@@ -104,7 +132,7 @@ export async function getCourseBySlug(slug: string): Promise<CourseContent | nul
     /* fall through */
   }
   return STATIC_COURSES.find((c) => c.slug === slug) ?? null;
-}
+});
 
 export async function getCourseVariant(courseSlug: string, countrySlug: string, citySlug?: string) {
   try {
