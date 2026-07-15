@@ -8,17 +8,10 @@ import { getSiteSettings } from "@/lib/site-content";
 import { DEFAULT_FOOTER_COLUMNS, type FooterColumn } from "@/lib/footer-defaults";
 import { FooterAccordion, ReadMore } from "@/components/footer-collapsible";
 
-const CONTACT_NUMBERS = [
-  { country: "USA", flag: "🇺🇸", number: "+1-469-442-0620\n+1-832-684-0080" },
-  { country: "India", flag: "🇮🇳", number: "+91-95382-36399\n+91-72089-98084\n+91-95381-83332\n+91-72089-98083" },
-  { country: "UK", flag: "🇬🇧", number: "+44-2045-865736\n+44-2046-002067" },
-  { country: "Singapore", flag: "🇸🇬", number: "+65-317-46174" },
-  { country: "Malaysia", flag: "🇲🇾", number: "+601548770914" },
-  { country: "Canada", flag: "🇨🇦", number: "+1-613-707-0763" },
-  { country: "New Zealand", flag: "🇳🇿", number: "+64-36694791" },
-  { country: "Ireland", flag: "🇮🇪", number: "+44-2081-586434" },
-  { country: "Australia", flag: "🇦🇺", number: "+61-290995641" },
-  { country: "UAE: Toll Free", flag: "🇦🇪", number: "8000180960" },
+const CONTACT_INFO = [
+  { label: "Office Address", value: "CWS-2V-322813, 26th Floor\nAmber Gem Tower, Ajman, UAE" },
+  { label: "Email", value: "info@simplilead.com", href: "mailto:info@simplilead.com" },
+  { label: "Phone", value: "+971 58 232 875", href: "tel:+97158232875" },
 ];
 
 
@@ -91,11 +84,15 @@ export async function SiteFooter() {
               </div>
 
               <div className="border border-gray-200 rounded-[24px] p-6 lg:p-8 bg-white shadow-sm">
-                 <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6">
-                    {CONTACT_NUMBERS.map(c => (
-                        <div key={c.country}>
-                           <div className="flex items-center gap-2 mb-2 font-bold text-brand-950 text-[13px]"><span className="text-lg leading-none">{c.flag}</span> {c.country}</div>
-                           <div className="text-[12px] text-brand-700 space-y-1 whitespace-pre-line leading-relaxed">{c.number}</div>
+                 <div className="space-y-6">
+                    {CONTACT_INFO.map(c => (
+                        <div key={c.label}>
+                           <div className="mb-1 font-bold text-brand-950 text-[13px]">{c.label}</div>
+                           {c.href ? (
+                             <a href={c.href} className="text-[13px] text-brand-700 hover:text-brand-600 transition-colors whitespace-pre-line leading-relaxed">{c.value}</a>
+                           ) : (
+                             <div className="text-[13px] text-brand-700 whitespace-pre-line leading-relaxed">{c.value}</div>
+                           )}
                         </div>
                     ))}
                  </div>
