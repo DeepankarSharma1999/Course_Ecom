@@ -200,11 +200,14 @@ export function DemandSection({ course }: { course: CourseContent }) {
       </section>
 
       {/* Download Guide Modal */}
-      <DownloadModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <DownloadModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         title="Discover More: Download The Free Guide!"
         subtitle="Fill out the form to get your free guide and take your first step towards a rewarding career."
+        courseSlug={course.slug}
+        source={`guide-${course.slug}`}
+        ctaLabel="Send me the guide"
       />
     </>
   );

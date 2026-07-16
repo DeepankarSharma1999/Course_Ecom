@@ -14,6 +14,9 @@ type Props = {
   /** Brochure mode — submitting returns a download link. */
   brochureCourseSlug?: string;
   ctaLabel?: string;
+  /** Prefill for a logged-in learner so they don't retype what we already know. */
+  defaultName?: string;
+  defaultEmail?: string;
 };
 
 type Utm = { source?: string; medium?: string; campaign?: string; term?: string; content?: string; referrer?: string; landingPath?: string };
@@ -63,6 +66,8 @@ export function LeadForm({
   source = "course-page",
   brochureCourseSlug,
   ctaLabel,
+  defaultName,
+  defaultEmail,
 }: Props) {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState<string>("");
@@ -125,8 +130,8 @@ export function LeadForm({
           aria-hidden="true"
           style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
         />
-        <input name="name" required placeholder="Full name *" aria-label="Full name" className="input w-full" autoComplete="name" />
-        <input name="email" type="email" required placeholder="Work email *" aria-label="Work email" className="input w-full" autoComplete="email" />
+        <input name="name" required defaultValue={defaultName} placeholder="Full name *" aria-label="Full name" className="input w-full" autoComplete="name" />
+        <input name="email" type="email" required defaultValue={defaultEmail} placeholder="Work email *" aria-label="Work email" className="input w-full" autoComplete="email" />
         <div className="flex gap-2">
           <select name="countryCode" defaultValue="+91" aria-label="Country code" className="input w-28">
             <option value="+91">+91</option>

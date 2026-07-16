@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { Plus, Trash2, Upload, Loader2 } from "lucide-react";
-import type {
-  Instructor, Review, Certificate, Accreditation, Demand, DemandTier, ReviewStat,
+import {
+  DEFAULT_REVIEWS, DEFAULT_REVIEW_STATS, DEFAULT_DEMAND_TIERS,
+  type Instructor, type Review, type Certificate, type Accreditation, type Demand, type DemandTier, type ReviewStat,
 } from "@/lib/course-section-defaults";
 
 // ---- shared bits -------------------------------------------------------------
@@ -55,6 +56,26 @@ function ImageField({ label, value, onChange, kind }: { label: string; value: st
   );
 }
 
+/**
+ * Greyed, read-only view of the site defaults this section falls back to while empty.
+ * Display only — nothing here is submitted, so the course keeps tracking the defaults
+ * until an admin actually adds a row.
+ */
+function LiveDefaults({ what, rows }: { what: string; rows: string[] }) {
+  return (
+    <div className="rounded-xl border border-dashed border-ink-300 bg-ink-50/50 p-4">
+      <p className="text-xs text-ink-500 mb-2.5">
+        Currently live: the site defaults below. Add {what} here to override them for this course.
+      </p>
+      <ul className="space-y-1.5 opacity-60 select-none">
+        {rows.map((r, i) => (
+          <li key={i} className="text-xs text-ink-700 truncate">• {r}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Card({ children, onRemove, title }: { children: React.ReactNode; onRemove: () => void; title: string }) {
   return (
     <div className="rounded-xl border border-ink-200 bg-ink-50/40 p-4 space-y-3 relative">
@@ -86,6 +107,10 @@ export function InstructorsEditor({ name, value }: { name: string; value?: Instr
   return (
     <div className="space-y-3">
       <Hidden name={name} value={rows} />
+      <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+        Not shown on course pages — the section is switched off in the page template
+        (trainer names only appear on the homepage). Anything added here saves but won&apos;t appear publicly.
+      </p>
       {rows.map((r, i) => (
         <Card key={i} title={`Instructor ${i + 1}`} onRemove={() => setRows(rows.filter((_, j) => j !== i))}>
           <div className="grid grid-cols-2 gap-3">
@@ -122,37 +147,41 @@ export function ReviewsEditor({ name, value }: { name: string; value?: Review[] 
           </div>
         </Card>
       ))}
+      {!rows.length && <LiveDefaults what="a review" rows={DEFAULT_REVIEWS.map((d) => `“${d.title}” — ${d.author}${d.source ? ` (${d.source})` : ""}`)} />}
       <AddBtn label="Add review" onClick={() => setRows([...rows, { title: "", content: "", author: "", role: "", source: "Google" }])} />
     </div>
   );
 }
 
 // ---- Certificate -------------------------------------------------------------
-export function CertificateEditor({ name, value }: { name: string; value?: Certificate }) {
+export function CertificateEditor({ name, value, defaults }: { name: string; value?: Certificate; defaults?: Certificate }) {
   const [v, setV] = useState<Certificate>(value ?? {});
   const has = (v.heading || v.body || v.image) ? true : false;
   return (
     <div className="space-y-3">
       <Hidden name={name} value={has ? v : {}} />
-      <Text label="Heading" value={v.heading ?? ""} placeholder="Earn the Coveted … Credential" onChange={(x) => setV({ ...v, heading: x })} />
-      <Text label="Body" textarea value={v.body ?? ""} onChange={(x) => setV({ ...v, body: x })} />
+      {defaults && !has && <p className="text-xs text-ink-500">Currently live: the greyed text below (auto-generated from the course title). Type here to override it.</p>}
+      <Text label="Heading" value={v.heading ?? ""} placeholder={defaults?.heading ?? "Earn the Coveted … Credential"} onChange={(x) => setV({ ...v, heading: x })} />
+      <Text label="Body" textarea value={v.body ?? ""} placeholder={defaults?.body} onChange={(x) => setV({ ...v, body: x })} />
       <ImageField label="Certificate image (optional — replaces the drawn certificate)" kind="certificate" value={v.image ?? ""} onChange={(x) => setV({ ...v, image: x })} />
     </div>
   );
 }
 
 // ---- Accreditation -----------------------------------------------------------
-export function AccreditationEditor({ name, value }: { name: string; value?: Accreditation }) {
+export function AccreditationEditor({ name, value, defaults }: { name: string; value?: Accreditation; defaults?: Accreditation }) {
   const [v, setV] = useState<Accreditation>(value ?? {});
   const more = v.more ?? [];
   const has = (v.heading || v.intro || more.length) ? true : false;
   return (
     <div className="space-y-3">
       <Hidden name={name} value={has ? v : {}} />
-      <Text label="Heading" value={v.heading ?? ""} onChange={(x) => setV({ ...v, heading: x })} />
-      <Text label="Intro paragraph" textarea value={v.intro ?? ""} onChange={(x) => setV({ ...v, intro: x })} />
+      {defaults && !has && <p className="text-xs text-ink-500">Currently live: the greyed text below (auto-generated from “Accredited By”). Type here to override it.</p>}
+      <Text label="Heading" value={v.heading ?? ""} placeholder={defaults?.heading} onChange={(x) => setV({ ...v, heading: x })} />
+      <Text label="Intro paragraph" textarea value={v.intro ?? ""} placeholder={defaults?.intro} onChange={(x) => setV({ ...v, intro: x })} />
       <div className="space-y-2">
         <span className={lbl}>Expanded paragraphs (shown under “Read more”)</span>
+        {!more.length && defaults?.more?.length ? <LiveDefaults what="a paragraph" rows={defaults.more} /> : null}
         {more.map((p, i) => (
           <div key={i} className="flex gap-2">
             <textarea className={inputCls} rows={2} value={p} onChange={(e) => setV({ ...v, more: more.map((x, j) => (j === i ? e.target.value : x)) })} />
@@ -193,6 +222,7 @@ export function DemandEditor({ name, value }: { name: string; value?: Demand }) 
             </div>
           </Card>
         ))}
+        {!tiers.length && <LiveDefaults what="a tier" rows={DEFAULT_DEMAND_TIERS.map((d) => `${d.prefix || "(base)"} — ${d.salary.min}–${d.salary.max} · ${d.companies.slice(0, 3).join(", ")}…`)} />}
         <AddBtn label="Add tier" onClick={() => setV({ ...v, tiers: [...tiers, { ...emptyTier }] })} />
       </div>
     </div>
@@ -214,6 +244,7 @@ export function ReviewStatsEditor({ name, value }: { name: string; value?: Revie
           </div>
         </Card>
       ))}
+      {!rows.length && <LiveDefaults what="a stat" rows={DEFAULT_REVIEW_STATS.map((d) => `${d.label} — ${d.rating} · ${d.count}`)} />}
       <AddBtn label="Add stat" onClick={() => setRows([...rows, { label: "", rating: "", count: "" }])} />
     </div>
   );

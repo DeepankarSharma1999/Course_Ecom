@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { type CourseContent } from "@/lib/seed-data";
+import { defaultCertificate } from "@/lib/course-section-defaults";
 
 export function CertificateSection({ course }: { course: CourseContent }) {
   const isCSM = course.slug.includes("csm");
@@ -12,8 +13,9 @@ export function CertificateSection({ course }: { course: CourseContent }) {
   // get the Simplilead-branded certificate below; external-body courses we don't have
   // a sample image for keep a neutral formal design under the body's name.
   const selfIssued = !course.accreditedBy || course.accreditedBy === "Simplilead";
-  const heading = cert?.heading || `Earn the Coveted ${certName} Credential`;
-  const body = cert?.body || `Earning the ${course.shortTitle} certification goes beyond acquiring a new skill—it's validation of your mastery. This certification isn't just a certificate; it's a testament to your dedication and expertise. It unlocks a realm of opportunities in your professional journey, signaling to employers and peers that you possess the knowledge and commitment to excel in guiding projects with agility and efficiency. You also get access to the global community and free resources.`;
+  const fallback = defaultCertificate(course);
+  const heading = cert?.heading || fallback.heading;
+  const body = cert?.body || fallback.body;
 
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100">

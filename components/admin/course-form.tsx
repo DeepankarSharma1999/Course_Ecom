@@ -4,6 +4,10 @@ import {
   InstructorsEditor, ReviewsEditor, CertificateEditor, AccreditationEditor, DemandEditor, ReviewStatsEditor,
 } from "./course-sections-editor";
 import { RichTextEditor } from "./rich-text-editor";
+import { UploadInput } from "./upload-input";
+import { resolveHeroImage } from "@/lib/course-images";
+import { defaultCertificate, defaultAccreditation } from "@/lib/course-section-defaults";
+import { baseCourseTitle } from "@/lib/utils";
 
 type Category = { id: string; slug: string; name: string };
 type Course = any;
@@ -11,6 +15,15 @@ type Course = any;
 export function CourseForm({ course, categories }: { course?: Course; categories: Category[] }) {
   const c = course || {};
   const j = (v: any) => (v ? JSON.stringify(v, null, 2) : "");
+  // Several fields are empty in the DB and filled in at render time by the public page.
+  // Compute the same values here (same inputs as lib/content.ts) so the form shows what's
+  // actually live instead of looking blank. These are previews only — never submitted.
+  const liveHero = c.slug ? resolveHeroImage(c.heroImage, c.slug, c.category?.slug ?? c.category?.name) : null;
+  // The public page derives shortTitle from the full title, so mirror that or the
+  // preview text won't match what renders.
+  const liveCourse = c.slug ? { slug: c.slug, shortTitle: baseCourseTitle(c.title ?? ""), accreditedBy: c.accreditedBy } : null;
+  const certDefaults = liveCourse ? defaultCertificate(liveCourse) : undefined;
+  const accDefaults = liveCourse ? defaultAccreditation(liveCourse) : undefined;
   return (
     <div className="grid lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2 space-y-6">
@@ -80,9 +93,9 @@ export function CourseForm({ course, categories }: { course?: Course; categories
         </Section>
 
         <Section title="Imagery & Brochure">
-          <Field label="Hero Image URL"><Input name="heroImage" defaultValue={c.heroImage ?? ""} placeholder="https://images.unsplash.com/..." /></Field>
-          <Field label="Thumbnail Image URL"><Input name="thumbnailImage" defaultValue={c.thumbnailImage ?? ""} /></Field>
-          <Field label="Brochure URL" hint="PDF link shown when a visitor requests the brochure"><Input name="brochureUrl" defaultValue={c.brochureUrl ?? ""} placeholder="https://.../brochure.pdf" /></Field>
+          <Field label="Hero Image" hint="Large banner image on the course page"><UploadInput name="heroImage" kind="hero" defaultValue={c.heroImage} fallback={liveHero} placeholder="https://images.unsplash.com/..." /></Field>
+          <Field label="Thumbnail Image" hint="Optional — cards currently use the hero image"><UploadInput name="thumbnailImage" kind="thumbnail" defaultValue={c.thumbnailImage} /></Field>
+          <Field label="Brochure (PDF)" hint="Shown when a visitor requests the brochure"><UploadInput name="brochureUrl" kind="brochure" defaultValue={c.brochureUrl} accept="application/pdf" placeholder="https://.../brochure.pdf" /></Field>
           <Field label="Live Class Meeting Link" hint="Zoom/Meet/Teams link — shown only to enrolled learners in their LMS"><Input name="meetingUrl" defaultValue={c.meetingUrl ?? ""} placeholder="https://zoom.us/j/..." /></Field>
         </Section>
 
@@ -107,7 +120,7 @@ export function CourseForm({ course, categories }: { course?: Course; categories
           </Field>
         </Section>
 
-        <Section title="Instructors" description="Add, edit or remove instructors shown on this course. Leave empty to use the site defaults.">
+        <Section title="Instructors" description="Currently disabled on public course pages — see the note below.">
           <InstructorsEditor name="ps_instructors" value={c.pageSections?.instructors} />
         </Section>
 
@@ -120,11 +133,11 @@ export function CourseForm({ course, categories }: { course?: Course; categories
         </Section>
 
         <Section title="Certificate" description="The certificate block. Add an image to replace the drawn certificate.">
-          <CertificateEditor name="ps_certificate" value={c.pageSections?.certificate} />
+          <CertificateEditor name="ps_certificate" value={c.pageSections?.certificate} defaults={certDefaults} />
         </Section>
 
         <Section title="Accreditation" description="The accreditation / training-partner block.">
-          <AccreditationEditor name="ps_accreditation" value={c.pageSections?.accreditation} />
+          <AccreditationEditor name="ps_accreditation" value={c.pageSections?.accreditation} defaults={accDefaults} />
         </Section>
 
         <Section title="Demand & Roles" description="Job role and the salary / hiring-company / demand tiers.">

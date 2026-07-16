@@ -13,7 +13,8 @@ import path from "node:path";
 import { randomBytes } from "node:crypto";
 import { getCurrentUser } from "@/lib/auth";
 
-const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
+const MAX_BYTES = 2 * 1024 * 1024; // 2 MB (images)
+const MAX_PDF_BYTES = 10 * 1024 * 1024; // 10 MB (brochures)
 const ALLOWED_MIME = new Set([
   "image/png",
   "image/jpeg",
@@ -22,6 +23,7 @@ const ALLOWED_MIME = new Set([
   "image/gif",
   "image/x-icon",
   "image/vnd.microsoft.icon",
+  "application/pdf",
 ]);
 const EXT_BY_MIME: Record<string, string> = {
   "image/png": "png",
@@ -31,6 +33,7 @@ const EXT_BY_MIME: Record<string, string> = {
   "image/gif": "gif",
   "image/x-icon": "ico",
   "image/vnd.microsoft.icon": "ico",
+  "application/pdf": "pdf",
 };
 
 function safeKind(input: string | null): string {
@@ -59,8 +62,9 @@ export async function POST(req: Request) {
   if (file.size === 0) {
     return NextResponse.json({ error: "Empty file" }, { status: 400 });
   }
-  if (file.size > MAX_BYTES) {
-    return NextResponse.json({ error: `File too large (max ${MAX_BYTES / 1024 / 1024} MB)` }, { status: 413 });
+  const maxBytes = file.type === "application/pdf" ? MAX_PDF_BYTES : MAX_BYTES;
+  if (file.size > maxBytes) {
+    return NextResponse.json({ error: `File too large (max ${maxBytes / 1024 / 1024} MB)` }, { status: 413 });
   }
   if (!ALLOWED_MIME.has(file.type)) {
     return NextResponse.json({ error: `Unsupported file type: ${file.type}` }, { status: 415 });

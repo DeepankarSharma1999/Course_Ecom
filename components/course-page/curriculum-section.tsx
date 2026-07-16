@@ -280,11 +280,14 @@ export function CurriculumSection({ course }: { course: CourseContent }) {
         </button>
       </div>
 
-      <DownloadModal 
+      <DownloadModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title="Download Curriculum"
-        subtitle="Enter your details to download the course curriculum"
+        subtitle={`Enter your details and we'll send you the full ${course.shortTitle} curriculum, pricing and upcoming batches.`}
+        courseSlug={course.slug}
+        source={`syllabus-${course.slug}`}
+        ctaLabel="Send me the curriculum"
       />
     </section>
   );

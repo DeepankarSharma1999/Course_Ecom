@@ -1,22 +1,46 @@
 "use client";
 
-import { useEffect } from "react";
-import { X, Check, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Loader2, X } from "lucide-react";
+import { LeadForm } from "@/components/lead-form";
+
+type Account = { name: string | null; email: string } | null;
 
 type DownloadModalProps = {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   subtitle: string;
+  /** Scopes the lead to this course and returns its brochure on submit. */
+  courseSlug: string;
+  /** Tags the lead in the admin (e.g. "syllabus-<slug>"). */
+  source: string;
+  ctaLabel?: string;
 };
 
-export function DownloadModal({ isOpen, onClose, title, subtitle }: DownloadModalProps) {
+export function DownloadModal({ isOpen, onClose, title, subtitle, courseSlug, source, ctaLabel }: DownloadModalProps) {
+  // undefined = still checking for a session; null = signed out.
+  const [account, setAccount] = useState<Account | undefined>(undefined);
+
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [isOpen, onClose]);
+
+  // Prefill from the learner session so a signed-in user doesn't retype what we know.
+  // Signed out, the form is the prompt — either way submitting records the lead.
+  useEffect(() => {
+    if (!isOpen) return;
+    let cancelled = false;
+    setAccount(undefined);
+    fetch("/api/learner/me")
+      .then((r) => r.json())
+      .then((d) => { if (!cancelled) setAccount(d?.user ?? null); })
+      .catch(() => { if (!cancelled) setAccount(null); });
+    return () => { cancelled = true; };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -55,69 +79,27 @@ export function DownloadModal({ isOpen, onClose, title, subtitle }: DownloadModa
         {/* Right side: Form */}
         <div className="flex-1 p-8 md:p-10">
           <h3 id="download-modal-title" className="text-2xl font-bold text-[#082032] mb-2">{title}</h3>
-          <p className="text-[14px] text-gray-500 mb-8 leading-relaxed">
-            {subtitle}
+          <p className="text-[14px] text-gray-500 mb-6 leading-relaxed">{subtitle}</p>
+
+          {account === undefined ? (
+            <div className="flex items-center gap-2 py-10 text-sm text-gray-500">
+              <Loader2 className="w-4 h-4 animate-spin" /> Loading…
+            </div>
+          ) : (
+            <LeadForm
+              variant="inline"
+              source={source}
+              courseSlug={courseSlug}
+              brochureCourseSlug={courseSlug}
+              ctaLabel={ctaLabel || "Send it to me"}
+              defaultName={account?.name ?? undefined}
+              defaultEmail={account?.email}
+            />
+          )}
+
+          <p className="text-[11px] text-gray-500 text-center pt-4 leading-relaxed">
+            By tapping submit, you agree to Simplilead <a href="/info/privacy-policy-and-disclaimer" className="font-bold text-[#082032] hover:underline">Privacy Policy</a> and <a href="/info/terms-and-conditions" className="font-bold text-[#082032] hover:underline">Terms &amp; Conditions</a>
           </p>
-
-          <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
-
-            {/* Phone Field */}
-            <div>
-              <label htmlFor="dm-phone" className="sr-only">Phone number</label>
-              <div className="flex rounded-[4px] border border-gray-300 overflow-hidden focus-within:border-[#1FA8A8] focus-within:ring-1 focus-within:ring-[#1FA8A8]">
-                <div className="flex items-center gap-2 px-3 bg-gray-50 border-r border-gray-300">
-                  <span className="text-[18px]" aria-hidden="true">🇮🇳</span>
-                  <span className="text-[14px] text-gray-600 font-medium">+91</span>
-                  <ChevronDown className="w-4 h-4 text-gray-400" />
-                </div>
-                <input
-                  id="dm-phone"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  placeholder="Phone Number *"
-                  required
-                  className="flex-1 px-4 py-3 text-[16px] outline-none"
-                />
-              </div>
-            </div>
-
-            {/* Email Field */}
-            <div>
-              <label htmlFor="dm-email" className="sr-only">Email address</label>
-              <div className="rounded-[4px] border border-gray-300 overflow-hidden focus-within:border-[#1FA8A8] focus-within:ring-1 focus-within:ring-[#1FA8A8]">
-                <input
-                  id="dm-email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="Email *"
-                  required
-                  className="w-full px-4 py-3 text-[16px] outline-none"
-                />
-              </div>
-            </div>
-
-            {/* WhatsApp Checkbox */}
-            <label className="flex items-center gap-2 cursor-pointer group">
-              <span className="relative flex items-center justify-center">
-                <input type="checkbox" defaultChecked className="peer h-4 w-4 appearance-none rounded-[3px] border border-[#1FA8A8] checked:bg-[#1FA8A8] cursor-pointer" />
-                <Check className="pointer-events-none absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100" strokeWidth={3} />
-              </span>
-              <span className="text-[13px] text-[#1FA8A8]">I want to receive updates directly on Whatsapp</span>
-            </label>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full h-12 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] transition-colors mt-2"
-            >
-              Get OTP
-            </button>
-
-            <p className="text-[11px] text-gray-500 text-center pt-2 leading-relaxed">
-              By tapping submit, you agree to Simplilead <a href="/info/privacy-policy-and-disclaimer" className="font-bold text-[#082032] hover:underline">Privacy Policy</a> and <a href="/info/terms-and-conditions" className="font-bold text-[#082032] hover:underline">Terms &amp; Conditions</a>
-            </p>
-          </form>
         </div>
       </div>
     </div>
