@@ -257,7 +257,7 @@ const mockAiCourses = ([
   curriculum: COURSE_CONTENT[c.slug]?.curriculum || [],
   whyChooseUs: [],
   faqs: COURSE_CONTENT[c.slug]?.faqs || [],
-  seoTitle: `${c.title} | Simplilead`,
+  seoTitle: c.title,
   seoDescription: `Get certified in ${c.title} with Simplilead. Expert-led training and comprehensive curriculum.`,
   seoKeywords: `${c.title.toLowerCase()}, ai training, certification`
 }));
@@ -288,7 +288,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Scrum Master (CSM®) Certification Training | Simplilead",
+    seoTitle: "Certified Scrum Master (CSM®) Certification Training",
     seoDescription: "Get certified in Certified Scrum Master (CSM®) Certification Training with Simplilead.",
     seoKeywords: "certified scrum master csm certification training, training, certification"
   },
@@ -316,7 +316,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Scrum Product Owner (CSPO®) Certification Training | Simplilead",
+    seoTitle: "Certified Scrum Product Owner (CSPO®) Certification Training",
     seoDescription: "Get certified in Certified Scrum Product Owner (CSPO®) Certification Training with Simplilead.",
     seoKeywords: "certified scrum product owner cspo certification training, training, certification"
   },
@@ -344,7 +344,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Advanced Certified Scrum Master (A-CSM®) Certification Training | Simplilead",
+    seoTitle: "Advanced Certified Scrum Master (A-CSM®) Certification Training",
     seoDescription: "Get certified in Advanced Certified Scrum Master (A-CSM®) Certification Training with Simplilead.",
     seoKeywords: "advanced certified scrum master acsm certification training, training, certification"
   },
@@ -372,7 +372,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Advanced Certified Scrum Product Owner (A-CSPO®) Certification Training | Simplilead",
+    seoTitle: "Advanced Certified Scrum Product Owner (A-CSPO®) Certification Training",
     seoDescription: "Get certified in Advanced Certified Scrum Product Owner (A-CSPO®) Certification Training with Simplilead.",
     seoKeywords: "advanced certified scrum product owner acspo certification training, training, certification"
   },
@@ -400,7 +400,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Scrum Developer (CSD®) Certification Training | Simplilead",
+    seoTitle: "Certified Scrum Developer (CSD®) Certification Training",
     seoDescription: "Get certified in Certified Scrum Developer (CSD®) Certification Training with Simplilead.",
     seoKeywords: "certified scrum developer csd certification training, training, certification"
   },
@@ -428,7 +428,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile and Scrum Training | Simplilead",
+    seoTitle: "Agile and Scrum Training",
     seoDescription: "Get certified in Agile and Scrum Training with Simplilead.",
     seoKeywords: "agile and scrum training, training, certification"
   },
@@ -456,7 +456,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PMI-Agile Certified Practitioner (PMI-ACP®) Certification Training | Simplilead",
+    seoTitle: "PMI-Agile Certified Practitioner (PMI-ACP®) Certification Training",
     seoDescription: "Get certified in PMI-Agile Certified Practitioner (PMI-ACP®) Certification Training with Simplilead.",
     seoKeywords: "pmiagile certified practitioner pmiacp certification training, training, certification"
   },
@@ -484,7 +484,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Master™ (PSM I) Certification Training | Simplilead",
+    seoTitle: "Professional Scrum Master™ (PSM I) Certification Training",
     seoDescription: "Get certified in Professional Scrum Master™ (PSM I) Certification Training with Simplilead.",
     seoKeywords: "professional scrum master psm i certification training, training, certification"
   },
@@ -512,7 +512,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Agile Scaling Practitioner 1 (CASP 1) Training | Simplilead",
+    seoTitle: "Certified Agile Scaling Practitioner 1 (CASP 1) Training",
     seoDescription: "Get certified in Certified Agile Scaling Practitioner 1 (CASP 1) Training with Simplilead.",
     seoKeywords: "certified agile scaling practitioner 1 casp 1 training, training, certification"
   },
@@ -540,7 +540,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Coaching Skills - Certified Facilitator (CAF) Training | Simplilead",
+    seoTitle: "Agile Coaching Skills - Certified Facilitator (CAF) Training",
     seoDescription: "Get certified in Agile Coaching Skills - Certified Facilitator (CAF) Training with Simplilead.",
     seoKeywords: "agile coaching skills  certified facilitator caf training, training, certification"
   },
@@ -568,7 +568,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Master™ Advanced (PSM A) Certification Training | Simplilead",
+    seoTitle: "Professional Scrum Master™ Advanced (PSM A) Certification Training",
     seoDescription: "Get certified in Professional Scrum Master™ Advanced (PSM A) Certification Training with Simplilead.",
     seoKeywords: "professional scrum master advanced psm a certification training, training, certification"
   },
@@ -596,7 +596,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Agile Leader® 1 (CAL 1™) Certification Training | Simplilead",
+    seoTitle: "Certified Agile Leader® 1 (CAL 1™) Certification Training",
     seoDescription: "Get certified in Certified Agile Leader® 1 (CAL 1™) Certification Training with Simplilead.",
     seoKeywords: "certified agile leader 1 cal 1 certification training, training, certification"
   },
@@ -624,7 +624,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Advanced Certified Scrum Developer® (A-CSD) Certification Training | Simplilead",
+    seoTitle: "Advanced Certified Scrum Developer® (A-CSD) Certification Training",
     seoDescription: "Get certified in Advanced Certified Scrum Developer® (A-CSD) Certification Training with Simplilead.",
     seoKeywords: "advanced certified scrum developer acsd certification training, training, certification"
   },
@@ -652,7 +652,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Certified Professional in Agile Coaching (ICP-ACC®) Certification Training | Simplilead",
+    seoTitle: "ICAgile Certified Professional in Agile Coaching (ICP-ACC®) Certification Training",
     seoDescription: "Get certified in ICAgile Certified Professional in Agile Coaching (ICP-ACC®) Certification Training with Simplilead.",
     seoKeywords: "icagile certified professional in agile coaching icpacc certification training, training, certification"
   },
@@ -680,7 +680,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum with Kanban™ (PSK) Certification Training | Simplilead",
+    seoTitle: "Professional Scrum with Kanban™ (PSK) Certification Training",
     seoDescription: "Get certified in Professional Scrum with Kanban™ (PSK) Certification Training with Simplilead.",
     seoKeywords: "professional scrum with kanban psk certification training, training, certification"
   },
@@ -708,7 +708,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Product Owner™ I (PSPO) Certification Training | Simplilead",
+    seoTitle: "Professional Scrum Product Owner™ I (PSPO) Certification Training",
     seoDescription: "Get certified in Professional Scrum Product Owner™ I (PSPO) Certification Training with Simplilead.",
     seoKeywords: "professional scrum product owner i pspo certification training, training, certification"
   },
@@ -736,7 +736,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Developer (PSD) Certification Training | Simplilead",
+    seoTitle: "Professional Scrum Developer (PSD) Certification Training",
     seoDescription: "Get certified in Professional Scrum Developer (PSD) Certification Training with Simplilead.",
     seoKeywords: "professional scrum developer psd certification training, training, certification"
   },
@@ -764,7 +764,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Scrum Professional - ScrumMaster (CSP®-SM) Certification Training | Simplilead",
+    seoTitle: "Certified Scrum Professional - ScrumMaster (CSP®-SM) Certification Training",
     seoDescription: "Get certified in Certified Scrum Professional - ScrumMaster (CSP®-SM) Certification Training with Simplilead.",
     seoKeywords: "certified scrum professional  scrummaster cspsm certification training, training, certification"
   },
@@ -792,7 +792,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Agile Leader® 2 (CAL 2™) Certification Training | Simplilead",
+    seoTitle: "Certified Agile Leader® 2 (CAL 2™) Certification Training",
     seoDescription: "Get certified in Certified Agile Leader® 2 (CAL 2™) Certification Training with Simplilead.",
     seoKeywords: "certified agile leader 2 cal 2 certification training, training, certification"
   },
@@ -820,7 +820,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Product Owner (PSPO) - Advanced Course | Simplilead",
+    seoTitle: "Professional Scrum Product Owner (PSPO) - Advanced Course",
     seoDescription: "Get certified in Professional Scrum Product Owner (PSPO) - Advanced Course with Simplilead.",
     seoKeywords: "professional scrum product owner pspo  advanced course, training, certification"
   },
@@ -848,7 +848,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Scrum@Scale™ Certification Training | Simplilead",
+    seoTitle: "Scrum@Scale™ Certification Training",
     seoDescription: "Get certified in Scrum@Scale™ Certification Training with Simplilead.",
     seoKeywords: "scrumscale certification training, training, certification"
   },
@@ -876,7 +876,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Coaching Agile Transformations (ICP-CAT) Certification Training | Simplilead",
+    seoTitle: "ICAgile Coaching Agile Transformations (ICP-CAT) Certification Training",
     seoDescription: "Get certified in ICAgile Coaching Agile Transformations (ICP-CAT) Certification Training with Simplilead.",
     seoKeywords: "icagile coaching agile transformations icpcat certification training, training, certification"
   },
@@ -904,7 +904,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Agile Leadership Essentials™ (PAL-E) Certification Training | Simplilead",
+    seoTitle: "Professional Agile Leadership Essentials™ (PAL-E) Certification Training",
     seoDescription: "Get certified in Professional Agile Leadership Essentials™ (PAL-E) Certification Training with Simplilead.",
     seoKeywords: "professional agile leadership essentials pale certification training, training, certification"
   },
@@ -932,7 +932,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Behaviour Driven Development (BDD) Training | Simplilead",
+    seoTitle: "Behaviour Driven Development (BDD) Training",
     seoDescription: "Get certified in Behaviour Driven Development (BDD) Training with Simplilead.",
     seoKeywords: "behaviour driven development bdd training, training, certification"
   },
@@ -960,7 +960,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Test Driven Development (TDD) Training | Simplilead",
+    seoTitle: "Test Driven Development (TDD) Training",
     seoDescription: "Get certified in Test Driven Development (TDD) Training with Simplilead.",
     seoKeywords: "test driven development tdd training, training, certification"
   },
@@ -988,7 +988,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Agility in the Enterprise (ICP-ENT) Certification Training | Simplilead",
+    seoTitle: "ICAgile Agility in the Enterprise (ICP-ENT) Certification Training",
     seoDescription: "Get certified in ICAgile Agility in the Enterprise (ICP-ENT) Certification Training with Simplilead.",
     seoKeywords: "icagile agility in the enterprise icpent certification training, training, certification"
   },
@@ -1016,7 +1016,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile(ICP) Fundamental Certification Training | Simplilead",
+    seoTitle: "ICAgile(ICP) Fundamental Certification Training",
     seoDescription: "Get certified in ICAgile(ICP) Fundamental Certification Training with Simplilead.",
     seoKeywords: "icagileicp fundamental certification training, training, certification"
   },
@@ -1044,7 +1044,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Fundamentals : Including Scrum and Kanban Training | Simplilead",
+    seoTitle: "Agile Fundamentals : Including Scrum and Kanban Training",
     seoDescription: "Get certified in Agile Fundamentals : Including Scrum and Kanban Training with Simplilead.",
     seoKeywords: "agile fundamentals  including scrum and kanban training, training, certification"
   },
@@ -1072,7 +1072,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Manage Agile Projects Using Scrum Training | Simplilead",
+    seoTitle: "Manage Agile Projects Using Scrum Training",
     seoDescription: "Get certified in Manage Agile Projects Using Scrum Training with Simplilead.",
     seoKeywords: "manage agile projects using scrum training, training, certification"
   },
@@ -1100,7 +1100,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile for Executives Training | Simplilead",
+    seoTitle: "Agile for Executives Training",
     seoDescription: "Get certified in Agile for Executives Training with Simplilead.",
     seoKeywords: "agile for executives training, training, certification"
   },
@@ -1128,7 +1128,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile for Managers Training | Simplilead",
+    seoTitle: "Agile for Managers Training",
     seoDescription: "Get certified in Agile for Managers Training with Simplilead.",
     seoKeywords: "agile for managers training, training, certification"
   },
@@ -1156,7 +1156,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Product Owner Training | Simplilead",
+    seoTitle: "Agile Product Owner Training",
     seoDescription: "Get certified in Agile Product Owner Training with Simplilead.",
     seoKeywords: "agile product owner training, training, certification"
   },
@@ -1184,7 +1184,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Applying Professional Scrum™ (APS) Certification Training | Simplilead",
+    seoTitle: "Applying Professional Scrum™ (APS) Certification Training",
     seoDescription: "Get certified in Applying Professional Scrum™ (APS) Certification Training with Simplilead.",
     seoKeywords: "applying professional scrum aps certification training, training, certification"
   },
@@ -1212,7 +1212,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Release Planning Training | Simplilead",
+    seoTitle: "Agile Release Planning Training",
     seoDescription: "Get certified in Agile Release Planning Training with Simplilead.",
     seoKeywords: "agile release planning training, training, certification"
   },
@@ -1240,7 +1240,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Scrum Professional - Product Owner® (CSP-PO) Certification Training | Simplilead",
+    seoTitle: "Certified Scrum Professional - Product Owner® (CSP-PO) Certification Training",
     seoDescription: "Get certified in Certified Scrum Professional - Product Owner® (CSP-PO) Certification Training with Simplilead.",
     seoKeywords: "certified scrum professional  product owner csppo certification training, training, certification"
   },
@@ -1268,7 +1268,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Project Management Training | Simplilead",
+    seoTitle: "Agile Project Management Training",
     seoDescription: "Get certified in Agile Project Management Training with Simplilead.",
     seoKeywords: "agile project management training, training, certification"
   },
@@ -1296,7 +1296,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Jira Software Training for Agile Projects | Simplilead",
+    seoTitle: "Jira Software Training for Agile Projects",
     seoDescription: "Get certified in Jira Software Training for Agile Projects with Simplilead.",
     seoKeywords: "jira software training for agile projects, training, certification"
   },
@@ -1324,7 +1324,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Agile Leadership (ICP-LEA) Certification Course Training | Simplilead",
+    seoTitle: "ICAgile Agile Leadership (ICP-LEA) Certification Course Training",
     seoDescription: "Get certified in ICAgile Agile Leadership (ICP-LEA) Certification Course Training with Simplilead.",
     seoKeywords: "icagile agile leadership icplea certification course training, training, certification"
   },
@@ -1352,7 +1352,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Product Management (ICP-PDM) Certification Training | Simplilead",
+    seoTitle: "ICAgile Product Management (ICP-PDM) Certification Training",
     seoDescription: "Get certified in ICAgile Product Management (ICP-PDM) Certification Training with Simplilead.",
     seoKeywords: "icagile product management icppdm certification training, training, certification"
   },
@@ -1380,7 +1380,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Agile Project & Delivery Management (ICP-APM) Training | Simplilead",
+    seoTitle: "ICAgile Agile Project & Delivery Management (ICP-APM) Training",
     seoDescription: "Get certified in ICAgile Agile Project & Delivery Management (ICP-APM) Training with Simplilead.",
     seoKeywords: "icagile agile project  delivery management icpapm training, training, certification"
   },
@@ -1408,7 +1408,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Product Backlog Management (PSPBM) Skills™ Certification Course | Simplilead",
+    seoTitle: "Professional Scrum Product Backlog Management (PSPBM) Skills™ Certification Course",
     seoDescription: "Get certified in Professional Scrum Product Backlog Management (PSPBM) Skills™ Certification Course with Simplilead.",
     seoKeywords: "professional scrum product backlog management pspbm skills certification course, training, certification"
   },
@@ -1436,7 +1436,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Agile Product Ownership (ICP-APO) Certification Training | Simplilead",
+    seoTitle: "ICAgile Agile Product Ownership (ICP-APO) Certification Training",
     seoDescription: "Get certified in ICAgile Agile Product Ownership (ICP-APO) Certification Training with Simplilead.",
     seoKeywords: "icagile agile product ownership icpapo certification training, training, certification"
   },
@@ -1464,7 +1464,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Applying Professional Kanban(APK) Course | Simplilead",
+    seoTitle: "Applying Professional Kanban(APK) Course",
     seoDescription: "Get certified in Applying Professional Kanban(APK) Course with Simplilead.",
     seoKeywords: "applying professional kanbanapk course, training, certification"
   },
@@ -1492,7 +1492,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Agile Team Facilitation Certification (ICP-ATF) Training | Simplilead",
+    seoTitle: "ICAgile Agile Team Facilitation Certification (ICP-ATF) Training",
     seoDescription: "Get certified in ICAgile Agile Team Facilitation Certification (ICP-ATF) Training with Simplilead.",
     seoKeywords: "icagile agile team facilitation certification icpatf training, training, certification"
   },
@@ -1520,7 +1520,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Foundations of AI (ICP-FAI) Certification Training | Simplilead",
+    seoTitle: "ICAgile Foundations of AI (ICP-FAI) Certification Training",
     seoDescription: "Get certified in ICAgile Foundations of AI (ICP-FAI) Certification Training with Simplilead.",
     seoKeywords: "icagile foundations of ai icpfai certification training, training, certification"
   },
@@ -1548,7 +1548,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Lean Portfolio Management (ICP-LPM) Certification Training | Simplilead",
+    seoTitle: "ICAgile Lean Portfolio Management (ICP-LPM) Certification Training",
     seoDescription: "Get certified in ICAgile Lean Portfolio Management (ICP-LPM) Certification Training with Simplilead.",
     seoKeywords: "icagile lean portfolio management icplpm certification training, training, certification"
   },
@@ -1576,7 +1576,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile People Development (ICP-PDV) Certification Training | Simplilead",
+    seoTitle: "ICAgile People Development (ICP-PDV) Certification Training",
     seoDescription: "Get certified in ICAgile People Development (ICP-PDV) Certification Training with Simplilead.",
     seoKeywords: "icagile people development icppdv certification training, training, certification"
   },
@@ -1604,7 +1604,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Systems Coaching (ICP-SYS) Certification Training | Simplilead",
+    seoTitle: "ICAgile Systems Coaching (ICP-SYS) Certification Training",
     seoDescription: "Get certified in ICAgile Systems Coaching (ICP-SYS) Certification Training with Simplilead.",
     seoKeywords: "icagile systems coaching icpsys certification training, training, certification"
   },
@@ -1632,7 +1632,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Business Agility Foundations (ICP-BAF) Certification Training | Simplilead",
+    seoTitle: "ICAgile Business Agility Foundations (ICP-BAF) Certification Training",
     seoDescription: "Get certified in ICAgile Business Agility Foundations (ICP-BAF) Certification Training with Simplilead.",
     seoKeywords: "icagile business agility foundations icpbaf certification training, training, certification"
   },
@@ -1660,7 +1660,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Master–AI Essentials (PSM-AI) Certification Training | Simplilead",
+    seoTitle: "Professional Scrum Master–AI Essentials (PSM-AI) Certification Training",
     seoDescription: "Get certified in Professional Scrum Master–AI Essentials (PSM-AI) Certification Training with Simplilead.",
     seoKeywords: "professional scrum masterai essentials psmai certification training, training, certification"
   },
@@ -1688,7 +1688,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Professional Scrum Product Owner–AI Essentials (PSPO-AI Essentials) Certification Training | Simplilead",
+    seoTitle: "Professional Scrum Product Owner–AI Essentials (PSPO-AI Essentials) Certification Training",
     seoDescription: "Get certified in Professional Scrum Product Owner–AI Essentials (PSPO-AI Essentials) Certification Training with Simplilead.",
     seoKeywords: "professional scrum product ownerai essentials pspoai essentials certification training, training, certification"
   },
@@ -1716,7 +1716,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile Adaptive Org Design (ICP-ORG) Certification Training | Simplilead",
+    seoTitle: "ICAgile Adaptive Org Design (ICP-ORG) Certification Training",
     seoDescription: "Get certified in ICAgile Adaptive Org Design (ICP-ORG) Certification Training with Simplilead.",
     seoKeywords: "icagile adaptive org design icporg certification training, training, certification"
   },
@@ -1744,7 +1744,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered Leading SAFe® 6.0 Certification Training | Simplilead",
+    seoTitle: "AI-Empowered Leading SAFe® 6.0 Certification Training",
     seoDescription: "Get certified in AI-Empowered Leading SAFe® 6.0 Certification Training with Simplilead.",
     seoKeywords: "aiempowered leading safe 60 certification training, training, certification"
   },
@@ -1772,7 +1772,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered SAFe® 6.0 Scrum Master (SSM) Certification Training | Simplilead",
+    seoTitle: "AI-Empowered SAFe® 6.0 Scrum Master (SSM) Certification Training",
     seoDescription: "Get certified in AI-Empowered SAFe® 6.0 Scrum Master (SSM) Certification Training with Simplilead.",
     seoKeywords: "aiempowered safe 60 scrum master ssm certification training, training, certification"
   },
@@ -1800,7 +1800,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training | Simplilead",
+    seoTitle: "AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training",
     seoDescription: "Get certified in AI-Empowered SAFe® 6.0 Product Owner/Product Manager (POPM) Certification Training with Simplilead.",
     seoKeywords: "aiempowered safe 60 product ownerproduct manager popm certification training, training, certification"
   },
@@ -1828,7 +1828,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered SAFe® 6.0 Advanced Scrum Master (SASM) Certification Training | Simplilead",
+    seoTitle: "AI-Empowered SAFe® 6.0 Advanced Scrum Master (SASM) Certification Training",
     seoDescription: "Get certified in AI-Empowered SAFe® 6.0 Advanced Scrum Master (SASM) Certification Training with Simplilead.",
     seoKeywords: "aiempowered safe 60 advanced scrum master sasm certification training, training, certification"
   },
@@ -1856,7 +1856,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered SAFe® 6.0 Release Train Engineer (RTE) Certification Training | Simplilead",
+    seoTitle: "AI-Empowered SAFe® 6.0 Release Train Engineer (RTE) Certification Training",
     seoDescription: "Get certified in AI-Empowered SAFe® 6.0 Release Train Engineer (RTE) Certification Training with Simplilead.",
     seoKeywords: "aiempowered safe 60 release train engineer rte certification training, training, certification"
   },
@@ -1884,7 +1884,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered SAFe® 6.0 Practice Consultant (SPC) Certification Training | Simplilead",
+    seoTitle: "AI-Empowered SAFe® 6.0 Practice Consultant (SPC) Certification Training",
     seoDescription: "Get certified in AI-Empowered SAFe® 6.0 Practice Consultant (SPC) Certification Training with Simplilead.",
     seoKeywords: "aiempowered safe 60 practice consultant spc certification training, training, certification"
   },
@@ -1912,7 +1912,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training | Simplilead",
+    seoTitle: "SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training",
     seoDescription: "Get certified in SAFe® 6.0 Lean Portfolio Management (LPM) Certification Training with Simplilead.",
     seoKeywords: "safe 60 lean portfolio management lpm certification training, training, certification"
   },
@@ -1940,7 +1940,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "SAFe® 6.0 Agile Product Management (APM) Certification Training | Simplilead",
+    seoTitle: "SAFe® 6.0 Agile Product Management (APM) Certification Training",
     seoDescription: "Get certified in SAFe® 6.0 Agile Product Management (APM) Certification Training with Simplilead.",
     seoKeywords: "safe 60 agile product management apm certification training, training, certification"
   },
@@ -1968,7 +1968,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered Advanced SAFe Practice Consultant (ASPC) Certification Path | Simplilead",
+    seoTitle: "AI-Empowered Advanced SAFe Practice Consultant (ASPC) Certification Path",
     seoDescription: "Get certified in AI-Empowered Advanced SAFe Practice Consultant (ASPC) Certification Path with Simplilead.",
     seoKeywords: "aiempowered advanced safe practice consultant aspc certification path, training, certification"
   },
@@ -1996,7 +1996,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Empowered SAFe® 6.0 for Teams Certification Training | Simplilead",
+    seoTitle: "AI-Empowered SAFe® 6.0 for Teams Certification Training",
     seoDescription: "Get certified in AI-Empowered SAFe® 6.0 for Teams Certification Training with Simplilead.",
     seoKeywords: "aiempowered safe 60 for teams certification training, training, certification"
   },
@@ -2024,7 +2024,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "SAFe® 6.0 Architects Certification Training | Simplilead",
+    seoTitle: "SAFe® 6.0 Architects Certification Training",
     seoDescription: "Get certified in SAFe® 6.0 Architects Certification Training with Simplilead.",
     seoKeywords: "safe 60 architects certification training, training, certification"
   },
@@ -2052,7 +2052,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "SAFe® 6.0 DevOps Certification Training | Simplilead",
+    seoTitle: "SAFe® 6.0 DevOps Certification Training",
     seoDescription: "Get certified in SAFe® 6.0 DevOps Certification Training with Simplilead.",
     seoKeywords: "safe 60 devops certification training, training, certification"
   },
@@ -2080,7 +2080,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "SAFe® 6.0 Agile Software Engineering Certification Training | Simplilead",
+    seoTitle: "SAFe® 6.0 Agile Software Engineering Certification Training",
     seoDescription: "Get certified in SAFe® 6.0 Agile Software Engineering Certification Training with Simplilead.",
     seoKeywords: "safe 60 agile software engineering certification training, training, certification"
   },
@@ -2108,7 +2108,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Advanced Facilitator: Value Stream Mapping Micro-Credential Course | Simplilead",
+    seoTitle: "Advanced Facilitator: Value Stream Mapping Micro-Credential Course",
     seoDescription: "Get certified in Advanced Facilitator: Value Stream Mapping Micro-Credential Course with Simplilead.",
     seoKeywords: "advanced facilitator value stream mapping microcredential course, training, certification"
   },
@@ -2136,7 +2136,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Achieving Responsible AI with SAFe Micro-credential Course | Simplilead",
+    seoTitle: "Achieving Responsible AI with SAFe Micro-credential Course",
     seoDescription: "Get certified in Achieving Responsible AI with SAFe Micro-credential Course with Simplilead.",
     seoKeywords: "achieving responsible ai with safe microcredential course, training, certification"
   },
@@ -2164,7 +2164,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile HR Explorer (AHRE) Training and Certification | Simplilead",
+    seoTitle: "Agile HR Explorer (AHRE) Training and Certification",
     seoDescription: "Get certified in Agile HR Explorer (AHRE) Training and Certification with Simplilead.",
     seoKeywords: "agile hr explorer ahre training and certification, training, certification"
   },
@@ -2192,7 +2192,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Advanced Scrum Master Certification Path | Simplilead",
+    seoTitle: "Advanced Scrum Master Certification Path",
     seoDescription: "Get certified in Advanced Scrum Master Certification Path with Simplilead.",
     seoKeywords: "advanced scrum master certification path, training, certification"
   },
@@ -2220,7 +2220,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Advanced Facilitator: Conflict & Collaboration Micro-Credential Course | Simplilead",
+    seoTitle: "Advanced Facilitator: Conflict & Collaboration Micro-Credential Course",
     seoDescription: "Get certified in Advanced Facilitator: Conflict & Collaboration Micro-Credential Course with Simplilead.",
     seoKeywords: "advanced facilitator conflict  collaboration microcredential course, training, certification"
   },
@@ -2248,7 +2248,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "SAFe® for Hardware Certification Training | Simplilead",
+    seoTitle: "SAFe® for Hardware Certification Training",
     seoDescription: "Get certified in SAFe® for Hardware Certification Training with Simplilead.",
     seoKeywords: "safe for hardware certification training, training, certification"
   },
@@ -2276,7 +2276,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Native Foundations Certification Training Course | Simplilead",
+    seoTitle: "AI-Native Foundations Certification Training Course",
     seoDescription: "Get certified in AI-Native Foundations Certification Training Course with Simplilead.",
     seoKeywords: "ainative foundations certification training course, training, certification"
   },
@@ -2304,7 +2304,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Native Change Agent Certification Training Course | Simplilead",
+    seoTitle: "AI-Native Change Agent Certification Training Course",
     seoDescription: "Get certified in AI-Native Change Agent Certification Training Course with Simplilead.",
     seoKeywords: "ainative change agent certification training course, training, certification"
   },
@@ -2332,7 +2332,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Project Management Professional (PMP®) Certification Training | Simplilead",
+    seoTitle: "Project Management Professional (PMP®) Certification Training",
     seoDescription: "Get certified in Project Management Professional (PMP®) Certification Training with Simplilead.",
     seoKeywords: "project management professional pmp certification training, training, certification"
   },
@@ -2360,7 +2360,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Project Management Techniques Training | Simplilead",
+    seoTitle: "Project Management Techniques Training",
     seoDescription: "Get certified in Project Management Techniques Training with Simplilead.",
     seoKeywords: "project management techniques training, training, certification"
   },
@@ -2388,7 +2388,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PRINCE2® Foundation and Practitioner Certification Training | Simplilead",
+    seoTitle: "PRINCE2® Foundation and Practitioner Certification Training",
     seoDescription: "Get certified in PRINCE2® Foundation and Practitioner Certification Training with Simplilead.",
     seoKeywords: "prince2 foundation and practitioner certification training, training, certification"
   },
@@ -2416,7 +2416,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PRINCE2® Foundation Certification Training | Simplilead",
+    seoTitle: "PRINCE2® Foundation Certification Training",
     seoDescription: "Get certified in PRINCE2® Foundation Certification Training with Simplilead.",
     seoKeywords: "prince2 foundation certification training, training, certification"
   },
@@ -2444,7 +2444,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PRINCE2® Practitioner Certification Training | Simplilead",
+    seoTitle: "PRINCE2® Practitioner Certification Training",
     seoDescription: "Get certified in PRINCE2® Practitioner Certification Training with Simplilead.",
     seoKeywords: "prince2 practitioner certification training, training, certification"
   },
@@ -2472,7 +2472,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Associate in Project Management (CAPM®) Certification Training | Simplilead",
+    seoTitle: "Certified Associate in Project Management (CAPM®) Certification Training",
     seoDescription: "Get certified in Certified Associate in Project Management (CAPM®) Certification Training with Simplilead.",
     seoKeywords: "certified associate in project management capm certification training, training, certification"
   },
@@ -2500,7 +2500,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PRINCE2 Agile® Foundation Certification Training | Simplilead",
+    seoTitle: "PRINCE2 Agile® Foundation Certification Training",
     seoDescription: "Get certified in PRINCE2 Agile® Foundation Certification Training with Simplilead.",
     seoKeywords: "prince2 agile foundation certification training, training, certification"
   },
@@ -2528,7 +2528,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Primavera P6 v 20.12 Certification Training | Simplilead",
+    seoTitle: "Primavera P6 v 20.12 Certification Training",
     seoDescription: "Get certified in Primavera P6 v 20.12 Certification Training with Simplilead.",
     seoKeywords: "primavera p6 v 2012 certification training, training, certification"
   },
@@ -2556,7 +2556,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PRINCE2 Agile® Practitioner Certification Training | Simplilead",
+    seoTitle: "PRINCE2 Agile® Practitioner Certification Training",
     seoDescription: "Get certified in PRINCE2 Agile® Practitioner Certification Training with Simplilead.",
     seoKeywords: "prince2 agile practitioner certification training, training, certification"
   },
@@ -2584,7 +2584,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PRINCE2 Agile® Foundation and Practitioner Certification Training | Simplilead",
+    seoTitle: "PRINCE2 Agile® Foundation and Practitioner Certification Training",
     seoDescription: "Get certified in PRINCE2 Agile® Foundation and Practitioner Certification Training with Simplilead.",
     seoKeywords: "prince2 agile foundation and practitioner certification training, training, certification"
   },
@@ -2612,7 +2612,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Program Management Professional (PgMP)® Certification Training | Simplilead",
+    seoTitle: "Program Management Professional (PgMP)® Certification Training",
     seoDescription: "Get certified in Program Management Professional (PgMP)® Certification Training with Simplilead.",
     seoKeywords: "program management professional pgmp certification training, training, certification"
   },
@@ -2640,7 +2640,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Project Management Fundamental Training | Simplilead",
+    seoTitle: "Project Management Fundamental Training",
     seoDescription: "Get certified in Project Management Fundamental Training with Simplilead.",
     seoKeywords: "project management fundamental training, training, certification"
   },
@@ -2668,7 +2668,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Portfolio Management Professional (PfMP®) Certification Training | Simplilead",
+    seoTitle: "Portfolio Management Professional (PfMP®) Certification Training",
     seoDescription: "Get certified in Portfolio Management Professional (PfMP®) Certification Training with Simplilead.",
     seoKeywords: "portfolio management professional pfmp certification training, training, certification"
   },
@@ -2696,7 +2696,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Disciplined Agile® Foundations (DAF) Training | Simplilead",
+    seoTitle: "Disciplined Agile® Foundations (DAF) Training",
     seoDescription: "Get certified in Disciplined Agile® Foundations (DAF) Training with Simplilead.",
     seoKeywords: "disciplined agile foundations daf training, training, certification"
   },
@@ -2724,7 +2724,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PMI-CPMAI Certification Training | Simplilead",
+    seoTitle: "PMI-CPMAI Certification Training",
     seoDescription: "Get certified in PMI-CPMAI Certification Training with Simplilead.",
     seoKeywords: "pmicpmai certification training, training, certification"
   },
@@ -2752,7 +2752,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Primavera P6 Professional Fundamentals Certification Training | Simplilead",
+    seoTitle: "Primavera P6 Professional Fundamentals Certification Training",
     seoDescription: "Get certified in Primavera P6 Professional Fundamentals Certification Training with Simplilead.",
     seoKeywords: "primavera p6 professional fundamentals certification training, training, certification"
   },
@@ -2780,7 +2780,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Business Case Writing Training | Simplilead",
+    seoTitle: "Business Case Writing Training",
     seoDescription: "Get certified in Business Case Writing Training with Simplilead.",
     seoKeywords: "business case writing training, training, certification"
   },
@@ -2808,7 +2808,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Conflict Management Training | Simplilead",
+    seoTitle: "Conflict Management Training",
     seoDescription: "Get certified in Conflict Management Training with Simplilead.",
     seoKeywords: "conflict management training, training, certification"
   },
@@ -2836,7 +2836,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Business Analysis Professional (CBAP®) Certification Training | Simplilead",
+    seoTitle: "Certified Business Analysis Professional (CBAP®) Certification Training",
     seoDescription: "Get certified in Certified Business Analysis Professional (CBAP®) Certification Training with Simplilead.",
     seoKeywords: "certified business analysis professional cbap certification training, training, certification"
   },
@@ -2864,7 +2864,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Change Management Training | Simplilead",
+    seoTitle: "Change Management Training",
     seoDescription: "Get certified in Change Management Training with Simplilead.",
     seoKeywords: "change management training, training, certification"
   },
@@ -2892,7 +2892,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certification of Capability in Business Analysis™ (CCBA®) Training | Simplilead",
+    seoTitle: "Certification of Capability in Business Analysis™ (CCBA®) Training",
     seoDescription: "Get certified in Certification of Capability in Business Analysis™ (CCBA®) Training with Simplilead.",
     seoKeywords: "certification of capability in business analysis ccba training, training, certification"
   },
@@ -2920,7 +2920,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Entry Certificate in Business Analysis™ (ECBA™) Certification Training | Simplilead",
+    seoTitle: "Entry Certificate in Business Analysis™ (ECBA™) Certification Training",
     seoDescription: "Get certified in Entry Certificate in Business Analysis™ (ECBA™) Certification Training with Simplilead.",
     seoKeywords: "entry certificate in business analysis ecba certification training, training, certification"
   },
@@ -2948,7 +2948,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Design Thinking Training | Simplilead",
+    seoTitle: "Design Thinking Training",
     seoDescription: "Get certified in Design Thinking Training with Simplilead.",
     seoKeywords: "design thinking training, training, certification"
   },
@@ -2976,7 +2976,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Analysis Certification (IIBA®-AAC) Certification Training | Simplilead",
+    seoTitle: "Agile Analysis Certification (IIBA®-AAC) Certification Training",
     seoDescription: "Get certified in Agile Analysis Certification (IIBA®-AAC) Certification Training with Simplilead.",
     seoKeywords: "agile analysis certification iibaaac certification training, training, certification"
   },
@@ -3004,7 +3004,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI for Business & IT Leaders & Managers Training | Simplilead",
+    seoTitle: "Generative AI for Business & IT Leaders & Managers Training",
     seoDescription: "Get certified in Generative AI for Business & IT Leaders & Managers Training with Simplilead.",
     seoKeywords: "generative ai for business  it leaders  managers training, training, certification"
   },
@@ -3032,7 +3032,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI for Business Analysts & Functional IT Consultants Training | Simplilead",
+    seoTitle: "Generative AI for Business Analysts & Functional IT Consultants Training",
     seoDescription: "Get certified in Generative AI for Business Analysts & Functional IT Consultants Training with Simplilead.",
     seoKeywords: "generative ai for business analysts  functional it consultants training, training, certification"
   },
@@ -3060,7 +3060,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Cloud Fundamentals for Business Managers & Product Managers Training | Simplilead",
+    seoTitle: "Cloud Fundamentals for Business Managers & Product Managers Training",
     seoDescription: "Get certified in Cloud Fundamentals for Business Managers & Product Managers Training with Simplilead.",
     seoKeywords: "cloud fundamentals for business managers  product managers training, training, certification"
   },
@@ -3088,7 +3088,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI Architect - Advanced Program Training | Simplilead",
+    seoTitle: "Generative AI Architect - Advanced Program Training",
     seoDescription: "Get certified in Generative AI Architect - Advanced Program Training with Simplilead.",
     seoKeywords: "generative ai architect  advanced program training, training, certification"
   },
@@ -3116,7 +3116,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Multi-cloud FinOps: AWS, GCP, Azure | Simplilead",
+    seoTitle: "Multi-cloud FinOps: AWS, GCP, Azure",
     seoDescription: "Get certified in Multi-cloud FinOps: AWS, GCP, Azure with Simplilead.",
     seoKeywords: "multicloud finops aws gcp azure, training, certification"
   },
@@ -3144,7 +3144,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Introduction to Generative AI Training | Simplilead",
+    seoTitle: "Introduction to Generative AI Training",
     seoDescription: "Get certified in Introduction to Generative AI Training with Simplilead.",
     seoKeywords: "introduction to generative ai training, training, certification"
   },
@@ -3172,7 +3172,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI for Agile Leaders Training | Simplilead",
+    seoTitle: "Generative AI for Agile Leaders Training",
     seoDescription: "Get certified in Generative AI for Agile Leaders Training with Simplilead.",
     seoKeywords: "generative ai for agile leaders training, training, certification"
   },
@@ -3200,7 +3200,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI for Scrum Masters Training | Simplilead",
+    seoTitle: "Generative AI for Scrum Masters Training",
     seoDescription: "Get certified in Generative AI for Scrum Masters Training with Simplilead.",
     seoKeywords: "generative ai for scrum masters training, training, certification"
   },
@@ -3228,7 +3228,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI in HR Certification Course | Simplilead",
+    seoTitle: "Generative AI in HR Certification Course",
     seoDescription: "Get certified in Generative AI in HR Certification Course with Simplilead.",
     seoKeywords: "generative ai in hr certification course, training, certification"
   },
@@ -3256,7 +3256,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI for Software Developers Course | Simplilead",
+    seoTitle: "Generative AI for Software Developers Course",
     seoDescription: "Get certified in Generative AI for Software Developers Course with Simplilead.",
     seoKeywords: "generative ai for software developers course, training, certification"
   },
@@ -3284,7 +3284,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI for Project Managers Training | Simplilead",
+    seoTitle: "Generative AI for Project Managers Training",
     seoDescription: "Get certified in Generative AI for Project Managers Training with Simplilead.",
     seoKeywords: "generative ai for project managers training, training, certification"
   },
@@ -3312,7 +3312,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Prompt Engineering Course | Simplilead",
+    seoTitle: "Prompt Engineering Course",
     seoDescription: "Get certified in Prompt Engineering Course with Simplilead.",
     seoKeywords: "prompt engineering course, training, certification"
   },
@@ -3340,7 +3340,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Generative AI for Product Owners/Product Managers Certification Training | Simplilead",
+    seoTitle: "Generative AI for Product Owners/Product Managers Certification Training",
     seoDescription: "Get certified in Generative AI for Product Owners/Product Managers Certification Training with Simplilead.",
     seoKeywords: "generative ai for product ownersproduct managers certification training, training, certification"
   },
@@ -3368,7 +3368,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Mastering Generative AI Tools Online | Simplilead",
+    seoTitle: "Mastering Generative AI Tools Online",
     seoDescription: "Get certified in Mastering Generative AI Tools Online with Simplilead.",
     seoKeywords: "mastering generative ai tools online, training, certification"
   },
@@ -3396,7 +3396,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agentic AI Foundation Training Course | Simplilead",
+    seoTitle: "Agentic AI Foundation Training Course",
     seoDescription: "Get certified in Agentic AI Foundation Training Course with Simplilead.",
     seoKeywords: "agentic ai foundation training course, training, certification"
   },
@@ -3424,7 +3424,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agentic AI Practitioner Training Course | Simplilead",
+    seoTitle: "Agentic AI Practitioner Training Course",
     seoDescription: "Get certified in Agentic AI Practitioner Training Course with Simplilead.",
     seoKeywords: "agentic ai practitioner training course, training, certification"
   },
@@ -3452,7 +3452,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Claude Certified Architect – Foundations (CCA-F) Training Course | Simplilead",
+    seoTitle: "Claude Certified Architect – Foundations (CCA-F) Training Course",
     seoDescription: "Get certified in Claude Certified Architect – Foundations (CCA-F) Training Course with Simplilead.",
     seoKeywords: "claude certified architect  foundations ccaf training course, training, certification"
   },
@@ -3480,7 +3480,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI For CXOs Workshop | Simplilead",
+    seoTitle: "AI For CXOs Workshop",
     seoDescription: "Get certified in AI For CXOs Workshop with Simplilead.",
     seoKeywords: "ai for cxos workshop, training, certification"
   },
@@ -3508,7 +3508,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agentic AI Engineering with Anthropic Claude Technologies Training Course | Simplilead",
+    seoTitle: "Agentic AI Engineering with Anthropic Claude Technologies Training Course",
     seoDescription: "Get certified in Agentic AI Engineering with Anthropic Claude Technologies Training Course with Simplilead.",
     seoKeywords: "agentic ai engineering with anthropic claude technologies training course, training, certification"
   },
@@ -3536,7 +3536,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Forward Deployed Architect Program | Simplilead",
+    seoTitle: "Forward Deployed Architect Program",
     seoDescription: "Get certified in Forward Deployed Architect Program with Simplilead.",
     seoKeywords: "forward deployed architect program, training, certification"
   },
@@ -3564,7 +3564,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI-Native Development Using BDD Training | Simplilead",
+    seoTitle: "AI-Native Development Using BDD Training",
     seoDescription: "Get certified in AI-Native Development Using BDD Training with Simplilead.",
     seoKeywords: "ainative development using bdd training, training, certification"
   },
@@ -3592,7 +3592,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agentic AI with Azure AI Foundry Program | Simplilead",
+    seoTitle: "Agentic AI with Azure AI Foundry Program",
     seoDescription: "Get certified in Agentic AI with Azure AI Foundry Program with Simplilead.",
     seoKeywords: "agentic ai with azure ai foundry program, training, certification"
   },
@@ -3620,7 +3620,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Objectives and Key Results (Agile OKRs) MicroCredential Training | Simplilead",
+    seoTitle: "Agile Objectives and Key Results (Agile OKRs) MicroCredential Training",
     seoDescription: "Get certified in Agile Objectives and Key Results (Agile OKRs) MicroCredential Training with Simplilead.",
     seoKeywords: "agile objectives and key results agile okrs microcredential training, training, certification"
   },
@@ -3648,7 +3648,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI for Scrum Masters Micro-credential Course | Simplilead",
+    seoTitle: "AI for Scrum Masters Micro-credential Course",
     seoDescription: "Get certified in AI for Scrum Masters Micro-credential Course with Simplilead.",
     seoKeywords: "ai for scrum masters microcredential course, training, certification"
   },
@@ -3676,7 +3676,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI for Product Owners Micro-credential Training | Simplilead",
+    seoTitle: "AI for Product Owners Micro-credential Training",
     seoDescription: "Get certified in AI for Product Owners Micro-credential Training with Simplilead.",
     seoKeywords: "ai for product owners microcredential training, training, certification"
   },
@@ -3704,7 +3704,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Scrum Essentials | Simplilead",
+    seoTitle: "Scrum Essentials",
     seoDescription: "Get certified in Scrum Essentials with Simplilead.",
     seoKeywords: "scrum essentials, training, certification"
   },
@@ -3732,7 +3732,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Conflict Management Skills Course | Simplilead",
+    seoTitle: "Conflict Management Skills Course",
     seoDescription: "Get certified in Conflict Management Skills Course with Simplilead.",
     seoKeywords: "conflict management skills course, training, certification"
   },
@@ -3760,7 +3760,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Scrum Better with Kanban (SBK) Micro-credential Training | Simplilead",
+    seoTitle: "Scrum Better with Kanban (SBK) Micro-credential Training",
     seoDescription: "Get certified in Scrum Better with Kanban (SBK) Micro-credential Training with Simplilead.",
     seoKeywords: "scrum better with kanban sbk microcredential training, training, certification"
   },
@@ -3788,7 +3788,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile AI for Product Planning Micro-credential Course Training | Simplilead",
+    seoTitle: "ICAgile AI for Product Planning Micro-credential Course Training",
     seoDescription: "Get certified in ICAgile AI for Product Planning Micro-credential Course Training with Simplilead.",
     seoKeywords: "icagile ai for product planning microcredential course training, training, certification"
   },
@@ -3816,7 +3816,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile AI for Product Metrics Micro Credential Course Training | Simplilead",
+    seoTitle: "ICAgile AI for Product Metrics Micro Credential Course Training",
     seoDescription: "Get certified in ICAgile AI for Product Metrics Micro Credential Course Training with Simplilead.",
     seoKeywords: "icagile ai for product metrics micro credential course training, training, certification"
   },
@@ -3844,7 +3844,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile AI for Stakeholder Management Micro Credential Course Certification Training | Simplilead",
+    seoTitle: "ICAgile AI for Stakeholder Management Micro Credential Course Certification Training",
     seoDescription: "Get certified in ICAgile AI for Stakeholder Management Micro Credential Course Certification Training with Simplilead.",
     seoKeywords: "icagile ai for stakeholder management micro credential course certification training, training, certification"
   },
@@ -3872,7 +3872,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile AI for Product Discovery Micro Credential Course Training | Simplilead",
+    seoTitle: "ICAgile AI for Product Discovery Micro Credential Course Training",
     seoDescription: "Get certified in ICAgile AI for Product Discovery Micro Credential Course Training with Simplilead.",
     seoKeywords: "icagile ai for product discovery micro credential course training, training, certification"
   },
@@ -3900,7 +3900,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile AI for Product Strategy Micro-Credential Course | Simplilead",
+    seoTitle: "ICAgile AI for Product Strategy Micro-Credential Course",
     seoDescription: "Get certified in ICAgile AI for Product Strategy Micro-Credential Course with Simplilead.",
     seoKeywords: "icagile ai for product strategy microcredential course, training, certification"
   },
@@ -3928,7 +3928,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ICAgile AI for Customer Insights Micro-credential Training | Simplilead",
+    seoTitle: "ICAgile AI for Customer Insights Micro-credential Training",
     seoDescription: "Get certified in ICAgile AI for Customer Insights Micro-credential Training with Simplilead.",
     seoKeywords: "icagile ai for customer insights microcredential training, training, certification"
   },
@@ -3956,7 +3956,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "UX and Design for Agile Teams Micro-credential Course | Simplilead",
+    seoTitle: "UX and Design for Agile Teams Micro-credential Course",
     seoDescription: "Get certified in UX and Design for Agile Teams Micro-credential Course with Simplilead.",
     seoKeywords: "ux and design for agile teams microcredential course, training, certification"
   },
@@ -3984,7 +3984,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Coaching Skills Micro-credential Training | Simplilead",
+    seoTitle: "Agile Coaching Skills Micro-credential Training",
     seoDescription: "Get certified in Agile Coaching Skills Micro-credential Training with Simplilead.",
     seoKeywords: "agile coaching skills microcredential training, training, certification"
   },
@@ -4012,7 +4012,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Applied Agentic AI Certification Training Course | Simplilead",
+    seoTitle: "Applied Agentic AI Certification Training Course",
     seoDescription: "Get certified in Applied Agentic AI Certification Training Course with Simplilead.",
     seoKeywords: "applied agentic ai certification training course, training, certification"
   },
@@ -4040,7 +4040,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Data Science With Python Training | Simplilead",
+    seoTitle: "Data Science With Python Training",
     seoDescription: "Get certified in Data Science With Python Training with Simplilead.",
     seoKeywords: "data science with python training, training, certification"
   },
@@ -4068,7 +4068,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Python Django (PD) Training | Simplilead",
+    seoTitle: "Python Django (PD) Training",
     seoDescription: "Get certified in Python Django (PD) Training with Simplilead.",
     seoKeywords: "python django pd training, training, certification"
   },
@@ -4096,7 +4096,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Introduction to Artificial Intelligence and Machine Learning (AI and ML) Training | Simplilead",
+    seoTitle: "Introduction to Artificial Intelligence and Machine Learning (AI and ML) Training",
     seoDescription: "Get certified in Introduction to Artificial Intelligence and Machine Learning (AI and ML) Training with Simplilead.",
     seoKeywords: "introduction to artificial intelligence and machine learning ai and ml training, training, certification"
   },
@@ -4124,7 +4124,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Artificial Intelligence (AI) Training | Simplilead",
+    seoTitle: "Artificial Intelligence (AI) Training",
     seoDescription: "Get certified in Artificial Intelligence (AI) Training with Simplilead.",
     seoKeywords: "artificial intelligence ai training, training, certification"
   },
@@ -4152,7 +4152,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Data Science Training | Simplilead",
+    seoTitle: "Data Science Training",
     seoDescription: "Get certified in Data Science Training with Simplilead.",
     seoKeywords: "data science training, training, certification"
   },
@@ -4180,7 +4180,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Artificial Intelligence For Agile Leaders Training | Simplilead",
+    seoTitle: "Certified Artificial Intelligence For Agile Leaders Training",
     seoDescription: "Get certified in Certified Artificial Intelligence For Agile Leaders Training with Simplilead.",
     seoKeywords: "certified artificial intelligence for agile leaders training, training, certification"
   },
@@ -4208,7 +4208,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Six Sigma Fundamentals Training | Simplilead",
+    seoTitle: "Six Sigma Fundamentals Training",
     seoDescription: "Get certified in Six Sigma Fundamentals Training with Simplilead.",
     seoKeywords: "six sigma fundamentals training, training, certification"
   },
@@ -4236,7 +4236,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Lean Six Sigma Yellow Belt Training | Simplilead",
+    seoTitle: "Lean Six Sigma Yellow Belt Training",
     seoDescription: "Get certified in Lean Six Sigma Yellow Belt Training with Simplilead.",
     seoKeywords: "lean six sigma yellow belt training, training, certification"
   },
@@ -4264,7 +4264,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Lean Six Sigma Green Belt Training | Simplilead",
+    seoTitle: "Lean Six Sigma Green Belt Training",
     seoDescription: "Get certified in Lean Six Sigma Green Belt Training with Simplilead.",
     seoKeywords: "lean six sigma green belt training, training, certification"
   },
@@ -4292,7 +4292,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Lean Six Sigma Black Belt Training | Simplilead",
+    seoTitle: "Lean Six Sigma Black Belt Training",
     seoDescription: "Get certified in Lean Six Sigma Black Belt Training with Simplilead.",
     seoKeywords: "lean six sigma black belt training, training, certification"
   },
@@ -4320,7 +4320,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Root Cause Analysis (RCA) Training | Simplilead",
+    seoTitle: "Root Cause Analysis (RCA) Training",
     seoDescription: "Get certified in Root Cause Analysis (RCA) Training with Simplilead.",
     seoKeywords: "root cause analysis rca training, training, certification"
   },
@@ -4348,7 +4348,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Lean Six Sigma Yellow Belt Training - 8 Hours Crash Course | Simplilead",
+    seoTitle: "Lean Six Sigma Yellow Belt Training - 8 Hours Crash Course",
     seoDescription: "Get certified in Lean Six Sigma Yellow Belt Training - 8 Hours Crash Course with Simplilead.",
     seoKeywords: "lean six sigma yellow belt training  8 hours crash course, training, certification"
   },
@@ -4376,7 +4376,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ISO-IEC 42001: 2023 Lead Implementer Certification Training | Simplilead",
+    seoTitle: "ISO-IEC 42001: 2023 Lead Implementer Certification Training",
     seoDescription: "Get certified in ISO-IEC 42001: 2023 Lead Implementer Certification Training with Simplilead.",
     seoKeywords: "isoiec 42001 2023 lead implementer certification training, training, certification"
   },
@@ -4404,7 +4404,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Essentials Microcredential Course | Simplilead",
+    seoTitle: "Agile Essentials Microcredential Course",
     seoDescription: "Get certified in Agile Essentials Microcredential Course with Simplilead.",
     seoKeywords: "agile essentials microcredential course, training, certification"
   },
@@ -4432,7 +4432,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Scrum Essentials Microcredential Course | Simplilead",
+    seoTitle: "Scrum Essentials Microcredential Course",
     seoDescription: "Get certified in Scrum Essentials Microcredential Course with Simplilead.",
     seoKeywords: "scrum essentials microcredential course, training, certification"
   },
@@ -4460,7 +4460,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Metrics that Matter: Improving Product Outcomes Microcredential Course | Simplilead",
+    seoTitle: "Metrics that Matter: Improving Product Outcomes Microcredential Course",
     seoDescription: "Get certified in Metrics that Matter: Improving Product Outcomes Microcredential Course with Simplilead.",
     seoKeywords: "metrics that matter improving product outcomes microcredential course, training, certification"
   },
@@ -4488,7 +4488,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Introduction to Agile Coaching Microcredential Course | Simplilead",
+    seoTitle: "Introduction to Agile Coaching Microcredential Course",
     seoDescription: "Get certified in Introduction to Agile Coaching Microcredential Course with Simplilead.",
     seoKeywords: "introduction to agile coaching microcredential course, training, certification"
   },
@@ -4516,7 +4516,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Get Started with DevOps Microcredential Course | Simplilead",
+    seoTitle: "Get Started with DevOps Microcredential Course",
     seoDescription: "Get certified in Get Started with DevOps Microcredential Course with Simplilead.",
     seoKeywords: "get started with devops microcredential course, training, certification"
   },
@@ -4544,7 +4544,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Get Started with AI Prompt Engineering Microcredentials Course | Simplilead",
+    seoTitle: "Get Started with AI Prompt Engineering Microcredentials Course",
     seoDescription: "Get certified in Get Started with AI Prompt Engineering Microcredentials Course with Simplilead.",
     seoKeywords: "get started with ai prompt engineering microcredentials course, training, certification"
   },
@@ -4572,7 +4572,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Coaching for Transformation: Sustaining Change Microcredential Course | Simplilead",
+    seoTitle: "Coaching for Transformation: Sustaining Change Microcredential Course",
     seoDescription: "Get certified in Coaching for Transformation: Sustaining Change Microcredential Course with Simplilead.",
     seoKeywords: "coaching for transformation sustaining change microcredential course, training, certification"
   },
@@ -4600,7 +4600,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Coaching for Change: Making Agility Work Microcredential Course | Simplilead",
+    seoTitle: "Coaching for Change: Making Agility Work Microcredential Course",
     seoDescription: "Get certified in Coaching for Change: Making Agility Work Microcredential Course with Simplilead.",
     seoKeywords: "coaching for change making agility work microcredential course, training, certification"
   },
@@ -4628,7 +4628,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Change Management Microcredential Course | Simplilead",
+    seoTitle: "Change Management Microcredential Course",
     seoDescription: "Get certified in Change Management Microcredential Course with Simplilead.",
     seoKeywords: "change management microcredential course, training, certification"
   },
@@ -4656,7 +4656,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Becoming an Agile Coach Microcredential Course | Simplilead",
+    seoTitle: "Becoming an Agile Coach Microcredential Course",
     seoDescription: "Get certified in Becoming an Agile Coach Microcredential Course with Simplilead.",
     seoKeywords: "becoming an agile coach microcredential course, training, certification"
   },
@@ -4684,7 +4684,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AI for Product Discovery and Strategy Microcredentials Course | Simplilead",
+    seoTitle: "AI for Product Discovery and Strategy Microcredentials Course",
     seoDescription: "Get certified in AI for Product Discovery and Strategy Microcredentials Course with Simplilead.",
     seoKeywords: "ai for product discovery and strategy microcredentials course, training, certification"
   },
@@ -4712,7 +4712,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile Stakeholder Engagement: Effective Communication Strategies Microcredential Course | Simplilead",
+    seoTitle: "Agile Stakeholder Engagement: Effective Communication Strategies Microcredential Course",
     seoDescription: "Get certified in Agile Stakeholder Engagement: Effective Communication Strategies Microcredential Course with Simplilead.",
     seoKeywords: "agile stakeholder engagement effective communication strategies microcredential course, training, certification"
   },
@@ -4740,7 +4740,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile for Marketing Microcredentials Course | Simplilead",
+    seoTitle: "Agile for Marketing Microcredentials Course",
     seoDescription: "Get certified in Agile for Marketing Microcredentials Course with Simplilead.",
     seoKeywords: "agile for marketing microcredentials course, training, certification"
   },
@@ -4768,7 +4768,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Agile for HR Microcredentials Course | Simplilead",
+    seoTitle: "Agile for HR Microcredentials Course",
     seoDescription: "Get certified in Agile for HR Microcredentials Course with Simplilead.",
     seoKeywords: "agile for hr microcredentials course, training, certification"
   },
@@ -4796,7 +4796,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ITIL 4® Foundation Certification Training | Simplilead",
+    seoTitle: "ITIL 4® Foundation Certification Training",
     seoDescription: "Get certified in ITIL 4® Foundation Certification Training with Simplilead.",
     seoKeywords: "itil 4 foundation certification training, training, certification"
   },
@@ -4824,7 +4824,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "ITIL 5 Foundation Certification Training | Simplilead",
+    seoTitle: "ITIL 5 Foundation Certification Training",
     seoDescription: "Get certified in ITIL 5 Foundation Certification Training with Simplilead.",
     seoKeywords: "itil 5 foundation certification training, training, certification"
   },
@@ -4852,7 +4852,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "DevOps Foundation® Certification Training | Simplilead",
+    seoTitle: "DevOps Foundation® Certification Training",
     seoDescription: "Get certified in DevOps Foundation® Certification Training with Simplilead.",
     seoKeywords: "devops foundation certification training, training, certification"
   },
@@ -4880,7 +4880,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Docker and Kubernetes Training | Simplilead",
+    seoTitle: "Docker and Kubernetes Training",
     seoDescription: "Get certified in Docker and Kubernetes Training with Simplilead.",
     seoKeywords: "docker and kubernetes training, training, certification"
   },
@@ -4908,7 +4908,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Continuous Testing Foundation (CTF)℠ Certification Training | Simplilead",
+    seoTitle: "Continuous Testing Foundation (CTF)℠ Certification Training",
     seoDescription: "Get certified in Continuous Testing Foundation (CTF)℠ Certification Training with Simplilead.",
     seoKeywords: "continuous testing foundation ctf certification training, training, certification"
   },
@@ -4936,7 +4936,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Continuous Delivery Ecosystem Foundation (CDEF)℠ Certification Training | Simplilead",
+    seoTitle: "Continuous Delivery Ecosystem Foundation (CDEF)℠ Certification Training",
     seoDescription: "Get certified in Continuous Delivery Ecosystem Foundation (CDEF)℠ Certification Training with Simplilead.",
     seoKeywords: "continuous delivery ecosystem foundation cdef certification training, training, certification"
   },
@@ -4964,7 +4964,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "DevSecOps Foundation℠ Certification Training | Simplilead",
+    seoTitle: "DevSecOps Foundation℠ Certification Training",
     seoDescription: "Get certified in DevSecOps Foundation℠ Certification Training with Simplilead.",
     seoKeywords: "devsecops foundation certification training, training, certification"
   },
@@ -4992,7 +4992,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AWS SysOps Administrator Certification Training | Simplilead",
+    seoTitle: "AWS SysOps Administrator Certification Training",
     seoDescription: "Get certified in AWS SysOps Administrator Certification Training with Simplilead.",
     seoKeywords: "aws sysops administrator certification training, training, certification"
   },
@@ -5020,7 +5020,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AWS DevOps Engineer Certification Training | Simplilead",
+    seoTitle: "AWS DevOps Engineer Certification Training",
     seoDescription: "Get certified in AWS DevOps Engineer Certification Training with Simplilead.",
     seoKeywords: "aws devops engineer certification training, training, certification"
   },
@@ -5048,7 +5048,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AWS Cloud Practitioner Certification Training | Simplilead",
+    seoTitle: "AWS Cloud Practitioner Certification Training",
     seoDescription: "Get certified in AWS Cloud Practitioner Certification Training with Simplilead.",
     seoKeywords: "aws cloud practitioner certification training, training, certification"
   },
@@ -5076,7 +5076,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AWS Certified Solutions Architect Professional Certification Training | Simplilead",
+    seoTitle: "AWS Certified Solutions Architect Professional Certification Training",
     seoDescription: "Get certified in AWS Certified Solutions Architect Professional Certification Training with Simplilead.",
     seoKeywords: "aws certified solutions architect professional certification training, training, certification"
   },
@@ -5104,7 +5104,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Cloud Computing with AWS Training | Simplilead",
+    seoTitle: "Cloud Computing with AWS Training",
     seoDescription: "Get certified in Cloud Computing with AWS Training with Simplilead.",
     seoKeywords: "cloud computing with aws training, training, certification"
   },
@@ -5132,7 +5132,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Angular JS Training | Simplilead",
+    seoTitle: "Angular JS Training",
     seoDescription: "Get certified in Angular JS Training with Simplilead.",
     seoKeywords: "angular js training, training, certification"
   },
@@ -5160,7 +5160,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "React Native Training | Simplilead",
+    seoTitle: "React Native Training",
     seoDescription: "Get certified in React Native Training with Simplilead.",
     seoKeywords: "react native training, training, certification"
   },
@@ -5188,7 +5188,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "React JS Training | Simplilead",
+    seoTitle: "React JS Training",
     seoDescription: "Get certified in React JS Training with Simplilead.",
     seoKeywords: "react js training, training, certification"
   },
@@ -5216,7 +5216,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Introduction to Blockchain Training | Simplilead",
+    seoTitle: "Introduction to Blockchain Training",
     seoDescription: "Get certified in Introduction to Blockchain Training with Simplilead.",
     seoKeywords: "introduction to blockchain training, training, certification"
   },
@@ -5244,7 +5244,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Python for Beginners Training | Simplilead",
+    seoTitle: "Python for Beginners Training",
     seoDescription: "Get certified in Python for Beginners Training with Simplilead.",
     seoKeywords: "python for beginners training, training, certification"
   },
@@ -5272,7 +5272,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Python Programming Training | Simplilead",
+    seoTitle: "Python Programming Training",
     seoDescription: "Get certified in Python Programming Training with Simplilead.",
     seoKeywords: "python programming training, training, certification"
   },
@@ -5300,7 +5300,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "PCI DSS Training | Simplilead",
+    seoTitle: "PCI DSS Training",
     seoDescription: "Get certified in PCI DSS Training with Simplilead.",
     seoKeywords: "pci dss training, training, certification"
   },
@@ -5328,7 +5328,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Microsoft AZ-400: Designing and Implementing Microsoft DevOps Solutions Training | Simplilead",
+    seoTitle: "Microsoft AZ-400: Designing and Implementing Microsoft DevOps Solutions Training",
     seoDescription: "Get certified in Microsoft AZ-400: Designing and Implementing Microsoft DevOps Solutions Training with Simplilead.",
     seoKeywords: "microsoft az400 designing and implementing microsoft devops solutions training, training, certification"
   },
@@ -5356,7 +5356,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Microsoft Power BI Training | Simplilead",
+    seoTitle: "Microsoft Power BI Training",
     seoDescription: "Get certified in Microsoft Power BI Training with Simplilead.",
     seoKeywords: "microsoft power bi training, training, certification"
   },
@@ -5384,7 +5384,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Microsoft Azure Fundamentals AZ-900 Certification Training | Simplilead",
+    seoTitle: "Microsoft Azure Fundamentals AZ-900 Certification Training",
     seoDescription: "Get certified in Microsoft Azure Fundamentals AZ-900 Certification Training with Simplilead.",
     seoKeywords: "microsoft azure fundamentals az900 certification training, training, certification"
   },
@@ -5412,7 +5412,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "AZ-104 Microsoft Azure Administrator Training | Simplilead",
+    seoTitle: "AZ-104 Microsoft Azure Administrator Training",
     seoDescription: "Get certified in AZ-104 Microsoft Azure Administrator Training with Simplilead.",
     seoKeywords: "az104 microsoft azure administrator training, training, certification"
   },
@@ -5440,7 +5440,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Microsoft Azure Developer Associate (AZ-204) Certification Course | Simplilead",
+    seoTitle: "Microsoft Azure Developer Associate (AZ-204) Certification Course",
     seoDescription: "Get certified in Microsoft Azure Developer Associate (AZ-204) Certification Course with Simplilead.",
     seoKeywords: "microsoft azure developer associate az204 certification course, training, certification"
   },
@@ -5468,7 +5468,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Certified Information Systems Security Professional (CISSP®) Training | Simplilead",
+    seoTitle: "Certified Information Systems Security Professional (CISSP®) Training",
     seoDescription: "Get certified in Certified Information Systems Security Professional (CISSP®) Training with Simplilead.",
     seoKeywords: "certified information systems security professional cissp training, training, certification"
   },
@@ -5496,7 +5496,7 @@ export const COURSES: CourseContent[] = [
     curriculum: [],
     whyChooseUs: [],
     faqs: [],
-    seoTitle: "Microsoft Certified Azure Solutions Architect Expert (AZ-305) Certification Training | Simplilead",
+    seoTitle: "Microsoft Certified Azure Solutions Architect Expert (AZ-305) Certification Training",
     seoDescription: "Get certified in Microsoft Certified Azure Solutions Architect Expert (AZ-305) Certification Training with Simplilead.",
     seoKeywords: "microsoft certified azure solutions architect expert az305 certification training, training, certification"
   },

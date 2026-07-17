@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { type Metadata } from "next";
 import { INFO_PAGES } from "@/lib/info-content";
+import { stripBrandSuffix } from "@/lib/utils";
 import AnimatedContent from "./animated-content";
 // Force hot reload
 
@@ -24,11 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = INFO_PAGES[slug];
 
   if (!content) {
-    return { title: "Page Not Found | Simplilead" };
+    return { title: "Page Not Found" };
   }
 
   return {
-    title: content.title,
+    // Stored titles carry "| Simplilead"; the layout template re-appends it (FIX-04).
+    title: stripBrandSuffix(content.title),
     description: content.description,
     keywords: content.keywords,
   };

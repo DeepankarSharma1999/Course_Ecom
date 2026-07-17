@@ -23,7 +23,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Adapt, Innovate, and Thrive in a Disruptive Market",
     description:
       "Business agility goes beyond IT. We help you transform your entire organization—from HR and marketing to finance and operations—to quickly respond to market changes, emerging opportunities, and customer demands.",
-    metaTitle: "Business Agility Transformation | Simplilead",
+    metaTitle: "Business Agility Transformation",
     metaDescription:
       "Achieve enterprise-wide Business Agility to respond quickly to market changes and outpace competitors.",
     benefits: [
@@ -48,7 +48,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Scale Agile Seamlessly Across Your Enterprise",
     description:
       "Leverage the Scaled Agile Framework (SAFe®) to align strategy with execution, accelerate delivery, and drive business agility. Our expert SAFe Practice Consultants (SPCs) guide you through every step of your transformation.",
-    metaTitle: "SAFe Implementation | Simplilead Enterprise",
+    metaTitle: "SAFe Implementation",
     metaDescription:
       "Scale Agile across your enterprise with expert SAFe Implementation services from Simplilead.",
     benefits: [
@@ -74,7 +74,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Align Strategy and Execution with Lean Budgeting",
     description:
       "Connect your enterprise strategy to execution. We help you implement Lean Portfolio Management (LPM) to govern investment, fund value streams, and accelerate flow across your organization.",
-    metaTitle: "Lean Portfolio Management | Simplilead",
+    metaTitle: "Lean Portfolio Management",
     metaDescription:
       "Align strategy with execution using Lean Portfolio Management—Lean budgeting, value-stream funding, and portfolio flow.",
     benefits: [
@@ -99,7 +99,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Optimize the End-to-End Flow of Value",
     description:
       "Identify, map, and optimize your value streams to eliminate waste and accelerate delivery. We help you see how value flows from concept to cash and remove the bottlenecks that slow you down.",
-    metaTitle: "Value Stream Management | Simplilead",
+    metaTitle: "Value Stream Management",
     metaDescription:
       "Map and optimize your value streams to eliminate waste, reduce lead time, and accelerate delivery.",
     benefits: [
@@ -124,7 +124,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Solve Complex Problems with a Human-Centered Mindset",
     description:
       "Equip your teams to innovate with confidence. Our hands-on Design Thinking workshops teach the mindset and tools to empathize with users, frame problems, and rapidly prototype winning solutions.",
-    metaTitle: "Design Thinking Workshops | Simplilead",
+    metaTitle: "Design Thinking Workshops",
     metaDescription:
       "Hands-on Design Thinking workshops that teach teams to empathize, ideate, prototype, and test customer-centered solutions.",
     benefits: [
@@ -149,7 +149,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Build Empowered, Outcome-Driven Product Teams",
     description:
       "Move from feature factories to outcome-driven product teams. Our product coaches work alongside your product managers and leaders to build the skills, mindset, and practices of world-class product organizations.",
-    metaTitle: "Product Coaching | Simplilead",
+    metaTitle: "Product Coaching",
     metaDescription:
       "Product coaching that transforms feature factories into empowered, outcome-driven product teams.",
     benefits: [
@@ -174,7 +174,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Shift from Temporary Projects to Lasting Products",
     description:
       "Move beyond the start-stop cycle of project funding. We help you adopt a product operating model—stable teams, value-stream funding, and outcome ownership—that delivers continuous value.",
-    metaTitle: "Project to Product | Simplilead",
+    metaTitle: "Project to Product",
     metaDescription:
       "Transition from project-based delivery to a product operating model with stable teams and outcome ownership.",
     benefits: [
@@ -199,7 +199,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Bridge the Gap Between Development and Operations",
     description:
       "DevOps is more than just tools—it's a fundamental shift in culture. We help you tear down silos, establish shared goals, and implement automation strategies that enable continuous integration, continuous delivery, and highly reliable systems.",
-    metaTitle: "DevOps Cultural Transformation | Simplilead",
+    metaTitle: "DevOps Cultural Transformation",
     metaDescription: "Foster a collaborative DevOps culture to accelerate software delivery and improve reliability.",
     benefits: [
       { icon: "users", title: "Break Down Silos", description: "Create cross-functional teams with shared accountability for the entire software lifecycle." },
@@ -224,7 +224,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Build Better Products, Faster",
     description:
       "Modern product development requires tight alignment between product management, design, and engineering. Our comprehensive training programs equip your entire cross-functional organization with the latest methodologies to build scalable, user-centric software.",
-    metaTitle: "Product Development Training | Simplilead",
+    metaTitle: "Product Development Training",
     metaDescription: "Equip your engineering and product teams with modern development practices.",
     benefits: [
       { icon: "code", title: "Technical Excellence", description: "Train engineering teams in Agile engineering practices like TDD, BDD, and Pair Programming." },
@@ -299,7 +299,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Free Courses",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Free Courses | Simplilead",
+      metaTitle: "Free Courses",
       metaDescription: "Level Up Your Career with Free Online Courses from Simplilead. Explore handpicked, high-impact courses designed for professionals and beginners alike.",
       heroBadge: "10K+ Reviews from Learners Worldwide",
       heroHeading: "Level Up Your Career with",
@@ -357,7 +357,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Practice Tests",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Free Online Practice Tests | Simplilead",
+      metaTitle: "Free Online Practice Tests",
       metaDescription: "Free, up-to-date IT practice tests to help you learn faster, spot weak areas, and pass your certification exams with confidence.",
       heroBadge: "Rated 4.9/5 by Professionals",
       heroHeading: "Master Your",
@@ -401,7 +401,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Refer & Earn",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Refer & Earn | Simplilead",
+      metaTitle: "Refer & Earn",
       metaDescription: "Refer friends to Simplilead and earn rewards for every successful enrollment. Up to 10% of the course value.",
       heroBadge: "Simplilead Referral Program",
       heroLine1: "Refer More.",
@@ -450,7 +450,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "About Us",
     group: "Marketing Pages",
     content: {
-      metaTitle: "About Us | SimpliLEAD",
+      metaTitle: "About Us",
       metaDescription: "SimpliLEAD is a global learning and certification partner enabling professionals and organizations to LEAD — Learn, Enhance, Adapt, and Deliver.",
       heroBadge: "Learn · Enhance · Adapt · Deliver",
       heroHeading: "Beyond conventional training —",
@@ -504,7 +504,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Corporate Training",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Corporate Training and Development Programs | Simplilead",
+      metaTitle: "Corporate Training and Development Programs",
       metaDescription: "Corporate courses customized to training needs. Hands-on training sessions help trainees implement learning to projects.",
       heroBadge: "Corporate Training Solutions",
       heroHeading: "Drive Business Outcomes with",
@@ -555,7 +555,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Resources & Blogs",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Learning Resources & Blogs | Simplilead",
+      metaTitle: "Learning Resources & Blogs",
       metaDescription: "Explore our collection of articles, whitepapers, and guides on Agile, Scrum, DevOps, and more. Stay ahead with expert insights.",
       heroBadge: "Insights & Guides",
       heroHeading: "Learning Resources",
@@ -583,7 +583,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     label: "Webinars",
     group: "Marketing Pages",
     content: {
-      metaTitle: "Live Webinars | Simplilead",
+      metaTitle: "Live Webinars",
       metaDescription: "Join our exclusive live webinars led by industry experts. Learn new skills, get your questions answered, and stay up-to-date with the latest trends.",
       heroBadge: "Live Events & Masterclasses",
       heroHeading: "Exclusive Live",
@@ -640,7 +640,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     subtitle: "Run Technology Like a Business",
     description:
       "Bring transparency and discipline to technology spend. We help you adopt Technology Business Management (TBM) to align IT investment with business value and make confident, data-driven decisions.",
-    metaTitle: "Technology Business Management | Simplilead",
+    metaTitle: "Technology Business Management",
     metaDescription:
       "Adopt Technology Business Management (TBM) to align IT spend with business value and drive data-driven decisions.",
     benefits: [

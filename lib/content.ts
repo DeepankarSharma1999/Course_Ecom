@@ -4,7 +4,7 @@
 import { cache } from "react";
 import { prisma } from "./prisma";
 import { resolveHeroImage } from "./course-images";
-import { baseCourseTitle } from "./utils";
+import { baseCourseTitle, stripBrandSuffix } from "./utils";
 import {
   COURSES as RAW_STATIC_COURSES,
   CATEGORIES as STATIC_CATEGORIES,
@@ -22,6 +22,7 @@ const STATIC_COURSES: CourseContent[] = RAW_STATIC_COURSES.map((c) => ({
   // Seed `shortTitle` was truncated to 50 chars; derive the clean base name
   // from the full title so downstream sections never render "...Certif".
   shortTitle: baseCourseTitle(c.title),
+  seoTitle: stripBrandSuffix(c.seoTitle) ?? c.title,
   heroImage: resolveHeroImage(c.heroImage, c.slug, c.category?.name),
 }));
 
@@ -73,7 +74,8 @@ function dbCourseToContent(c: any): CourseContent {
     hiddenSections: (c.hiddenSections as any) ?? [],
     pageSections: (c.pageSections as any) ?? null,
     faqs: (c.faqs ?? []).map((f: any) => ({ q: f.question, a: f.answer })),
-    seoTitle: c.seoTitle ?? c.title,
+    // Stored seoTitles carry "| Simplilead"; the layout template re-appends it (FIX-04).
+    seoTitle: stripBrandSuffix(c.seoTitle) ?? c.title,
     seoDescription: c.seoDescription ?? c.summary,
     seoKeywords: c.seoKeywords ?? "",
   };

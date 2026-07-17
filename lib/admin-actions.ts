@@ -123,7 +123,8 @@ export async function createCourse(formData: FormData) {
     priceLocal: course.basePriceInr || 0,
     heroHeadline: `${shortTitle} Training in ${city.name}`,
     heroSubheadline: `${course.subtitle || ""} Join thousands of learners in ${city.name}.`.trim(),
-    seoTitle: `${shortTitle} Certification Training in ${city.name} | Simplilead`,
+    // No brand suffix — the layout title template appends "| Simplilead" (FIX-04).
+    seoTitle: `${shortTitle} Certification Training in ${city.name}`,
     seoDescription: `${course.summary || ""} Live online & classroom batches available in ${city.name}.`.trim(),
     isPublished: true,
   }));
