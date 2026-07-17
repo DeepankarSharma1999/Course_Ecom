@@ -6,6 +6,7 @@ import { getDisplayCurrency } from "@/lib/geo";
 export const metadata: Metadata = {
   title: "All Certification Training Courses",
   description: "Browse all globally accredited certification courses from Simplilead — Agile, SAFe, DevOps, Project Management, ITSM, Quality and more.",
+  alternates: { canonical: "/courses" },
 };
 
 export const revalidate = 60;

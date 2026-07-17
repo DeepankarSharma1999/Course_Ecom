@@ -9,7 +9,7 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getPageContent(SLUG);
-  return { title: c.metaTitle, description: c.metaDescription };
+  return { title: c.metaTitle, description: c.metaDescription, alternates: { canonical: "/practice-tests" } };
 }
 
 export default async function PracticeTestsPage() {

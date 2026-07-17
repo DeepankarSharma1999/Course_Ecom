@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: stripBrandSuffix(content.title),
     description: content.description,
     keywords: content.keywords,
+    alternates: { canonical: `/info/${slug}` },
   };
 }
 

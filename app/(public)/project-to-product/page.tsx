@@ -7,7 +7,7 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getPageContent(SLUG);
-  return { title: c.metaTitle, description: c.metaDescription };
+  return { title: c.metaTitle, description: c.metaDescription, alternates: { canonical: "/project-to-product" } };
 }
 
 export default async function Page() {

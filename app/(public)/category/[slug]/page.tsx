@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${cat.name} Training & Certification Courses`,
     description: `${cat.tagline}. Globally accredited ${cat.name} training from Simplilead.`,
+    alternates: { canonical: `/category/${slug}` },
   };
 }
 

@@ -4,6 +4,7 @@ import { ComboCoursesClient } from "./combo-client";
 export const metadata = {
   title: "Combo Courses",
   description: "Unbeatable saving combo schedules. Explore our combo courses for maximum value.",
+  alternates: { canonical: "/combo-courses" },
 };
 
 export const dynamic = "force-dynamic";

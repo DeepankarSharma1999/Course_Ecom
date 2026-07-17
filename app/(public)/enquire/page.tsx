@@ -8,7 +8,7 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const p = await getSimplePage("enquire");
-  return { title: stripBrandSuffix(p?.seoTitle) || p?.title || "Enquire Now", description: p?.seoDescription || p?.heroSubheading || undefined };
+  return { title: stripBrandSuffix(p?.seoTitle) || p?.title || "Enquire Now", description: p?.seoDescription || p?.heroSubheading || undefined, alternates: { canonical: "/enquire" } };
 }
 
 export default async function EnquirePage() {
