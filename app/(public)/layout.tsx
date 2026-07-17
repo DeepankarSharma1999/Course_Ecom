@@ -1,8 +1,7 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { ExitIntentPopup } from "@/components/exit-intent-popup";
 import { FloatingWhatsApp } from "@/components/whatsapp-button";
-import { LiveChatWidget } from "@/components/live-chat-widget";
+import { DeferredWidgets } from "@/components/deferred-widgets";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { PricingProvider } from "@/components/pricing-provider";
 import { getSiteSettings } from "@/lib/site-content";
@@ -71,9 +70,9 @@ export default async function PublicLayout({ children }: { children: React.React
       />
       <main>{children}</main>
       <SiteFooter />
-      <ExitIntentPopup />
       <FloatingWhatsApp phone={settings.whatsappNumber} message={`Hi ${settings.brandName} team, I'd like to know more about your courses.`} />
-      <LiveChatWidget />
+      {/* Chat + exit-intent mount after idle so their JS stays off the critical path (FIX-10/12). */}
+      <DeferredWidgets />
       <AuthModal />
       <CookieConsent />
     </PricingProvider>

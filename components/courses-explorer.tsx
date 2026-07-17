@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { CourseCard } from "@/components/course-card";
@@ -10,13 +10,15 @@ import { usePricing } from "@/components/pricing-provider";
 type Course = any;
 type Category = { slug: string; name: string };
 
+// FIX-02: rating/review sorts removed — there is no real rating data to sort on.
 const SORTS = [
   { value: "featured", label: "Recommended" },
-  { value: "rating", label: "Highest Rated" },
   { value: "price-low", label: "Price: Low → High" },
   { value: "price-high", label: "Price: High → Low" },
-  { value: "popular", label: "Most Reviewed" },
 ];
+
+// FIX-10: render the grid incrementally instead of mounting all ~200 cards.
+const PAGE_SIZE = 24;
 
 export function CoursesExplorer({ courses, categories, initialQuery }: { courses: Course[]; categories: Category[]; currency?: CurrencyCode; initialQuery?: string }) {
   const { convert, currency, currencies } = usePricing();
@@ -44,13 +46,14 @@ export function CoursesExplorer({ courses, categories, initialQuery }: { courses
     }
 
     switch (sort) {
-      case "rating": list.sort((a, b) => (b.ratingAvg ?? 0) - (a.ratingAvg ?? 0)); break;
       case "price-low": list.sort((a, b) => (a.basePriceUsd ?? 0) - (b.basePriceUsd ?? 0)); break;
       case "price-high": list.sort((a, b) => (b.basePriceUsd ?? 0) - (a.basePriceUsd ?? 0)); break;
-      case "popular": list.sort((a, b) => (b.ratingCount ?? 0) - (a.ratingCount ?? 0)); break;
     }
     return list;
   }, [courses, q, cat, examOnly, maxPrice, sort]);
+
+  const [visible, setVisible] = useState(PAGE_SIZE);
+  useEffect(() => setVisible(PAGE_SIZE), [q, cat, examOnly, maxPrice, sort]);
 
   const hasFilters = q || cat || examOnly || maxPrice !== "" || sort !== "featured";
 
@@ -128,9 +131,18 @@ export function CoursesExplorer({ courses, categories, initialQuery }: { courses
             <Link href="/courses" className="text-brand-600 hover:underline text-sm">Reset filters</Link>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {filtered.map((c: any) => <CourseCard key={c.slug} course={c} currency={currency} currencies={currencies} />)}
-          </div>
+          <>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+              {filtered.slice(0, visible).map((c: any) => <CourseCard key={c.slug} course={c} currency={currency} currencies={currencies} />)}
+            </div>
+            {filtered.length > visible && (
+              <div className="mt-8 text-center">
+                <button onClick={() => setVisible((v) => v + PAGE_SIZE)} className="btn-outline px-8 py-3">
+                  Load more ({filtered.length - visible} remaining)
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
