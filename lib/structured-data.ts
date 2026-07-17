@@ -1,22 +1,45 @@
 import type { CourseContent } from "@/lib/seed-data";
+import type { CourseSchedule } from "@/lib/content";
 import { SITE } from "@/lib/utils";
 
-export function courseJsonLd(course: CourseContent, location?: { country?: string; city?: string }) {
+// TODO(owner): fill with the official profile URLs as they come online —
+// Google Business Profile, Trustpilot, LinkedIn company page, and partner-body
+// directory entries (Scrum Alliance/PMI/…) once FIX-03/FIX-14 are resolved.
+// Empty array => sameAs is omitted from the Organization schema.
+export const ORG_SAME_AS: string[] = [];
+
+// Site-wide Organization schema (FIX-15). No ratings, no invented data.
+export function organizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE.name,
+    url: SITE.url,
+    logo: `${SITE.url}/logo.png`,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: SITE.phone,
+      contactType: "customer service",
+    },
+    ...(ORG_SAME_AS.length ? { sameAs: ORG_SAME_AS } : {}),
+  };
+}
+
+// Course + CourseInstance built from the REAL batch rows shown on the page.
+// HARD RULE (FIX-15): no AggregateRating / Review schema until real, public
+// third-party reviews exist (FIX-14) — fake rating markup invites a manual action.
+export function courseJsonLd(course: CourseContent, location?: { country?: string; city?: string }, schedules: CourseSchedule[] = []) {
+  const locationName = location?.city ? `${location.city}, ${location.country || "India"}` : undefined;
   return {
     "@context": "https://schema.org",
     "@type": "Course",
     name: course.title,
     description: course.seoDescription || course.summary,
+    url: `${SITE.url}/${course.slug}`,
     provider: {
       "@type": "Organization",
       name: SITE.name,
-      sameAs: SITE.url,
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: course.ratingAvg.toString(),
-      reviewCount: course.ratingCount.toString(),
-      bestRating: "5",
+      url: SITE.url,
     },
     offers: {
       "@type": "Offer",
@@ -25,11 +48,17 @@ export function courseJsonLd(course: CourseContent, location?: { country?: strin
       priceCurrency: "INR",
       availability: "https://schema.org/InStock",
     },
-    hasCourseInstance: {
-      "@type": "CourseInstance",
-      courseMode: "Blended",
-      location: location?.city ? `${location.city}, ${location.country || "India"}` : "Online",
-    },
+    ...(schedules.length
+      ? {
+          hasCourseInstance: schedules.slice(0, 12).map((s) => ({
+            "@type": "CourseInstance",
+            courseMode: /online/i.test(s.mode) ? "Online" : "Onsite",
+            startDate: s.startDate.toISOString().slice(0, 10),
+            endDate: s.endDate.toISOString().slice(0, 10),
+            ...(locationName ? { location: locationName } : {}),
+          })),
+        }
+      : {}),
   };
 }
 

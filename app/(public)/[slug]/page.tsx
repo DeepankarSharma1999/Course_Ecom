@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   if (course) {
     const schedules = await getCourseSchedules(slug);
     const jsonLd = [
-      courseJsonLd(course),
+      courseJsonLd(course, undefined, schedules),
       faqJsonLd(course.faqs),
       breadcrumbJsonLd([
         { name: "Home", url: SITE.url },

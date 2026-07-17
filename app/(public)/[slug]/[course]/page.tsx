@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
   const schedules = await getCourseSchedules(course);
 
   const jsonLd = [
-    courseJsonLd(c, { country: co.name }),
+    courseJsonLd(c, { country: co.name }, schedules),
     faqJsonLd(c.faqs),
     breadcrumbJsonLd([
       { name: "Home", url: SITE.url },

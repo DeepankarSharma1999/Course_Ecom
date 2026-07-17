@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE, cn } from "@/lib/utils";
+import { organizationJsonLd } from "@/lib/structured-data";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LearnerAuthProvider } from "@/components/learner-auth-provider";
@@ -31,6 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={cn("font-sans", jakarta.variable)}>
       {/* No fonts.googleapis preconnect — next/font self-hosts Plus Jakarta Sans (FIX-09). */}
       <body>
+        {/* Site-wide Organization schema — FIX-15. */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }} />
         <LearnerAuthProvider>{children}</LearnerAuthProvider>
         {/* Real-user Core Web Vitals (LCP/INP/CLS) reporting — FIX-07. */}
         <SpeedInsights />
