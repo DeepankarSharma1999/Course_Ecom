@@ -5,6 +5,7 @@ import { CoursePageContent } from "@/components/course-page-content";
 import { StickyCta } from "@/components/sticky-cta";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE, baseCourseTitle, composeCourseTitle } from "@/lib/utils";
+import { isCourseIndexed, NOINDEX } from "@/lib/indexing";
 import { getAllCourses, getCourseBySlug, getCountryBySlug, getCityBySlug } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
@@ -31,6 +32,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: composed,
       description: course.seoDescription,
       keywords: course.seoKeywords,
+      // Only allowlisted courses are indexed (FIX-06); the rest stay live but
+      // noindex until they earn unique content.
+      robots: isCourseIndexed(slug) ? undefined : NOINDEX,
       alternates: { canonical: `/${slug}` },
       openGraph: { title: `${composed} | ${SITE.name}`, description: course.seoDescription, images: course.heroImage ? [course.heroImage] : [], url: `${SITE.url}/${slug}` },
     };
@@ -40,6 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: `Certification Training in ${country.name}`,
       description: `Globally accredited certification training in ${country.name}. Live online & classroom batches in major cities.`,
+      robots: NOINDEX,
       alternates: { canonical: `/${slug}` },
     };
   }
@@ -48,6 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: `Certification Training in ${city.name}`,
       description: `Globally accredited certification training in ${city.name}, ${city.country.name}. Live online & classroom batches.`,
+      robots: NOINDEX,
       alternates: { canonical: `/${slug}` },
     };
   }

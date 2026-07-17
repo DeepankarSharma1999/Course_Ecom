@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
 import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
+import { NOINDEX } from "@/lib/indexing";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { getCities, getCityBySlug, getCourseBySlug, getCourseVariant } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
@@ -23,6 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const description = variant?.seoDescription || `Become a certified ${base} in ${ct.name}. ${c.summary} Weekend & weekday batches available.`;
   return {
     title, description, keywords: `${c.seoKeywords}, ${base} ${ct.name}, ${base} training in ${ct.name}`,
+    // Geo variants are noindex until they meet the FIX-19 uniqueness bar.
+    robots: NOINDEX,
     alternates: { canonical: `/${slug}/${course}/${city}` },
     openGraph: { title, description, images: c.heroImage ? [c.heroImage] : [], url: `${SITE.url}/${slug}/${course}/${city}` },
   };
