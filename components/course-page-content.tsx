@@ -8,7 +8,7 @@ import * as Lucide from "lucide-react";
 import { type CourseContent, type FaqItem, findCity, findCountry, CITIES_IN, COURSES } from "@/lib/seed-data";
 import { LeadForm } from "@/components/lead-form";
 import { FaqAccordion } from "@/components/faq-accordion";
-import { BrochureButton } from "@/components/brochure-button";
+import { LeadModalButton } from "@/components/lead-modal-button";
 import { type CurrencyCode, type CurrencyConfig, formatInCurrency } from "@/lib/currency";
 import { AccreditationSection } from "@/components/course-page/accreditation-section";
 import { DemandSection } from "@/components/course-page/demand-section";
@@ -210,13 +210,31 @@ export function CoursePageContent({
                 <a href="#schedules" className="h-12 px-8 bg-transparent border-2 border-[#082032] hover:bg-gray-50 text-[#082032] font-bold rounded-[4px] flex items-center gap-2 transition-colors">
                   View Schedules
                 </a>
-                <button className="h-12 px-8 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] transition-colors flex items-center gap-2">
+                <LeadModalButton
+                  courseSlug={course.slug}
+                  source={`brochure-${course.slug}`}
+                  title="Get the Course Brochure"
+                  subtitle="Enter your details — we'll send you the full curriculum, pricing and upcoming batches."
+                  ctaLabel="Send me the brochure"
+                  brochure
+                  className="h-12 px-8 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] transition-colors flex items-center gap-2"
+                >
                   <Lucide.Download className="w-4 h-4" /> Download Brochure
-                </button>
+                </LeadModalButton>
               </div>
-              
+
               <div className="mt-4 text-[13px] text-gray-500 font-medium">
-                Want to Train Your Team? <a href="#" className="text-[#1FA8A8] hover:underline font-bold">Get a Quote</a>
+                Want to Train Your Team?{" "}
+                <LeadModalButton
+                  courseSlug={course.slug}
+                  source={`quote-${course.slug}`}
+                  title={`Get a Quote for ${course.shortTitle}`}
+                  subtitle="Tell us about your team and we'll come back with pricing for a private or group cohort."
+                  ctaLabel="Request a quote"
+                  className="text-[#1FA8A8] hover:underline font-bold"
+                >
+                  Get a Quote
+                </LeadModalButton>
               </div>
             </div>
 
@@ -380,9 +398,17 @@ export function CoursePageContent({
                 <Lucide.Map className="w-5 h-5" />
               </div>
             </div>
-            <button className="w-full h-11 border border-[#082032] text-[#082032] hover:bg-gray-50 font-bold rounded-[4px] flex items-center justify-center transition-colors text-[14px]">
+            <LeadModalButton
+              courseSlug={course.slug}
+              source={`brochure-${course.slug}`}
+              title="Get the Course Brochure"
+              subtitle="Enter your details — we'll send you the full curriculum, pricing and upcoming batches."
+              ctaLabel="Send me the brochure"
+              brochure
+              className="w-full h-11 border border-[#082032] text-[#082032] hover:bg-gray-50 font-bold rounded-[4px] flex items-center justify-center transition-colors text-[14px]"
+            >
               Download Brochure
-            </button>
+            </LeadModalButton>
           </div>
 
           {/* Lead Form Widget (for mobile or bottom of sidebar) */}
