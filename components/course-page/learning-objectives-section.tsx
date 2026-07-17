@@ -31,7 +31,7 @@ export function LearningObjectivesSection({ course }: { course: CourseContent })
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
           {objectives.slice(0, displayCount).map((obj, i) => (
             <div key={i} className="flex gap-4 items-start">
-              <div className="w-8 h-8 rounded-full border-2 border-[#1FA8A8] flex items-center justify-center text-[#1FA8A8] font-bold shrink-0 mt-1">
+              <div className="w-8 h-8 rounded-full border-2 border-[#1FA8A8] flex items-center justify-center text-[#0E7C7C] font-bold shrink-0 mt-1">
                 {i + 1}
               </div>
               <div>
@@ -48,7 +48,7 @@ export function LearningObjectivesSection({ course }: { course: CourseContent })
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             aria-expanded={isExpanded}
-            className="text-[13px] font-bold text-[#082032] hover:text-[#1FA8A8] transition-colors flex items-center justify-center gap-1"
+            className="text-[13px] font-bold text-[#082032] hover:text-[#0E7C7C] transition-colors flex items-center justify-center gap-1"
           >
             {isExpanded ? "View less" : "View more"} 
             {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

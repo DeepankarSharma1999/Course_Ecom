@@ -76,7 +76,7 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
             </div>
             
             <div className="flex items-center justify-between mb-4">
-              <span className="px-3 py-1 bg-[#e0f2f1] text-[#1FA8A8] rounded-full text-[11px] font-bold">
+              <span className="px-3 py-1 bg-[#e0f2f1] text-[#0E7C7C] rounded-full text-[11px] font-bold">
                 {article.views}
               </span>
               <span className="text-[11px] text-gray-400 font-medium">
@@ -87,7 +87,7 @@ export function ArticlesSection({ course }: { course: CourseContent }) {
             <h3 className="font-bold text-[#082032] text-[16px] mb-2 line-clamp-2">{article.title}</h3>
             <p className="text-[13px] text-gray-500 mb-6 line-clamp-2 flex-1">{article.desc}</p>
             
-            <Link href="#" className="text-[13px] font-bold text-[#082032] underline text-left w-max hover:text-[#1FA8A8] transition-colors">
+            <Link href="#" className="text-[13px] font-bold text-[#082032] underline text-left w-max hover:text-[#0E7C7C] transition-colors">
               Read more
             </Link>
           </div>

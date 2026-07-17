@@ -39,7 +39,7 @@ export function ReviewsSection({ course }: { course?: CourseContent }) {
             <button 
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2 rounded-full font-bold text-[14px] whitespace-nowrap transition-colors ${activeFilter === filter ? "bg-[#f0f7f7] text-[#1FA8A8]" : "text-gray-500 hover:bg-gray-50"}`}
+              className={`px-5 py-2 rounded-full font-bold text-[14px] whitespace-nowrap transition-colors ${activeFilter === filter ? "bg-[#f0f7f7] text-[#0E7C7C]" : "text-gray-500 hover:bg-gray-50"}`}
             >
               {filter}
             </button>
@@ -74,7 +74,7 @@ export function ReviewsSection({ course }: { course?: CourseContent }) {
               
               <div className="flex items-center justify-between border-t border-gray-100 pt-4 border-dashed">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#e0f2f1] rounded-full flex items-center justify-center text-[#1FA8A8] font-bold text-lg">
+                  <div className="w-10 h-10 bg-[#e0f2f1] rounded-full flex items-center justify-center text-[#0E7C7C] font-bold text-lg">
                     {r.author.charAt(0)}
                   </div>
                   <div>

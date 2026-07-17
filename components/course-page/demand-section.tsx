@@ -76,7 +76,7 @@ export function DemandSection({ course }: { course: CourseContent }) {
                   role="tab"
                   aria-selected={activeRole === idx}
                   onClick={() => setActiveRole(idx)}
-                  className={`px-6 py-2 font-bold text-[14px] rounded-full cursor-pointer whitespace-nowrap transition-colors ${activeRole === idx ? "bg-[#f0f7f7] text-[#1FA8A8]" : "text-gray-500 hover:text-gray-900"}`}
+                  className={`px-6 py-2 font-bold text-[14px] rounded-full cursor-pointer whitespace-nowrap transition-colors ${activeRole === idx ? "bg-[#f0f7f7] text-[#0E7C7C]" : "text-gray-500 hover:text-gray-900"}`}
                 >
                   {label}
                 </button>
@@ -181,7 +181,7 @@ export function DemandSection({ course }: { course: CourseContent }) {
 
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-2 text-[#082032] font-bold flex items-center gap-1 cursor-pointer transition-colors hover:text-[#1FA8A8]"
+              className="mt-2 text-[#082032] font-bold flex items-center gap-1 cursor-pointer transition-colors hover:text-[#0E7C7C]"
             >
               {isExpanded ? (
                 <>Read Less <ChevronUp className="w-4 h-4" /></>

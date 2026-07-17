@@ -25,13 +25,13 @@ export default async function CorporatePage() {
           
           {/* Left Content */}
           <div className="pt-4">
-            <div className="inline-flex items-center gap-2 bg-[#e6f6f6] text-[#1FA8A8] px-4 py-1.5 rounded-full mb-6 text-sm font-bold tracking-wide">
+            <div className="inline-flex items-center gap-2 bg-[#e6f6f6] text-[#0E7C7C] px-4 py-1.5 rounded-full mb-6 text-sm font-bold tracking-wide">
               <Building2 className="w-4 h-4" />
               {c.heroBadge}
             </div>
 
             <h1 className="text-[40px] md:text-[52px] font-extrabold tracking-tight mb-6 leading-[1.1] text-[#082032]">
-              {c.heroHeading} <br className="hidden md:block"/> {c.heroHeadingMid} <span className="text-[#1FA8A8]">{c.heroHeadingHighlight}</span>
+              {c.heroHeading} <br className="hidden md:block"/> {c.heroHeadingMid} <span className="text-[#0E7C7C]">{c.heroHeadingHighlight}</span>
             </h1>
 
             <p className="text-[18px] text-gray-600 mb-10 leading-relaxed max-w-2xl">
@@ -42,7 +42,7 @@ export default async function CorporatePage() {
               {(c.stats as any[]).map((stat, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-[#f1f5f9] flex items-center justify-center shrink-0">
-                    <DynamicIcon name={stat.icon} className="w-6 h-6 text-[#1FA8A8]" />
+                    <DynamicIcon name={stat.icon} className="w-6 h-6 text-[#0E7C7C]" />
                   </div>
                   <div>
                     <div className="font-bold text-xl">{stat.value}</div>
@@ -119,11 +119,11 @@ export default async function CorporatePage() {
                   <DynamicIcon name={domain.icon} className={`w-6 h-6 ${domain.color}`} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg text-[#082032] mb-1 group-hover:text-[#1FA8A8] transition-colors">{domain.title}</h3>
+                  <h3 className="font-bold text-lg text-[#082032] mb-1 group-hover:text-[#0E7C7C] transition-colors">{domain.title}</h3>
                   <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
                     {domain.courses}
                     <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <span className="text-[#1FA8A8] group-hover:underline flex items-center gap-1">Explore <ChevronRight className="w-3 h-3" /></span>
+                    <span className="text-[#0E7C7C] group-hover:underline flex items-center gap-1">Explore <ChevronRight className="w-3 h-3" /></span>
                   </div>
                 </div>
               </Link>
@@ -131,7 +131,7 @@ export default async function CorporatePage() {
           </div>
           
           <div className="text-center mt-12">
-            <Link href="/courses" className="inline-flex items-center gap-2 font-bold text-[#1FA8A8] hover:text-[#082032] transition-colors border-b-2 border-[#1FA8A8] pb-1">
+            <Link href="/courses" className="inline-flex items-center gap-2 font-bold text-[#0E7C7C] hover:text-[#082032] transition-colors border-b-2 border-[#1FA8A8] pb-1">
               View All Course Domains <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -144,7 +144,7 @@ export default async function CorporatePage() {
         
         <div className="container-tight relative z-10">
           <div className="mb-16 md:w-1/2">
-            <div className="text-[#1FA8A8] font-bold tracking-widest uppercase text-sm mb-4">{c.advantageEyebrow}</div>
+            <div className="text-[#0E7C7C] font-bold tracking-widest uppercase text-sm mb-4">{c.advantageEyebrow}</div>
             <h2 className="text-[32px] md:text-[42px] font-bold mb-6 leading-tight">{c.advantageTitle}</h2>
             <p className="text-gray-300 text-lg leading-relaxed">{c.advantageSubtitle}</p>
           </div>
@@ -155,7 +155,7 @@ export default async function CorporatePage() {
                 {/* Connector Line */}
                 {i !== 4 && <div className="hidden md:block absolute top-8 left-1/2 w-full h-px border-t-2 border-dashed border-gray-700 -z-10 group-hover:border-[#1FA8A8] transition-colors" />}
                 
-                <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur border border-white/10 flex items-center justify-center font-black text-2xl text-[#1FA8A8] mb-6 shadow-lg group-hover:bg-[#1FA8A8] group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur border border-white/10 flex items-center justify-center font-black text-2xl text-[#0E7C7C] mb-6 shadow-lg group-hover:bg-[#1FA8A8] group-hover:text-white transition-all duration-300 group-hover:scale-110">
                   {step.num}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{step.title}</h3>

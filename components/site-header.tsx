@@ -115,7 +115,7 @@ export function SiteHeader({
             <div className="flex items-center gap-2 bg-black/20 rounded-lg px-3 py-1.5 border border-white/10">
               <div className="text-right">
                 <span className="block text-white/70 text-[9px] font-bold uppercase tracking-widest mb-0.5 leading-none">USE CODE</span>
-                <span className="block text-[#1FA8A8] font-black text-[12px] leading-none">FLAT 10% OFF</span>
+                <span className="block text-[#0E7C7C] font-black text-[12px] leading-none">FLAT 10% OFF</span>
               </div>
               <span className="text-amber-400 font-black text-[16px] tracking-widest bg-amber-400/10 px-2 py-0.5 rounded ml-1">
                 SIMPLILEAD10
@@ -274,14 +274,14 @@ export function SiteHeader({
           
           {/* AI Courses */}
           <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "ai-courses" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("ai-courses")} onMouseLeave={closeSoft}>
-            <Link href="/category/generative-ai" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
-              AI Courses <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "ai-courses" ? "text-[#1FA8A8] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
+            <Link href="/category/generative-ai" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#0E7C7C] transition-colors">
+              AI Courses <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "ai-courses" ? "text-[#0E7C7C] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
             </Link>
             {openMenu === "ai-courses" && (
               <div className="absolute left-0 top-[72px] pt-1 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[320px] overflow-hidden py-2 flex flex-col">
                   {(nav.aiCourses ?? []).map((link, i) => (
-                    <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
+                    <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#0E7C7C] transition-colors border-b border-gray-50 last:border-0">
                       {link.name}
                     </Link>
                   ))}
@@ -291,34 +291,34 @@ export function SiteHeader({
           </div>
 
           <div className="flex items-center h-full px-4 border-b-2 border-transparent">
-            <Link href="/self-paced" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+            <Link href="/self-paced" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#0E7C7C] transition-colors">
               Self-Paced
             </Link>
           </div>
 
           {/* Enterprise */}
           <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "enterprise" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("enterprise")} onMouseLeave={closeSoft}>
-            <Link href="/corporate-training" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
-              Enterprise <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "enterprise" ? "text-[#1FA8A8] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
+            <Link href="/corporate-training" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#0E7C7C] transition-colors">
+              Enterprise <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "enterprise" ? "text-[#0E7C7C] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
             </Link>
             {openMenu === "enterprise" && (
               <div className="absolute left-0 top-[72px] pt-1 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[260px] py-2 flex flex-col">
-                  <Link href="/corporate-training" className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50" onMouseEnter={() => setOpenSubMenu(null)}>
+                  <Link href="/corporate-training" className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#0E7C7C] transition-colors border-b border-gray-50" onMouseEnter={() => setOpenSubMenu(null)}>
                     Corporate Training
                   </Link>
                   
                   <div className="relative group" onMouseEnter={() => setOpenSubMenu("agile")}>
                     {/* Flyout parent only — no standalone page exists for it. */}
-                    <span className={`cursor-default px-5 py-3 text-[13px] font-medium transition-colors border-b border-gray-50 flex justify-between items-center ${openSubMenu === "agile" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
+                    <span className={`cursor-default px-5 py-3 text-[13px] font-medium transition-colors border-b border-gray-50 flex justify-between items-center ${openSubMenu === "agile" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#0E7C7C]"}`}>
                       Agile Solutions
-                      {openSubMenu === "agile" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
+                      {openSubMenu === "agile" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0E7C7C]" />}
                     </span>
                     {openSubMenu === "agile" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
                           {(nav.enterpriseAgile ?? []).map((item, idx) => (
-                            <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
+                            <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#0E7C7C] transition-colors border-b border-gray-50 last:border-0">
                               {item.name}
                             </Link>
                           ))}
@@ -329,15 +329,15 @@ export function SiteHeader({
 
                   <div className="relative group" onMouseEnter={() => setOpenSubMenu("product")}>
                     {/* Flyout parent only — no standalone page exists for it. */}
-                    <span className={`cursor-default px-5 py-3 text-[13px] font-medium transition-colors flex justify-between items-center ${openSubMenu === "product" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8]"}`}>
+                    <span className={`cursor-default px-5 py-3 text-[13px] font-medium transition-colors flex justify-between items-center ${openSubMenu === "product" ? "bg-[#082032] text-white" : "text-[#082032] hover:bg-gray-50 hover:text-[#0E7C7C]"}`}>
                       Product Building
-                      {openSubMenu === "product" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
+                      {openSubMenu === "product" ? <Lucide.ChevronLeft className="w-3.5 h-3.5 text-white" /> : <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0E7C7C]" />}
                     </span>
                     {openSubMenu === "product" && (
                       <div className="absolute left-[-270px] top-[-10px] w-[270px] pr-2">
                         <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg overflow-hidden py-2 flex flex-col">
                           {(nav.enterpriseProduct ?? []).map((item, idx) => (
-                            <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0">
+                            <Link key={idx} href={item.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#0E7C7C] transition-colors border-b border-gray-50 last:border-0">
                               {item.name}
                             </Link>
                           ))}
@@ -352,23 +352,23 @@ export function SiteHeader({
           </div>
 
           <div className="flex items-center h-full px-4 border-b-2 border-transparent">
-            <Link href="/refer-earn" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
+            <Link href="/refer-earn" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#0E7C7C] transition-colors">
               Refer & Earn
             </Link>
           </div>
 
           {/* Resources */}
           <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "resources" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("resources")} onMouseLeave={closeSoft}>
-            <Link href="/resources" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#1FA8A8] transition-colors">
-              Resources <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "resources" ? "text-[#1FA8A8] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
+            <Link href="/resources" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#0E7C7C] transition-colors">
+              Resources <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "resources" ? "text-[#0E7C7C] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
             </Link>
             {openMenu === "resources" && (
               <div className="absolute right-0 top-[72px] pt-1 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg w-[260px] overflow-hidden py-2 flex flex-col">
                   {(nav.resources ?? []).map((link, i) => (
-                    <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#1FA8A8] transition-colors border-b border-gray-50 last:border-0 flex justify-between items-center group">
+                    <Link key={i} href={link.href} className="px-5 py-3 text-[13px] font-medium text-[#082032] hover:bg-gray-50 hover:text-[#0E7C7C] transition-colors border-b border-gray-50 last:border-0 flex justify-between items-center group">
                       {link.name}
-                      {link.arrow && <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1FA8A8]" />}
+                      {link.arrow && <Lucide.ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0E7C7C]" />}
                     </Link>
                   ))}
                 </div>
@@ -431,7 +431,7 @@ export function SiteHeader({
                         <div className="text-[20px] font-black text-[#082032] uppercase leading-tight">{cat.name}</div>
                         {cat.tagline && <div className="text-[13px] text-gray-400 mt-1">{cat.tagline}</div>}
                       </div>
-                      <Link href={`/category/${cat.slug}`} className="text-[14px] font-bold text-[#1FA8A8] underline shrink-0 mt-1">
+                      <Link href={`/category/${cat.slug}`} className="text-[14px] font-bold text-[#0E7C7C] underline shrink-0 mt-1">
                         View all Courses
                       </Link>
                     </div>

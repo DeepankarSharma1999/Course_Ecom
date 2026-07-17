@@ -23,7 +23,7 @@ export function HighlightsSection({ course }: { course: CourseContent }) {
           const restPart = words.slice(3).join(' ');
           return (
             <div key={i} className="flex flex-col gap-3">
-              <Icon className="w-8 h-8 text-[#1FA8A8]" strokeWidth={1.5} />
+              <Icon className="w-8 h-8 text-[#0E7C7C]" strokeWidth={1.5} />
               <div className="text-[15px] text-[#475569] leading-relaxed pr-4">
                 <span className="font-bold text-[#082032]">{boldPart}</span> {restPart}
               </div>
@@ -136,7 +136,7 @@ export function HighlightsSection({ course }: { course: CourseContent }) {
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
-          className="mt-2 text-[#082032] font-bold flex items-center gap-1 cursor-pointer transition-colors hover:text-[#1FA8A8]"
+          className="mt-2 text-[#082032] font-bold flex items-center gap-1 cursor-pointer transition-colors hover:text-[#0E7C7C]"
         >
           {isExpanded ? (
             <span className="border-b border-[#082032] hover:border-[#1FA8A8] pb-0.5">Read Less <ChevronUp className="w-4 h-4 inline" /></span>

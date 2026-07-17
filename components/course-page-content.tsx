@@ -109,7 +109,7 @@ export function CoursePageContent({
                 <span className="text-gray-300">›</span>
               </>
             )}
-            <span className="text-gray-400 line-clamp-1">{breadcrumbLabel}</span>
+            <span className="text-gray-500 line-clamp-1">{breadcrumbLabel}</span>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-12 items-start">
@@ -131,19 +131,19 @@ export function CoursePageContent({
               <div className="flex flex-wrap items-center gap-6 mb-8 text-[13px] font-bold text-[#082032]">
                 {course.durationLabel && (
                   <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-[#1FA8A8]" />
+                    <Clock className="w-4 h-4 text-[#0E7C7C]" />
                     <span>{course.durationLabel}</span>
                   </div>
                 )}
                 {course.level && (
                   <div className="flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-[#1FA8A8]" />
+                    <BookOpen className="w-4 h-4 text-[#0E7C7C]" />
                     <span>{course.level}</span>
                   </div>
                 )}
                 {course.examIncluded && (
                   <div className="flex items-center gap-2">
-                    <FileCheck className="w-4 h-4 text-[#1FA8A8]" />
+                    <FileCheck className="w-4 h-4 text-[#0E7C7C]" />
                     <span>Exam Included</span>
                   </div>
                 )}
@@ -187,7 +187,7 @@ export function CoursePageContent({
                   title={`Get a Quote for ${course.shortTitle}`}
                   subtitle="Tell us about your team and we'll come back with pricing for a private or group cohort."
                   ctaLabel="Request a quote"
-                  className="text-[#1FA8A8] hover:underline font-bold"
+                  className="text-[#0E7C7C] hover:underline font-bold"
                 >
                   Get a Quote
                 </LeadModalButton>
@@ -217,7 +217,7 @@ export function CoursePageContent({
                   <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[8px] font-bold border border-gray-200">LTP</div>
                   <span className="text-[12px] font-bold text-[#92400e]">Licensed Training Partner</span>
                 </div>
-                <button className="text-gray-500 hover:text-gray-800">
+                <button aria-label="Share this course" className="text-gray-500 hover:text-gray-800">
                   <Lucide.Share2 className="w-4 h-4" />
                 </button>
               </div>
@@ -240,7 +240,7 @@ export function CoursePageContent({
               <a 
                 key={link.id} 
                 href={`#${link.id}`}
-                className={`px-4 md:px-5 py-4 text-[13px] md:text-[14px] font-bold whitespace-nowrap transition-colors border-b-[3px] ${i === 0 ? "text-[#1FA8A8] border-[#1FA8A8]" : "text-gray-600 hover:text-[#1FA8A8] border-transparent hover:border-[#1FA8A8]"}`}
+                className={`px-4 md:px-5 py-4 text-[13px] md:text-[14px] font-bold whitespace-nowrap transition-colors border-b-[3px] ${i === 0 ? "text-[#0E7C7C] border-[#1FA8A8]" : "text-gray-600 hover:text-[#0E7C7C] border-transparent hover:border-[#1FA8A8]"}`}
               >
                 {link.label}
               </a>
@@ -327,7 +327,7 @@ export function CoursePageContent({
                 )}
 
                 <div className="flex items-center gap-2 text-[12px] text-gray-600 font-semibold mb-3">
-                  <Globe className="w-3.5 h-3.5 text-[#1FA8A8]" /> {nextBatch.mode} <span className="text-gray-300">•</span>{" "}
+                  <Globe className="w-3.5 h-3.5 text-[#0E7C7C]" /> {nextBatch.mode} <span className="text-gray-300">•</span>{" "}
                   {[0, 6].includes(nextBatch.startDate.getDay()) ? "Weekend Batch" : "Weekday Batch"}
                 </div>
               </div>
@@ -342,7 +342,7 @@ export function CoursePageContent({
               <div className="text-[20px] font-black text-[#082032] flex items-center gap-2">
                 {format(nextBatchPrice * (1 - (nextBatch?.discountPct ?? 0) / 100))}
                 {nextBatch?.discountPct ? (
-                  <span className="text-[13px] font-semibold text-gray-400 line-through">{format(nextBatchPrice)}</span>
+                  <span className="text-[13px] font-semibold text-gray-500 line-through">{format(nextBatchPrice)}</span>
                 ) : null}
               </div>
 
@@ -350,7 +350,7 @@ export function CoursePageContent({
                 Enroll Now
               </Link>
               <div className="text-center pt-1">
-                <a href="#schedules" className="text-[12px] font-bold text-[#1FA8A8] hover:underline flex items-center justify-center gap-1">View all Schedules <Lucide.ChevronRight className="w-3 h-3" /></a>
+                <a href="#schedules" className="text-[12px] font-bold text-[#0E7C7C] hover:underline flex items-center justify-center gap-1">View all Schedules <Lucide.ChevronRight className="w-3 h-3" /></a>
               </div>
             </div>
           </div>
@@ -411,7 +411,7 @@ export function CoursePageContent({
               <Link 
                 key={c.slug} 
                 href={`/${c.slug}`}
-                className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors"
+                className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#0E7C7C] transition-colors"
               >
                 {c.title}
               </Link>
@@ -426,7 +426,7 @@ export function CoursePageContent({
                 <Link
                   key={c.slug}
                   href={`/${countrySlug || 'in'}/${course.slug}/${c.slug}`}
-                  className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#1FA8A8] transition-colors"
+                  className="px-3 py-2 bg-gray-50 border border-gray-200 text-[12px] font-semibold text-gray-500 rounded hover:border-[#1FA8A8] hover:text-[#0E7C7C] transition-colors"
                 >
                   {c.name}
                 </Link>

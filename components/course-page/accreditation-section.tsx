@@ -38,7 +38,7 @@ export function AccreditationSection({ course }: { course: CourseContent }) {
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
-          className="mt-6 text-[#082032] font-bold flex items-center gap-1 cursor-pointer transition-colors hover:text-[#1FA8A8]"
+          className="mt-6 text-[#082032] font-bold flex items-center gap-1 cursor-pointer transition-colors hover:text-[#0E7C7C]"
         >
           {isExpanded ? (
             <span className="border-b border-[#082032] hover:border-[#1FA8A8] pb-0.5">Read Less <ChevronUp className="w-4 h-4 inline" /></span>

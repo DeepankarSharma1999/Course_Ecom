@@ -56,8 +56,8 @@ export function SchedulesSection({ schedules, fallbackPriceUsd, courseSlug }: { 
               aria-pressed={isActive}
               className={`h-10 px-4 rounded-full border text-[13px] font-semibold transition-colors ${
                 isActive
-                  ? "border-[#1FA8A8] bg-[#e0f2f1] text-[#1FA8A8]"
-                  : "border-gray-200 text-gray-600 hover:border-[#1FA8A8] hover:text-[#1FA8A8] bg-white"
+                  ? "border-[#1FA8A8] bg-[#e0f2f1] text-[#0E7C7C]"
+                  : "border-gray-200 text-gray-600 hover:border-[#1FA8A8] hover:text-[#0E7C7C] bg-white"
               }`}
             >
               {f}
@@ -72,7 +72,7 @@ export function SchedulesSection({ schedules, fallbackPriceUsd, courseSlug }: { 
             aria-expanded={isMonthOpen}
             aria-haspopup="listbox"
             className={`h-10 px-4 rounded-full border text-[13px] font-semibold transition-colors flex items-center gap-1.5 ${
-              selectedMonth || isMonthOpen ? "border-[#1FA8A8] text-[#1FA8A8] bg-[#e0f2f1]" : "border-gray-200 text-gray-600 hover:border-[#1FA8A8] hover:text-[#1FA8A8] bg-white"
+              selectedMonth || isMonthOpen ? "border-[#1FA8A8] text-[#0E7C7C] bg-[#e0f2f1]" : "border-gray-200 text-gray-600 hover:border-[#1FA8A8] hover:text-[#0E7C7C] bg-white"
             }`}
           >
             <Calendar className="w-3.5 h-3.5" /> {selectedMonth || "Month"} <ChevronDown className="w-3.5 h-3.5" />
@@ -88,7 +88,7 @@ export function SchedulesSection({ schedules, fallbackPriceUsd, courseSlug }: { 
                     setIsMonthOpen(false);
                     setActiveFilters([]);
                   }}
-                  className={`w-full text-left px-4 py-2 text-[13px] hover:bg-gray-50 transition-colors ${selectedMonth === m ? "font-bold text-[#1FA8A8]" : "text-gray-600 font-medium"}`}
+                  className={`w-full text-left px-4 py-2 text-[13px] hover:bg-gray-50 transition-colors ${selectedMonth === m ? "font-bold text-[#0E7C7C]" : "text-gray-600 font-medium"}`}
                 >
                   {m}
                 </button>
@@ -113,7 +113,7 @@ export function SchedulesSection({ schedules, fallbackPriceUsd, courseSlug }: { 
                   </div>
                 )}
                 <div className="flex items-center gap-3 text-[12px] lg:text-[13px] font-semibold text-gray-700">
-                  <span className="flex items-center gap-1 text-[#1FA8A8]">
+                  <span className="flex items-center gap-1 text-[#0E7C7C]">
                     <Globe className="w-3.5 h-3.5" /> {s.mode}
                   </span>
                   <span className="text-gray-300">•</span>
@@ -136,7 +136,7 @@ export function SchedulesSection({ schedules, fallbackPriceUsd, courseSlug }: { 
                 ) : null}
                 <div className="text-[18px] lg:text-[22px] font-black text-[#082032] flex items-center justify-start lg:justify-end gap-2 mb-3 lg:mb-4">
                   {format(price * (1 - (s.discountPct ?? 0) / 100))}
-                  {s.discountPct ? <span className="text-[12px] lg:text-[14px] font-semibold text-gray-400 line-through">{format(price)}</span> : null}
+                  {s.discountPct ? <span className="text-[12px] lg:text-[14px] font-semibold text-gray-500 line-through">{format(price)}</span> : null}
                 </div>
                 <a href={courseSlug ? `/register?course=${courseSlug}` : "#enquire"} className="w-full h-9 lg:h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[13px] lg:text-[14px]">
                   Enroll Now

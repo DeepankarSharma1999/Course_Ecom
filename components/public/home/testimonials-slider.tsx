@@ -83,7 +83,7 @@ export function TestimonialsSlider({ content, testimonials = [] }: { content?: a
                       {t.photo ? (
                         <img src={t.photo} alt={t.name} className="h-10 w-10 rounded-full object-cover border border-gray-100" />
                       ) : (
-                        <div className="h-10 w-10 rounded-full bg-[#e0f2f1] border border-gray-100 flex items-center justify-center text-[#1FA8A8] font-bold">
+                        <div className="h-10 w-10 rounded-full bg-[#e0f2f1] border border-gray-100 flex items-center justify-center text-[#0E7C7C] font-bold">
                           {t.name.charAt(0)}
                         </div>
                       )}

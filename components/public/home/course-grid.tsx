@@ -48,7 +48,7 @@ export function CourseGrid({
                   type="button"
                   onClick={() => setActiveTab(tab)}
                   className={`relative px-4 py-2 md:px-6 md:py-2.5 text-[12px] md:text-[13px] font-bold whitespace-nowrap transition-colors rounded-sm ${
-                    active ? "text-primary bg-[#E9F4F4]" : "text-gray-600 hover:text-[#082032] hover:bg-gray-50"
+                    active ? "text-[#0E7C7C] bg-[#E9F4F4]" : "text-gray-600 hover:text-[#082032] hover:bg-gray-50"
                   }`}
                 >
                   {tab}
@@ -59,7 +59,7 @@ export function CourseGrid({
               );
             })}
           </div>
-          <button className="hidden md:flex items-center justify-center w-11 h-11 border border-gray-200 rounded-md text-gray-500 hover:text-primary transition-colors shrink-0">
+          <button aria-label="Search courses" className="hidden md:flex items-center justify-center w-11 h-11 border border-gray-200 rounded-md text-gray-500 hover:text-primary transition-colors shrink-0">
             <Search className="w-4 h-4" />
           </button>
         </div>
@@ -99,7 +99,7 @@ function CourseDiscoveryCard({ course, currency, index }: { course: CourseConten
       </div>
 
       <div className="p-4 md:p-6 flex flex-col flex-1">
-        <div className="text-[10px] md:text-[11px] text-gray-400 font-medium mb-2 md:mb-3">Live Classroom / Classroom</div>
+        <div className="text-[10px] md:text-[11px] text-gray-500 font-medium mb-2 md:mb-3">Live Classroom / Classroom</div>
         
         <h3 className="text-[16px] md:text-[18px] font-bold text-[#082032] leading-snug mb-4 md:mb-6 flex-1 hover:text-primary transition-colors cursor-pointer line-clamp-2 md:line-clamp-none">
           <Link href={`/${course.slug}`}>{course.shortTitle || course.title}</Link>

@@ -62,7 +62,7 @@ export function EnterpriseSolutionLayout({
       {/* Hero Section */}
       <section className="relative bg-white pt-20 pb-24 border-b border-gray-200">
         <div className="container-tight max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center justify-center gap-2 bg-[#e6f6f6] text-[#1FA8A8] px-4 py-1.5 rounded-full mb-8 text-sm font-bold tracking-wide mx-auto">
+          <div className="inline-flex items-center justify-center gap-2 bg-[#e6f6f6] text-[#0E7C7C] px-4 py-1.5 rounded-full mb-8 text-sm font-bold tracking-wide mx-auto">
             <Target className="w-4 h-4" />
             {category}
           </div>
@@ -70,7 +70,7 @@ export function EnterpriseSolutionLayout({
           <h1 className="text-[40px] md:text-[56px] font-extrabold tracking-tight mb-6 leading-[1.1] text-[#082032]">
             {title}
           </h1>
-          <h2 className="text-[20px] md:text-[24px] text-[#1FA8A8] font-bold mb-6">
+          <h2 className="text-[20px] md:text-[24px] text-[#0E7C7C] font-bold mb-6">
             {subtitle}
           </h2>
           
@@ -97,7 +97,7 @@ export function EnterpriseSolutionLayout({
             {benefits.map((benefit, i) => (
               <div key={i} className="group p-8 rounded-2xl bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
                 <div className="w-16 h-16 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:bg-[#1FA8A8]/10 transition-colors">
-                  {getIcon(benefit.icon, "w-8 h-8 text-[#1FA8A8]")}
+                  {getIcon(benefit.icon, "w-8 h-8 text-[#0E7C7C]")}
                 </div>
                 <h3 className="font-bold text-xl text-[#082032] mb-3">{benefit.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
@@ -113,7 +113,7 @@ export function EnterpriseSolutionLayout({
         
         <div className="container-tight relative z-10">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <div className="text-[#1FA8A8] font-bold tracking-widest uppercase text-sm mb-4">Our Methodology</div>
+            <div className="text-[#0E7C7C] font-bold tracking-widest uppercase text-sm mb-4">Our Methodology</div>
             <h2 className="text-[32px] md:text-[42px] font-bold mb-6 leading-tight">{approachTitle}</h2>
           </div>
 

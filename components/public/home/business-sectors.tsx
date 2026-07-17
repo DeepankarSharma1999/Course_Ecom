@@ -85,7 +85,7 @@ export function BusinessSectors({ content }: { content?: any }) {
         </div>
 
         <div className="text-center mb-24">
-          <Link href="/courses" className="inline-flex items-center justify-center px-8 py-3 bg-[#E23B3B] hover:bg-[#c93030] text-white text-[15px] font-bold rounded shadow-[0_8px_20px_rgba(226,59,59,0.25)] transition-all">
+          <Link href="/courses" className="inline-flex items-center justify-center px-8 py-3 bg-[#C42B2B] hover:bg-[#a82424] text-white text-[15px] font-bold rounded shadow-[0_8px_20px_rgba(196,43,43,0.25)] transition-all">
             Self-Learning
           </Link>
         </div>

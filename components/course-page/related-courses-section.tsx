@@ -50,7 +50,7 @@ export function RelatedCoursesSection({ course }: { course: CourseContent }) {
                 {i === 1 && <span className="px-2 py-1 bg-gray-200 text-gray-700 text-[10px] font-bold rounded">Classroom</span>}
               </div>
               <h3 className="font-bold text-[#082032] text-[18px] mb-6">{c.title}</h3>
-              <div className="flex items-center gap-6 text-[13px] text-[#1FA8A8] font-bold">
+              <div className="flex items-center gap-6 text-[13px] text-[#0E7C7C] font-bold">
                 <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {c.enrolled} Enrolled</span>
                 <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {c.hours} Hours</span>
               </div>

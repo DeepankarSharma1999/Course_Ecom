@@ -42,7 +42,7 @@ export function FaqSection({ faqs, shortTitle }: { faqs: FaqItem[], shortTitle: 
             }}
             className={`px-6 py-2.5 rounded-full text-[14px] font-bold whitespace-nowrap transition-colors ${
               activeTab === tab 
-                ? "bg-[#e0f2f1] text-[#1FA8A8]" 
+                ? "bg-[#e0f2f1] text-[#0E7C7C]" 
                 : "text-gray-600 hover:bg-gray-50"
             }`}
           >
@@ -70,7 +70,7 @@ export function FaqSection({ faqs, shortTitle }: { faqs: FaqItem[], shortTitle: 
                 <span className={`font-bold text-[15px] ${isOpen ? 'text-[#082032]' : 'text-[#475569]'}`}>
                   {i + 1}. {faq.q}
                 </span>
-                <div className={`transition-transform duration-200 shrink-0 ml-4 ${isOpen ? 'text-[#1FA8A8]' : 'text-gray-400'}`}>
+                <div className={`transition-transform duration-200 shrink-0 ml-4 ${isOpen ? 'text-[#0E7C7C]' : 'text-gray-400'}`}>
                   {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                 </div>
               </button>
@@ -87,7 +87,7 @@ export function FaqSection({ faqs, shortTitle }: { faqs: FaqItem[], shortTitle: 
       
       {/* View More Dropdown Indicator */}
       <div className="mt-8 text-center">
-        <button className="text-[14px] font-bold text-[#082032] hover:text-[#1FA8A8] transition-colors border border-gray-300 px-6 py-2 rounded-full inline-flex items-center gap-2">
+        <button className="text-[14px] font-bold text-[#082032] hover:text-[#0E7C7C] transition-colors border border-gray-300 px-6 py-2 rounded-full inline-flex items-center gap-2">
           View More <ChevronDown className="w-4 h-4" />
         </button>
       </div>

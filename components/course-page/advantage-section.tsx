@@ -8,32 +8,32 @@ export function AdvantageSection({ course }: { course: CourseContent }) {
 
   const advantages = [
     {
-      icon: <Presentation className="w-6 h-6 text-[#1FA8A8]" />,
+      icon: <Presentation className="w-6 h-6 text-[#0E7C7C]" />,
       title: "Comprehensive Exam Prep",
       description: "Hone your CSM exam readiness and bolster your confidence by practicing with four meticulously crafted high-quality mock exams."
     },
     {
-      icon: <UserCheck className="w-6 h-6 text-[#1FA8A8]" />,
+      icon: <UserCheck className="w-6 h-6 text-[#0E7C7C]" />,
       title: "Elite Panel of CSTs",
       description: "Get trained by Scrum Alliance accredited and experienced CSTs with more than a decade's experience as Scrum practitioners."
     },
     {
-      icon: <Briefcase className="w-6 h-6 text-[#1FA8A8]" />,
+      icon: <Briefcase className="w-6 h-6 text-[#0E7C7C]" />,
       title: "Effortless Certification Renewal",
       description: "Earn 20 SEUs upon completion of our complimentary Agile and Scrum course worth $300 for seamless certification renewal."
     },
     {
-      icon: <Globe className="w-6 h-6 text-[#1FA8A8]" />,
+      icon: <Globe className="w-6 h-6 text-[#0E7C7C]" />,
       title: "Comprehensive Job Support",
       description: "Benefit from comprehensive job support, including LinkedIn assistance, AI-resume builder and more."
     },
     {
-      icon: <Award className="w-6 h-6 text-[#1FA8A8]" />,
+      icon: <Award className="w-6 h-6 text-[#0E7C7C]" />,
       title: "Global LTP of Scrum Alliance",
       description: "We are a Scrum Alliance Licensed Training Partner(LTP), having trained over 250,000 Agile professionals."
     },
     {
-      icon: <Ticket className="w-6 h-6 text-[#1FA8A8]" />,
+      icon: <Ticket className="w-6 h-6 text-[#0E7C7C]" />,
       title: "Mentorship by Industry Experts",
       description: "Get mentored by Scrum Alliance accredited professionals and get real-world tips and industry-proven techniques."
     }
