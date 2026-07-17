@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import * as Lucide from "lucide-react";
 import { VERIFIED_STATS } from "@/lib/verified-stats";
@@ -132,9 +133,15 @@ export function HomeHero({ content }: { content?: any }) {
 
         {/* RIGHT COLUMN — single composed collage (people + arches + skyline + cards) */}
         <div className="relative hidden lg:block">
-          <img
+          {/* Desktop LCP element: next/image + priority so it's preloaded with
+              fetchpriority=high and served resized/AVIF (FIX-08). */}
+          <Image
             src="/Hero/hero-right-side.webp"
             alt="Professionals who advanced their careers with Simplilead"
+            width={877}
+            height={941}
+            priority
+            sizes="(min-width: 1024px) 620px, 0px"
             className="w-full h-auto max-w-[620px] ml-auto select-none"
             style={{
               // ponytail: CSS edge feather instead of re-exporting the image with a transparent bg

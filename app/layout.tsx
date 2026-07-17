@@ -29,10 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={cn("font-sans", jakarta.variable)}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      </head>
+      {/* No fonts.googleapis preconnect — next/font self-hosts Plus Jakarta Sans (FIX-09). */}
       <body>
         <LearnerAuthProvider>{children}</LearnerAuthProvider>
         {/* Real-user Core Web Vitals (LCP/INP/CLS) reporting — FIX-07. */}

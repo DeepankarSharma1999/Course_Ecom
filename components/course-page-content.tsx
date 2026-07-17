@@ -25,6 +25,17 @@ import { ArticlesSection } from "@/components/course-page/articles-section";
 import { SchedulesSection } from "@/components/course-page/schedules-section";
 import { RelatedCoursesSection } from "@/components/course-page/related-courses-section";
 
+// Hosts whitelisted in next.config.mjs remotePatterns; local paths always optimize.
+function isOptimizableImage(src?: string) {
+  if (!src) return false;
+  if (src.startsWith("/")) return true;
+  try {
+    return ["images.unsplash.com", "images.pexels.com", "cdn.jsdelivr.net"].includes(new URL(src).hostname);
+  } catch {
+    return false;
+  }
+}
+
 function fmtDate(d: Date) {
   return d.toLocaleDateString("en-IN", { month: "short", day: "2-digit", year: "numeric" });
 }
@@ -187,9 +198,15 @@ export function CoursePageContent({
             <div className="w-full lg:w-[480px] shrink-0">
               <div className="rounded-2xl overflow-hidden shadow-2xl relative bg-gray-100 aspect-[4/3] flex items-center justify-center border border-gray-200">
                 <div className="absolute inset-0 bg-[#082032]/5 z-10"></div>
-                {/* ponytail: raw img — course.heroImage is admin free-text; next/image throws on unconfigured hosts. Migrate if uploads are constrained to known hosts. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={course.heroImage} alt={course.title} loading="eager" className="absolute inset-0 w-full h-full object-cover" />
+                {/* next/image (priority) for local/known hosts — the page's LCP element (FIX-08);
+                    raw img fallback because course.heroImage is admin free-text and
+                    next/image throws on unconfigured hosts. */}
+                {isOptimizableImage(course.heroImage) ? (
+                  <Image src={course.heroImage} alt={course.title} fill priority sizes="(min-width: 1024px) 480px, 100vw" className="absolute inset-0 w-full h-full object-cover" />
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={course.heroImage} alt={course.title} loading="eager" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover" />
+                )}
                 <div className="absolute top-4 right-4 bg-white rounded-lg px-2 py-1 shadow text-[10px] font-bold flex items-center gap-1 z-20">
                   <Award className="w-3 h-3 text-yellow-500" /> Global Certification
                 </div>
