@@ -5,7 +5,7 @@ import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { NOINDEX } from "@/lib/indexing";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { getCities, getCityBySlug, getCourseBySlug, getCourseVariant } from "@/lib/content";
+import { getCities, getCityBySlug, getCourseBySlug, getCourseVariant, getCourseSchedules } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
@@ -41,6 +41,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
   const co = ct.country;
   const cities = (await getCities()).filter((x) => x.country.slug === co.slug).map((x) => ({ slug: x.slug, name: x.name }));
 
+  const schedules = await getCourseSchedules(course);
+
   const jsonLd = [
     courseJsonLd(c, { country: co.name, city: ct.name }),
     faqJsonLd(c.faqs),
@@ -57,7 +59,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
       {jsonLd.map((d, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
       ))}
-      <CoursePageContent course={c} countrySlug={slug} citySlug={city} countryName={co.name} cityName={ct.name} cities={cities} currency={currency} currencies={currencyCfg.currencies} />
+      <CoursePageContent course={c} countrySlug={slug} citySlug={city} countryName={co.name} cityName={ct.name} cities={cities} schedules={schedules} currency={currency} currencies={currencyCfg.currencies} />
       <StickyCta courseTitle={c.shortTitle} priceLabel={c.basePriceUsd ? formatInCurrency(c.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
     </>
   );

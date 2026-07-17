@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import * as Lucide from "lucide-react";
 import { type CourseContent, type FaqItem, findCity, findCountry, CITIES_IN, COURSES } from "@/lib/seed-data";
+import type { CourseSchedule } from "@/lib/content";
 import { LeadForm } from "@/components/lead-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { LeadModalButton } from "@/components/lead-modal-button";
@@ -24,47 +25,13 @@ import { ArticlesSection } from "@/components/course-page/articles-section";
 import { SchedulesSection } from "@/components/course-page/schedules-section";
 import { RelatedCoursesSection } from "@/components/course-page/related-courses-section";
 
-// ... inside the file ...
-// We need to carefully replace the existing blocks.
-
-type Schedule = {
-  mode: string;
-  startDate: Date;
-  endDate: Date;
-  timeLabel?: string;
-  priceUsd: number;
-  discountPct?: number;
-  seatsLeft?: number;
-  isFilling?: boolean;
-};
-
-function generateSchedules(course: CourseContent): Schedule[] {
-  const out: Schedule[] = [];
-  const now = new Date();
-  for (let m = 0; m < 12; m++) {
-    for (let i = 1; i <= 2; i++) {
-      const start = new Date(now.getFullYear(), now.getMonth() + m, i * 10);
-      const end = new Date(start); end.setDate(start.getDate() + 1);
-      out.push({
-        mode: "Live Online Classroom",
-        startDate: start, endDate: end,
-        timeLabel: "09:00 AM - 06:00 PM",
-        priceUsd: course.basePriceUsd,
-        discountPct: (m + i) % 3 === 0 ? 15 : 10,
-        seatsLeft: 12 - ((m + i) % 5),
-        isFilling: m === 0,
-      });
-    }
-  }
-  return out;
-}
-
 function fmtDate(d: Date) {
   return d.toLocaleDateString("en-IN", { month: "short", day: "2-digit", year: "numeric" });
 }
 
 export function CoursePageContent({
   course,
+  schedules = [],
   countrySlug,
   citySlug,
   countryName: countryNameProp,
@@ -74,6 +41,7 @@ export function CoursePageContent({
   currencies,
 }: {
   course: CourseContent;
+  schedules?: CourseSchedule[];
   countrySlug?: string;
   citySlug?: string;
   countryName?: string;
@@ -106,7 +74,8 @@ export function CoursePageContent({
     ? `Key Features of ${baseTitle} Training in ${locationName}`
     : `Key Features of ${baseTitle} Certification Training`;
 
-  const schedules = generateSchedules(course);
+  const nextBatch = schedules[0];
+  const nextBatchPrice = nextBatch ? (nextBatch.priceUsd || course.basePriceUsd) : course.basePriceUsd;
 
   // Per-course hero metrics. Same slug-hash formula as course-grid.tsx so the
   // course card and this page report the same enrolled count; avatars are real
@@ -327,8 +296,8 @@ export function CoursePageContent({
           {/* Demand & Roles — industry-recognised job roles derived per course */}
           {show("demand") && <DemandSection course={course} />}
 
-          {/* Schedules Table (Redesigned & Componentized) */}
-          {show("schedules") && <SchedulesSection schedules={schedules} currency={currency} courseSlug={course.slug} />}
+          {/* Schedules Table — real upcoming DB batches */}
+          {show("schedules") && <SchedulesSection schedules={schedules} fallbackPriceUsd={course.basePriceUsd} courseSlug={course.slug} />}
 
           {/* Advisor Banner */}
           <AdvisorBanner />
@@ -343,44 +312,43 @@ export function CoursePageContent({
         {/* RIGHT COLUMN: Sticky Sidebar */}
         <aside className="w-full lg:w-[350px] shrink-0 space-y-6 lg:sticky lg:top-[100px] z-30 pb-10">
           
-          {/* Fast Filling Schedule Card */}
+          {/* Next Batch Card — real data only (FIX-02): renders from the first
+              upcoming DB schedule, or a price+enquire card when none exist. */}
           <div className="bg-white rounded-xl border border-[#1FA8A8]/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden relative">
             <div className="p-5 bg-[#fef9f2] border-b border-[#1FA8A8]/20 flex items-center justify-between">
-              <h3 className="font-bold text-[#082032] text-[16px]">Fast Filling Schedule</h3>
+              <h3 className="font-bold text-[#082032] text-[16px]">{nextBatch?.isFilling ? "Fast Filling Schedule" : "Next Batch"}</h3>
             </div>
-            
-            {/* The main schedule body */}
-            <div className="p-5 border-b border-gray-100">
-              <div className="flex gap-2 mb-3">
-                <span className="px-2 py-0.5 bg-orange-100 text-orange-800 rounded text-[10px] font-bold flex items-center gap-1"><Lucide.Sun className="w-3 h-3" /> Afternoon</span>
-                <span className="px-2 py-0.5 bg-red-500 text-white rounded text-[10px] font-bold">30% OFF</span>
+
+            {nextBatch ? (
+              <div className="p-5 border-b border-gray-100">
+                {nextBatch.discountPct ? (
+                  <div className="flex gap-2 mb-3">
+                    <span className="px-2 py-0.5 bg-red-500 text-white rounded text-[10px] font-bold">{nextBatch.discountPct}% OFF</span>
+                  </div>
+                ) : null}
+                <h4 className="font-black text-[#082032] text-[16px] mb-1">{fmtDate(nextBatch.startDate)} - {fmtDate(nextBatch.endDate)}</h4>
+                {nextBatch.timeLabel && <div className="text-[12px] text-gray-500 mb-4">{nextBatch.timeLabel} {nextBatch.timezone || "IST"}</div>}
+
+                <div className="flex items-center gap-2 text-[12px] text-gray-600 font-semibold mb-3">
+                  <Globe className="w-3.5 h-3.5 text-[#1FA8A8]" /> {nextBatch.mode} <span className="text-gray-300">•</span>{" "}
+                  {[0, 6].includes(nextBatch.startDate.getDay()) ? "Weekend Batch" : "Weekday Batch"}
+                </div>
               </div>
-              <h4 className="font-black text-[#082032] text-[16px] mb-1">{fmtDate(schedules[0]?.startDate || new Date())} - {fmtDate(schedules[0]?.endDate || new Date())}</h4>
-              <div className="text-[12px] text-gray-500 mb-4">{schedules[0]?.timeLabel} IST</div>
-              
-              <div className="flex items-center gap-2 text-[12px] text-gray-600 font-semibold mb-3">
-                <Globe className="w-3.5 h-3.5 text-[#1FA8A8]" /> {schedules[0]?.mode} <span className="text-gray-300">•</span> Weekend Batch
+            ) : (
+              <div className="p-5 border-b border-gray-100 text-[13px] text-gray-600">
+                New batch dates are being finalized. Enquire and we&apos;ll confirm the next start date.
               </div>
-            </div>
-            
+            )}
+
             {/* Pricing Footer */}
             <div className="p-5 bg-[#fbfdfd] space-y-4">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <div className="text-[20px] font-black text-[#082032] flex items-center gap-2">
-                    {format(course.basePriceUsd * 0.7)}
-                    <span className="text-[13px] font-semibold text-gray-400 line-through">{format(course.basePriceUsd)}</span>
-                  </div>
-                  <div className="text-[10px] text-gray-500">As low as {format(course.basePriceUsd * 0.7 / 12)}/month <Lucide.Info className="w-3 h-3 inline" /></div>
-                </div>
-                {/* Quantity Input */}
-                <div className="flex items-center border border-gray-200 rounded px-1.5 py-0.5 bg-white">
-                  <button className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-[#082032]">-</button>
-                  <span className="w-6 text-center text-[13px] font-bold">1</span>
-                  <button className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-[#082032]">+</button>
-                </div>
+              <div className="text-[20px] font-black text-[#082032] flex items-center gap-2">
+                {format(nextBatchPrice * (1 - (nextBatch?.discountPct ?? 0) / 100))}
+                {nextBatch?.discountPct ? (
+                  <span className="text-[13px] font-semibold text-gray-400 line-through">{format(nextBatchPrice)}</span>
+                ) : null}
               </div>
-              
+
               <Link href={`/register?course=${course.slug}`} className="w-full h-11 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] flex items-center justify-center transition-colors text-[14px]">
                 Enroll Now
               </Link>

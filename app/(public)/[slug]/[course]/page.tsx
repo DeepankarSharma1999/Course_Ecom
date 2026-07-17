@@ -4,7 +4,7 @@ import { CoursePageContent } from "@/components/course-page-content";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { NOINDEX } from "@/lib/indexing";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { getCourseBySlug, getCountryBySlug, getCities, getCourseVariant } from "@/lib/content";
+import { getCourseBySlug, getCountryBySlug, getCities, getCourseVariant, getCourseSchedules } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 
 // Per-request (currency via cookies/headers) and ~10k country×course combos —
@@ -33,6 +33,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
   if (!c || !co) notFound();
   const cities = (await getCities()).filter((x) => x.country.slug === co.slug).map((x) => ({ slug: x.slug, name: x.name }));
 
+  const schedules = await getCourseSchedules(course);
+
   const jsonLd = [
     courseJsonLd(c, { country: co.name }),
     faqJsonLd(c.faqs),
@@ -48,7 +50,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
       {jsonLd.map((d, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
       ))}
-      <CoursePageContent course={c} countrySlug={slug} countryName={co.name} cities={cities} currency={currency} currencies={currencyCfg.currencies} />
+      <CoursePageContent course={c} countrySlug={slug} countryName={co.name} cities={cities} schedules={schedules} currency={currency} currencies={currencyCfg.currencies} />
     </>
   );
 }

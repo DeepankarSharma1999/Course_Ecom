@@ -6,7 +6,7 @@ import { StickyCta } from "@/components/sticky-cta";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { SITE, baseCourseTitle, composeCourseTitle } from "@/lib/utils";
 import { isCourseIndexed, NOINDEX } from "@/lib/indexing";
-import { getAllCourses, getCourseBySlug, getCountryBySlug, getCityBySlug } from "@/lib/content";
+import { getAllCourses, getCourseBySlug, getCountryBySlug, getCityBySlug, getCourseSchedules } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
 
@@ -64,6 +64,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { slug } = await params;
   const [course, currency, currencyCfg] = await Promise.all([getCourseBySlug(slug), getDisplayCurrency(), getCurrencyConfig()]);
   if (course) {
+    const schedules = await getCourseSchedules(slug);
     const jsonLd = [
       courseJsonLd(course),
       faqJsonLd(course.faqs),
@@ -78,7 +79,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         {jsonLd.map((d, i) => (
           <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
         ))}
-        <CoursePageContent course={course} currency={currency} currencies={currencyCfg.currencies} />
+        <CoursePageContent course={course} schedules={schedules} currency={currency} currencies={currencyCfg.currencies} />
         <StickyCta courseTitle={baseCourseTitle(course.title)} priceLabel={course.basePriceUsd ? formatInCurrency(course.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
       </>
     );

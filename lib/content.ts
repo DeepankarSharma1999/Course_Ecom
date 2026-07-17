@@ -136,6 +136,43 @@ export const getCourseBySlug = cache(async (slug: string): Promise<CourseContent
   return STATIC_COURSES.find((c) => c.slug === slug) ?? null;
 });
 
+// Real upcoming batches for a course (FIX-02/FIX-15): the course page used to
+// invent schedules at render time; it now shows only what the admin scheduled.
+export type CourseSchedule = {
+  mode: string;
+  startDate: Date;
+  endDate: Date;
+  timeLabel?: string;
+  timezone?: string;
+  priceUsd: number;
+  discountPct?: number;
+  seatsLeft?: number;
+  isFilling: boolean;
+};
+
+export const getCourseSchedules = cache(async (courseSlug: string): Promise<CourseSchedule[]> => {
+  try {
+    const rows = await prisma.schedule.findMany({
+      where: { course: { slug: courseSlug }, startDate: { gte: new Date() } },
+      orderBy: { startDate: "asc" },
+      take: 24,
+    });
+    return rows.map((r) => ({
+      mode: r.mode,
+      startDate: r.startDate,
+      endDate: r.endDate,
+      timeLabel: r.timeLabel ?? undefined,
+      timezone: r.timezone ?? undefined,
+      priceUsd: r.priceUsd ?? 0,
+      discountPct: r.discountPct ?? undefined,
+      seatsLeft: r.seatsLeft ?? undefined,
+      isFilling: r.isFilling,
+    }));
+  } catch {
+    return [];
+  }
+});
+
 export async function getCourseVariant(courseSlug: string, countrySlug: string, citySlug?: string) {
   try {
     const c = await prisma.course.findUnique({ where: { slug: courseSlug } });
