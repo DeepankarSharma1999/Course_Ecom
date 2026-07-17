@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { MessageSquare, ArrowUpRight, Minus, ThumbsUp, ThumbsDown, Paperclip, MoreHorizontal, LogIn } from "lucide-react";
+import { MessageSquare, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LeadForm } from "@/components/lead-form";
 
 export function LiveChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,48 +32,29 @@ export function LiveChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-0 right-0 w-[340px] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col border border-gray-100"
-            style={{ height: '520px' }}
+            /* Cap to the viewport so the panel never runs off-screen; the body scrolls instead. */
+            className="absolute bottom-0 right-0 w-[340px] max-w-[calc(100vw-2rem)] h-[520px] max-h-[calc(100dvh-8rem)] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col border border-gray-100"
           >
             {/* Header */}
-            <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center justify-center relative">
+            <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center justify-center relative shrink-0">
               <span className="font-bold text-[15px]">Chat with us</span>
               <button onClick={() => setIsOpen(false)} aria-label="Minimize chat" className="absolute right-4 grid h-9 w-9 place-items-center hover:opacity-70 transition-opacity">
                 <Minus className="w-5 h-5 text-primary-foreground" />
               </button>
             </div>
 
-            {/* Form Area */}
-            <div className="flex-1 p-5 bg-white flex flex-col gap-4">
-              <div className="text-[15px] text-[#2f3941] leading-relaxed">
-                <p className="mb-4">Greetings! Your perfect partner for all your training needs.</p>
+            {/* Body — min-h-0 lets it scroll rather than push content past the panel edge */}
+            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-5 bg-white">
+              <div className="text-[15px] text-[#2f3941] leading-relaxed mb-4">
+                <p className="mb-3">Greetings! Your perfect partner for all your training needs.</p>
                 <p>We are happy to help! :)</p>
               </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="lc-name" className="font-bold text-sm text-[#2f3941]">Name</label>
-                <input id="lc-name" name="name" type="text" autoComplete="name" className="border border-gray-300 rounded p-2 text-base sm:text-sm outline-none focus:border-primary transition-colors" />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="lc-email" className="font-bold text-sm text-[#2f3941]">Email</label>
-                <input id="lc-email" name="email" type="email" autoComplete="email" className="border border-gray-300 rounded p-2 text-base sm:text-sm outline-none focus:border-primary transition-colors" />
-              </div>
-
-              <div className="flex flex-col gap-1.5 mb-2">
-                <label htmlFor="lc-message" className="font-bold text-sm text-[#2f3941]">Message</label>
-                <textarea id="lc-message" name="message" className="border border-gray-300 rounded p-2 text-base sm:text-sm outline-none focus:border-primary transition-colors resize-none min-h-[100px]" />
-              </div>
+              <LeadForm
+                variant="inline"
+                source="live-chat"
+                ctaLabel="Start chat"
+              />
             </div>
-
-            {/* Footer */}
-            <div className="p-4 bg-[#f8f9fa] border-t border-gray-200 flex items-center justify-between rounded-b-lg">
-              <div className="text-[13px] font-semibold text-gray-500 tracking-wide">zendesk</div>
-              <button className="bg-[#2f3941] hover:bg-[#1f262b] text-white px-5 py-2.5 rounded text-sm font-medium transition-colors">
-                Start chat
-              </button>
-            </div>
-            
           </motion.div>
         )}
       </AnimatePresence>

@@ -22,7 +22,7 @@ type NavCategory = {
   name: string;
   tagline?: string | null;
   icon?: string | null;
-  courses: { slug: string; title: string; image?: string | null }[];
+  courses: { slug: string; title: string; image?: string | null; duration?: string | null }[];
 };
 
 type FeaturedCourse = { slug: string; title: string; category: string };
@@ -52,9 +52,12 @@ export function SiteHeader({
   nav = {},
   currency = "USD",
   currencies = [],
+  phone,
 }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Drill-down inside the mobile drawer: null = main menu, slug = that category's course list.
+  const [mobileCat, setMobileCat] = useState<string | null>(null);
   const [openMenu, setOpenMenu] = useState<"courses" | "ai-courses" | "enterprise" | "resources" | null>(null);
   const [openSubMenu, setOpenSubMenu] = useState<"agile" | "product" | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -78,7 +81,14 @@ export function SiteHeader({
     setOpenMenu(null);
     setOpenSubMenu(null);
     setMobileOpen(false);
+    setMobileCat(null);
   }, [pathname]);
+
+  // Lock page scroll behind the open drawer.
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#f8fcfc] border-b border-gray-200 font-sans transition-all duration-300">
@@ -116,10 +126,20 @@ export function SiteHeader({
         </div>
       </div>
 
+      {/* Top Banner — compact mobile version */}
+      <div className="md:hidden bg-gradient-to-r from-[#082032] via-[#0d5c5c] to-[#082032] text-white text-[12px] py-2 px-4 text-center font-semibold">
+        <span className="text-amber-400">⚡</span> FLASH SALE — Flat 10% off with code <span className="text-amber-400 font-black tracking-wider">SIMPLILEAD10</span>
+      </div>
+
       {/* Main nav */}
-      <div className="container-tight flex items-center h-[72px] justify-between gap-4">
+      <div className="container-tight flex items-center h-[72px] justify-between gap-3">
+        {/* Mobile hamburger (left, like the reference) */}
+        <button aria-label="Open menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)} className="lg:hidden -ml-1 grid h-10 w-10 place-items-center text-[#082032]">
+          <Menu className="w-6 h-6" />
+        </button>
+
         {/* Logo */}
-        <Link href="/" className="flex items-center shrink-0">
+        <Link href="/" className="flex items-center shrink-0 mr-auto lg:mr-0">
           <img src="/logo.png" alt={brandName} className="h-[44px] w-auto object-contain" />
         </Link>
 
@@ -373,40 +393,145 @@ export function SiteHeader({
             </button>
           )}
 
-          <button aria-label="Open menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)} className="lg:hidden grid h-11 w-11 place-items-center text-foreground/80 hover:text-primary bg-secondary rounded-full">
-            <Menu className="w-5 h-5" />
+          {/* Mobile search — opens the drawer, whose search field sits on top */}
+          <button aria-label="Search courses" onClick={() => { setMobileCat(null); setMobileOpen(true); }} className="lg:hidden grid h-10 w-10 place-items-center text-[#082032]">
+            <Search className="w-5 h-5" />
           </button>
         </div>
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-[100] bg-background lg:hidden overflow-y-auto">
-          <div className="p-4 flex items-center justify-between border-b border-border/50 bg-card">
-            <img src="/logo.png" alt={brandName} className="h-20 w-auto object-contain" />
-            <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="grid h-11 w-11 place-items-center bg-secondary rounded-full text-foreground/80"><X className="w-5 h-5" /></button>
-          </div>
-          <div className="p-6 space-y-1">
-            <form action="/courses" method="get" className="relative mb-6">
-              <Search className="w-4 h-4 text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2" />
-              <input type="text" name="q" aria-label="Search courses" placeholder="What do you want to learn today?" className="w-full pl-11 pr-4 py-3.5 border border-border/50 rounded-full text-base bg-secondary focus:outline-none focus:border-primary" />
-            </form>
-            {[
-              { href: "/courses", label: "All Courses" },
-              { href: "/category/generative-ai", label: "AI Courses" },
-              { href: "/combo-courses", label: "Combo Courses", isNew: true },
-              { href: "/self-paced", label: "Self-Paced" },
-              { href: "/corporate-training", label: "Enterprise" },
-              { href: "/refer-earn", label: "Refer & Earn" },
-              { href: "/resources", label: "Resources" },
-            ].map((item) => (
-              <Link key={item.href} href={item.href} className="min-h-[52px] py-4 font-semibold text-foreground border-b border-border/50 flex justify-between items-center">
-                <span className="flex items-center gap-2">{item.label}{item.isNew && <span className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full">New</span>}</span>
-                <ChevronRight className="w-4 h-4 opacity-50" />
-              </Link>
-            ))}
-            {!isLoggedIn && (
-              <button onClick={() => { setMobileOpen(false); openModal(); }} className="btn-primary mt-6 w-full">Sign In</button>
-            )}
+        <div className="fixed inset-0 z-[100] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+          {/* Dim the page; a sliver stays visible on the right like the reference */}
+          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
+          <div className="absolute inset-y-0 left-0 w-[90%] max-w-[400px] bg-white rounded-r-3xl shadow-2xl flex flex-col overflow-hidden">
+
+            {/* Drawer header */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 shrink-0">
+              <img src="/logo.png" alt={brandName} className="h-9 w-auto object-contain" />
+              <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="grid h-10 w-10 place-items-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-50">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto overscroll-contain">
+              {(() => {
+                const cat = mobileCat ? navCategories.find((c) => c.slug === mobileCat) : null;
+
+                // ---- Category drill-down view ----
+                if (cat) return (
+                  <div className="pb-8">
+                    <div className="px-5 pt-4">
+                      <button onClick={() => setMobileCat(null)} className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-[14px] font-semibold text-[#082032] hover:bg-gray-50">
+                        <Lucide.ArrowLeft className="w-4 h-4" /> Back
+                      </button>
+                    </div>
+                    <div className="px-5 pt-5 flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="text-[20px] font-black text-[#082032] uppercase leading-tight">{cat.name}</div>
+                        {cat.tagline && <div className="text-[13px] text-gray-400 mt-1">{cat.tagline}</div>}
+                      </div>
+                      <Link href={`/category/${cat.slug}`} className="text-[14px] font-bold text-[#1FA8A8] underline shrink-0 mt-1">
+                        View all Courses
+                      </Link>
+                    </div>
+                    <div className="mx-5 mt-5 pb-2 text-[17px] font-bold text-[#082032] border-b border-gray-200">Certifications</div>
+                    <div className="px-5">
+                      {cat.courses.map((c, i) => (
+                        <Link key={c.slug} href={`/${c.slug}`} className="flex items-start gap-3 py-4 border-b border-gray-100">
+                          <div className="w-11 h-11 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
+                            {c.image ? (
+                              <img src={c.image} alt="" className="w-full h-full object-contain p-1" loading="lazy" />
+                            ) : (
+                              <span className="text-primary font-bold text-[10px]">{c.title.slice(0, 4).toUpperCase()}</span>
+                            )}
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center flex-wrap gap-x-2 gap-y-1 text-[12px] text-gray-500 mb-1">
+                              {c.duration && (
+                                <>
+                                  <span className="inline-flex items-center gap-1"><Lucide.Calendar className="w-3.5 h-3.5" /> {c.duration}</span>
+                                  <span className="text-gray-300">|</span>
+                                </>
+                              )}
+                              <span className="inline-flex items-center gap-1"><Lucide.Video className="w-3.5 h-3.5" /> Live Classes</span>
+                              {i === 0 && <span className="bg-[#fdf3d8] text-[#8a6d1a] text-[10px] font-bold px-2 py-0.5 rounded tracking-wide">POPULAR</span>}
+                              {i === 1 && <span className="bg-[#0d9488] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wide">TRENDING</span>}
+                            </div>
+                            <div className="text-[15px] font-bold text-[#082032] leading-snug">{c.title}</div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+
+                // ---- Main menu view ----
+                return (
+                  <div className="pb-6">
+                    <form action="/courses" method="get" className="relative px-5 pt-4">
+                      <Search className="w-4 h-4 text-gray-400 absolute left-9 top-1/2 translate-y-[3px]" />
+                      <input type="text" name="q" aria-label="Search courses" placeholder="What do you want to learn today?" className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-full text-[15px] bg-gray-50 focus:outline-none focus:border-[#1FA8A8] focus:bg-white" />
+                    </form>
+
+                    <div className="px-5 pt-6 pb-3 font-bold text-[18px] text-[#082032] border-b border-gray-100">Explore Categories</div>
+                    <div>
+                      {navCategories.map((c) => {
+                        const Icon = (Lucide as any)[c.icon ?? ""] || Lucide.Grid3x3;
+                        return (
+                          <button key={c.slug} onClick={() => setMobileCat(c.slug)} className="w-full flex items-center gap-4 px-5 py-[15px] border-b border-gray-100 text-left hover:bg-gray-50">
+                            <Icon className="w-5 h-5 text-[#475569]" strokeWidth={1.8} />
+                            <span className="flex-1 text-[16px] font-medium text-[#082032]">{c.name}</span>
+                            <ChevronRight className="w-5 h-5 text-gray-400" />
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Site sections */}
+                    <div className="mt-2 border-t-8 border-gray-100">
+                      {[
+                        { href: "/combo-courses", label: "Combo Courses", icon: Lucide.Layers, isNew: true },
+                        { href: "/category/generative-ai", label: "AI Courses", icon: Lucide.GraduationCap, isNew: true, chevron: true },
+                        { href: "/self-paced", label: "Self-Paced", icon: Lucide.MonitorPlay, chevron: true },
+                        { href: "/resources", label: "Resources", icon: Lucide.BookOpen, chevron: true },
+                        { href: "/corporate-training", label: "Enterprise", icon: Lucide.Building2, chevron: true },
+                        { href: "/refer-earn", label: "Refer & Earn", icon: Lucide.Gift },
+                      ].map((item) => (
+                        <Link key={item.href} href={item.href} className="flex items-center gap-4 px-5 py-[17px] border-b-8 border-gray-100 last:border-b-0 hover:bg-gray-50">
+                          <item.icon className="w-5 h-5 text-[#334155]" strokeWidth={1.8} />
+                          <span className="flex items-center gap-2 flex-1 text-[16px] font-semibold text-[#082032]">
+                            {item.label}
+                            {item.isNew && <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">New</span>}
+                          </span>
+                          {item.chevron && <ChevronRight className="w-5 h-5 text-gray-400" />}
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Help + sign in */}
+                    <div className="px-5 pt-8">
+                      <div className="flex items-center justify-between gap-3">
+                        <div>
+                          <div className="font-bold text-[15px] text-[#082032]">Didn&rsquo;t find what you need?</div>
+                          <div className="text-[14px] text-gray-500 mt-0.5">We&rsquo;ll help you find it</div>
+                        </div>
+                        {phone && (
+                          <a href={`tel:${phone.replace(/\s+/g, "")}`} className="inline-flex items-center gap-2 border border-gray-300 rounded-lg px-4 py-2.5 text-[14px] font-bold text-[#082032] hover:bg-gray-50 shrink-0">
+                            <Lucide.Phone className="w-4 h-4" /> Call Us
+                          </a>
+                        )}
+                      </div>
+                      {!isLoggedIn && (
+                        <button onClick={() => { setMobileOpen(false); openModal(); }} className="mt-6 w-full h-12 rounded-lg bg-[#1FA8A8] hover:bg-[#168989] text-white font-bold text-[16px] transition-colors">
+                          Sign In
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
           </div>
         </div>
       )}

@@ -34,6 +34,8 @@ export default async function PublicLayout({ children }: { children: React.React
       slug: c.slug,
       title: c.shortTitle || c.title,
       image: courseBadge(c.slug), // certifying-body logo, or null -> initials fallback
+      // Some labels already read "2 Days | Live Classes" — keep only the duration part.
+      duration: (c.durationLabel || "").split("|")[0].trim() || null,
     })),
   })).filter((c) => c.courses.length > 0);
 
