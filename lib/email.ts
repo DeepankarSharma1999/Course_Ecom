@@ -3,6 +3,7 @@
 // To switch providers later, replace the body of sendMail().
 
 import { getSiteSettings } from "./site-content";
+import { SITE } from "./utils";
 
 export type SendMailInput = {
   to: string | string[];
@@ -88,7 +89,7 @@ export async function sendViaFormSubmit(toEmail: string, lead: any, siteName: st
     "Landing page": utm.landingPath || "—",
     Referrer: utm.referrer || "—",
     Message: lead.message || "—",
-    "Admin link": `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/admin/leads/${lead.id}`,
+    "Admin link": `${SITE.url}/admin/leads/${lead.id}`,
     "Submitted via": siteName,
   };
   try {
@@ -138,7 +139,7 @@ export async function notifyAdminOfLead(lead: any) {
       ${row("Referrer", utm.referrer || "—")}
       ${lead.message ? row("Message", `<div style="white-space:pre-wrap">${escapeHtml(lead.message)}</div>`) : ""}
     </table>
-    <div style="margin-top:18px"><a href="${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/admin/leads/${lead.id}" style="display:inline-block;background:#1f44e6;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600">Open in Admin →</a></div>
+    <div style="margin-top:18px"><a href="${SITE.url}/admin/leads/${lead.id}" style="display:inline-block;background:#1f44e6;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600">Open in Admin →</a></div>
   `;
   return sendMail({
     to: adminEmail,
@@ -156,9 +157,9 @@ export async function autoReplyToLead(lead: any) {
     <p>Thanks for reaching out to <strong>${s.brandName}</strong>. We&rsquo;ve received your enquiry${lead.courseSlug ? ` about <strong>${lead.courseSlug}</strong>` : ""}, and a training advisor will get back to you shortly — typically within one business hour.</p>
     <p>While you wait:</p>
     <ul>
-      <li>Browse our full <a href="${process.env.NEXT_PUBLIC_SITE_URL || "#"}/courses">course catalog</a></li>
-      <li>Compare <a href="${process.env.NEXT_PUBLIC_SITE_URL || "#"}/compare">two courses side-by-side</a></li>
-      <li>Read about our <a href="${process.env.NEXT_PUBLIC_SITE_URL || "#"}/trainers">accredited trainers</a></li>
+      <li>Browse our full <a href="${SITE.url}/courses">course catalog</a></li>
+      <li>Compare <a href="${SITE.url}/compare">two courses side-by-side</a></li>
+      <li>Read about our <a href="${SITE.url}/trainers">accredited trainers</a></li>
     </ul>
     ${s.whatsappNumber ? `<p>Need an instant response? <a href="https://wa.me/${s.whatsappNumber}">Chat with us on WhatsApp</a>.</p>` : ""}
     <p>Talk soon,<br/>The ${s.brandName} team</p>

@@ -8,8 +8,16 @@ export function cn(...inputs: ClassValue[]) {
 export const SITE = {
   name: "Simplilead",
   tagline: "Global Certification Training",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  // Canonical production origin (www is the indexed host — see FIX-05).
+  // NEXT_PUBLIC_SITE_URL only overrides for local dev; *.vercel.app values are
+  // ignored so a stale template env var can never leak into canonicals/sitemap
+  // again (FIX-01). Keep the Vercel env var unset or set to this exact value.
+  url:
+    (process.env.NEXT_PUBLIC_SITE_URL?.includes("vercel.app") ? null : process.env.NEXT_PUBLIC_SITE_URL) ||
+    (process.env.NODE_ENV === "production" ? "https://www.simplilead.training" : "http://localhost:3000"),
   phone: "+91 80 4710 6633",
+  // TODO(owner): template leftover — replace with the real support inbox, and
+  // update the DB copies (admin > Site Settings, and the seeded policy pages).
   email: "info@course-ecom.com",
 };
 
