@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   description:
     "Simplilead delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more. Learn from accredited trainers, in person or live online.",
   openGraph: { type: "website", siteName: SITE.name, url: SITE.url },
-  robots: { index: true, follow: true },
+  // No global robots meta — indexing is the default; pages opt OUT via
+  // robots: NOINDEX (lib/indexing.ts) so there is exactly one directive per page.
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

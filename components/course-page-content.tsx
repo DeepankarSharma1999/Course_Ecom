@@ -303,7 +303,11 @@ export function CoursePageContent({
                   </div>
                 ) : null}
                 <h4 className="font-black text-[#082032] text-[16px] mb-1">{fmtDate(nextBatch.startDate)} - {fmtDate(nextBatch.endDate)}</h4>
-                {nextBatch.timeLabel && <div className="text-[12px] text-gray-500 mb-4">{nextBatch.timeLabel} {nextBatch.timezone || "IST"}</div>}
+                {nextBatch.timeLabel && (
+                  <div className="text-[12px] text-gray-500 mb-4">
+                    {nextBatch.timeLabel}{nextBatch.timezone && !nextBatch.timeLabel.includes(nextBatch.timezone) ? ` ${nextBatch.timezone}` : ""}
+                  </div>
+                )}
 
                 <div className="flex items-center gap-2 text-[12px] text-gray-600 font-semibold mb-3">
                   <Globe className="w-3.5 h-3.5 text-[#1FA8A8]" /> {nextBatch.mode} <span className="text-gray-300">•</span>{" "}

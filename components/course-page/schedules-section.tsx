@@ -108,7 +108,8 @@ export function SchedulesSection({ schedules, fallbackPriceUsd, courseSlug }: { 
                 <h3 className="text-[15px] lg:text-[18px] font-black text-[#082032] mb-1 lg:mb-2 leading-tight">{fmtDate(s.startDate)} - {fmtDate(s.endDate)}</h3>
                 {s.timeLabel && (
                   <div className="flex items-center gap-3 text-[12px] lg:text-[13px] text-gray-500 mb-2 lg:mb-3">
-                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {s.timezone || "IST"} • {s.timeLabel}</span>
+                    {/* timeLabel often already carries the timezone ("09:00 AM - 06:00 PM IST") */}
+                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {s.timeLabel}{s.timezone && !s.timeLabel.includes(s.timezone) ? ` ${s.timezone}` : ""}</span>
                   </div>
                 )}
                 <div className="flex items-center gap-3 text-[12px] lg:text-[13px] font-semibold text-gray-700">
