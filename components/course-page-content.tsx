@@ -77,16 +77,9 @@ export function CoursePageContent({
   const nextBatch = schedules[0];
   const nextBatchPrice = nextBatch ? (nextBatch.priceUsd || course.basePriceUsd) : course.basePriceUsd;
 
-  // Per-course hero metrics. Same slug-hash formula as course-grid.tsx so the
-  // course card and this page report the same enrolled count; avatars are real
-  // portraits from public/images/people (12 locally-hosted Unsplash face crops).
-  const slugHash = course.slug.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-  const enrolled = ((slugHash * 314) % 90000) + 10000;
-  const enrolledLabel = `${(Math.floor(enrolled / 100) * 100).toLocaleString()}+ Enrolled`;
-  const avatarIds = Array.from({ length: 5 }, (_, i) => (((slugHash + i * 7) % 12) + 1)); // i*7 mod 12 → 5 distinct picks
-  const gRating = course.ratingAvg.toFixed(1);
-  const fbRating = (Math.round((course.ratingAvg - 0.1 - (slugHash % 2) * 0.1) * 10) / 10).toFixed(1);
-  const swRating = Math.min(4.9, course.ratingAvg + 0.1 - ((slugHash >> 3) % 2) * 0.2).toFixed(1);
+  // Hero bullets come from the course's own keyFeatures (FIX-02) — the old
+  // hardcoded list claimed "16 PDUs", exam fees etc. on every course.
+  const heroBullets = (course.keyFeatures ?? []).slice(0, 5);
 
   return (
     <div className="bg-[#ffffff] min-h-screen">
@@ -123,56 +116,39 @@ export function CoursePageContent({
                 {cityName ? `${course.subtitle} Join ${cityName}'s leading certification training provider.` : course.subtitle}
               </p>
 
-              {/* Metrics Row */}
+              {/* Facts Row — real course attributes only (FIX-02) */}
               <div className="flex flex-wrap items-center gap-6 mb-8 text-[13px] font-bold text-[#082032]">
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {avatarIds.map((id) => (
-                      <img
-                        key={id}
-                        src={`/images/people/p${id}.jpg`}
-                        alt=""
-                        width={24}
-                        height={24}
-                        loading="lazy"
-                        className="w-6 h-6 rounded-full border-2 border-white object-cover shrink-0"
-                      />
-                    ))}
+                {course.durationLabel && (
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-[#1FA8A8]" />
+                    <span>{course.durationLabel}</span>
                   </div>
-                  <span>{enrolledLabel}</span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-blue-600 font-black">G</span>
-                  <span>{gRating}/5</span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-blue-600 font-black">f</span>
-                  <span>{fbRating}/5</span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-red-500 font-black">s</span>
-                  <span>{swRating}/5</span>
-                </div>
+                )}
+                {course.level && (
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-[#1FA8A8]" />
+                    <span>{course.level}</span>
+                  </div>
+                )}
+                {course.examIncluded && (
+                  <div className="flex items-center gap-2">
+                    <FileCheck className="w-4 h-4 text-[#1FA8A8]" />
+                    <span>Exam Included</span>
+                  </div>
+                )}
               </div>
 
-              {/* Bullet Points */}
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Master Agile practices with 16 hours of live instructor-led certification training",
-                  "Earn 16 PDUs and 16 SEUs while preparing with 4 mock exams and real-world simulations",
-                  "Learn from top Agile Alliance-certified trainers and gain access to curated resources",
-                  "Gear up to ace your exam (fee included) and join the thriving global community",
-                  "Enjoy a 2-year membership and advance your career with certification"
-                ].map((bullet, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[14px] text-[#475569] font-medium">
-                    <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Bullet Points — per-course keyFeatures; nothing renders when unset */}
+              {heroBullets.length > 0 && (
+                <ul className="space-y-3 mb-8">
+                  {heroBullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-3 text-[14px] text-[#475569] font-medium">
+                      <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
+                      <span>{bullet.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               {/* Actions */}
               <div className="flex flex-wrap gap-4 items-center">

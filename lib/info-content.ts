@@ -84,22 +84,20 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
     title: "Customer Speak | Reviews & Testimonials for Simplilead",
     description: "Read what our learners and enterprise clients have to say about our Agile, Scrum, PMP, and Corporate Training programs.",
     keywords: "reviews, testimonials, student reviews, corporate training feedback, CSM reviews, PMP reviews",
+    // FIX-02: fabricated countries/ratings/outcome claims removed — replace
+    // with real learner stories (with permission) once they exist.
     sections: [
       {
-        heading: "Transforming Careers Globally",
-        body: "Our alumni network spans over 150 countries. From aspiring Scrum Masters to seasoned Project Management Professionals (PMP), our learners consistently rate our certification courses as career-defining experiences.",
+        heading: "Transforming Careers",
+        body: "From aspiring Scrum Masters to seasoned Project Management Professionals (PMP), our learners tell us our certification courses are practical, engaging and career-focused.",
       },
       {
-        heading: "Enterprise Success Stories",
-        body: "We have partnered with leading tech giants to drive agile transformations. Our customized Corporate Training solutions have enabled cross-functional teams to achieve up to a 40% increase in delivery speed and operational efficiency.",
-      },
-      {
-        heading: "Verified Ratings",
-        body: "With a 4.8/5 average rating across Google, SwitchUp, and LinkedIn, our commitment to top-tier instructional design and expert-led live virtual classrooms is unparalleled in the industry.",
+        heading: "Enterprise Training",
+        body: "Our customized Corporate Training solutions help cross-functional teams put accredited curriculum into practice on real projects.",
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },

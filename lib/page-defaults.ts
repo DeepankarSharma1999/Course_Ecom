@@ -301,7 +301,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     content: {
       metaTitle: "Free Courses",
       metaDescription: "Level Up Your Career with Free Online Courses from Simplilead. Explore handpicked, high-impact courses designed for professionals and beginners alike.",
-      heroBadge: "10K+ Reviews from Learners Worldwide",
+      heroBadge: "Free Courses for Professionals",
       heroHeading: "Level Up Your Career with",
       heroHighlight: "Free Online Courses",
       heroSubtitle: "Explore handpicked, high-impact courses designed for professionals and beginners alike—completely free and fully online.",
@@ -326,11 +326,12 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
       ],
       practiceTestsTitle: "Explore Our Free Practice Tests",
       practiceTestsSubtitle: "Test your knowledge and prepare for your certification exams.",
+      // FIX-02: fabricated "users" counts removed; the card hides the chip when unset.
       practiceTests: [
-        { title: "Certified Scrum Master (CSM) Practice Test", slug: "csm", tests: 3, hours: 3, questions: 150, marks: 150, users: "73k+" },
-        { title: "Leading SAFe Practice Test | SAFe Agilist Mock Test", slug: "leading-safe", tests: 4, hours: 6, questions: 180, marks: 180, users: "9K+" },
-        { title: "ITIL Practice Test: Ace Your Certification", slug: "itil", tests: 5, hours: 5, questions: 200, marks: 200, users: "5K+" },
-        { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 3, hours: 4, questions: 120, marks: 120, users: "3K+" },
+        { title: "Certified Scrum Master (CSM) Practice Test", slug: "csm", tests: 3, hours: 3, questions: 150, marks: 150 },
+        { title: "Leading SAFe Practice Test | SAFe Agilist Mock Test", slug: "leading-safe", tests: 4, hours: 6, questions: 180, marks: 180 },
+        { title: "ITIL Practice Test: Ace Your Certification", slug: "itil", tests: 5, hours: 5, questions: 200, marks: 200 },
+        { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 3, hours: 4, questions: 120, marks: 120 },
       ],
       referTitle: "Invite Your Friends & Unlock Unlimited Learning",
       referSubtitle: "Share the knowledge! Enjoy unlimited access to all Simplilead courses—enroll in as many as you want, 100% free.",
@@ -359,7 +360,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     content: {
       metaTitle: "Free Online Practice Tests",
       metaDescription: "Free, up-to-date IT practice tests to help you learn faster, spot weak areas, and pass your certification exams with confidence.",
-      heroBadge: "Rated 4.9/5 by Professionals",
+      heroBadge: "Free Practice Tests",
       heroHeading: "Master Your",
       heroHighlight: "Certifications",
       heroSubtitle: "Free, up-to-date IT practice tests to help you learn faster, spot weak areas, and pass with confidence.",
@@ -379,21 +380,20 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
       ],
       testsTitle: "Choose Your Practice Test",
       testsSubtitle: "Simulate the real exam environment with our expert-crafted tests. Get detailed explanations for every question.",
+      // FIX-02: fabricated "users" counts removed; the card hides the chip when unset.
       tests: [
-        { title: "Certified Scrum Master (CSM) Practice Test", slug: "csm", tests: 3, users: "73k+", isRequest: false },
-        { title: "Leading SAFe Practice Test | SAFe Agilist Mock Test", slug: "leading-safe", tests: 4, users: "9K+", isRequest: false },
-        { title: "ITIL Practice Test: Ace Your Certification", slug: "itil", tests: 5, users: "5K+", isRequest: false },
-        { title: "PMP Practice Test | Project Management Mock Test", slug: "pmp", tests: 38, users: "30K+", isRequest: false },
-        { title: "Free SAFe® Scrum Master (SSM) Practice Test", slug: "safe-scrum-master", tests: 4, users: "8K+", isRequest: false },
-        { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 0, users: "3K+", isRequest: true },
+        { title: "Certified Scrum Master (CSM) Practice Test", slug: "csm", tests: 3, isRequest: false },
+        { title: "Leading SAFe Practice Test | SAFe Agilist Mock Test", slug: "leading-safe", tests: 4, isRequest: false },
+        { title: "ITIL Practice Test: Ace Your Certification", slug: "itil", tests: 5, isRequest: false },
+        { title: "PMP Practice Test | Project Management Mock Test", slug: "pmp", tests: 38, isRequest: false },
+        { title: "Free SAFe® Scrum Master (SSM) Practice Test", slug: "safe-scrum-master", tests: 4, isRequest: false },
+        { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 0, isRequest: true },
       ],
       reviewsTitle: "What Our Learners Say",
-      reviewsSubtitle: "Join thousands of professionals who have advanced their careers with Simplilead.",
-      reviews: [
-        { name: "Daniel Harper", role: "Product Manager", company: "Simplilead", text: "Outstanding training from Simplilead! The curriculum on multi-agent architectures and RAG pipeline development was thorough and current. Real-world use cases across industries gave me the confidence to lead AI initiatives at my organization immediately." },
-        { name: "Sarah Mitchell", role: "Cloud AI Architect", company: "Simplilead", text: "I enrolled in this course to upskill as a software architect, and Simplilead exceeded my expectations. The MCP server integration labs and API demos were practical and industry-relevant. The trainer's mentorship made complex concepts easy to grasp." },
-        { name: "Arjun Krishnamurthy", role: "AI/ML Engineer", company: "Simplilead", text: "Simplilead delivered exceptional value through this Agentic AI Engineering course. Building autonomous agents with the SDK, integrating MCP servers, and deploying on cloud platforms gave me skills that no other training provided." },
-      ],
+      reviewsSubtitle: "Real reviews from professionals who trained with Simplilead.",
+      // FIX-02: the default reviews were invented people; add real, permissioned
+      // reviews via the admin editor. Empty => the section renders nothing.
+      reviews: [],
     },
   },
 
@@ -511,10 +511,9 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
       heroHeadingMid: "Customized",
       heroHeadingHighlight: "Corporate Training",
       heroSubtitle: "Upskill your workforce with hands-on, expert-led training programs tailored to your organization's specific goals. We offer individual and group training to help teams implement learning directly into high-impact projects.",
-      stats: [
-        { icon: "users", value: "300,000+", label: "Professionals Trained" },
-        { icon: "building", value: "500+", label: "Enterprise Clients" },
-      ],
+      // FIX-02: no invented headcounts — add real, verifiable stats via the
+      // admin editor when available (see lib/verified-stats.ts for the policy).
+      stats: [],
       trustedLabel: "Trusted by industry leaders",
       trustedLogos: [
         "/images/vendor/wikimedia/Amazon_logo.svg",

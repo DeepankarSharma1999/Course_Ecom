@@ -8,7 +8,6 @@ import { DynamicIcon } from "@/components/public/dynamic-icon";
 import { getPageContent } from "@/lib/page-content";
 
 const CourseGrid = dynamic(() => import("@/components/public/home/course-grid").then(m => m.CourseGrid));
-const AccoladesSection = dynamic(() => import("@/components/public/home/accolades-section").then(m => m.AccoladesSection));
 
 const SLUG = "self-paced";
 export const revalidate = 60;
@@ -92,9 +91,6 @@ export default async function SelfPacedPage() {
         </div>
         <CourseGrid courses={COURSES} categories={CATEGORIES} currency={currency} />
       </section>
-
-      {/* Accolades Section */}
-      <AccoladesSection />
     </>
   );
 }

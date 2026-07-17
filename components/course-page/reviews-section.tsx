@@ -3,8 +3,11 @@
 import { useState, useRef } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { type CourseContent } from "@/lib/seed-data";
-import { DEFAULT_REVIEWS, DEFAULT_REVIEW_STATS } from "@/lib/course-section-defaults";
 
+// FIX-02: renders ONLY reviews the admin entered for this course
+// (course.pageSections.reviews / .reviewStats). The old fabricated defaults —
+// invented reviewers plus Google/Facebook/SwitchUp counts copied from a
+// competitor — are gone; with no data the section renders nothing.
 export function ReviewsSection({ course }: { course?: CourseContent }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState("All Reviews");
@@ -16,20 +19,17 @@ export function ReviewsSection({ course }: { course?: CourseContent }) {
     }
   };
 
-  // Per-course override from admin, else the shared defaults.
-  const reviews = course?.pageSections?.reviews?.length
-    ? course.pageSections.reviews
-    : DEFAULT_REVIEWS;
-  const stats = course?.pageSections?.reviewStats?.length
-    ? course.pageSections.reviewStats
-    : DEFAULT_REVIEW_STATS;
+  const reviews = course?.pageSections?.reviews ?? [];
+  const stats = course?.pageSections?.reviewStats ?? [];
 
   const filteredReviews = reviews.filter(r => activeFilter === "All Reviews" || r.source === activeFilter);
+
+  if (reviews.length === 0 && stats.length === 0) return null;
 
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100 pb-10 overflow-hidden">
       <div className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-2 break-words">
-        CSM CERTIFICATION COURSE REVIEWS
+        {(course?.shortTitle || "Course").toUpperCase()} REVIEWS
       </div>
       <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Our Learners Love Us</h2>
       
@@ -95,6 +95,7 @@ export function ReviewsSection({ course }: { course?: CourseContent }) {
       </div>
 
       {/* Aggregate Stats — editable per course (course.pageSections.reviewStats) */}
+      {stats.length > 0 && (
       <div className="mt-6 bg-white rounded-xl md:rounded-2xl border border-gray-200 p-4 md:p-6 flex flex-col md:flex-row justify-between items-center shadow-sm divide-y md:divide-y-0 md:divide-x divide-gray-100">
         {stats.map((s, i) => (
           <div key={i} className="flex flex-row md:flex-col items-center justify-between md:justify-center w-full md:flex-1 py-3 md:py-0 md:px-4 first:pt-0 last:pb-0 md:first:pl-2 md:last:pr-2">
@@ -109,6 +110,7 @@ export function ReviewsSection({ course }: { course?: CourseContent }) {
           </div>
         ))}
       </div>
+      )}
     </section>
   );
 }

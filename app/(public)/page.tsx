@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllCourses, getCategories } from "@/lib/content";
+import { getAllCourses, getCategories, getTestimonials } from "@/lib/content";
 import { getHomeContent, getSiteSettings } from "@/lib/site-content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { DEFAULT_REACH_STATS as REACH_STATS_DEFAULT } from "@/lib/home-defaults";
@@ -19,7 +19,6 @@ const PedagogySection = dynamic(() => import("@/components/public/home/pedagogy-
 const TrainersSection = dynamic(() => import("@/components/public/home/trainers-section").then(m => m.TrainersSection));
 const WorldMap = dynamic(() => import("@/components/world-map").then(m => m.WorldMap));
 const TestimonialsSlider = dynamic(() => import("@/components/public/home/testimonials-slider").then(m => m.TestimonialsSlider));
-const AccoladesSection = dynamic(() => import("@/components/public/home/accolades-section").then(m => m.AccoladesSection));
 
 export const revalidate = 60;
 
@@ -36,12 +35,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [COURSES, CATEGORIES, currency, currencyCfg, h] = await Promise.all([
+  const [COURSES, CATEGORIES, currency, currencyCfg, h, testimonials] = await Promise.all([
     getAllCourses(),
     getCategories(),
     getDisplayCurrency(),
     getCurrencyConfig(),
     getHomeContent(),
+    getTestimonials(),
   ]);
 
   const sectionEls: Record<string, React.ReactNode> = {
@@ -52,8 +52,9 @@ export default async function HomePage() {
     combos: <ComboSchedule combos={COURSES.filter((c) => c.category?.slug === "combo-courses")} currency={currency} currencies={currencyCfg.currencies} />,
     pedagogy: <PedagogySection content={h} />,
     trainers: <TrainersSection />,
-    testimonials: <TestimonialsSlider content={h} />,
-    accolades: <AccoladesSection content={h} />,
+    testimonials: <TestimonialsSlider content={h} testimonials={testimonials} />,
+    // "accolades" (fabricated press/awards marquee) was removed — FIX-02. The
+    // key renders nothing if still present in a saved section order.
     reach: (
       <section className="overflow-hidden bg-[#082032] py-16 font-sans md:py-20">
         <div className="container-tight">
@@ -66,14 +67,17 @@ export default async function HomePage() {
               <p className="mt-5 max-w-xl text-base leading-8 text-white/75">
                 {h.reachSubtitle || "Join learners and teams using expert-led programs to build capability across Agile, product, project, technology, and AI domains."}
               </p>
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                {(h.reachStats?.length ? h.reachStats : REACH_STATS_DEFAULT).map((s: any) => (
-                  <div key={s.label} className="rounded-2xl border border-white/10 bg-white/6 p-4">
-                    <div className="text-2xl font-black text-white">{s.value}</div>
-                    <div className="mt-1 text-xs font-bold uppercase tracking-wide text-white/70">{s.label}</div>
-                  </div>
-                ))}
-              </div>
+              {/* FIX-02: stats grid renders only admin-entered reach stats. */}
+              {(h.reachStats?.length ? h.reachStats : REACH_STATS_DEFAULT).length > 0 && (
+                <div className="mt-8 grid grid-cols-2 gap-4">
+                  {(h.reachStats?.length ? h.reachStats : REACH_STATS_DEFAULT).map((s: any) => (
+                    <div key={s.label} className="rounded-2xl border border-white/10 bg-white/6 p-4">
+                      <div className="text-2xl font-black text-white">{s.value}</div>
+                      <div className="mt-1 text-xs font-bold uppercase tracking-wide text-white/70">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/courses" className="btn-primary">Explore Courses</Link>
                 <Link href="/corporate-training" className="btn-outline border-white/20 bg-transparent text-white hover:bg-white/10">Corporate Training</Link>

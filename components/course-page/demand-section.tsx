@@ -47,12 +47,15 @@ export function DemandSection({ course }: { course: CourseContent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeRole, setActiveRole] = useState(0);
 
-  // Per-course override from admin, else derived role + default tiers.
+  // FIX-02: salary/demand figures render only when the admin entered sourced
+  // data for this course — the old "illustrative" default tiers were invented.
   const demand = course.pageSections?.demand;
   const role = demand?.role || deriveRole(course);
   const tiers = demand?.tiers?.length ? demand.tiers : DEFAULT_DEMAND_TIERS;
   const tabs = tiers.map((t) => `${t.prefix}${role}`);
   const currentData = tiers[activeRole] ?? tiers[0];
+
+  if (tiers.length === 0) return null;
 
   return (
     <>
@@ -122,7 +125,7 @@ export function DemandSection({ course }: { course: CourseContent }) {
 
           <div className="mt-8 text-[14px] text-[#475569] leading-relaxed max-w-4xl mx-auto space-y-4">
             <p>
-              Armed with this coveted <span className="text-blue-600">{course.shortTitle} certification</span>, not only will you be well positioned to command salaries <span className="text-blue-600">21% on average higher</span> than that earned by your non-certified peers, but also be ready to land in-demand roles like {role}, {`Senior ${role}`}, and {`Lead ${role}`}.
+              Armed with this coveted <span className="text-blue-600">{course.shortTitle} certification</span>, you&apos;ll be ready to pursue in-demand roles like {role}, {`Senior ${role}`}, and {`Lead ${role}`}.
             </p>
 
             {isExpanded && (

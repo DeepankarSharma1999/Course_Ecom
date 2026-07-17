@@ -45,22 +45,12 @@ export const DEFAULT_PEDAGOGY_STEPS: PedagogyStep[] = [
   { title: "Apply", text: "Go beyond theory and build professional-grade projects, with gamification to keep things fun — earn points, badges and climb the leaderboard.", img: "/images/vendor/pexels/pexels-photo-3184287.jpeg" },
 ];
 
-export const DEFAULT_SPOTLIGHT_ARTICLES: SpotlightArticle[] = [
-  { logo: "BS", title: "Simplilead crosses 10 million enrollments across 100+ nations!", img: "/images/vendor/pexels/pexels-photo-3184291.jpeg" },
-  { logo: "ET", title: "How Simplilead is reshaping corporate Agile training globally.", img: "/images/vendor/pexels/pexels-photo-1181406.jpeg" },
-  { logo: "mc", title: "The rise of Micro-credentials: Simplilead leads the way in 2026.", img: "/images/vendor/pexels/pexels-photo-3182773.jpeg" },
-  { logo: "YS", title: "From a startup to an enterprise learning giant: The Simplilead journey.", img: "/images/vendor/pexels/pexels-photo-3184315.jpeg" },
-];
+// FIX-02: the default spotlight articles, awards and reach stats were invented
+// (fake press coverage attributed to real publications, made-up award wins and
+// headcounts). Defaults are empty — nothing renders until the admin enters
+// real, verifiable items. See lib/verified-stats.ts for the policy.
+export const DEFAULT_SPOTLIGHT_ARTICLES: SpotlightArticle[] = [];
 
-export const DEFAULT_ACCOLADES: Accolade[] = [
-  { title: "Employee Choice Award", org: "Simplilead rated Top 3 in Tech Firms", logo: "cube-icon" },
-  { title: "Most Promising Brand", org: "Simplilead: Economic Times' Most Promising Brand 2022", logo: "ET" },
-  { title: "Ed Company of the Year", org: "Simplilead won VC Circle Education Company of the Year, Feb 2022", logo: "VCCIRCLE" },
-];
+export const DEFAULT_ACCOLADES: Accolade[] = [];
 
-export const DEFAULT_REACH_STATS: Stat[] = [
-  { value: "120+", label: "Countries" },
-  { value: "130+", label: "Courses" },
-  { value: "5,000+", label: "Learners" },
-  { value: "98%", label: "Satisfaction" },
-];
+export const DEFAULT_REACH_STATS: Stat[] = [];

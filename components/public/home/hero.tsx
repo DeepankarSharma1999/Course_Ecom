@@ -3,6 +3,7 @@ import path from "node:path";
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import * as Lucide from "lucide-react";
+import { VERIFIED_STATS } from "@/lib/verified-stats";
 
 function resolveCompanyLogo(file: string): string | null {
   const dir = path.join(process.cwd(), "public", "companies");
@@ -11,14 +12,6 @@ function resolveCompanyLogo(file: string): string | null {
   }
   return null;
 }
-
-const learnerAvatars = [
-  "https://i.pravatar.cc/100?img=11",
-  "https://i.pravatar.cc/100?img=32",
-  "https://i.pravatar.cc/100?img=5",
-  "https://i.pravatar.cc/100?img=48",
-  "https://i.pravatar.cc/100?img=16",
-];
 
 function TrustedCompanyCarousel() {
   const trustedCompanies = [
@@ -114,35 +107,27 @@ export function HomeHero({ content }: { content?: any }) {
 
           <TrustedCompanyCarousel />
 
-          {/* shield trust line */}
-          <div className="mt-5 flex items-center gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-[#14665c] flex items-center justify-center shrink-0">
-              <Lucide.ShieldCheck className="w-3.5 h-3.5 text-white" />
-            </span>
-            <span className="text-[14px] font-medium text-gray-600">and 4,500+ companies across the globe</span>
-          </div>
-
-          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <div className="flex -space-x-3 items-center">
-              {learnerAvatars.map((src, i) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt=""
-                  className="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm"
-                  style={{ zIndex: 6 - i }}
-                />
-              ))}
-              <span className="h-11 w-11 rounded-full bg-[#14665c] border-2 border-white text-white text-[12px] font-bold flex items-center justify-center shadow-sm relative z-0">12K+</span>
+          {/* Trust stats render only when VERIFIED_STATS holds real values (FIX-02). */}
+          {VERIFIED_STATS.companiesTrained && (
+            <div className="mt-5 flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full bg-[#14665c] flex items-center justify-center shrink-0">
+                <Lucide.ShieldCheck className="w-3.5 h-3.5 text-white" />
+              </span>
+              <span className="text-[14px] font-medium text-gray-600">and {VERIFIED_STATS.companiesTrained} companies across the globe</span>
             </div>
-            <div className="flex flex-col text-left">
-              <div className="text-[13px] text-gray-500 font-medium">Rated by Learners</div>
-              <div className="flex items-center gap-1.5 text-[15px] font-bold text-[#0f1f2e]">
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                4.8/5 <span className="font-normal text-gray-400 px-1">•</span> <span className="font-medium text-gray-500 text-[14px]">12,500+ Reviews</span>
+          )}
+
+          {VERIFIED_STATS.reviewRating && VERIFIED_STATS.reviewCount && (
+            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <div className="flex flex-col text-left">
+                <div className="text-[13px] text-gray-500 font-medium">Rated by Learners</div>
+                <div className="flex items-center gap-1.5 text-[15px] font-bold text-[#0f1f2e]">
+                  <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  {VERIFIED_STATS.reviewRating} <span className="font-normal text-gray-400 px-1">•</span> <span className="font-medium text-gray-500 text-[14px]">{VERIFIED_STATS.reviewCount} Reviews</span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* RIGHT COLUMN — single composed collage (people + arches + skyline + cards) */}

@@ -15,10 +15,12 @@ export function InstructorsSection({ course }: { course: CourseContent }) {
     }
   };
 
-  // Per-course override from admin, else the shared defaults.
+  // Per-course override from admin, else the shared defaults (empty — FIX-02).
   const instructors = course.pageSections?.instructors?.length
     ? course.pageSections.instructors
     : DEFAULT_INSTRUCTORS;
+
+  if (instructors.length === 0) return null;
 
   return (
     <section className="scroll-mt-24 pt-12 border-t border-gray-100">

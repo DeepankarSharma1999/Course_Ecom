@@ -251,7 +251,7 @@ model SiteSettings {
 model HomePageContent {
   id                  String  @id @default("singleton")
 
-  heroBadgeText       String  @default("Trusted by 500,000+ learners across 50+ countries")
+  heroBadgeText       String  @default("Globally accredited certification training")
   heroHeadline        String  @default("Globally Accredited")
   heroHeadlineHighlight String @default("Certification")
   heroHeadlineSuffix  String  @default("Training")

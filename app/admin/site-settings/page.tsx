@@ -36,7 +36,7 @@ export default async function SiteSettingsPage({ searchParams }: { searchParams:
             <Field label="Address"><Textarea name="address" rows={2} defaultValue={s?.address ?? ""} /></Field>
           </Section>
           <Section title="Top Bar">
-            <Field label="Messages (JSON array of strings)"><Textarea name="topBarMessages" rows={3} defaultValue={j(s?.topBarMessages)} placeholder='["Globally accredited", "5,00,000+ trained"]' /></Field>
+            <Field label="Messages (JSON array of strings)"><Textarea name="topBarMessages" rows={3} defaultValue={j(s?.topBarMessages)} placeholder='["Globally accredited certification training"]' /></Field>
           </Section>
           <Section title="Announcement Bar">
             <Checkbox name="announcementEnabled" label="Show announcement bar" defaultChecked={!!s?.announcementEnabled} />

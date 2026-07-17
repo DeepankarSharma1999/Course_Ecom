@@ -240,7 +240,7 @@ export function ReviewStatsEditor({ name, value }: { name: string; value?: Revie
           <div className="grid grid-cols-3 gap-3">
             <Text label="Platform (e.g. Google)" value={r.label ?? ""} onChange={(v) => setRows(patch(rows, i, { label: v }))} />
             <Text label="Rating (e.g. 4.8/5)" value={r.rating ?? ""} onChange={(v) => setRows(patch(rows, i, { rating: v }))} />
-            <Text label="Count (e.g. 6,028 Reviews)" value={r.count ?? ""} onChange={(v) => setRows(patch(rows, i, { count: v }))} />
+            <Text label="Count (real reviews only, e.g. 42 Reviews)" value={r.count ?? ""} onChange={(v) => setRows(patch(rows, i, { count: v }))} />
           </div>
         </Card>
       ))}

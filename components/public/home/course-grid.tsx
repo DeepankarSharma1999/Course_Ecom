@@ -20,7 +20,7 @@ export function CourseGrid({
   content?: any;
 }) {
   const coursesBadge = content?.coursesBadge || "Find the course right for your goals";
-  const coursesTitle = content?.coursesTitle || "Explore From Over 400+ Courses";
+  const coursesTitle = content?.coursesTitle || "Explore Our Certification Courses";
   const tabs = ["All Courses", ...categories.slice(0, 7).map((c) => c.name)];
   const [activeTab, setActiveTab] = useState("All Courses");
 
@@ -77,10 +77,6 @@ export function CourseGrid({
 
 function CourseDiscoveryCard({ course, currency, index }: { course: CourseContent; currency: CurrencyCode; index: number }) {
   const { format } = usePricing();
-  // Mock some tag logic for the UI reference
-  const isRecommended = index === 0 || index === 1 || index === 2;
-  const isTrending = index === 3 || index === 4;
-
   const compareAtPriceInr = "compareAtPriceInr" in course
     ? (course as CourseContent & { compareAtPriceInr?: number }).compareAtPriceInr
     : undefined;
@@ -100,17 +96,6 @@ function CourseDiscoveryCard({ course, currency, index }: { course: CourseConten
           />
         ) : null}
         
-        {/* Floating Tags */}
-        {isRecommended && (
-          <div className="absolute top-0 right-0 bg-[#4e6bf2] text-white text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-bl-lg tracking-wide z-10 shadow-sm">
-            Recommended
-          </div>
-        )}
-        {isTrending && (
-          <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-bl-lg tracking-wide z-10 shadow-sm">
-            Trending
-          </div>
-        )}
       </div>
 
       <div className="p-4 md:p-6 flex flex-col flex-1">
@@ -125,9 +110,11 @@ function CourseDiscoveryCard({ course, currency, index }: { course: CourseConten
             <div className="flex items-center gap-1.5 text-[11px] md:text-[12px] font-medium text-gray-500">
               <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" /> {course.durationLabel || "16 Hrs"}
             </div>
-            <div className="flex items-center gap-1.5 text-[11px] md:text-[12px] font-medium text-gray-500">
-              <Users className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" /> {((course.slug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) * 314) % 90000 + 10000).toLocaleString()} Enrolled
-            </div>
+            {course.level && (
+              <div className="flex items-center gap-1.5 text-[11px] md:text-[12px] font-medium text-gray-500">
+                <Users className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" /> {course.level}
+              </div>
+            )}
           </div>
           <div className="text-right">
             <div className="text-[10px] md:text-[11px] text-gray-500 font-medium mb-0.5">Start from</div>

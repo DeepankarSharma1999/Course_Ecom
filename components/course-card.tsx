@@ -34,11 +34,8 @@ export function CourseCard({ course, country, city, currency = "USD", currencies
         </div>
         <p className="text-sm text-ink-600 line-clamp-2 mb-4">{course.summary}</p>
         <div className="mt-auto flex items-center justify-between pt-3 border-t border-ink-100">
-          <div className="flex items-center gap-1 text-sm">
-            <Star className="w-4 h-4 fill-accent-500 text-accent-500" />
-            <span className="font-semibold text-ink-900">{course.ratingAvg}</span>
-            <span className="text-ink-500">({course.ratingCount.toLocaleString()})</span>
-          </div>
+          {/* FIX-02: star ratings return only when real review data exists */}
+          <span className="text-xs text-ink-500">{course.level || course.category.name}</span>
           <div className="text-brand-600 font-bold">{formatInCurrency(course.basePriceUsd, currency, currencies)}</div>
         </div>
       </div>

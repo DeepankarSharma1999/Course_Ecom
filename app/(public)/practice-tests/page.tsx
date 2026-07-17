@@ -130,9 +130,11 @@ export default async function PracticeTestsPage() {
                         Coming Soon
                       </span>
                     )}
-                    <span className="text-xs font-semibold flex items-center gap-1.5 text-ink-500 bg-ink-50 px-2.5 py-1 rounded-md">
-                      <Users className="w-3.5 h-3.5" /> {test.users} Users
-                    </span>
+                    {test.users && (
+                      <span className="text-xs font-semibold flex items-center gap-1.5 text-ink-500 bg-ink-50 px-2.5 py-1 rounded-md">
+                        <Users className="w-3.5 h-3.5" /> {test.users} Users
+                      </span>
+                    )}
                   </div>
                   <h3 className="font-bold text-lg text-ink-900 mb-1 group-hover:text-brand-600 transition-colors line-clamp-2">
                     {test.title}
@@ -155,7 +157,8 @@ export default async function PracticeTestsPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section — renders only admin-entered reviews (FIX-02) */}
+      {REVIEWS.length > 0 && (
       <section className="section bg-white overflow-hidden">
         <div className="container-tight relative">
           <div className="absolute top-0 left-0 text-ink-100/50 transform -translate-x-8 -translate-y-8 z-0">
@@ -190,7 +193,8 @@ export default async function PracticeTestsPage() {
           </div>
         </div>
       </section>
-      
+      )}
+
     </main>
   );
 }

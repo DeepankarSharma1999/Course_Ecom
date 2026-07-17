@@ -4,6 +4,7 @@ import {
   Briefcase, UserCheck, CheckCircle, Users, Bookmark,
 } from "lucide-react";
 import { DEFAULT_BUSINESS_SECTORS } from "@/lib/home-defaults";
+import { VERIFIED_STATS } from "@/lib/verified-stats";
 
 type Domain = { name: string; icon: string };
 
@@ -101,7 +102,8 @@ export function BusinessSectors({ content }: { content?: any }) {
               </div>
               <div>
                 <div className="text-[13px] font-bold text-[#082032]">Premium Job Openings</div>
-                <div className="text-[11px] text-gray-500 mt-0.5">5000+ Hiring Partners</div>
+                {/* FIX-02: numeric claims render only from VERIFIED_STATS */}
+                <div className="text-[11px] text-gray-500 mt-0.5">{VERIFIED_STATS.hiringPartners ? `${VERIFIED_STATS.hiringPartners} Hiring Partners` : "Hiring Partner Network"}</div>
               </div>
             </div>
             
@@ -131,7 +133,7 @@ export function BusinessSectors({ content }: { content?: any }) {
               </div>
               <div>
                 <div className="text-[13px] font-bold text-[#082032]">Global Alumni Network</div>
-                <div className="text-[11px] text-gray-500 mt-0.5">Network with 450,000+ Alumni</div>
+                <div className="text-[11px] text-gray-500 mt-0.5">{VERIFIED_STATS.alumniNetwork ? `Network with ${VERIFIED_STATS.alumniNetwork} Alumni` : "Connect with fellow graduates"}</div>
               </div>
             </div>
           </div>

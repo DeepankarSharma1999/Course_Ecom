@@ -3,112 +3,43 @@
 import { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
-const TESTIMONIALS = [
-  {
-    title: "They reshaped how we deliver value",
-    name: "Head of Transformation",
-    role: "Tier-1 GCC Bank · Riyadh",
-    text: "SimpliLEAD didn't just train our teams — they reshaped how we deliver value. Practitioner-led, deeply contextual and outcome-oriented.",
-    avatar: "/images/people/p3.jpg",
-    platform: "LinkedIn"
-  },
-  {
-    title: "A trusted partner",
-    name: "Chief People Officer",
-    role: "Federal Authority · UAE",
-    text: "The blend of certification rigor with hands-on, regionally-grounded scenarios is exactly what our talent needs. A trusted partner.",
-    avatar: "/images/people/p6.jpg",
-    platform: "LinkedIn"
-  },
-  {
-    title: "Closing the knowledge-to-execution gap",
-    name: "CIO",
-    role: "National Energy Company · Doha",
-    text: "From AI strategy to agile@scale, SimpliLEAD has been instrumental in helping us close the knowledge-to-execution gap.",
-    avatar: "/images/people/p5.jpg",
-    platform: "Google"
-  },
-  {
-    title: "Excellent learning experience",
-    name: "David Miller",
-    role: "Software Engineer",
-    text: "The instructors are industry veterans. I loved the practical assignments. Everything was structured beautifully for a seamless learning journey.",
-    avatar: "https://i.pravatar.cc/150?img=12",
-    platform: "LinkedIn"
-  },
-  {
-    title: "Highly recommended!",
-    name: "Sarah Johnson",
-    role: "Agile Coach",
-    text: "Got my SAFe certification easily. The platform is super intuitive and helpful for anyone looking to upskill in enterprise agility.",
-    avatar: "https://i.pravatar.cc/150?img=5",
-    platform: "Google"
-  },
-  {
-    title: "A Game Changer for my Career",
-    name: "Michael Chen",
-    role: "Data Analyst",
-    text: "The Data Science bootcamp exceeded my expectations. The hands-on projects were directly applicable to my job, and the mentorship was top-notch.",
-    avatar: "https://i.pravatar.cc/150?img=33",
-    platform: "LinkedIn"
-  },
-  {
-    title: "Incredible Support",
-    name: "Emma Williams",
-    role: "Cloud Architect",
-    text: "Passed my AWS Solutions Architect exam on the first try! The practice tests and detailed explanations were exactly what I needed to succeed.",
-    avatar: "https://i.pravatar.cc/150?img=44",
-    platform: "Google"
-  },
-  {
-    title: "Best UI/UX Course Online",
-    name: "Daniel Martinez",
-    role: "Product Designer",
-    text: "The immersive learning experience is brilliant. I built a portfolio of professional-grade projects that landed me multiple interviews within a week.",
-    avatar: "https://i.pravatar.cc/150?img=51",
-    platform: "LinkedIn"
-  },
-  {
-    title: "Clear, concise, and practical",
-    name: "Sophia Lee",
-    role: "Marketing Director",
-    text: "I took the Digital Marketing masterclass. It completely changed how we approach our ad spend. ROI went up significantly thanks to the practical frameworks taught.",
-    avatar: "https://i.pravatar.cc/150?img=20",
-    platform: "Google"
-  },
-  {
-    title: "Outstanding Instructors",
-    name: "James Wilson",
-    role: "Full Stack Developer",
-    text: "The React Native module was fantastic. Instructors patiently answered all queries and the peer coding sessions were a great way to learn collaboratively.",
-    avatar: "https://i.pravatar.cc/150?img=60",
-    platform: "LinkedIn"
-  }
-];
+// FIX-02: renders ONLY admin-entered testimonials (Admin > Testimonials).
+// The old hardcoded set of invented people/quotes is gone; with no rows the
+// section renders nothing.
+export type Testimonial = {
+  name: string;
+  role?: string;
+  company?: string;
+  quote: string;
+  rating: number;
+  course?: string;
+  photo?: string;
+};
 
-export function TestimonialsSlider({ content }: { content?: any }) {
+export function TestimonialsSlider({ content, testimonials = [] }: { content?: any; testimonials?: Testimonial[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const tBadge = content?.testimonialsBadge || "Learner Reviews From The World Over";
-  const tTitle = content?.testimonialsTitle || "Testimonials That Speak Volumes";
+  const tBadge = content?.testimonialsBadge || "Learner Stories";
+  const tTitle = content?.testimonialsTitle || "What Our Learners Say";
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const itemsPerView = isMobile ? 1 : 3;
-  const maxIndex = Math.max(0, TESTIMONIALS.length - itemsPerView);
+  const maxIndex = Math.max(0, testimonials.length - itemsPerView);
 
-  // Auto-slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((current) => (current >= maxIndex ? 0 : current + 1));
     }, 3000);
     return () => clearInterval(interval);
   }, [maxIndex]);
+
+  if (testimonials.length === 0) return null;
 
   const handlePrev = () => setActiveIndex((c) => (c > 0 ? c - 1 : maxIndex));
   const handleNext = () => setActiveIndex((c) => (c < maxIndex ? c + 1 : 0));
@@ -122,53 +53,44 @@ export function TestimonialsSlider({ content }: { content?: any }) {
         </div>
 
         <div className="overflow-visible w-full">
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${activeIndex * (isMobile ? 100 : 33.333)}%)` }}
           >
-            {TESTIMONIALS.map((testimonial, index) => (
+            {testimonials.map((t, index) => (
               <div key={index} className="w-full md:w-1/3 shrink-0 px-3">
                 <article className="bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] p-8 flex flex-col relative pt-10 h-full">
-                  
-                  {/* Quote marks background */}
                   <div className="absolute -top-2 left-6 text-gray-100 font-serif text-[80px] leading-none pointer-events-none">
                     &ldquo;
                   </div>
 
                   <div className="relative z-10 flex-1">
-                    <h3 className="text-[16px] font-bold text-[#082032] mb-3">{testimonial.title}</h3>
-                    
-                    <div className="flex text-[#facc15] mb-6" aria-label="5 star rating">
-                      {Array.from({ length: 5 }).map((_, starIndex) => (
+                    {t.course && <h3 className="text-[16px] font-bold text-[#082032] mb-3">{t.course}</h3>}
+
+                    <div className="flex text-[#facc15] mb-6" aria-label={`${t.rating} star rating`}>
+                      {Array.from({ length: Math.min(5, Math.max(0, t.rating)) }).map((_, starIndex) => (
                         <Star key={starIndex} className="h-4 w-4 fill-current" />
                       ))}
                     </div>
 
-                    <p className="text-[13px] leading-relaxed text-gray-500 font-medium mb-2">
-                      {testimonial.text}
+                    <p className="text-[13px] leading-relaxed text-gray-500 font-medium mb-8">
+                      {t.quote}
                     </p>
-                    {testimonial.text.length > 100 && (
-                      <button className="text-[12px] font-bold text-[#082032] underline hover:text-primary transition-colors mb-8 inline-block">
-                        Read More
-                      </button>
-                    )}
                   </div>
 
                   <div className="mt-auto flex items-center justify-between border-t border-dashed border-gray-200 pt-6">
                     <div className="flex items-center gap-3">
-                      <img src={testimonial.avatar} alt={testimonial.name} className="h-10 w-10 rounded-full object-cover border border-gray-100" />
-                      <div>
-                        <div className="text-[13px] font-bold text-[#082032] leading-tight">{testimonial.name}</div>
-                        <div className="text-[11px] font-medium text-gray-500 mt-0.5">{testimonial.role}</div>
-                      </div>
-                    </div>
-                    <div className="text-right flex flex-col items-end">
-                      <div className="text-[9px] text-gray-400 font-bold uppercase mb-1 tracking-wider">Read on</div>
-                      {testimonial.platform === 'Google' ? (
-                         <div className="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center text-lg font-bold text-red-500 shadow-sm">G</div>
+                      {t.photo ? (
+                        <img src={t.photo} alt={t.name} className="h-10 w-10 rounded-full object-cover border border-gray-100" />
                       ) : (
-                         <div className="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center text-sm font-bold text-white shadow-sm">in</div>
+                        <div className="h-10 w-10 rounded-full bg-[#e0f2f1] border border-gray-100 flex items-center justify-center text-[#1FA8A8] font-bold">
+                          {t.name.charAt(0)}
+                        </div>
                       )}
+                      <div>
+                        <div className="text-[13px] font-bold text-[#082032] leading-tight">{t.name}</div>
+                        <div className="text-[11px] font-medium text-gray-500 mt-0.5">{[t.role, t.company].filter(Boolean).join(" · ")}</div>
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -177,16 +99,16 @@ export function TestimonialsSlider({ content }: { content?: any }) {
           </div>
         </div>
 
-        {/* Pagination Controls */}
-        <div className="flex items-center justify-center gap-4 mt-10">
-          <button onClick={handlePrev} aria-label="Previous testimonial" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-700 transition-colors bg-white shadow-sm">
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button onClick={handleNext} aria-label="Next testimonial" className="w-11 h-11 rounded-full border border-[#082032] flex items-center justify-center text-[#082032] hover:bg-[#082032] hover:text-white transition-colors bg-white shadow-sm">
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-
+        {testimonials.length > itemsPerView && (
+          <div className="flex items-center justify-center gap-4 mt-10">
+            <button onClick={handlePrev} aria-label="Previous testimonial" className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-gray-500 hover:text-gray-700 transition-colors bg-white shadow-sm">
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button onClick={handleNext} aria-label="Next testimonial" className="w-11 h-11 rounded-full border border-[#082032] flex items-center justify-center text-[#082032] hover:bg-[#082032] hover:text-white transition-colors bg-white shadow-sm">
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

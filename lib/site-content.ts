@@ -16,16 +16,17 @@ const DEFAULT_SETTINGS = {
   email: "info@course-ecom.com",
   whatsappNumber: "971585232875",
   address: null,
+  // FIX-02: no invented headcounts — see lib/verified-stats.ts for the policy.
   topBarMessages: [
     "Globally accredited certification training",
-    "5,00,000+ professionals trained worldwide",
+    "Live online & classroom batches worldwide",
   ],
   accreditationLogos: [
     { name: "Scaled Agile" }, { name: "PMI®" }, { name: "Scrum Alliance" },
     { name: "AXELOS" }, { name: "EXIN" }, { name: "PeopleCert" }, { name: "IIBA®" },
   ],
   socialLinks: { linkedin: "", twitter: "", facebook: "", instagram: "", youtube: "" },
-  footerAbout: "Simplilead is a global certification training provider, helping 500,000+ professionals across 50+ countries advance their careers with globally accredited programs.",
+  footerAbout: "Simplilead is a global certification training provider, helping professionals advance their careers with globally accredited programs.",
   footerColumns: [
     {
       title: "AGILE",
@@ -76,17 +77,17 @@ const DEFAULT_SETTINGS = {
 };
 
 const DEFAULT_HOME = {
-  heroBadgeText: "Trusted by 500,000+ learners across 50+ countries",
+  heroBadgeText: "Globally accredited certification training",
   heroHeadline: "Globally Accredited",
   heroHeadlineHighlight: "Certification",
   heroHeadlineSuffix: "Training",
   heroSubheading: "Live instructor-led, classroom and corporate training in Agile, SAFe, DevOps, Project Management, IT Service Management, Quality and emerging technologies — by accredited trainers.",
   heroCtaPrimaryText: "Explore All Courses", heroCtaPrimaryLink: "/courses",
   heroCtaSecondaryText: "Corporate Training", heroCtaSecondaryLink: "/corporate-training",
+  // FIX-02: only claims we can stand behind; ratings/pass-rates need evidence.
   heroStats: [
-    { value: "4.8/5", label: "Average Rating" },
-    { value: "98%", label: "Pass Rate" },
     { value: "24×7", label: "Learner Support" },
+    { value: "90-day", label: "Free Course Retake" },
   ],
   heroFormTitle: "Talk to a Training Advisor",
   heroFormSubtitle: "Get course details, batch schedules and group discounts.",
@@ -116,7 +117,7 @@ const DEFAULT_HOME = {
   ctaPrimaryText: "Enquire Now", ctaPrimaryLink: "/enquire",
   ctaSecondaryText: "Corporate Training", ctaSecondaryLink: "/corporate-training",
   seoTitle: "Simplilead | Globally Accredited Certification Training", 
-  seoDescription: "Join 500,000+ professionals worldwide. Simplilead offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management.",
+  seoDescription: "Simplilead offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management — live online, classroom and corporate programs.",
 };
 
 const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
@@ -125,7 +126,7 @@ const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
     heroBadge: "For Enterprises",
     heroHeadline: "Upskill Your Teams With Globally Accredited Training",
     heroSubheading: "Custom curriculum, private group batches, bulk enrollments and dedicated success management for your enterprise.",
-    body: "Simplilead partners with Fortune 500 enterprises and high-growth product companies to deliver world-class training programs at scale.\n\nWe combine accredited curriculum, practitioner-led delivery and modern learning experiences to ensure your teams don't just complete training — they apply it.\n\n**What we offer**\n- Private cohorts and custom curriculum\n- Bulk enrollment discounts (10+ learners)\n- Dedicated learning experience manager\n- Onsite, virtual or hybrid delivery\n- LMS access for 12 months\n- Detailed reporting and certification tracking",
+    body: "Simplilead partners with enterprises and high-growth product companies to deliver world-class training programs at scale.\n\nWe combine accredited curriculum, practitioner-led delivery and modern learning experiences to ensure your teams don't just complete training — they apply it.\n\n**What we offer**\n- Private cohorts and custom curriculum\n- Bulk enrollment discounts (10+ learners)\n- Dedicated learning experience manager\n- Onsite, virtual or hybrid delivery\n- LMS access for 12 months\n- Detailed reporting and certification tracking",
     showLeadForm: true,
     leadFormTitle: "Request a Corporate Proposal",
     leadFormSubtitle: "Our enterprise team will respond within one business day.",
@@ -144,7 +145,7 @@ const DEFAULT_SIMPLE_PAGES: Record<string, any> = {
     slug: "about", title: "About Simplilead",
     heroBadge: "About",
     heroHeadline: "Building Careers Through World-Class Training",
-    heroSubheading: "Simplilead is a global training and certification provider, trusted by 500,000+ professionals and 1,000+ enterprises.",
+    heroSubheading: "Simplilead is a global training and certification provider for professionals and enterprise teams.",
     body: "Founded with a mission to make globally accredited certification training accessible across geographies, Simplilead partners with Scaled Agile, PMI, Scrum Alliance, AXELOS, EXIN and PeopleCert to deliver world-class programs in Agile, SAFe, DevOps, Project Management, IT Service Management, Quality, Cybersecurity and emerging tech.\n\n**Our mission** — give every professional an unfair career advantage through practitioner-led training, modern learning experiences and outcome-focused certification programs.\n\n**Why choose Simplilead** — accredited training partners, only SPC/PMP-certified instructors, free retake policy, 24×7 learner support and a single point of contact through your learning journey.",
     showLeadForm: false,
   },
