@@ -21,12 +21,8 @@ export function PopularCoursesWidget({ courses }: { courses: any[] }) {
               <span>•</span>
               <span className="truncate">{course.categorySlug?.toUpperCase()}</span>
             </div>
-            <div className="flex items-center justify-between">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map(j => (
-                  <img key={j} src={`https://i.pravatar.cc/100?img=${i * 4 + j}`} className="w-6 h-6 rounded-full border-2 border-white" alt="Student" />
-                ))}
-              </div>
+            {/* FIX-02/12: fake pravatar "student" avatars removed */}
+            <div className="flex items-center justify-end">
               <Link href={`/${course.slug}`} className="bg-ink-900 text-white text-[11px] font-bold px-3 py-1 rounded-full hover:bg-ink-800 transition-colors">
                 Explore
               </Link>

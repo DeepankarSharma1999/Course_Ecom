@@ -52,8 +52,8 @@ export function BenefitsSection() {
               {/* Desktop Video Mockup */}
               <div className="absolute bottom-[10%] right-[10%] w-[55%] h-[45%] bg-white rounded-t-xl shadow-md border-x border-t border-gray-100 z-10 p-1.5 flex flex-col">
                  <div className="flex-1 bg-gray-200 rounded-md overflow-hidden relative flex">
-                    <img src="/images/vendor/pexels/pexels-photo-415829.jpeg" className="w-full h-full object-cover" alt="Student" />
-                    <img src="/images/vendor/pexels/pexels-photo-1043471.jpeg" className="w-1/3 h-full object-cover border-l border-white" alt="Student" />
+                    <img src="/images/vendor/pexels/pexels-photo-415829.jpeg" loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Student" />
+                    <img src="/images/vendor/pexels/pexels-photo-1043471.jpeg" loading="lazy" decoding="async" className="w-1/3 h-full object-cover border-l border-white" alt="Student" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-6 h-6 bg-black/50 rounded-full flex items-center justify-center"><Play className="w-3 h-3 text-white ml-0.5" /></div>
                     </div>
@@ -96,9 +96,9 @@ export function BenefitsSection() {
                    </div>
                  </div>
                  <div className="grid grid-cols-3 gap-1.5 w-max">
-                    <img src="/images/vendor/pexels/pexels-photo-220453.jpeg" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
-                    <img src="/images/vendor/pexels/pexels-photo-1043471.jpeg" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
-                    <img src="/images/vendor/pexels/pexels-photo-415829.jpeg" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
+                    <img src="/images/vendor/pexels/pexels-photo-220453.jpeg" loading="lazy" decoding="async" width="50" height="50" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
+                    <img src="/images/vendor/pexels/pexels-photo-1043471.jpeg" loading="lazy" decoding="async" width="50" height="50" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
+                    <img src="/images/vendor/pexels/pexels-photo-415829.jpeg" loading="lazy" decoding="async" width="50" height="50" className="w-[50px] h-[50px] rounded-lg object-cover" alt="" />
                  </div>
               </div>
 
