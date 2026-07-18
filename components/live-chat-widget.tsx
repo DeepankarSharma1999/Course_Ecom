@@ -17,7 +17,7 @@ export function LiveChatWidget() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
-            className="bg-[#1FA8A8] hover:bg-[#188c8c] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 transition-colors group"
+            className="bg-[#0E7C7C] hover:bg-[#0a5f5f] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 transition-colors group"
           >
             <MessageSquare className="w-5 h-5 group-hover:scale-110 transition-transform" />
             <span className="font-bold text-sm tracking-wide">Chat</span>

@@ -60,7 +60,7 @@ export default async function HomePage() {
         <div className="container-tight">
           <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <div className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">{h.reachBadge || "Global reach"}</div>
+              <div className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-teal-300">{h.reachBadge || "Global reach"}</div>
               <h2 className="text-3xl font-black leading-tight text-white md:text-5xl">
                 {h.reachTitle || "Training professionals across borders and industries."}
               </h2>

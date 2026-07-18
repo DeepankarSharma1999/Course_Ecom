@@ -40,7 +40,7 @@ export function RelatedCoursesSection({ course }: { course: CourseContent }) {
         ].map((c, i) => (
           <div key={i} className="min-w-[300px] md:min-w-[350px] rounded-2xl border border-gray-200 bg-[#fcfdfd] overflow-hidden flex flex-col relative snap-start">
             {c.badge && (
-              <div className="absolute top-4 right-4 bg-[#1FA8A8] text-white text-[10px] font-bold px-2 py-1 rounded">
+              <div className="absolute top-4 right-4 bg-[#0E7C7C] text-white text-[10px] font-bold px-2 py-1 rounded">
                 {c.badge}
               </div>
             )}

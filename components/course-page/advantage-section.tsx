@@ -50,7 +50,7 @@ export function AdvantageSection({ course }: { course: CourseContent }) {
         {advantages.map((item, i) => (
           <div key={i} className="flex flex-col">
             <div className="w-12 h-12 rounded-lg bg-[#f0f7f7] flex items-center justify-center mb-4 relative">
-              <div className="absolute inset-0 bg-[#1FA8A8]/10 rounded-lg blur-[2px]"></div>
+              <div className="absolute inset-0 bg-[#0E7C7C]/10 rounded-lg blur-[2px]"></div>
               <div className="relative z-10">{item.icon}</div>
             </div>
             <h3 className="font-bold text-[#082032] text-[18px] mb-2">{item.title}</h3>

@@ -20,8 +20,6 @@ export function ComboSchedule({ combos, currency = "USD", currencies }: { combos
 
         <div className="grid gap-6 lg:grid-cols-3">
           {combos.map((combo) => {
-            // ponytail: pseudo enrolled count from the slug — no DB field for it.
-            const enrolled = ((combo.slug || combo.title).split("").reduce((a: number, ch: string) => a + ch.charCodeAt(0), 0) % 5) + 4;
             const logos = comboLogos(combo.title);
             return (
               <article
@@ -43,11 +41,8 @@ export function ComboSchedule({ combos, currency = "USD", currencies }: { combos
 
                 <h3 className="mb-4 min-h-14 text-lg font-black leading-snug text-[#082032]">{combo.shortTitle || combo.title}</h3>
 
+                {/* FIX-02: fake slug-derived "k enrolled" count removed */}
                 <div className="mb-5 flex flex-wrap gap-3 text-sm font-semibold text-muted-foreground">
-                  <span className="flex items-center gap-1.5">
-                    <TrendingUp className="h-4 w-4" />
-                    {enrolled}k enrolled
-                  </span>
                   <span>Live Classroom</span>
                 </div>
 

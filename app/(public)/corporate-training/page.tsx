@@ -94,7 +94,7 @@ export default async function CorporatePage() {
                   <option>200+ learners</option>
                 </select>
               </div>
-              <button type="submit" className="w-full bg-[#1FA8A8] hover:bg-[#168989] text-white rounded-lg px-6 py-3.5 font-bold transition-colors shadow-md mt-2 flex items-center justify-center gap-2">
+              <button type="submit" className="w-full bg-[#0E7C7C] hover:bg-[#0a5f5f] text-white rounded-lg px-6 py-3.5 font-bold transition-colors shadow-md mt-2 flex items-center justify-center gap-2">
                 Request Proposal <ArrowRight className="w-4 h-4" />
               </button>
               <p className="text-[11px] text-gray-400 text-center mt-4">By submitting, you agree to our Terms of Service and Privacy Policy.</p>
@@ -115,7 +115,7 @@ export default async function CorporatePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {DOMAINS.map((domain, i) => (
               <Link href="/courses" key={i} className="group p-6 rounded-2xl bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex items-start gap-5 hover:-translate-y-1">
-                <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 group-hover:bg-[#1FA8A8]/10 transition-colors">
+                <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center shrink-0 group-hover:bg-[#0E7C7C]/10 transition-colors">
                   <DynamicIcon name={domain.icon} className={`w-6 h-6 ${domain.color}`} />
                 </div>
                 <div>
@@ -140,7 +140,7 @@ export default async function CorporatePage() {
 
       {/* Immersive Learning Model */}
       <section className="py-24 bg-[#082032] text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#1FA8A8] opacity-5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0E7C7C] opacity-5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
         
         <div className="container-tight relative z-10">
           <div className="mb-16 md:w-1/2">
@@ -155,7 +155,7 @@ export default async function CorporatePage() {
                 {/* Connector Line */}
                 {i !== 4 && <div className="hidden md:block absolute top-8 left-1/2 w-full h-px border-t-2 border-dashed border-gray-700 -z-10 group-hover:border-[#1FA8A8] transition-colors" />}
                 
-                <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur border border-white/10 flex items-center justify-center font-black text-2xl text-[#0E7C7C] mb-6 shadow-lg group-hover:bg-[#1FA8A8] group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur border border-white/10 flex items-center justify-center font-black text-2xl text-[#0E7C7C] mb-6 shadow-lg group-hover:bg-[#0E7C7C] group-hover:text-white transition-all duration-300 group-hover:scale-110">
                   {step.num}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{step.title}</h3>

@@ -79,7 +79,7 @@ export function EnterpriseSolutionLayout({
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="#contact" className="bg-[#1FA8A8] hover:bg-[#168989] text-white rounded-lg px-8 py-4 font-bold transition-colors shadow-lg flex items-center justify-center gap-2 text-lg">
+            <Link href="#contact" className="bg-[#0E7C7C] hover:bg-[#0a5f5f] text-white rounded-lg px-8 py-4 font-bold transition-colors shadow-lg flex items-center justify-center gap-2 text-lg">
               Consult an Expert <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -96,7 +96,7 @@ export function EnterpriseSolutionLayout({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, i) => (
               <div key={i} className="group p-8 rounded-2xl bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
-                <div className="w-16 h-16 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:bg-[#1FA8A8]/10 transition-colors">
+                <div className="w-16 h-16 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:bg-[#0E7C7C]/10 transition-colors">
                   {getIcon(benefit.icon, "w-8 h-8 text-[#0E7C7C]")}
                 </div>
                 <h3 className="font-bold text-xl text-[#082032] mb-3">{benefit.title}</h3>
@@ -109,7 +109,7 @@ export function EnterpriseSolutionLayout({
 
       {/* Approach Section */}
       <section className="py-24 bg-[#082032] text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#1FA8A8] opacity-5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0E7C7C] opacity-5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
         
         <div className="container-tight relative z-10">
           <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -120,7 +120,7 @@ export function EnterpriseSolutionLayout({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {approach.map((step, i) => (
               <div key={i} className="relative group p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-[#1FA8A8] flex items-center justify-center font-black text-xl text-white mb-6 shadow-lg">
+                <div className="w-12 h-12 rounded-full bg-[#0E7C7C] flex items-center justify-center font-black text-xl text-white mb-6 shadow-lg">
                   {i + 1}
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">{step.title}</h3>

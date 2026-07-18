@@ -79,7 +79,7 @@ export async function SiteFooter() {
                         <div className="w-4 h-4 rounded-full bg-yellow-400 absolute right-1 mix-blend-multiply opacity-90"></div>
                      </span>
                      <span className="font-black text-blue-800 text-2xl italic leading-none">VISA</span>
-                     <span className="font-black text-teal-400 italic text-lg leading-none tracking-tighter">afterpay<span className="text-xl">⬎</span></span>
+                     <span className="font-black text-teal-700 italic text-lg leading-none tracking-tighter">afterpay<span className="text-xl">⬎</span></span>
                  </div>
               </div>
 
@@ -136,7 +136,7 @@ export async function SiteFooter() {
               </ReadMore>
            </div>
            
-           <div className="mt-8 pt-6 border-t border-brand-100/50 text-center text-xs text-brand-600/70 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+           <div className="mt-8 pt-6 border-t border-brand-100/50 text-center text-xs text-brand-700 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
               <Link href="/about" className="hover:text-brand-600 transition-colors underline underline-offset-2">About Us</Link>
               <Link href="/info/privacy-policy-and-disclaimer" className="hover:text-brand-600 transition-colors underline underline-offset-2">Privacy Policy</Link>
               <Link href="/refund-policy" className="hover:text-brand-600 transition-colors underline underline-offset-2">Refund Policy</Link>

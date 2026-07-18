@@ -48,7 +48,7 @@ export function CourseGrid({
                   type="button"
                   onClick={() => setActiveTab(tab)}
                   className={`relative px-4 py-2 md:px-6 md:py-2.5 text-[12px] md:text-[13px] font-bold whitespace-nowrap transition-colors rounded-sm ${
-                    active ? "text-[#0E7C7C] bg-[#E9F4F4]" : "text-gray-600 hover:text-[#082032] hover:bg-gray-50"
+                    active ? "text-[#0B6B6B] bg-[#E9F4F4]" : "text-gray-600 hover:text-[#082032] hover:bg-gray-50"
                   }`}
                 >
                   {tab}

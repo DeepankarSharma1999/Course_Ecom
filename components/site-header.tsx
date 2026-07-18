@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -140,7 +141,7 @@ export function SiteHeader({
 
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0 mr-auto lg:mr-0">
-          <img src="/logo.png" alt={brandName} className="h-[44px] w-auto object-contain" />
+          <Image src="/logo.png" alt={brandName} width={136} height={44} priority className="h-[44px] w-auto object-contain" />
         </Link>
 
         {/* All Courses Dropdown & Search (Desktop) */}
@@ -408,7 +409,7 @@ export function SiteHeader({
 
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 shrink-0">
-              <img src="/logo.png" alt={brandName} className="h-9 w-auto object-contain" />
+              <Image src="/logo.png" alt={brandName} width={111} height={36} className="h-9 w-auto object-contain" />
               <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="grid h-10 w-10 place-items-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-50">
                 <X className="w-5 h-5" />
               </button>
@@ -523,7 +524,7 @@ export function SiteHeader({
                         )}
                       </div>
                       {!isLoggedIn && (
-                        <button onClick={() => { setMobileOpen(false); openModal(); }} className="mt-6 w-full h-12 rounded-lg bg-[#1FA8A8] hover:bg-[#168989] text-white font-bold text-[16px] transition-colors">
+                        <button onClick={() => { setMobileOpen(false); openModal(); }} className="mt-6 w-full h-12 rounded-lg bg-[#0E7C7C] hover:bg-[#0a5f5f] text-white font-bold text-[16px] transition-colors">
                           Sign In
                         </button>
                       )}
