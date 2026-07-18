@@ -1,10 +1,10 @@
-import DottedMap from "dotted-map";
-
 // Server component (FIX-10): the dotted world map used to be computed in the
 // browser on every render — `new DottedMap()` runs point-in-polygon math for
 // the whole globe and was the single biggest main-thread cost on the homepage.
-// It now renders on the server; the arc "draw" animation is pure CSS and the
-// pulses are SMIL, so the map ships zero client JS.
+// The base map is now a prebuilt static asset (public/world-dots.svg —
+// regenerate with `npx dotted-map` params: height 100, grid diagonal, radius
+// 0.22, color #FFFFFF25); arcs animate via CSS and pulses via SMIL, so the
+// map ships zero client JS and no multi-MB inline data URI.
 
 interface MapProps {
   dots?: Array<{
@@ -13,14 +13,6 @@ interface MapProps {
   }>;
   lineColor?: string;
 }
-
-// Module-level: computed once per server process, reused across renders.
-const svgMap = new DottedMap({ height: 100, grid: "diagonal" }).getSVG({
-  radius: 0.22,
-  color: "#FFFFFF25",
-  shape: "circle",
-  backgroundColor: "transparent",
-});
 
 const projectPoint = (lat: number, lng: number) => {
   const x = (lng + 180) * (800 / 360);
@@ -39,7 +31,8 @@ export function WorldMap({ dots = [], lineColor = "#1FA8A8" }: MapProps) {
     <div className="w-full aspect-[2/1] relative font-sans">
       <style>{`@keyframes wm-draw { to { stroke-dashoffset: 0; } }`}</style>
       <img
-        src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
+        src="/world-dots.svg"
+        loading="lazy"
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
         alt=""
         height="495"

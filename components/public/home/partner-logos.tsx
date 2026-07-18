@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import Image from "next/image";
 import path from "node:path";
 
 type Cert = {
@@ -51,11 +52,12 @@ export function PartnerLogos({ content }: { content?: any }) {
         >
           <div className="grid h-12 w-full place-items-center">
             {cert.src ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={cert.src}
                 alt={cert.name}
-                className="max-h-11 max-w-[96px] object-contain"
+                width={96}
+                height={44}
+                className="max-h-11 max-w-[96px] w-auto h-auto object-contain"
               />
             ) : (
               <span className="text-center text-[14px] font-bold tracking-tight text-[#0a2540]">

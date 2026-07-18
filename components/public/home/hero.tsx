@@ -37,8 +37,7 @@ function TrustedCompanyCarousel() {
       {trustedCompanies.map((company) => (
         <div key={company.name} className="grid h-10 w-36 shrink-0 place-items-center px-3" title={company.name}>
           {company.src ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={company.src} alt={company.name} className="max-h-9 max-w-[110px] object-contain" />
+            <Image src={company.src} alt={company.name} width={110} height={36} className="max-h-9 max-w-[110px] w-auto h-auto object-contain" />
           ) : (
             <span className={`text-[18px] font-black ${company.className}`}>{company.wordmark}</span>
           )}
