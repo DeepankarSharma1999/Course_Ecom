@@ -19,13 +19,16 @@ export type BatchTrack = {
 
 export type SalaryEntry = { role: string; amount: string; source: string; sourceUrl: string; sourceDate: string };
 export type GeoFaq = { q: string; a: string };
+// Price and exam cost differ per course (PMP vs CSM), so both are keyed by course slug.
+export type GeoPrice = { display: string; amount: number; currency: string; days: number };
+export type GeoExamCost = { member: string; nonMember: string; source: string };
 
 export type GeoCountry = {
   name: string;
   iso: string;           // lowercase, doubles as URL slug
   currency: string;
-  priceDisplay: string;  // display string, e.g. "₹45,000" — TODO until supplied
-  examCost: { member: string; nonMember: string; source: string };
+  pricing: Record<string, GeoPrice>;
+  examCost: Record<string, GeoExamCost>;
   salaryCountry: SalaryEntry[];
   intro: string;
   faq: GeoFaq[];

@@ -23,8 +23,8 @@ export const countrySchema = z.object({
   name: z.string().min(1),
   iso: z.string().length(2),
   currency: z.string().min(3),
-  priceDisplay: z.string().min(1),
-  examCost: z.object({ member: z.string(), nonMember: z.string(), source: z.string() }),
+  pricing: z.record(z.object({ display: z.string().min(1), amount: z.number().positive(), currency: z.string().min(3), days: z.number().int().positive() })),
+  examCost: z.record(z.object({ member: z.string(), nonMember: z.string(), source: z.string() })),
   salaryCountry: z.array(salarySchema),
   intro: z.string().min(1),
   faq: z.array(faqSchema),
@@ -76,7 +76,7 @@ export type GateResult = { indexable: boolean; released: boolean; reasons: strin
 export function cityGate(city: GeoCity, country: GeoCountry): GateResult {
   const reasons: string[] = [];
   if (hasTodo(city)) reasons.push("TODO values remain in city file");
-  if (hasTodo(country.priceDisplay) || hasTodo(country.examCost)) reasons.push("country pricing still TODO");
+  if (hasTodo(country.pricing) || hasTodo(country.examCost)) reasons.push("country pricing still TODO");
   const fit = fitCheck(getBatchTracks(), city.timezone);
   if (fit.status !== "fit") reasons.push(`off-hours (local ${fit.session.localLabel})`);
   if (!salaryFresh(city.salary)) reasons.push("salary entries missing, without sourceUrl, or sourceDate older than 12 months");
@@ -99,7 +99,7 @@ export function cityGate(city: GeoCity, country: GeoCountry): GateResult {
 // Country hub: same bar minus city-specific fields (fit check, meta, employers).
 export function countryGate(country: GeoCountry): GateResult {
   const reasons: string[] = [];
-  if (hasTodo(country.priceDisplay) || hasTodo(country.examCost)) reasons.push("pricing still TODO");
+  if (hasTodo(country.pricing) || hasTodo(country.examCost)) reasons.push("pricing still TODO");
   if (hasTodo(country.intro)) reasons.push("intro still TODO");
   if (hasTodo(country.salaryCountry) || !salaryFresh(country.salaryCountry))
     reasons.push("salary entries missing, TODO, without sourceUrl, or sourceDate older than 12 months");

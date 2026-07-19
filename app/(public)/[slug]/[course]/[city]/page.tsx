@@ -32,9 +32,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const c = await getCourseBySlug(slug);
     if (!c) return {};
     const todo = (s: string) => s.includes("TODO");
-    const title = !todo(geoCity.meta.title) ? geoCity.meta.title : composeCourseTitle(c.title, { city: geoCity.name });
+    // City meta serves both courses — "{course}" in the stored strings is
+    // replaced with this page's course name.
+    const fill = (s: string) => s.replaceAll("{course}", baseCourseTitle(c.shortTitle));
+    const title = !todo(geoCity.meta.title) ? fill(geoCity.meta.title) : composeCourseTitle(c.title, { city: geoCity.name });
     const description = !todo(geoCity.meta.description)
-      ? geoCity.meta.description
+      ? fill(geoCity.meta.description)
       : `Live online ${baseCourseTitle(c.shortTitle)} certification training for ${geoCity.name}, ${geoCountry.name} — batch dates in your local time, salaries and exam cost.`;
     const path = `/${slug}/${course}/${city}`;
     return {

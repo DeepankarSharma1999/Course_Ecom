@@ -145,9 +145,9 @@ function SalarySection({ heading, entries }: { heading: string; entries: SalaryE
   );
 }
 
-function ExamCostSection({ country, courseName }: { country: GeoCountry; courseName: string }) {
-  const { examCost } = country;
-  if (hasTodo(examCost)) return null;
+function ExamCostSection({ country, courseName, courseSlug }: { country: GeoCountry; courseName: string; courseSlug: string }) {
+  const examCost = country.examCost[courseSlug];
+  if (!examCost || hasTodo(examCost)) return null;
   return (
     <section className="space-y-4">
       <h2 className="h2">{courseName} exam cost in {country.name}</h2>
@@ -212,7 +212,8 @@ export function GeoCityPage({ course, country, city }: { course: CourseContent; 
   const h1 = composeCourseTitle(course.title, { city: city.name });
   const url = `${SITE.url}/${course.slug}/${country.iso}/${city.slug}`;
   const next = fit.track.batches[0];
-  const price = !hasTodo(country.priceDisplay) ? `${country.priceDisplay} · live online` : undefined;
+  const p = country.pricing[course.slug];
+  const price = p && !hasTodo(p) ? `${p.display} · ${p.days}-day live online` : undefined;
   const realFaqs = city.faq.filter((f) => !hasTodo(f));
 
   const jsonLd: object[] = [
@@ -255,8 +256,8 @@ export function GeoCityPage({ course, country, city }: { course: CourseContent; 
           </section>
         )}
 
-        <SalarySection heading={`${courseName} salaries in ${city.name}`} entries={city.salary} />
-        <ExamCostSection country={country} courseName={courseName} />
+        <SalarySection heading={`Project & agile salaries in ${city.name}`} entries={city.salary} />
+        <ExamCostSection country={country} courseName={courseName} courseSlug={course.slug} />
 
         <section className="space-y-4">
           <CurriculumSection course={course} />
@@ -289,7 +290,8 @@ export function GeoCountryHub({ course, country }: { course: CourseContent; coun
   const courseName = baseCourseTitle(course.shortTitle);
   const h1 = composeCourseTitle(course.title, { country: country.name });
   const url = `${SITE.url}/${course.slug}/${country.iso}`;
-  const price = !hasTodo(country.priceDisplay) ? `${country.priceDisplay} · live online` : undefined;
+  const p = country.pricing[course.slug];
+  const price = p && !hasTodo(p) ? `${p.display} · ${p.days}-day live online` : undefined;
   const realFaqs = country.faq.filter((f) => !hasTodo(f));
 
   const jsonLd: object[] = [
@@ -323,8 +325,8 @@ export function GeoCountryHub({ course, country }: { course: CourseContent; coun
           </section>
         )}
 
-        <SalarySection heading={`${courseName} salaries in ${country.name}`} entries={country.salaryCountry} />
-        <ExamCostSection country={country} courseName={courseName} />
+        <SalarySection heading={`Project & agile salaries in ${country.name}`} entries={country.salaryCountry} />
+        <ExamCostSection country={country} courseName={courseName} courseSlug={course.slug} />
 
         {realFaqs.length > 0 && (
           <section className="max-w-3xl space-y-4">

@@ -12,11 +12,9 @@ export function geoCourseJsonLd(
   track: BatchTrack,
   cityName?: string,
 ) {
-  // Offers only once real pricing exists — priceDisplay is a display string
-  // ("₹45,000"); extract the numeric part, omit offers if TODO or unparseable.
-  const priceNum = hasTodo(country.priceDisplay)
-    ? NaN
-    : Number(country.priceDisplay.replace(/[^0-9.]/g, ""));
+  // Offers only once real per-course pricing exists — omit while TODO.
+  const price = country.pricing[course.slug];
+  const hasPrice = !!price && !hasTodo(price) && price.amount > 0;
   return {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -24,13 +22,13 @@ export function geoCourseJsonLd(
     description: course.seoDescription || course.summary,
     url,
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-    ...(Number.isFinite(priceNum) && priceNum > 0
+    ...(hasPrice
       ? {
           offers: {
             "@type": "Offer",
             category: "Training",
-            price: priceNum,
-            priceCurrency: country.currency,
+            price: price.amount,
+            priceCurrency: price.currency,
             availability: "https://schema.org/InStock",
           },
         }
