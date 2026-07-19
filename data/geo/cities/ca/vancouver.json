@@ -1,0 +1,43 @@
+{
+  "name": "Vancouver",
+  "slug": "vancouver",
+  "timezone": "America/Vancouver",
+  "salary": [
+    {
+      "role": "TODO role e.g. Project Manager",
+      "amount": "TODO e.g. ₹18,00,000/yr",
+      "source": "TODO e.g. Glassdoor",
+      "sourceUrl": "TODO https://...",
+      "sourceDate": "TODO YYYY-MM-DD"
+    }
+  ],
+  "employers": [
+    "TODO employer 1",
+    "TODO employer 2"
+  ],
+  "industries": "TODO: one sentence on Vancouver's dominant hiring industries.",
+  "intro": "TODO: hand-written 120-180 word intro for Vancouver. Do not publish until replaced.",
+  "faq": [
+    {
+      "q": "TODO question 1",
+      "a": "TODO answer 1"
+    },
+    {
+      "q": "TODO question 2",
+      "a": "TODO answer 2"
+    },
+    {
+      "q": "TODO question 3",
+      "a": "TODO answer 3"
+    },
+    {
+      "q": "TODO question 4",
+      "a": "TODO answer 4"
+    }
+  ],
+  "meta": {
+    "title": "TODO meta title for Vancouver",
+    "description": "TODO meta description for Vancouver"
+  },
+  "releaseWeek": 10
+}

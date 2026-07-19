@@ -1,0 +1,43 @@
+{
+  "name": "Washington, D.C.",
+  "slug": "washington-dc",
+  "timezone": "America/New_York",
+  "salary": [
+    {
+      "role": "TODO role e.g. Project Manager",
+      "amount": "TODO e.g. ₹18,00,000/yr",
+      "source": "TODO e.g. Glassdoor",
+      "sourceUrl": "TODO https://...",
+      "sourceDate": "TODO YYYY-MM-DD"
+    }
+  ],
+  "employers": [
+    "TODO employer 1",
+    "TODO employer 2"
+  ],
+  "industries": "TODO: one sentence on Washington, D.C.'s dominant hiring industries.",
+  "intro": "TODO: hand-written 120-180 word intro for Washington, D.C.. Do not publish until replaced.",
+  "faq": [
+    {
+      "q": "TODO question 1",
+      "a": "TODO answer 1"
+    },
+    {
+      "q": "TODO question 2",
+      "a": "TODO answer 2"
+    },
+    {
+      "q": "TODO question 3",
+      "a": "TODO answer 3"
+    },
+    {
+      "q": "TODO question 4",
+      "a": "TODO answer 4"
+    }
+  ],
+  "meta": {
+    "title": "TODO meta title for Washington, D.C.",
+    "description": "TODO meta description for Washington, D.C."
+  },
+  "releaseWeek": 9
+}

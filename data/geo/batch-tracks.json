@@ -1,0 +1,26 @@
+[
+  {
+    "id": "asia",
+    "tz": "Asia/Kolkata",
+    "label": "IST",
+    "start": "09:00",
+    "end": "18:00",
+    "batches": [
+      {
+        "startDate": "2026-08-01",
+        "endDate": "2026-08-02",
+        "days": "Sat–Sun"
+      },
+      {
+        "startDate": "2026-08-15",
+        "endDate": "2026-08-16",
+        "days": "Sat–Sun"
+      },
+      {
+        "startDate": "2026-09-05",
+        "endDate": "2026-09-06",
+        "days": "Sat–Sun"
+      }
+    ]
+  }
+]

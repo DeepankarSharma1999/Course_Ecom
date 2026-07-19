@@ -1,0 +1,39 @@
+{
+  "name": "Qatar",
+  "iso": "qa",
+  "currency": "QAR",
+  "priceDisplay": "TODO e.g. ₹45,000",
+  "examCost": {
+    "member": "TODO",
+    "nonMember": "TODO",
+    "source": "TODO url"
+  },
+  "salaryCountry": [
+    {
+      "role": "TODO role e.g. Project Manager",
+      "amount": "TODO e.g. ₹18,00,000/yr",
+      "source": "TODO e.g. Glassdoor",
+      "sourceUrl": "TODO https://...",
+      "sourceDate": "TODO YYYY-MM-DD"
+    }
+  ],
+  "intro": "TODO: hand-written ~150 word intro for certification training in Qatar. Do not publish until replaced.",
+  "faq": [
+    {
+      "q": "TODO question 1",
+      "a": "TODO answer 1"
+    },
+    {
+      "q": "TODO question 2",
+      "a": "TODO answer 2"
+    },
+    {
+      "q": "TODO question 3",
+      "a": "TODO answer 3"
+    }
+  ],
+  "cities": [
+    "doha"
+  ],
+  "releaseWeek": 3
+}
