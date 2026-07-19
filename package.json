@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/db-sync.js && next build",
+    "build": "node scripts/db-sync.js && tsx scripts/validate-geo.ts --ci && next build",
+    "validate:geo": "tsx scripts/validate-geo.ts",
+    "test:geo": "tsx scripts/test-geo.ts",
     "db:sync": "node scripts/db-sync.js",
     "db:deploy": "tsx scripts/db-ready.ts && prisma db push --skip-generate && tsx --env-file=.env prisma/seed.ts && tsx --env-file=.env scripts/generate-course-content.ts && tsx --env-file=.env scripts/seed-combos.ts",
     "start": "next start",
