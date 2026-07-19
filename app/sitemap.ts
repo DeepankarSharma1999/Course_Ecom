@@ -3,10 +3,15 @@ import { getCategories } from "@/lib/content";
 import { INDEXED_COURSE_SLUGS } from "@/lib/indexing";
 import { INFO_PAGES } from "@/lib/info-content";
 import { SITE } from "@/lib/utils";
+import { GEO_COURSES, getGeoCountries } from "@/lib/geo-pages/data";
+import { isCityIndexable, isCountryIndexable } from "@/lib/geo-pages/gate";
 
 // FIX-06: the sitemap lists ONLY pages meant for the index — the allowlisted
 // courses plus core/static pages. Noindexed pages (the ~185 remaining courses
 // and every country/city variant) are deliberately absent.
+// Geo landing pages (/{course}/{country}[/{city}]) appear ONLY once they pass
+// the publishing gate (no TODOs, fit-check, sourced salaries, unique intro)
+// AND their releaseWeek <= RELEASE_WEEK — pacing new pages into the index.
 
 // Mirrors HIDDEN in app/(public)/info/[slug]/page.tsx (those routes 404).
 const HIDDEN_INFO = new Set(["tutorials", "interview-questions", "course-info"]);
@@ -35,5 +40,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...Object.keys(INFO_PAGES).filter((s) => !HIDDEN_INFO.has(s)).map((s) => url(`/info/${s}`, 0.4, "monthly")),
     ...categories.map((c: { slug: string }) => url(`/category/${c.slug}`, 0.8)),
     ...INDEXED_COURSE_SLUGS.map((s) => url(`/${s}`, 0.9)),
+    ...GEO_COURSES.flatMap((course) =>
+      getGeoCountries().flatMap((co) => [
+        ...(isCountryIndexable(co.iso) ? [url(`/${course}/${co.iso}`, 0.7)] : []),
+        ...co.cities.filter((ct) => isCityIndexable(co.iso, ct)).map((ct) => url(`/${course}/${co.iso}/${ct}`, 0.7)),
+      ])),
   ];
 }

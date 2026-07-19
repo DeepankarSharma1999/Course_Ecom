@@ -9,6 +9,8 @@ import { isCourseIndexed, NOINDEX } from "@/lib/indexing";
 import { getAllCourses, getCourseBySlug, getCountryBySlug, getCityBySlug, getCourseSchedules } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
+import { isGeoCourse } from "@/lib/geo-pages/data";
+import { GeoAvailableIn } from "@/components/geo/geo-page";
 
 export const dynamicParams = true;
 export const revalidate = 60;
@@ -80,6 +82,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }} />
         ))}
         <CoursePageContent course={course} schedules={schedules} currency={currency} currencies={currencyCfg.currencies} />
+        {isGeoCourse(course.slug) && <GeoAvailableIn courseSlug={course.slug} />}
         <StickyCta courseTitle={baseCourseTitle(course.title)} priceLabel={course.basePriceUsd ? formatInCurrency(course.basePriceUsd, currency, currencyCfg.currencies) : undefined} />
       </>
     );
