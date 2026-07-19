@@ -4,40 +4,43 @@
   "timezone": "Asia/Riyadh",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Riyadh)",
+      "amount": "SAR 286,709/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/saudi-arabia/riyadh",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Savola Group",
+    "Islamic Development Bank",
+    "Saudia",
+    "Red Sea Global",
+    "Abdul Latif Jameel"
   ],
-  "industries": "TODO: one sentence on Jeddah's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Jeddah. Do not publish until replaced.",
+  "industries": "Port logistics, aviation, tourism giga-projects and construction conglomerates drive Jeddah's demand for certified project talent.",
+  "intro": "Jeddah's project market runs on trade, pilgrims and construction. The port — the Kingdom's busiest — drives logistics programmes; the Haramain corridor and airport expansions serve tens of millions of Umrah and Hajj travellers; and the Red Sea coastline north of the city hosts tourism giga-projects hiring delivery professionals at pace. Contractors and family conglomerates headquartered in Jeddah increasingly require PMP for programme roles, mirroring what government clients demand in tenders. Our live online weekend batch lets Jeddah professionals certify without travelling to Riyadh or abroad: two days on the IST schedule at civilised local hours, taught in English with an international cohort. Employer-ready invoices support sponsorship. After the workshop we walk through your exam application, run full mock exams, and keep the trainer available for questions until the credential is yours.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Jeddah?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 06:30 AM – 03:30 PM AST in Jeddah. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Jeddah?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Jeddah. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Saudi Arabia?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Saudi Arabia and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Jeddah sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Saudi Arabia accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Jeddah",
-    "description": "TODO meta description for Jeddah"
+    "title": "{course} Training in Jeddah — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Jeddah: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 3
 }

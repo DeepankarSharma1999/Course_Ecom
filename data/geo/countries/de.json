@@ -2,34 +2,61 @@
   "name": "Germany",
   "iso": "de",
   "currency": "EUR",
-  "priceDisplay": "TODO e.g. ₹45,000",
+  "pricing": {
+    "pmp-certification-training": {
+      "display": "US$1,295",
+      "amount": 1295,
+      "currency": "USD",
+      "days": 2
+    },
+    "csm-certification-training": {
+      "display": "US$695",
+      "amount": 695,
+      "currency": "USD",
+      "days": 2
+    }
+  },
   "examCost": {
-    "member": "TODO",
-    "nonMember": "TODO",
-    "source": "TODO url"
+    "pmp-certification-training": {
+      "member": "US$425",
+      "nonMember": "US$675",
+      "source": "https://www.pmi.org/certifications/project-management-pmp"
+    },
+    "csm-certification-training": {
+      "member": "Included in course fee (2 attempts)",
+      "nonMember": "Included in course fee (2 attempts)",
+      "source": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+    }
   },
   "salaryCountry": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager",
+      "amount": "€64,350/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/germany-project-manager-salary-SRCH_IL.0,7_IN96_KO8,23.htm",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master",
+      "amount": "€69,875/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/germany-scrum-master-salary-SRCH_IL.0,7_IN96_KO8,20.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
-  "intro": "TODO: hand-written ~150 word intro for certification training in Germany. Do not publish until replaced.",
+  "intro": "Germany's project culture is engineering-grade: automotive programmes with decade-long horizons, Industrie 4.0 factory transformations, and a Mittelstand digitising under competitive pressure. International certification has grown fast here as companies globalise their delivery organisations — PMP provides the common language with US and Asian partners, while Scrum credentials are standard across Germany's software and automotive-software teams. English-language instruction suits the international project environments where certified roles concentrate. Our live online weekend batch runs on the IST schedule, converting to morning-to-afternoon German hours with the evening free. You train alongside an international cohort in a compact two-day format. Afterwards we guide your exam application, provide full-length mock exams, and remain available for questions until you pass. German cohorts often include entire delivery teams certifying together before a transformation programme kicks off.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "How much does certification training cost in Germany?",
+      "a": "The course fee is US$1,295 for PMP and US$695 for CSM, covering the full live online weekend workshop, study materials, mock exams and exam application support. PMI's PMP exam fee (US$425 member / US$675 non-member) is paid separately to PMI; the CSM exam is included in the course fee."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Are the classes live or recorded?",
+      "a": "Every batch is taught live by an instructor over two weekend days — not pre-recorded videos. You can ask questions in real time, work through exercises with the cohort, and reach the trainer afterwards for doubts."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certification recognised by employers in Germany?",
+      "a": "Yes. PMP (from PMI) and CSM (from Scrum Alliance) are global credentials recognised identically everywhere, including by employers and recruiters across Germany."
     }
   ],
   "cities": [

@@ -4,40 +4,43 @@
   "timezone": "America/Sao_Paulo",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "R$11,417/month",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/brazil-project-manager-salary-SRCH_IL.0,6_IN36_KO7,22.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Itaú Unibanco",
+    "Nubank",
+    "Vale",
+    "Embraer",
+    "Mercado Livre Brasil"
   ],
-  "industries": "TODO: one sentence on São Paulo's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for São Paulo. Do not publish until replaced.",
+  "industries": "Banking and fintech, continental-scale manufacturing and regional corporate headquarters anchor Latin America's largest market.",
+  "intro": "São Paulo concentrates Latin America's project firepower: Faria Lima's banks and Nubank-led fintechs iterate at Silicon Valley pace, the industrial belt runs the continent's largest manufacturing programs, and global firms manage their South American portfolios from Paulista towers. Brazil's PMI chapters are among the world's largest, so PMP recognition is deep; the tech scene has made Scrum credentials equally mainstream. Our current batches run live online on the IST schedule, which lands 12:30 AM – 9:30 AM São Paulo time — an overnight start we hold as off-hours and state plainly. Register interest for Americas-hours batches to be first notified. The package is constant: live weekend instruction in English, exam application support, calibrated mock exams, and trainer access until you certify.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in São Paulo?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 12:30 AM – 09:30 AM BRT in São Paulo. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in São Paulo?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in São Paulo. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Brazil?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Brazil and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in São Paulo sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Brazil accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for São Paulo",
-    "description": "TODO meta description for São Paulo"
+    "title": "{course} Training in São Paulo — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for São Paulo: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 11
 }

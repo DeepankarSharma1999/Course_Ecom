@@ -4,40 +4,43 @@
   "timezone": "Asia/Muscat",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Muscat)",
+      "amount": "OMR 1,548/month",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/muscat-oman-project-manager-salary-SRCH_IL.0,11_IM1615_KO12,27.htm",
+      "sourceDate": "2026-01-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "OQ",
+    "Petroleum Development Oman",
+    "Bank Muscat",
+    "Omantel",
+    "Asyad Group"
   ],
-  "industries": "TODO: one sentence on Muscat's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Muscat. Do not publish until replaced.",
+  "industries": "Energy, ports and logistics, utilities and banking anchor the capital's project economy under Oman's diversification plans.",
+  "intro": "Muscat professionals watch a diversifying Oman from the centre: ministries headquartered in the capital steer Duqm's industrial rise, tourism development along the coast, and logistics ambitions built on Sohar and Salalah ports. Utilities, OQ's energy portfolio and the banks add steady transformation work. Omanisation policy gives certified nationals a visible edge, and PMP is the credential HR departments in Muscat recognise without explanation. With limited classroom options in the Sultanate, our live online weekend batch is built for exactly this market: two days on the IST schedule at friendly Omani daytime hours, in English, with an international cohort. Employer-ready invoices simplify sponsorship. Afterwards you get careful exam application support, mock exams that match the real difficulty, and a doubt-clearing line to the trainer until you clear.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Muscat?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 07:30 AM – 04:30 PM GST in Muscat. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Muscat?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Muscat. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Oman?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Oman and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Muscat sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Oman accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Muscat",
-    "description": "TODO meta description for Muscat"
+    "title": "{course} Training in Muscat — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Muscat: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 4
 }

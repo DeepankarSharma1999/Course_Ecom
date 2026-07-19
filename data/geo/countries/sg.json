@@ -2,34 +2,61 @@
   "name": "Singapore",
   "iso": "sg",
   "currency": "SGD",
-  "priceDisplay": "TODO e.g. ₹45,000",
+  "pricing": {
+    "pmp-certification-training": {
+      "display": "US$1,295",
+      "amount": 1295,
+      "currency": "USD",
+      "days": 2
+    },
+    "csm-certification-training": {
+      "display": "US$695",
+      "amount": 695,
+      "currency": "USD",
+      "days": 2
+    }
+  },
   "examCost": {
-    "member": "TODO",
-    "nonMember": "TODO",
-    "source": "TODO url"
+    "pmp-certification-training": {
+      "member": "US$425",
+      "nonMember": "US$675",
+      "source": "https://www.pmi.org/certifications/project-management-pmp"
+    },
+    "csm-certification-training": {
+      "member": "Included in course fee (2 attempts)",
+      "nonMember": "Included in course fee (2 attempts)",
+      "source": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+    }
   },
   "salaryCountry": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager",
+      "amount": "S$122,554/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/singapore",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master",
+      "amount": "S$110,938/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/scrum-master/singapore/singapore",
+      "sourceDate": "2026-07-01"
     }
   ],
-  "intro": "TODO: hand-written ~150 word intro for certification training in Singapore. Do not publish until replaced.",
+  "intro": "Singapore treats professional certification the way it treats everything else: as infrastructure. SkillsFuture credits, employer training budgets and a government that benchmarks workforce credentials have made PMP and Scrum certifications near-standard for delivery roles in the city-state's banks, tech regional headquarters and logistics giants. Competition is regional — your CV sits next to candidates from across ASEAN — so the credential is often the filter that decides who interviews. Our live online weekend batch runs on the IST schedule, which lands mid-morning to evening in Singapore: the full workshop fits in one weekend with no annual leave spent. The cohort is international and instruction is case-driven, echoing the multi-market programmes Singapore professionals typically run. Afterwards we support your exam application, provide full-length mock exams, and keep the trainer accessible for questions until you certify.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "How much does certification training cost in Singapore?",
+      "a": "The course fee is US$1,295 for PMP and US$695 for CSM, covering the full live online weekend workshop, study materials, mock exams and exam application support. PMI's PMP exam fee (US$425 member / US$675 non-member) is paid separately to PMI; the CSM exam is included in the course fee."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Are the classes live or recorded?",
+      "a": "Every batch is taught live by an instructor over two weekend days — not pre-recorded videos. You can ask questions in real time, work through exercises with the cohort, and reach the trainer afterwards for doubts."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certification recognised by employers in Singapore?",
+      "a": "Yes. PMP (from PMI) and CSM (from Scrum Alliance) are global credentials recognised identically everywhere, including by employers and recruiters across Singapore."
     }
   ],
   "cities": [

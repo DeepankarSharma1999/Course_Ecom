@@ -4,40 +4,50 @@
   "timezone": "America/New_York",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "US$104,735/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/project-manager-salary-SRCH_KO0,15.htm",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "US$126,951/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Delta Air Lines",
+    "The Home Depot",
+    "Coca-Cola",
+    "NCR Voyix",
+    "Emory Healthcare"
   ],
-  "industries": "TODO: one sentence on Atlanta's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Atlanta. Do not publish until replaced.",
+  "industries": "Payments processing, aviation, corporate headquarters and logistics give Atlanta a broad, credential-conscious project market.",
+  "intro": "Atlanta quietly runs much of America's commerce: the payment processors of Transaction Alley handle most US card volume, Delta operates the world's busiest airport, and headquarters from Coca-Cola to Home Depot manage global programmes from the metro. Fintech growth has made Scrum credentials valuable; the corporate and logistics base keeps PMP in steady demand, and Georgia's film and healthcare booms add more. Our current batches run live online on the IST schedule — overnight in Eastern time, which suits only the genuinely determined, and we flag that rather than obscure it. Register interest for Americas-hours batches to be first in line. Either way: live weekend training, exam application support, full-length mock exams, and trainer access until you pass. Atlanta's payments firms in particular treat certification as a fast-track marker for delivery leadership.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Atlanta?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 11:30 PM – 08:30 AM EDT (prev day) in Atlanta. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Atlanta?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Atlanta. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United States?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United States and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Atlanta sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United States accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Atlanta",
-    "description": "TODO meta description for Atlanta"
+    "title": "{course} Training in Atlanta — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Atlanta: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 9
 }

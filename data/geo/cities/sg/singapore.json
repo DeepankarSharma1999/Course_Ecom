@@ -4,40 +4,50 @@
   "timezone": "Asia/Singapore",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "S$122,554/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/singapore",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "S$110,938/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/scrum-master/singapore/singapore",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "DBS Bank",
+    "Grab",
+    "PSA International",
+    "Singtel",
+    "GovTech Singapore"
   ],
-  "industries": "TODO: one sentence on Singapore's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Singapore. Do not publish until replaced.",
+  "industries": "Banking and finance, regional technology headquarters, and port-driven logistics automation dominate certified project hiring.",
+  "intro": "Singapore's delivery roles sit at the intersection of three demanding worlds: banks running always-on regulatory and digital programmes, tech firms using the city as APAC headquarters, and logistics and port operators automating the world's busiest transhipment hub. Hiring managers here screen on certification because they can — the applicant pool spans all of Asia. A PMP or CSM moves you through that filter, and SkillsFuture-era employers fund it readily. Our live online weekend batch converts the IST schedule to 11:30 AM – 8:30 PM Singapore time: a full workshop across one weekend, no leave taken. The cohort is international, the cases are multi-market programmes — exactly the shape of Singaporean project work. Afterwards you get exam application guidance, full-length mock exams, and a direct line to the trainer for doubts until you clear.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Singapore?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 11:30 AM – 08:30 PM SGT in Singapore. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Singapore?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Singapore. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Singapore?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Singapore and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Singapore sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Singapore accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Singapore",
-    "description": "TODO meta description for Singapore"
+    "title": "{course} Training in Singapore — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Singapore: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 2
 }

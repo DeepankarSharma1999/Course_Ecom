@@ -4,40 +4,50 @@
   "timezone": "Asia/Dubai",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Dubai)",
+      "amount": "AED 276,314/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/united-arab-emirates/dubai",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (Dubai)",
+      "amount": "AED 292,078/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/scrum-master/united-arab-emirates/dubai",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Emirates Group",
+    "Emaar Properties",
+    "DP World",
+    "Majid Al Futtaim",
+    "Mashreq Bank"
   ],
-  "industries": "TODO: one sentence on Dubai's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Dubai. Do not publish until replaced.",
+  "industries": "Real estate and construction, aviation, logistics, banking and government digital programmes generate continuous project hiring.",
+  "intro": "Dubai hires project talent the way other cities hire salespeople — constantly and competitively. Real estate developers, airlines, logistics giants, banks and the Smart Dubai government programmes all run permanent portfolios of change, and recruiters screen hard on certification because the candidate pool is global. A PMP or CSM is frequently the difference between a CV that clears the ATS filter and one that doesn't. Our live online weekend batch runs on the IST schedule, which lands at comfortable daytime hours in Dubai — train from JLT or Deira without giving up a working week that already runs long. The cohort is international, matching how Dubai teams actually look. Fees are invoiced in US dollars for straightforward employer sponsorship. Afterwards: exam application guidance, full mock exams, and trainer access until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Dubai?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 07:30 AM – 04:30 PM GST in Dubai. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Dubai?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Dubai. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United Arab Emirates?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United Arab Emirates and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Dubai sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United Arab Emirates accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Dubai",
-    "description": "TODO meta description for Dubai"
+    "title": "{course} Training in Dubai — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Dubai: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 2
 }

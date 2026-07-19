@@ -4,40 +4,43 @@
   "timezone": "Australia/Sydney",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "A$140,000/yr",
+      "source": "Glassdoor Australia",
+      "sourceUrl": "https://www.glassdoor.com.au/Salaries/sydney-scrum-master-salary-SRCH_IL.0,6_IM962_KO7,19.htm",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Commonwealth Bank",
+    "Westpac",
+    "Atlassian",
+    "Transport for NSW",
+    "Macquarie Group"
   ],
-  "industries": "TODO: one sentence on Sydney's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Sydney. Do not publish until replaced.",
+  "industries": "Banking transformation, the Tech Central precinct and a decade-long infrastructure pipeline drive certified hiring.",
+  "intro": "Sydney's project market is Australia's deepest: the banks' transformation portfolios run from Barangaroo, Tech Central is assembling the southern hemisphere's largest technology precinct, and a metro-and-motorway infrastructure pipeline keeps program roles filled for a decade ahead. Certification is priced into salaries openly — Scrum credentials for the digital delivery world, PMP for infrastructure and financial governance. Our current batches run live online on the IST schedule, which in Sydney means 1:30 PM – 10:30 PM: the final stretch runs late, so we hold this page as off-hours and say so honestly. Register interest for APAC-hours batches and you'll be first notified. The format regardless: live weekend instruction, exam application support, full-length mocks, and trainer access until you pass. Cohorts regularly include Sydney bankers, consultants and public-sector delivery leads comparing notes across sectors.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Sydney?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 01:30 PM – 10:30 PM GMT+10 in Sydney. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Sydney?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Sydney. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Australia?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Australia and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Sydney sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Australia accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Sydney",
-    "description": "TODO meta description for Sydney"
+    "title": "{course} Training in Sydney — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Sydney: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 10
 }

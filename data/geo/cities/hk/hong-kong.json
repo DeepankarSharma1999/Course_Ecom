@@ -4,40 +4,43 @@
   "timezone": "Asia/Hong_Kong",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "HK$39,000–49,000/month",
+      "source": "Jobsdb Hong Kong",
+      "sourceUrl": "https://hk.jobsdb.com/career-advice/role/project-manager/salary",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "HSBC",
+    "AIA",
+    "Cathay Pacific",
+    "Hong Kong Jockey Club",
+    "Bank of China (Hong Kong)"
   ],
-  "industries": "TODO: one sentence on Hong Kong's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Hong Kong. Do not publish until replaced.",
+  "industries": "Banking, insurance and regulatory change programmes dominate, with fintech and virtual banks growing the agile side.",
+  "intro": "Hong Kong project careers are built inside the finance machine: banks and insurers here run continuous regulatory change — HKMA directives, cross-border wealth schemes, digital banking licences — and each programme needs certified delivery leads who can survive audit scrutiny. Global reporting lines mean hiring managers default to internationally recognised credentials; PMP for programme governance, Scrum certifications for the fintech and virtual-bank scene. Our live online weekend batch runs on the IST schedule, converting to 11:30 AM – 8:30 PM Hong Kong time: the full workshop in one weekend, taught in English with an international cohort that mirrors the territory's workforce. Corporate-ready invoices ease sponsorship. Afterwards you get precise exam application support, mock exams tuned to real difficulty, and continued trainer access for doubts until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Hong Kong?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 11:30 AM – 08:30 PM HKT in Hong Kong. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Hong Kong?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Hong Kong. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Hong Kong?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Hong Kong and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Hong Kong sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Hong Kong accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Hong Kong",
-    "description": "TODO meta description for Hong Kong"
+    "title": "{course} Training in Hong Kong — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Hong Kong: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 5
 }

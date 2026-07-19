@@ -2,34 +2,54 @@
   "name": "Bangladesh",
   "iso": "bd",
   "currency": "BDT",
-  "priceDisplay": "TODO e.g. ₹45,000",
+  "pricing": {
+    "pmp-certification-training": {
+      "display": "US$1,295",
+      "amount": 1295,
+      "currency": "USD",
+      "days": 2
+    },
+    "csm-certification-training": {
+      "display": "US$695",
+      "amount": 695,
+      "currency": "USD",
+      "days": 2
+    }
+  },
   "examCost": {
-    "member": "TODO",
-    "nonMember": "TODO",
-    "source": "TODO url"
+    "pmp-certification-training": {
+      "member": "US$425",
+      "nonMember": "US$675",
+      "source": "https://www.pmi.org/certifications/project-management-pmp"
+    },
+    "csm-certification-training": {
+      "member": "Included in course fee (2 attempts)",
+      "nonMember": "Included in course fee (2 attempts)",
+      "source": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+    }
   },
   "salaryCountry": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager",
+      "amount": "BDT 72,500/month",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/bangladesh-project-manager-salary-SRCH_IL.0,10_IN27_KO11,26.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
-  "intro": "TODO: hand-written ~150 word intro for certification training in Bangladesh. Do not publish until replaced.",
+  "intro": "Bangladesh's project economy is bigger than its certification market — which is the opportunity. Mega-infrastructure like the Padma Bridge and metro rail, a garment industry modernising under international compliance pressure, and a fast-growing software export sector all need formal project management, while certified professionals remain scarce in Dhaka. A PMP or CSM therefore differentiates sharply, both locally and for the Gulf and Southeast Asian roles many Bangladeshi professionals target. Our live online weekend batch runs on the IST schedule, converting to near-identical local hours in Bangladesh, so the workshop fits one weekend cleanly. Instruction is in English with an international cohort, and invoices support employer sponsorship. Afterwards you get step-by-step exam application help, full mock exams, and direct trainer access for doubts until you certify.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "How much does certification training cost in Bangladesh?",
+      "a": "The course fee is US$1,295 for PMP and US$695 for CSM, covering the full live online weekend workshop, study materials, mock exams and exam application support. PMI's PMP exam fee (US$425 member / US$675 non-member) is paid separately to PMI; the CSM exam is included in the course fee."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Are the classes live or recorded?",
+      "a": "Every batch is taught live by an instructor over two weekend days — not pre-recorded videos. You can ask questions in real time, work through exercises with the cohort, and reach the trainer afterwards for doubts."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certification recognised by employers in Bangladesh?",
+      "a": "Yes. PMP (from PMI) and CSM (from Scrum Alliance) are global credentials recognised identically everywhere, including by employers and recruiters across Bangladesh."
     }
   ],
   "cities": [],

@@ -12,9 +12,9 @@ Routes (distinct from the legacy noindex `/{country}/{course}` DB variants):
 /{course}/{country}/{city}   city page        e.g. /pmp-certification-training/in/bangalore
 ```
 
-Every page **renders** today, but ships `noindex` and stays out of the sitemap
-until it passes the publishing gate. Nothing here invents data — every fact is
-a `TODO` until you supply it.
+Every page renders with full content, but ships `noindex` and stays out of the
+sitemap until it passes the publishing gate AND its releaseWeek is reached —
+set `RELEASE_WEEK` in Vercel to start releasing pages.
 
 ## Commands
 
@@ -28,7 +28,7 @@ a `TODO` until you supply it.
 
 A city page becomes indexable (robots noindex removed + added to sitemap) only when ALL hold:
 
-1. **No `TODO` remains** anywhere in its city file, or in its country file's `priceDisplay`/`examCost`.
+1. **No `TODO` remains** anywhere in its city file, or in its country file's `pricing`/`examCost` (both keyed per course slug).
 2. **Fit check passes** — some batch track's full session lands within 07:00–22:00 city-local time.
 3. Every **salary entry** has an `http(s)` `sourceUrl` and a `sourceDate` within the last 12 months.
 4. **Intro is 120–180 words** and <60% trigram-similar to every other city intro (>60% fails the build once both intros are real).
@@ -38,25 +38,35 @@ A city page becomes indexable (robots noindex removed + added to sitemap) only w
 Country hubs: same rules minus the city-only checks (no fit check / meta / employers).
 Logic lives in [lib/geo-pages/gate.ts](lib/geo-pages/gate.ts).
 
-## How to fill a city file
+## Data status (July 2026)
 
-Edit `data/geo/cities/{country}/{city}.json` and replace every `TODO`:
+All 94 files are **fully filled** — no TODOs remain. Sources used:
+
+- **Prices/days**: the 18-Jul-2026 course sheet (ROW USD: PMP $1,295, CSM $695, 2 days each); India uses the site's DB price (₹24,999).
+- **Exam fees**: PMI 2026 fees (US$425 member / US$675 non-member, pmi.org); CSM exam is included in the course fee (Scrum Alliance).
+- **Salaries**: July 2026 figures from Glassdoor/SalaryExpert/PayScale/Indeed with the source URL and as-of date stored per entry. Cities without a city-specific figure reuse the country entry labeled "(national average)".
+- **Intros/FAQs/employers**: editorially written; FAQs embed exact per-city time conversions computed from the batch track.
+
+To update any fact later, edit the JSON field and rebuild — the validator re-checks everything. Salary entries older than 12 months automatically demote a page to draft, so refresh `sourceDate` (with a re-checked figure) at least yearly.
+
+## How to edit a city file
+
+`data/geo/cities/{country}/{city}.json` — the shape:
 
 ```jsonc
 {
-  "salary": [{ "role": "Project Manager", "amount": "₹19,20,000/yr",
-               "source": "Glassdoor", "sourceUrl": "https://…", "sourceDate": "2026-05-01" }],
-  "employers": ["…"],                    // real, verifiable employers only
+  "salary": [{ "role": "Project Manager", "amount": "S$122,554/yr",
+               "source": "ERI SalaryExpert", "sourceUrl": "https://…", "sourceDate": "2026-07-01" }],
+  "employers": ["…"],
   "industries": "one sentence",
-  "intro": "hand-written, 120–180 words, unique to this city",
-  "faq": [ { "q": "…", "a": "…" }, … ],  // >=4, city-specific
-  "meta": { "title": "…", "description": "…" },
-  "releaseWeek": 3                        // when it may enter the sitemap
+  "intro": "unique, 120–180 words",
+  "faq": [ { "q": "…", "a": "…" }, … ],   // >=4
+  "meta": { "title": "{course} Training in …", "description": "…" },  // {course} is replaced per course page
+  "releaseWeek": 3
 }
 ```
 
-Then fill the country file's `priceDisplay` + `examCost` (they gate every city in
-that country), run `npm run validate:geo`, and confirm the page shows `✓ INDEXABLE`.
+Country files hold `pricing` and `examCost` keyed by course slug — each entry gates every city in that country.
 
 ## How to add a batch track
 
@@ -82,25 +92,9 @@ Variables → `RELEASE_WEEK`) and redeploy. Seeded values stagger countries in
 tiers (India wk 1 → AE/SG wk 2 → … → NZ/MX/BR wk 11), so even fully-filled pages
 enter the index at a controlled pace. Re-tier by editing `releaseWeek` per file.
 
-## TODO data you must supply
+## Coverage
 
-Per **country** (31 files, `data/geo/countries/{iso}.json`) — in, ae, sa, qa, kw,
-om, bh, sg, my, id, ph, th, hk, bd, lk, gb, ie, de, nl, fr, ch, za, ng, ke, eg,
-us, ca, au, nz, mx, br:
-
-- `priceDisplay` — course fee in local currency (display string)
-- `examCost.member` / `examCost.nonMember` / `examCost.source` (URL)
-- `salaryCountry[]` — role, amount, source, sourceUrl, sourceDate
-- `intro` — ~150 words, hand-written
-- `faq[]`
-
-Per **city** (63 files, `data/geo/cities/{iso}/{slug}.json`):
-
-- `salary[]` (role, amount, source, sourceUrl, sourceDate) · `employers[]` ·
-  `industries` · `intro` (120–180 words, unique) · `faq[]` (≥4) ·
-  `meta.title` / `meta.description`
-
-Cities per country: **in** bangalore, mumbai, delhi-ncr, hyderabad, pune, chennai,
+31 countries / 63 cities, all filled. Cities per country: **in** bangalore, mumbai, delhi-ncr, hyderabad, pune, chennai,
 kolkata, ahmedabad · **ae** dubai, abu-dhabi, sharjah · **sa** riyadh, jeddah,
 dammam · **qa** doha · **kw** kuwait-city · **om** muscat · **sg** singapore ·
 **my** kuala-lumpur · **id** jakarta · **ph** manila · **th** bangkok ·
@@ -119,5 +113,5 @@ calgary, montreal · **au** sydney, melbourne, brisbane, perth · **nz** aucklan
   (the templates auto-hide any section whose data is still `TODO`).
 - Every displayed time carries a timezone label — enforced by the engine in
   [lib/geo-pages/timezone.ts](lib/geo-pages/timezone.ts).
-- JSON-LD never emits `AggregateRating`/`Review`; `offers` is omitted until
-  `priceDisplay` is real; `CourseInstance` dates come from the actual track.
+- JSON-LD never emits `AggregateRating`/`Review`; `offers` uses the per-course
+  price and currency; `CourseInstance` dates come from the actual track.

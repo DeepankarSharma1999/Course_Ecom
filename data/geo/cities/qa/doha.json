@@ -4,40 +4,43 @@
   "timezone": "Asia/Qatar",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "QAR 228,000/yr",
+      "source": "JobMeter",
+      "sourceUrl": "https://www.jobmeter.app/blog/project-manager-salary-qatar",
+      "sourceDate": "2026-01-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "QatarEnergy",
+    "Qatar Airways",
+    "Ooredoo",
+    "QNB",
+    "Hamad Medical Corporation"
   ],
-  "industries": "TODO: one sentence on Doha's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Doha. Do not publish until replaced.",
+  "industries": "LNG and energy expansion, aviation, banking and national digital-government programmes drive certified project hiring.",
+  "intro": "Doha's project pipeline did not stop with the World Cup — it changed shape. LNG expansion at Ras Laffan is the world's largest, Qatar's ministries are digitising services under a national programme, and the city keeps building out transport, health and education infrastructure. Employers from QatarEnergy to the banks screen project hires on certification because Doha's talent market is thin and international: the credential is the common yardstick. Our live online weekend batch runs on the IST schedule, landing at comfortable daytime hours in Doha, so you complete the whole workshop in one weekend from home. Teaching is in English with a global cohort that mirrors Qatari workplaces. Invoices are employer-sponsorship ready. Then comes the follow-through: exam application guidance, realistic mock exams, and open trainer access for questions until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Doha?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 06:30 AM – 03:30 PM AST in Doha. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Doha?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Doha. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Qatar?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Qatar and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Doha sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Qatar accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Doha",
-    "description": "TODO meta description for Doha"
+    "title": "{course} Training in Doha — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Doha: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 3
 }

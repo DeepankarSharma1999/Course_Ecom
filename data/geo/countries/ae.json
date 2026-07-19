@@ -2,34 +2,61 @@
   "name": "United Arab Emirates",
   "iso": "ae",
   "currency": "AED",
-  "priceDisplay": "TODO e.g. ₹45,000",
+  "pricing": {
+    "pmp-certification-training": {
+      "display": "US$1,295",
+      "amount": 1295,
+      "currency": "USD",
+      "days": 2
+    },
+    "csm-certification-training": {
+      "display": "US$695",
+      "amount": 695,
+      "currency": "USD",
+      "days": 2
+    }
+  },
   "examCost": {
-    "member": "TODO",
-    "nonMember": "TODO",
-    "source": "TODO url"
+    "pmp-certification-training": {
+      "member": "US$425",
+      "nonMember": "US$675",
+      "source": "https://www.pmi.org/certifications/project-management-pmp"
+    },
+    "csm-certification-training": {
+      "member": "Included in course fee (2 attempts)",
+      "nonMember": "Included in course fee (2 attempts)",
+      "source": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+    }
   },
   "salaryCountry": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Dubai)",
+      "amount": "AED 276,314/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/united-arab-emirates/dubai",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (Dubai)",
+      "amount": "AED 292,078/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/scrum-master/united-arab-emirates/dubai",
+      "sourceDate": "2026-07-01"
     }
   ],
-  "intro": "TODO: hand-written ~150 word intro for certification training in United Arab Emirates. Do not publish until replaced.",
+  "intro": "The UAE runs on projects: towers, airports, logistics corridors, digital government platforms. That project economy makes the Emirates one of the strongest markets anywhere for certified project managers and Scrum Masters, and most large employers in Dubai and Abu Dhabi now list PMP or an agile credential in job descriptions rather than treating it as a bonus. Our live online weekend batches run on the IST schedule, which lands in comfortable daytime hours across the UAE — no late nights, no commute across Sheikh Zayed Road. You train with an international cohort, which mirrors how UAE workplaces actually operate. Fees are quoted in US dollars and we issue invoices that UAE employers accept for training sponsorship. After the workshop you get exam application help and mock exams, plus guidance on how UAE recruiters read certifications when screening for programme and delivery roles.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "How much does certification training cost in United Arab Emirates?",
+      "a": "The course fee is US$1,295 for PMP and US$695 for CSM, covering the full live online weekend workshop, study materials, mock exams and exam application support. PMI's PMP exam fee (US$425 member / US$675 non-member) is paid separately to PMI; the CSM exam is included in the course fee."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Are the classes live or recorded?",
+      "a": "Every batch is taught live by an instructor over two weekend days — not pre-recorded videos. You can ask questions in real time, work through exercises with the cohort, and reach the trainer afterwards for doubts."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certification recognised by employers in United Arab Emirates?",
+      "a": "Yes. PMP (from PMI) and CSM (from Scrum Alliance) are global credentials recognised identically everywhere, including by employers and recruiters across United Arab Emirates."
     }
   ],
   "cities": [

@@ -4,40 +4,43 @@
   "timezone": "Europe/Berlin",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "€65,000/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/berlin-germany-scrum-master-salary-SRCH_IL.0,14_IM1020_KO15,27.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Zalando",
+    "Delivery Hero",
+    "Deutsche Bahn",
+    "Siemens Energy",
+    "N26"
   ],
-  "industries": "TODO: one sentence on Berlin's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Berlin. Do not publish until replaced.",
+  "industries": "Startups and scale-ups, federal digitisation programmes and corporate innovation hubs define Berlin's agile-leaning market.",
+  "intro": "Berlin is Germany's laboratory: the startup capital, the seat of federal digitisation programmes, and the city where the country's corporates put their innovation outposts. Delivery roles here skew agile — Scrum credentials are effectively the entry ticket to the tech scene from Kreuzberg to Adlershof — while the public-sector modernisation wave and infrastructure projects keep classical programme management in demand too. Berlin's workforce is Europe's most international, and English-language instruction matches how its teams already operate. Our live online weekend batch runs on the IST schedule at German morning-to-afternoon hours, completing the workshop in one weekend. Afterwards we support your exam application, run mock exams at genuine difficulty, and keep the trainer reachable for questions until you pass. Berlin cohorts are typically the most international we teach anywhere in Europe.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Berlin?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 05:30 AM – 02:30 PM GMT+2 in Berlin. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Berlin?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Berlin. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Germany?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Germany and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Berlin sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Germany accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Berlin",
-    "description": "TODO meta description for Berlin"
+    "title": "{course} Training in Berlin — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Berlin: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 7
 }

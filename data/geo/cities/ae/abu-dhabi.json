@@ -4,40 +4,50 @@
   "timezone": "Asia/Dubai",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Dubai)",
+      "amount": "AED 276,314/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/united-arab-emirates/dubai",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (Dubai)",
+      "amount": "AED 292,078/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/scrum-master/united-arab-emirates/dubai",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "ADNOC",
+    "Mubadala",
+    "Etihad Airways",
+    "Masdar",
+    "First Abu Dhabi Bank"
   ],
-  "industries": "TODO: one sentence on Abu Dhabi's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Abu Dhabi. Do not publish until replaced.",
+  "industries": "Energy, sovereign investment, aviation and government transformation programmes dominate the capital's project market.",
+  "intro": "Abu Dhabi's project economy is institutional: sovereign entities, energy majors and government departments running multi-year capital and transformation programmes. ADNOC's ecosystem alone sustains thousands of project roles, while Masdar, Etihad and the financial free zone at ADGM add renewables, aviation and fintech portfolios. These employers follow structured competency frameworks, and PMP is usually written directly into role requirements; agile certifications are climbing as digital government matures. Our live online weekend batch fits the capital's working culture — two days on the IST schedule, converting to friendly daytime hours, no commute to a training centre. You study with an international cohort and receive US-dollar invoices that sponsorship departments process easily. After the workshop we support the exam application, run realistic mocks, and keep the trainer available for questions until you clear.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Abu Dhabi?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 07:30 AM – 04:30 PM GST in Abu Dhabi. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Abu Dhabi?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Abu Dhabi. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United Arab Emirates?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United Arab Emirates and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Abu Dhabi sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United Arab Emirates accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Abu Dhabi",
-    "description": "TODO meta description for Abu Dhabi"
+    "title": "{course} Training in Abu Dhabi — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Abu Dhabi: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 2
 }

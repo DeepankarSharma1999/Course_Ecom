@@ -4,40 +4,50 @@
   "timezone": "Asia/Kolkata",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager / Scrum Master (national average)",
+      "amount": "₹19,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-project-manager-salary-SRCH_KO0,28.htm",
+      "sourceDate": "2026-05-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "₹15,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "HDFC Bank",
+    "ICICI Bank",
+    "Reliance Industries",
+    "JPMorgan Chase",
+    "Accenture"
   ],
-  "industries": "TODO: one sentence on Mumbai's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Mumbai. Do not publish until replaced.",
+  "industries": "Banking, insurance and financial services dominate, alongside corporate headquarters, media and a fast-growing fintech sector.",
+  "intro": "Mumbai's certification demand comes from a different place than the tech cities: banking, insurance, media and the corporate headquarters economy. BFSI transformation programmes — core banking replacements, digital onboarding, regulatory change — are run out of Lower Parel, BKC and Powai, and they hire project managers who can show formal method, not just experience. A PMP is close to mandatory in bank PMOs; Scrum credentials are spreading fast through fintech and broking. For a city where commutes eat evenings, a live online weekend batch is the practical route: two days, taught on Indian Standard Time, no travel to a training centre in traffic. Case discussions draw on financial-services delivery, vendor governance and compliance-heavy programmes. After the workshop we handle exam application guidance, provide mock exams, and keep the trainer accessible for doubts until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Mumbai?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 09:00 AM – 06:00 PM IST in Mumbai. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Mumbai?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Mumbai. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from India?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in India and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Mumbai sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in India accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Mumbai",
-    "description": "TODO meta description for Mumbai"
+    "title": "{course} Training in Mumbai — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Mumbai: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 1
 }

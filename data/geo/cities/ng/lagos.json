@@ -4,40 +4,43 @@
   "timezone": "Africa/Lagos",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "NGN 291,667/month",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/nigeria-project-manager-salary-SRCH_IL.0,7_IN177_KO8,23.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Access Bank",
+    "Flutterwave",
+    "MTN Nigeria",
+    "Dangote Group",
+    "Shell Nigeria"
   ],
-  "industries": "TODO: one sentence on Lagos's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Lagos. Do not publish until replaced.",
+  "industries": "Banking and fintech, oil and gas, telecoms and the new Lekki industrial corridor drive Lagos's project hiring.",
+  "intro": "Lagos compresses Nigeria's entire project economy into one metropolis: the banks of Victoria Island digitising at speed, fintech unicorns scaling payment rails across Africa, oil and gas operators managing joint-venture capital projects, and Lekki's new port and free zone adding industrial programmes. Employers here move fast and screen faster — a PMP or CSM is the quickest way to establish credibility in a market where certified professionals remain scarce relative to demand. Our live online weekend batch runs on the IST schedule, converting to 4:30 AM – 1:30 PM Lagos time; the early start means your weekend afternoons stay yours. Instruction is in English with an international cohort. Afterwards comes exam application support, realistic full-length mocks, and direct trainer access for doubts until you clear.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Lagos?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 04:30 AM – 01:30 PM WAT in Lagos. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Lagos?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Lagos. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Nigeria?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Nigeria and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Lagos sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Nigeria accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Lagos",
-    "description": "TODO meta description for Lagos"
+    "title": "{course} Training in Lagos — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Lagos: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 8
 }

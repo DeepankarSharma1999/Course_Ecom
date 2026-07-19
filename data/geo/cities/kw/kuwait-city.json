@@ -4,40 +4,43 @@
   "timezone": "Asia/Kuwait",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "KWD 1,658/month",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/kuwait-project-manager-salary-SRCH_IL.0,6_IC3470419_KO7,22.htm",
+      "sourceDate": "2026-04-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Kuwait Oil Company",
+    "KNPC",
+    "Zain",
+    "National Bank of Kuwait",
+    "Alghanim Industries"
   ],
-  "industries": "TODO: one sentence on Kuwait City's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Kuwait City. Do not publish until replaced.",
+  "industries": "Oil and gas capital programmes, banking, telecom and government infrastructure initiatives generate most project-management demand.",
+  "intro": "Kuwait City's project roles flow from two sources: the oil sector's capital programmes — KOC and KNPC run some of the region's largest upstream and refining projects — and a government pushing long-delayed infrastructure, housing and digital initiatives. Both worlds are formal in their hiring: tenders specify certified project staff, and PMP is the qualification Kuwaiti employers cite most. Local classroom options are scarce, so live online is how Kuwait certifies. Our batch compresses the workshop into one weekend on the IST schedule, converting to comfortable daytime hours in Kuwait, taught in English with an international cohort. Invoices are structured for employer sponsorship. After the two days, we help you assemble the exam application correctly, drill you with full mock exams, and keep the trainer reachable for doubts until you have the certificate.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Kuwait City?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 06:30 AM – 03:30 PM AST in Kuwait City. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Kuwait City?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Kuwait City. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Kuwait?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Kuwait and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Kuwait City sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Kuwait accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Kuwait City",
-    "description": "TODO meta description for Kuwait City"
+    "title": "{course} Training in Kuwait City — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Kuwait City: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 4
 }

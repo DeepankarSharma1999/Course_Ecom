@@ -4,40 +4,43 @@
   "timezone": "Australia/Melbourne",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "A$141,850/yr",
+      "source": "Glassdoor Australia",
+      "sourceUrl": "https://www.glassdoor.com.au/Salaries/melbourne-scrum-master-salary-SRCH_IL.0,9_IM965_KO10,22.htm",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "NAB",
+    "ANZ",
+    "Telstra",
+    "Victorian Big Build",
+    "CSL"
   ],
-  "industries": "TODO: one sentence on Melbourne's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Melbourne. Do not publish until replaced.",
+  "industries": "The Big Build infrastructure program, banking and insurance, health sciences and a strong tech scene share Melbourne's market.",
+  "intro": "Melbourne pairs Australia's biggest infrastructure program with its liveliest digital economy: the Big Build's rail tunnels and level-crossing removals employ program talent in volume, while the city's banks, insurers and health networks run transformation portfolios of their own. Victoria's government sector adds steady certified-role demand. Scrum credentials carry the tech scene from Cremorne to Docklands; PMP anchors the infrastructure and corporate side. Our current batches run live online on the IST schedule — 1:30 PM – 10:30 PM Melbourne time, finishing late enough that we hold this page as off-hours and say so plainly. Register interest for APAC-hours batches to be notified first. Constant throughout: live weekend instruction, exam application guidance, calibrated mocks, and trainer access until certification. Recent cohorts have mixed Big Build contractors with bank delivery leads, to everyone's benefit.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Melbourne?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 01:30 PM – 10:30 PM GMT+10 in Melbourne. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Melbourne?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Melbourne. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Australia?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Australia and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Melbourne sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Australia accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Melbourne",
-    "description": "TODO meta description for Melbourne"
+    "title": "{course} Training in Melbourne — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Melbourne: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 10
 }

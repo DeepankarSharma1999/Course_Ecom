@@ -4,40 +4,43 @@
   "timezone": "Asia/Jakarta",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "Rp 508,722,851/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/indonesia",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "GoTo",
+    "Bank Mandiri",
+    "Telkom Indonesia",
+    "Pertamina",
+    "Unilever Indonesia"
   ],
-  "industries": "TODO: one sentence on Jakarta's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Jakarta. Do not publish until replaced.",
+  "industries": "Digital platforms, state-owned enterprises, banking and consumer goods drive Jakarta's demand for certified delivery professionals.",
+  "intro": "Jakarta runs the largest digital economy in Southeast Asia, and its project hiring reflects that scale: super-apps and unicorns building at speed, state enterprises modernising everything from ports to power, banks defending against digital challengers, and conglomerates professionalising family businesses. International certification cuts through this crowded, relationship-driven market — a PMP or CSM tells a Jakarta employer instantly that you work to global method. Our live online weekend batch runs on the IST schedule, which lands at 10:30 AM – 7:30 PM Western Indonesia time: comfortable, commute-free, complete in one weekend. Instruction is in English alongside an international cohort — practical preparation for the multinational and regional roles most candidates target. We follow up with exam application support, full-length mock exams, and open trainer access until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Jakarta?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 10:30 AM – 07:30 PM WIB in Jakarta. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Jakarta?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Jakarta. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Indonesia?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Indonesia and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Jakarta sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Indonesia accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Jakarta",
-    "description": "TODO meta description for Jakarta"
+    "title": "{course} Training in Jakarta — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Jakarta: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 5
 }

@@ -4,40 +4,50 @@
   "timezone": "Europe/London",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Agile Project Manager / Scrum Master (national average)",
+      "amount": "£59,657/yr",
+      "source": "Glassdoor UK",
+      "sourceUrl": "https://www.glassdoor.co.uk/Salaries/agile-project-manager-scrum-master-salary-SRCH_KO0,34.htm",
+      "sourceDate": "2026-05-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "£57,652/yr",
+      "source": "Glassdoor UK",
+      "sourceUrl": "https://www.glassdoor.co.uk/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "BBC",
+    "Barclays Technology Centre",
+    "Booking.com",
+    "Co-op Group",
+    "AutoTrader"
   ],
-  "industries": "TODO: one sentence on Manchester's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Manchester. Do not publish until replaced.",
+  "industries": "Media and broadcasting, banking technology centres, e-commerce and a growing public-sector hub economy anchor project demand.",
+  "intro": "Manchester has built the UK's most convincing second tech economy: the BBC and ITV anchor MediaCityUK, global banks run northern technology centres here, and the city's startup scene scales on lower costs than London with talent from four universities. Public-sector relocations — including major government hubs — add programme roles continuously. Northern employers fund certification because it anchors the salary uplift the region's tech boom is producing; PMP and Scrum credentials both feature in Manchester job adverts routinely. Our live online weekend batch runs early UK hours on the IST schedule, finishing by mid-afternoon each day — the workshop fits one weekend with afternoons spare. Afterwards you get structured exam application support, realistic mock exams, and open access to the trainer for questions until you're certified.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Manchester?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 04:30 AM – 01:30 PM GMT+1 in Manchester. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Manchester?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Manchester. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United Kingdom?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United Kingdom and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Manchester sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United Kingdom accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Manchester",
-    "description": "TODO meta description for Manchester"
+    "title": "{course} Training in Manchester — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Manchester: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 6
 }

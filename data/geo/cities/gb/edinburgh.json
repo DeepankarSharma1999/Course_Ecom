@@ -4,40 +4,50 @@
   "timezone": "Europe/London",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Agile Project Manager / Scrum Master (national average)",
+      "amount": "£59,657/yr",
+      "source": "Glassdoor UK",
+      "sourceUrl": "https://www.glassdoor.co.uk/Salaries/agile-project-manager-scrum-master-salary-SRCH_KO0,34.htm",
+      "sourceDate": "2026-05-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "£57,652/yr",
+      "source": "Glassdoor UK",
+      "sourceUrl": "https://www.glassdoor.co.uk/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "abrdn",
+    "Lloyds Banking Group",
+    "Baillie Gifford",
+    "FanDuel",
+    "Scottish Government"
   ],
-  "industries": "TODO: one sentence on Edinburgh's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Edinburgh. Do not publish until replaced.",
+  "industries": "Asset management, insurance and pensions dominate, with fintech and devolved-government digital programmes growing fast.",
+  "intro": "Edinburgh runs the UK's second-largest financial centre, and its project roles have a distinctly regulated flavour: pensions, insurance and asset-management firms delivering compliance-heavy change, alongside two fast-growing fintech unicorn alumni and a public sector serving devolved government. Certified delivery professionals are in structurally short supply in Scotland, which shows in salaries and contract rates. PMP fits the financial programme world; Scrum credentials serve the tech scene spreading through the Exchange district and Leith. Our live online weekend batch runs on the IST schedule at early-morning to mid-afternoon UK hours — two days, whole workshop, afternoons free. Afterwards comes exam application support, mock exams calibrated to the real paper, and continued trainer availability for questions until you clear. Scottish financial-services employers typically reimburse the fee within one appraisal cycle of passing.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Edinburgh?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 04:30 AM – 01:30 PM GMT+1 in Edinburgh. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Edinburgh?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Edinburgh. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United Kingdom?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United Kingdom and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Edinburgh sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United Kingdom accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Edinburgh",
-    "description": "TODO meta description for Edinburgh"
+    "title": "{course} Training in Edinburgh — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Edinburgh: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 6
 }

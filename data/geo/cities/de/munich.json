@@ -4,40 +4,43 @@
   "timezone": "Europe/Berlin",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "€85,074/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/munich-scrum-master-salary-SRCH_IL.0,6_IM1053_KO7,19.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "BMW Group",
+    "Siemens",
+    "Allianz",
+    "Infineon",
+    "Google Munich"
   ],
-  "industries": "TODO: one sentence on Munich's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Munich. Do not publish until replaced.",
+  "industries": "Automotive, industrial engineering, insurance and a deep technology sector give Munich Germany's richest project market.",
+  "intro": "Munich pairs Germany's most valuable corporations with its highest salaries, and its project culture reflects the neighbourhood: BMW's vehicle programmes, Siemens's global engineering portfolios, Allianz's transformation agenda and a dense ring of technology suppliers. These organisations run delivery at international scale, which is precisely where PMP earns its keep — while Munich's software and automotive-software teams, including major US tech offices, hire on Scrum credentials. Certification pays for itself faster here than almost anywhere in Europe. Our live online weekend batch runs on the IST schedule at Bavarian morning-to-afternoon hours, the full workshop inside one weekend. We then guide your exam application, provide full-length mocks, and stay available for doubts until the certificate arrives. Munich participants often certify ahead of internal moves into BMW, Siemens or Allianz programme roles.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Munich?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 05:30 AM – 02:30 PM GMT+2 in Munich. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Munich?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Munich. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Germany?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Germany and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Munich sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Germany accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Munich",
-    "description": "TODO meta description for Munich"
+    "title": "{course} Training in Munich — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Munich: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 7
 }

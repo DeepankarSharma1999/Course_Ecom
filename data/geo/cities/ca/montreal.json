@@ -4,40 +4,43 @@
   "timezone": "America/Toronto",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager / Scrum Master",
+      "amount": "CA$81,824/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/montreal-qc-canada-project-manager-scrum-master-salary-SRCH_IL.0,18_IM990_KO19,47.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Bombardier",
+    "CAE",
+    "Ubisoft Montréal",
+    "National Bank of Canada",
+    "Air Canada"
   ],
-  "industries": "TODO: one sentence on Montreal's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Montreal. Do not publish until replaced.",
+  "industries": "Aerospace manufacturing, AI research labs, game studios and banking operations define Montreal's dual-natured market.",
+  "intro": "Montreal runs Canada's aerospace and AI economies side by side: Bombardier, CAE and the supplier network make it one of the world's three aerospace capitals, while Mila's research gravity has drawn every major AI lab to the city. Add the game studios, banks' Quebec operations and infrastructure renewal, and delivery roles span both formal program management and deeply agile software work. Bilingual professionals with international certification are especially mobile here. Our current batches run live online on the IST schedule — overnight in Eastern time, which we state honestly rather than minimize. Register interest to be first notified when Americas-hours batches open. Unchanged throughout: live weekend instruction, exam application support, calibrated mock exams, and trainer access until you clear. Bilingual course materials are not required — the exam itself is offered in English worldwide.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Montreal?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 11:30 PM – 08:30 AM EDT (prev day) in Montreal. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Montreal?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Montreal. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Canada?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Canada and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Montreal sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Canada accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Montreal",
-    "description": "TODO meta description for Montreal"
+    "title": "{course} Training in Montreal — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Montreal: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 10
 }

@@ -4,40 +4,50 @@
   "timezone": "Asia/Kolkata",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager / Scrum Master (national average)",
+      "amount": "₹19,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-project-manager-salary-SRCH_KO0,28.htm",
+      "sourceDate": "2026-05-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "₹15,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Zydus Lifesciences",
+    "Adani Group",
+    "Torrent Pharmaceuticals",
+    "TCS",
+    "Nirma"
   ],
-  "industries": "TODO: one sentence on Ahmedabad's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Ahmedabad. Do not publish until replaced.",
+  "industries": "Pharmaceuticals, chemicals and textiles manufacturing lead, with GIFT City adding financial services and a growing IT sector.",
+  "intro": "Ahmedabad's project demand is entrepreneurial: pharmaceutical plants scaling for global supply, chemical and textile manufacturers modernising, GIFT City pulling financial-services operations into Gujarat, and a construction boom that runs on formal project controls. Employers here are often promoter-led businesses professionalising fast — and hiring certified project managers is how they do it. PMP signals exactly the discipline these organisations are buying; agile credentials are rising with the city's growing IT and fintech presence. Our live online weekend batch runs two days on Indian Standard Time, letting professionals from Ahmedabad and Gandhinagar train without disrupting the family business week that shapes this city's rhythm. Cases cover plant expansions, regulatory-bound pharma projects and owner-driven programmes. We follow up with exam application support, mock exams, and trainer access for doubts until you certify.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Ahmedabad?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 09:00 AM – 06:00 PM IST in Ahmedabad. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Ahmedabad?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Ahmedabad. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from India?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in India and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Ahmedabad sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in India accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Ahmedabad",
-    "description": "TODO meta description for Ahmedabad"
+    "title": "{course} Training in Ahmedabad — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Ahmedabad: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 1
 }

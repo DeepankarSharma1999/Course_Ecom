@@ -4,40 +4,43 @@
   "timezone": "Africa/Johannesburg",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Johannesburg)",
+      "amount": "R 1,313,538/yr",
+      "source": "ERI SalaryExpert",
+      "sourceUrl": "https://www.salaryexpert.com/salary/job/project-manager/south-africa/johannesburg",
+      "sourceDate": "2026-07-08"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Standard Bank",
+    "Anglo American",
+    "FirstRand",
+    "Discovery",
+    "MTN Group"
   ],
-  "industries": "TODO: one sentence on Johannesburg's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Johannesburg. Do not publish until replaced.",
+  "industries": "Banking and insurance, mining capital programmes and the energy transition concentrate certified project hiring in Gauteng.",
+  "intro": "Johannesburg is where Africa's capital gets allocated, and project roles follow the money: the big four banks run continent-scale transformation programmes from Sandton, the mining houses headquartered here execute capital projects across hemispheres, and the energy transition — grid, solar, storage — is staffed largely out of Gauteng. Certified professionals are the currency of this market; PMP appears in corporate role profiles as standard, and agile credentials carry the digital-banking scene. Our live online weekend batch converts the IST schedule to 5:30 AM – 2:30 PM Johannesburg time — an early start, but the full workshop closes by mid-afternoon each day, leaving weekend evenings free. Afterwards you get structured exam application support, full-length mock exams, and open trainer access for doubts until you certify.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Johannesburg?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 05:30 AM – 02:30 PM SAST in Johannesburg. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Johannesburg?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Johannesburg. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from South Africa?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in South Africa and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Johannesburg sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in South Africa accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Johannesburg",
-    "description": "TODO meta description for Johannesburg"
+    "title": "{course} Training in Johannesburg — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Johannesburg: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 8
 }

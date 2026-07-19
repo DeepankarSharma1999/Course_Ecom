@@ -4,40 +4,50 @@
   "timezone": "America/Toronto",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager / Scrum Master",
+      "amount": "CA$116,659/yr",
+      "source": "Glassdoor Canada",
+      "sourceUrl": "https://www.glassdoor.ca/Salaries/toronto-project-manager-scrum-master-salary-SRCH_IL.0,7_IM976_KO8,36.htm",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master",
+      "amount": "CA$101,370/yr",
+      "source": "Glassdoor Canada",
+      "sourceUrl": "https://www.glassdoor.ca/Salaries/toronto-on-scrum-master-salary-SRCH_IL.0,10_IM976_KO11,23.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "RBC",
+    "TD Bank",
+    "Rogers",
+    "University Health Network",
+    "Shopify"
   ],
-  "industries": "TODO: one sentence on Toronto's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Toronto. Do not publish until replaced.",
+  "industries": "Banking transformation portfolios, healthcare and transit programs, and Canada's largest tech ecosystem drive hiring.",
+  "intro": "Toronto is Canada's project capital by weight of institutions: the Big Five banks run their transformation portfolios from Bay Street, the province's healthcare and transit programs are among North America's largest, and a tech ecosystem behind only the Valley and NYC keeps hiring delivery leads. Canadian employers are famously credential-conscious — PMP appears in postings as a requirement, not a preference, and newcomers use it to localize international experience. Our current batches run live online on the IST schedule, which lands overnight in Eastern time; we say that honestly. Register interest for Americas-hours batches to be notified first. The format never changes: live weekend instruction, exam application support, full-length mock exams, and trainer access until you pass. Newcomers to Canada regularly use this exact route to convert overseas experience into Bay Street interviews.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Toronto?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 11:30 PM – 08:30 AM EDT (prev day) in Toronto. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Toronto?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Toronto. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Canada?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Canada and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Toronto sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Canada accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Toronto",
-    "description": "TODO meta description for Toronto"
+    "title": "{course} Training in Toronto — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Toronto: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 10
 }

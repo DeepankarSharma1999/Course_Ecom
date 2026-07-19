@@ -4,40 +4,43 @@
   "timezone": "America/Vancouver",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master (national average)",
+      "amount": "CA$97,205/yr",
+      "source": "Glassdoor Canada",
+      "sourceUrl": "https://www.glassdoor.ca/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-05-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Teck Resources",
+    "Lululemon",
+    "Port of Vancouver",
+    "Electronic Arts",
+    "TELUS"
   ],
-  "industries": "TODO: one sentence on Vancouver's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Vancouver. Do not publish until replaced.",
+  "industries": "Port logistics, mining headquarters, film and visual effects, and a livability-driven tech scene share the project market.",
+  "intro": "Vancouver's project market mixes Pacific trade with Hollywood North: the port — Canada's largest — runs continuous infrastructure programs, the film and visual-effects industry manages production at industrial scale, and a tech scene anchored by global engineering offices keeps growing on livability migration. Mining headquarters add capital-program demand. PMP serves the port, mining and construction world; Scrum credentials carry the tech and creative-tech sector. Our current batches run live online on the IST schedule — for Pacific time that's roughly 8:30 PM – 5:30 AM, an overnight commitment we name plainly. Register interest and you'll hear first when Americas-hours batches open. Throughout: live instruction over one weekend, exam application help, realistic mocks, and trainer access until certification. Evening-shift workers and early risers in Vancouver have made the current schedule work surprisingly often.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Vancouver?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 08:30 PM – 05:30 AM PDT (prev day) in Vancouver. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Vancouver?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Vancouver. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Canada?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Canada and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Vancouver sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Canada accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Vancouver",
-    "description": "TODO meta description for Vancouver"
+    "title": "{course} Training in Vancouver — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Vancouver: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 10
 }

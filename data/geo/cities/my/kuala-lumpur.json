@@ -4,40 +4,43 @@
   "timezone": "Asia/Kuala_Lumpur",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "RM 6,600/month",
+      "source": "Indeed Malaysia",
+      "sourceUrl": "https://malaysia.indeed.com/career/project-manager/salaries",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Petronas",
+    "Maybank",
+    "Shell Business Operations",
+    "AirAsia",
+    "Standard Chartered GBS"
   ],
-  "industries": "TODO: one sentence on Kuala Lumpur's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Kuala Lumpur. Do not publish until replaced.",
+  "industries": "Global shared-services and delivery hubs, oil and gas, banking and aviation anchor the capital's project economy.",
+  "intro": "Kuala Lumpur has quietly become one of Asia's shared-services capitals: global banks, oil majors and tech firms run regional delivery hubs from KL Sentral, Bangsar South and Cyberjaya, hiring project and scrum professionals to serve markets from Tokyo to London. Those hubs benchmark internationally, so PMP and CSM appear directly in job requirements — and HRD Corp claims mean employers usually pay. Petronas's ecosystem adds engineering-programme demand at the top of the market. Our live online weekend batch runs on the IST schedule, landing 11:30 AM – 8:30 PM Malaysia time: one weekend, full workshop, no leave. English instruction with an international cohort mirrors hub working life. Afterwards we guide your exam application, run mocks that match real exam difficulty, and keep the trainer available for questions until you're certified.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Kuala Lumpur?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 11:30 AM – 08:30 PM MYT in Kuala Lumpur. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Kuala Lumpur?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Kuala Lumpur. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Malaysia?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Malaysia and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Kuala Lumpur sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Malaysia accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Kuala Lumpur",
-    "description": "TODO meta description for Kuala Lumpur"
+    "title": "{course} Training in Kuala Lumpur — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Kuala Lumpur: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 4
 }

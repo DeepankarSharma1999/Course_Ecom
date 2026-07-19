@@ -4,40 +4,50 @@
   "timezone": "America/New_York",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "US$104,735/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/project-manager-salary-SRCH_KO0,15.htm",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "US$126,951/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Mass General Brigham",
+    "Moderna",
+    "Fidelity Investments",
+    "Vertex Pharmaceuticals",
+    "MIT Lincoln Laboratory"
   ],
-  "industries": "TODO: one sentence on Boston's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Boston. Do not publish until replaced.",
+  "industries": "Biotech and pharmaceuticals, academic medical centers and asset management define a compliance-heavy project market.",
+  "intro": "Boston's project economy runs on knowledge industries: the biotech capital of the world in Kendall Square, hospitals that double as research empires, asset managers steering trillions, and universities spinning out startups continuously. Project roles here often carry regulatory weight — clinical trials, FDA submissions, financial compliance — which is where PMP-style formal method earns its premium; the software and robotics scene hires on Scrum credentials. Our current batches run live online on the IST schedule, overnight for Eastern time; we're straightforward that this suits early risers and night owls, not everyone. Register interest and we'll notify you first when Americas-hours batches open. The package holds constant: live instruction, exam application help, calibrated mocks, and trainer access until you clear. Boston cohorts skew heavily toward biotech and healthcare programme managers with compliance-driven deadlines.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Boston?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 11:30 PM – 08:30 AM EDT (prev day) in Boston. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Boston?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Boston. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United States?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United States and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Boston sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United States accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Boston",
-    "description": "TODO meta description for Boston"
+    "title": "{course} Training in Boston — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Boston: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 9
 }

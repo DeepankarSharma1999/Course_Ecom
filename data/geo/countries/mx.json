@@ -2,34 +2,54 @@
   "name": "Mexico",
   "iso": "mx",
   "currency": "MXN",
-  "priceDisplay": "TODO e.g. ₹45,000",
+  "pricing": {
+    "pmp-certification-training": {
+      "display": "US$1,295",
+      "amount": 1295,
+      "currency": "USD",
+      "days": 2
+    },
+    "csm-certification-training": {
+      "display": "US$695",
+      "amount": 695,
+      "currency": "USD",
+      "days": 2
+    }
+  },
   "examCost": {
-    "member": "TODO",
-    "nonMember": "TODO",
-    "source": "TODO url"
+    "pmp-certification-training": {
+      "member": "US$425",
+      "nonMember": "US$675",
+      "source": "https://www.pmi.org/certifications/project-management-pmp"
+    },
+    "csm-certification-training": {
+      "member": "Included in course fee (2 attempts)",
+      "nonMember": "Included in course fee (2 attempts)",
+      "source": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+    }
   },
   "salaryCountry": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager",
+      "amount": "MX$42,542/month",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/mexico-project-manager-salary-SRCH_IL.0,6_IN169_KO7,22.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
-  "intro": "TODO: hand-written ~150 word intro for certification training in Mexico. Do not publish until replaced.",
+  "intro": "Mexico's project economy is riding the nearshoring wave: manufacturers relocating supply chains from Asia are building plants across the Bajío and the northern border states, US firms are expanding Mexican delivery centres, and Mexico City's corporates are digitising to match. Certified project managers — especially those working across US time zones with international credentials — are the profile every one of these employers wants. Our batches currently run live online on the Asia (IST) schedule, which lands overnight in Mexico; we hold these pages as off-hours and say so plainly rather than bury it. Register interest for Americas-hours batches and you'll be contacted the moment they open. The package is constant: live weekend instruction in English, exam application support, full-length mocks, and trainer access until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "How much does certification training cost in Mexico?",
+      "a": "The course fee is US$1,295 for PMP and US$695 for CSM, covering the full live online weekend workshop, study materials, mock exams and exam application support. PMI's PMP exam fee (US$425 member / US$675 non-member) is paid separately to PMI; the CSM exam is included in the course fee."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Are the classes live or recorded?",
+      "a": "Every batch is taught live by an instructor over two weekend days — not pre-recorded videos. You can ask questions in real time, work through exercises with the cohort, and reach the trainer afterwards for doubts."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certification recognised by employers in Mexico?",
+      "a": "Yes. PMP (from PMI) and CSM (from Scrum Alliance) are global credentials recognised identically everywhere, including by employers and recruiters across Mexico."
     }
   ],
   "cities": [

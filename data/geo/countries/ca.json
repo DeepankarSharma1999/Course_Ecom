@@ -2,34 +2,54 @@
   "name": "Canada",
   "iso": "ca",
   "currency": "CAD",
-  "priceDisplay": "TODO e.g. ₹45,000",
+  "pricing": {
+    "pmp-certification-training": {
+      "display": "US$1,295",
+      "amount": 1295,
+      "currency": "USD",
+      "days": 2
+    },
+    "csm-certification-training": {
+      "display": "US$695",
+      "amount": 695,
+      "currency": "USD",
+      "days": 2
+    }
+  },
   "examCost": {
-    "member": "TODO",
-    "nonMember": "TODO",
-    "source": "TODO url"
+    "pmp-certification-training": {
+      "member": "US$425",
+      "nonMember": "US$675",
+      "source": "https://www.pmi.org/certifications/project-management-pmp"
+    },
+    "csm-certification-training": {
+      "member": "Included in course fee (2 attempts)",
+      "nonMember": "Included in course fee (2 attempts)",
+      "source": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+    }
   },
   "salaryCountry": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "CA$97,205/yr",
+      "source": "Glassdoor Canada",
+      "sourceUrl": "https://www.glassdoor.ca/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-05-01"
     }
   ],
-  "intro": "TODO: hand-written ~150 word intro for certification training in Canada. Do not publish until replaced.",
+  "intro": "Canada's project market rewards credentials with unusual consistency: regulated industries — banking, energy, public sector — dominate hiring, immigration brings a steady stream of internationally trained professionals who use certification to localise their experience, and employers from Toronto's banks to Alberta's energy firms write PMP directly into job postings. Scrum credentials carry the technology corridors of Toronto, Vancouver and Montreal. Our batches currently run live online on the Asia (IST) schedule, which lands overnight-to-morning across Canadian timezones — workable for the determined, but not prime time, and we say so plainly. Register interest for Americas-hours batches and we'll contact you the moment they're scheduled. The package is identical either way: live instruction, exam application support, mock exams, and trainer access until you certify.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "How much does certification training cost in Canada?",
+      "a": "The course fee is US$1,295 for PMP and US$695 for CSM, covering the full live online weekend workshop, study materials, mock exams and exam application support. PMI's PMP exam fee (US$425 member / US$675 non-member) is paid separately to PMI; the CSM exam is included in the course fee."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Are the classes live or recorded?",
+      "a": "Every batch is taught live by an instructor over two weekend days — not pre-recorded videos. You can ask questions in real time, work through exercises with the cohort, and reach the trainer afterwards for doubts."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certification recognised by employers in Canada?",
+      "a": "Yes. PMP (from PMI) and CSM (from Scrum Alliance) are global credentials recognised identically everywhere, including by employers and recruiters across Canada."
     }
   ],
   "cities": [

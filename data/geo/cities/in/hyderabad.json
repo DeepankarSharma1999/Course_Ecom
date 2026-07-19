@@ -4,40 +4,50 @@
   "timezone": "Asia/Kolkata",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager / Scrum Master (national average)",
+      "amount": "₹19,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-project-manager-salary-SRCH_KO0,28.htm",
+      "sourceDate": "2026-05-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "₹15,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Microsoft",
+    "Amazon",
+    "Dr. Reddy's Laboratories",
+    "Deloitte",
+    "Salesforce"
   ],
-  "industries": "TODO: one sentence on Hyderabad's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Hyderabad. Do not publish until replaced.",
+  "industries": "Technology capability centres share the city with a world-scale pharmaceutical and life-sciences cluster.",
+  "intro": "Hyderabad has become the second-largest technology employment centre in India, and HITEC City's campuses — Microsoft's largest site outside Redmond, Google, Amazon, and a dense layer of pharma corporations — hire delivery leads on credentials. What distinguishes Hyderabad is the pharma and life-sciences overlay: companies in Genome Valley run validation-heavy, compliance-bound projects where formal project management is not optional, making PMP particularly valued. Scrum roles grow with every new GCC announcement. Our weekend live online batch runs on Indian Standard Time, so you train from home over two days without touching the working week. Class discussion covers scenarios Hyderabad professionals recognise: regulated-industry documentation, captive-centre reporting lines, platform migrations. After the workshop you get exam application support built for high-audit-risk applications, mock exams, and trainer access until you clear.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Hyderabad?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 09:00 AM – 06:00 PM IST in Hyderabad. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Hyderabad?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Hyderabad. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from India?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in India and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Hyderabad sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in India accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Hyderabad",
-    "description": "TODO meta description for Hyderabad"
+    "title": "{course} Training in Hyderabad — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Hyderabad: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 1
 }

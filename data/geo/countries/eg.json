@@ -2,34 +2,54 @@
   "name": "Egypt",
   "iso": "eg",
   "currency": "EGP",
-  "priceDisplay": "TODO e.g. ₹45,000",
+  "pricing": {
+    "pmp-certification-training": {
+      "display": "US$1,295",
+      "amount": 1295,
+      "currency": "USD",
+      "days": 2
+    },
+    "csm-certification-training": {
+      "display": "US$695",
+      "amount": 695,
+      "currency": "USD",
+      "days": 2
+    }
+  },
   "examCost": {
-    "member": "TODO",
-    "nonMember": "TODO",
-    "source": "TODO url"
+    "pmp-certification-training": {
+      "member": "US$425",
+      "nonMember": "US$675",
+      "source": "https://www.pmi.org/certifications/project-management-pmp"
+    },
+    "csm-certification-training": {
+      "member": "Included in course fee (2 attempts)",
+      "nonMember": "Included in course fee (2 attempts)",
+      "source": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+    }
   },
   "salaryCountry": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Cairo)",
+      "amount": "EGP 20,083/month",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/cairo-egypt-project-manager-salary-SRCH_IL.0,11_IM1175_KO12,27.htm",
+      "sourceDate": "2026-05-01"
     }
   ],
-  "intro": "TODO: hand-written ~150 word intro for certification training in Egypt. Do not publish until replaced.",
+  "intro": "Egypt combines mega-project ambition with a deep professional workforce: the New Administrative Capital, Suez Canal Zone industrialisation and national digitisation programmes run alongside a growing offshoring sector serving Gulf and European clients. Egyptian professionals also certify with an eye on Gulf careers, where their credentials command regional salaries. PMP is the standard in Egypt's construction, oil and gas, and government programme world; Scrum credentials grow with Cairo's software export industry. Our live online weekend batch runs on the IST schedule, landing at comfortable morning-to-evening Egyptian hours. Instruction is in English with an international cohort, and invoices support employer sponsorship. After class we help with the exam application, provide mock exams at genuine difficulty, and keep the trainer available until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "How much does certification training cost in Egypt?",
+      "a": "The course fee is US$1,295 for PMP and US$695 for CSM, covering the full live online weekend workshop, study materials, mock exams and exam application support. PMI's PMP exam fee (US$425 member / US$675 non-member) is paid separately to PMI; the CSM exam is included in the course fee."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Are the classes live or recorded?",
+      "a": "Every batch is taught live by an instructor over two weekend days — not pre-recorded videos. You can ask questions in real time, work through exercises with the cohort, and reach the trainer afterwards for doubts."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certification recognised by employers in Egypt?",
+      "a": "Yes. PMP (from PMI) and CSM (from Scrum Alliance) are global credentials recognised identically everywhere, including by employers and recruiters across Egypt."
     }
   ],
   "cities": [

@@ -4,40 +4,43 @@
   "timezone": "Europe/Zurich",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "CHF 120,000/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/switzerland-project-manager-salary-SRCH_IL.0,11_IN226_KO12,27.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "UBS",
+    "Zurich Insurance",
+    "Google Zurich",
+    "Swiss Re",
+    "Credit Suisse (UBS Group)"
   ],
-  "industries": "TODO: one sentence on Zurich's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Zurich. Do not publish until replaced.",
+  "industries": "Banking, insurance and reinsurance dominate, joined by major international engineering and technology sites.",
+  "intro": "Zurich's project market pays Europe's highest rates for a reason: the programmes here — bank regulatory portfolios at UBS scale, insurance transformations at Swiss Re and Zurich Insurance, Google's largest engineering site outside the US — demand certified professionals who can operate to exacting Swiss standards. Hiring is precise: credentials are verified, and PMP or Scrum certification is commonly the explicit screening line. The city's workforce is deeply international, working in English. Our live online weekend batch runs on the IST schedule at Swiss morning-to-afternoon hours, fitting the complete workshop into one weekend. Afterwards we provide methodical exam application support, full-length mock exams at genuine difficulty, and continued access to the trainer for questions until you clear the exam. Many Zurich participants expense the fee through generous Swiss employer development budgets without friction.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Zurich?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 05:30 AM – 02:30 PM GMT+2 in Zurich. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Zurich?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Zurich. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Switzerland?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Switzerland and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Zurich sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Switzerland accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Zurich",
-    "description": "TODO meta description for Zurich"
+    "title": "{course} Training in Zurich — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Zurich: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 8
 }

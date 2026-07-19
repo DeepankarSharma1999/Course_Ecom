@@ -4,40 +4,50 @@
   "timezone": "Asia/Kolkata",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager / Scrum Master (national average)",
+      "amount": "₹19,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-project-manager-salary-SRCH_KO0,28.htm",
+      "sourceDate": "2026-05-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "₹15,00,000/yr",
+      "source": "Glassdoor India",
+      "sourceUrl": "https://www.glassdoor.co.in/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Zoho",
+    "Hyundai Motor India",
+    "Cognizant",
+    "Foxconn",
+    "Ford Business Solutions"
   ],
-  "industries": "TODO: one sentence on Chennai's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Chennai. Do not publish until replaced.",
+  "industries": "IT services and SaaS along the OMR corridor sit beside one of India's biggest automotive and electronics manufacturing belts.",
+  "intro": "Chennai's project roles cluster around three anchors: the OMR IT corridor, a manufacturing base that includes some of India's largest auto and electronics plants, and a SaaS ecosystem that has grown up around home-grown product companies. Manufacturing employers along the Oragadam and Sriperumbudur belts run capital projects where PMP is the recognised standard, while the software exporters and SaaS firms hire Scrum Masters as they scale engineering teams. Certification is how Chennai recruiters cut through applicant volume. Our live online weekend batch is taught on Indian Standard Time across two days, so you never trade working hours for training. Sessions use scenarios grounded in Chennai's economy — plant commissioning, client-facing delivery for US accounts, product-team agility. We then support your exam application, run mock tests, and stay on call for doubts until the certificate is yours.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Chennai?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 09:00 AM – 06:00 PM IST in Chennai. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Chennai?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Chennai. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from India?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in India and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Chennai sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in India accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Chennai",
-    "description": "TODO meta description for Chennai"
+    "title": "{course} Training in Chennai — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Chennai: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 1
 }

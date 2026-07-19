@@ -4,40 +4,43 @@
   "timezone": "Asia/Kolkata",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "₹16,75,000/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/bengaluru-scrum-master-salary-SRCH_IL.0,9_IC2940587_KO10,22.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Infosys",
+    "Wipro",
+    "TCS",
+    "Amazon",
+    "Walmart Global Tech"
   ],
-  "industries": "TODO: one sentence on Bangalore's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Bangalore. Do not publish until replaced.",
+  "industries": "Hiring concentrates in IT services, product engineering, and the global capability centres of US and European enterprises.",
+  "intro": "Bangalore's job market rewards people who can keep distributed delivery honest. Most hiring happens inside global capability centres and product engineering firms clustered along Outer Ring Road, Whitefield and Electronic City, where release trains, client SLAs and quarterly commitments make structured project leadership a baseline expectation. Recruiters here shortlist on credentials first — a PMP or CSM on the profile is often what gets the interview. Our weekend live online batch fits Bangalore's reality: you keep weekday sprint duties and still complete the full workshop in two days, taught in Indian Standard Time with no conversion to think about. Classes lean on the situations Bangalore professionals actually face — captive-centre stakeholders in three timezones, vendor transitions, agile-at-scale programmes. Afterwards you get exam application support, mock tests and direct trainer access until you clear the exam.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Bangalore?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 09:00 AM – 06:00 PM IST in Bangalore. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Bangalore?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Bangalore. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from India?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in India and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Bangalore sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in India accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Bangalore",
-    "description": "TODO meta description for Bangalore"
+    "title": "{course} Training in Bangalore — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Bangalore: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 1
 }

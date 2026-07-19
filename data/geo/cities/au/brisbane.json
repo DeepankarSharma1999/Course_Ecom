@@ -4,40 +4,43 @@
   "timezone": "Australia/Brisbane",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "A$126,000/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/brisbane-australia-scrum-master-salary-SRCH_IL.0,18_IM968_KO19,31.htm",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Suncorp",
+    "Rio Tinto",
+    "Queensland Government",
+    "Virgin Australia",
+    "Technology One"
   ],
-  "industries": "TODO: one sentence on Brisbane's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Brisbane. Do not publish until replaced.",
+  "industries": "Olympics-driven infrastructure, resources-sector programs and a growing tech scene define Brisbane's project decade.",
+  "intro": "Brisbane is building toward a deadline the whole city can see: the 2032 Olympics anchor an infrastructure program — Cross River Rail, venues, transport upgrades — that has made south-east Queensland one of Australia's busiest project markets. The resources sector runs its Queensland capital programs from Brisbane towers, and a growing tech scene rounds out demand. PMP suits the infrastructure and resources world; Scrum credentials the digital side. Our current batches run live online on the IST schedule — 1:30 PM – 10:30 PM Brisbane time, a late finish we flag honestly by holding this page as off-hours. Register interest for APAC-hours batches and you'll hear first. The package holds: live weekend instruction, exam application support, full-length mocks, and trainer access until you pass.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Brisbane?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 01:30 PM – 10:30 PM GMT+10 in Brisbane. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Brisbane?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Brisbane. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Australia?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Australia and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Brisbane sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Australia accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Brisbane",
-    "description": "TODO meta description for Brisbane"
+    "title": "{course} Training in Brisbane — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Brisbane: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 10
 }

@@ -4,40 +4,50 @@
   "timezone": "America/Los_Angeles",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "US$104,735/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/project-manager-salary-SRCH_KO0,15.htm",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "US$126,951/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Google",
+    "Salesforce",
+    "Genentech",
+    "Uber",
+    "Wells Fargo"
   ],
-  "industries": "TODO: one sentence on San Francisco's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for San Francisco. Do not publish until replaced.",
+  "industries": "Software platforms and AI, biotech and enterprise technology drive the world's most agile-saturated project market.",
+  "intro": "The Bay Area writes the playbooks other markets follow, and its delivery roles reflect that: technical program managers steering platform migrations at the giants, agile coaches scaling startups through hypergrowth, and now the AI boom generating program work faster than teams can hire. Scrum credentials are assumed; PMP distinguishes candidates for the infrastructure, biotech and enterprise programs that keep the region's economy diversified. Our current batches run live online on the IST schedule — for Pacific time that's evening through early morning, a real trade-off we name plainly. Register interest and you'll hear first when Americas-hours batches are scheduled. Constant throughout: live expert instruction in one weekend, exam application guidance, full-length mocks, and trainer access until certification. Bay Area participants frequently certify during job searches, when the credential differentiates identical tech resumes.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in San Francisco?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 08:30 PM – 05:30 AM PDT (prev day) in San Francisco. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in San Francisco?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in San Francisco. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United States?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United States and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in San Francisco sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United States accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for San Francisco",
-    "description": "TODO meta description for San Francisco"
+    "title": "{course} Training in San Francisco — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for San Francisco: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 9
 }

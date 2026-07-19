@@ -4,40 +4,50 @@
   "timezone": "America/Los_Angeles",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "US$104,735/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/project-manager-salary-SRCH_KO0,15.htm",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "US$126,951/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "SpaceX",
+    "Netflix",
+    "Kaiser Permanente",
+    "Port of Los Angeles",
+    "Disney"
   ],
-  "industries": "TODO: one sentence on Los Angeles's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Los Angeles. Do not publish until replaced.",
+  "industries": "Entertainment and streaming, aerospace, port logistics and healthcare give LA America's most diversified project market.",
+  "intro": "Los Angeles runs projects across more industries than any other American city: studios and streamers producing content at industrial scale, the ports of San Pedro Bay moving 40% of US imports, aerospace primes and SpaceX in the South Bay, and healthcare systems serving ten million people. That breadth means both flavors of credential pay: PMP in aerospace, logistics and healthcare; Scrum certifications across entertainment tech and the Silicon Beach scene. Our current batches run live online on the IST schedule — evening-to-early-morning for Pacific time, a trade-off we state rather than spin. Register interest for Americas-hours batches to be first notified. Either way: one weekend, live instruction, exam application support, realistic mocks, trainer access until you pass. LA cohorts are the most industry-diverse in our US roster, from studios to shipyards.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Los Angeles?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 08:30 PM – 05:30 AM PDT (prev day) in Los Angeles. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Los Angeles?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Los Angeles. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United States?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United States and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Los Angeles sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United States accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Los Angeles",
-    "description": "TODO meta description for Los Angeles"
+    "title": "{course} Training in Los Angeles — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Los Angeles: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 9
 }

@@ -4,40 +4,43 @@
   "timezone": "Asia/Bangkok",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (Bangkok)",
+      "amount": "฿728,307/yr",
+      "source": "PayScale",
+      "sourceUrl": "https://www.payscale.com/research/TH/Job=Project_Manager%2C_(Unspecified_Type_%2F_General)/Salary/84fa3fb1/Bangkok",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Siam Commercial Bank",
+    "CP Group",
+    "PTT",
+    "Agoda",
+    "Krungthai Bank"
   ],
-  "industries": "TODO: one sentence on Bangkok's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Bangkok. Do not publish until replaced.",
+  "industries": "Banking transformation, conglomerate modernisation, regional multinational hubs and EEC manufacturing drive project hiring.",
+  "intro": "Bangkok's certified-role demand comes from an economy balancing old and new: banks funding some of ASEAN's most aggressive digital transformations, conglomerates like the CP empire professionalising delivery, multinationals running Mekong-region operations from Sukhumvit towers, and EEC manufacturing investment needing engineering programme managers. International credentials matter disproportionately here because they bridge the Thai and multinational corporate worlds. Our live online weekend batch runs on the IST schedule, landing at 10:30 AM – 7:30 PM Thailand time — a comfortable single weekend from home. Instruction is in English with an international cohort, matching the environments where certified roles concentrate. Invoices support employer sponsorship. After the workshop we help assemble your exam application, drill full-length mocks, and stay reachable for questions until you certify.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Bangkok?",
+      "a": "Live classes run 09:00 AM – 06:00 PM IST, which is 10:30 AM – 07:30 PM ICT in Bangkok. The full workshop is completed across one Sat–Sun weekend."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Bangkok?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Bangkok. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from Thailand?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in Thailand and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Bangkok sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Thailand accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Bangkok",
-    "description": "TODO meta description for Bangkok"
+    "title": "{course} Training in Bangkok — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Bangkok: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 5
 }

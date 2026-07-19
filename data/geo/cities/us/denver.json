@@ -4,40 +4,50 @@
   "timezone": "America/Denver",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Project Manager (national average)",
+      "amount": "US$104,735/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/project-manager-salary-SRCH_KO0,15.htm",
+      "sourceDate": "2026-07-01"
+    },
+    {
+      "role": "Scrum Master (national average)",
+      "amount": "US$126,951/yr",
+      "source": "Glassdoor",
+      "sourceUrl": "https://www.glassdoor.com/Salaries/scrum-master-salary-SRCH_KO0,12.htm",
+      "sourceDate": "2026-07-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Lockheed Martin Space",
+    "Ball Aerospace",
+    "Charter Communications",
+    "Xcel Energy",
+    "Palantir"
   ],
-  "industries": "TODO: one sentence on Denver's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for Denver. Do not publish until replaced.",
+  "industries": "Aerospace and defense, telecom, renewable energy and inbound tech migration drive the Front Range project market.",
+  "intro": "Denver's mile-high economy has become a magnet for relocating tech workers and the companies chasing them: aerospace and defense along the Front Range, telecoms headquartered here since the cable era, renewable energy programs scaling across the Mountain West, and a startup scene fed by quality-of-life migration. Project roles split accordingly — PMP for aerospace and energy programs, Scrum credentials for the tech corridor from RiNo to Boulder. Our current batches run live online on the IST schedule, overnight for Mountain time; we flag that honestly. Register interest and we'll notify you first when Americas-hours batches open. The package is unchanged regardless: live weekend instruction, exam application support, full-length mock exams, and trainer access until you clear. Front Range participants often relocate mid-career, using certification to reset their local professional network.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in Denver?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 09:30 PM – 06:30 AM MDT (prev day) in Denver. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in Denver?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in Denver. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United States?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United States and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in Denver sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United States accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for Denver",
-    "description": "TODO meta description for Denver"
+    "title": "{course} Training in Denver — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for Denver: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 9
 }

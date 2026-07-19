@@ -4,40 +4,43 @@
   "timezone": "Europe/London",
   "salary": [
     {
-      "role": "TODO role e.g. Project Manager",
-      "amount": "TODO e.g. ₹18,00,000/yr",
-      "source": "TODO e.g. Glassdoor",
-      "sourceUrl": "TODO https://...",
-      "sourceDate": "TODO YYYY-MM-DD"
+      "role": "Scrum Master",
+      "amount": "£62,696/yr",
+      "source": "Glassdoor UK",
+      "sourceUrl": "https://www.glassdoor.co.uk/Salaries/london-scrum-master-salary-SRCH_IL.0,6_IM1035_KO7,19.htm",
+      "sourceDate": "2026-06-01"
     }
   ],
   "employers": [
-    "TODO employer 1",
-    "TODO employer 2"
+    "Barclays",
+    "HSBC",
+    "Government Digital Service",
+    "Deloitte",
+    "Lloyds Banking Group"
   ],
-  "industries": "TODO: one sentence on London's dominant hiring industries.",
-  "intro": "TODO: hand-written 120-180 word intro for London. Do not publish until replaced.",
+  "industries": "Financial services, government delivery, technology scale-ups and the consulting firms serving them all drive certified hiring.",
+  "intro": "London's project market is really several markets sharing a skyline: banking and insurance programmes in the City and Canary Wharf, government delivery portfolios across Whitehall, tech scale-ups from Shoreditch to King's Cross, and the consultancies that staff all of them. Competition for delivery roles is international, day-rate contracting is a way of life, and certification is the currency both permanent and contract markets price openly — PMP for programme governance, Scrum credentials for digital delivery. Our live online weekend batch runs on the IST schedule, converting to roughly 4:30 AM – 1:30 PM London time — an early start that buys you free weekend afternoons, with the full workshop done in two days. Afterwards we handle exam application guidance, full-length mocks, and trainer access for doubts until you clear.",
   "faq": [
     {
-      "q": "TODO question 1",
-      "a": "TODO answer 1"
+      "q": "What are the class timings in London?",
+      "a": "Our current batches follow the Asia schedule: 09:00 AM – 06:00 PM IST, which converts to 04:30 AM – 01:30 PM GMT+1 in London. You are welcome to join at those hours, or register interest and we will notify you first when batches in your region's hours are scheduled."
     },
     {
-      "q": "TODO question 2",
-      "a": "TODO answer 2"
+      "q": "Is the training online or at a venue in London?",
+      "a": "All batches are 100% live online, taught by an instructor over video with interactive exercises — there is no venue to travel to in London. You need a laptop, a stable connection and a free weekend."
     },
     {
-      "q": "TODO question 3",
-      "a": "TODO answer 3"
+      "q": "Is the certificate different if I attend from United Kingdom?",
+      "a": "No. The certification is issued by the same global body regardless of where you attend from, and holds identical recognition with employers in United Kingdom and internationally."
     },
     {
-      "q": "TODO question 4",
-      "a": "TODO answer 4"
+      "q": "Can my employer in London sponsor the course?",
+      "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United Kingdom accept them under learning and development budgets. Group pricing is available for teams."
     }
   ],
   "meta": {
-    "title": "TODO meta title for London",
-    "description": "TODO meta description for London"
+    "title": "{course} Training in London — Live Online Weekend Batches",
+    "description": "Live online {course} certification training for London: upcoming weekend batch dates in your local time, salary data with sources, and exam cost."
   },
   "releaseWeek": 6
 }
