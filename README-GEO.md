@@ -68,20 +68,28 @@ To update any fact later, edit the JSON field and rebuild — the validator re-c
 
 Country files hold `pricing` and `examCost` keyed by course slug — each entry gates every city in that country.
 
-## How to add a batch track
+## Batch tracks & schedule
 
-Edit [data/geo/batch-tracks.json](data/geo/batch-tracks.json) — nothing else:
+`data/geo/batch-tracks.json` holds **4 regional home schedules**, each 09:00–18:00
+local, generated with a **full year of batches — two per week: a weekday Wed–Thu
+cohort and a weekend Sat–Sun cohort**:
 
-```jsonc
-{ "id": "americas", "tz": "America/Chicago", "label": "CT",
-  "start": "09:00", "end": "18:00",
-  "batches": [{ "startDate": "2026-10-03", "endDate": "2026-10-04", "days": "Sat–Sun" }] }
-```
+| Track | Home tz | Label | Cities it serves |
+|---|---|---|---|
+| `asia` | Asia/Kolkata | IST | India, UAE, Singapore, Malaysia, Indonesia, Philippines, Thailand, Hong Kong, Oman, Perth |
+| `emea` | Europe/London | UK | UK, Ireland, Germany, Netherlands, France, Switzerland, Saudi/Qatar/Kuwait/Bahrain, South Africa, Nigeria, Kenya, Egypt |
+| `americas` | America/Chicago | CT | all US cities, Canada, Mexico, Brazil |
+| `apac` | Australia/Sydney | AET | Sydney, Melbourne, Brisbane, Auckland |
 
-On the next build every US/LatAm city's fit check re-evaluates against the new
-track and flips from `off-hours` to `fit` automatically — the off-hours banner
-disappears and (if the content gate passes) the pages become indexable.
-Keep `batches[0]` an upcoming date; the fit check evaluates the first batch.
+The fit-check assigns each city the first track (in array order) whose full session
+lands inside 07:00–22:00 local. With these four, **every seeded city fits** — pages
+show that track's batches converted to exact local time, and each page's table
+displays the next 8 upcoming batches (new ones roll in as dates pass).
+
+To regenerate the year of dates (e.g. next year, or to change cadence/times), edit
+and re-run the generator, or edit `batch-tracks.json` directly — a batch is
+`{ startDate, endDate, days }` and the list must stay sorted ascending. Adding a
+5th track (or shifting a track's `start`/`end`) re-runs the fit-check on next build.
 
 ## Release pacing (RELEASE_WEEK)
 

@@ -10,7 +10,7 @@ import { LeadModalButton } from "@/components/lead-modal-button";
 import type { CourseContent } from "@/lib/seed-data";
 import { SITE, baseCourseTitle, composeCourseTitle } from "@/lib/utils";
 import { faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { getBatchTracks, getGeoCities, getGeoCountries, type BatchTrack, type GeoCity, type GeoCountry, type SalaryEntry } from "@/lib/geo-pages/data";
+import { getBatchTracks, getGeoCities, getGeoCountries, upcomingBatches, type BatchTrack, type GeoCity, type GeoCountry, type SalaryEntry } from "@/lib/geo-pages/data";
 import { convertSession, fitCheck, type FitResult } from "@/lib/geo-pages/timezone";
 import { geoCourseJsonLd } from "@/lib/geo-pages/schema";
 import { hasTodo, isCountryIndexable } from "@/lib/geo-pages/gate";
@@ -76,7 +76,7 @@ function BatchTable({ track, cityTz, courseSlug, courseName }: { track: BatchTra
             </tr>
           </thead>
           <tbody className="divide-y divide-border/60">
-            {track.batches.map((b) => {
+            {upcomingBatches(track).map((b) => {
               const s = convertSession(track, b, cityTz ?? track.tz);
               return (
                 <tr key={b.startDate} className="hover:bg-secondary/40">
@@ -103,7 +103,7 @@ function BatchTable({ track, cityTz, courseSlug, courseName }: { track: BatchTra
         </table>
       </div>
       <p className="border-t border-border/60 bg-secondary/40 px-5 py-3 text-xs text-muted-foreground">
-        All batches are live online classes taught on the {track.label} schedule; times shown{cityTz ? " in your local timezone are exact conversions" : " include the timezone"}.
+        Showing the next batches — new weekend (Sat–Sun) and weekday (Wed–Thu) cohorts run year-round on the {track.label} schedule; times shown{cityTz ? " in your local timezone are exact conversions" : " include the timezone"}.
       </p>
     </div>
   );
@@ -211,7 +211,7 @@ export function GeoCityPage({ course, country, city }: { course: CourseContent; 
   const courseName = baseCourseTitle(course.shortTitle);
   const h1 = composeCourseTitle(course.title, { city: city.name });
   const url = `${SITE.url}/${course.slug}/${country.iso}/${city.slug}`;
-  const next = fit.track.batches[0];
+  const next = upcomingBatches(fit.track, 1)[0];
   const p = country.pricing[course.slug];
   const price = p && !hasTodo(p) ? `${p.display} · ${p.days}-day live online` : undefined;
   const realFaqs = city.faq.filter((f) => !hasTodo(f));

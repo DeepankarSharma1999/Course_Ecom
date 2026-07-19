@@ -2,7 +2,7 @@
 // no AggregateRating/Review anywhere, no fabricated fields — omit instead.
 import type { CourseContent } from "@/lib/seed-data";
 import { SITE } from "@/lib/utils";
-import type { BatchTrack, GeoCountry } from "./data";
+import { upcomingBatches, type BatchTrack, type GeoCountry } from "./data";
 import { hasTodo } from "./gate";
 
 export function geoCourseJsonLd(
@@ -33,7 +33,7 @@ export function geoCourseJsonLd(
           },
         }
       : {}),
-    hasCourseInstance: track.batches.slice(0, 12).map((b) => ({
+    hasCourseInstance: upcomingBatches(track, 12).map((b) => ({
       "@type": "CourseInstance",
       courseMode: "Online",
       startDate: b.startDate,

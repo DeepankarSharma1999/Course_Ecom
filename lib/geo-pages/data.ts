@@ -98,3 +98,11 @@ export function getGeoCity(countryIso: string, slug: string): GeoCity | undefine
 export function isGeoCourse(slug: string): boolean {
   return (GEO_COURSES as readonly string[]).includes(slug);
 }
+
+// Batches run a full year (2/week); pages show only upcoming ones, capped.
+// Batches are stored sorted ascending, so filter+slice is enough.
+export function upcomingBatches(track: BatchTrack, limit = 8, now = new Date()): BatchDate[] {
+  const today = now.toISOString().slice(0, 10);
+  const future = track.batches.filter((b) => b.endDate >= today);
+  return (future.length ? future : track.batches).slice(0, limit);
+}
