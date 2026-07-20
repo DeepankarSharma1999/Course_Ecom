@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Star, Twitter } from "lucide-react";
+import { ORG_PROFILES } from "@/lib/structured-data";
 import { getAllCourses, getCountries } from "@/lib/content";
 import { FooterCountrySelect } from "@/components/footer-country-select";
 import { CATEGORIES } from "@/lib/seed-data";
@@ -38,12 +39,15 @@ export async function SiteFooter() {
   const categories = CATEGORIES;
   const columns: FooterColumn[] = (settings.footerColumns as any)?.length ? (settings.footerColumns as any) : DEFAULT_FOOTER_COLUMNS;
   const social = (settings.socialLinks as any) || {};
+  // Only verified profiles get a hardcoded default (FIX-14/16); the other networks
+  // render only when the admin has entered a real URL in Site Settings.
   const socialIcons = [
-    { label: "LinkedIn", href: social.linkedin || "https://www.linkedin.com/company/simplilead", Icon: Linkedin },
-    { label: "Instagram", href: social.instagram || "https://www.instagram.com/simplilead", Icon: Instagram },
-    { label: "Facebook", href: social.facebook || "https://www.facebook.com/simplilead", Icon: Facebook },
-    { label: "Twitter", href: social.twitter || "https://twitter.com/simplilead", Icon: Twitter, fill: true },
+    { label: "LinkedIn", href: social.linkedin || ORG_PROFILES.find((p) => p.label === "LinkedIn")?.href, Icon: Linkedin },
+    { label: "Instagram", href: social.instagram, Icon: Instagram },
+    { label: "Facebook", href: social.facebook, Icon: Facebook },
+    { label: "Twitter", href: social.twitter, Icon: Twitter, fill: true },
   ].filter((s) => s.href);
+  const reviewProfiles = ORG_PROFILES.filter((p) => p.label !== "LinkedIn");
   return (
     <footer className="bg-brand-50/30 font-sans pt-16 pb-8 border-t border-brand-100/50">
       <div className="container-tight max-w-[1400px] px-6 md:px-12">
@@ -64,6 +68,13 @@ export async function SiteFooter() {
                     {socialIcons.map(({ label, href, Icon, fill }) => (
                       <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer" className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 text-brand-700 hover:bg-brand-600 hover:text-white transition-all">
                         <Icon className={`w-4 h-4 ${fill ? "fill-current" : ""}`} />
+                      </a>
+                    ))}
+                 </div>
+                 <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                    {reviewProfiles.map((p) => (
+                      <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-1.5 text-sm text-brand-700 underline-offset-4 hover:underline">
+                        <Star className="w-3.5 h-3.5" aria-hidden /> Review us on {p.label}
                       </a>
                     ))}
                  </div>

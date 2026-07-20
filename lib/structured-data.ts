@@ -2,11 +2,16 @@ import type { CourseContent } from "@/lib/seed-data";
 import type { CourseSchedule } from "@/lib/content";
 import { SITE } from "@/lib/utils";
 
-// TODO(owner): fill with the official profile URLs as they come online —
-// Google Business Profile, Trustpilot, LinkedIn company page, and partner-body
-// directory entries (Scrum Alliance/PMI/…) once FIX-03/FIX-14 are resolved.
-// Empty array => sameAs is omitted from the Organization schema.
-export const ORG_SAME_AS: string[] = [];
+// Verified official profiles (FIX-14/15/16) — used for Organization sameAs and
+// linked from the site footer. Add Google Business Profile and partner-body
+// directory entries (Scrum Alliance/PMI/…) here as they come online (FIX-03).
+export const ORG_PROFILES = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/simplilead-consulting-services-llc" },
+  { label: "Trustpilot", href: "https://www.trustpilot.com/review/simplilead.com" },
+  { label: "The Training Marketplace", href: "https://thetm.com/training-provider/simplilead-consulting-services" },
+] as const;
+
+export const ORG_SAME_AS: string[] = ORG_PROFILES.map((p) => p.href);
 
 // Site-wide Organization schema (FIX-15). No ratings, no invented data.
 export function organizationJsonLd() {
