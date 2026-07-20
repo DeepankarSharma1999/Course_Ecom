@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" font-family="Arial, Helvetica, sans-serif">
+<rect width="1200" height="680" fill="#ffffff"/>
+<ellipse cx="144" cy="578" rx="216" ry="68" fill="#faf3e3" transform="rotate(-35 144 578)"/>
+<ellipse cx="1056" cy="95.2" rx="216" ry="68" fill="#faf3e3" transform="rotate(-35 1056 95.2)"/>
+<ellipse cx="192" cy="237.99999999999997" rx="192" ry="61.199999999999996" fill="#e4efe4" transform="rotate(-35 192 237.99999999999997)"/>
+<ellipse cx="1032" cy="462.40000000000003" rx="192" ry="61.199999999999996" fill="#e4efe4" transform="rotate(-35 1032 462.40000000000003)"/>
+
+<rect x="225" y="52" width="750" height="570" rx="14" fill="#ffffff" stroke="#8b8ff0" stroke-width="2"/>
+<path d="M 239 66 h 722 v 176 h -722 z" fill="#12294b"/>
+<text x="268" y="140" font-size="40" fill="#ffffff" font-weight="600">Microsoft Certified</text>
+<text font-size="23" fill="#ffffff"><tspan x="268" y="180">Azure Solutions Architect</tspan><tspan x="268" y="208">Expert (AZ-305)</tspan></text>
+<text x="268" y="330" font-size="21" fill="#222">Itzel Winters</text>
+<text x="268" y="362" font-size="11.5" fill="#333">Has successfully completed the requirements to be recognised as a Microsoft Certified: Azure Solutions Architect Expert.</text>
+<text x="268" y="412" font-size="10.5" fill="#333">Date of achievement: May 1, 2026</text>
+<text x="268" y="430" font-size="10.5" fill="#333">Valid until: May 1, 2028</text>
+<g transform="translate(268,500)">
+  <rect width="17" height="17" fill="#f25022"/><rect x="19" width="17" height="17" fill="#7fba00"/>
+  <rect y="19" width="17" height="17" fill="#00a4ef"/><rect x="19" y="19" width="17" height="17" fill="#ffb900"/>
+  <text x="46" y="27" font-size="21" fill="#666" font-weight="600">Microsoft</text>
+</g>
+<text x="640" y="516" font-size="10.5" fill="#333">Satya Nadella</text>
+<text x="640" y="531" font-size="10.5" fill="#333">Chief Executive Officer</text>
+<g transform="translate(872,455)">
+  <path d="M -46 -38 h 92 v 52 l -46 34 l -46 -34 z" fill="#ffffff" stroke="#12294b" stroke-width="3"/>
+  <path d="M -38 6 h 76 v 12 l -38 26 l -38 -26 z" fill="#1f6fd6"/>
+  <text y="-18" text-anchor="middle" font-size="8.5" fill="#12294b" font-weight="bold">Microsoft CERTIFIED</text>
+  <rect x="-40" y="-10" width="80" height="15" fill="#ffffff" stroke="#888" stroke-width="0.6" transform="rotate(-3)"/>
+  <text y="1" text-anchor="middle" font-size="9" fill="#111" font-weight="bold" transform="rotate(-3)">EXPERT</text>
+  <text y="28" text-anchor="middle" font-size="12" fill="#ffffff">★★</text>
+</g>
+<rect x="239" y="580" width="722" height="28" fill="#12294b"/>
+<text x="600" y="598" text-anchor="middle" font-size="8.5" fill="#cfd8e6">*This certificate is for representative purpose only and holds no official or legal value.</text>
+</svg>

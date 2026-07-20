@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" font-family="Arial, Helvetica, sans-serif">
+<rect width="1200" height="680" fill="#ffffff"/>
+<ellipse cx="144" cy="578" rx="216" ry="68" fill="#faf3e3" transform="rotate(-35 144 578)"/>
+<ellipse cx="1056" cy="95.2" rx="216" ry="68" fill="#faf3e3" transform="rotate(-35 1056 95.2)"/>
+<ellipse cx="192" cy="237.99999999999997" rx="192" ry="61.199999999999996" fill="#e4efe4" transform="rotate(-35 192 237.99999999999997)"/>
+<ellipse cx="1032" cy="462.40000000000003" rx="192" ry="61.199999999999996" fill="#e4efe4" transform="rotate(-35 1032 462.40000000000003)"/>
+
+<rect x="405" y="68" width="390" height="540" rx="10" fill="#7a1f2b"/>
+<rect x="419" y="82" width="362" height="512" fill="#ffffff"/>
+<g transform="translate(448,104)">
+  <rect x="6" y="18" width="44" height="5" fill="#7a1f2b"/><rect x="10" y="4" width="36" height="12" rx="6" fill="#e8a33d"/>
+  <rect x="9" y="10" width="6" height="8" fill="#7a1f2b"/><rect x="19.5" y="10" width="6" height="8" fill="#7a1f2b"/><rect x="30" y="10" width="6" height="8" fill="#7a1f2b"/><rect x="40.5" y="10" width="6" height="8" fill="#7a1f2b"/>
+  <text x="2" y="42" font-size="15" font-weight="bold" fill="#e07b39">DevOps</text>
+  <text x="2" y="53" font-size="6.5" letter-spacing="2" fill="#7a1f2b">I N S T I T U T E</text>
+</g>
+<text x="700" y="118" font-size="11.5" font-weight="bold" fill="#111">Certified ID</text>
+<text x="700" y="133" font-size="11.5" fill="#111">0000000</text>
+<text x="600" y="212" text-anchor="middle" font-size="12" font-style="italic" fill="#8a8a8a">This is to certify that</text>
+<text x="600" y="244" text-anchor="middle" font-size="26" font-weight="bold" fill="#7a1f2b">Juan Lopez</text>
+<text x="600" y="272" text-anchor="middle" font-size="12" font-style="italic" fill="#8a8a8a">Has achieved the</text>
+<text text-anchor="middle" font-size="17" font-weight="bold" fill="#7a1f2b"><tspan x="600" y="300">Continuous Delivery Ecosystem</tspan><tspan x="600" y="322">Foundation (CDEF)℠ Certification</tspan></text>
+<g transform="translate(600,420)">
+  <path d="M 0 -62 A 62 62 0 0 1 53.7 31 L 27 15.5 A 31 31 0 0 0 0 -31 Z" fill="#1f6f8b" transform="rotate(0)"/><path d="M 0 -62 A 62 62 0 0 1 53.7 31 L 27 15.5 A 31 31 0 0 0 0 -31 Z" fill="#e8a33d" transform="rotate(120)"/><path d="M 0 -62 A 62 62 0 0 1 53.7 31 L 27 15.5 A 31 31 0 0 0 0 -31 Z" fill="#c0392b" transform="rotate(240)"/>
+  <circle r="28" fill="#ffffff"/><circle r="28" fill="none" stroke="#ddd"/>
+  <text y="-2" text-anchor="middle" font-size="7" fill="#555" font-weight="bold">HUMANS</text><text y="7" text-anchor="middle" font-size="7" fill="#555" font-weight="bold">of DevOps</text>
+</g>
+<line x1="470" y1="540" x2="580" y2="540" stroke="#555" stroke-width="0.8"/>
+<text x="470" y="554" font-size="9" fill="#666">CEO, DevOps Institute</text>
+<text x="660" y="548" font-size="11" fill="#111">May 1, 2026</text>
+<text x="660" y="560" font-size="8" fill="#888">Date</text>
+<text x="600" y="584" text-anchor="middle" font-size="7.5" fill="#9a9a9a">*This certificate is for representative purpose only and holds no official or legal value.</text>
+</svg>
