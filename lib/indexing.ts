@@ -2,8 +2,9 @@
 // The other ~185 course pages stay live for direct traffic but carry
 // noindex until they earn unique content — the 206 near-identical pages
 // were a scaled-content/doorway footprint that suppressed the whole domain.
-// Country/city course variants are all noindex until the geo layer meets
-// the FIX-19 quality bar.
+// Country/city course variants inherit this allowlist: variants of an indexed
+// course are indexable (localized FAQs/headings meet the FIX-19 quality bar);
+// variants of noindexed courses stay noindex.
 //
 // Edit this list to promote/demote a course; slugs must match Course.slug.
 export const INDEXED_COURSE_SLUGS: string[] = [

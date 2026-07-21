@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { type FaqItem } from "@/lib/seed-data";
 
-export function FaqSection({ faqs, shortTitle }: { faqs: FaqItem[], shortTitle: string }) {
+export function FaqSection({ faqs, shortTitle, location }: { faqs: FaqItem[], shortTitle: string, location?: string }) {
   const tabs = ["Course", "Workshop", "Standard & Pro", "Career Benefits", "Finance"];
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -27,9 +27,11 @@ export function FaqSection({ faqs, shortTitle }: { faqs: FaqItem[], shortTitle: 
   return (
     <section id="faq" className="scroll-mt-24 pt-12 border-t border-gray-100 pb-10">
       <div className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-2">
-        {shortTitle.toUpperCase()} CERTIFICATION COURSE FAQS
+        {shortTitle.toUpperCase()} CERTIFICATION COURSE FAQS{location ? ` IN ${location.toUpperCase()}` : ""}
       </div>
-      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">Frequently Asked Questions</h2>
+      <h2 className="text-[26px] md:text-[32px] font-bold text-[#082032] mb-8 break-words leading-tight">
+        Frequently Asked Questions{location ? ` — ${shortTitle} Training in ${location}` : ""}
+      </h2>
       
       {/* Tabs */}
       <div className="flex overflow-x-auto hide-scrollbar mb-8 bg-white border border-gray-200 rounded-full p-1.5 w-max max-w-full shadow-sm">

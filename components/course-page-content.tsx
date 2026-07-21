@@ -299,7 +299,7 @@ export function CoursePageContent({
           {show("articles") && <ArticlesSection course={course} />}
 
           {/* FAQ */}
-          {show("faq") && <FaqSection faqs={course.faqs} shortTitle={course.shortTitle} />}
+          {show("faq") && <FaqSection faqs={course.faqs} shortTitle={course.shortTitle} location={locationName} />}
         </div>
 
         {/* RIGHT COLUMN: Sticky Sidebar */}

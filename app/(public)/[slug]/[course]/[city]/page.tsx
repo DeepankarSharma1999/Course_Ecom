@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
 import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
-import { NOINDEX } from "@/lib/indexing";
+import { NOINDEX, isCourseIndexed } from "@/lib/indexing";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
-import { localizeCourseFaqs } from "@/lib/course-faqs";
+import { localizeCourseFaqs, courseKeywords } from "@/lib/course-faqs";
 import { getCities, getCityBySlug, getCourseBySlug, getCourseVariant, getCourseSchedules } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
@@ -53,12 +53,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!c || !ct || ct.country.slug !== slug) return {};
   const variant = await getCourseVariant(course, slug, city);
   const base = baseCourseTitle(c.title);
-  const title = stripBrandSuffix(variant?.seoTitle) || composeCourseTitle(c.shortTitle, { city: ct.name });
+  const { acr } = courseKeywords(c);
+  // c.title (not the 50-char-truncated DB shortTitle) — the truncated form
+  // yielded titles like "…Certification Traini Certification Training in Delhi".
+  const title = stripBrandSuffix(variant?.seoTitle) || composeCourseTitle(c.title, { city: ct.name });
   const description = variant?.seoDescription || `Become a certified ${base} in ${ct.name}. ${c.summary} Weekend & weekday batches available.`;
   return {
-    title, description, keywords: `${c.seoKeywords}, ${base} ${ct.name}, ${base} training in ${ct.name}`,
-    // Geo variants are noindex until they meet the FIX-19 uniqueness bar.
-    robots: NOINDEX,
+    title, description,
+    keywords: `${c.seoKeywords}, ${base} ${ct.name}, ${base} training in ${ct.name}, ${acr} certification ${ct.name}, ${acr} course in ${ct.name}`,
+    // City variants of the FIX-06 allowlisted courses are indexable — localized
+    // FAQs, headings, currency and schedules meet the FIX-19 uniqueness bar.
+    // Variants of noindexed courses stay noindex (a city page of a page Google
+    // may not index would re-create the doorway footprint FIX-06 removed).
+    robots: isCourseIndexed(course) ? undefined : NOINDEX,
     alternates: { canonical: `/${slug}/${course}/${city}` },
     openGraph: { title, description, images: c.heroImage ? [c.heroImage] : [], url: `${SITE.url}/${slug}/${course}/${city}` },
   };
@@ -78,10 +85,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
   // (e.g. /uk/.../hyderabad), redirect to the city's real country page.
   if (ct.country.slug !== slug) redirect(`/${ct.country.slug}/${course}/${city}`);
   const co = ct.country;
+  const cities = (await getCities()).filter((x) => x.country.slug === co.slug).map((x) => ({ slug: x.slug, name: x.name }));
   // Inject GEO keywords (city) into the FAQs for this city variant — feeds both
   // the rendered FAQ section and the FAQ JSON-LD below.
-  c.faqs = localizeCourseFaqs(c.faqs, ct.name, c.title);
-  const cities = (await getCities()).filter((x) => x.country.slug === co.slug).map((x) => ({ slug: x.slug, name: x.name }));
+  c.faqs = localizeCourseFaqs(c, {
+    location: ct.name,
+    siblingCities: cities.filter((x) => x.slug !== city).map((x) => ({ name: x.name, href: `/${slug}/${course}/${x.slug}` })),
+  });
 
   const schedules = await getCourseSchedules(course);
 

@@ -7,13 +7,20 @@
 // membership) that differ by credential. Detection is slug/title based because
 // `accreditedBy` and `level` are uniform placeholders in the catalog.
 //
-// Used to fill FAQs for courses that have none (the 5 hand-authored courses keep
-// their own). Persisted to the DB by scripts/seed-course-faqs.ts and used as the
-// static fallback in content.ts.
+// Location (GEO) support: buildCourseFaqs accepts an optional location so the
+// city/country variant pages get StarAgile-style density — the location woven
+// into nearly every question/answer with rotated keyword variants ("CSM
+// training in Delhi", "CSM course in Delhi") plus location-only FAQs (weekend
+// batches, other cities with internal links). Without a location the output is
+// the neutral set stored in the DB by scripts/seed-course-faqs.ts and used as
+// the static fallback in content.ts.
 
 import { baseCourseTitle } from "./utils";
+import { COURSES as SEED_COURSES } from "./seed-data";
 
 export type FaqItem = { q: string; a: string };
+export type SiblingCity = { name: string; href: string };
+export type GeoFaqOptions = { location?: string | null; siblingCities?: SiblingCity[] };
 
 type CourseLike = {
   slug: string;
@@ -136,7 +143,63 @@ function name(c: CourseLike): string {
   return baseCourseTitle(c.title) || c.title;
 }
 
-function baseFaqs(c: CourseLike): FaqItem[] {
+// ---------- SEO keyword variants ----------
+
+export type CourseKeywords = { base: string; acr: string; pool: string[] };
+
+/**
+ * Keyword variants for a course, StarAgile-style: the acronym from the title's
+ * parens ("Certified Scrum Master (CSM®)" -> "CSM") drives short variants
+ * ("CSM training", "CSM course") that rotate through questions/answers so the
+ * phrasing varies naturally instead of repeating the full formal name.
+ */
+export function courseKeywords(c: CourseLike): CourseKeywords {
+  const base = name(c);
+  const m = c.title.match(/\(([^)]{2,20})\)/);
+  const raw = m?.[1]?.replace(/[®™℠]/g, "").trim() ?? "";
+  // Acronym-ish only: short, mostly uppercase tokens ("CSM", "PSM I", "PMI-ACP").
+  const acr = /^[A-Z0-9][A-Za-z0-9 .&-]{0,14}$/.test(raw) && /[A-Z]{2}/.test(raw) ? raw : base;
+  const pool = [
+    `${acr} certification training`,
+    `${acr} training`,
+    `${acr} course`,
+    `${acr} certification`,
+  ];
+  if (acr !== base) pool.push(`${base} certification`);
+  return { base, acr, pool: [...new Set(pool)] };
+}
+
+// Deterministic rotation through the keyword pool by FAQ position.
+const rot = (pool: string[], i: number) => pool[i % pool.length];
+
+// Country names that read wrong without an article ("in United States").
+const NEEDS_THE = new Set(["United States", "United Kingdom", "United Arab Emirates", "Netherlands", "Philippines"]);
+const locDisplay = (loc: string) => (NEEDS_THE.has(loc) ? `the ${loc}` : loc);
+
+// Localize a family-FAQ question: append " in {loc}" unless it's already there
+// or the phrasing would break ("Does this certification expire in Delhi?" is
+// the acceptable StarAgile-style edge; "as tools change in Delhi?" is not).
+function locQ(q: string, loc: string): string {
+  if (q.includes(loc)) return q;
+  if (/(change|expire|roadmap|policy)\?$/i.test(q)) return q;
+  return q.replace(/\?$/, ` in ${loc}?`);
+}
+
+// Rotated location sentence appended to family-FAQ answers.
+function locA(a: string, loc: string, kw: string, i: number): string {
+  if (a.includes(loc)) return a;
+  const suffixes = [
+    ` This applies equally to ${kw} learners in ${loc}.`,
+    ` The process is the same for every ${kw} batch in ${loc}.`,
+    ` Participants in ${loc} taking the ${kw} follow the same steps.`,
+    ` This holds for all ${kw} cohorts in ${loc}.`,
+  ];
+  return a + suffixes[i % suffixes.length];
+}
+
+// ---------- FAQ builders ----------
+
+function baseFaqs(c: CourseLike, loc?: string): FaqItem[] {
   const n = name(c);
   const dur = durationPhrase(c.durationLabel);
   const audience = listSentence(
@@ -144,6 +207,28 @@ function baseFaqs(c: CourseLike): FaqItem[] {
     "professionals looking to build in-demand, job-ready skills and validate them with a recognised credential"
   );
   const prereq = listSentence(c.prerequisites, "");
+  const { pool } = courseKeywords(c);
+
+  if (loc) {
+    const prereqA = prereq
+      ? `You should have ${prereq.charAt(0).toLowerCase() + prereq.slice(1)}. Beyond that, there are no formal prerequisites for the ${rot(pool, 3)} in ${loc} — our trainers take you from fundamentals to applied skills.`
+      : `There are no strict prerequisites for the ${rot(pool, 3)} in ${loc}. A basic familiarity with the subject area helps, but the trainer covers the fundamentals before moving to advanced, applied topics.`;
+    return [
+      {
+        q: `How is the ${n} training delivered in ${loc}?`,
+        a: `The ${rot(pool, 0)} in ${loc} is delivered as live, instructor-led online classes over ${dur} that you can join from anywhere in ${loc}, in small interactive batches with hands-on exercises and real-world examples. You also get session recordings, courseware, and post-class support. Weekday and weekend ${rot(pool, 1)} batches run on ${loc}-friendly timings, and corporate/in-house delivery in ${loc} can be arranged.`,
+      },
+      {
+        q: `Can I take the ${rot(pool, 2)} online in ${loc}?`,
+        a: `Yes. The ${rot(pool, 0)} is available as live online classes across ${loc}, alongside classroom batches in select locations. Both formats cover the same syllabus and prepare you for the ${rot(pool, 3)}.`,
+      },
+      {
+        q: `Who should attend the ${rot(pool, 2)} in ${loc}?`,
+        a: `The ${rot(pool, 1)} in ${loc} is ideal for ${audience}.`,
+      },
+      { q: `What are the prerequisites for the ${rot(pool, 1)} in ${loc}?`, a: prereqA },
+    ];
+  }
 
   const faqs: FaqItem[] = [
     {
@@ -170,23 +255,51 @@ function baseFaqs(c: CourseLike): FaqItem[] {
   return faqs;
 }
 
-// Region/keyword note appended to answers so the primary keyword and location
-// read naturally rather than as a stuffed list.
-function geoLine(n: string, location: string): FaqItem[] {
-  return [
+// Location-only FAQs for city/country variant pages.
+function geoFaqs(c: CourseLike, loc: string, siblingCities?: SiblingCity[]): FaqItem[] {
+  const { pool } = courseKeywords(c);
+  const out: FaqItem[] = [
     {
-      q: `Do you offer ${n} certification training in ${location}?`,
-      a: `Yes. We run ${n} training in ${location} as live online batches you can join from anywhere in ${location}, with classroom sessions in select cities. Timings are aligned to ${location} working hours, and pricing is shown in your local currency.`,
+      q: `Do you offer ${rot(pool, 0)} in ${loc}?`,
+      a: `Yes. We run the ${rot(pool, 1)} in ${loc} as live online batches you can join from anywhere in ${loc}, with classroom sessions in select cities. Timings are aligned to ${loc} working hours, and pricing is shown in your local currency.`,
     },
     {
-      q: `Is the ${n} certification recognised in ${location}?`,
-      a: `Absolutely. The ${n} certification is globally recognised and valued by employers across ${location}, so it strengthens your CV and career prospects locally and internationally.`,
+      q: `Is the ${rot(pool, 3)} recognised by employers in ${loc}?`,
+      a: `Absolutely. The ${rot(pool, 3)} is globally recognised and valued by employers across ${loc}, so it strengthens your CV and career prospects locally and internationally.`,
+    },
+    {
+      q: `Are there weekend batches for the ${rot(pool, 2)} in ${loc}?`,
+      a: `Yes. Alongside weekday cohorts, we schedule weekend ${rot(pool, 1)} batches timed for ${loc} so working professionals can complete the ${rot(pool, 2)} without taking leave. Check the schedules section above for the next ${loc}-friendly dates.`,
     },
   ];
+  if (siblingCities?.length) {
+    const links = siblingCities
+      .slice(0, 10)
+      .map((s) => `<a href="${s.href}" class="text-brand-600 hover:underline">${rot(pool, 1)} in ${s.name}</a>`)
+      .join(", ");
+    out.push({
+      q: `Which other cities offer the ${rot(pool, 2)} besides ${loc}?`,
+      a: `The same ${rot(pool, 0)} runs across major cities: ${links}. Every location follows the same curriculum, certification process, and pricing.`,
+    });
+  }
+  return out;
 }
 
-function tailFaqs(c: CourseLike): FaqItem[] {
+function tailFaqs(c: CourseLike, loc?: string): FaqItem[] {
   const n = name(c);
+  const { pool } = courseKeywords(c);
+  if (loc) {
+    return [
+      {
+        q: `Do you offer group or corporate ${rot(pool, 1)} in ${loc}?`,
+        a: `Yes. We run private ${rot(pool, 2)} cohorts for teams in ${loc} with tailored scheduling, and offer group discounts for three or more participants. Contact us for a corporate/in-house quote in ${loc}.`,
+      },
+      {
+        q: `What is the rescheduling and refund policy for the ${rot(pool, 2)} in ${loc}?`,
+        a: `You can reschedule to a later ${loc} batch at no extra cost with advance notice. Refunds are handled per our published cancellation policy — reach out to support and we'll help you switch dates or process a refund.`,
+      },
+    ];
+  }
   return [
     {
       q: `Do you offer group or corporate training for ${n}?`,
@@ -380,25 +493,53 @@ function dedupe(faqs: FaqItem[]): FaqItem[] {
   });
 }
 
-/** Build a full FAQ set (family + universal), deduped, for one course. */
-export function buildCourseFaqs(c: CourseLike): FaqItem[] {
+/**
+ * Build a full FAQ set (family + universal), deduped, for one course.
+ * With `location`, every section is localized (StarAgile-style density):
+ * base/tail FAQs use location-native templates with rotated keyword variants,
+ * family FAQs get the location appended to questions/answers, and
+ * location-only FAQs (offered-in, recognised-in, weekend batches, other
+ * cities) are inserted after the opening questions.
+ */
+export function buildCourseFaqs(c: CourseLike, opts?: GeoFaqOptions): FaqItem[] {
   const fam = detectFamily(c);
-  return dedupe([...baseFaqs(c), ...familyFaqs(c, fam), ...tailFaqs(c)]);
+  const rawLoc = opts?.location?.trim() || undefined;
+  const loc = rawLoc ? locDisplay(rawLoc) : undefined;
+  let family = familyFaqs(c, fam);
+  if (loc) {
+    const { pool } = courseKeywords(c);
+    family = family.map((f, i) => ({ q: locQ(f.q, loc), a: locA(f.a, loc, rot(pool, i), i) }));
+  }
+  const geo = loc ? geoFaqs(c, loc, opts?.siblingCities) : [];
+  const base = baseFaqs(c, loc);
+  // Geo block right after the opening delivery/online questions, so location
+  // keywords appear high in the section (and in the JSON-LD) without
+  // displacing the core answers.
+  return dedupe([...base.slice(0, 2), ...geo, ...base.slice(2), ...family, ...tailFaqs(c, loc)]);
+}
+
+// Courses whose FAQs are hand-authored in seed-data; localization appends the
+// geo block instead of regenerating their prose.
+let handAuthored: Set<string> | null = null;
+function isHandAuthored(slug: string): boolean {
+  handAuthored ??= new Set(SEED_COURSES.filter((x) => (x.faqs?.length ?? 0) > 0).map((x) => x.slug));
+  return handAuthored.has(slug);
 }
 
 /**
- * Add location-specific (GEO) FAQs for city/country variant pages. The stored
- * course FAQs stay location-neutral; pages call this at render time with the
- * resolved city or country name so the questions carry dynamic GEO keywords
- * (and the same set feeds the FAQ JSON-LD). No-op without a location.
+ * Localize a course's FAQs for a city/country variant page. Stored FAQs stay
+ * location-neutral; pages call this at render time with the resolved location
+ * so questions carry dynamic GEO keywords (the same set feeds the FAQ
+ * JSON-LD). Generated courses are re-generated with full localization;
+ * hand-authored courses keep their prose and gain the location-only block.
+ * No-op without a location.
  */
-export function localizeCourseFaqs(faqs: FaqItem[], location?: string | null, courseName?: string): FaqItem[] {
-  const loc = location?.trim();
-  if (!loc) return faqs;
-  const n = (courseName && baseCourseTitle(courseName)) || courseName || "this";
-  // Insert GEO FAQs after the opening delivery/online questions so location
-  // keywords appear high in the section without displacing the core answers.
-  const head = faqs.slice(0, 2);
-  const rest = faqs.slice(2);
-  return dedupe([...head, ...geoLine(n, loc), ...rest]);
+export function localizeCourseFaqs(course: CourseLike & { faqs: FaqItem[] }, opts: GeoFaqOptions): FaqItem[] {
+  const loc = opts.location?.trim();
+  if (!loc) return course.faqs;
+  if (isHandAuthored(course.slug)) {
+    const faqs = course.faqs ?? [];
+    return dedupe([...faqs.slice(0, 2), ...geoFaqs(course, locDisplay(loc), opts.siblingCities), ...faqs.slice(2)]);
+  }
+  return buildCourseFaqs(course, opts);
 }
