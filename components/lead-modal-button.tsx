@@ -10,9 +10,11 @@ import { LeadForm } from "@/components/lead-form";
  * into being decorative markup.
  */
 export function LeadModalButton({
-  courseSlug, source, title, subtitle, ctaLabel, brochure, className, children,
+  courseSlug, countrySlug, citySlug, source, title, subtitle, ctaLabel, brochure, className, children,
 }: {
   courseSlug: string;
+  countrySlug?: string;
+  citySlug?: string;
   /** Tags the lead in the admin, e.g. "brochure-<slug>" / "quote-<slug>". */
   source: string;
   title: string;
@@ -52,6 +54,8 @@ export function LeadModalButton({
                 variant="inline"
                 source={source}
                 courseSlug={courseSlug}
+                countrySlug={countrySlug}
+                citySlug={citySlug}
                 brochureCourseSlug={brochure ? courseSlug : undefined}
                 ctaLabel={ctaLabel}
               />

@@ -293,7 +293,7 @@ export function CoursePageContent({
           {show("schedules") && <SchedulesSection schedules={schedules} fallbackPriceUsd={course.basePriceUsd} courseSlug={course.slug} />}
 
           {/* Advisor Banner */}
-          <AdvisorBanner />
+          <AdvisorBanner courseSlug={course.slug} countrySlug={countrySlug} citySlug={citySlug} />
 
           {/* Articles Section */}
           {show("articles") && <ArticlesSection course={course} />}
