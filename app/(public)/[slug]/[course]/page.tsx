@@ -4,6 +4,7 @@ import { CoursePageContent } from "@/components/course-page-content";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { NOINDEX } from "@/lib/indexing";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { localizeCourseFaqs } from "@/lib/course-faqs";
 import { getCourseBySlug, getCountryBySlug, getCities, getCourseVariant, getCourseSchedules } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { GEO_COURSES, getGeoCountries, getGeoCountry, isGeoCourse } from "@/lib/geo-pages/data";
@@ -63,6 +64,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
   }
   const [c, co, currency, currencyCfg] = await Promise.all([getCourseBySlug(course), getCountryBySlug(slug), getDisplayCurrency(), getCurrencyConfig()]);
   if (!c || !co) notFound();
+  // Inject GEO keywords into the FAQs for this country variant (feeds both the
+  // rendered FAQ section and the FAQ JSON-LD below).
+  c.faqs = localizeCourseFaqs(c.faqs, co.name, c.title);
   const cities = (await getCities()).filter((x) => x.country.slug === co.slug).map((x) => ({ slug: x.slug, name: x.name }));
 
   const schedules = await getCourseSchedules(course);

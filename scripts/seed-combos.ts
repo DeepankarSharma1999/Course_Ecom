@@ -11,14 +11,14 @@ const COMBOS = [
     title: "Leading SAFe Certification Training & PMP Certification Training",
     shortTitle: "Leading SAFe & PMP Combo",
     priceInr: 70999,
-    priceUsd: 899,
+    priceUsd: 1295,
   },
   {
     slug: "ssm-pmp-combo",
     title: "SSM Certification Training & PMP Certification Training",
     shortTitle: "SSM & PMP Combo",
     priceInr: 70999,
-    priceUsd: 899,
+    priceUsd: 1495,
   },
   {
     slug: "csm-cspo-combo",
@@ -32,7 +32,7 @@ const COMBOS = [
     title: "PMP Certification Training & PMI-ACP Certification Training",
     shortTitle: "PMP & PMI-ACP Combo",
     priceInr: 64999,
-    priceUsd: 829,
+    priceUsd: 1595,
   },
   {
     slug: "applied-agentic-ai-engineering",

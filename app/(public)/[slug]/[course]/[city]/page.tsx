@@ -5,6 +5,7 @@ import { StickyCta } from "@/components/sticky-cta";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
 import { NOINDEX } from "@/lib/indexing";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { localizeCourseFaqs } from "@/lib/course-faqs";
 import { getCities, getCityBySlug, getCourseBySlug, getCourseVariant, getCourseSchedules } from "@/lib/content";
 import { getDisplayCurrency, getCurrencyConfig } from "@/lib/geo";
 import { formatInCurrency } from "@/lib/currency";
@@ -77,6 +78,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string;
   // (e.g. /uk/.../hyderabad), redirect to the city's real country page.
   if (ct.country.slug !== slug) redirect(`/${ct.country.slug}/${course}/${city}`);
   const co = ct.country;
+  // Inject GEO keywords (city) into the FAQs for this city variant — feeds both
+  // the rendered FAQ section and the FAQ JSON-LD below.
+  c.faqs = localizeCourseFaqs(c.faqs, ct.name, c.title);
   const cities = (await getCities()).filter((x) => x.country.slug === co.slug).map((x) => ({ slug: x.slug, name: x.name }));
 
   const schedules = await getCourseSchedules(course);

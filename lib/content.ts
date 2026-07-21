@@ -5,6 +5,7 @@ import { cache } from "react";
 import { prisma } from "./prisma";
 import { resolveHeroImage } from "./course-images";
 import { baseCourseTitle, stripBrandSuffix } from "./utils";
+import { buildCourseFaqs } from "./course-faqs";
 import {
   COURSES as RAW_STATIC_COURSES,
   CATEGORIES as STATIC_CATEGORIES,
@@ -24,6 +25,8 @@ const STATIC_COURSES: CourseContent[] = RAW_STATIC_COURSES.map((c) => ({
   shortTitle: baseCourseTitle(c.title),
   seoTitle: stripBrandSuffix(c.seoTitle) ?? c.title,
   heroImage: resolveHeroImage(c.heroImage, c.slug, c.category?.name),
+  // Fill FAQs for courses that ship none, so the DB-down fallback still renders them.
+  faqs: c.faqs?.length ? c.faqs : buildCourseFaqs(c),
 }));
 
 // Mirror of baseNameOf() in scripts/generate-course-content.ts — how the stored
@@ -73,7 +76,18 @@ function dbCourseToContent(c: any): CourseContent {
     whyChooseUs: (c.whyChooseUs as any) ?? [],
     hiddenSections: (c.hiddenSections as any) ?? [],
     pageSections: (c.pageSections as any) ?? null,
-    faqs: (c.faqs ?? []).map((f: any) => ({ q: f.question, a: f.answer })),
+    faqs: c.faqs?.length
+      ? c.faqs.map((f: any) => ({ q: f.question, a: f.answer }))
+      : buildCourseFaqs({
+          slug: c.slug,
+          title: c.title,
+          shortTitle: c.shortTitle,
+          category: c.category ? { slug: c.category.slug, name: c.category.name } : { slug: "", name: "" },
+          durationLabel: c.durationLabel ?? undefined,
+          examIncluded: !!c.examIncluded,
+          whoShouldAttend: (c.whoShouldAttend as any) ?? [],
+          prerequisites: (c.prerequisites as any) ?? [],
+        }),
     // Stored seoTitles carry "| Simplilead"; the layout template re-appends it (FIX-04).
     seoTitle: stripBrandSuffix(c.seoTitle) ?? c.title,
     seoDescription: c.seoDescription ?? c.summary,
