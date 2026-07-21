@@ -1,41 +1,18 @@
-// FIX-06: which course pages are allowed into the Google index + sitemap.
-// The other ~185 course pages stay live for direct traffic but carry
-// noindex until they earn unique content — the 206 near-identical pages
-// were a scaled-content/doorway footprint that suppressed the whole domain.
-// Country/city course variants inherit this allowlist: variants of an indexed
-// course are indexable (localized FAQs/headings meet the FIX-19 quality bar);
-// variants of noindexed courses stay noindex.
+// Indexation policy for course pages and their country/city variants.
 //
-// Edit this list to promote/demote a course; slugs must match Course.slug.
-export const INDEXED_COURSE_SLUGS: string[] = [
-  // Agile & Scrum
-  "csm-certification-training",
-  "cspo-certification-training",
-  "a-csm-certification-training",
-  "agile-and-scrum-training",
-  "pmi-acp-certification-training",
-  // Project & Business
-  "pmp-certification-training",
-  "prince2-foundation-practitioner-course",
-  "capm-certification-training",
-  "cbap-certification-training",
-  "change-management-training",
-  // DevOps & Cloud
-  "devops-foundation-certification",
-  "docker-kubernetes-certification",
-  "aws-sysops-administrator-certification-training",
-  "aws-devops-engineer-certification-training",
-  "cloud-computing-with-aws-course",
-  // Quality & Service
-  "lean-six-sigma-yellow-belt-certification",
-  "lean-six-sigma-green-belt-certification",
-  "itil-foundation-certification",
-  "root-cause-analysis-training",
-];
-
-export function isCourseIndexed(slug: string) {
-  return INDEXED_COURSE_SLUGS.includes(slug);
+// History: FIX-06 (2026) noindexed the thin long tail after 206 near-identical
+// pages drew a scaled-content/doorway suppression, keeping a 19-course
+// allowlist. As of GEO-12 the owner chose full indexation: every course page
+// now carries unique generated content (per-family FAQs, localized GEO
+// variants, per-course pricing/schedules), and all courses + variants are
+// indexable and sitemapped.
+//
+// If Google Search Console shows a sitewide impressions drop after this
+// change, re-gate by restoring an allowlist here — every robots decision and
+// the sitemap flow through isCourseIndexed().
+export function isCourseIndexed(_slug: string) {
+  return true;
 }
 
-// noindex,follow — keeps link equity flowing while the page sits out of the index.
+// noindex,follow — keeps link equity flowing while a page sits out of the index.
 export const NOINDEX = { index: false, follow: true } as const;

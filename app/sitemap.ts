@@ -1,18 +1,15 @@
 import type { MetadataRoute } from "next";
-import { getCategories } from "@/lib/content";
-import { INDEXED_COURSE_SLUGS } from "@/lib/indexing";
+import { getCategories, getAllCourses } from "@/lib/content";
 import { INFO_PAGES } from "@/lib/info-content";
 import { SITE } from "@/lib/utils";
 import { COUNTRIES, CITIES_IN } from "@/lib/seed-data";
 import { GEO_COURSES, getGeoCountries } from "@/lib/geo-pages/data";
 import { isCityIndexable, isCountryIndexable } from "@/lib/geo-pages/gate";
 
-// FIX-06: the sitemap lists ONLY pages meant for the index — the allowlisted
-// courses plus core/static pages. Noindexed pages (the ~185 remaining courses
-// and their country/city variants) are deliberately absent.
-// Country/city variants (/{country}/{course}[/{city}]) of the ALLOWLISTED
-// courses are indexable and listed: their localized FAQs, headings, currency
-// and schedules meet the FIX-19 uniqueness bar.
+// GEO-12: full indexation — every published course plus its country/city
+// variants (/{country}/{course}[/{city}]) is listed; variants carry localized
+// FAQs/headings/currency/schedules (see lib/indexing.ts for the history and
+// the re-gate lever).
 // Geo landing pages (/{course}/{country}[/{city}]) appear ONLY once they pass
 // the publishing gate (no TODOs, fit-check, sourced salaries, unique intro)
 // AND their releaseWeek <= RELEASE_WEEK — pacing new pages into the index.
@@ -36,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ({ url: `${base}${path}`, lastModified: now, changeFrequency, priority });
 
   const categories = await getCategories();
+  const courseSlugs = (await getAllCourses()).map((c) => c.slug);
 
   return [
     url("", 1),
@@ -43,9 +41,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...MARKETING_ROUTES.map((p) => url(p, 0.6, "monthly")),
     ...Object.keys(INFO_PAGES).filter((s) => !HIDDEN_INFO.has(s)).map((s) => url(`/info/${s}`, 0.4, "monthly")),
     ...categories.map((c: { slug: string }) => url(`/category/${c.slug}`, 0.8)),
-    ...INDEXED_COURSE_SLUGS.map((s) => url(`/${s}`, 0.9)),
-    // Country + city variants of allowlisted courses (cities are India-only today).
-    ...INDEXED_COURSE_SLUGS.flatMap((s) => [
+    ...courseSlugs.map((s) => url(`/${s}`, 0.9)),
+    // Country + city variants of every course (cities are India-only today).
+    ...courseSlugs.flatMap((s) => [
       ...COUNTRIES.map((co: { slug: string }) => url(`/${co.slug}/${s}`, 0.5, "monthly")),
       ...CITIES_IN.map((ct: { slug: string }) => url(`/in/${s}/${ct.slug}`, 0.6, "monthly")),
     ]),

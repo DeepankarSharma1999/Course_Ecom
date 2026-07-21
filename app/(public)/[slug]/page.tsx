@@ -34,8 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: composed,
       description: course.seoDescription,
       keywords: course.seoKeywords,
-      // Only allowlisted courses are indexed (FIX-06); the rest stay live but
-      // noindex until they earn unique content.
+      // GEO-12: all course pages indexable (see lib/indexing.ts for history).
       robots: isCourseIndexed(slug) ? undefined : NOINDEX,
       alternates: { canonical: `/${slug}` },
       openGraph: { title: `${composed} | ${SITE.name}`, description: course.seoDescription, images: course.heroImage ? [course.heroImage] : [], url: `${SITE.url}/${slug}` },
