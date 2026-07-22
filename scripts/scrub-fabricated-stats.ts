@@ -24,10 +24,10 @@ async function main() {
     const topBar = ((settings.topBarMessages as string[]) || []).filter((m) => !/[\d,]{4,}\+/.test(m));
     if (topBar.length === 0) topBar.push("Globally accredited certification training");
     const footerAbout = /500,000|5,00,000/.test(settings.footerAbout ?? "")
-      ? "Simplilead is a global certification training provider, helping professionals advance their careers with globally accredited programs."
+      ? "SimpliLEAD is a global certification training provider, helping professionals advance their careers with globally accredited programs."
       : settings.footerAbout;
     const defaultSeoDescription = /500,000|5,00,000/.test(settings.defaultSeoDescription ?? "")
-      ? "Simplilead delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more."
+      ? "SimpliLEAD delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more."
       : settings.defaultSeoDescription;
     log("SiteSettings.topBarMessages:", settings.topBarMessages, "->", topBar);
     log("SiteSettings.footerAbout:", settings.footerAbout, "->", footerAbout);
@@ -53,7 +53,7 @@ async function main() {
     }
     if (/500,000|5,00,000/.test(home.seoDescription ?? "")) {
       data.seoDescription =
-        "Simplilead offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management — live online, classroom and corporate programs.";
+        "SimpliLEAD offers expert-led certification training in Agile, Scrum, SAFe, DevOps, PMP, and IT Service Management — live online, classroom and corporate programs.";
       log("HomePageContent.seoDescription scrubbed");
     }
     if (/[\d,]+\+ (professionals|learners|enterprises)/i.test(home.heroSubheading ?? "")) {
@@ -82,8 +82,8 @@ async function main() {
   const variants = await prisma.$executeRaw`
     UPDATE "CoursePageVariant"
     SET "heroSubheadline" = REPLACE("heroSubheadline", 'Join thousands of learners in', 'Live online & classroom batches in'),
-        "seoTitle" = REGEXP_REPLACE("seoTitle", '\s*\|\s*Simplilead\s*$', '')
-    WHERE "heroSubheadline" LIKE '%Join thousands of learners%' OR "seoTitle" ~ '\|\s*Simplilead\s*$'`;
+        "seoTitle" = REGEXP_REPLACE("seoTitle", '\s*\|\s*SimpliLEAD\s*$', '')
+    WHERE "heroSubheadline" LIKE '%Join thousands of learners%' OR "seoTitle" ~ '\|\s*SimpliLEAD\s*$'`;
   log(`CoursePageVariant rows updated: ${variants}`);
 
   // --- Seeded fake testimonials (exact match only; rows printed for recovery) --

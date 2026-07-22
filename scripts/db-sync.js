@@ -92,6 +92,13 @@ if (!process.env.DATABASE_URL) {
   });
   if (wa.count) console.log("db-sync: WhatsApp number migrated.");
 
+  // 6b. Phone — same pattern: migrate the old default, keep admin edits.
+  const ph = await p.siteSettings.updateMany({
+    where: { phone: "+91 80 4710 6633" },
+    data: { phone: "+971 58 523 2875" },
+  });
+  if (ph.count) console.log("db-sync: phone number migrated.");
+
   // 7. Enrollments created before the pending/confirmed flow shipped
   //    (2026-07-12) were instant enrollments — keep them visible.
   const en = await p.enrollment.updateMany({

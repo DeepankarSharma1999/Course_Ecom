@@ -32,7 +32,8 @@ function MarqueeRow({ items, reverse = false }: { items: Domain[]; reverse?: boo
 
   return (
     <div className="relative w-full max-w-full overflow-hidden mb-4 [contain:paint]" style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}>
-      <div className={`flex w-max animate-marquee ${reverse ? '[animation-direction:reverse]' : ''} hover:[animation-play-state:paused]`}>
+      {/* 31.25s = the 25s base slowed 20% (25 / 0.8) — client-requested pace. */}
+      <div className={`flex w-max animate-marquee [animation-duration:31.25s] ${reverse ? '[animation-direction:reverse]' : ''} hover:[animation-play-state:paused]`}>
         <div className="flex items-center gap-4 pr-4">
           {content}
         </div>
@@ -74,7 +75,7 @@ export function BusinessSectors({ content }: { content?: any }) {
           <p className="mt-4 text-[14px] leading-relaxed text-gray-500 max-w-2xl mx-auto font-medium">
             Our immersive courses in booming fields like Data Science, AI, and Cloud Computing
             provide you with the practical knowledge and experience you need to succeed in the ever-
-            evolving job market. Don't just learn, get future-ready with Simplilead.
+            evolving job market. Don't just learn, get future-ready with SimpliLEAD.
           </p>
         </div>
 

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description:
-    "Simplilead delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more. Learn from accredited trainers, in person or live online.",
+    "SimpliLEAD delivers globally recognized certification training in Agile, Scrum, SAFe, DevOps, Project Management, Quality, IT Service Management, and more. Learn from accredited trainers, in person or live online.",
   openGraph: { type: "website", siteName: SITE.name, url: SITE.url },
   // No global robots meta — indexing is the default; pages opt OUT via
   // robots: NOINDEX (lib/indexing.ts) so there is exactly one directive per page.

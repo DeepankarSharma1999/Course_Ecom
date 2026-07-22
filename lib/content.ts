@@ -88,7 +88,7 @@ function dbCourseToContent(c: any): CourseContent {
           whoShouldAttend: (c.whoShouldAttend as any) ?? [],
           prerequisites: (c.prerequisites as any) ?? [],
         }),
-    // Stored seoTitles carry "| Simplilead"; the layout template re-appends it (FIX-04).
+    // Stored seoTitles carry "| SimpliLEAD"; the layout template re-appends it (FIX-04).
     seoTitle: stripBrandSuffix(c.seoTitle) ?? c.title,
     seoDescription: c.seoDescription ?? c.summary,
     seoKeywords: c.seoKeywords ?? "",

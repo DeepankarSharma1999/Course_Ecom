@@ -11,7 +11,7 @@ const PAGES = [
     title: "Refund Policy",
     content: `
 <p><em>Last updated: July 2026</em></p>
-<p>At Simplilead we want you to be fully satisfied with your training. This policy explains when and how course fees are refunded. It applies to all instructor-led (live online and classroom) and self-paced courses purchased directly from Simplilead.</p>
+<p>At SimpliLEAD we want you to be fully satisfied with your training. This policy explains when and how course fees are refunded. It applies to all instructor-led (live online and classroom) and self-paced courses purchased directly from SimpliLEAD.</p>
 <h2>Instructor-led courses</h2>
 <ul>
   <li><strong>More than 7 days before the batch start date:</strong> full refund, minus any payment-processing charges.</li>
@@ -20,7 +20,7 @@ const PAGES = [
 </ul>
 <h2>Self-paced courses</h2>
 <p>Self-paced course fees are refundable within <strong>7 days of purchase</strong>, provided less than 25% of the course content has been consumed and no certificate has been issued.</p>
-<h2>Batches cancelled or rescheduled by Simplilead</h2>
+<h2>Batches cancelled or rescheduled by SimpliLEAD</h2>
 <p>If we cancel or reschedule a batch and the new dates do not work for you, you are entitled to a <strong>100% refund</strong> — including all processing charges — or a free transfer to any batch of your choice.</p>
 <h2>Exam fees and third-party costs</h2>
 <p>Where the course fee includes an exam voucher or membership from a certification body (for example Scrum Alliance, Scaled Agile, PMI or PeopleCert), that portion is <strong>non-refundable once the voucher has been issued</strong> in your name.</p>
@@ -34,7 +34,7 @@ const PAGES = [
     title: "Cancellation Policy",
     content: `
 <p><em>Last updated: July 2026</em></p>
-<p>This policy describes how registrations with Simplilead may be cancelled or rescheduled — by you or by us.</p>
+<p>This policy describes how registrations with SimpliLEAD may be cancelled or rescheduled — by you or by us.</p>
 <h2>Cancellation by the participant</h2>
 <ul>
   <li>Cancellation requests must be sent to <a href="mailto:info@course-ecom.com">info@course-ecom.com</a> from your registered email address.</li>
@@ -42,11 +42,11 @@ const PAGES = [
   <li>Instead of cancelling, you may <strong>reschedule once free of charge</strong> to any future batch of the same course, up to 48 hours before the batch starts.</li>
   <li>You may also <strong>transfer your seat to a colleague</strong> at no cost — let us know their name and email at least 24 hours before the batch starts.</li>
 </ul>
-<h2>Cancellation or rescheduling by Simplilead</h2>
+<h2>Cancellation or rescheduling by SimpliLEAD</h2>
 <ul>
   <li>We may cancel or reschedule a batch due to insufficient enrolments, trainer unavailability, or circumstances beyond our control. We will notify you by email as early as possible — normally at least 3 days before the start date.</li>
   <li>In that case you can choose a <strong>full refund (100%, including processing charges)</strong> or a free transfer to any future batch.</li>
-  <li>Simplilead's liability is limited to the course fee paid. We are not responsible for travel, accommodation or other incidental costs, so we recommend arranging travel only after a batch is confirmed.</li>
+  <li>SimpliLEAD's liability is limited to the course fee paid. We are not responsible for travel, accommodation or other incidental costs, so we recommend arranging travel only after a batch is confirmed.</li>
 </ul>
 <h2>No-shows</h2>
 <p>Participants who do not attend a confirmed batch without prior notice are not eligible for a refund or transfer.</p>
@@ -58,7 +58,7 @@ const PAGES = [
     title: "Cookies Policy",
     content: `
 <p><em>Last updated: July 2026</em></p>
-<p>This Cookies Policy explains how Simplilead ("we", "us") uses cookies and similar technologies on this website, and the choices you have.</p>
+<p>This Cookies Policy explains how SimpliLEAD ("we", "us") uses cookies and similar technologies on this website, and the choices you have.</p>
 <h2>What are cookies?</h2>
 <p>Cookies are small text files stored on your device when you visit a website. They help the site work correctly, remember your preferences, and understand how the site is used.</p>
 <h2>Cookies we use</h2>

@@ -32,7 +32,7 @@ export function StickyCta({ courseTitle, priceLabel, enquireHref = "/enquire", s
           <div className="text-[11px] text-ink-500 truncate">{courseTitle}</div>
           {priceLabel && <div className="text-sm font-bold text-brand-700">{priceLabel}</div>}
         </div>
-        <a href="tel:+918047106633" className="p-2.5 rounded-lg bg-emerald-500 text-white" aria-label="Call us">
+        <a href="tel:+971585232875" className="p-2.5 rounded-lg bg-emerald-500 text-white" aria-label="Call us">
           <Phone className="w-4 h-4" />
         </a>
         <a href={schedulesHref} className="px-3 py-2.5 rounded-lg bg-ink-100 text-ink-800 text-sm font-semibold inline-flex items-center gap-1">

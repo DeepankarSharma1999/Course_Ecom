@@ -3,7 +3,7 @@
 // Any course without a scraped badge falls back to the "UL" default.
 import manifest from "./badge-manifest.json";
 
-const DEFAULT_BADGE = "/images/courses/badges/_default-ul.svg";
+export const DEFAULT_BADGE = "/images/courses/badges/_default-ul.svg";
 
 export function courseBadge(slug: string): string {
   return (manifest as Record<string, string>)[slug] ?? DEFAULT_BADGE;

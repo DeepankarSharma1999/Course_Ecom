@@ -22,7 +22,7 @@ export function ReferralLinkCard({ link, learnerName }: { link: string; learnerN
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const message = encodeURIComponent(`Hi! I've been learning with Simplilead — use my link to get a discount on globally accredited certification courses: ${link}`);
+  const message = encodeURIComponent(`Hi! I've been learning with SimpliLEAD — use my link to get a discount on globally accredited certification courses: ${link}`);
   const shares = [
     { icon: MessageCircle, label: "WhatsApp", href: `https://wa.me/?text=${message}` },
     { icon: Mail, label: "Email", href: `mailto:?subject=${encodeURIComponent("A discount on certification training for you")}&body=${message}` },

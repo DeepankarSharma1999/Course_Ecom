@@ -115,7 +115,7 @@ export default function AnimatedContent({ content, slug }: { content: InfoPageCo
             <div className="relative z-10 max-w-2xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to accelerate your career?</h2>
               <p className="text-lg text-background/80 mb-8 leading-relaxed">
-                Join thousands of professionals globally who have trusted Simplilead for their Agile, Scrum, and PMP certification needs. Explore our comprehensive course catalog today.
+                Join thousands of professionals globally who have trusted SimpliLEAD for their Agile, Scrum, and PMP certification needs. Explore our comprehensive course catalog today.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/courses" className="btn bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3.5 text-lg font-bold rounded-md">

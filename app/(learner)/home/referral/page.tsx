@@ -22,7 +22,7 @@ export default async function ReferralPage() {
     <div className="p-8 max-w-[1000px] mx-auto space-y-8">
       <div>
         <h1 className="text-2xl font-extrabold text-ink-900 mb-1">Refer & Earn</h1>
-        <p className="text-ink-500 text-[14px]">Share Simplilead with your network — you earn rewards, they get discounts.</p>
+        <p className="text-ink-500 text-[14px]">Share SimpliLEAD with your network — you earn rewards, they get discounts.</p>
       </div>
 
       <ReferralLinkCard link={referralLink} learnerName={learner.name || "there"} />

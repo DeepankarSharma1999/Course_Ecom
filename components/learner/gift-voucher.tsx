@@ -14,7 +14,7 @@ export function GiftVoucherBanner() {
           A Smarter Way to Gift Learning
         </h3>
         <p className="text-[14px] text-ink-600 mb-6 max-w-[400px]">
-          Gift access to world-class Agile training with Simplilead gift cards learning made flexible and meaningful.
+          Gift access to world-class Agile training with SimpliLEAD gift cards learning made flexible and meaningful.
         </p>
         <Link href="/home/gifts" className="inline-block bg-primary hover:bg-[#0f6b6b] text-white font-bold px-6 py-2.5 rounded-lg transition-colors text-[14px] shadow-sm">
           Buy Gift Card

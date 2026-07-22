@@ -24,8 +24,8 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const [h, s] = await Promise.all([getHomeContent(), getSiteSettings()]);
-  // Home titles are already brand-led ("Simplilead | …") — absolute stops the
-  // layout template from appending a second "| Simplilead" (FIX-04).
+  // Home titles are already brand-led ("SimpliLEAD | …") — absolute stops the
+  // layout template from appending a second "| SimpliLEAD" (FIX-04).
   const title = h.seoTitle || s.defaultSeoTitle;
   return {
     title: title ? { absolute: title } : undefined,

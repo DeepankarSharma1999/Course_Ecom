@@ -51,7 +51,7 @@ async function main() {
     // Match course bullet points: - [Title](Url)
     const match = line.match(/^- \[([^\]]+)\]\(([^)]+)\)$/);
     if (match && currentCategory && categoriesToImport[currentCategory]) {
-      const title = match[1].replace(/SimpliAxis/gi, "Simplilead").trim();
+      const title = match[1].replace(/SimpliAxis/gi, "SimpliLEAD").trim();
       let url = match[2];
       
       // Some courses are listed twice.
@@ -77,7 +77,7 @@ async function main() {
       if (line === "[ENROLL NOW](https://www.simpliaxis.com/combo-courses)") {
           const prevLine = comboLines[i-1].trim();
           if (prevLine && !prevLine.startsWith("[")) {
-              const title = prevLine.replace(/SimpliAxis/gi, "Simplilead").trim();
+              const title = prevLine.replace(/SimpliAxis/gi, "SimpliLEAD").trim();
               categoriesToImport["COMBO COURSES"].courses.push({
                   title: title,
                   url: `https://www.simpliaxis.com/combo-courses#${slugify(title)}` // dummy url
@@ -107,7 +107,7 @@ async function main() {
       create: { 
           slug: catData.slug, 
           name: catName === "Generative AI" || catName === "Microcredentials" ? catName : catName.charAt(0) + catName.slice(1).toLowerCase(),
-          tagline: `Explore top-tier ${catName.toLowerCase()} training by Simplilead.`
+          tagline: `Explore top-tier ${catName.toLowerCase()} training by SimpliLEAD.`
       }
     });
 
@@ -119,8 +119,8 @@ async function main() {
             slug = slugify(c.title);
         }
 
-        const summary = `${c.title} by Simplilead is designed to elevate your professional skills. Access comprehensive curriculum, expert trainers, and get certified.`;
-        const description = `<p>Welcome to the <strong>${c.title}</strong> provided by Simplilead. This course brings you the industry-leading standards of training and excellence. Whether you are looking to upskill, reskill, or start fresh, our expert-led sessions ensure that you meet your career goals.</p><p>Enroll today to experience unparalleled learning outcomes.</p>`;
+        const summary = `${c.title} by SimpliLEAD is designed to elevate your professional skills. Access comprehensive curriculum, expert trainers, and get certified.`;
+        const description = `<p>Welcome to the <strong>${c.title}</strong> provided by SimpliLEAD. This course brings you the industry-leading standards of training and excellence. Whether you are looking to upskill, reskill, or start fresh, our expert-led sessions ensure that you meet your career goals.</p><p>Enroll today to experience unparalleled learning outcomes.</p>`;
 
         try {
             await prisma.course.upsert({

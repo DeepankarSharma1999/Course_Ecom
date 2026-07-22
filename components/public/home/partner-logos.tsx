@@ -85,7 +85,8 @@ export function PartnerLogos({ content }: { content?: any }) {
             style={{ maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)" }}
           >
             {/* Four identical groups; the track slides exactly two group widths (-50%) for a seamless loop. */}
-            <div className="flex w-max animate-marquee items-center group-hover:[animation-play-state:paused]">
+            {/* 31.25s = the 25s base slowed 20% (25 / 0.8) — client-requested pace. */}
+            <div className="flex w-max animate-marquee items-center [animation-duration:31.25s] group-hover:[animation-play-state:paused]">
               {group("a")}
               {group("b", true)}
               {group("c", true)}

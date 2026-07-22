@@ -20,7 +20,7 @@ export default async function SiteSettingsPage({ searchParams }: { searchParams:
         {sp.saved && <div className="mb-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2 text-sm">Saved.</div>}
         <form action={saveSiteSettings} className="grid lg:grid-cols-2 gap-6">
           <Section title="Brand">
-            <Field label="Brand Name" required><Input name="brandName" defaultValue={s?.brandName ?? "Simplilead"} required /></Field>
+            <Field label="Brand Name" required><Input name="brandName" defaultValue={s?.brandName ?? "SimpliLEAD"} required /></Field>
             <Field label="Tagline"><Input name="tagline" defaultValue={s?.tagline ?? ""} /></Field>
             <Field label="Logo" hint="Saved under /public/uploads/ and committed with your repo">
               <ImageUploader name="logoUrl" kind="logo" defaultValue={s?.logoUrl ?? null} previewAspect="wide" />
@@ -32,7 +32,7 @@ export default async function SiteSettingsPage({ searchParams }: { searchParams:
           <Section title="Contact">
             <Field label="Phone"><Input name="phone" defaultValue={s?.phone ?? ""} /></Field>
             <Field label="Email"><Input name="email" defaultValue={s?.email ?? ""} /></Field>
-            <Field label="WhatsApp Number" hint="Country code + number, no symbols"><Input name="whatsappNumber" defaultValue={s?.whatsappNumber ?? ""} placeholder="918047106633" /></Field>
+            <Field label="WhatsApp Number" hint="Country code + number, no symbols"><Input name="whatsappNumber" defaultValue={s?.whatsappNumber ?? ""} placeholder="971585232875" /></Field>
             <Field label="Address"><Textarea name="address" rows={2} defaultValue={s?.address ?? ""} /></Field>
           </Section>
           <Section title="Top Bar">

@@ -5,16 +5,26 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const SUBS: [string, string][] = [
-  ["ULearnSystems", "Simplilead"],
-  ["Ulearnsystems", "Simplilead"],
+  ["ULearnSystems", "SimpliLEAD"],
+  ["Ulearnsystems", "SimpliLEAD"],
   ["ULEARNSYSTEMS", "SIMPLILEAD"],
   ["ulearnsystems", "simplilead"],
   ["ULEARN10", "SIMPLILEAD10"],
+  // Brand casing pass: the wordmark capitalises LEAD. Lowercase `simplilead`
+  // is left alone — it is the domain, e-mail and slug form.
+  ["Simplilead", "SimpliLEAD"],
 ];
 
 // Wrap a SQL expression in nested REPLACE()s for every substitution.
 function replaced(expr: string) {
   return SUBS.reduce((acc, [from, to]) => `REPLACE(${acc}, '${from}', '${to}')`, expr);
+}
+
+// Only touch rows that still hold an old token. LIKE is case-sensitive in
+// Postgres, so an already-renamed "SimpliLEAD" row will not match "Simplilead"
+// and the script stays idempotent.
+function stale(expr: string) {
+  return SUBS.map(([from]) => `${expr} LIKE '%${from}%'`).join(" OR ");
 }
 
 async function main() {
@@ -27,8 +37,8 @@ async function main() {
   for (const { table_name, column_name, data_type } of cols) {
     const t = `"${table_name}"`, c = `"${column_name}"`;
     const sql = data_type === "jsonb"
-      ? `UPDATE ${t} SET ${c} = (${replaced(`${c}::text`)})::jsonb WHERE ${c}::text ILIKE '%ulearn%'`
-      : `UPDATE ${t} SET ${c} = ${replaced(c)} WHERE ${c} ILIKE '%ulearn%'`;
+      ? `UPDATE ${t} SET ${c} = (${replaced(`${c}::text`)})::jsonb WHERE ${stale(`${c}::text`)}`
+      : `UPDATE ${t} SET ${c} = ${replaced(c)} WHERE ${stale(c)}`;
     try {
       const n = await prisma.$executeRawUnsafe(sql);
       if (n > 0) { console.log(`  ${table_name}.${column_name}: ${n}`); touched += n; }

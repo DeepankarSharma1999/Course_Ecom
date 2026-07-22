@@ -10,7 +10,7 @@ export function CertificateSection({ course }: { course: CourseContent }) {
   const cert = course.pageSections?.certificate;
   // Exactly two designs: courses with the body's real sample certificate on file
   // (cert.image, set by scripts/assign-certificates.js) show that image; every
-  // other course shows the Simplilead-branded certificate — never a mock-official
+  // other course shows the SimpliLEAD-branded certificate — never a mock-official
   // design under an external body's name.
   const fallback = defaultCertificate(course);
   const heading = cert?.heading || fallback.heading;
@@ -38,7 +38,7 @@ export function CertificateSection({ course }: { course: CourseContent }) {
         <div className="absolute top-1/2 left-0 w-64 h-32 bg-[#e8f3e8] rounded-[100px] -rotate-45 -translate-x-10 -translate-y-1/2 -z-10 blur-xl"></div>
         <div className="absolute top-1/2 right-0 w-64 h-32 bg-[#e8f3e8] rounded-[100px] rotate-45 translate-x-10 -translate-y-1/2 -z-10 blur-xl"></div>
 
-        {/* Simplilead-issued certificate of achievement */}
+        {/* SimpliLEAD-issued certificate of achievement */}
         <div className="rounded-2xl border-4 border-brand-700 p-2 bg-white shadow-xl relative z-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-tr from-brand-50 to-white -z-10"></div>
           {/* Corner accents */}
@@ -48,7 +48,7 @@ export function CertificateSection({ course }: { course: CourseContent }) {
           <div className="absolute bottom-1 right-1 w-28 h-28 bg-accent-500 [clip-path:polygon(100%_100%,100%_0,0_100%)] -translate-x-2 -translate-y-2 -z-[1]"></div>
 
           <div className="border border-brand-200 p-10 md:p-16 text-center h-full flex flex-col items-center justify-center">
-            <img src="/brand/simplilead-logo.png" alt="Simplilead" className="h-10 md:h-12 w-auto mb-6" loading="lazy" />
+            <img src="/brand/simplilead-logo.png" alt="SimpliLEAD" className="h-10 md:h-12 w-auto mb-6" loading="lazy" />
             <h4 className="text-brand-800 font-bold text-lg md:text-2xl mb-1 tracking-[0.3em] uppercase">Certificate of Achievement</h4>
             <div className="w-24 border-b-2 border-accent-500 mb-8"></div>
 
@@ -56,7 +56,7 @@ export function CertificateSection({ course }: { course: CourseContent }) {
             <h3 className="text-2xl md:text-4xl font-serif text-[#082032] mb-6 italic">{course.title}</h3>
 
             <p className="text-gray-500 text-sm max-w-xl mx-auto leading-relaxed mb-12">
-              having fulfilled all prescribed requirements of the program, and is hereby awarded this certificate by Simplilead in recognition of that accomplishment.
+              having fulfilled all prescribed requirements of the program, and is hereby awarded this certificate by SimpliLEAD in recognition of that accomplishment.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-between w-full max-w-2xl px-2 md:px-8 items-center sm:items-end mt-auto gap-6 sm:gap-0">
@@ -68,7 +68,7 @@ export function CertificateSection({ course }: { course: CourseContent }) {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-brand-600 bg-brand-50 flex items-center justify-center relative order-1 sm:order-2 shrink-0">
                 <div className="absolute inset-1.5 md:inset-2 border border-brand-600 rounded-full border-dashed"></div>
                 <div className="text-[8px] md:text-[10px] font-black text-brand-700 uppercase text-center leading-tight">
-                  Simplilead<br/>Certified
+                  SimpliLEAD<br/>Certified
                 </div>
               </div>
 

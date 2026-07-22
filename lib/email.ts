@@ -16,7 +16,7 @@ export type SendMailInput = {
 
 export async function sendMail(input: SendMailInput): Promise<{ ok: boolean; id?: string; error?: string }> {
   const apiKey = process.env.RESEND_API_KEY;
-  const fromAddr = input.from || process.env.EMAIL_FROM || "Simplilead <onboarding@resend.dev>";
+  const fromAddr = input.from || process.env.EMAIL_FROM || "SimpliLEAD <onboarding@resend.dev>";
   if (!apiKey) {
     console.log("\n[email:fallback] (set RESEND_API_KEY to actually send)");
     console.log("  from:    ", fromAddr);

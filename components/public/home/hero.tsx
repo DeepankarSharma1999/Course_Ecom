@@ -136,7 +136,7 @@ export function HomeHero({ content }: { content?: any }) {
               fetchpriority=high and served resized/AVIF (FIX-08). */}
           <Image
             src="/Hero/hero-right-side.webp"
-            alt="Professionals who advanced their careers with Simplilead"
+            alt="Professionals who advanced their careers with SimpliLEAD"
             width={877}
             height={941}
             priority

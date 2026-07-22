@@ -54,6 +54,8 @@ export function SimplePageRenderer({ page, source }: { page: any; source?: strin
                 title={page.leadFormTitle || "Get in touch"}
                 subtitle={page.leadFormSubtitle || ""}
                 source={source || `page-${page.slug}`}
+                // Spoclearn-style consultation scheduling on the enquiry page.
+                showScheduler={source === "enquire"}
               />
             </aside>
           )}

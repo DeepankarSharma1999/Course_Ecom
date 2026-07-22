@@ -164,7 +164,7 @@ ${code ? `<text x="615" y="${trackLines.length > 1 ? 342 : 312}" text-anchor="mi
 <text x="315" y="550" font-size="10.5" fill="#333">May 1, 2026</text>
 <line x1="750" y1="512" x2="905" y2="512" stroke="#333" stroke-width="1"/>
 <text x="750" y="528" font-size="10.5" fill="#333">Authorized Instructor</text>
-<text x="750" y="543" font-size="10.5" fill="#333">Simplilead (Member Training Org.)</text>
+<text x="750" y="543" font-size="10.5" fill="#333">SimpliLEAD (Member Training Org.)</text>
 <text x="750" y="572" font-size="9" fill="#9a9a9a">*This certificate is for representative purpose</text>
 <text x="750" y="584" font-size="9" fill="#9a9a9a">only and holds no official or legal value.</text>`);
 }
@@ -217,7 +217,7 @@ function pmiTemplate({ certName }) {
   <text y="34" text-anchor="middle" font-size="8" fill="#e0c3f0">2026</text>
 </g>
 <rect x="560" y="580" width="170" height="26" fill="none" stroke="#5a2ea6" stroke-width="1"/>
-<text x="645" y="597" text-anchor="middle" font-size="9" fill="#9a7bb8">Simplilead</text>
+<text x="645" y="597" text-anchor="middle" font-size="9" fill="#9a7bb8">SimpliLEAD</text>
 <text x="500" y="668" text-anchor="middle" font-size="10.5" fill="#555">Name of Instructor</text>
 <text x="500" y="692" text-anchor="middle" font-size="9" fill="#8a8a8a">${DISCLAIMER}</text>`);
 }

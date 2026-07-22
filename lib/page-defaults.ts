@@ -50,7 +50,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
       "Leverage the Scaled Agile Framework (SAFe®) to align strategy with execution, accelerate delivery, and drive business agility. Our expert SAFe Practice Consultants (SPCs) guide you through every step of your transformation.",
     metaTitle: "SAFe Implementation",
     metaDescription:
-      "Scale Agile across your enterprise with expert SAFe Implementation services from Simplilead.",
+      "Scale Agile across your enterprise with expert SAFe Implementation services from SimpliLEAD.",
     benefits: [
       { icon: "trending", title: "Faster Time-to-Market", description: "Streamline workflows and synchronize cross-functional teams to deliver value rapidly." },
       { icon: "target", title: "Strategic Alignment", description: "Connect portfolio strategy directly to agile execution to ensure teams build what matters." },
@@ -300,7 +300,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     group: "Marketing Pages",
     content: {
       metaTitle: "Free Courses",
-      metaDescription: "Level Up Your Career with Free Online Courses from Simplilead. Explore handpicked, high-impact courses designed for professionals and beginners alike.",
+      metaDescription: "Level Up Your Career with Free Online Courses from SimpliLEAD. Explore handpicked, high-impact courses designed for professionals and beginners alike.",
       heroBadge: "Free Courses for Professionals",
       heroHeading: "Level Up Your Career with",
       heroHighlight: "Free Online Courses",
@@ -334,7 +334,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 3, hours: 4, questions: 120, marks: 120 },
       ],
       referTitle: "Invite Your Friends & Unlock Unlimited Learning",
-      referSubtitle: "Share the knowledge! Enjoy unlimited access to all Simplilead courses—enroll in as many as you want, 100% free.",
+      referSubtitle: "Share the knowledge! Enjoy unlimited access to all SimpliLEAD courses—enroll in as many as you want, 100% free.",
       referButton: "Invite Now",
       webinarsTitle: "Upcoming Live Webinars",
       webinarsSubtitle: "Join our expert-led sessions to gain real-world insights.",
@@ -390,7 +390,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { title: "DevOps Practice Test: Prepare Efficiently", slug: "devops", tests: 0, isRequest: true },
       ],
       reviewsTitle: "What Our Learners Say",
-      reviewsSubtitle: "Real reviews from professionals who trained with Simplilead.",
+      reviewsSubtitle: "Real reviews from professionals who trained with SimpliLEAD.",
       // FIX-02: the default reviews were invented people; add real, permissioned
       // reviews via the admin editor. Empty => the section renders nothing.
       reviews: [],
@@ -402,8 +402,8 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     group: "Marketing Pages",
     content: {
       metaTitle: "Refer & Earn",
-      metaDescription: "Refer friends to Simplilead and earn rewards for every successful enrollment. Up to 10% of the course value.",
-      heroBadge: "Simplilead Referral Program",
+      metaDescription: "Refer friends to SimpliLEAD and earn rewards for every successful enrollment. Up to 10% of the course value.",
+      heroBadge: "SimpliLEAD Referral Program",
       heroLine1: "Refer More.",
       heroHighlight: "Earn More.",
       heroLine3: "Repeat.",
@@ -432,16 +432,16 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
       ],
       benefitsNote: "*Rewards vary based on the user's location and the final purchased price of the course.",
       faqTitle: "Frequently Asked Questions",
-      faqSubtitle: "Everything you need to know about the Simplilead Referral Program.",
+      faqSubtitle: "Everything you need to know about the SimpliLEAD Referral Program.",
       faqs: [
-        { question: "How does the Refer and Earn program work?", answer: "It's simple! Generate your unique referral link using the form above. Share it with your friends, colleagues, or network. When they enroll in a Simplilead course using your link, they get a discount, and you earn a reward once their enrollment is confirmed." },
+        { question: "How does the Refer and Earn program work?", answer: "It's simple! Generate your unique referral link using the form above. Share it with your friends, colleagues, or network. When they enroll in a SimpliLEAD course using your link, they get a discount, and you earn a reward once their enrollment is confirmed." },
         { question: "Is there a limit to how many people I can refer?", answer: "No, there is absolutely no limit! The more people you refer, the more you can earn. Our top referrers earn significant rewards every month." },
         { question: "When do I get my reward?", answer: "Rewards are processed 30 days after your referral successfully starts their course. This ensures there are no cancellations or refunds during the standard guarantee period." },
         { question: "What courses are eligible for referral rewards?", answer: "Almost all our certification training programs are eligible. However, the exact reward amount varies depending on the course tier. Please check the 'Course-Wise Benefits' table for specific details." },
         { question: "How will I receive my reward?", answer: "Rewards are typically sent as Amazon Gift Cards or direct bank transfers, depending on your region and preference. Our support team will contact you to confirm your preferred payout method." },
       ],
       ctaTitle: "Ready to start earning?",
-      ctaSubtitle: "Join hundreds of Simplilead alumni and partners who are earning great rewards by helping others advance their careers.",
+      ctaSubtitle: "Join hundreds of SimpliLEAD alumni and partners who are earning great rewards by helping others advance their careers.",
       ctaButton: "Get My Referral Link",
     },
   },
@@ -537,7 +537,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { icon: "server", color: "text-indigo-500", title: "DevOps", courses: "14+ Courses" },
         { icon: "layout", color: "text-teal-500", title: "IT Service Management", courses: "8+ Courses" },
       ],
-      advantageEyebrow: "The Simplilead Advantage",
+      advantageEyebrow: "The SimpliLEAD Advantage",
       advantageTitle: "Immersive Learning Model for Maximum ROI",
       advantageSubtitle: "Our proven 5-step framework ensures that training translates directly into measurable business performance and sustained skill retention.",
       steps: [
@@ -611,7 +611,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
     group: "Marketing Pages",
     content: {
       metaTitle: "Self-Paced Online Training Courses",
-      metaDescription: "Learn at your own pace with our comprehensive self-paced online courses. Gain globally recognized certifications from Simplilead.",
+      metaDescription: "Learn at your own pace with our comprehensive self-paced online courses. Gain globally recognized certifications from SimpliLEAD.",
       heroBadge: "100% Online & Self-Paced",
       heroHeading: "Master New Skills at",
       heroHeadingHighlight: "Your Own Pace.",

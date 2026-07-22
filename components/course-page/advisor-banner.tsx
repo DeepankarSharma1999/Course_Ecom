@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LeadModalButton } from "@/components/lead-modal-button";
+import Link from "next/link";
 
 // Region advisor photos from /public/advisors — picked by the page's country slug.
 const ADVISOR_IMAGES = {
@@ -55,7 +55,7 @@ export function AdvisorBanner({
             <div className="w-64 h-64 bg-orange-200 rounded-t-full relative overflow-hidden border-4 border-white shadow-lg">
               <Image
                 src={src}
-                alt="SimpliLead learning advisor"
+                alt="SimpliLEAD learning advisor"
                 fill
                 sizes="256px"
                 className="object-cover object-top"
@@ -72,18 +72,15 @@ export function AdvisorBanner({
           <h2 className="text-[28px] md:text-[32px] font-bold text-[#082032] mb-8 leading-tight">
             Have more questions or need personalized guidance?
           </h2>
-          <LeadModalButton
-            courseSlug={courseSlug}
-            countrySlug={countrySlug}
-            citySlug={citySlug}
-            source={`advisor-${courseSlug}`}
-            title="Talk to a Learning Advisor"
-            subtitle="Share your details and an advisor will call you back shortly."
-            ctaLabel="Request a Callback"
-            className="h-12 px-8 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] transition-colors text-[14px]"
+          {/* Straight to the /enquire scheduler (calendar + time slots) — the
+              popup form couldn't carry a consultation slot. Course/location
+              context rides the query string for lead attribution. */}
+          <Link
+            href={`/enquire?course=${courseSlug}${countrySlug ? `&country=${countrySlug}` : ""}${citySlug ? `&city=${citySlug}` : ""}`}
+            className="inline-flex items-center justify-center h-12 px-8 bg-[#082032] hover:bg-black text-white font-bold rounded-[4px] transition-colors text-[14px]"
           >
             Contact Learning Advisor
-          </LeadModalButton>
+          </Link>
         </div>
       </div>
     </section>

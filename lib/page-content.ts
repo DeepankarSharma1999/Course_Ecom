@@ -20,7 +20,7 @@ export async function getPageContent<T = Record<string, any>>(slug: string): Pro
   const defaults = (PAGE_DEFAULTS[slug]?.content ?? {}) as T;
   const row = await prisma.pageContent.findUnique({ where: { slug } }).catch(() => null);
   const out: any = merge(defaults, row?.content);
-  // The root layout's title template appends "| Simplilead"; DB rows saved under
+  // The root layout's title template appends "| SimpliLEAD"; DB rows saved under
   // the old defaults still carry their own suffix, which would double it (FIX-04).
   if (typeof out?.metaTitle === "string") out.metaTitle = stripBrandSuffix(out.metaTitle);
   return out;

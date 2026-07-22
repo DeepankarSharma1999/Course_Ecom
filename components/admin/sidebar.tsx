@@ -25,7 +25,7 @@ const NAV = [
   { href: "/admin/users", label: "Admin Users", icon: Users },
 ];
 
-export function AdminSidebar({ brandName = "Simplilead", logoUrl = null }: { brandName?: string; logoUrl?: string | null }) {
+export function AdminSidebar({ brandName = "SimpliLEAD", logoUrl = null }: { brandName?: string; logoUrl?: string | null }) {
   const pathname = usePathname();
   return (
     <aside className="w-60 shrink-0 bg-ink-900 text-ink-200 min-h-screen sticky top-0">

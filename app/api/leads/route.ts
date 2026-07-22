@@ -19,6 +19,9 @@ const LeadSchema = z.object({
   phone: z.string().min(6).max(20),
   countryCode: z.string().optional(),
   message: z.string().max(2000).optional(),
+  // Consultation slot from the SchedulePicker (both or neither).
+  preferredDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().or(z.literal("").transform(() => undefined)),
+  preferredTime: z.string().max(80).optional().or(z.literal("").transform(() => undefined)),
   courseSlug: z.string().optional(),
   countrySlug: z.string().optional(),
   citySlug: z.string().optional(),
@@ -70,6 +73,12 @@ export async function POST(req: Request) {
   const data = parsed.data;
   const consent = data.consentMarketing === true || data.consentMarketing === "on" || data.consentMarketing === "true";
 
+  // ponytail: slot lives in message, no Lead column — admin reads it in the lead
+  // detail view; add real columns if slots ever need querying/reminders.
+  const message = data.preferredDate && data.preferredTime
+    ? [`Preferred consultation: ${data.preferredDate} at ${data.preferredTime}`, data.message].filter(Boolean).join("\n\n")
+    : data.message;
+
   let savedLead: any = null;
   try {
     if (process.env.DATABASE_URL) {
@@ -80,7 +89,7 @@ export async function POST(req: Request) {
           email: data.email,
           phone: data.phone,
           countryCode: data.countryCode,
-          message: data.message,
+          message,
           courseSlug: data.courseSlug,
           countrySlug: data.countrySlug,
           citySlug: data.citySlug,

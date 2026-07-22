@@ -220,7 +220,7 @@ model SiteSettings {
   logoUrl            String?
   faviconUrl         String?
 
-  phone              String  @default("+91 80 4710 6633")
+  phone              String  @default("+971 58 523 2875")
   email              String  @default("info@course-ecom.com")
   whatsappNumber     String?
   address            String? @db.Text

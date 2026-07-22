@@ -1,6 +1,6 @@
 // One-time migration: set the real certification body (accreditedBy) per course and,
 // where we have the body's actual sample certificate in public/certificates/, set
-// pageSections.certificate.image. Courses without a match become "Simplilead"
+// pageSections.certificate.image. Courses without a match become "SimpliLEAD"
 // (self-issued) and use the branded fallback in certificate-section.tsx.
 // Run inside the web container: docker exec mindclick-web node scripts/assign-certificates.js
 const { PrismaClient } = require("@prisma/client");
@@ -75,7 +75,7 @@ function classify(course) {
     if (re.test(course.slug)) return { body, key: key || null };
   }
   if (course.category?.slug === "safe") return { body: "Scaled Agile, Inc.", key: null };
-  return { body: "Simplilead", key: null };
+  return { body: "SimpliLEAD", key: null };
 }
 
 (async () => {

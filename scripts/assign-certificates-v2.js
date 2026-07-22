@@ -16,10 +16,10 @@ const p = new PrismaClient();
   for (const c of courses) {
     const ps = c.pageSections && typeof c.pageSections === "object" ? c.pageSections : {};
     const cert = ps.certificate && typeof ps.certificate === "object" ? ps.certificate : {};
-    // Mislabeled self-delivered course: use the Simplilead self-issued design.
+    // Mislabeled self-delivered course: use the SimpliLEAD self-issued design.
     if (c.accreditedBy === "SimpliLEAD") {
       delete cert.image;
-      await p.course.update({ where: { id: c.id }, data: { accreditedBy: "Simplilead", pageSections: { ...ps, certificate: cert } } });
+      await p.course.update({ where: { id: c.id }, data: { accreditedBy: "SimpliLEAD", pageSections: { ...ps, certificate: cert } } });
       selfed++; console.log("SELF", c.slug);
       continue;
     }

@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    // Stored titles carry "| Simplilead"; the layout template re-appends it (FIX-04).
+    // Stored titles carry "| SimpliLEAD"; the layout template re-appends it (FIX-04).
     title: stripBrandSuffix(content.title),
     description: content.description,
     keywords: content.keywords,

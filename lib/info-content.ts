@@ -12,8 +12,8 @@ export type InfoPageContent = {
 
 export const INFO_PAGES: Record<string, InfoPageContent> = {
   "contact-us": {
-    title: "Contact Simplilead | Enterprise Training Inquiries",
-    description: "Get in touch with Simplilead for Agile, Scrum, PMP, and Corporate Training inquiries. We offer 24/7 global support.",
+    title: "Contact SimpliLEAD | Enterprise Training Inquiries",
+    description: "Get in touch with SimpliLEAD for Agile, Scrum, PMP, and Corporate Training inquiries. We offer 24/7 global support.",
     keywords: "contact us, customer support, enterprise sales, Agile training inquiry, PMP course contact",
     sections: [
       {
@@ -30,18 +30,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "careers": {
-    title: "Careers at Simplilead | Join Our Enterprise Training Team",
-    description: "Explore career opportunities at Simplilead. Join a global leader in Agile, Scrum, PMP, and Corporate Training solutions.",
+    title: "Careers at SimpliLEAD | Join Our Enterprise Training Team",
+    description: "Explore career opportunities at SimpliLEAD. Join a global leader in Agile, Scrum, PMP, and Corporate Training solutions.",
     keywords: "careers, jobs, hiring, Agile jobs, Scrum Master jobs, Corporate Training careers, Enterprise Training opportunities",
     sections: [
       {
         heading: "Shape the Future of Enterprise Learning",
-        body: "At Simplilead, we are pioneering the future of global education and enterprise transformation. Our mission is to deliver world-class training in Agile, Scrum, PMP, and cutting-edge technology domains. We are looking for passionate, driven individuals to join our rapidly growing team.",
+        body: "At SimpliLEAD, we are pioneering the future of global education and enterprise transformation. Our mission is to deliver world-class training in Agile, Scrum, PMP, and cutting-edge technology domains. We are looking for passionate, driven individuals to join our rapidly growing team.",
       },
       {
         heading: "Why Work With Us?",
@@ -53,18 +53,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "accreditation": {
-    title: "Global Accreditations & Partnerships | Simplilead",
-    description: "Simplilead is a globally accredited training provider for Agile, Scrum, PMP, SAFe, and ITIL certifications. Partnering with top global institutions.",
+    title: "Global Accreditations & Partnerships | SimpliLEAD",
+    description: "SimpliLEAD is a globally accredited training provider for Agile, Scrum, PMP, SAFe, and ITIL certifications. Partnering with top global institutions.",
     keywords: "Accreditation, Accredited Training Provider, Scrum Alliance, PMI ATP, SAFe Platinum Partner, ITIL certification provider",
     sections: [
       {
         heading: "Our Commitment to Quality",
-        body: "Simplilead maintains the highest standards of educational excellence. Our training programs are rigorously vetted and accredited by the world's leading certification bodies, ensuring that your enterprise training yields internationally recognized credentials.",
+        body: "SimpliLEAD maintains the highest standards of educational excellence. Our training programs are rigorously vetted and accredited by the world's leading certification bodies, ensuring that your enterprise training yields internationally recognized credentials.",
       },
       {
         heading: "Global Partnerships",
@@ -76,12 +76,12 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "customer-speak": {
-    title: "Customer Speak | Reviews & Testimonials for Simplilead",
+    title: "Customer Speak | Reviews & Testimonials for SimpliLEAD",
     description: "Read what our learners and enterprise clients have to say about our Agile, Scrum, PMP, and Corporate Training programs.",
     keywords: "reviews, testimonials, student reviews, corporate training feedback, CSM reviews, PMP reviews",
     // FIX-02: fabricated countries/ratings/outcome claims removed — replace
@@ -97,13 +97,13 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "grievance-redressal": {
-    title: "Grievance Redressal Mechanism | Simplilead",
-    description: "Simplilead is committed to transparent and prompt resolution of customer grievances regarding our training programs.",
+    title: "Grievance Redressal Mechanism | SimpliLEAD",
+    description: "SimpliLEAD is committed to transparent and prompt resolution of customer grievances regarding our training programs.",
     keywords: "grievance redressal, customer support, complaints, dispute resolution, corporate training support",
     sections: [
       {
@@ -120,7 +120,7 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
@@ -143,12 +143,12 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "classroom": {
-    title: "In-Person Classroom Training | Simplilead",
+    title: "In-Person Classroom Training | SimpliLEAD",
     description: "Intensive, in-person classroom training for Agile, Scrum, PMP, and ITIL certifications across major global cities.",
     keywords: "Classroom training, in-person certification, bootcamp, Scrum Master classroom training, PMP bootcamps",
     sections: [
@@ -166,18 +166,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "agile-services": {
-    title: "Agile Consulting & Transformation Services | Simplilead",
+    title: "Agile Consulting & Transformation Services | SimpliLEAD",
     description: "Enterprise-grade Agile Consulting, coaching, and transformation services to accelerate business agility and delivery.",
     keywords: "Agile Consulting, Agile Transformation, Enterprise Agility, SAFe Implementation, Scrum Coaching, Business Agility",
     sections: [
       {
         heading: "Drive Enterprise Agility",
-        body: "Beyond certification training, Simplilead provides comprehensive Agile Transformation services. We help organizations scale Agile frameworks, optimize value streams, and cultivate a culture of continuous improvement.",
+        body: "Beyond certification training, SimpliLEAD provides comprehensive Agile Transformation services. We help organizations scale Agile frameworks, optimize value streams, and cultivate a culture of continuous improvement.",
       },
       {
         heading: "Expert Agile Coaching",
@@ -189,7 +189,7 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
@@ -200,7 +200,7 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
     sections: [
       {
         heading: "Explore Our Extensive Portfolio",
-        body: "Simplilead offers over 150 globally recognized certification programs. From foundational courses to advanced enterprise architecture, our catalog covers the entire spectrum of IT, Business, and Project Management domains.",
+        body: "SimpliLEAD offers over 150 globally recognized certification programs. From foundational courses to advanced enterprise architecture, our catalog covers the entire spectrum of IT, Business, and Project Management domains.",
       },
       {
         heading: "Curriculum Designed for Success",
@@ -212,12 +212,12 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "tutorials": {
-    title: "Free Learning Tutorials | Upskill with Simplilead",
+    title: "Free Learning Tutorials | Upskill with SimpliLEAD",
     description: "Access high-quality, free tutorials on Agile, Scrum, Project Management, coding, and more.",
     keywords: "Free tutorials, learning resources, Agile tutorials, Scrum guide, PMP prep, coding tutorials",
     sections: [
@@ -235,18 +235,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "blogs": {
-    title: "Expert Insights & Industry Blogs | Simplilead",
+    title: "Expert Insights & Industry Blogs | SimpliLEAD",
     description: "Read the latest trends, insights, and expert opinions on Agile, Project Management, Tech, and Corporate Training.",
     keywords: "Blogs, industry insights, Agile articles, Project Management trends, Tech news, Corporate Training blog",
     sections: [
       {
         heading: "Thought Leadership",
-        body: "Stay ahead of the curve with the Simplilead blog. Our industry experts, Agile Coaches, and SPCTs regularly share deep dives into emerging trends, framework updates, and best practices in enterprise agility.",
+        body: "Stay ahead of the curve with the SimpliLEAD blog. Our industry experts, Agile Coaches, and SPCTs regularly share deep dives into emerging trends, framework updates, and best practices in enterprise agility.",
       },
       {
         heading: "Career Advice & Exam Tips",
@@ -258,7 +258,7 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
@@ -281,12 +281,12 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "masterclasses": {
-    title: "Exclusive Expert Masterclasses | Simplilead",
+    title: "Exclusive Expert Masterclasses | SimpliLEAD",
     description: "Join high-impact, expert-led masterclasses on advanced Agile, Leadership, and Technology topics.",
     keywords: "Masterclasses, expert webinars, advanced Agile training, leadership masterclass, SAFe masterclass",
     sections: [
@@ -300,26 +300,26 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "On-Demand Access",
-        body: "Missed a live session? Simplilead alumni get exclusive on-demand access to our library of recorded Masterclasses, ensuring continuous professional development.",
+        body: "Missed a live session? SimpliLEAD alumni get exclusive on-demand access to our library of recorded Masterclasses, ensuring continuous professional development.",
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "become-an-instructor": {
-    title: "Become an Instructor | Teach at Simplilead",
+    title: "Become an Instructor | Teach at SimpliLEAD",
     description: "Join our global network of elite trainers. Teach Agile, Scrum, PMP, and tech courses to professionals worldwide.",
     keywords: "Become an instructor, teach online, Agile trainer jobs, PMP instructor, Corporate Trainer opportunities",
     sections: [
       {
         heading: "Share Your Expertise with the World",
-        body: "Are you a seasoned industry expert with a passion for teaching? Join Simplilead as an instructor and help shape the careers of thousands of professionals globally. We are always looking for dynamic trainers in Agile, Project Management, and IT domains.",
+        body: "Are you a seasoned industry expert with a passion for teaching? Join SimpliLEAD as an instructor and help shape the careers of thousands of professionals globally. We are always looking for dynamic trainers in Agile, Project Management, and IT domains.",
       },
       {
         heading: "Unmatched Reach & Support",
-        body: "As a Simplilead instructor, you gain access to our state-of-the-art virtual delivery platforms and a global audience. We handle the marketing, enrollment, and administrative logistics so you can focus on what you do best: teaching.",
+        body: "As a SimpliLEAD instructor, you gain access to our state-of-the-art virtual delivery platforms and a global audience. We handle the marketing, enrollment, and administrative logistics so you can focus on what you do best: teaching.",
       },
       {
         heading: "Criteria & Application",
@@ -327,18 +327,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "become-a-training-partner": {
     title: "Become a Training Partner | Enterprise Collaboration",
-    description: "Partner with Simplilead to deliver premium Agile, Scrum, and PMP training in your region.",
+    description: "Partner with SimpliLEAD to deliver premium Agile, Scrum, and PMP training in your region.",
     keywords: "Training Partner, Franchise, Reseller, Corporate Training Partnership, B2B Education",
     sections: [
       {
         heading: "Expand Your Portfolio",
-        body: "Partner with a global leader in professional education. By becoming a Simplilead Training Partner, you can offer our globally accredited Agile, Scrum, and PMP certification courses to your local client base.",
+        body: "Partner with a global leader in professional education. By becoming a SimpliLEAD Training Partner, you can offer our globally accredited Agile, Scrum, and PMP certification courses to your local client base.",
       },
       {
         heading: "Turnkey Enterprise Solutions",
@@ -350,18 +350,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "affiliate": {
-    title: "Affiliate Program | Earn with Simplilead",
-    description: "Join the Simplilead Affiliate Program. Promote top-rated Agile and PMP courses and earn competitive commissions.",
+    title: "Affiliate Program | Earn with SimpliLEAD",
+    description: "Join the SimpliLEAD Affiliate Program. Promote top-rated Agile and PMP courses and earn competitive commissions.",
     keywords: "Affiliate program, earn money online, course affiliate, education affiliate, promote courses",
     sections: [
       {
         heading: "Monetize Your Audience",
-        body: "Do you have an audience of professionals seeking career growth? Join the Simplilead Affiliate Program and earn highly competitive commissions by promoting our industry-leading Agile, Scrum, and PMP certification courses.",
+        body: "Do you have an audience of professionals seeking career growth? Join the SimpliLEAD Affiliate Program and earn highly competitive commissions by promoting our industry-leading Agile, Scrum, and PMP certification courses.",
       },
       {
         heading: "High Conversion Rates",
@@ -373,12 +373,12 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "faqs": {
-    title: "Frequently Asked Questions (FAQs) | Simplilead",
+    title: "Frequently Asked Questions (FAQs) | SimpliLEAD",
     description: "Find answers to the most common questions about our certification courses, training delivery, and corporate solutions.",
     keywords: "FAQs, help center, course questions, Agile certification FAQs, PMP exam questions",
     sections: [
@@ -396,22 +396,22 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "terms-and-conditions": {
-    title: "Terms and Conditions | Simplilead",
-    description: "Read the comprehensive Terms and Conditions for using Simplilead platform and services.",
+    title: "Terms and Conditions | SimpliLEAD",
+    description: "Read the comprehensive Terms and Conditions for using SimpliLEAD platform and services.",
     keywords: "Terms and conditions, legal, website terms, usage policy, enterprise terms",
     sections: [
       {
         heading: "Agreement to Terms",
-        body: "By accessing and using the Simplilead website and enrolling in our Agile, Scrum, or PMP certification programs, you agree to be bound by these Terms and Conditions. These terms govern your use of our platform and intellectual property.",
+        body: "By accessing and using the SimpliLEAD website and enrolling in our Agile, Scrum, or PMP certification programs, you agree to be bound by these Terms and Conditions. These terms govern your use of our platform and intellectual property.",
       },
       {
         heading: "Intellectual Property Rights",
-        body: "All course materials, videos, and documentation provided during our Corporate Training and individual sessions are the exclusive intellectual property of Simplilead and our accrediting partners. Unauthorized distribution is strictly prohibited.",
+        body: "All course materials, videos, and documentation provided during our Corporate Training and individual sessions are the exclusive intellectual property of SimpliLEAD and our accrediting partners. Unauthorized distribution is strictly prohibited.",
       },
       {
         heading: "User Conduct",
@@ -419,18 +419,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "privacy-policy-and-disclaimer": {
-    title: "Privacy Policy and Disclaimer | Simplilead",
-    description: "Understand how Simplilead collects, uses, and protects your personal data.",
+    title: "Privacy Policy and Disclaimer | SimpliLEAD",
+    description: "Understand how SimpliLEAD collects, uses, and protects your personal data.",
     keywords: "Privacy policy, data protection, GDPR, data security, disclaimer",
     sections: [
       {
         heading: "Data Protection Commitment",
-        body: "Simplilead is deeply committed to protecting your privacy. We comply with global data protection regulations, including GDPR, to ensure that the personal information of our learners and enterprise clients is secure.",
+        body: "SimpliLEAD is deeply committed to protecting your privacy. We comply with global data protection regulations, including GDPR, to ensure that the personal information of our learners and enterprise clients is secure.",
       },
       {
         heading: "Information Collection and Use",
@@ -438,16 +438,16 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Disclaimer",
-        body: "While our training programs drastically improve certification success rates, Simplilead does not guarantee exam clearance. The user is solely responsible for evaluating the merits of the information provided.",
+        body: "While our training programs drastically improve certification success rates, SimpliLEAD does not guarantee exam clearance. The user is solely responsible for evaluating the merits of the information provided.",
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "cancellation-and-refund-policy": {
-    title: "Cancellation and Refund Policy | Simplilead",
+    title: "Cancellation and Refund Policy | SimpliLEAD",
     description: "Review our transparent cancellation, rescheduling, and refund policies for all training programs.",
     keywords: "Cancellation policy, refund policy, reschedule training, course refund, corporate training cancellation",
     sections: [
@@ -465,18 +465,18 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   },
   "report-a-vulnerability": {
-    title: "Report a Vulnerability | Security at Simplilead",
-    description: "Help us keep the Simplilead platform secure. Guidelines for reporting security vulnerabilities.",
+    title: "Report a Vulnerability | Security at SimpliLEAD",
+    description: "Help us keep the SimpliLEAD platform secure. Guidelines for reporting security vulnerabilities.",
     keywords: "Report vulnerability, security, bug bounty, responsible disclosure, platform security",
     sections: [
       {
         heading: "Our Security Commitment",
-        body: "Security is paramount at Simplilead. As a trusted partner for global enterprise Corporate Training, we take the security of our platform and our users' data extremely seriously.",
+        body: "Security is paramount at SimpliLEAD. As a trusted partner for global enterprise Corporate Training, we take the security of our platform and our users' data extremely seriously.",
       },
       {
         heading: "Responsible Disclosure",
@@ -488,7 +488,7 @@ export const INFO_PAGES: Record<string, InfoPageContent> = {
       },
       {
         heading: "Continuous Learning & Support",
-        body: "We believe that learning doesn't stop once the certification is achieved. Simplilead provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
+        body: "We believe that learning doesn't stop once the certification is achieved. SimpliLEAD provides ongoing mentorship, comprehensive post-training support, and access to an exclusive alumni network to help you continuously grow and navigate your professional journey with confidence."
       }
     ]
   }

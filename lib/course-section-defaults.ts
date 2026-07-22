@@ -37,8 +37,8 @@ export function defaultCertificate(course: { slug: string; shortTitle: string })
 export function defaultAccreditation(course: { accreditedBy?: string | null }): Required<Accreditation> {
   const body = course.accreditedBy || "Scrum Alliance";
   return {
-    heading: `Simplilead is a ${body} Licensed Training Partner (LTP)`,
-    intro: `As a ${body} Licensed Training Partner (LTP), Simplilead is officially authorized to deliver trainings based on the world's most prestigious agile curriculum.`,
+    heading: `SimpliLEAD is a ${body} Licensed Training Partner (LTP)`,
+    intro: `As a ${body} Licensed Training Partner (LTP), SimpliLEAD is officially authorized to deliver trainings based on the world's most prestigious agile curriculum.`,
     more: [
       "This isn't just a partnership — it's a promise of quality, credibility, and career transformation.",
       "Every training is led by a certified trainer, every course meets rigorous global standards, and every certificate you earn is recognized by employers worldwide.",

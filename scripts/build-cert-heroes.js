@@ -84,7 +84,7 @@ async function compose(src, dest) {
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   const courses = await p.course.findMany({
-    where: { isPublished: true, NOT: { accreditedBy: "Simplilead" } },
+    where: { isPublished: true, NOT: { accreditedBy: "SimpliLEAD" } },
     select: { id: true, slug: true, heroImage: true },
   });
   let made = 0, skipped = 0;

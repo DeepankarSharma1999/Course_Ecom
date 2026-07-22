@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { CheckCircle2, Download, Loader2 } from "lucide-react";
+import { SchedulePicker } from "@/components/schedule-picker";
 
 type Props = {
   variant?: "card" | "inline" | "sidebar";
@@ -17,6 +18,8 @@ type Props = {
   /** Prefill for a logged-in learner so they don't retype what we already know. */
   defaultName?: string;
   defaultEmail?: string;
+  /** Consultation scheduling (calendar + time slots) above the contact fields. */
+  showScheduler?: boolean;
 };
 
 type Utm = { source?: string; medium?: string; campaign?: string; term?: string; content?: string; referrer?: string; landingPath?: string };
@@ -68,6 +71,7 @@ export function LeadForm({
   ctaLabel,
   defaultName,
   defaultEmail,
+  showScheduler,
 }: Props) {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState<string>("");
@@ -78,11 +82,21 @@ export function LeadForm({
     setState("loading"); setError("");
     const data = Object.fromEntries(new FormData(e.currentTarget).entries());
     const utm = getStoredUtm();
+    // Attribution fallback: course-page CTAs link to /enquire?course=…&country=…
+    // — without props, pick the context up from the URL so the lead still
+    // records which course page sent the visitor.
+    const sp = new URLSearchParams(window.location.search);
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, courseSlug, countrySlug, citySlug, source, brochureCourseSlug, utm }),
+        body: JSON.stringify({
+          ...data,
+          courseSlug: courseSlug ?? sp.get("course") ?? undefined,
+          countrySlug: countrySlug ?? sp.get("country") ?? undefined,
+          citySlug: citySlug ?? sp.get("city") ?? undefined,
+          source, brochureCourseSlug, utm,
+        }),
       });
       const body = await res.json();
       if (!res.ok) throw new Error(body?.error || "Something went wrong");
@@ -130,6 +144,7 @@ export function LeadForm({
           aria-hidden="true"
           style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
         />
+        {showScheduler && <SchedulePicker />}
         <input name="name" required defaultValue={defaultName} placeholder="Full name *" aria-label="Full name" className="input w-full" autoComplete="name" />
         <input name="email" type="email" required defaultValue={defaultEmail} placeholder="Work email *" aria-label="Work email" className="input w-full" autoComplete="email" />
         <div className="flex gap-2">
