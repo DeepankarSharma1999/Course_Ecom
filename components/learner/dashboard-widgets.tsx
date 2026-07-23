@@ -22,15 +22,20 @@ export function ComboOfferCard({ course }: { course: any }) {
           {course.title}
         </h3>
         <p className="text-[12px] text-ink-500 mb-4 flex items-center gap-2">
-          <span className="flex items-center text-[#eab308]"><Star className="w-3 h-3 fill-current" /> {course.ratingAvg || 4.8}</span>
-          <span>•</span>
+          {course.ratingAvg ? (
+            <>
+              <span className="flex items-center text-[#eab308]"><Star className="w-3 h-3 fill-current" /> {course.ratingAvg}</span>
+              <span>•</span>
+            </>
+          ) : null}
           <span>Live Classroom</span>
         </p>
 
-        <div className="flex items-end justify-center gap-2 mb-6">
-          <span className="text-xl font-extrabold text-ink-900">{formatPrice(course.basePriceUsd || 249, "USD")}</span>
-          <span className="text-[13px] text-ink-400 line-through pb-0.5">{formatPrice((course.basePriceUsd || 249) * 1.2, "USD")}</span>
-        </div>
+        {course.basePriceUsd ? (
+          <div className="flex items-end justify-center gap-2 mb-6">
+            <span className="text-xl font-extrabold text-ink-900">{formatPrice(course.basePriceUsd, "USD")}</span>
+          </div>
+        ) : null}
 
         <Link
           href={`/${course.slug}`}

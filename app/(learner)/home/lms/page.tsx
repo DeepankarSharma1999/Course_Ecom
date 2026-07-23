@@ -39,11 +39,8 @@ export default async function LmsPage() {
             <GraduationCap className="w-7 h-7 text-primary" />
           </div>
           <h2 className="font-bold text-ink-900 text-[16px] mb-1.5">You haven&apos;t enrolled in anything yet</h2>
-          <p className="text-[14px] text-ink-500 mb-6">Start with a free course from your dashboard, or browse the full catalog.</p>
+          <p className="text-[14px] text-ink-500 mb-6">Browse the catalog to find your first course.</p>
           <div className="flex items-center justify-center gap-3">
-            <Link href="/home" className="inline-flex items-center gap-2 border border-ink-200 text-ink-700 font-bold px-6 py-2.5 rounded-lg hover:bg-ink-50 transition-colors text-[14px]">
-              Free courses
-            </Link>
             <Link href="/courses" className="inline-flex items-center gap-2 bg-primary hover:bg-[#0f6b6b] text-white font-bold px-6 py-2.5 rounded-lg transition-colors text-[14px]">
               <BookOpen className="w-4 h-4" /> Browse catalog
             </Link>

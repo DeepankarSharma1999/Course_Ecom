@@ -5,7 +5,6 @@ import { useLearnerAuth } from "@/components/learner-auth-provider";
 
 export function WelcomeBanner({ enrolledCount = 0 }: { enrolledCount?: number }) {
   const { user } = useLearnerAuth();
-  const progress = Math.min(enrolledCount * 25, 100);
 
   return (
     <div className="bg-gradient-to-r from-[#e0f2fe] to-[#bae6fd] rounded-2xl p-6 relative overflow-hidden h-[180px] flex items-center border border-[#7dd3fc]/50">
@@ -14,20 +13,10 @@ export function WelcomeBanner({ enrolledCount = 0 }: { enrolledCount?: number })
       <div className="absolute bottom-4 left-1/2 w-24 h-24 rounded-full bg-white/40 blur-2xl"></div>
 
       <div className="flex items-center gap-6 relative z-10 w-full max-w-xl">
-        {/* Radial enrollment indicator */}
-        <div className="relative w-24 h-24 flex items-center justify-center shrink-0">
-          <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" className="text-white" strokeWidth="8" />
-            <circle
-              cx="50" cy="50" r="45" fill="none" stroke="currentColor" className="text-[#0284c7]" strokeWidth="8"
-              strokeDasharray="283" strokeDashoffset={283 - (283 * progress) / 100}
-              strokeLinecap="round"
-            />
-          </svg>
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-[22px] font-black text-[#0c4a6e] leading-none">{enrolledCount}</span>
-            <span className="text-[8px] font-bold text-[#0c4a6e]/70 uppercase tracking-wide mt-0.5">Courses</span>
-          </div>
+        {/* Enrollment count badge — a count, not a progress percentage */}
+        <div className="w-24 h-24 rounded-full bg-white/70 border-4 border-[#0284c7]/40 flex flex-col items-center justify-center shrink-0">
+          <span className="text-[22px] font-black text-[#0c4a6e] leading-none">{enrolledCount}</span>
+          <span className="text-[8px] font-bold text-[#0c4a6e]/70 uppercase tracking-wide mt-0.5">Courses</span>
         </div>
 
         {/* Content */}
