@@ -33,7 +33,7 @@ type CourseLike = {
   prerequisites?: string[];
 };
 
-type Family =
+export type Family =
   | "scrum-alliance"
   | "scrum-org"
   | "safe"
@@ -57,7 +57,7 @@ type Family =
 
 const has = (s: string, ...needles: string[]) => needles.some((n) => s.includes(n));
 
-function detectFamily(c: CourseLike): Family {
+export function detectFamily(c: CourseLike): Family {
   const slug = c.slug.toLowerCase();
   const title = c.title.toLowerCase();
   const t = `${slug} ${title}`;

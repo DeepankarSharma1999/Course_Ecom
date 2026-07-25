@@ -30,6 +30,8 @@ Key pages: [All courses](${SITE.url}/courses) · [Combo courses](${SITE.url}/com
 
 City/country pages follow the patterns ${SITE.url}/{country}/{course-slug} and ${SITE.url}/in/{course-slug}/{city} (e.g. ${SITE.url}/in/csm-certification-training/delhi).
 
+Every course also has a certification guide at ${SITE.url}/info/{course-slug} covering syllabus, eligibility, exam format, pass marks, cost and renewal (e.g. ${SITE.url}/info/csm-certification-training).
+
 ${sections}
 `;
 

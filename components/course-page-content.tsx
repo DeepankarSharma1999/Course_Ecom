@@ -300,6 +300,15 @@ export function CoursePageContent({
 
           {/* FAQ */}
           {show("faq") && <FaqSection faqs={course.faqs} shortTitle={course.shortTitle} location={locationName} />}
+
+          {/* Certification guide cross-link (info layer) */}
+          <Link
+            href={`/info/${course.slug}`}
+            className="block bg-[#f0faf9] border border-[#1FA8A8]/30 rounded-xl p-5 text-[#082032] hover:border-[#1FA8A8] transition-colors"
+          >
+            <span className="font-bold">Complete {baseCourseTitle(course.title)} guide</span>
+            <span className="text-gray-600"> — syllabus, eligibility, exam format, cost &amp; renewal →</span>
+          </Link>
         </div>
 
         {/* RIGHT COLUMN: Sticky Sidebar */}

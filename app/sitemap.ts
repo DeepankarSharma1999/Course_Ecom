@@ -5,6 +5,7 @@ import { SITE } from "@/lib/utils";
 import { COUNTRIES, CITIES_IN } from "@/lib/seed-data";
 import { GEO_COURSES, getGeoCountries } from "@/lib/geo-pages/data";
 import { isCityIndexable, isCountryIndexable } from "@/lib/geo-pages/gate";
+import { isGuideListed } from "@/lib/course-guide";
 
 // GEO-12: full indexation — every published course plus its country/city
 // variants (/{country}/{course}[/{city}]) is listed; variants carry localized
@@ -33,7 +34,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ({ url: `${base}${path}`, lastModified: now, changeFrequency, priority });
 
   const categories = await getCategories();
-  const courseSlugs = (await getAllCourses()).map((c) => c.slug);
+  const courses = await getAllCourses();
+  const courseSlugs = courses.map((c) => c.slug);
+  const guideSlugs = courses.filter(isGuideListed).map((c) => c.slug);
 
   return [
     url("", 1),
@@ -42,6 +45,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...Object.keys(INFO_PAGES).filter((s) => !HIDDEN_INFO.has(s)).map((s) => url(`/info/${s}`, 0.4, "monthly")),
     ...categories.map((c: { slug: string }) => url(`/category/${c.slug}`, 0.8)),
     ...courseSlugs.map((s) => url(`/${s}`, 0.9)),
+    // Certification guides (/info/<course-slug>) — informational long-tail layer.
+    ...guideSlugs.map((s) => url(`/info/${s}`, 0.7)),
     // Country + city variants of every course (cities are India-only today).
     ...courseSlugs.flatMap((s) => [
       ...COUNTRIES.map((co: { slug: string }) => url(`/${co.slug}/${s}`, 0.5, "monthly")),
