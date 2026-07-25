@@ -19,7 +19,7 @@
     "Credit Suisse (UBS Group)"
   ],
   "industries": "Banking, insurance and reinsurance dominate, joined by major international engineering and technology sites.",
-  "intro": "Zurich's project market pays Europe's highest rates for a reason: the programmes here — bank regulatory portfolios at UBS scale, insurance transformations at Swiss Re and Zurich Insurance, Google's largest engineering site outside the US — demand certified professionals who can operate to exacting Swiss standards. Hiring is precise: credentials are verified, and PMP or Scrum certification is commonly the explicit screening line. The city's workforce is deeply international, working in English. You can join a live online cohort in Zurich year-round, on either a weekend Sat–Sun or a midweek Wed–Thu schedule, both timed for comfortable Zurich daytime rather than awkward hours; exact converted timings for each upcoming date appear in the table below. Afterwards we provide methodical exam application support, full-length mock exams at genuine difficulty, and continued access to the trainer for questions until you clear the exam.",
+  "intro": "Zurich's project market pays Europe's highest rates for a reason: the programmes here — bank regulatory portfolios at UBS scale, insurance transformations at Swiss Re and Zurich Insurance, Google's largest engineering site outside the US — demand certified professionals who can operate to exacting Swiss standards. Hiring is precise: credentials are verified, and PMP or Scrum certification is commonly the explicit screening line. The city's workforce is deeply international, working in English. You can join a live online cohort in Zurich year-round, on either a weekend Sat–Sun or a midweek Wed–Thu schedule, both timed for comfortable Zurich daytime rather than awkward hours; exact converted timings for each upcoming date appear in the table below. Afterwards we provide methodical exam application support, full-length mock exams at genuine difficulty, and continued access to the trainer for questions until you clear the exam.\n\nZurich's project economy is the densest-paying in Europe: banks, insurers and pharma-adjacent firms run governed change portfolios where certified project leadership is assumed, and contractor day rates make the credential's return arithmetic short. The market is compact and reputation-driven — credentials are checked, not skimmed. The course runs live online across two consecutive days in central European hours, in English, matching Zurich's international program staffing. Swiss compensation deserves Swiss-specific data: the sourced Zurich entries in the salary table below are dated and named, not extrapolated. The employer list shows the finance-insurance concentration that hires certified professionals here, and institutions can certify whole change teams through private cohorts scheduled around quarter-end freezes.",
   "faq": [
     {
       "q": "What are the class timings in Zurich?",
@@ -36,6 +36,50 @@
     {
       "q": "Can my employer in Zurich sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Switzerland accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Zurich?",
+      "a": "The fee for the live online {course} course for Zurich is shown at the top of this page in CHF and covers the complete two-day program. What you see on this page is the entire training cost; nothing is added later."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Zurich?",
+      "a": "The Sat–Sun and Wed–Thu cohorts teach the same {course} content in the same two-day format. Zurich learners with weekday client calls usually choose the weekend batch; exact local session times are in the table above."
+    },
+    {
+      "q": "Can I take the {course} exam from Zurich?",
+      "a": "Yes — the {course} exam can be taken online from Zurich; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Zurich?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Zurich job descriptions. The employer list on this page shows where certified professionals in Zurich work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Zurich?",
+      "a": "See the salary table on this page — every Zurich figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Zurich?",
+      "a": "The batch table above lists the next start dates for Zurich — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Zurich?",
+      "a": "Yes. Teams in Zurich can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Zurich delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Zurich. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Zurich?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Zurich."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for Switzerland?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for Switzerland with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Zurich?",
+      "a": "Because completion and understanding differ: live {course} sessions force the exercises, discussion and Q&A that videos skip, and Zurich learners finish in a scheduled two days instead of an open-ended queue."
     }
   ],
   "meta": {

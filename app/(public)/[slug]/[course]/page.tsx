@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CoursePageContent } from "@/components/course-page-content";
 import { baseCourseTitle, composeCourseTitle, SITE, stripBrandSuffix } from "@/lib/utils";
-import { NOINDEX, isCourseIndexed } from "@/lib/indexing";
+import { NOINDEX, isVariantIndexed } from "@/lib/indexing";
 import { courseJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { localizeCourseFaqs, courseKeywords } from "@/lib/course-faqs";
 import { getCourseBySlug, getCountryBySlug, getCities, getCourseVariant, getCourseSchedules } from "@/lib/content";
@@ -33,10 +33,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const title = composeCourseTitle(c.title, { country: geoCountry.name });
     const description = `Live online ${baseCourseTitle(c.shortTitle)} certification training for ${geoCountry.name} — upcoming batch dates, local pricing and exam cost.`;
     const path = `/${slug}/${course}`;
+    // hreflang cluster across the released country hubs of this course (all
+    // en-{ISO}; x-default = the global course page). Only indexable members —
+    // hreflang pointing at noindex drafts is a spec violation.
+    const languages: Record<string, string> = { "x-default": `/${slug}` };
+    for (const co of getGeoCountries()) {
+      if (isCountryIndexable(co.iso)) languages[`en-${co.iso.toUpperCase()}`] = `/${slug}/${co.iso}`;
+    }
     return {
       title, description,
       robots: isCountryIndexable(course) ? undefined : NOINDEX,
-      alternates: { canonical: path },
+      alternates: { canonical: path, ...(Object.keys(languages).length > 1 ? { languages } : {}) },
       openGraph: { title, description, images: c.heroImage ? [c.heroImage] : [], url: `${SITE.url}${path}` },
     };
   }
@@ -52,10 +59,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title, description,
     keywords: `${c.seoKeywords}, ${base} ${co.name}, ${base} training in ${co.name}, ${acr} certification ${co.name}, ${acr} course in ${co.name}`,
-    // Country variants of the FIX-06 allowlisted courses are indexable — localized
-    // FAQs, headings, currency and schedules meet the FIX-19 uniqueness bar.
-    // Variants of noindexed courses stay noindex (see lib/indexing.ts).
-    robots: isCourseIndexed(course) ? undefined : NOINDEX,
+    // Legacy variants are noindex (SEO-AUDIT 2026-07, see lib/indexing.ts) —
+    // the gated /{course}/{country} pages are the indexable geo surface.
+    robots: isVariantIndexed(course) ? undefined : NOINDEX,
     alternates: { canonical: `/${slug}/${course}` },
     openGraph: { title, description, images: c.heroImage ? [c.heroImage] : [], url: `${SITE.url}/${slug}/${course}` },
   };

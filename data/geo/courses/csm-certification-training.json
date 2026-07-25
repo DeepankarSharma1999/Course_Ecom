@@ -1,0 +1,260 @@
+{
+  "slug": "csm-certification-training",
+  "fullName": "Certified Scrum Master",
+  "acr": "CSM",
+  "certBody": "Scrum Alliance",
+  "certBodyUrl": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster",
+  "partnerBadge": "Scrum Alliance Licensed Training Partner (LTP)",
+  "skills": [
+    "Scrum framework: roles, events, artifacts and commitments",
+    "Facilitating Sprint Planning, Daily Scrum, Review and Retrospective",
+    "Backlog refinement and working agreements",
+    "Servant leadership and team coaching",
+    "Removing impediments and shielding the team",
+    "Estimation, velocity and empirical forecasting",
+    "Definition of Done and quality practices",
+    "Stakeholder communication and transparency",
+    "Scaling awareness: where Scrum ends and scaling frameworks begin",
+    "Agile Manifesto values and principles in day-to-day delivery"
+  ],
+  "roles": [
+    {
+      "title": "New and aspiring Scrum Masters",
+      "body": "The Certified Scrum Master (CSM) credential is the most widely listed entry requirement in Scrum Master job descriptions, and no prior experience is required to earn it."
+    },
+    {
+      "title": "Project Managers moving to agile delivery",
+      "body": "PMs transitioning from predictive delivery use the CSM to relabel and rewire their facilitation and planning skills for Scrum teams."
+    },
+    {
+      "title": "Developers and QA engineers",
+      "body": "Team members who informally run standups and retros formalize that role with the CSM, a common first step toward lead positions."
+    },
+    {
+      "title": "Product Owners and Business Analysts",
+      "body": "Understanding the Scrum Master accountability makes backlog collaboration smoother; many POs hold both CSM and CSPO."
+    },
+    {
+      "title": "Engineering Managers and Team Leads",
+      "body": "Leaders of Scrum teams take the CSM to coach rather than command, and to run the events their teams depend on."
+    },
+    {
+      "title": "Agile Coaches starting their track",
+      "body": "The CSM is the first rung of the Scrum Alliance certification ladder that continues to A-CSM and CSP-SM."
+    }
+  ],
+  "benefits": [
+    {
+      "title": "The most recognized Scrum credential",
+      "body": "The Certified Scrum Master (CSM) certification from Scrum Alliance is the longest-running Scrum credential and the one most frequently named in Scrum Master job postings in {country}."
+    },
+    {
+      "title": "Exam included, no separate fee",
+      "body": "Unlike most certifications, the CSM exam fee is included in the course fee — the {price} you see on this page covers the live training and two exam attempts within 90 days."
+    },
+    {
+      "title": "Fast time-to-credential",
+      "body": "The CSM requires a live {days}-day course and a 50-question exam; most professionals in {city} are certified within a week of finishing class."
+    },
+    {
+      "title": "A practical facilitation toolkit",
+      "body": "CSM training is exercise-driven — you leave with concrete techniques for planning, retros and impediment handling, not just theory."
+    },
+    {
+      "title": "Two-year Scrum Alliance membership",
+      "body": "Passing the CSM includes Scrum Alliance membership, with access to local user groups and member resources."
+    },
+    {
+      "title": "A documented pay premium for certified Scrum Masters",
+      "body": "See the salary table on this page for {city}-specific Scrum Master figures, each with a linked source and date."
+    }
+  ],
+  "whoShouldAttend": [
+    "Aspiring Scrum Masters with no prior agile experience — none is required",
+    "Project managers and delivery leads moving into agile roles",
+    "Developers, testers and analysts on Scrum teams",
+    "Product Owners who want the full picture of the Scrum framework",
+    "Engineering managers coaching one or more Scrum teams",
+    "Anyone whose organization in {city} is adopting Scrum"
+  ],
+  "prerequisites": [
+    "There are no formal prerequisites for CSM certification — no degree, no documented experience hours",
+    "Attendance of the full live {days}-day course from a licensed trainer is mandatory (Scrum Alliance rule); the exam unlocks only after attendance",
+    "Reading the Scrum Guide before class is recommended but not required"
+  ],
+  "whyUs": [
+    {
+      "title": "Live online, in hours that fit {city}",
+      "body": "Our CSM batches run on four regional schedules, and every session time on this page is converted to {city} local time."
+    },
+    {
+      "title": "Exam fee included, pricing transparent",
+      "body": "The {price} fee covers the {days}-day live course and the CSM exam with two attempts — the fee cards and batch dates on this page are the complete cost picture for {country}."
+    },
+    {
+      "title": "Weekday and weekend cohorts year-round",
+      "body": "Two CSM cohorts run every week — Wed–Thu and Sat–Sun — so professionals in {city} can certify without taking leave."
+    },
+    {
+      "title": "Sourced local salary data",
+      "body": "Every Scrum Master salary figure for {city} on this page names its source and as-of date, so your business case is verifiable."
+    }
+  ],
+  "examGuide": [
+    {
+      "h": "{acr} exam format",
+      "p": [
+        "The Certified Scrum Master (CSM) exam is a 50-question multiple-choice test with a 60-minute limit, taken online through the Scrum Alliance platform. You need 37 correct answers (74%) to pass.",
+        "The exam unlocks only after you complete the live CSM course with a licensed trainer — self-study alone cannot lead to the credential."
+      ]
+    },
+    {
+      "h": "How the {acr} certification process works",
+      "p": [
+        "The sequence is: attend the full live {days}-day CSM training, receive your exam invitation from Scrum Alliance by email, take the 50-question online exam, and accept the license agreement. Your CSM certificate and two-year Scrum Alliance membership activate immediately after passing.",
+        "The course fee of {price} includes the exam — there is no separate exam purchase for candidates in {country}."
+      ]
+    },
+    {
+      "h": "{acr} exam attempts and retakes",
+      "p": [
+        "Your course fee includes two exam attempts within 90 days of the course. The pass rate is high — the exam checks understanding of the Scrum framework as taught in class, not trick questions — and a further attempt after the included two carries a small fee set by Scrum Alliance.",
+        "There is no waiting period between your first and second attempt; most candidates who retake do so within days."
+      ]
+    },
+    {
+      "h": "Taking the {acr} exam from {city}",
+      "p": [
+        "The CSM exam is fully online and unproctored in the traditional sense — you take it from home or office in {city} whenever you're ready within the 90-day window. No test centres, no scheduling constraints, no timezone gymnastics.",
+        "The 60-minute timer starts when you begin; you can complete it any time of day that suits {city} hours."
+      ]
+    },
+    {
+      "h": "Maintaining the {acr}: SEUs and renewal",
+      "p": [
+        "The CSM credential is valid for two years. Renewal requires 20 Scrum Education Units (SEUs) earned over the period plus a renewal fee paid to Scrum Alliance — no re-examination.",
+        "SEUs come from courses, user-group participation, volunteering and other learning activities logged in your Scrum Alliance account; many CSMs simply roll their renewal into the next certification (A-CSM) on the track."
+      ]
+    }
+  ],
+  "cityGuide": [
+    {
+      "h": "How much does {acr} certification cost in {city}?",
+      "p": [
+        "The live online Certified Scrum Master (CSM) certification training for {city} costs {price} for the {days}-day program — and unlike most certifications, that fee includes the exam with two attempts and two years of Scrum Alliance membership. There is no separate exam fee in {country}. Because the exam and two attempts are bundled, comparing CSM providers on headline price is genuinely like-for-like — there is no exam add-on to reconstruct later. Employer-sponsored candidates can request an invoice suitable for reimbursement, and the fee covers the live sessions, materials, the exam attempts and the two-year Scrum Alliance membership.",
+        "The batch dates on this page show exact {city} local times, and the fee shown is the complete cost."
+      ]
+    },
+    {
+      "h": "How to become a {acr} in {city}",
+      "p": [
+        "For professionals in {city}: (1) pick a weekday or weekend batch above — times are already converted to {city} local time, (2) attend the full live {days}-day course, (3) take the 50-question online exam within 90 days, and (4) accept the Scrum Alliance license. Most candidates in {city} hold the CSM credential within a week of finishing class. Scrum Alliance emails your exam invitation shortly after course completion, and the 90-day window gives ample room to schedule around work. Nothing about the process requires local presence — the course, the exam and the credential itself are all delivered online, so {city} candidates follow the identical path as anywhere else.",
+        "No prior experience, degree or other certification is required to start."
+      ]
+    },
+    {
+      "h": "Is {acr} certification worth it in {city}?",
+      "p": [
+        "Check the salary table above — every Scrum Master figure is specific to {city} or {country}, sourced and dated, so you can weigh the {price} all-inclusive fee against the documented local pay range. Scrum Master openings routinely list the CSM by name, and the credential's two-year Scrum Alliance membership adds local user-group access on top of the certificate itself. Because renewal runs on education units rather than re-examination, the credential stays current alongside normal professional development instead of demanding a fresh exam cycle. For hiring managers the credential is also a screening shortcut, which is exactly why it keeps appearing in {city} job descriptions year after year.",
+        "The employers named on this page hire agile talent in {city}, and the CSM is the credential their Scrum Master openings most commonly list."
+      ]
+    },
+    {
+      "h": "Corporate {acr} training for teams in {city}",
+      "p": [
+        "Companies in {city} adopting Scrum across several teams can run a private CSM cohort scheduled to {city} working hours rather than the public calendar. Use the enquiry form on this page with your team size and preferred dates. Private cohorts cover the same mandatory live coursework, so every attendee leaves exam-eligible. Cohorts can mix team members across offices and timezones, and completion reporting gives your L&D team per-attendee certification status without chasing certificates. Sessions run on your working calendar rather than the public batch dates, and invoicing supports purchase-order workflows common in larger {city} organizations."
+      ]
+    }
+  ],
+  "examFaqs": [
+    {
+      "q": "How many questions are on the CSM exam?",
+      "a": "The CSM exam has 50 multiple-choice questions with a 60-minute limit. You need 37 correct (74%) to earn the CSM credential."
+    },
+    {
+      "q": "Is the CSM exam hard?",
+      "a": "The CSM exam checks understanding of the Scrum framework as taught in the live course — no trick questions. Attend the full CSM course, review the Scrum Guide, and the pass rate is very high."
+    },
+    {
+      "q": "Can I take the CSM exam without the course?",
+      "a": "No. Scrum Alliance requires attending the full live CSM course with a licensed trainer before the exam unlocks — self-study alone cannot lead to CSM certification."
+    },
+    {
+      "q": "How many CSM exam attempts do I get?",
+      "a": "Your CSM course fee includes two exam attempts within 90 days. Further attempts carry a small Scrum Alliance fee; there is no waiting period between attempts."
+    },
+    {
+      "q": "Is the CSM exam proctored?",
+      "a": "No. The CSM exam is taken online through the Scrum Alliance platform at any time within your 90-day window — no test centres, no proctoring appointments."
+    },
+    {
+      "q": "Are there prerequisites for CSM certification?",
+      "a": "None. The CSM has no degree, experience or prior-certification requirement — attending the live CSM course is the only mandatory step before the exam."
+    },
+    {
+      "q": "How long is the CSM certification valid?",
+      "a": "The CSM credential is valid for two years. Renewal requires 20 SEUs plus a Scrum Alliance renewal fee — there is no re-examination for CSM renewal."
+    },
+    {
+      "q": "What are SEUs and how do I earn them?",
+      "a": "Scrum Education Units (SEUs) are the renewal currency for the CSM: courses, user-group sessions, volunteering and other learning activities logged in your Scrum Alliance account count toward the 20 needed every two years."
+    },
+    {
+      "q": "Is the exam fee included in CSM training?",
+      "a": "Yes. Unlike most certifications, the CSM course fee includes the exam with two attempts and two years of Scrum Alliance membership — no separate exam purchase."
+    },
+    {
+      "q": "CSM vs PSM — which should I take?",
+      "a": "The CSM (Scrum Alliance) requires a live course and renews every two years; PSM I (Scrum.org) can be taken exam-only and never expires. Choose the CSM for guided, exercise-driven learning with trainer feedback; see the comparison table on this page."
+    },
+    {
+      "q": "Does the CSM cover scaling frameworks like SAFe?",
+      "a": "The CSM focuses on single-team Scrum — roles, events and artifacts. It builds the foundation that scaling frameworks assume; many CSM holders add a scaling certification later."
+    },
+    {
+      "q": "What happens right after I pass the CSM exam?",
+      "a": "You accept the Scrum Alliance license agreement and your CSM certificate plus two-year membership activate immediately — most candidates hold the CSM within a week of finishing class."
+    },
+    {
+      "q": "What is the next certification after CSM?",
+      "a": "The Scrum Alliance track continues from CSM to Advanced Certified ScrumMaster (A-CSM) and then Certified Scrum Professional ScrumMaster (CSP-SM); many CSM holders also add CSPO for the Product Owner view."
+    },
+    {
+      "q": "Will I get a certificate for attending the CSM course?",
+      "a": "Your credential comes from Scrum Alliance after passing the CSM exam — that is the certificate employers verify, and it appears in the public Scrum Alliance directory."
+    }
+  ],
+  "vs": {
+    "title": "{acr} vs PSM: which Scrum Master certification?",
+    "intro": "The Certified Scrum Master (CSM) from Scrum Alliance and the Professional Scrum Master (PSM I) from Scrum.org are the two dominant Scrum Master credentials.",
+    "aLabel": "CSM",
+    "bLabel": "PSM I",
+    "rows": [
+      {
+        "aspect": "Certifying body",
+        "a": "Scrum Alliance",
+        "b": "Scrum.org"
+      },
+      {
+        "aspect": "Live course",
+        "a": "Mandatory 2-day course with licensed trainer",
+        "b": "Optional — exam can be taken directly"
+      },
+      {
+        "aspect": "Exam",
+        "a": "50 questions, 74% to pass, 2 attempts included",
+        "b": "80 questions, 85% to pass, 60 minutes"
+      },
+      {
+        "aspect": "Renewal",
+        "a": "Every 2 years (20 SEUs + fee)",
+        "b": "Never expires"
+      },
+      {
+        "aspect": "Best for",
+        "a": "Guided, exercise-driven learning and coaching feedback",
+        "b": "Self-studiers confident with the Scrum Guide"
+      }
+    ]
+  }
+}

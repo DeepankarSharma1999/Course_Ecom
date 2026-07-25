@@ -1,0 +1,277 @@
+{
+  "slug": "pmp-certification-training",
+  "fullName": "Project Management Professional",
+  "acr": "PMP",
+  "certBody": "Project Management Institute (PMI)",
+  "certBodyUrl": "https://www.pmi.org/certifications/project-management-pmp",
+  "partnerBadge": "PMI Premier Authorized Training Partner (ATP)",
+  "skills": [
+    "Predictive, agile and hybrid project planning",
+    "Scope definition and requirements management",
+    "Scheduling, critical path and milestone tracking",
+    "Budgeting, cost control and earned value management",
+    "Risk identification, analysis and response planning",
+    "Stakeholder engagement and communications management",
+    "Team leadership, conflict resolution and servant leadership",
+    "Quality management and continuous improvement",
+    "Procurement and vendor management",
+    "Change management and integrated change control",
+    "Business environment analysis and benefits realization",
+    "PMI's Examination Content Outline task domains: People, Process, Business Environment"
+  ],
+  "roles": [
+    {
+      "title": "Project Managers",
+      "body": "The Project Management Professional (PMP) credential is the default benchmark hiring managers screen for when staffing project management roles across industries."
+    },
+    {
+      "title": "Program and Portfolio Managers",
+      "body": "PMP-certified program managers use the same PMI vocabulary their PMO and sponsors expect, making multi-project governance and reporting cleaner."
+    },
+    {
+      "title": "Team Leads moving into project roles",
+      "body": "Engineers, analysts and delivery leads who already run workstreams can convert that experience into the documented hours the PMP application requires."
+    },
+    {
+      "title": "Scrum Masters and Agile practitioners",
+      "body": "Roughly half of the current PMP exam covers agile and hybrid approaches, so Scrum Masters extend their profile beyond a single framework."
+    },
+    {
+      "title": "PMO Analysts and Coordinators",
+      "body": "A PMP moves PMO staff from supporting projects to owning them, which is normally the boundary between coordinator and manager pay bands."
+    },
+    {
+      "title": "Consultants and Contractors",
+      "body": "Independent professionals use the PMP to clear client-side vendor screening, where the credential is often a hard requirement on tenders."
+    }
+  ],
+  "benefits": [
+    {
+      "title": "Globally recognized credential",
+      "body": "The Project Management Professional (PMP) certification from PMI is recognized across industries and borders — the same credential is understood in {country} as in every other market you may work in."
+    },
+    {
+      "title": "Documented earning power",
+      "body": "PMI's own Earning Power salary survey consistently reports higher median salaries for PMP holders than for uncertified peers in the same roles; see the salary table on this page for {city}-specific figures with sources."
+    },
+    {
+      "title": "Covers agile, hybrid and predictive delivery",
+      "body": "The current PMP Examination Content Outline splits across People (42%), Process (50%) and Business Environment (8%), with about half the questions set in agile or hybrid contexts — one credential covering the full delivery spectrum."
+    },
+    {
+      "title": "A shared professional vocabulary",
+      "body": "PMP training standardizes how you talk about scope, risk, baselines and change control, which is precisely what cross-functional and multi-vendor projects in {city} need."
+    },
+    {
+      "title": "Stronger internal mobility",
+      "body": "Organizations that fund PMP certification typically do so as part of promotion tracks into senior project and program roles."
+    },
+    {
+      "title": "PMI membership network",
+      "body": "Preparing for the PMP usually starts with PMI membership, which discounts the exam fee and connects you to local PMI chapter events."
+    }
+  ],
+  "whoShouldAttend": [
+    "Working project managers formalizing experience into the PMP credential",
+    "Team leads and senior engineers who already run projects without the title",
+    "Scrum Masters and Product Owners broadening beyond agile-only frameworks",
+    "PMO analysts, planners and coordinators stepping up to project ownership",
+    "Program managers who need the PMP for vendor or client requirements",
+    "Career switchers with project experience who need a recognized credential"
+  ],
+  "prerequisites": [
+    "A four-year degree plus 36 months of project leadership experience, OR a high-school diploma / associate degree plus 60 months of experience (PMI eligibility rules)",
+    "35 contact hours of project management education — this live {days}-day PMP certification training counts toward that requirement",
+    "No prior certification is required; holding CAPM also satisfies the education requirement"
+  ],
+  "whyUs": [
+    {
+      "title": "Live online, in hours that fit {city}",
+      "body": "Our PMP batches run on four regional schedules, and every session time on this page is shown converted to {city} local time — no guessing across timezones."
+    },
+    {
+      "title": "Transparent, sourced numbers",
+      "body": "Every salary figure for {city} on this page carries its source and as-of date, and the PMP exam fee for {country} is listed with a link to PMI's official fee page."
+    },
+    {
+      "title": "Weekday and weekend cohorts year-round",
+      "body": "Two PMP cohorts run every week — a Wed–Thu weekday track and a Sat–Sun weekend track — so professionals in {city} can train without taking leave."
+    },
+    {
+      "title": "Application and exam guidance",
+      "body": "The course walks through PMI's application, the 35-contact-hour documentation, and an exam preparation plan, not just the syllabus."
+    }
+  ],
+  "examGuide": [
+    {
+      "h": "{acr} exam format",
+      "p": [
+        "The Project Management Professional (PMP) exam is administered by PMI and contains 180 questions to be completed in 230 minutes, with two scheduled 10-minute breaks. Question types include multiple-choice, multiple-response, matching, hotspot and limited fill-in-the-blank.",
+        "Questions follow PMI's Examination Content Outline across three domains — People (42%), Process (50%) and Business Environment (8%) — and about half of the exam reflects agile or hybrid project environments rather than purely predictive ones."
+      ]
+    },
+    {
+      "h": "How to apply for the {acr} exam",
+      "p": [
+        "You apply on pmi.org: create a PMI account, document your project leadership experience against the eligibility rules, and record your 35 contact hours of project management education (this PMP training provides them). PMI reviews applications and a percentage are selected for audit, in which case you submit supporting documentation before scheduling.",
+        "Once approved you receive eligibility for one year, during which you can schedule your PMP exam appointment through Pearson VUE."
+      ]
+    },
+    {
+      "h": "{acr} exam cost in {country}",
+      "p": [
+        "The PMP exam fee in {country} is {examMember} for PMI members and {examNonMember} for non-members, paid directly to PMI — see the fee cards above, with the source linked. PMI membership carries its own annual fee but the member exam discount typically offsets most of it.",
+        "The exam fee is separate from the PMP training fee of {price} for the {days}-day live online course."
+      ]
+    },
+    {
+      "h": "Taking the {acr} exam from {city}",
+      "p": [
+        "You can sit the PMP exam either at a Pearson VUE test center or as an online proctored exam from home or office in {city}. Online proctoring runs around the clock, so candidates in {city} can book a slot in local working hours; the test-center option depends on Pearson VUE availability in your area — check the Pearson VUE seat finder for current {city} locations.",
+        "Both delivery modes use the same 180-question exam, the same fee, and produce the same PMP credential."
+      ]
+    },
+    {
+      "h": "{acr} passing score and results",
+      "p": [
+        "PMI does not publish a numeric passing score for the PMP exam. Results are reported as an overall pass/fail plus a performance rating per domain (Above Target, Target, Below Target, Needs Improvement). Most candidates receive their provisional result on screen immediately after finishing.",
+        "If you don't pass, PMI allows up to three attempts within your one-year eligibility period; re-examination fees are lower than the first-attempt fee and are listed on pmi.org."
+      ]
+    },
+    {
+      "h": "Maintaining the {acr}: PDUs and renewal",
+      "p": [
+        "The PMP credential is maintained through PMI's Continuing Certification Requirements (CCR) program: 60 professional development units (PDUs) every three years, split between education and giving-back activities.",
+        "PDUs are earned through courses, webinars, PMI chapter events and on-the-job activities, then reported in PMI's CCR system — there is no re-examination as long as you renew on time."
+      ]
+    }
+  ],
+  "cityGuide": [
+    {
+      "h": "How much does {acr} certification training cost in {city}?",
+      "p": [
+        "The live online Project Management Professional (PMP) certification training for {city} costs {price} for the full {days}-day program, including the 35 contact hours PMI requires. The PMP exam fee is paid separately to PMI — {examMember} for members and {examNonMember} for non-members in {country}. For budgeting, add PMI membership if you want the member exam rate — the combined training-plus-exam outlay is typically recovered within the first certified pay revision, per the sourced salary table below. Employer-sponsored candidates can request an invoice suitable for reimbursement, and the fee covers all live sessions, materials and the completion certificate PMI accepts as contact-hour evidence.",
+        "There are no hidden add-ons: the batch dates, the {city} local session times and the fee on this page are the complete picture."
+      ]
+    },
+    {
+      "h": "How to become {acr} certified in {city}",
+      "p": [
+        "The path for professionals in {city} is: (1) confirm you meet PMI's experience eligibility, (2) complete the 35 contact hours via this live PMP training on a schedule converted to {city} time, (3) submit your application on pmi.org, (4) book the exam at a Pearson VUE centre or online proctored from {city}, and (5) pass the 180-question exam. PMI's application itself is free to submit, and the batch table above always shows the next available start dates, so the only real scheduling decision is weekday versus weekend. If PMI selects your application for audit, the documentation from this course satisfies the education check, and the audit adds only a few days to the timeline.",
+        "Most working professionals in {city} complete the journey in eight to twelve weeks from first class to credential, driven mainly by personal study pace rather than logistics."
+      ]
+    },
+    {
+      "h": "Is {acr} certification worth it in {city}?",
+      "p": [
+        "Use the salary table above — every figure is specific to {city} or {country} with a linked source and date, so you can weigh the {price} training fee and PMI exam fee against the documented pay range for certified project managers in {city}. PMI's Earning Power survey consistently reports a meaningful median pay gap between PMP holders and uncertified peers in comparable roles, which is why the credential appears in so many job descriptions. The credential also travels: because PMI recognition is global, a PMP earned from {city} carries identical weight if your next role is in another country or fully remote.",
+        "Beyond pay, the employers listed on this page hire project talent in {city}, and the PMP is the credential their job descriptions most commonly name."
+      ]
+    },
+    {
+      "h": "Corporate {acr} training for teams in {city}",
+      "p": [
+        "Organizations in {city} upskilling several project managers at once can run a private PMP cohort on a schedule aligned to {city} working hours instead of the public batch calendar. Use the enquiry form on this page and mention your team size and preferred dates. Private cohorts include the same 35 contact hours and exam-application guidance as public batches, with completion reporting for your L&D team. Cohorts can mix team members across offices, and the same sourced salary and exam-cost data on this page doubles as ready-made input for an internal business case. Sessions can also be recorded per your agreement for internal enablement, and invoicing supports purchase-order workflows common in larger {city} organizations."
+      ]
+    }
+  ],
+  "examFaqs": [
+    {
+      "q": "How many questions are on the PMP exam?",
+      "a": "The PMP exam has 180 questions with 230 minutes to complete them, plus two scheduled 10-minute breaks. The PMP question mix includes multiple-choice, multiple-response, matching and hotspot formats."
+    },
+    {
+      "q": "What is the PMP exam passing score?",
+      "a": "PMI does not publish a numeric PMP passing score. Your PMP result is pass/fail with a per-domain performance rating: Above Target, Target, Below Target or Needs Improvement."
+    },
+    {
+      "q": "Is the PMP exam difficult?",
+      "a": "The PMP exam is demanding because it tests situational judgment across predictive, agile and hybrid delivery — not memorization. Candidates who complete a structured PMP prep course and two or three full-length mocks typically pass on the first attempt."
+    },
+    {
+      "q": "How long should I prepare for the PMP exam?",
+      "a": "Most working professionals prepare six to ten weeks for the PMP after finishing the 35 contact hours. A steady PMP study plan of 8–10 hours a week beats cramming."
+    },
+    {
+      "q": "Can I take the PMP exam online?",
+      "a": "Yes. The PMP exam is offered both online proctored (from home or office, 24/7 slots) and at Pearson VUE test centres. Both formats deliver the identical PMP credential."
+    },
+    {
+      "q": "How many times can I attempt the PMP exam?",
+      "a": "PMI allows up to three PMP exam attempts within your one-year eligibility period. Re-examination fees are lower than the first-attempt PMP fee."
+    },
+    {
+      "q": "What are the eligibility requirements for the PMP?",
+      "a": "A four-year degree with 36 months of project leadership experience, or a secondary degree with 60 months, plus 35 contact hours of project management education. This PMP certification training satisfies the education requirement."
+    },
+    {
+      "q": "Does the PMP certification expire?",
+      "a": "The PMP is maintained, not retaken: earn 60 PDUs every three years under PMI's CCR program and your PMP renews without re-examination."
+    },
+    {
+      "q": "What is the difference between PMP and PMI membership?",
+      "a": "PMI membership is an annual subscription that discounts the PMP exam fee and gives access to standards like the PMBOK Guide; the PMP is the credential itself. Most PMP candidates join PMI first because the exam discount roughly offsets the membership fee."
+    },
+    {
+      "q": "Is the PMP worth it for agile practitioners?",
+      "a": "About half of the current PMP exam is set in agile or hybrid contexts, so the PMP now certifies the full delivery spectrum rather than competing with agile credentials."
+    },
+    {
+      "q": "What is the PMP audit process?",
+      "a": "A percentage of PMP applications are randomly selected for audit. You submit copies of your degree, experience sign-offs and 35-contact-hour certificate; once verified, your PMP eligibility proceeds normally."
+    },
+    {
+      "q": "Which is better: PMP or CAPM?",
+      "a": "CAPM is PMI's entry-level credential with no experience requirement; the PMP requires documented project leadership. If you meet PMP eligibility, go straight to the PMP — it is the one hiring managers screen for."
+    },
+    {
+      "q": "What score reports do I get after the PMP exam?",
+      "a": "Immediately after the PMP exam you see a provisional pass/fail on screen; the formal PMP score report with domain-level ratings appears in your PMI account within a few days."
+    },
+    {
+      "q": "Do PMP exam questions follow the PMBOK Guide?",
+      "a": "The PMP exam follows PMI's Examination Content Outline, not any single book. The PMBOK Guide and the Agile Practice Guide are core references, but PMP questions test applied judgment across sources."
+    },
+    {
+      "q": "What are PDUs and how do I earn them for PMP renewal?",
+      "a": "PDUs (professional development units) are the currency of PMP renewal: 60 every three years, earned via courses, webinars, PMI chapter events and giving-back activities, logged in PMI's CCR system."
+    },
+    {
+      "q": "Can I use this course's hours for the PMP application?",
+      "a": "Yes — this live PMP certification training provides the full 35 contact hours PMI requires, and you receive a completion certificate to attach if your PMP application is audited."
+    }
+  ],
+  "vs": {
+    "title": "{acr} vs CAPM: which one fits you?",
+    "intro": "The Project Management Professional (PMP) and the Certified Associate in Project Management (CAPM) are both PMI credentials, but they target different career stages.",
+    "aLabel": "PMP",
+    "bLabel": "CAPM",
+    "rows": [
+      {
+        "aspect": "Who it's for",
+        "a": "Experienced practitioners leading projects",
+        "b": "Early-career professionals and students"
+      },
+      {
+        "aspect": "Experience required",
+        "a": "36–60 months leading projects",
+        "b": "None — 23 contact hours of education"
+      },
+      {
+        "aspect": "Exam",
+        "a": "180 questions, 230 minutes",
+        "b": "150 questions, 3 hours"
+      },
+      {
+        "aspect": "Recognition in hiring",
+        "a": "Frequently a hard requirement for PM roles",
+        "b": "A stepping stone; rarely a role requirement"
+      },
+      {
+        "aspect": "Renewal",
+        "a": "60 PDUs every 3 years",
+        "b": "15 PDUs every 3 years"
+      }
+    ]
+  }
+}

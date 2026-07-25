@@ -20,9 +20,8 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               <span className="font-semibold text-ink-900 pr-6">{it.q}</span>
               <ChevronDown className={`w-5 h-5 text-ink-500 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} />
             </button>
-            {isOpen && (
-              <div className="px-5 pb-5 -mt-1 text-ink-600 leading-relaxed">{it.a}</div>
-            )}
+            {/* Always in the DOM (hidden, not unmounted) so crawlers see answer text. */}
+            <div hidden={!isOpen} className="px-5 pb-5 -mt-1 text-ink-600 leading-relaxed">{it.a}</div>
           </div>
         );
       })}

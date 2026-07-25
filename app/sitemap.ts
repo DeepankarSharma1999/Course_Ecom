@@ -1,8 +1,10 @@
+import fs from "fs";
+import path from "path";
 import type { MetadataRoute } from "next";
 import { getCategories, getAllCourses } from "@/lib/content";
+import { getPageContent } from "@/lib/page-content";
 import { INFO_PAGES } from "@/lib/info-content";
 import { SITE } from "@/lib/utils";
-import { COUNTRIES, CITIES_IN } from "@/lib/seed-data";
 import { GEO_COURSES, getGeoCountries } from "@/lib/geo-pages/data";
 import { isCityIndexable, isCountryIndexable } from "@/lib/geo-pages/gate";
 import { isGuideListed } from "@/lib/course-guide";
@@ -27,21 +29,36 @@ const MARKETING_ROUTES = [
   "/practice-tests", "/self-paced", "/refer-earn",
 ];
 
+// Deploy-time constant for routes with no per-item timestamp — a stable value
+// beats per-request `new Date()`, which changed on every crawl and taught
+// Google to ignore lastmod entirely.
+const BUILD_DATE = new Date();
+
+// Geo data files carry their real content age in the filesystem.
+function geoFileDate(rel: string): Date {
+  try { return fs.statSync(path.join(process.cwd(), "data", "geo", rel)).mtime; }
+  catch { return BUILD_DATE; }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = SITE.url;
-  const now = new Date();
-  const url = (path: string, priority: number, changeFrequency: "weekly" | "monthly" = "weekly") =>
-    ({ url: `${base}${path}`, lastModified: now, changeFrequency, priority });
+  const url = (path: string, priority: number, changeFrequency: "weekly" | "monthly" = "weekly", lastModified: Date = BUILD_DATE) =>
+    ({ url: `${base}${path}`, lastModified, changeFrequency, priority });
 
   const categories = await getCategories();
   const courses = await getAllCourses();
   const courseSlugs = courses.map((c) => c.slug);
   const guideSlugs = courses.filter(isGuideListed).map((c) => c.slug);
-  let blogSlugs: string[] = [];
+  let blogs: { slug: string; updatedAt: Date }[] = [];
   try {
     const { prisma } = await import("@/lib/prisma");
-    blogSlugs = (await prisma.blog.findMany({ where: { isPublished: true }, select: { slug: true } })).map((b) => b.slug);
+    blogs = await prisma.blog.findMany({ where: { isPublished: true }, select: { slug: true, updatedAt: true } });
   } catch { /* DB unavailable — omit blog posts */ }
+  let comparePairs: { a: string; b: string }[] = [];
+  try {
+    const c = await getPageContent("compare");
+    comparePairs = ((c as Record<string, unknown>).suggested as { a: string; b: string }[]) ?? [];
+  } catch { /* content unavailable — omit compare pairs */ }
 
   return [
     url("", 1),
@@ -52,17 +69,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...courseSlugs.map((s) => url(`/${s}`, 0.9)),
     // Certification guides (/info/<course-slug>) — informational long-tail layer.
     ...guideSlugs.map((s) => url(`/info/${s}`, 0.7)),
-    // Published blog posts.
-    ...blogSlugs.map((s) => url(`/blog/${s}`, 0.6)),
-    // Country + city variants of every course (cities are India-only today).
-    ...courseSlugs.flatMap((s) => [
-      ...COUNTRIES.map((co: { slug: string }) => url(`/${co.slug}/${s}`, 0.5, "monthly")),
-      ...CITIES_IN.map((ct: { slug: string }) => url(`/in/${s}/${ct.slug}`, 0.6, "monthly")),
-    ]),
+    // Published blog posts — real updatedAt as lastmod.
+    ...blogs.map((b) => url(`/blog/${b.slug}`, 0.6, "weekly", b.updatedAt)),
+    // Curated comparison pages only — never the full ~42k combinatorial set.
+    ...comparePairs.map(({ a, b }) => url(`/compare/${a}-vs-${b}`, 0.5, "monthly")),
+    // Legacy /{country}/{course}[/{city}] variants removed (SEO-AUDIT 2026-07):
+    // they are noindex (lib/indexing.ts isVariantIndexed) — the gated geo pages
+    // below are the only geo surface in the sitemap.
     ...GEO_COURSES.flatMap((course) =>
       getGeoCountries().flatMap((co) => [
-        ...(isCountryIndexable(co.iso) ? [url(`/${course}/${co.iso}`, 0.7)] : []),
-        ...co.cities.filter((ct) => isCityIndexable(co.iso, ct)).map((ct) => url(`/${course}/${co.iso}/${ct}`, 0.7)),
+        ...(isCountryIndexable(co.iso) ? [url(`/${course}/${co.iso}`, 0.7, "weekly", geoFileDate(`countries/${co.iso}.json`))] : []),
+        ...co.cities.filter((ct) => isCityIndexable(co.iso, ct))
+          .map((ct) => url(`/${course}/${co.iso}/${ct}`, 0.7, "weekly", geoFileDate(`cities/${co.iso}/${ct}.json`))),
       ])),
   ];
 }

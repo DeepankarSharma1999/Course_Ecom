@@ -26,7 +26,7 @@
     "Mashreq Bank"
   ],
   "industries": "Real estate and construction, aviation, logistics, banking and government digital programmes generate continuous project hiring.",
-  "intro": "Dubai hires project talent the way other cities hire salespeople — constantly and competitively. Real estate developers, airlines, logistics giants, banks and the Smart Dubai government programmes all run permanent portfolios of change, and recruiters screen hard on certification because the candidate pool is global. A PMP or CSM is frequently the difference between a CV that clears the ATS filter and one that doesn't. Our live online weekend batch runs on the IST schedule, which lands at comfortable daytime hours in Dubai — train from JLT or Deira without giving up a working week that already runs long. The cohort is international, matching how Dubai teams actually look. Fees are invoiced in US dollars for straightforward employer sponsorship. Afterwards: exam application guidance, full mock exams, and trainer access until you pass.",
+  "intro": "Dubai hires project talent the way other cities hire salespeople — constantly and competitively. Real estate developers, airlines, logistics giants, banks and the Smart Dubai government programmes all run permanent portfolios of change, and recruiters screen hard on certification because the candidate pool is global. A PMP or CSM is frequently the difference between a CV that clears the ATS filter and one that doesn't. Our live online weekend batch runs on the IST schedule, which lands at comfortable daytime hours in Dubai — train from JLT or Deira without giving up a working week that already runs long. The cohort is international, matching how Dubai teams actually look. Fees are invoiced in US dollars for straightforward employer sponsorship. Afterwards: exam application guidance, full mock exams, and trainer access until you pass.\n\nDubai treats project delivery as a civic sport: free-zone scale-ups, DIFC financial firms and the emirate's rolling pipeline of infrastructure and tourism builds all staff formal project offices, and recruiters shortlist certified candidates first because turnover is fast and onboarding time is expensive. A live online weekend batch fits the city's six-day work rhythms — no traffic to a training venue, sessions shown in Dubai local time on this page. Salaries in Dubai are tax-free, which changes the certification math; use the sourced Dubai figures in the table below rather than global averages when you weigh the fee. The employer list shows the mix of consultancies, developers and tech firms hiring certified project talent here, and private cohorts are available for Dubai teams.",
   "faq": [
     {
       "q": "What are the class timings in Dubai?",
@@ -43,6 +43,50 @@
     {
       "q": "Can my employer in Dubai sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United Arab Emirates accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Dubai?",
+      "a": "The fee for the live online {course} course for Dubai is shown at the top of this page in AED and covers the complete two-day program. There are no venue or material add-ons — the price on this page is the full training cost."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Dubai?",
+      "a": "Both cover the identical {course} syllabus over two consecutive days. Most working professionals in Dubai pick the Sat–Sun cohort to protect delivery commitments; the Wed–Thu cohort suits those who can block two weekdays. The batch table above shows both in Dubai local time."
+    },
+    {
+      "q": "Can I take the {course} exam from Dubai?",
+      "a": "Yes — the {course} exam can be taken online from Dubai; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Dubai?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Dubai job descriptions. The employer list on this page shows where certified professionals in Dubai work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Dubai?",
+      "a": "See the salary table on this page — every Dubai figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Dubai?",
+      "a": "The batch table above lists the next start dates for Dubai — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Dubai?",
+      "a": "Yes. Teams in Dubai can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Dubai delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Dubai. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Dubai?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Dubai."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for United Arab Emirates?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for United Arab Emirates with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Dubai?",
+      "a": "Self-paced videos can't answer questions or run exercises. The live {course} format gives Dubai learners real-time trainer interaction, group activities and accountability to actually finish — in the same two days a video library would let stretch into months."
     }
   ],
   "meta": {

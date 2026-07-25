@@ -19,7 +19,7 @@
     "N26"
   ],
   "industries": "Startups and scale-ups, federal digitisation programmes and corporate innovation hubs define Berlin's agile-leaning market.",
-  "intro": "Berlin is Germany's laboratory: the startup capital, the seat of federal digitisation programmes, and the city where the country's corporates put their innovation outposts. Delivery roles here skew agile — Scrum credentials are effectively the entry ticket to the tech scene from Kreuzberg to Adlershof — while the public-sector modernisation wave and infrastructure projects keep classical programme management in demand too. Berlin's workforce is Europe's most international, and English-language instruction matches how its teams already operate. Live online training runs continuously through the year for Berlin, with weekend Saturday–Sunday and weekday Wednesday–Thursday cohorts timed to sensible local hours; the schedule below shows the exact Berlin start and finish for each upcoming batch. Afterwards we support your exam application, run mock exams at genuine difficulty, and keep the trainer reachable for questions until you pass.",
+  "intro": "Berlin is Germany's laboratory: the startup capital, the seat of federal digitisation programmes, and the city where the country's corporates put their innovation outposts. Delivery roles here skew agile — Scrum credentials are effectively the entry ticket to the tech scene from Kreuzberg to Adlershof — while the public-sector modernisation wave and infrastructure projects keep classical programme management in demand too. Berlin's workforce is Europe's most international, and English-language instruction matches how its teams already operate. Live online training runs continuously through the year for Berlin, with weekend Saturday–Sunday and weekday Wednesday–Thursday cohorts timed to sensible local hours; the schedule below shows the exact Berlin start and finish for each upcoming batch. Afterwards we support your exam application, run mock exams at genuine difficulty, and keep the trainer reachable for questions until you pass.\n\nBerlin's delivery culture grew up in startups and scaled into structure: the city's maturing tech companies now run proper product and program governance, and the federal digital programs headquartered here add a second, process-formal demand stream. Certification bridges both worlds — credible to scale-ups as applied method, legible to institutions as governance. Training is live online over two consecutive days in central European hours, in English, which matches Berlin's international workforce. Compensation varies sharply between startup and corporate Berlin; the sourced entries in the salary table below anchor the certified range specifically. The employer list reflects that tech-and-institution mix, and scale-ups formalizing their first PMO can certify the founding team through a private cohort.",
   "faq": [
     {
       "q": "What are the class timings in Berlin?",
@@ -36,6 +36,50 @@
     {
       "q": "Can my employer in Berlin sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Germany accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Berlin?",
+      "a": "The fee for the live online {course} course for Berlin is shown at the top of this page in EUR and covers the complete two-day program. There are no venue or material add-ons — the price on this page is the full training cost."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Berlin?",
+      "a": "Both cover the identical {course} syllabus over two consecutive days. Most working professionals in Berlin pick the Sat–Sun cohort to protect delivery commitments; the Wed–Thu cohort suits those who can block two weekdays. The batch table above shows both in Berlin local time."
+    },
+    {
+      "q": "Can I take the {course} exam from Berlin?",
+      "a": "Yes — the {course} exam can be taken online from Berlin; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Berlin?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Berlin job descriptions. The employer list on this page shows where certified professionals in Berlin work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Berlin?",
+      "a": "See the salary table on this page — every Berlin figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Berlin?",
+      "a": "The batch table above lists the next start dates for Berlin — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Berlin?",
+      "a": "Yes. Teams in Berlin can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Berlin delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Berlin. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Berlin?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Berlin."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for Germany?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for Germany with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Berlin?",
+      "a": "Self-paced videos can't answer questions or run exercises. The live {course} format gives Berlin learners real-time trainer interaction, group activities and accountability to actually finish — in the same two days a video library would let stretch into months."
     }
   ],
   "meta": {

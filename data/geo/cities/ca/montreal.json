@@ -19,7 +19,7 @@
     "Air Canada"
   ],
   "industries": "Aerospace manufacturing, AI research labs, game studios and banking operations define Montreal's dual-natured market.",
-  "intro": "Montreal runs Canada's aerospace and AI economies side by side: Bombardier, CAE and the supplier network make it one of the world's three aerospace capitals, while Mila's research gravity has drawn every major AI lab to the city. Add the game studios, banks' Quebec operations and infrastructure renewal, and delivery roles span both formal program management and deeply agile software work. Bilingual professionals with international certification are especially mobile here. We run live online cohorts throughout the year on Montreal-friendly hours — weekend Saturday–Sunday batches and midweek Wednesday–Thursday batches both — meaning learners in Montreal attend at ordinary local times, never overnight; the table below shows each upcoming date converted for Montreal. Unchanged throughout: live weekend instruction, exam application support, calibrated mock exams, and trainer access until you clear.",
+  "intro": "Montreal runs Canada's aerospace and AI economies side by side: Bombardier, CAE and the supplier network make it one of the world's three aerospace capitals, while Mila's research gravity has drawn every major AI lab to the city. Add the game studios, banks' Quebec operations and infrastructure renewal, and delivery roles span both formal program management and deeply agile software work. Bilingual professionals with international certification are especially mobile here. We run live online cohorts throughout the year on Montreal-friendly hours — weekend Saturday–Sunday batches and midweek Wednesday–Thursday batches both — meaning learners in Montreal attend at ordinary local times, never overnight; the table below shows each upcoming date converted for Montreal. Unchanged throughout: live weekend instruction, exam application support, calibrated mock exams, and trainer access until you clear.\n\nMontreal delivers projects in two languages and three signature industries: aerospace primes and their supplier network, a gaming and visual-effects cluster with studio-scale pipelines, and the AI research economy commercializing around Mile End. International certification carries weight precisely because Montreal's programs plug into global supply chains. Training is live online across two consecutive days shown in Montreal local time on this page, delivered in English. Quebec compensation structures differ from Ontario's; the sourced Montreal entries below give this market's own dated figures for certified roles. The employer list shows the aerospace-gaming-AI mix hiring certified project talent, and primes can certify supplier-facing program staff together through private cohorts.",
   "faq": [
     {
       "q": "What are the class timings in Montreal?",
@@ -36,6 +36,50 @@
     {
       "q": "Can my employer in Montreal sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Canada accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Montreal?",
+      "a": "The fee for the live online {course} course for Montreal is shown at the top of this page in CAD and covers the complete two-day program. The displayed amount is the complete training fee, with no hidden extras."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Montreal?",
+      "a": "Identical {course} syllabus either way — choose whichever pair of days your Montreal schedule can spare. The batch table above shows every session converted to Montreal local time."
+    },
+    {
+      "q": "Can I take the {course} exam from Montreal?",
+      "a": "Yes — the {course} exam can be taken online from Montreal; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Montreal?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Montreal job descriptions. The employer list on this page shows where certified professionals in Montreal work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Montreal?",
+      "a": "See the salary table on this page — every Montreal figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Montreal?",
+      "a": "The batch table above lists the next start dates for Montreal — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Montreal?",
+      "a": "Yes. Teams in Montreal can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Montreal delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Montreal. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Montreal?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Montreal."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for Canada?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for Canada with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Montreal?",
+      "a": "Live {course} classes include exercises, discussion and instant answers — the parts that make the material stick — and the two-day schedule means Montreal learners are done, not perpetually 40% through a playlist."
     }
   ],
   "meta": {

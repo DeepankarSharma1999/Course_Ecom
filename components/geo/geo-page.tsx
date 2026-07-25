@@ -3,7 +3,7 @@
 // Section ORDER on the city page is SEO-driven and fixed — do not reorder.
 // Styling follows the site's existing tokens (.section/.container-tight/.card/…).
 import Link from "next/link";
-import { AlarmClock, ExternalLink, MapPin } from "lucide-react";
+import { AlarmClock, BadgeCheck, ExternalLink, MapPin } from "lucide-react";
 import { CurriculumSection } from "@/components/course-page/curriculum-section";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { LeadModalButton } from "@/components/lead-modal-button";
@@ -13,7 +13,9 @@ import { faqJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { getBatchTracks, getGeoCities, getGeoCountries, upcomingBatches, type BatchTrack, type GeoCity, type GeoCountry, type SalaryEntry } from "@/lib/geo-pages/data";
 import { convertSession, fitCheck, type FitResult } from "@/lib/geo-pages/timezone";
 import { geoCourseJsonLd } from "@/lib/geo-pages/schema";
-import { hasTodo, isCountryIndexable } from "@/lib/geo-pages/gate";
+import { hasTodo, isCityIndexable, isCountryIndexable } from "@/lib/geo-pages/gate";
+import { getGeoCourseContent, type SlotValues } from "@/lib/geo-pages/course-content";
+import { GeoCityGuide, GeoDeepSections } from "@/components/geo/deep-sections";
 
 const fmtDate = (iso: string) =>
   new Intl.DateTimeFormat("en-US", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(iso + "T00:00:00Z"));
@@ -61,7 +63,7 @@ function OffHoursBanner({ cityName, fit, courseSlug, courseName }: { cityName: s
   );
 }
 
-function BatchTable({ track, cityTz, courseSlug, courseName }: { track: BatchTrack; cityTz?: string; courseSlug: string; courseName: string }) {
+function BatchTable({ track, cityTz, cityName, courseSlug, courseName }: { track: BatchTrack; cityTz?: string; cityName?: string; courseSlug: string; courseName: string }) {
   return (
     <div className="card overflow-hidden p-0">
       <div className="overflow-x-auto">
@@ -71,7 +73,7 @@ function BatchTable({ track, cityTz, courseSlug, courseName }: { track: BatchTra
               <th scope="col" className="px-5 py-3.5">Batch dates</th>
               <th scope="col" className="px-5 py-3.5">Days</th>
               <th scope="col" className="px-5 py-3.5">Time ({track.label})</th>
-              {cityTz && <th scope="col" className="px-5 py-3.5">Your local time</th>}
+              {cityTz && <th scope="col" className="px-5 py-3.5">{cityName ? `Time in ${cityName}` : "Your local time"}</th>}
               <th scope="col" className="px-5 py-3.5"><span className="sr-only">Enroll</span></th>
             </tr>
           </thead>
@@ -169,13 +171,15 @@ function ExamCostSection({ country, courseName, courseSlug }: { country: GeoCoun
 }
 
 function CityLinks({ course, country, current }: { course: CourseContent; country: GeoCountry; current?: string }) {
-  const cities = getGeoCities().filter((c) => c.country === country.iso && c.slug !== current);
+  // Only released, indexable cities — an indexable page must never link into
+  // noindex drafts (matches GeoAvailableIn's gating).
+  const cities = getGeoCities().filter((c) => c.country === country.iso && c.slug !== current && isCityIndexable(country.iso, c.slug));
   if (!cities.length && !current) return null;
   return (
     <section className="space-y-4">
       <h2 className="h3">{baseCourseTitle(course.shortTitle)} training in other locations</h2>
       <ul className="flex flex-wrap gap-2.5">
-        {current && (
+        {current && isCountryIndexable(country.iso) && (
           <li>
             <Link href={`/${course.slug}/${country.iso}`} className="badge bg-primary/10 text-primary hover:bg-primary/20 min-h-[44px]">
               <MapPin className="h-3.5 w-3.5" aria-hidden /> All of {country.name}
@@ -192,13 +196,20 @@ function CityLinks({ course, country, current }: { course: CourseContent; countr
   );
 }
 
-function Hero({ title, subtitle, priceLine }: { title: string; subtitle: string; priceLine?: string }) {
+function Hero({ title, subtitle, priceLine, badge }: { title: string; subtitle: string; priceLine?: string; badge?: string }) {
   return (
     <section className="bg-gradient-to-br from-brand-950 to-brand-800 text-white">
       <div className="container-tight py-14 md:py-16">
         <h1 className="text-4xl font-bold leading-tight md:text-5xl">{title}</h1>
         <p className="mt-3 max-w-2xl text-lg text-brand-100">{subtitle}</p>
-        {priceLine && <p className="mt-4 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-sm font-bold">{priceLine}</p>}
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          {priceLine && <p className="inline-flex rounded-full bg-white/10 px-4 py-1.5 text-sm font-bold">{priceLine}</p>}
+          {badge && (
+            <p className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-sm font-semibold">
+              <BadgeCheck className="h-4 w-4" aria-hidden /> {badge}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -214,7 +225,19 @@ export function GeoCityPage({ course, country, city }: { course: CourseContent; 
   const next = upcomingBatches(fit.track, 1)[0];
   const p = country.pricing[course.slug];
   const price = p && !hasTodo(p) ? `${p.display} · ${p.days}-day live online` : undefined;
-  const realFaqs = city.faq.filter((f) => !hasTodo(f));
+  const deep = getGeoCourseContent(course.slug);
+  const acr = deep?.acr ?? courseName;
+  // City FAQs serve both geo courses — "{course}" slots become this page's acronym.
+  const realFaqs = city.faq.filter((f) => !hasTodo(f))
+    .map((f) => ({ q: f.q.replaceAll("{course}", acr), a: f.a.replaceAll("{course}", acr) }));
+  const exam = country.examCost[course.slug];
+  const slots: SlotValues = {
+    city: city.name, country: country.name,
+    price: p && !hasTodo(p) ? p.display : undefined,
+    days: p && !hasTodo(p) ? String(p.days) : undefined,
+    examMember: exam && !hasTodo(exam) ? exam.member : undefined,
+    examNonMember: exam && !hasTodo(exam) ? exam.nonMember : undefined,
+  };
 
   const jsonLd: object[] = [
     geoCourseJsonLd(course, url, country, fit.track, city.name),
@@ -225,22 +248,24 @@ export function GeoCityPage({ course, country, city }: { course: CourseContent; 
       { name: city.name, url },
     ]),
   ];
-  if (realFaqs.length) jsonLd.push(faqJsonLd(realFaqs));
+  const allFaqs = [...realFaqs, ...(deep?.examFaqs ?? [])];
+  if (allFaqs.length) jsonLd.push(faqJsonLd(allFaqs));
 
   return (
     <>
       <JsonLd data={jsonLd} />
       <Hero
         title={h1}
-        subtitle={`Next live online batch: ${fmtDate(next.startDate)} (${next.days}) — ${fit.session.localLabel} in ${city.name}.`}
+        subtitle={`Join ${acr}-certified professionals across ${city.name}. Next live online batch: ${fmtDate(next.startDate)} (${next.days}) — ${fit.session.localLabel} in ${city.name}.`}
         priceLine={price}
+        badge={deep?.partnerBadge}
       />
       <div className="container-tight section space-y-12 md:space-y-16">
         {fit.status === "off-hours" && <OffHoursBanner cityName={city.name} fit={fit} courseSlug={course.slug} courseName={courseName} />}
 
         <section className="space-y-4">
-          <h2 className="h2">Upcoming {courseName} batches for {city.name}</h2>
-          <BatchTable track={fit.track} cityTz={city.timezone} courseSlug={course.slug} courseName={courseName} />
+          <h2 className="h2">Upcoming {acr} batches for {city.name}</h2>
+          <BatchTable track={fit.track} cityTz={city.timezone} cityName={city.name} courseSlug={course.slug} courseName={courseName} />
         </section>
 
         {!hasTodo(city.intro) && (
@@ -256,6 +281,25 @@ export function GeoCityPage({ course, country, city }: { course: CourseContent; 
           </section>
         )}
 
+        {deep && <GeoCityGuide content={deep} v={slots} />}
+
+        {/* Distinct path for the team/L&D buyer persona — separate lead source. */}
+        <div className="card flex flex-col gap-4 p-6 sm:flex-row sm:items-center">
+          <p className="flex-1 leading-7 text-muted-foreground">
+            <strong className="text-foreground">Training a team in {city.name}?</strong> Private {acr} cohorts run on your calendar with group pricing — invoices suitable for corporate sponsorship included.
+          </p>
+          <LeadModalButton
+            courseSlug={course.slug}
+            source={`geo-corporate-${course.slug}`}
+            title={`Corporate ${acr} training — ${city.name}`}
+            subtitle={`Tell us your team size and preferred dates for a private ${courseName} cohort in ${city.name} hours.`}
+            ctaLabel="Request corporate quote"
+            className="btn-primary whitespace-nowrap"
+          >
+            Talk to us about team training
+          </LeadModalButton>
+        </div>
+
         <SalarySection heading={`Project & agile salaries in ${city.name}`} entries={city.salary} />
         <ExamCostSection country={country} courseName={courseName} courseSlug={course.slug} />
 
@@ -263,9 +307,11 @@ export function GeoCityPage({ course, country, city }: { course: CourseContent; 
           <CurriculumSection course={course} />
         </section>
 
+        {deep && <GeoDeepSections content={deep} v={slots} localFlavor={!hasTodo(city.industries) ? city.industries : undefined} />}
+
         {realFaqs.length > 0 && (
           <section className="max-w-3xl space-y-4">
-            <h2 className="h2">{courseName} in {city.name} — FAQs</h2>
+            <h2 className="h2">{acr} in {city.name} — FAQs</h2>
             <FaqAccordion items={realFaqs} />
           </section>
         )}
@@ -292,7 +338,18 @@ export function GeoCountryHub({ course, country }: { course: CourseContent; coun
   const url = `${SITE.url}/${course.slug}/${country.iso}`;
   const p = country.pricing[course.slug];
   const price = p && !hasTodo(p) ? `${p.display} · ${p.days}-day live online` : undefined;
-  const realFaqs = country.faq.filter((f) => !hasTodo(f));
+  const deep = getGeoCourseContent(course.slug);
+  const acr = deep?.acr ?? courseName;
+  const realFaqs = country.faq.filter((f) => !hasTodo(f))
+    .map((f) => ({ q: f.q.replaceAll("{course}", acr), a: f.a.replaceAll("{course}", acr) }));
+  const exam = country.examCost[course.slug];
+  const slots: SlotValues = {
+    country: country.name,
+    price: p && !hasTodo(p) ? p.display : undefined,
+    days: p && !hasTodo(p) ? String(p.days) : undefined,
+    examMember: exam && !hasTodo(exam) ? exam.member : undefined,
+    examNonMember: exam && !hasTodo(exam) ? exam.nonMember : undefined,
+  };
 
   const jsonLd: object[] = [
     geoCourseJsonLd(course, url, country, track),
@@ -302,7 +359,8 @@ export function GeoCountryHub({ course, country }: { course: CourseContent; coun
       { name: country.name, url },
     ]),
   ];
-  if (realFaqs.length) jsonLd.push(faqJsonLd(realFaqs));
+  const allFaqs = [...realFaqs, ...(deep?.examFaqs ?? [])];
+  if (allFaqs.length) jsonLd.push(faqJsonLd(allFaqs));
 
   return (
     <>
@@ -311,10 +369,11 @@ export function GeoCountryHub({ course, country }: { course: CourseContent; coun
         title={h1}
         subtitle={`Live online ${courseName} batches on the ${track.label} schedule, open to learners across ${country.name}.`}
         priceLine={price}
+        badge={deep?.partnerBadge}
       />
       <div className="container-tight section space-y-12 md:space-y-16">
         <section className="space-y-4">
-          <h2 className="h2">Upcoming {courseName} batches</h2>
+          <h2 className="h2">Upcoming {acr} batches in {country.name}</h2>
           <BatchTable track={track} courseSlug={course.slug} courseName={courseName} />
         </section>
 
@@ -328,9 +387,11 @@ export function GeoCountryHub({ course, country }: { course: CourseContent; coun
         <SalarySection heading={`Project & agile salaries in ${country.name}`} entries={country.salaryCountry} />
         <ExamCostSection country={country} courseName={courseName} courseSlug={course.slug} />
 
+        {deep && <GeoDeepSections content={deep} v={slots} />}
+
         {realFaqs.length > 0 && (
           <section className="max-w-3xl space-y-4">
-            <h2 className="h2">{courseName} in {country.name} — FAQs</h2>
+            <h2 className="h2">{acr} in {country.name} — FAQs</h2>
             <FaqAccordion items={realFaqs} />
           </section>
         )}
@@ -344,7 +405,7 @@ export function GeoCountryHub({ course, country }: { course: CourseContent; coun
         <section className="space-y-4">
           <h2 className="h3">Choose your city</h2>
           <ul className="flex flex-wrap gap-2.5">
-            {getGeoCities().filter((c) => c.country === country.iso).map((c) => (
+            {getGeoCities().filter((c) => c.country === country.iso && isCityIndexable(country.iso, c.slug)).map((c) => (
               <li key={c.slug}>
                 <Link href={`/${course.slug}/${country.iso}/${c.slug}`} className="badge hover:bg-secondary/70 min-h-[44px]">
                   <MapPin className="h-3.5 w-3.5" aria-hidden /> {c.name}

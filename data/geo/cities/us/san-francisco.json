@@ -26,7 +26,7 @@
     "Wells Fargo"
   ],
   "industries": "Software platforms and AI, biotech and enterprise technology drive the world's most agile-saturated project market.",
-  "intro": "The Bay Area writes the playbooks other markets follow, and its delivery roles reflect that: technical program managers steering platform migrations at the giants, agile coaches scaling startups through hypergrowth, and now the AI boom generating program work faster than teams can hire. Scrum credentials are assumed; PMP distinguishes candidates for the infrastructure, biotech and enterprise programs that keep the region's economy diversified. Live online training runs continuously through the year for San Francisco, with weekend Saturday–Sunday and weekday Wednesday–Thursday cohorts timed to sensible local hours; the schedule below shows the exact San Francisco start and finish for each upcoming batch. Constant throughout: live expert instruction in one weekend, exam application guidance, full-length mocks, and trainer access until certification. Bay Area professionals often certify during job searches, when the credential separates otherwise identical tech resumes.",
+  "intro": "The Bay Area writes the playbooks other markets follow, and its delivery roles reflect that: technical program managers steering platform migrations at the giants, agile coaches scaling startups through hypergrowth, and now the AI boom generating program work faster than teams can hire. Scrum credentials are assumed; PMP distinguishes candidates for the infrastructure, biotech and enterprise programs that keep the region's economy diversified. Live online training runs continuously through the year for San Francisco, with weekend Saturday–Sunday and weekday Wednesday–Thursday cohorts timed to sensible local hours; the schedule below shows the exact San Francisco start and finish for each upcoming batch. Constant throughout: live expert instruction in one weekend, exam application guidance, full-length mocks, and trainer access until certification. Bay Area professionals often certify during job searches, when the credential separates otherwise identical tech resumes.\n\nThe Bay Area hires product people first, but its biggest bets still need program discipline: infrastructure build-outs, enterprise migrations and the compliance programs that follow scale all run on formal delivery governance. In a market saturated with self-taught process, certification is contrarian signal — verifiable method among vibes. Training is live online across two consecutive days shown in San Francisco local time on this page, no Caltrain or bridge required. Bay compensation math is its own genre; the sourced San Francisco entries in the salary table below keep it factual with names and dates. The employer list reflects the tech-finance-biotech spread, and enterprises running platform migrations can certify program teams together privately.",
   "faq": [
     {
       "q": "What are the class timings in San Francisco?",
@@ -43,6 +43,50 @@
     {
       "q": "Can my employer in San Francisco sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United States accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in San Francisco?",
+      "a": "The fee for the live online {course} course for San Francisco is shown at the top of this page in USD and covers the complete two-day program. There are no venue or material add-ons — the price on this page is the full training cost."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in San Francisco?",
+      "a": "Both cover the identical {course} syllabus over two consecutive days. Most working professionals in San Francisco pick the Sat–Sun cohort to protect delivery commitments; the Wed–Thu cohort suits those who can block two weekdays. The batch table above shows both in San Francisco local time."
+    },
+    {
+      "q": "Can I take the {course} exam from San Francisco?",
+      "a": "Yes — the {course} exam can be taken online from San Francisco; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in San Francisco?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant San Francisco job descriptions. The employer list on this page shows where certified professionals in San Francisco work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in San Francisco?",
+      "a": "See the salary table on this page — every San Francisco figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in San Francisco?",
+      "a": "The batch table above lists the next start dates for San Francisco — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in San Francisco?",
+      "a": "Yes. Teams in San Francisco can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in San Francisco delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in San Francisco. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from San Francisco?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in San Francisco."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for United States?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for United States with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in San Francisco?",
+      "a": "Self-paced videos can't answer questions or run exercises. The live {course} format gives San Francisco learners real-time trainer interaction, group activities and accountability to actually finish — in the same two days a video library would let stretch into months."
     }
   ],
   "meta": {

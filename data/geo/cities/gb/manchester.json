@@ -26,7 +26,7 @@
     "AutoTrader"
   ],
   "industries": "Media and broadcasting, banking technology centres, e-commerce and a growing public-sector hub economy anchor project demand.",
-  "intro": "Manchester has built the UK's most convincing second tech economy: the BBC and ITV anchor MediaCityUK, global banks run northern technology centres here, and the city's startup scene scales on lower costs than London with talent from four universities. Public-sector relocations — including major government hubs — add programme roles continuously. Northern employers fund certification because it anchors the salary uplift the region's tech boom is producing; PMP and Scrum credentials both feature in Manchester job adverts routinely. We run live online cohorts throughout the year on Manchester-friendly hours — weekend Saturday–Sunday batches and midweek Wednesday–Thursday batches both — meaning learners in Manchester attend at ordinary local times, never overnight; the table below shows each upcoming date converted for Manchester. Afterwards you get structured exam application support, realistic mock exams, and open access to the trainer for questions until you're certified.",
+  "intro": "Manchester has built the UK's most convincing second tech economy: the BBC and ITV anchor MediaCityUK, global banks run northern technology centres here, and the city's startup scene scales on lower costs than London with talent from four universities. Public-sector relocations — including major government hubs — add programme roles continuously. Northern employers fund certification because it anchors the salary uplift the region's tech boom is producing; PMP and Scrum credentials both feature in Manchester job adverts routinely. We run live online cohorts throughout the year on Manchester-friendly hours — weekend Saturday–Sunday batches and midweek Wednesday–Thursday batches both — meaning learners in Manchester attend at ordinary local times, never overnight; the table below shows each upcoming date converted for Manchester. Afterwards you get structured exam application support, realistic mock exams, and open access to the trainer for questions until you're certified.\n\nManchester carries the North's largest concentration of project work: media and broadcasting around MediaCity, a fast-compounding tech scene, and the public-sector relocations that moved serious program budgets out of London. Employers here compete for a smaller certified pool than the capital's, which makes the credential proportionally louder on a Manchester CV. Training is live online over two days in UK hours — no Piccadilly commute, no leave. Northern salaries trail London less than folklore suggests, especially for certified roles; check the sourced Manchester entries below for the actual spread. The employer list reflects the media-tech-public mix that hires certified project talent here, and private cohorts suit organizations building delivery capability outside the capital.",
   "faq": [
     {
       "q": "What are the class timings in Manchester?",
@@ -43,6 +43,50 @@
     {
       "q": "Can my employer in Manchester sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in United Kingdom accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Manchester?",
+      "a": "The fee for the live online {course} course for Manchester is shown at the top of this page in GBP and covers the complete two-day program. There are no venue or material add-ons — the price on this page is the full training cost."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Manchester?",
+      "a": "Both cover the identical {course} syllabus over two consecutive days. Most working professionals in Manchester pick the Sat–Sun cohort to protect delivery commitments; the Wed–Thu cohort suits those who can block two weekdays. The batch table above shows both in Manchester local time."
+    },
+    {
+      "q": "Can I take the {course} exam from Manchester?",
+      "a": "Yes — the {course} exam can be taken online from Manchester; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Manchester?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Manchester job descriptions. The employer list on this page shows where certified professionals in Manchester work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Manchester?",
+      "a": "See the salary table on this page — every Manchester figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Manchester?",
+      "a": "The batch table above lists the next start dates for Manchester — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Manchester?",
+      "a": "Yes. Teams in Manchester can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Manchester delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Manchester. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Manchester?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Manchester."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for United Kingdom?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for United Kingdom with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Manchester?",
+      "a": "Self-paced videos can't answer questions or run exercises. The live {course} format gives Manchester learners real-time trainer interaction, group activities and accountability to actually finish — in the same two days a video library would let stretch into months."
     }
   ],
   "meta": {

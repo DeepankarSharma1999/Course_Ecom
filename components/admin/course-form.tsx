@@ -87,7 +87,7 @@ export function CourseForm({ course, categories }: { course?: Course; categories
           <div className="grid md:grid-cols-4 gap-4">
             <Field label="Base Price (USD)" hint="Base price — all currencies convert from this"><Input type="number" name="basePriceUsd" defaultValue={c.basePriceUsd ?? ""} /></Field>
             <Field label="Base Price (INR)" hint="Legacy — display uses USD"><Input type="number" name="basePriceInr" defaultValue={c.basePriceInr ?? ""} /></Field>
-            <Field label="Rating Avg"><Input type="number" step="0.1" name="ratingAvg" defaultValue={c.ratingAvg ?? 4.8} /></Field>
+            <Field label="Rating Avg"><Input type="number" step="0.1" name="ratingAvg" defaultValue={c.ratingAvg ?? 0} /></Field>
             <Field label="Rating Count"><Input type="number" name="ratingCount" defaultValue={c.ratingCount ?? 0} /></Field>
           </div>
         </Section>

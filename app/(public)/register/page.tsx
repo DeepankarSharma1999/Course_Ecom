@@ -3,7 +3,8 @@ import { RegisterForm } from "@/components/register-form";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "Register for a Course", alternates: { canonical: "/register" } };
+// Conversion-only utility form — thin page, kept out of the index.
+export const metadata = { title: "Register for a Course", alternates: { canonical: "/register" }, robots: { index: false, follow: true } };
 
 // Course registration (no payment gateway yet): the learner picks a course and
 // submits the form; an admin confirms participation from Admin > Registrations,

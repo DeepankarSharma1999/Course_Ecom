@@ -26,7 +26,7 @@
     "Accenture"
   ],
   "industries": "Banking, insurance and financial services dominate, alongside corporate headquarters, media and a fast-growing fintech sector.",
-  "intro": "Mumbai's certification demand comes from a different place than the tech cities: banking, insurance, media and the corporate headquarters economy. BFSI transformation programmes — core banking replacements, digital onboarding, regulatory change — are run out of Lower Parel, BKC and Powai, and they hire project managers who can show formal method, not just experience. A PMP is close to mandatory in bank PMOs; Scrum credentials are spreading fast through fintech and broking. For a city where commutes eat evenings, a live online weekend batch is the practical route: two days, taught on Indian Standard Time, no travel to a training centre in traffic. Case discussions draw on financial-services delivery, vendor governance and compliance-heavy programmes. After the workshop we handle exam application guidance, provide mock exams, and keep the trainer accessible for doubts until you pass.",
+  "intro": "Mumbai's certification demand comes from a different place than the tech cities: banking, insurance, media and the corporate headquarters economy. BFSI transformation programmes — core banking replacements, digital onboarding, regulatory change — are run out of Lower Parel, BKC and Powai, and they hire project managers who can show formal method, not just experience. A PMP is close to mandatory in bank PMOs; Scrum credentials are spreading fast through fintech and broking. For a city where commutes eat evenings, a live online weekend batch is the practical route: two days, taught on Indian Standard Time, no travel to a training centre in traffic. Case discussions draw on financial-services delivery, vendor governance and compliance-heavy programmes. After the workshop we handle exam application guidance, provide mock exams, and keep the trainer accessible for doubts until you pass.\n\nMumbai's certification demand concentrates where the money moves: banks and insurers in BKC and Lower Parel run regulated change programs that require documented project governance, and the consulting firms serving them shortlist certified candidates first. For professionals juggling local-train commutes, a live online weekend batch beats any venue-based course — you train from home in IST and keep Monday's delivery calendar intact. The salary figures below are specific to Mumbai with named sources, so you can put a number on what the credential is worth in this market. Pharma headquarters, media houses and the broker-tech cluster all staff formal PMOs here, and the employer list on this page reflects that spread. Teams in Mumbai can also book a private cohort scheduled around month-end and quarter-close crunches.",
   "faq": [
     {
       "q": "What are the class timings in Mumbai?",
@@ -43,6 +43,50 @@
     {
       "q": "Can my employer in Mumbai sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in India accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Mumbai?",
+      "a": "The fee for the live online {course} course for Mumbai is shown at the top of this page in INR and covers the complete two-day program. What you see on this page is the entire training cost; nothing is added later."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Mumbai?",
+      "a": "The Sat–Sun and Wed–Thu cohorts teach the same {course} content in the same two-day format. Mumbai learners with weekday client calls usually choose the weekend batch."
+    },
+    {
+      "q": "Can I take the {course} exam from Mumbai?",
+      "a": "Yes — the {course} exam can be taken online from Mumbai; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Mumbai?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Mumbai job descriptions. The employer list on this page shows where certified professionals in Mumbai work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Mumbai?",
+      "a": "See the salary table on this page — every Mumbai figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Mumbai?",
+      "a": "The batch table above lists the next start dates for Mumbai — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Mumbai?",
+      "a": "Yes. Teams in Mumbai can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Mumbai delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Mumbai. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Mumbai?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Mumbai."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for India?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for India with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Mumbai?",
+      "a": "Because completion and understanding differ: live {course} sessions force the exercises, discussion and Q&A that videos skip, and Mumbai learners finish in a scheduled two days instead of an open-ended queue."
     }
   ],
   "meta": {

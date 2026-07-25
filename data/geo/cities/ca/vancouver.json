@@ -19,7 +19,7 @@
     "TELUS"
   ],
   "industries": "Port logistics, mining headquarters, film and visual effects, and a livability-driven tech scene share the project market.",
-  "intro": "Vancouver's project market mixes Pacific trade with Hollywood North: the port — Canada's largest — runs continuous infrastructure programs, the film and visual-effects industry manages production at industrial scale, and a tech scene anchored by global engineering offices keeps growing on livability migration. Mining headquarters add capital-program demand. PMP serves the port, mining and construction world; Scrum credentials carry the tech and creative-tech sector. There are live online batches all year for Vancouver — pick a Saturday–Sunday weekend or a Wednesday–Thursday weekday cohort — each timed to fall within normal Vancouver working-day hours; the schedule below gives the precise local start and end for every date. Throughout: live instruction over one weekend, exam application help, realistic mocks, and trainer access until certification.",
+  "intro": "Vancouver's project market mixes Pacific trade with Hollywood North: the port — Canada's largest — runs continuous infrastructure programs, the film and visual-effects industry manages production at industrial scale, and a tech scene anchored by global engineering offices keeps growing on livability migration. Mining headquarters add capital-program demand. PMP serves the port, mining and construction world; Scrum credentials carry the tech and creative-tech sector. There are live online batches all year for Vancouver — pick a Saturday–Sunday weekend or a Wednesday–Thursday weekday cohort — each timed to fall within normal Vancouver working-day hours; the schedule below gives the precise local start and end for every date. Throughout: live instruction over one weekend, exam application help, realistic mocks, and trainer access until certification.\n\nVancouver's project mix is distinctly Pacific: film and visual-effects pipelines running studio-scale delivery, a tech sector hiring for both local product and US-remote roles, and the port and resource-sector programs that anchor the province. US-adjacent hiring makes globally recognized certification especially portable here. Training runs live online across two consecutive days shown in Vancouver local time on this page. BC compensation trails Toronto less for certified roles than general averages suggest; the sourced Vancouver entries below give this market's own dated figures. The employer list shows the film-tech-resource spread hiring certified professionals, and studios or scale-ups can certify delivery leads together via private cohorts.",
   "faq": [
     {
       "q": "What are the class timings in Vancouver?",
@@ -36,6 +36,50 @@
     {
       "q": "Can my employer in Vancouver sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Canada accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Vancouver?",
+      "a": "The fee for the live online {course} course for Vancouver is shown at the top of this page in CAD and covers the complete two-day program. What you see on this page is the entire training cost; nothing is added later."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Vancouver?",
+      "a": "The Sat–Sun and Wed–Thu cohorts teach the same {course} content in the same two-day format. Vancouver learners with weekday client calls usually choose the weekend batch; exact local session times are in the table above."
+    },
+    {
+      "q": "Can I take the {course} exam from Vancouver?",
+      "a": "Yes — the {course} exam can be taken online from Vancouver; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Vancouver?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Vancouver job descriptions. The employer list on this page shows where certified professionals in Vancouver work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Vancouver?",
+      "a": "See the salary table on this page — every Vancouver figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Vancouver?",
+      "a": "The batch table above lists the next start dates for Vancouver — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Vancouver?",
+      "a": "Yes. Teams in Vancouver can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Vancouver delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Vancouver. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Vancouver?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Vancouver."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for Canada?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for Canada with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Vancouver?",
+      "a": "Because completion and understanding differ: live {course} sessions force the exercises, discussion and Q&A that videos skip, and Vancouver learners finish in a scheduled two days instead of an open-ended queue."
     }
   ],
   "meta": {

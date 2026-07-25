@@ -38,7 +38,17 @@ export function geoCourseJsonLd(
       courseMode: "Online",
       startDate: b.startDate,
       endDate: b.endDate,
+      // Recommended by Google's course-info guidance for recurring batches.
+      courseSchedule: {
+        "@type": "Schedule",
+        startDate: b.startDate,
+        endDate: b.endDate,
+        repeatFrequency: "P1W",
+        repeatCount: 1,
+      },
       ...(cityName ? { location: `${cityName}, ${country.name}` } : {}),
     })),
+    // Freshness signal for AI/answer engines — batch tables roll continuously.
+    dateModified: new Date().toISOString().slice(0, 10),
   };
 }

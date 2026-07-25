@@ -56,7 +56,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       author: { "@type": b.author ? "Person" : "Organization", name: b.author || SITE.name },
       publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
       mainEntityOfPage: `${SITE.url}/blog/${slug}`,
-      ...(b.heroImage ? { image: b.heroImage } : {}),
+      // image is required for Article/BlogPosting rich-result eligibility —
+      // absolute URL, falling back to the site logo when a post has no hero.
+      image: [b.heroImage ? (b.heroImage.startsWith("http") ? b.heroImage : `${SITE.url}${b.heroImage}`) : `${SITE.url}/logo.png`],
       ...(b.tags.length ? { keywords: b.tags.join(", ") } : {}),
     },
     breadcrumbJsonLd([

@@ -81,7 +81,8 @@ export function cityGate(city: GeoCity, country: GeoCountry): GateResult {
   if (fit.status !== "fit") reasons.push(`off-hours (local ${fit.session.localLabel})`);
   if (!salaryFresh(city.salary)) reasons.push("salary entries missing, without sourceUrl, or sourceDate older than 12 months");
   const wc = wordCount(city.intro);
-  if (wc < 120 || wc > 180) reasons.push(`intro is ${wc} words (need 120–180)`);
+  // Upper bound raised 180→340 for the SEO expansion (longer localized intros).
+  if (wc < 120 || wc > 340) reasons.push(`intro is ${wc} words (need 120–340)`);
   if (city.faq.length < 4) reasons.push(`only ${city.faq.length} FAQs (need >=4)`);
   // Duplicate-intro check against every other non-TODO city intro.
   if (!hasTodo(city.intro)) {
@@ -104,7 +105,8 @@ export function countryGate(country: GeoCountry): GateResult {
   if (hasTodo(country.salaryCountry) || !salaryFresh(country.salaryCountry))
     reasons.push("salary entries missing, TODO, without sourceUrl, or sourceDate older than 12 months");
   const wc = wordCount(country.intro);
-  if (wc < 120 || wc > 180) reasons.push(`intro is ${wc} words (need 120–180)`);
+  // Upper bound raised 180→340 for the SEO expansion (longer localized intros).
+  if (wc < 120 || wc > 340) reasons.push(`intro is ${wc} words (need 120–340)`);
   if (hasTodo(country.faq) || country.faq.length < 1) reasons.push("FAQs missing or TODO");
   const released = country.releaseWeek <= RELEASE_WEEK;
   if (!released) reasons.push(`releaseWeek ${country.releaseWeek} > RELEASE_WEEK ${RELEASE_WEEK}`);

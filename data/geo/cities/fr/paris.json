@@ -19,7 +19,7 @@
     "Société Générale"
   ],
   "industries": "Aerospace and engineering groups, banking transformation, Grand Paris infrastructure and the Station F tech ecosystem drive demand.",
-  "intro": "Paris concentrates France's programme economy: the global engineering champions of aerospace, rail and energy headquartered in La Défense, the banks running post-regulation transformation, the Olympics-accelerated infrastructure of Grand Paris, and Europe's largest startup campus at Station F. Certified delivery professionals move between these worlds, and international credentials — PMP for the grands groupes' global programmes, Scrum for the tech scene — are what make that movement possible. English-language instruction mirrors the international project teams where these roles sit. There are live online batches all year for Paris — pick a Saturday–Sunday weekend or a Wednesday–Thursday weekday cohort — each timed to fall within normal Paris working-day hours; the schedule below gives the precise local start and end for every date. Afterwards you get exam application guidance, realistic full-length mock exams, and open trainer access for questions until certification.",
+  "intro": "Paris concentrates France's programme economy: the global engineering champions of aerospace, rail and energy headquartered in La Défense, the banks running post-regulation transformation, the Olympics-accelerated infrastructure of Grand Paris, and Europe's largest startup campus at Station F. Certified delivery professionals move between these worlds, and international credentials — PMP for the grands groupes' global programmes, Scrum for the tech scene — are what make that movement possible. English-language instruction mirrors the international project teams where these roles sit. There are live online batches all year for Paris — pick a Saturday–Sunday weekend or a Wednesday–Thursday weekday cohort — each timed to fall within normal Paris working-day hours; the schedule below gives the precise local start and end for every date. Afterwards you get exam application guidance, realistic full-length mock exams, and open trainer access for questions until certification.\n\nParis concentrates the program budgets of the CAC 40: banking, luxury, energy and aerospace groups all run transformation portfolios from the capital and its La Défense towers, staffed through consultancies that treat certification as a billability requirement. International programs here operate in English, and the credential's global recognition matters precisely because Parisian delivery teams span continents. Training runs live online over two consecutive days in central European hours — no RER commute to a training venue. Certified project pay in Paris carries a measurable premium; the sourced entries in the salary table below put current numbers on it. The employer list reflects the corporate-and-consulting demand base, and groups running multi-year transformations can certify delivery teams through private cohorts.",
   "faq": [
     {
       "q": "What are the class timings in Paris?",
@@ -36,6 +36,50 @@
     {
       "q": "Can my employer in Paris sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in France accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Paris?",
+      "a": "The fee for the live online {course} course for Paris is shown at the top of this page in EUR and covers the complete two-day program. There are no venue or material add-ons — the price on this page is the full training cost."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Paris?",
+      "a": "Both cover the identical {course} syllabus over two consecutive days. Most working professionals in Paris pick the Sat–Sun cohort to protect delivery commitments; the Wed–Thu cohort suits those who can block two weekdays. The batch table above shows both in Paris local time."
+    },
+    {
+      "q": "Can I take the {course} exam from Paris?",
+      "a": "Yes — the {course} exam can be taken online from Paris; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Paris?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Paris job descriptions. The employer list on this page shows where certified professionals in Paris work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Paris?",
+      "a": "See the salary table on this page — every Paris figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Paris?",
+      "a": "The batch table above lists the next start dates for Paris — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Paris?",
+      "a": "Yes. Teams in Paris can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Paris delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Paris. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Paris?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Paris."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for France?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for France with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Paris?",
+      "a": "Self-paced videos can't answer questions or run exercises. The live {course} format gives Paris learners real-time trainer interaction, group activities and accountability to actually finish — in the same two days a video library would let stretch into months."
     }
   ],
   "meta": {

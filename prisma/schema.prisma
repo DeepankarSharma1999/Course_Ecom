@@ -97,7 +97,7 @@ model Course {
   meetingUrl      String?  // live-class join link (Zoom/Meet/Teams), shown to enrolled learners
   examIncluded    Boolean  @default(false)
   pduCredits      Int?
-  ratingAvg       Float    @default(4.8)
+  ratingAvg       Float    @default(0)
   ratingCount     Int      @default(0)
   isFeatured      Boolean  @default(false)
   isPublished     Boolean  @default(true)

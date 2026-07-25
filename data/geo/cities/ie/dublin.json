@@ -19,7 +19,7 @@
     "Pfizer"
   ],
   "industries": "Technology European headquarters, financial services and pharmaceuticals make Dublin one of Europe's densest project markets.",
-  "intro": "Dublin's docklands host the European headquarters of the world's technology industry, and those employers hire delivery talent the way their US parents do — screened on credentials, funded by generous learning budgets. Beyond tech, post-Brexit financial relocations keep adding programme roles, and the pharma corridor within commuting distance runs validation-heavy projects where formal method is mandatory. Irish salaries for certified professionals track among Europe's best. Batches are scheduled live online across the whole year at hours built for Dublin: a weekend Sat–Sun cohort and a weekday Wed–Thu cohort each week, all landing in comfortable local daytime; every upcoming date and its exact Dublin timing is listed in the schedule below. You train with an international cohort that looks like a Dublin office. Afterwards you get exam application guidance, full-length mock exams, and open trainer access for doubts until you certify.",
+  "intro": "Dublin's docklands host the European headquarters of the world's technology industry, and those employers hire delivery talent the way their US parents do — screened on credentials, funded by generous learning budgets. Beyond tech, post-Brexit financial relocations keep adding programme roles, and the pharma corridor within commuting distance runs validation-heavy projects where formal method is mandatory. Irish salaries for certified professionals track among Europe's best. Batches are scheduled live online across the whole year at hours built for Dublin: a weekend Sat–Sun cohort and a weekday Wed–Thu cohort each week, all landing in comfortable local daytime; every upcoming date and its exact Dublin timing is listed in the schedule below. You train with an international cohort that looks like a Dublin office. Afterwards you get exam application guidance, full-length mock exams, and open trainer access for doubts until you certify.\n\nDublin hosts the EMEA operations of a striking share of global tech and pharma, and those organizations import their certification culture wholesale: project and program roles in multinationals here list credentials as standard, and the local consultancies staffing them follow suit. The result is one of Europe's most credential-dense job markets relative to size. The course runs live online across two consecutive days in Irish hours — no M50 crawl to a venue. Dublin salaries for certified project professionals reflect multinational pay scales; verify against the sourced entries below, which name their sources and dates. The employer list shows the tech-pharma-finance triangle that hires here, and multinationals certifying delivery teams across EMEA can anchor private cohorts from Dublin.",
   "faq": [
     {
       "q": "What are the class timings in Dublin?",
@@ -36,6 +36,50 @@
     {
       "q": "Can my employer in Dublin sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in Ireland accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Dublin?",
+      "a": "The fee for the live online {course} course for Dublin is shown at the top of this page in EUR and covers the complete two-day program. The displayed amount is the complete training fee, with no hidden extras."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Dublin?",
+      "a": "Identical {course} syllabus either way — choose whichever pair of days your Dublin schedule can spare. The batch table above shows every session converted to Dublin local time."
+    },
+    {
+      "q": "Can I take the {course} exam from Dublin?",
+      "a": "Yes — the {course} exam can be taken online from Dublin; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Dublin?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Dublin job descriptions. The employer list on this page shows where certified professionals in Dublin work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Dublin?",
+      "a": "See the salary table on this page — every Dublin figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Dublin?",
+      "a": "The batch table above lists the next start dates for Dublin — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Dublin?",
+      "a": "Yes. Teams in Dublin can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Dublin delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Dublin. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Dublin?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Dublin."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for Ireland?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for Ireland with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Dublin?",
+      "a": "Live {course} classes include exercises, discussion and instant answers — the parts that make the material stick — and the two-day schedule means Dublin learners are done, not perpetually 40% through a playlist."
     }
   ],
   "meta": {

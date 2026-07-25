@@ -8,7 +8,7 @@ import { LearnerAuthProvider } from "@/components/learner-auth-provider";
 
 export const viewport: Viewport = {
   width: "device-width",
-  initialScale: 0.85,
+  initialScale: 1,
   maximumScale: 5,
 };
 

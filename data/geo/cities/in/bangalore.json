@@ -19,7 +19,7 @@
     "Walmart Global Tech"
   ],
   "industries": "Hiring concentrates in IT services, product engineering, and the global capability centres of US and European enterprises.",
-  "intro": "Bangalore's job market rewards people who can keep distributed delivery honest. Most hiring happens inside global capability centres and product engineering firms clustered along Outer Ring Road, Whitefield and Electronic City, where release trains, client SLAs and quarterly commitments make structured project leadership a baseline expectation. Recruiters here shortlist on credentials first — a PMP or CSM on the profile is often what gets the interview. Our weekend live online batch fits Bangalore's reality: you keep weekday sprint duties and still complete the full workshop in two days, taught in Indian Standard Time with no conversion to think about. Classes lean on the situations Bangalore professionals actually face — captive-centre stakeholders in three timezones, vendor transitions, agile-at-scale programmes. Afterwards you get exam application support, mock tests and direct trainer access until you clear the exam.",
+  "intro": "Bangalore's job market rewards people who can keep distributed delivery honest. Most hiring happens inside global capability centres and product engineering firms clustered along Outer Ring Road, Whitefield and Electronic City, where release trains, client SLAs and quarterly commitments make structured project leadership a baseline expectation. Recruiters here shortlist on credentials first — a PMP or CSM on the profile is often what gets the interview. Our weekend live online batch fits Bangalore's reality: you keep weekday sprint duties and still complete the full workshop in two days, taught in Indian Standard Time with no conversion to think about. Classes lean on the situations Bangalore professionals actually face — captive-centre stakeholders in three timezones, vendor transitions, agile-at-scale programmes. Afterwards you get exam application support, mock tests and direct trainer access until you clear the exam.\n\nThe certification conversation in Bangalore has shifted from optional to expected. Product companies in Koramangala and HSR hire Scrum Masters who can show a credential plus real sprint history, while the capability centres along Outer Ring Road ask project leads to hold a recognized certification before client-facing rotations. Because every batch runs in IST, Bangalore learners join the weekend cohort without touching weekday standups, and the two-day format means no extended leave requests. Use the salary table below to benchmark your next negotiation — each figure for Bangalore is sourced and dated — and check the employer list to see where certified professionals in the city actually work. If your team at a Bangalore GCC needs several seats, the corporate option runs private cohorts on your calendar instead of ours.",
   "faq": [
     {
       "q": "What are the class timings in Bangalore?",
@@ -36,6 +36,50 @@
     {
       "q": "Can my employer in Bangalore sponsor the course?",
       "a": "Yes. We issue invoices suitable for corporate sponsorship and reimbursement, and most employers in India accept them under learning and development budgets. Group pricing is available for teams."
+    },
+    {
+      "q": "How much does {course} training cost in Bangalore?",
+      "a": "The fee for the live online {course} course for Bangalore is shown at the top of this page in INR and covers the complete two-day program. There are no venue or material add-ons — the price on this page is the full training cost."
+    },
+    {
+      "q": "Should I pick the weekday or weekend {course} batch in Bangalore?",
+      "a": "Both cover the identical {course} syllabus over two consecutive days. Most working professionals in Bangalore pick the Sat–Sun cohort to protect delivery commitments; the Wed–Thu cohort suits those who can block two weekdays."
+    },
+    {
+      "q": "Can I take the {course} exam from Bangalore?",
+      "a": "Yes — the {course} exam can be taken online from Bangalore; you do not need to travel. The exam and certification guide further up this page explains the exact format, attempts and booking process."
+    },
+    {
+      "q": "Is {course} certification recognized by employers in Bangalore?",
+      "a": "Yes. The {course} credential is issued by its global certifying body and is the one most commonly named in relevant Bangalore job descriptions. The employer list on this page shows where certified professionals in Bangalore work."
+    },
+    {
+      "q": "What salary can a {course}-certified professional expect in Bangalore?",
+      "a": "See the salary table on this page — every Bangalore figure carries a named source and an as-of date, so you can verify it rather than trust a marketing average. Certified professionals typically use these sourced numbers in appraisal and offer negotiations."
+    },
+    {
+      "q": "How soon can I start {course} training in Bangalore?",
+      "a": "The batch table above lists the next start dates for Bangalore — two cohorts run every week (weekday and weekend), so you are never more than a few days from a {course} start."
+    },
+    {
+      "q": "Do you offer group pricing for {course} training for teams in Bangalore?",
+      "a": "Yes. Teams in Bangalore can enroll together under group pricing, and larger groups can run a private {course} cohort scheduled to their own calendar — use the enquiry option on this page with your team size."
+    },
+    {
+      "q": "What language is the {course} training in Bangalore delivered in?",
+      "a": "All live {course} sessions are delivered in English, the working language of certification exams and of most project teams in Bangalore. Trainers take questions throughout the live sessions."
+    },
+    {
+      "q": "How do I enroll in the {course} course from Bangalore?",
+      "a": "Pick a batch from the table above and use its Enroll button — you'll get a confirmation by email. The full flow is online; nothing requires visiting an office in Bangalore."
+    },
+    {
+      "q": "Where can I see the {course} exam fee for India?",
+      "a": "The exam-cost section on this page lists the current {course} exam fee for India with a link to the certifying body's official fee page, so the number you plan around is the official one."
+    },
+    {
+      "q": "Why choose live online {course} training over a self-paced course in Bangalore?",
+      "a": "Self-paced videos can't answer questions or run exercises. The live {course} format gives Bangalore learners real-time trainer interaction, group activities and accountability to actually finish — in the same two days a video library would let stretch into months."
     }
   ],
   "meta": {

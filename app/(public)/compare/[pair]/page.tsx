@@ -94,7 +94,10 @@ export default async function ComparePair({ params }: { params: Promise<{ pair: 
                 <Row label="Accredited by" a={a.accreditedBy} b={b.accreditedBy} />
                 <Row label="Exam fee included" a={a.examIncluded ? <Check className="w-4 h-4 text-emerald-600" /> : <X className="w-4 h-4 text-red-500" />} b={b.examIncluded ? <Check className="w-4 h-4 text-emerald-600" /> : <X className="w-4 h-4 text-red-500" />} />
                 <Row label="Price" a={a.basePriceUsd ? formatInCurrency(a.basePriceUsd, currency, currencyCfg.currencies) : "—"} b={b.basePriceUsd ? formatInCurrency(b.basePriceUsd, currency, currencyCfg.currencies) : "—"} highlight />
-                <Row label="Rating" a={`${a.ratingAvg}/5 (${a.ratingCount})`} b={`${b.ratingAvg}/5 (${b.ratingCount})`} />
+                {/* Ratings only when real reviews exist — never a seeded default. */}
+                {a.ratingCount > 0 && b.ratingCount > 0 && (
+                  <Row label="Rating" a={`${a.ratingAvg}/5 (${a.ratingCount})`} b={`${b.ratingAvg}/5 (${b.ratingCount})`} />
+                )}
                 <Row label="Key features" a={<ListCell items={a.keyFeatures as any} />} b={<ListCell items={b.keyFeatures as any} />} />
                 <Row label="Who should attend" a={<ListCell items={a.whoShouldAttend} />} b={<ListCell items={b.whoShouldAttend} />} />
                 <Row label="Learning outcomes" a={<ListCell items={a.learningOutcomes} />} b={<ListCell items={b.learningOutcomes} />} />

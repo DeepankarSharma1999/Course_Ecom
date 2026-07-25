@@ -53,6 +53,8 @@ export function courseJsonLd(course: CourseContent, location?: { country?: strin
       priceCurrency: "INR",
       availability: "https://schema.org/InStock",
     },
+    // Freshness signal — course pages update with rolling schedules.
+    dateModified: new Date().toISOString().slice(0, 10),
     ...(schedules.length
       ? {
           hasCourseInstance: schedules.slice(0, 12).map((s) => ({
@@ -60,6 +62,14 @@ export function courseJsonLd(course: CourseContent, location?: { country?: strin
             courseMode: /online/i.test(s.mode) ? "Online" : "Onsite",
             startDate: s.startDate.toISOString().slice(0, 10),
             endDate: s.endDate.toISOString().slice(0, 10),
+            // Recommended by Google's course-info guidance for recurring batches.
+            courseSchedule: {
+              "@type": "Schedule",
+              startDate: s.startDate.toISOString().slice(0, 10),
+              endDate: s.endDate.toISOString().slice(0, 10),
+              repeatFrequency: "P1W",
+              repeatCount: 1,
+            },
             ...(locationName ? { location: locationName } : {}),
           })),
         }
