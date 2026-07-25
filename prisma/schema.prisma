@@ -24,7 +24,7 @@ model Category {
   updatedAt DateTime @updatedAt
 }
 
-// Blog articles shown on /resources, managed from admin > Blogs.
+// Blog articles shown on /blog (301 from /resources), managed from admin > Blogs.
 model Blog {
   id          String    @id @default(cuid())
   slug        String    @unique
@@ -33,10 +33,19 @@ model Blog {
   excerpt     String?   @db.Text
   content     String    @db.Text // HTML body
   readMins    Int?
+  author      String?   // display name for the E-E-A-T byline
+  authorRole  String?   // e.g. "PMP, Lead Trainer"
+  heroImage   String?
+  tags        String[]  @default([])
+  seoTitle    String?
+  seoDescription String? @db.Text
+  relatedCourseSlugs String[] @default([]) // course/guide cross-links
   isPublished Boolean   @default(true)
   publishedAt DateTime  @default(now())
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  @@index([category, publishedAt])
 }
 
 // Countries and cities drive the /[country] and /[country]/[course]/[city] URLs.

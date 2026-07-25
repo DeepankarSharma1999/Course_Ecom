@@ -21,14 +21,20 @@ const nextConfig = {
       "/agile-solutions": "/category/agile",
       "/product-building": "/product-coaching",
       "/free-courses": "/courses",
-      "/tutorials": "/resources",
-      "/interview-questions": "/resources",
-      "/events": "/resources",
-      "/course-info": "/resources",
-      "/scrum-master-certification-guide": "/resources",
+      "/tutorials": "/blog",
+      "/interview-questions": "/blog",
+      "/events": "/blog",
+      "/course-info": "/blog",
+      "/scrum-master-certification-guide": "/blog",
       "/terms": "/info/terms-and-conditions",
+      // Blog moved from /resources to /blog (canonical blog hub).
+      "/resources": "/blog",
+      "/info/blogs": "/blog",
     };
-    return Object.entries(map).map(([source, destination]) => ({ source, destination, permanent: true }));
+    return [
+      ...Object.entries(map).map(([source, destination]) => ({ source, destination, permanent: true })),
+      { source: "/resources/:slug", destination: "/blog/:slug", permanent: true },
+    ];
   },
 };
 export default nextConfig;

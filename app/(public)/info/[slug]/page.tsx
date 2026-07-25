@@ -15,7 +15,7 @@ type Props = {
 export const revalidate = 60;
 
 // Placeholder info pages hidden until they carry real content.
-const HIDDEN = new Set(["tutorials", "interview-questions", "course-info"]);
+const HIDDEN = new Set(["tutorials", "interview-questions", "course-info", "blogs"]);
 
 // Static info pages plus one certification guide per eligible course.
 export async function generateStaticParams() {

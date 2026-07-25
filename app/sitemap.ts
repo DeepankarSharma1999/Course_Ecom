@@ -16,9 +16,9 @@ import { isGuideListed } from "@/lib/course-guide";
 // AND their releaseWeek <= RELEASE_WEEK — pacing new pages into the index.
 
 // Mirrors HIDDEN in app/(public)/info/[slug]/page.tsx (those routes 404).
-const HIDDEN_INFO = new Set(["tutorials", "interview-questions", "course-info"]);
+const HIDDEN_INFO = new Set(["tutorials", "interview-questions", "course-info", "blogs"]);
 
-const CORE_ROUTES = ["", "/courses", "/combo-courses", "/corporate-training", "/about", "/enquire", "/resources", "/compare"];
+const CORE_ROUTES = ["", "/courses", "/combo-courses", "/corporate-training", "/about", "/enquire", "/blog", "/compare"];
 
 const MARKETING_ROUTES = [
   "/business-agility", "/safe-implementation", "/lean-portfolio-management", "/value-stream",
@@ -37,6 +37,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const courses = await getAllCourses();
   const courseSlugs = courses.map((c) => c.slug);
   const guideSlugs = courses.filter(isGuideListed).map((c) => c.slug);
+  let blogSlugs: string[] = [];
+  try {
+    const { prisma } = await import("@/lib/prisma");
+    blogSlugs = (await prisma.blog.findMany({ where: { isPublished: true }, select: { slug: true } })).map((b) => b.slug);
+  } catch { /* DB unavailable — omit blog posts */ }
 
   return [
     url("", 1),
@@ -47,6 +52,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...courseSlugs.map((s) => url(`/${s}`, 0.9)),
     // Certification guides (/info/<course-slug>) — informational long-tail layer.
     ...guideSlugs.map((s) => url(`/info/${s}`, 0.7)),
+    // Published blog posts.
+    ...blogSlugs.map((s) => url(`/blog/${s}`, 0.6)),
     // Country + city variants of every course (cities are India-only today).
     ...courseSlugs.flatMap((s) => [
       ...COUNTRIES.map((co: { slug: string }) => url(`/${co.slug}/${s}`, 0.5, "monthly")),

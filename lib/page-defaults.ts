@@ -289,7 +289,7 @@ export const PAGE_DEFAULTS: Record<string, PageDefault> = {
         { name: "Product Development Training", href: "/product-development-training" },
       ],
       resources: [
-        { name: "Blogs", href: "/resources" },
+        { name: "Blogs", href: "/blog" },
         { name: "Practice Tests", href: "/practice-tests" },
       ],
     },

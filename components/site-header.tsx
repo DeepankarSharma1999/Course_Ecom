@@ -360,7 +360,7 @@ export function SiteHeader({
 
           {/* Resources */}
           <div className={`relative flex items-center h-full px-4 border-b-2 transition-colors ${openMenu === "resources" ? "bg-gray-50 border-[#1FA8A8]" : "border-transparent"}`} onMouseEnter={() => openSoft("resources")} onMouseLeave={closeSoft}>
-            <Link href="/resources" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#0E7C7C] transition-colors">
+            <Link href="/blog" className="flex items-center gap-1 text-[14px] font-semibold text-[#082032] hover:text-[#0E7C7C] transition-colors">
               Resources <Lucide.ChevronDown className={`w-3.5 h-3.5 transition-transform ${openMenu === "resources" ? "text-[#0E7C7C] rotate-180" : "text-[#94A3B8]"}`} strokeWidth={2} />
             </Link>
             {openMenu === "resources" && (
@@ -495,7 +495,7 @@ export function SiteHeader({
                         { href: "/combo-courses", label: "Combo Courses", icon: Lucide.Layers, isNew: true },
                         { href: "/category/generative-ai", label: "AI Courses", icon: Lucide.GraduationCap, isNew: true, chevron: true },
                         { href: "/self-paced", label: "Self-Paced", icon: Lucide.MonitorPlay, chevron: true },
-                        { href: "/resources", label: "Resources", icon: Lucide.BookOpen, chevron: true },
+                        { href: "/blog", label: "Blog", icon: Lucide.BookOpen, chevron: true },
                         { href: "/corporate-training", label: "Enterprise", icon: Lucide.Building2, chevron: true },
                         { href: "/refer-earn", label: "Refer & Earn", icon: Lucide.Gift },
                       ].map((item) => (

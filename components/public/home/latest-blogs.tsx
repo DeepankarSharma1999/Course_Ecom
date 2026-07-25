@@ -36,7 +36,7 @@ export function LatestBlogs() {
             <div className="section-eyebrow mb-3">Resources</div>
             <h2 className="h2">Latest insights for modern professionals</h2>
           </div>
-          <Link href="/resources" className="btn-outline w-fit">
+          <Link href="/blog" className="btn-outline w-fit">
             View Resources <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -74,7 +74,7 @@ function ArticleCard({ article, featured = false }: { article: (typeof blogs)[nu
           </span>
         </div>
         <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">{article.text}</p>
-        <Link href="/resources" className="mt-5 inline-flex min-h-[44px] items-center gap-2 text-sm font-black text-primary">
+        <Link href="/blog" className="mt-5 inline-flex min-h-[44px] items-center gap-2 text-sm font-black text-primary">
           Read article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
