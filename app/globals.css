@@ -129,3 +129,40 @@ body {
 .course-prose li::marker { color: #1FA8A8; }
 .course-prose strong { color: #082032; font-weight: 700; }
 .course-prose a { color: #0a66c2; text-decoration: underline; }
+
+/* Blog article body (HTML stored in blog.content, decorated in blog/[slug]/page.tsx). */
+.blog-prose { color: #334155; font-size: 16.5px; line-height: 1.85; }
+.blog-prose > p.lead-para { font-size: 19px; line-height: 1.75; color: #1e293b; }
+.blog-prose > p.lead-para::first-letter { color: #0E7C7C; font-weight: 800; }
+.blog-prose h2 { position: relative; color: #082032; font-weight: 800; font-size: 27px; line-height: 1.25; margin: 2.75rem 0 1rem; padding-left: 1rem; scroll-margin-top: 7rem; }
+.blog-prose h2::before { content: ""; position: absolute; left: 0; top: 0.28em; bottom: 0.18em; width: 5px; border-radius: 3px; background: linear-gradient(180deg, #1FA8A8, #0E7C7C); }
+.blog-prose h3 { color: #0E7C7C; font-weight: 700; font-size: 19px; margin: 1.75rem 0 0.5rem; }
+.blog-prose p { margin: 0 0 1.15rem; }
+.blog-prose ul { list-style: none; padding-left: 0.25rem; margin: 0 0 1.25rem; }
+.blog-prose ul > li { position: relative; padding-left: 1.65rem; margin: 0.5rem 0; }
+.blog-prose ul > li::before { content: ""; position: absolute; left: 0; top: 0.52em; width: 0.95rem; height: 0.95rem; border-radius: 50%; background: #1FA8A8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/60% no-repeat; }
+.blog-prose ol { list-style: none; counter-reset: bp; padding-left: 0.25rem; margin: 0 0 1.25rem; }
+.blog-prose ol > li { position: relative; counter-increment: bp; padding-left: 2.35rem; margin: 0.6rem 0; }
+.blog-prose ol > li::before { content: counter(bp); position: absolute; left: 0; top: 0.14em; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: #E7F5F5; color: #0E7C7C; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+.blog-prose ol[start] { counter-reset: bp calc(var(--bp-start, 1) - 1); }
+.blog-prose li ul, .blog-prose li ol { margin: 0.4rem 0 0.4rem; }
+.blog-prose strong { color: #082032; font-weight: 700; }
+.blog-prose a { color: #0E7C7C; font-weight: 600; text-decoration: underline; text-decoration-color: #1FA8A8aa; text-underline-offset: 3px; }
+.blog-prose a:hover { color: #1FA8A8; }
+.blog-prose em { color: #475569; }
+.blog-prose .table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid #d9e2ec; border-radius: 14px; box-shadow: 0 4px 16px rgba(8, 32, 50, 0.05); }
+.blog-prose .table-wrap table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 0; }
+.blog-prose .table-wrap tr:first-child th { background: linear-gradient(135deg, #0B5E5E, #1FA8A8); color: #ffffff; font-weight: 700; text-align: left; }
+.blog-prose .table-wrap th, .blog-prose .table-wrap td { padding: 0.8rem 1rem; border-bottom: 1px solid #e8eef4; vertical-align: top; }
+.blog-prose .table-wrap tbody tr:nth-child(even) td { background: #f6fafb; }
+.blog-prose .table-wrap tr:last-child th, .blog-prose .table-wrap tr:last-child td { border-bottom: none; }
+.blog-prose .table-wrap th:first-child { color: #082032; font-weight: 700; white-space: nowrap; }
+.blog-prose .table-wrap tr:first-child th:first-child { color: #ffffff; }
+.blog-prose details.faq-item { border: 1px solid #d9e2ec; border-radius: 12px; margin: 0.65rem 0; background: #ffffff; overflow: hidden; transition: border-color 0.2s; }
+.blog-prose details.faq-item[open] { border-color: #1FA8A8; box-shadow: 0 4px 14px rgba(31, 168, 168, 0.10); }
+.blog-prose details.faq-item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 1.25rem; font-weight: 700; color: #082032; }
+.blog-prose details.faq-item summary::-webkit-details-marker { display: none; }
+.blog-prose details.faq-item summary::after { content: "+"; flex-shrink: 0; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: #E7F5F5; color: #0E7C7C; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+.blog-prose details.faq-item[open] summary::after { content: "−"; transform: rotate(180deg); }
+.blog-prose details.faq-item > p { margin: 0; padding: 0 1.25rem 1.1rem; color: #475569; }
+.blog-prose blockquote { border-left: 4px solid #1FA8A8; background: #f0faf9; border-radius: 0 12px 12px 0; margin: 1.5rem 0; padding: 1rem 1.35rem; color: #0f3d3d; font-style: italic; }

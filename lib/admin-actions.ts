@@ -577,17 +577,39 @@ export async function deleteCategory(id: string) {
 }
 
 // =========== BLOGS ============
+const toList = (v: FormDataEntryValue | null) =>
+  String(v || "").split(",").map((s) => s.trim()).filter(Boolean);
+
 export async function saveBlog(id: string | null, formData: FormData) {
   await requireAdmin();
   const title = String(formData.get("title") || "").trim();
   const slugIn = String(formData.get("slug") || "").trim().toLowerCase();
+  const slug = slugIn || title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const category = toStr(formData.get("category"));
+  const readMins = toInt(formData.get("readMins"));
+  let heroImage = toStr(formData.get("heroImage"));
+
+  // No hero provided → auto-generate the branded category image (same
+  // generator as the seeded posts, so all blogs share one visual system).
+  if (!heroImage) {
+    const { generateBlogHero } = await import("./blog-hero");
+    heroImage = await generateBlogHero(slug, title, category, readMins);
+  }
+
   const data = {
     title,
-    slug: slugIn || title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
-    category: toStr(formData.get("category")),
+    slug,
+    category,
     excerpt: toStr(formData.get("excerpt")),
     content: String(formData.get("content") || ""),
-    readMins: toInt(formData.get("readMins")),
+    readMins,
+    author: toStr(formData.get("author")),
+    authorRole: toStr(formData.get("authorRole")),
+    heroImage,
+    tags: toList(formData.get("tags")),
+    seoTitle: toStr(formData.get("seoTitle")),
+    seoDescription: toStr(formData.get("seoDescription")),
+    relatedCourseSlugs: toList(formData.get("relatedCourseSlugs")),
     isPublished: toBool(formData.get("isPublished")),
   };
   if (id) await prisma.blog.update({ where: { id }, data });
