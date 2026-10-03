@@ -10,7 +10,7 @@ import { ExpandableRow, DetailItem } from "@/components/admin/expandable-row";
 export const dynamic = "force-dynamic";
 
 // Course registrations awaiting confirmation. Confirming makes the course
-// visible in the learner's dashboard (no payment gateway yet).
+// visible in the learner's dashboard; payment (Ziina) is shown but doesn't confirm by itself.
 export default async function RegistrationsPage() {
   const rows = await prisma.enrollment.findMany({
     include: { learner: { select: { name: true, email: true, createdAt: true } } },
@@ -44,6 +44,7 @@ export default async function RegistrationsPage() {
                 <th className="px-4 py-3">Requested</th>
                 <th className="px-4 py-3">Learner</th>
                 <th className="px-4 py-3">Course</th>
+                <th className="px-4 py-3">Payment</th>
                 <th className="px-4 py-3">Status</th>
                 <th className="px-4 py-3 text-right">Actions</th>
                 <th className="px-3 py-3 w-8"><span className="sr-only">Expand</span></th>
@@ -51,14 +52,14 @@ export default async function RegistrationsPage() {
             </thead>
             <tbody className="divide-y divide-ink-100">
               {rows.length === 0 && (
-                <tr><td colSpan={6} className="px-4 py-12 text-center text-ink-500">No registrations yet.</td></tr>
+                <tr><td colSpan={7} className="px-4 py-12 text-center text-ink-500">No registrations yet.</td></tr>
               )}
               {rows.map((r) => {
                 const lead = leadFor(r.learner.email, r.courseSlug);
                 return (
                   <ExpandableRow
                     key={r.id}
-                    colSpan={5}
+                    colSpan={6}
                     cols={
                       <>
                         <td className="px-4 py-3 whitespace-nowrap">{r.createdAt.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</td>
@@ -67,6 +68,9 @@ export default async function RegistrationsPage() {
                           <div className="text-xs text-ink-500">{r.learner.email}</div>
                         </td>
                         <td className="px-4 py-3"><Link href={`/${r.courseSlug}`} target="_blank" className="text-brand-600 hover:underline">{r.courseTitle}</Link></td>
+                        <td className="px-4 py-3">
+                          {r.paidAt ? <Badge tone="green">paid ${r.priceUsd}</Badge> : r.priceUsd > 0 ? <Badge tone="yellow">unpaid ${r.priceUsd}</Badge> : "—"}
+                        </td>
                         <td className="px-4 py-3">
                           <Badge tone={r.status === "confirmed" ? "green" : "yellow"}>{r.status}</Badge>
                         </td>
@@ -101,7 +105,8 @@ export default async function RegistrationsPage() {
                           <DetailItem label="Course" value={<Link href={`/${r.courseSlug}`} target="_blank" className="text-brand-600 hover:underline">{r.courseTitle}</Link>} />
                           <DetailItem label="Status" value={<Badge tone={r.status === "confirmed" ? "green" : "yellow"}>{r.status}</Badge>} />
                           <DetailItem label="Account created" value={r.learner.createdAt.toLocaleDateString()} />
-                          <DetailItem label="Price" value={r.priceUsd > 0 ? `$${r.priceUsd}` : "Free / to be invoiced"} />
+                          <DetailItem label="Price" value={r.priceUsd > 0 ? `$${r.priceUsd}${r.paidAt ? ` — paid ${r.paidAt.toLocaleString()}` : " — unpaid"}` : "Free / to be invoiced"} />
+                          <DetailItem label="Ziina payment ID" value={r.paymentId} />
                         </div>
                         {lead?.message && <DetailItem label="Message from learner" value={<span className="whitespace-pre-wrap">{lead.message}</span>} />}
                       </div>

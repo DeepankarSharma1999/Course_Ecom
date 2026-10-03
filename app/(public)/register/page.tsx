@@ -6,11 +6,11 @@ export const dynamic = "force-dynamic";
 // Conversion-only utility form — thin page, kept out of the index.
 export const metadata = { title: "Register for a Course", alternates: { canonical: "/register" }, robots: { index: false, follow: true } };
 
-// Course registration (no payment gateway yet): the learner picks a course and
-// submits the form; an admin confirms participation from Admin > Registrations,
-// after which the course appears in their dashboard.
-export default async function RegisterPage({ searchParams }: { searchParams: Promise<{ course?: string }> }) {
-  const { course } = await searchParams;
+// Course registration: the learner picks a course, submits the form and pays
+// on Ziina's hosted checkout; an admin confirms participation from
+// Admin > Registrations, after which the course appears in their dashboard.
+export default async function RegisterPage({ searchParams }: { searchParams: Promise<{ course?: string; payment?: string }> }) {
+  const { course, payment } = await searchParams;
   const courses = await prisma.course.findMany({
     where: { isPublished: true },
     orderBy: [{ category: { order: "asc" } }, { title: "asc" }],
@@ -28,11 +28,12 @@ export default async function RegisterPage({ searchParams }: { searchParams: Pro
       <div className="max-w-xl mx-auto px-4">
         <h1 className="text-3xl md:text-4xl font-bold text-[#082032] mb-2 text-center">Register for a Course</h1>
         <p className="text-[15px] text-[#475569] text-center mb-8">
-          Submit your registration and our team will confirm your seat. The course appears in your dashboard once confirmed.
+          Register and pay securely, and our team will confirm your seat. The course appears in your dashboard once confirmed.
         </p>
         <RegisterForm
           groups={[...byCategory].map(([category, list]) => ({ category, courses: list.map((c) => ({ slug: c.slug, title: c.title })) }))}
           preselected={course}
+          paymentCancelled={payment === "cancelled"}
         />
       </div>
     </div>

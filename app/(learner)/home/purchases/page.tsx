@@ -7,7 +7,8 @@ import { Receipt, BookOpen } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
-export default async function PurchaseHistoryPage() {
+export default async function PurchaseHistoryPage({ searchParams }: { searchParams: Promise<{ payment?: string }> }) {
+  const { payment } = await searchParams;
   const learner = await getCurrentLearner();
   if (!learner) redirect("/");
 
@@ -22,6 +23,13 @@ export default async function PurchaseHistoryPage() {
         <h1 className="text-2xl font-extrabold text-ink-900 mb-1">My Registrations</h1>
         <p className="text-ink-500 text-[14px]">Every course registration on your account. Pending ones unlock in your dashboard once our team confirms your seat.</p>
       </div>
+
+      {payment === "success" && (
+        <div className="text-sm text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3">Payment received — thank you! Our team will confirm your seat shortly.</div>
+      )}
+      {payment === "pending" && (
+        <div className="text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">We couldn&apos;t confirm your payment yet. If you were charged, it will show here shortly — otherwise use &quot;Pay now&quot; to try again.</div>
+      )}
 
       {enrollments.length === 0 ? (
         <div className="bg-white rounded-2xl border border-ink-100 p-12 text-center shadow-sm">
@@ -41,6 +49,7 @@ export default async function PurchaseHistoryPage() {
               <tr>
                 <th className="px-6 py-3">Course</th>
                 <th className="px-6 py-3">Date</th>
+                <th className="px-6 py-3">Payment</th>
                 <th className="px-6 py-3">Status</th>
                 <th className="px-6 py-3"></th>
               </tr>
@@ -52,6 +61,9 @@ export default async function PurchaseHistoryPage() {
                   <td className="px-6 py-4 text-ink-600">
                     {e.createdAt.toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}
                   </td>
+                  <td className="px-6 py-4 text-ink-600">
+                    {e.paidAt ? `Paid ${formatPrice(e.priceUsd, "USD")}` : "—"}
+                  </td>
                   <td className="px-6 py-4">
                     {e.status === "confirmed"
                       ? <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Confirmed</span>
@@ -60,7 +72,9 @@ export default async function PurchaseHistoryPage() {
                   <td className="px-6 py-4 text-right">
                     {e.status === "confirmed"
                       ? <Link href={`/home/lms/${e.courseSlug}`} className="text-primary font-semibold hover:underline text-[13px]">Go to course</Link>
-                      : <Link href={`/${e.courseSlug}`} className="text-ink-500 font-semibold hover:underline text-[13px]">View course</Link>}
+                      : e.priceUsd > 0 && !e.paidAt
+                        ? <Link href={`/register?course=${e.courseSlug}`} className="text-primary font-semibold hover:underline text-[13px]">Pay now</Link>
+                        : <Link href={`/${e.courseSlug}`} className="text-ink-500 font-semibold hover:underline text-[13px]">View course</Link>}
                   </td>
                 </tr>
               ))}

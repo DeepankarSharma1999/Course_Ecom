@@ -8,11 +8,12 @@ import { useLearnerAuth } from "@/components/learner-auth-provider";
 type Props = {
   groups: { category: string; courses: { slug: string; title: string }[] }[];
   preselected?: string;
+  paymentCancelled?: boolean;
 };
 
 // Registration needs a learner account (the confirmed course lands in their
 // dashboard), so signed-out visitors get the sign-in modal first.
-export function RegisterForm({ groups, preselected }: Props) {
+export function RegisterForm({ groups, preselected, paymentCancelled }: Props) {
   const { isLoggedIn, user, openModal } = useLearnerAuth();
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
@@ -43,7 +44,7 @@ export function RegisterForm({ groups, preselected }: Props) {
       const body = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(body?.error || "Something went wrong. Please try again.");
       // Contact details go to the leads inbox so the team can reach out.
-      fetch("/api/leads", {
+      const lead = fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -56,6 +57,11 @@ export function RegisterForm({ groups, preselected }: Props) {
           source: "Course Registration",
         }),
       }).catch(() => {});
+      if (body.redirectUrl) {
+        await lead; // let the lead land before leaving for the hosted checkout
+        window.location.href = body.redirectUrl;
+        return;
+      }
       setState("success");
     } catch (err: any) {
       setError(err.message);
@@ -80,6 +86,11 @@ export function RegisterForm({ groups, preselected }: Props) {
 
   return (
     <div className="card p-6 md:p-8 bg-white rounded-2xl border border-gray-200 shadow-sm">
+      {paymentCancelled && state === "idle" && (
+        <div className="mb-4 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+          Your payment wasn&apos;t completed and you haven&apos;t been charged. Submit again to retry.
+        </div>
+      )}
       <form onSubmit={onSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-ink-700 mb-1">Course *</label>
@@ -119,11 +130,11 @@ export function RegisterForm({ groups, preselected }: Props) {
           <textarea name="message" rows={2} className="input w-full" placeholder="Preferred batch, questions, team size…" />
         </div>
         <button type="submit" disabled={state === "loading"} className="btn-primary w-full">
-          {state === "loading" ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</> : "Submit registration"}
+          {state === "loading" ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</> : "Register & pay"}
         </button>
         {error && <div className="text-sm text-red-600">{error}</div>}
         <p className="text-xs text-ink-500 text-center">
-          No payment is taken now — our team confirms your seat and shares payment options.
+          You&apos;ll be taken to our secure payment page (charged in USD). Our team then confirms your seat.
         </p>
       </form>
       <style jsx>{`

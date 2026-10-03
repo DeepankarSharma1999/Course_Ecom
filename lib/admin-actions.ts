@@ -425,7 +425,7 @@ export async function bulkCreateSchedules(formData: FormData) {
 }
 
 // =========== COURSE REGISTRATIONS ============
-// No payment gateway yet: learners register, an admin confirms participation,
+// Learners register (and pay via Ziina); an admin confirms participation,
 // and only confirmed enrollments show in the learner dashboard.
 export async function confirmEnrollment(id: string) {
   await requireAdmin();
